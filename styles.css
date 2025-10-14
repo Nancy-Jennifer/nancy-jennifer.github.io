@@ -1,0 +1,15 @@
+
+:root{
+  --bleu-nuit:#0B132B;
+  --bleu:#1C2541;
+  --accent:#E76F51;
+}
+.navbar, .navbar-dark { background-color: var(--bleu-nuit) !important; }
+.navbar a, .navbar-brand { color: #fff !important; }
+a { color: var(--accent); }
+.cta { margin: 1rem 0; }
+.btn-primary { background: var(--accent); border-color: var(--accent); }
+.quarto-title-banner {
+  background: linear-gradient(135deg, #0B132B 0%, #1C2541 60%);
+  color:#fff;
+}

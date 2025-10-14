@@ -1,0 +1,23 @@
+
+---
+title: "Optimiser l’expérience client mobile en France"
+subtitle: "Analyse de la qualité de service au regard des standards internationaux (ARCEP 2024)"
+image: assets/hero-4g-banner.png
+format:
+  html:
+    toc: false
+---
+
+Bienvenue sur mon **portfolio Data Analyst Technique**.  
+Je conçois des analyses **Télécoms (QoS)** et **People Analytics**, avec un focus sur la **rigueur méthodologique** et la **traduction métier**.
+
+::: {.cta}
+**Projet phare** → [EDA Télécom France 2024](telecoms/index.qmd){.btn .btn-primary}
+:::
+
+### Ce que vous trouverez ici
+- **Études de cas réelles** : ARCEP 2024 (France), benchmark UE/OCDE/Monde.  
+- **Cartes & visualisations** : Leaflet, ggplot2, matplotlib.  
+- **Rapports reproductibles** : R Markdown / Quarto, notebooks, code source public.
+
+> *Sources principales : ARCEP (données publiques 2024), ITU, World Bank WDI.*

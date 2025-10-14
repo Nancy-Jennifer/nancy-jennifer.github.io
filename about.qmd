@@ -1,0 +1,10 @@
+
+---
+title: "À propos"
+---
+
+Je suis **Nancy Jennifer**, Data Analyst Technique (Télécoms & People Analytics).  
+- **Stack** : SQL, Python, R, Quarto, Tableau/Leaflet.  
+- **Intérêt** : qualité de service mobile, KPIs réseaux, analytics RH.  
+
+[LinkedIn](#) • [GitHub](https://github.com/nancy-jennifer)
