@@ -14,11 +14,15 @@
   --gris-f:#F5F7FA;
 }
 
-/* NAV/hero bleus */
-.navbar, .navbar-dark { background: var(--bleu-nuit) !important; }
-.quarto-title-banner {
-  background: linear-gradient(135deg, var(--bleu-nuit) 0%, var(--bleu) 65%);
-  color:#fff;
+/* ===== Navbar claire ===== */
+.navbar, .navbar-dark {
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+.navbar .navbar-brand, .navbar .nav-link { color: var(--bleu) !important; }
+.navbar .nav-link:hover { color: var(--accent) !important; opacity: 1; }
+.navbar .nav-link.active { color: var(--accent) !important; font-weight: 600; }
 }
 
 /* Boutons/liens VERTS */
