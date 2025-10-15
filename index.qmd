@@ -1,12 +1,12 @@
 ---
-title: "Nancy lee YIMBERE ALAPINI"
-subtitle: "Data Analyst certifiée (Google) — Télécoms & People Analytics"
-image: assets/hero-home.jpg
-title-block-banner: true
-page-layout: article
+title: ""
 format:
   html:
     toc: false
+---
+
+![](assets/people-analytics.jpg){.hero-img alt="Équipe avec réseau de connexions de données" loading=lazy}
+
 ---
 
 <div class="hero-center">
