@@ -30,3 +30,6 @@ a { color: var(--accent); }
 /* Footer bleu */
 .nav-footer { background: var(--bleu); color:#fff; }
 .nav-footer a { color:#fff; text-decoration: underline; }
+
+.btn-row a { display:inline-block; margin: .25rem .35rem .25rem 0; }
+
