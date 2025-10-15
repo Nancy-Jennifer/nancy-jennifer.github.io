@@ -1,23 +1,36 @@
-
 ---
-title: "Optimiser l’expérience client mobile en France"
-subtitle: "Analyse de la qualité de service au regard des standards internationaux (ARCEP 2024)"
-image: assets/hero-4g-banner.png
+title: "Nancy lee YIMBERE ALAPINI"
+subtitle: "Data Analyst certifiée (Google) — Télécoms & People Analytics"
+image: assets/hero-home.jpg
+title-block-banner: true
+page-layout: article
 format:
   html:
     toc: false
 ---
 
-Bienvenue sur mon **portfolio Data Analyst Technique**.  
-Je conçois des analyses **Télécoms (QoS)** et **People Analytics**, avec un focus sur la **rigueur méthodologique** et la **traduction métier**.
+<div class="hero-center">
+  <h1 class="hero-title">Nancy lee YIMBERE ALAPINI</h1>
+  <h2 class="hero-subtitle">Data Analyst certifiée (Google) — Télécoms & People Analytics</h2>
+  <p class="tagline">Comprendre, Interpréter, Convaincre grâce aux données</p>
+</div>
+
+## Bonjour, bienvenue dans mon univers Data !
+
+Ce portfolio présente mes **projets réels** en **Télécommunications (QoS)** et **People Analytics**, avec une approche centrée sur la **rigueur méthodologique** et la **traduction métier**.
+
+### Mes outils & pratiques
+- **SQL, R, Python** — nettoyage, EDA, modélisation, automatisation.
+- **Visualisation** — ggplot2, matplotlib, Leaflet (cartes), dashboards.
+- **Reproductibilité** — Quarto / R Markdown, notebooks, code public.
 
 ::: {.cta}
-**Projet phare** → [EDA Télécom France 2024](telecoms/index.qmd){.btn .btn-primary}
+[🚀 Projet phare — EDA Télécom France 2024](telecoms/index.qmd){.btn .btn-primary}
+[👥 People Analytics — HR Attrition](people-analytics/index.qmd){.btn .btn-outline-primary}
 :::
 
-### Ce que vous trouverez ici
-- **Études de cas réelles** : ARCEP 2024 (France), benchmark UE/OCDE/Monde.  
-- **Cartes & visualisations** : Leaflet, ggplot2, matplotlib.  
-- **Rapports reproductibles** : R Markdown / Quarto, notebooks, code source public.
+## Ce que vous trouverez ici
+- **Études de cas** : Télécoms (Qualité de service), People Analytics (performance & rétention).
+- **Livrables** : rapports clairs, visualisations interactives, recommandations opérationnelles.
 
-> *Sources principales : ARCEP (données publiques 2024), ITU, World Bank WDI.*
+> *Sources fréquentes : ARCEP (données publiques), IBM (datasets RH anonymisés), Kaggle (compétitions & open data), ITU, World Bank WDI, Eurostat, data.gouv.fr, et autres jeux de données ouverts sectoriels.*
