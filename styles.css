@@ -37,3 +37,13 @@ a { color: var(--accent); }
 
 .btn-row a { display:inline-block; margin: .25rem .35rem .25rem 0; }
 
+/* Image héro d'accueil (sans texte par-dessus) */
+.hero-img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  margin: .5rem 0 1.25rem 0; /* décalée sous le menu */
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+}
+
+
