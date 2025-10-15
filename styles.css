@@ -1,15 +1,32 @@
 
+/* ===== Palette site global ===== */
 :root{
-  --bleu-nuit:#0B132B;
-  --bleu:#1C2541;
-  --accent:#E76F51;
+  /* Base BLEU (UI de fond/navigation) */
+  --bleu-nuit:#0B132B;   /* navbar, hero gradient start */
+  --bleu:#1C2541;        /* hero gradient end, footer */
+  --bleu-clair:#2F3A66;  /* survols, détails */
+
+  /* Accent VERT (actions, liens, boutons) */
+  --accent:#16A34A;      /* vert pro People Analytics */
+
+  /* Neutres */
+  --gris:#E0E0E0;
+  --gris-f:#F5F7FA;
 }
-.navbar, .navbar-dark { background-color: var(--bleu-nuit) !important; }
-.navbar a, .navbar-brand { color: #fff !important; }
-a { color: var(--accent); }
-.cta { margin: 1rem 0; }
-.btn-primary { background: var(--accent); border-color: var(--accent); }
+
+/* NAV/hero bleus */
+.navbar, .navbar-dark { background: var(--bleu-nuit) !important; }
 .quarto-title-banner {
-  background: linear-gradient(135deg, #0B132B 0%, #1C2541 60%);
+  background: linear-gradient(135deg, var(--bleu-nuit) 0%, var(--bleu) 65%);
   color:#fff;
 }
+
+/* Boutons/liens VERTS */
+a { color: var(--accent); }
+.btn, .btn-primary { background: var(--accent); border-color: var(--accent); }
+.btn-outline-primary { color: var(--accent); border-color: var(--accent); }
+.btn-outline-primary:hover { background: var(--accent); color:#fff; }
+
+/* Footer bleu */
+.nav-footer { background: var(--bleu); color:#fff; }
+.nav-footer a { color:#fff; text-decoration: underline; }
