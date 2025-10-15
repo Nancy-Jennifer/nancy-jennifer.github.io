@@ -24,7 +24,7 @@ Ce portfolio présente mes **projets réels** en **Télécommunications (QoS)** 
 - **Visualisation** — ggplot2, matplotlib, Leaflet (cartes), dashboards.
 - **Reproductibilité** — Quarto / R Markdown, notebooks, code public.
 
-::: {.cta}
+::: {.cta .btn-row}
 [🚀 Projet phare — EDA Télécom France 2024](telecoms/index.qmd){.btn .btn-primary}
 [👥 People Analytics — HR Attrition](people-analytics/index.qmd){.btn .btn-outline-primary}
 :::
