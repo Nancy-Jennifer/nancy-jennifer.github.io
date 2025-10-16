@@ -1,4 +1,38 @@
 ---
-title: "Méthodologie Analytique"
+title: "Méthodes et approches analytiques"
 ---
-Contenu à venir : cadre d’analyse, bonnes pratiques, outils.
+
+## 🔍 Ma démarche analytique
+
+Dans mes projets Data Analytics, je mobilise différentes approches selon la **problématique métier** et les **données disponibles**.  
+Ces approches se déclinent en **quatre niveaux complémentaires** : descriptif, inférentiel, prédictif et prescriptif.
+
+Chacun répond à une question clé et sert un objectif précis, allant de la simple observation à la recommandation opérationnelle.
+
+Le tableau synthétique ci-dessous illustre ces niveaux, accompagnés d’exemples concrets issus de mes réalisations.
+
+| Niveau analytique | Question clé | Objectif principal | Exemple de mise en œuvre |
+|--------------------|--------------|--------------------|---------------------------|
+| **Descriptif** | Que s’est-il passé ? | Observer et résumer les faits passés. | Analyse QoS télécom (taux de coupure, latence, satisfaction client). |
+| **Inférentiel** | Pourquoi cela s’est-il produit ? | Identifier causes et corrélations. | Impact des heures sup. sur le turnover (People Analytics). |
+| **Prédictif** | Que va-t-il se passer ? | Anticiper les comportements futurs. | Modélisation du risque de départ d’un salarié. |
+| **Prescriptif** | Que faut-il faire ? | Recommander des actions optimales. | Scénarios d’optimisation de couverture réseau / rétention RH. |
+
+```{css}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+th {
+  background-color: #2E7D32;
+  color: white;
+  padding: 8px;
+  text-align: left;
+}
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+tr:hover { background-color: #f6f6f6; }
