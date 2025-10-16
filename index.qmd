@@ -1,14 +1,4 @@
 ---
-title: "Méthodologie Analytique"
----
-Contenu à venir : cadre d’analyse, bonnes pratiques, outils.
-
----
-title: "Contributions / Bénévolat"
----
-Contenu à venir : projets open-source, actions bénévoles data.
-
----
 title: ""
 format:
   html:
@@ -17,30 +7,31 @@ format:
 
 ![](assets/people-analytics.jpg){.hero-img alt="Équipe avec réseau de connexions de données" loading=lazy}
 
----
+<div class="hero-meta">
 
-<div class="hero-center">
-  <h1 class="hero-title">Nancy lee YIMBERE ALAPINI</h1>
-  <h2 class="hero-subtitle">Data Analyst certifiée (Google) — Télécoms & People Analytics</h2>
-  <p class="tagline">Comprendre, Interpréter, Convaincre grâce aux données</p>
+### Nancy Lee YIMBERE ALAPINI
+**Data Analyst Technique** — Télécoms & People Analytics  
+*Comprendre, interpréter, convaincre grâce aux données.*
+
 </div>
 
 ## Bonjour, bienvenue dans mon univers Data !
 
-Ce portfolio présente mes **projets réels** en **Télécommunications (QoS)** et **People Analytics**, avec une approche centrée sur la **rigueur méthodologique** et la **traduction métier**.
-
-### Mes outils & pratiques
-- **SQL, R, Python** — nettoyage, EDA, modélisation, automatisation.
-- **Visualisation** — ggplot2, matplotlib, Leaflet (cartes), dashboards.
-- **Reproductibilité** — Quarto / R Markdown, notebooks, code public.
+Je conçois des analyses **Télécoms (QoS)** et **People Analytics**, avec une approche orientée
+**rigueur méthodologique** et **traduction métier**.
 
 ::: {.cta .btn-row}
 [🚀 Projet phare — EDA Télécom France 2024](telecoms/index.qmd){.btn .btn-primary}
 [👥 People Analytics — HR Attrition](people-analytics/index.qmd){.btn .btn-outline-primary}
 :::
 
-## Ce que vous trouverez ici
+### Mes outils & pratiques
+- **SQL, R, Python** — nettoyage, EDA, modélisation, automatisation.
+- **Visualisation** — ggplot2, matplotlib, Plotly, Leaflet (cartes), dashboards.
+- **Reproductibilité** — Quarto / R Markdown, notebooks, code source public.
+
+### Ce que vous trouverez ici
 - **Études de cas** : Télécoms (Qualité de service), People Analytics (performance & rétention).
 - **Livrables** : rapports clairs, visualisations interactives, recommandations opérationnelles.
 
-> *Sources fréquentes : ARCEP (données publiques), IBM (datasets RH anonymisés), Kaggle (compétitions & open data), ITU, World Bank WDI, Eurostat, data.gouv.fr, et autres jeux de données ouverts sectoriels.*
+*Sources de données publiques ouvertes : ARCEP, ITU, World Bank WDI, IBM (datasets anonymisés), Kaggle, etc.*
