@@ -1,10 +1,55 @@
+---
+title: "Qui suis-je ?"
+---
+
+Ingénieure télécoms avec **onze (11) années d'expérience**, aujourd’hui **Data Analyst certifiée (Google)**,  
+**je transforme les données en leviers de décisions.**
+
+Mon évolution vers la data s’est imposée naturellement.  
+Au fil des projets techniques et opérationnels, j’ai constaté un besoin croissant de **comprendre, visualiser et interpréter les données** pour améliorer la performance, la qualité de service et l’engagement client.
+
+J’ai également compris que **l’humain est au cœur de la stratégie d’entreprise**, ce qui a éveillé mon intérêt pour la **People Analytics**, un domaine passionnant où les données permettent de **mieux comprendre, valoriser et accompagner les talents.**
 
 ---
-title: "À propos"
+
+## 🎯 Ma double expertise
+
+Je mets aujourd’hui à profit ma double compétence :
+
+- 💡 Une **expertise métier télécoms solide**
+- 🧩 Une **maîtrise des outils d’analyse et de visualisation de données** : SQL, R, Python, Tableau, Power BI…
+
+À cela s’ajoute ma passion pour les **données liées à l’humain**, qui me pousse à explorer le champ de la People Analytics pour contribuer à des **décisions RH plus éclairées et centrées sur l’individu.**
+
 ---
 
-Je suis **Nancy Jennifer**, Data Analyst Technique (Télécoms & People Analytics).  
-- **Stack** : SQL, Python, R, Quarto, Tableau/Leaflet.  
-- **Intérêt** : qualité de service mobile, KPIs réseaux, analytics RH.  
+## 📚 Mes domaines de prédilection
 
-[LinkedIn](#) • [GitHub](https://github.com/nancy-jennifer)
+- **Télécoms & Qualité de service :**  
+  Analyse de données réseaux, optimisation de la qualité de service, prédiction de la demande, performance des équipements.
+
+- **People Analytics :**  
+  Analyse des données RH pour améliorer le bien-être, la performance, la rétention des talents et la culture d’entreprise.
+
+---
+
+## 💬 Ma philosophie
+
+> **Analyser, raconter, décider.**  
+> Une donnée n’a de valeur que lorsqu’elle **éclaire une décision** et **raconte une histoire utile.**
+
+Contactez-moi si vous recherchez **une analyste capable de relier la technique à la stratégie**,  
+avec **rigueur, clarté et une vraie compréhension du terrain.**
+
+---
+
+```{css}
+blockquote {
+  border-left: 4px solid #2E7D32;
+  background: #f7f9f8;
+  padding: .8rem 1rem;
+  border-radius: 6px;
+  font-style: italic;
+  color: #1b1b1b;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
