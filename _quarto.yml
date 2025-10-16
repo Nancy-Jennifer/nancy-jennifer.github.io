@@ -1,4 +1,3 @@
-
 project:
   type: website
   output-dir: _site
@@ -10,12 +9,16 @@ website:
     left:
       - text: "Accueil"
         href: index.qmd
+      - text: "Qui suis-je ?"
+        href: about.qmd
       - text: "Télécoms"
         href: telecoms/index.qmd
       - text: "People Analytics"
         href: people-analytics/index.qmd
-      - text: "À propos"
-        href: about.qmd
+      - text: "Méthodologie Analytique"
+        href: methode/index.qmd
+      - text: "Contributions / Bénévolat"
+        href: contributions/index.qmd
     right:
       - icon: github
         href: https://github.com/nancy-jennifer
