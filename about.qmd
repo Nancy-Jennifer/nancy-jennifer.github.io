@@ -1,15 +1,12 @@
 ---
 title: "Qui suis-je ?"
-image: /assets/banners/banniere-about.png   # chemin ABSOLU = inratable
-title-block-banner: true
 page-layout: full
 ---
 
-<div class="slogan">
-  <span>De l’expertise technique à la prise de décisions par les données.</span>
-</div>
+<!-- ===== BANNIÈRE FORCÉE (affichage garanti) ===== -->
+<div class="hero-banner"></div>
 
-
+<!-- ===== SLOGAN (très grand, gras, bleu) ===== -->
 <div class="slogan">
   <span>De l’expertise technique à la prise de décisions par les données.</span>
 </div>
@@ -53,61 +50,19 @@ Je mets aujourd’hui à profit ma double compétence :
 Contactez-moi si vous recherchez **une analyste capable de relier la technique à la stratégie**,  
 avec **rigueur, clarté et une vraie compréhension du terrain.**
 
-<!-- ====== STYLES LOCAUX ====== -->
+<!-- ================= STYLES LOCAUX (ne s'affichent pas) ================= -->
 ```{=html}
 <style>
-/* Hauteur + cadrage de la bannière d'en-tête */
-.quarto-title-block .quarto-title-banner{
-  height: 340px;                /* ajuste 280–380px si besoin */
-  background-size: cover;
-  background-position: center center;  /* ex: center 40% pour remonter le cadrage */
-  position: relative;
-}
-
-/* Slogan sous la bannière : très grand, gras, bleu */
-.slogan{
-  margin: 16px auto 26px auto;
-  max-width: 1100px;
-  padding: 10px 16px;
-  text-align: center;
-}
-.slogan span{
-  display: inline-block;
-  font-weight: 800;
-  color: #0A4E9B;               /* bleu soutenu */
-  /* très grand mais responsive */
-  font-size: clamp(1.6rem, 3.2vw + 0.6rem, 3.0rem);
-  letter-spacing: .2px;
-}
-
-/* Mobile : bannière un peu plus basse + slogan lisible */
-@media (max-width: 600px){
-  .quarto-title-block .quarto-title-banner{ height: 240px; }
-  .slogan span{ font-size: clamp(1.4rem, 5vw + .2rem, 2.2rem); }
-}
-
-/* Blockquote propre */
-blockquote{
-  border-left: 4px solid #2E7D32;
-  background: #f7f9f8;
-  padding: .8rem 1rem;
-  border-radius: 6px;
-  font-style: italic;
-  color: #1b1b1b;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-</style>
-
-<style>
-/* Bannière : hauteur + cadrage */
-.quarto-title-block .quarto-title-banner{
-  height: 340px;
+/* ===== Bannière : image de fond + hauteur + cadrage ===== */
+.hero-banner{
+  width: 100%;
+  height: 340px; /* ajuste 280–380px si besoin */
+  background-image: url('/assets/banners/banniere-about.png'); /* chemin ABSOLU */
   background-size: cover;
   background-position: center center;
-  position: relative;
 }
 
-/* Slogan : très grand, gras, bleu */
+/* ===== Slogan : très grand, gras, bleu ===== */
 .slogan{
   margin: 16px auto 26px;
   max-width: 1100px;
@@ -121,9 +76,20 @@ blockquote{
   letter-spacing: .2px;
 }
 
-/* Mobile */
+/* ===== Mobile ===== */
 @media (max-width: 600px){
-  .quarto-title-block .quarto-title-banner{ height: 240px; }
+  .hero-banner{ height: 240px; }
   .slogan span{ font-size: clamp(1.6rem, 5vw + .2rem, 2.2rem); }
+}
+
+/* ===== Blockquote propre ===== */
+blockquote{
+  border-left: 4px solid #2E7D32;
+  background: #f7f9f8;
+  padding: .8rem 1rem;
+  border-radius: 6px;
+  font-style: italic;
+  color: #1b1b1b;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 </style>
