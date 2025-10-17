@@ -1,9 +1,14 @@
 ---
 title: "Qui suis-je ?"
-image: assets/banners/banniere-about.png
+image: /assets/banners/banniere-about.png   # chemin ABSOLU = inratable
 title-block-banner: true
 page-layout: full
 ---
+
+<div class="slogan">
+  <span>De l’expertise technique à la prise de décisions par les données.</span>
+</div>
+
 
 <div class="slogan">
   <span>De l’expertise technique à la prise de décisions par les données.</span>
@@ -90,5 +95,35 @@ blockquote{
   font-style: italic;
   color: #1b1b1b;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+</style>
+
+<style>
+/* Bannière : hauteur + cadrage */
+.quarto-title-block .quarto-title-banner{
+  height: 340px;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+/* Slogan : très grand, gras, bleu */
+.slogan{
+  margin: 16px auto 26px;
+  max-width: 1100px;
+  text-align: center;
+}
+.slogan span{
+  display: inline-block;
+  font-weight: 900;
+  color: #0A4E9B; /* bleu soutenu */
+  font-size: clamp(2.0rem, 3.8vw + 0.6rem, 3.2rem); /* très grand mais responsive */
+  letter-spacing: .2px;
+}
+
+/* Mobile */
+@media (max-width: 600px){
+  .quarto-title-block .quarto-title-banner{ height: 240px; }
+  .slogan span{ font-size: clamp(1.6rem, 5vw + .2rem, 2.2rem); }
 }
 </style>
