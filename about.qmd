@@ -1,6 +1,13 @@
 ---
 title: "Qui suis-je ?"
+image: assets/banners/banniere-about.png
+title-block-banner: true
+page-layout: full
 ---
+
+<div class="slogan">
+  <span>De l’expertise technique à la prise de décisions par les données.</span>
+</div>
 
 Ingénieure télécoms avec **onze (11) années d'expérience**, aujourd’hui **Data Analyst certifiée (Google)**,  
 **je transforme les données en leviers de décisions.**
@@ -41,9 +48,33 @@ Je mets aujourd’hui à profit ma double compétence :
 Contactez-moi si vous recherchez **une analyste capable de relier la technique à la stratégie**,  
 avec **rigueur, clarté et une vraie compréhension du terrain.**
 
----
-
 ```{css}
+.quarto-title-block .quarto-title-banner {
+  /* Ajuste la hauteur de la bannière si besoin */
+  height: 320px;
+  background-size: cover;
+  background-position: center center;
+}
+
+/* Slogan sous la bannière : lisible, centré, responsive */
+.slogan {
+  margin: 14px auto 22px auto;
+  max-width: 1100px;
+  padding: 12px 18px;
+  background: #f7f9fb;
+  border: 1px solid #e6ecf2;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.slogan span {
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: .2px;
+  color: #0f2233; /* bleu nuit doux */
+}
+
+/* Style propre pour les blockquotes de ta page */
 blockquote {
   border-left: 4px solid #2E7D32;
   background: #f7f9f8;
