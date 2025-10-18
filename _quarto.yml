@@ -25,12 +25,18 @@ website:
       - icon: github
         href: https://github.com/nancy-jennifer
 
-  # ===== Pied de page global (année auto) =====
   page-footer:
     left: |
-      © {date} Nancy Lee YIMBERE ALAPINI – Data Analyst | Télécommunications &amp; People Analytics – Portfolio personnel –
-      <a href="https://www.linkedin.com/in/https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/" target="_blank" rel="noopener">LinkedIn</a> |
+      © <span id="year"></span> Nancy Lee YIMBERE – Data Analyst | Télécommunications &amp; People Analytics – Portfolio personnel –
+      <a href="https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626" target="_blank" rel="noopener">LinkedIn</a> |
       <a href="mailto:nancylee.yimbere@gmail.com">nancylee.yimbere@gmail.com</a>
+      <script>
+        (function(){
+          var y = new Date().getFullYear();
+          var el = document.getElementById('year');
+          if (el) el.textContent = y;
+        })();
+      </script>
     right: ""
 
 format:
