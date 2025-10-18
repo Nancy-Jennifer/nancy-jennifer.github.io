@@ -3,9 +3,8 @@ title: "Méthodes et approches analytiques"
 page-layout: full
 ---
 
-<!-- ===== BANNIÈRE FORCÉE (affichage garanti, juste après le titre) ===== -->
+<!-- ===== BANNIÈRE FORCÉE (juste après le titre) ===== -->
 <div class="hero-banner-methode"></div>
-
 
 <!-- ===== CONTENU DE LA PAGE ===== -->
 
@@ -49,16 +48,17 @@ Python (pandas, scikit-learn), R (tidyverse), Quarto/Markdown, Git/GitHub, Table
   color:#0A4E9B !important;
 }
 
-/* ===== Bannière méthode (même logique que la page "Qui suis-je ?") ===== */
+/* ===== Bannière méthode (même logique que "Qui suis-je ?") ===== */
 .hero-banner-methode{
   width: 100%;
   height: 340px; /* ajuste 280–380px si besoin */
   background-image: url('/assets/banners/banniere-methode.png');
   background-size: cover;
   background-position: center center;
+  margin-bottom: 24px; /* ← espace sous la bannière (1–2 lignes) */
 }
 
-/* ===== Table stylée (CSS encapsulé -> n'apparaît plus en clair) ===== */
+/* ===== Table stylée (CSS encapsulé) ===== */
 table { border-collapse: collapse; width: 100%; margin-top: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
 th { background-color: #2E7D32; color: white; padding: 8px; text-align: left; }
 td { padding: 8px; border-bottom: 1px solid #ddd; }
@@ -66,6 +66,6 @@ tr:hover { background-color: #f6f6f6; }
 
 /* ===== Mobile ===== */
 @media (max-width: 600px){
-  .hero-banner-methode{ height: 240px; }
+  .hero-banner-methode{ height: 240px; margin-bottom: 20px; }
 }
 </style>
