@@ -1,5 +1,6 @@
-
-/* ===== Palette site global ===== */
+/* =========================
+   PALETTE & VARIABLES GLOBALES
+   ========================= */
 :root{
   /* Base BLEU (UI de fond/navigation) */
   --bleu-nuit:#0B132B;   /* navbar, hero gradient start */
@@ -14,36 +15,63 @@
   --gris-f:#F5F7FA;
 }
 
-/* ===== Navbar claire ===== */
+/* =========================
+   NAVBAR CLAIRE
+   ========================= */
 .navbar, .navbar-dark {
-  background: #ffffff !important;
-  border-bottom: 1px solid rgba(0,0,0,.06);
-  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+  background:#ffffff !important;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
 }
+
+/* Couleurs des liens de navbar */
 .navbar .navbar-brand, .navbar .nav-link { color: var(--bleu) !important; }
 .navbar .nav-link:hover { color: var(--accent) !important; opacity: 1; }
 .navbar .nav-link.active { color: var(--accent) !important; font-weight: 600; }
-}
 
-/* Boutons/liens VERTS */
+/* SUPPRIMER le libellé de marque (ex: "TelcoPeopleData — …") */
+.navbar-brand { display: none !important; }
+
+/* Légère compensation de padding après suppression du brand */
+.navbar { padding-left: .5rem; }
+
+/* =========================
+   LIENS & BOUTONS (accent vert)
+   ========================= */
 a { color: var(--accent); }
 .btn, .btn-primary { background: var(--accent); border-color: var(--accent); }
 .btn-outline-primary { color: var(--accent); border-color: var(--accent); }
 .btn-outline-primary:hover { background: var(--accent); color:#fff; }
 
-/* Footer bleu */
+/* =========================
+   FOOTER
+   ========================= */
 .nav-footer { background: var(--bleu); color:#fff; }
 .nav-footer a { color:#fff; text-decoration: underline; }
 
-.btn-row a { display:inline-block; margin: .25rem .35rem .25rem 0; }
+/* Rangée de boutons utilitaires */
+.btn-row a { display:inline-block; margin:.25rem .35rem .25rem 0; }
 
-/* Image héro d'accueil (sans texte par-dessus) */
-.hero-img {
-  width: 100%;
-  display: block;
-  border-radius: 12px;
-  margin: .5rem 0 1.25rem 0; /* décalée sous le menu */
-  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+/* =========================
+   HÉRO D’ACCUEIL (si utilisé)
+   ========================= */
+.hero-img{
+  width:100%;
+  display:block;
+  border-radius:12px;
+  margin:.5rem 0 1.25rem 0; /* décalée sous le menu */
+  box-shadow:0 10px 30px rgba(0,0,0,.10);
 }
 
-
+/* =========================
+   BLOCKQUOTE HARMONISÉ
+   ========================= */
+blockquote{
+  border-left:4px solid #2E7D32;
+  background:#f7f9f8;
+  padding:.8rem 1rem;
+  border-radius:6px;
+  font-style:italic;
+  color:#1b1b1b;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
