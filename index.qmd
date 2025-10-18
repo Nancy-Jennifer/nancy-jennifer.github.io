@@ -1,7 +1,3 @@
----
-title: "Accueil"
-page-layout: full
----
 
 <!-- ===== BANNIÈRE ACCUEIL (même logique que les autres pages) ===== -->
 <div class="hero-banner-home"></div>
