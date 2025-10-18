@@ -5,7 +5,6 @@ project:
     - assets/**
 
 website:
-  # On cache le titre de la navbar via CSS, donc on peut laisser vide ici
   title: ""
   description: "Portfolio Data Analyst Technique — Télécoms QoS & People Analytics"
   navbar:
@@ -20,7 +19,7 @@ website:
         href: people-analytics/index.qmd
       - text: "Méthodologie Analytique"
         href: methode/index.qmd
-      - text: "Contributions / Bénévolat"
+      - text: "Contributions bénévoles"   # ← nouveau libellé d'onglet
         href: contributions/index.qmd
     right:
       - icon: github
