@@ -1,18 +1,28 @@
+---
+title: ""                 # aucun titre affiché
+page-layout: full
+title-block-style: none
+---
 
-<!-- ===== BANNIÈRE ACCUEIL (même logique que les autres pages) ===== -->
-<div class="hero-banner-home"></div>
-
-
-### Nancy Lee YIMBERE ALAPINI
-**Data Analyst Technique** — Télécoms & People Analytics  
-*Comprendre, interpréter, convaincre grâce aux données.*
-
+<!-- ===== EN-TÊTE PERSONNEL (haut gauche) ===== -->
+<div class="home-header">
+  <div class="home-name">Nancy Lee YIMBERE ALAPINI</div>
+  <div class="home-role">Data Analyst Technique — Télécoms &amp; People Analytics</div>
+  <div class="home-tagline">Comprendre, interpréter, convaincre grâce aux données.</div>
 </div>
 
-## Bonjour, bienvenue dans mon univers Data !
+<!-- (2 lignes d'espace sous la tagline) -->
+<div class="spacer-2lines"></div>
 
-Je conçois des analyses **Télécoms (QoS)** et **People Analytics**, avec une approche orientée
-**rigueur méthodologique** et **traduction métier**.
+<!-- ===== BANNIÈRE D’ACCUEIL ===== -->
+<div class="hero-banner-home"></div>
+
+# Bienvenue dans mon univers Data !
+
+Je conçois des analyses **Télécoms (QoS)** et **People Analytics**, avec une approche orientée **rigueur méthodologique** et **traduction métier**.
+
+<!-- ===== Légende des projets (gras, noir) ===== -->
+<div class="projects-intro"><strong>Projets phares :</strong></div>
 
 <!-- ===== Projets phares (toujours visibles) ===== -->
 <div class="projects-row">
@@ -20,13 +30,105 @@ Je conçois des analyses **Télécoms (QoS)** et **People Analytics**, avec une 
   <a class="project-pill" href="people-analytics/index.qmd">📊 People Analytics — HR Attrition</a>
 </div>
 
-### Mes outils & pratiques
+## Mes outils & pratiques
 - **SQL, R, Python** — nettoyage, EDA, modélisation, automatisation.
 - **Visualisation** — ggplot2, matplotlib, Plotly, Leaflet (cartes), dashboards.
 - **Reproductibilité** — Quarto / R Markdown, notebooks, code source public.
 
-### Ce que vous trouverez ici
+## Ce que vous trouverez ici
 - **Études de cas** : Télécoms (Qualité de service), People Analytics (performance & rétention).
 - **Livrables** : rapports clairs, visualisations interactives, recommandations opérationnelles.
 
-*Sources de données publiques ouvertes : ARCEP, ITU, World Bank WDI, IBM (datasets anonymisés), Kaggle, etc.*
+```{=html}
+<style>
+/* Cache tout bloc-titre résiduel */
+.quarto-title-block { display:none; }
+
+/* ===== En-tête perso (haut gauche) ===== */
+.home-header{
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.home-name{
+  font-size: clamp(1.4rem, 2.2vw + .6rem, 2.0rem);
+  font-weight: 800;
+  color: #0f2233;
+  line-height: 1.15;
+}
+.home-role{
+  margin-top: 2px;
+  font-size: clamp(1.05rem, 1.4vw + .35rem, 1.25rem);
+  font-weight: 600;
+  color: #2E7D32;             /* vert — dimension humaine */
+  line-height: 1.25;
+}
+.home-tagline{
+  margin-top: 4px;
+  font-size: clamp(1.0rem, 1.1vw + .25rem, 1.15rem);
+  color: #333;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+/* 2 lignes d'espace avant la bannière */
+.spacer-2lines{
+  height: calc(1.35em * 2);   /* ~ 2 lignes en fonction de la taille du texte */
+}
+
+/* ===== Bannière accueil — même format que les autres pages ===== */
+.hero-banner-home{
+  width: 100%;
+  height: 340px;                           /* ajuste 280–380px si besoin */
+  background-image: url('/assets/people-analytics.jpg');  /* remplace si besoin */
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 24px;                     /* espace sous la bannière */
+  border-radius: 0;                        /* garder en plein-bord si souhaité */
+}
+
+/* ===== Légende "Projets phares :" (gras, noir) ===== */
+.projects-intro{
+  margin: 6px 0 6px 0;
+  color: #111;
+  font-size: 1.05rem;
+}
+
+/* ===== Rangée de projets ===== */
+.projects-row{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 4px 0 22px 0;
+}
+
+/* Pastilles-projets visibles par défaut (aucun survol requis) */
+.project-pill{
+  display: inline-block;
+  background: #2E7D32;       /* vert pro */
+  color: #fff !important;
+  text-decoration: none !important;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  font-weight: 700;
+  letter-spacing: .2px;
+  line-height: 1.2;
+  border: 1px solid rgba(0,0,0,.06);
+  opacity: 1 !important;
+  transform: translateY(0);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.project-pill:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px){
+  .hero-banner-home{ height: 240px; margin-bottom: 20px; }
+  .projects-intro{ margin-top: 2px; }
+  .home-name{ font-size: 1.6rem; }
+  .home-role{ font-size: 1.1rem; }
+  .home-tagline{ font-size: 1rem; }
+}
+</style>
