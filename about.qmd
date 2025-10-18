@@ -3,10 +3,10 @@ title: "Qui suis-je ?"
 page-layout: full
 ---
 
-<!-- ===== BANNIÈRE FORCÉE (affichage garanti) ===== -->
+<!-- ===== BANNIÈRE FORCÉE ===== -->
 <div class="hero-banner"></div>
 
-<!-- ===== SLOGAN (très grand, gras, bleu) ===== -->
+<!-- ===== SLOGAN (bleu, un peu moins grand) ===== -->
 <div class="slogan">
   <span>De l’expertise technique à la prise de décisions par les données.</span>
 </div>
@@ -50,46 +50,36 @@ Je mets aujourd’hui à profit ma double compétence :
 Contactez-moi si vous recherchez **une analyste capable de relier la technique à la stratégie**,  
 avec **rigueur, clarté et une vraie compréhension du terrain.**
 
-<!-- ================= STYLES LOCAUX (ne s'affichent pas) ================= -->
 ```{=html}
 <style>
-/* ===== Bannière : image de fond + hauteur + cadrage ===== */
+/* ===== Bannière ===== */
 .hero-banner{
   width: 100%;
-  height: 340px; /* ajuste 280–380px si besoin */
-  background-image: url('/assets/banners/banniere-about.png'); /* chemin ABSOLU */
+  height: 340px;
+  background-image: url('/assets/banners/banniere-about.png');
   background-size: cover;
   background-position: center center;
 }
 
-/* ===== Slogan : très grand, gras, bleu ===== */
-.slogan{
-  margin: 16px auto 26px;
-  max-width: 1100px;
-  text-align: center;
-}
+/* ===== Slogan : bleu, un peu moins grand que le H1 ===== */
+.slogan{ margin: 16px auto 26px; max-width: 1100px; text-align: center; }
 .slogan span{
-  display: inline-block;
-  font-weight: 900;
-  color: #0A4E9B; /* bleu soutenu */
-  font-size: clamp(2.0rem, 3.8vw + 0.6rem, 3.2rem); /* très grand mais responsive */
+  display:inline-block;
+  font-weight: 800;
+  color: #0A4E9B;
+  /* ↓ plus petit qu'avant, reste > corps de texte */
+  font-size: clamp(1.6rem, 2.2vw + 0.5rem, 2.1rem);
   letter-spacing: .2px;
+}
+
+/* ===== Titre H1 en vert (humain) ===== */
+.quarto-title .title, .quarto-title h1.title{
+  color:#2E7D32 !important;
 }
 
 /* ===== Mobile ===== */
 @media (max-width: 600px){
   .hero-banner{ height: 240px; }
-  .slogan span{ font-size: clamp(1.6rem, 5vw + .2rem, 2.2rem); }
-}
-
-/* ===== Blockquote propre ===== */
-blockquote{
-  border-left: 4px solid #2E7D32;
-  background: #f7f9f8;
-  padding: .8rem 1rem;
-  border-radius: 6px;
-  font-style: italic;
-  color: #1b1b1b;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  .slogan span{ font-size: clamp(1.4rem, 4.2vw + .2rem, 1.8rem); }
 }
 </style>
