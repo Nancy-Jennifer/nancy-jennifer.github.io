@@ -38,7 +38,7 @@ Le tableau synthétique ci-dessous illustre ces niveaux, accompagnés d’exempl
 ---
 
 ## 🧰 Outils
-Python (pandas, scikit-learn), R (tidyverse), Quarto/Markdown, Git/GitHub, Tableau/Power BI, Plotly/ggplot2.
+Python (pandas, scikit-learn), R (tidyverse), SQL, Quarto/Markdown, Git/GitHub, Tableau, Plotly/ggplot2.
 
 <!-- ================= STYLES LOCAUX (ne s'affichent pas) ================= -->
 ```{=html}
