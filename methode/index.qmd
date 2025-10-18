@@ -1,8 +1,14 @@
 ---
 title: "Méthodes et approches analytiques"
+page-layout: full
 ---
 
-## 🔍 Ma démarche analytique
+<!-- ===== BANNIÈRE FORCÉE (affichage garanti, juste après le titre) ===== -->
+<div class="hero-banner-methode"></div>
+
+<!-- ===== CONTENU DE LA PAGE ===== -->
+
+## 🔎 Ma démarche analytique
 
 Dans mes projets Data Analytics, je mobilise différentes approches selon la **problématique métier** et les **données disponibles**.  
 Ces approches se déclinent en **quatre niveaux complémentaires** : descriptif, inférentiel, prédictif et prescriptif.
@@ -12,27 +18,53 @@ Chacun répond à une question clé et sert un objectif précis, allant de la si
 Le tableau synthétique ci-dessous illustre ces niveaux, accompagnés d’exemples concrets issus de mes réalisations.
 
 | Niveau analytique | Question clé | Objectif principal | Exemple de mise en œuvre |
-|--------------------|--------------|--------------------|---------------------------|
-| **Descriptif** | Que s’est-il passé ? | Observer et résumer les faits passés. | Analyse QoS télécom (taux de coupure, latence, satisfaction client). |
-| **Inférentiel** | Pourquoi cela s’est-il produit ? | Identifier causes et corrélations. | Impact des heures sup. sur le turnover (People Analytics). |
-| **Prédictif** | Que va-t-il se passer ? | Anticiper les comportements futurs. | Modélisation du risque de départ d’un salarié. |
-| **Prescriptif** | Que faut-il faire ? | Recommander des actions optimales. | Scénarios d’optimisation de couverture réseau / rétention RH. |
+|---|---|---|---|
+| Descriptif | Que s’est-il passé ? | Observer et résumer les faits passés. | Analyse QoS télécom (taux de coupure, latence, satisfaction client). |
+| Inférentiel | Pourquoi cela s’est-il produit ? | Expliquer, tester des hypothèses. | Tests statistiques / corrélations KPI réseau. |
+| Prédictif | Que va-t-il se passer ? | Anticiper, estimer un résultat futur. | Prévision de charge / trafic réseau, risque d’attrition. |
+| Prescriptif | Que doit-on faire ? | Recommander des actions optimales. | Priorisation des actions QoS, scénarios RH orientés valeur. |
 
-```{css}
-table {
-  border-collapse: collapse;
+---
+
+## 🧭 Cadre méthodologique
+1) **Problème métier & hypothèses** → cadrage, KPIs, succès attendu  
+2) **Données & qualité** → dictionnaire, contrôles d’intégrité, valeurs manquantes  
+3) **EDA orientée métier** → tendances, segments, signaux faibles  
+4) **Modélisation** (si pertinent) → baselines, features, régularisation  
+5) **Validation & robustesse** → CV, métriques, analyses de sensibilité  
+6) **Interprétabilité & reco** → importance de variables/SHAP + plan d’action  
+7) **Reproductibilité** → scripts versionnés, chemins **relatifs**, livrables clairs
+
+---
+
+## 🧰 Outils
+Python (pandas, scikit-learn), R (tidyverse), Quarto/Markdown, Git/GitHub, Tableau/Power BI, Plotly/ggplot2.
+
+<!-- ================= STYLES LOCAUX (ne s'affichent pas) ================= -->
+```{=html}
+<style>
+/* ===== Titre H1 en bleu ===== */
+.quarto-title .title, .quarto-title h1.title{
+  color:#0A4E9B !important;
+}
+
+/* ===== Bannière méthode (même logique que la page "Qui suis-je ?") ===== */
+.hero-banner-methode{
   width: 100%;
-  margin-top: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  height: 340px; /* ajuste 280–380px si besoin */
+  background-image: url('/assets/banners/banniere-methode.png');
+  background-size: cover;
+  background-position: center center;
 }
-th {
-  background-color: #2E7D32;
-  color: white;
-  padding: 8px;
-  text-align: left;
-}
-td {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
+
+/* ===== Table stylée (CSS encapsulé -> n'apparaît plus en clair) ===== */
+table { border-collapse: collapse; width: 100%; margin-top: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+th { background-color: #2E7D32; color: white; padding: 8px; text-align: left; }
+td { padding: 8px; border-bottom: 1px solid #ddd; }
 tr:hover { background-color: #f6f6f6; }
+
+/* ===== Mobile ===== */
+@media (max-width: 600px){
+  .hero-banner-methode{ height: 240px; }
+}
+</style>
