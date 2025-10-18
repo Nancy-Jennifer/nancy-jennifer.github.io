@@ -1,10 +1,52 @@
 ---
-title: "Contributions / Bénévolat"
+title: "Contributions bénévoles"
+page-layout: full
 ---
 
-## 🤝 Contributions & Bénévolat
+<!-- ===== BANNIÈRE (même logique que les autres pages) ===== -->
+<div class="hero-banner-contrib"></div>
 
-Contenu en cours d’élaboration.  
-Cette section sera bientôt disponible.
+<!-- ===== Message d'état (rouge, pro) ===== -->
+<div class="status-contrib">🔧 Section en cours de construction</div>
 
-> 🌱 Cette partie présentera mes engagements, projets associatifs, et contributions bénévoles liés à la Data, à l’éducation ou à la communauté tech.
+<!-- ===== Texte conservé, plus grand ===== -->
+<div class="intro-contrib">
+  🌱 Cette partie présentera mes engagements, projets associatifs, et contributions bénévoles liés à la Data, à l’éducation ou à la communauté tech.
+</div>
+
+<!-- (Pas d’autre texte pour l’instant, comme demandé) -->
+
+```{=html}
+<style>
+/* ===== Bannière Contributions ===== */
+.hero-banner-contrib{
+  width: 100%;
+  height: 340px; /* ajuste 280–380px si besoin */
+  background-image: url('/assets/banners/banniere-contributions.png');
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 24px; /* espace sous la bannière */
+}
+
+/* ===== Message d'état (rouge, visible mais élégant) ===== */
+.status-contrib{
+  color: #C62828;           /* rouge pro */
+  font-weight: 800;
+  text-align: center;
+  margin: 6px 0 14px 0;
+  letter-spacing: .2px;
+}
+
+/* ===== Intro (texte conservé, taille augmentée) ===== */
+.intro-contrib{
+  font-size: clamp(1.05rem, 1.2vw + .5rem, 1.35rem); /* > corps du texte */
+  line-height: 1.55;
+  color: #0f2233;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px){
+  .hero-banner-contrib{ height: 240px; margin-bottom: 20px; }
+  .intro-contrib{ font-size: clamp(1.0rem, 3.8vw + .2rem, 1.2rem); }
+}
+</style>
