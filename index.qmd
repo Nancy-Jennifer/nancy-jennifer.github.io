@@ -1,13 +1,11 @@
 ---
-title: ""
-format:
-  html:
-    toc: false
+title: "Accueil"
+page-layout: full
 ---
 
-![](assets/people-analytics.jpg){.hero-img alt="Équipe avec réseau de connexions de données" loading=lazy}
+<!-- ===== BANNIÈRE ACCUEIL (même logique que les autres pages) ===== -->
+<div class="hero-banner-home"></div>
 
-<div class="hero-meta">
 
 ### Nancy Lee YIMBERE ALAPINI
 **Data Analyst Technique** — Télécoms & People Analytics  
@@ -20,10 +18,11 @@ format:
 Je conçois des analyses **Télécoms (QoS)** et **People Analytics**, avec une approche orientée
 **rigueur méthodologique** et **traduction métier**.
 
-::: {.cta .btn-row}
-[🚀 Projet phare — EDA Télécom France 2024](telecoms/index.qmd){.btn .btn-primary}
-[👥 People Analytics — HR Attrition](people-analytics/index.qmd){.btn .btn-outline-primary}
-:::
+<!-- ===== Projets phares (toujours visibles) ===== -->
+<div class="projects-row">
+  <a class="project-pill" href="telecoms/index.qmd">🚀 Projet phare — EDA Télécom France 2024</a>
+  <a class="project-pill" href="people-analytics/index.qmd">📊 People Analytics — HR Attrition</a>
+</div>
 
 ### Mes outils & pratiques
 - **SQL, R, Python** — nettoyage, EDA, modélisation, automatisation.
