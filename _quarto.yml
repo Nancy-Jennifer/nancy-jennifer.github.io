@@ -2,10 +2,11 @@ project:
   type: website
   output-dir: _site
   resources:
-    - assets/**          
+    - assets/**
 
 website:
-  title: "TelcoPeopleData — Portfolio Nancy Jennifer"
+  # On cache le titre de la navbar via CSS, donc on peut laisser vide ici
+  title: ""
   description: "Portfolio Data Analyst Technique — Télécoms QoS & People Analytics"
   navbar:
     left:
@@ -32,7 +33,9 @@ format:
   html:
     theme: cosmo
     css: styles.css
+    lang: fr
     toc: true
+    toc-title: "Sur cette page"
     smooth-scroll: true
     link-external-newwindow: true
     code-copy: true
