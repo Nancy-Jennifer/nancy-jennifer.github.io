@@ -6,6 +6,7 @@ page-layout: full
 <!-- ===== BANNIÈRE FORCÉE (affichage garanti, juste après le titre) ===== -->
 <div class="hero-banner-methode"></div>
 
+
 <!-- ===== CONTENU DE LA PAGE ===== -->
 
 ## 🔎 Ma démarche analytique
