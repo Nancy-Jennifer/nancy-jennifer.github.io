@@ -1,0 +1,24 @@
+---
+title: "Projets Télécoms"
+description: "Galerie des analyses QoS en France : P1, P2 et suivants."
+toc: false
+page-layout: full
+---
+
+## Galerie des projets Télécoms
+
+> Accédez aux analyses QoS (ARCEP) par projet. Chaque carte résume rapidement la portée et le livrable.
+
+::: {.cards}
+::: {.card}
+### P1 — ARCEP 2022 : Qualité de Service Télécom France
+EDA **voix/SMS/data** · KPI (réussite, latence, débits) · lecture par **contextes** (urbain, rural, transport, indoor)  
+[🚀 Ouvrir le projet P1](p1-arcep-2022.qmd){.btn .btn-primary}
+:::
+
+::: {.card}
+### P2 — ARCEP 2024 + standards ITU *(à venir)*
+Standardisation, **z-scores**, **Gap Analysis** Macro vs QoS, recommandations **orientées réseau**  
+[🔧 Bientôt disponible](#){.btn .btn-outline-secondary}
+:::
+:::
