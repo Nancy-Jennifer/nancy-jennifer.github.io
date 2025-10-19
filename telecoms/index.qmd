@@ -1,11 +1,10 @@
 ---
-title: "Télécoms — QoS & Réseau"
-description: "Landing page Télécoms : expertise, périmètre et accès à la galerie de projets (ARCEP, QoS voix/SMS/data, comparaisons inter-opérateurs, contextes d’usage)."
+title: "Télécoms — Qualité de Service & Réseau"
 toc: false
 page-layout: full
 ---
 
-![](/assets/banners/banner-telecom.jpg){.hero-telecom}
+![](/assets/banners/banner-telecom.jpg){.hero-img}
 
 ## Télécoms — Qualité de Service & Réseau
 
