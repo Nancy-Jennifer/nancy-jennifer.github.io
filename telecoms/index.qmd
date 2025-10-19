@@ -1,0 +1,12 @@
+---
+title: "Télécoms — Projets QoS & Réseau"
+description: "Analyses ARCEP France, EDA voix/SMS/data, comparaisons inter-opérateurs et lectures par contexte d’usage."
+page-layout: full
+toc: false
+---
+
+# Télécoms — Projets d’analyse QoS
+
+Cette section présente mes projets d’analyse de **qualité de service mobile (QoS)** à partir de sources officielles telles que l’**ARCEP**.
+
+👉 **[🚀 Ouvrir le projet P1 — ARCEP 2022](p1-arcep-2022.qmd)**
