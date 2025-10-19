@@ -55,7 +55,6 @@ a { color: var(--accent); }
 /* =========================
    BANNIÈRES (format harmonisé)
    ========================= */
-/* Utilisée pour toutes les bannières d'en-tête (ex: Qui suis-je ?, Télécoms, etc.) */
 /* Bannière harmonisée (même format que les autres pages) */
 .hero-img{
   width:100% !important;
