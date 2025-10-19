@@ -5,7 +5,7 @@ toc: false
 page-layout: full
 ---
 
-![](../assets/banners/banner-telecom.jpg){.hero-img}
+![](/assets/banners/banner-telecom.jpg){.hero-telecom}
 
 ## Télécoms — Qualité de Service & Réseau
 
