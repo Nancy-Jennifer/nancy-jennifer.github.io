@@ -3,7 +3,8 @@ title: "Télécoms — QoS & Réseau"
 description: "Projets d’analytics Télécoms : ARCEP France, EDA voix/SMS/data, comparaisons inter-opérateurs et lectures par contexte d’usage."
 page-layout: full
 toc: false
-title-block-banner: "../assets/banners/banner-telecom.jpg"
+image: ../assets/banners/banner-telecom.jpg
+title-block-banner: true
 ---
 
 <section style="margin: 0 0 1.25rem 0;">
@@ -37,12 +38,3 @@ title-block-banner: "../assets/banners/banner-telecom.jpg"
     <a class="btn btn-primary" href="p1-arcep-2022.qmd">🚀 Ouvrir le projet P1</a>
   </article>
 </div>
-
-.badges { display:flex; flex-wrap:wrap; gap:.5rem; margin:.25rem 0 1rem 0; }
-.badge { border:1px solid #e6e6e6; border-radius:999px; padding:.25rem .6rem; font-size:.85rem; background:#fafafa; }
-.cards { display:grid; grid-template-columns:1fr; gap:18px; }
-.card { border:1px solid #e9e9e9; border-radius:14px; padding:18px; box-shadow:0 6px 18px rgba(0,0,0,.05); background:#fff; }
-.card-header h3 { margin:.25rem 0 .35rem 0; }
-.card-sub { margin:0 0 .6rem 0; color:#555; }
-.card-list { margin:.25rem 0 1rem 1rem; }
-.btn { border-radius:10px; }
