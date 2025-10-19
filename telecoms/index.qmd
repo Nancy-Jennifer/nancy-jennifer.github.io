@@ -1,27 +1,17 @@
 ---
 title: "Télécoms — QoS & Réseau"
-description: "Projets d’analytics Télécoms : ARCEP France, EDA voix/SMS/data, comparaisons inter-opérateurs et lectures par contexte d’usage."
-page-layout: full
+description: "Landing page Télécoms : expertise, périmètre et accès à la galerie de projets (ARCEP, QoS voix/SMS/data, comparaisons inter-opérateurs, contextes d’usage)."
 toc: false
-title-block-banner: "../assets/banners/banner-telecom.jpg"
+page-layout: full
 ---
+
+![](../assets/banners/banner-telecom.jpg){.hero-img}
+
+## Télécoms — Qualité de Service & Réseau
 
 **Spécialisée en Analytics Télécoms**, je transforme la donnée télécom en insights utiles pour **optimiser la QoS**, **orienter le déploiement réseau** et **améliorer l’expérience client mobile**.
 
-::: {.badges}
 `ARCEP 2022`{.badge} `QoS voix · SMS · data`{.badge} `Comparaisons inter-opérateurs`{.badge} `Analyse par contextes d’usage`{.badge}
-:::
 
-::: {.cards}
-::: {.card}
-### P1 — ARCEP 2022 : Qualité de Service Télécom France
-
-EDA voix/SMS/data · KPI harmonisés (réussite, latence, débits) · lecture par contextes (urbain, rural, transport, indoor)
-
-- Nettoyage & normalisation du schéma de données  
-- Comparaisons inter-opérateurs par contexte d’usage  
-- Visualisations synthétiques (barres, radar, heatmap)
-
-[🚀 Ouvrir le projet P1](p1-arcep-2022.qmd){.btn .btn-primary}
-:::
-:::
+[🔎 Voir les projets Télécoms](projets.qmd){.btn .btn-primary}
+[Méthodologie analytique](../methode/index.qmd){.btn .btn-outline-secondary}
