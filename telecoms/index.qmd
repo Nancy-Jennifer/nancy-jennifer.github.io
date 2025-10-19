@@ -3,38 +3,25 @@ title: "Télécoms — QoS & Réseau"
 description: "Projets d’analytics Télécoms : ARCEP France, EDA voix/SMS/data, comparaisons inter-opérateurs et lectures par contexte d’usage."
 page-layout: full
 toc: false
-image: ../assets/banners/banner-telecom.jpg
-title-block-banner: true
+title-block-banner: "../assets/banners/banner-telecom.jpg"
 ---
 
-<section style="margin: 0 0 1.25rem 0;">
-  <p style="max-width: 980px; font-size: 1.05rem;">
-    <strong>Spécialisée en Analytics Télécoms</strong>, je transforme la donnée télécom en insights utiles
-    pour <strong>optimiser la QoS</strong>, <strong>orienter le déploiement réseau</strong> et
-    <strong>améliorer l’expérience client mobile</strong>.
-  </p>
+**Spécialisée en Analytics Télécoms**, je transforme la donnée télécom en insights utiles pour **optimiser la QoS**, **orienter le déploiement réseau** et **améliorer l’expérience client mobile**.
 
-  <div class="badges">
-    <span class="badge">ARCEP 2022</span>
-    <span class="badge">QoS voix · SMS · data</span>
-    <span class="badge">Comparaisons inter-opérateurs</span>
-    <span class="badge">Analyse par contextes d’usage</span>
-  </div>
-</section>
+::: {.badges}
+`ARCEP 2022`{.badge} `QoS voix · SMS · data`{.badge} `Comparaisons inter-opérateurs`{.badge} `Analyse par contextes d’usage`{.badge}
+:::
 
-<div class="cards">
-  <article class="card">
-    <div class="card-header">
-      <h3>P1 — ARCEP 2022 : Qualité de Service Télécom France</h3>
-      <p class="card-sub">
-        EDA voix/SMS/data · KPI harmonisés (réussite, latence, débits) · lecture par contextes (urbain, rural, transport, indoor)
-      </p>
-    </div>
-    <ul class="card-list">
-      <li>Nettoyage & normalisation du schéma de données</li>
-      <li>Comparaisons inter-opérateurs par contexte d’usage</li>
-      <li>Visualisations synthétiques (barres, radar, heatmap)</li>
-    </ul>
-    <a class="btn btn-primary" href="p1-arcep-2022.qmd">🚀 Ouvrir le projet P1</a>
-  </article>
-</div>
+::: {.cards}
+::: {.card}
+### P1 — ARCEP 2022 : Qualité de Service Télécom France
+
+EDA voix/SMS/data · KPI harmonisés (réussite, latence, débits) · lecture par contextes (urbain, rural, transport, indoor)
+
+- Nettoyage & normalisation du schéma de données  
+- Comparaisons inter-opérateurs par contexte d’usage  
+- Visualisations synthétiques (barres, radar, heatmap)
+
+[🚀 Ouvrir le projet P1](p1-arcep-2022.qmd){.btn .btn-primary}
+:::
+:::
