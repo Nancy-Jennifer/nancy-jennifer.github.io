@@ -6,8 +6,6 @@ page-layout: full
 
 ![](/assets/banners/banner-telecom.jpg){.hero-img}
 
-## Télécoms — Qualité de Service & Réseau
-
 **Spécialisée en Analytics Télécoms**, je transforme la donnée télécom en insights utiles pour **optimiser la QoS**, **orienter le déploiement réseau** et **améliorer l’expérience client mobile**.
 
 `ARCEP 2022`{.badge} `QoS voix · SMS · data`{.badge} `Comparaisons inter-opérateurs`{.badge} `Analyse par contextes d’usage`{.badge}
