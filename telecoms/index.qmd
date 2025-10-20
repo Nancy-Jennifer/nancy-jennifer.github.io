@@ -4,7 +4,7 @@ toc: false
 page-layout: full
 ---
 
-![](/assets/banners/banner-telecom-1920x720.jpg){style="width:100%;display:block;margin:0 0 1rem 0;"}
+![](/assets/banners/banner-telecom.jpg){style="width:100%;display:block;margin:0 0 1rem 0;"}
 
 **Spécialisée en Analytics Télécoms**, je transforme la donnée télécom en insights utiles pour **optimiser la QoS**, **orienter le déploiement réseau** et **améliorer l’expérience client mobile**.
 
