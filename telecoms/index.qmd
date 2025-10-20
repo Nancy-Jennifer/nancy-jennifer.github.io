@@ -1,15 +1,24 @@
 ---
 title: "Télécoms — Qualité de Service & Réseau"
 toc: false
+page-layout: full
 ---
 
-<!-- Bannière contrôlée (largeur + hauteur), avec <img> pour voir tout de suite si le chemin est bon -->
+<!-- ===== BANNIÈRE : URL absolues + fallback ===== -->
 <div class="hero-telecom-wrap">
-  
-  <!-- ===== CAS B : si tu l'as nommé banner-telecom.jpg (ou autre) =====
-  <img src="../assets/banners/banner-telecom.jpg"
-       alt="Bannière Télécoms" class="hero-banner-telecom" loading="eager" />
-  -->
+  <picture>
+    <!-- 1er essai : version recadrée 1920×720 -->
+    <source srcset="https://nancy-jennifer.github.io/assets/banners/banner-telecom-1920x720.jpg">
+    <!-- 2e essai : version simple -->
+    <source srcset="https://nancy-jennifer.github.io/assets/banners/banner-telecom.jpg">
+    <!-- Fallback final -->
+    <img
+      src="https://nancy-jennifer.github.io/assets/banners/banner-telecom.jpg"
+      alt="Bannière Télécoms"
+      class="hero-banner-telecom"
+      loading="eager"
+    />
+  </picture>
 </div>
 
 **Spécialisée en Analytics Télécoms**, je transforme la donnée télécom en insights utiles pour **optimiser la QoS**, **orienter le déploiement réseau** et **améliorer l’expérience client mobile**.
@@ -21,18 +30,18 @@ toc: false
 
 ```{=html}
 <style>
-/* Contrainte de longueur (largeur) + centrage */
+/* Contrainte de largeur (longueur) + centrage */
 .hero-telecom-wrap{
-  width: min(92vw, 1100px);  /* largeur max 1100px, sinon 92% de l'écran */
+  width: min(92vw, 1100px);  /* largeur max 1100px ; s'adapte sur petits écrans */
   margin: 0 auto 10px auto;  /* centré */
 }
 
-/* Bannière : même rendu que tes autres pages */
+/* Bannière : hauteur fixe + recadrage propre */
 .hero-banner-telecom{
   width: 100%;
-  height: 240px;            /* ajuste 220 / 240 / 260 */
-  object-fit: cover;        /* recadrage propre */
-  object-position: 55% 50%; /* focus antenne+fibre (mets 50% 50% si tu veux centre exact) */
+  height: 240px;            /* ⇦ ajuste 220 / 240 / 260 au besoin */
+  object-fit: cover;
+  object-position: 55% 50%; /* focus antenne + fibre ; mets 50% 50% pour centre exact */
   border-radius: 12px;
   display: block;
   box-shadow: 0 6px 18px rgba(0,0,0,.08);
