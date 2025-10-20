@@ -1,12 +1,11 @@
 ---
 title: "Télécoms — Qualité de Service & Réseau"
-toc: false
 page-layout: full
+toc: false
 ---
 
-<!-- Bannière : image absolue + hauteur fixée + recadrage propre -->
-<img src="/assets/banners/banner-telecom.jpg" alt="Bannière Télécoms"
-     style="width:100%; height:260px; object-fit:cover; border-radius:12px; display:block; margin:0 0 1.2rem 0;" />
+<!-- ===== BANNIÈRE (même logique que Contributions) ===== -->
+<div class="hero-banner-telecom"></div>
 
 **Spécialisée en Analytics Télécoms**, je transforme la donnée télécom en insights utiles pour **optimiser la QoS**, **orienter le déploiement réseau** et **améliorer l’expérience client mobile**.
 
@@ -14,3 +13,25 @@ page-layout: full
 
 [🔎 Voir les projets Télécoms](projets.qmd){.btn .btn-primary}
 [Méthodologie analytique](../methode/index.qmd){.btn .btn-outline-primary}
+
+```{=html}
+<style>
+/* ===== Bannière Télécoms (exactement comme “Contributions”) ===== */
+.hero-banner-telecom{
+  width: 100%;
+  height: 240px; /* Réduit. Tu peux mettre 220–260px si tu veux un poil +/− grand */
+  background-image: url('/assets/banners/banner-telecom.jpg'); /* ou banner-telecom.jpg si c’est ton nom */
+  background-size: cover;
+  background-position: 55% 50%; /* focus sur l’antenne + fibre ; ajuste à 50% 50% si besoin */
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+/* Mobile */
+@media (max-width: 600px){
+  .hero-banner-telecom{
+    height: 200px;
+    margin-bottom: 20px;
+  }
+}
+</style>
