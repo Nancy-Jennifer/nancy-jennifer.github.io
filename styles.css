@@ -52,24 +52,31 @@ a { color: var(--accent); }
 /* Rangée de boutons utilitaires */
 .btn-row a { display:inline-block; margin:.25rem .35rem .25rem 0; }
 
-/* =========================
-   BANNIÈRES (format harmonisé)
-   ========================= */
-/* Bannière harmonisée (même format que les autres pages) */
-.hero-img{
-  width:100% !important;
-  height:260px !important;     /* <- même hauteur que tes bannières existantes */
-  object-fit:cover !important; /* recadrage propre */
-  object-position:60% 45% !important; /* ajuste le focus (ex: 55–70% / 40–55%) */
-  display:block;
-  border-radius:12px;
-  margin:0 0 1rem 0;
-  box-shadow:0 10px 30px rgba(0,0,0,.10);
+/* ===== BANNIÈRES — FORMAT UNIFIÉ (≈ 1920×720, ratio ~2.67:1) ===== */
+.hero-banner{
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1920 / 720;          /* <- clé pour un rendu identique aux autres pages */
+  object-fit: cover !important;       /* recadrage propre si l'image dépasse */
+  object-position: 55% 50% !important;/* décale un peu vers l'antenne (ajuste si besoin) */
+  display: block;
+  margin: 0 0 1rem 0;
+  border-radius: 0 !important;        /* coins carrés comme tes autres bannières */
+  box-shadow: none !important;        /* pas d’ombre, cohérent avec les autres */
 }
 
-/* Hauteur un peu réduite sur mobile */
+/* Si Quarto place l'image dans une figure */
+.quarto-figure img.hero-banner{
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1920 / 720;
+  object-fit: cover !important;
+  object-position: 55% 50% !important;
+}
+
+/* Version mobile : on garde le même ratio, rien d'autre à faire */
 @media (max-width: 768px){
-  .hero-img{ height:200px !important; }
+  .hero-banner{ /* pas de changement, l'aspect-ratio s'occupe de tout */ }
 }
 
 
