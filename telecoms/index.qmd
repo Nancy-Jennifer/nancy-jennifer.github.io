@@ -1,12 +1,12 @@
 ---
 title: "Télécoms — Qualité de Service & Réseau"
-image: 
-  path: "../assets/banners/banner-telecom.jpg"
-  alt: "Bannière Télécoms"
-  width: "100%"
-  height: "260px"
-  style: "object-fit: cover; border-radius: 12px; margin-bottom: 1.2rem;"
+toc: false
+page-layout: full
 ---
+
+<!-- Bannière : image absolue + hauteur fixée + recadrage propre -->
+<img src="/assets/banners/banner-telecom-1920x720.jpg" alt="Bannière Télécoms"
+     style="width:100%; height:260px; object-fit:cover; border-radius:12px; display:block; margin:0 0 1.2rem 0;" />
 
 **Spécialisée en Analytics Télécoms**, je transforme la donnée télécom en insights utiles pour **optimiser la QoS**, **orienter le déploiement réseau** et **améliorer l’expérience client mobile**.
 
