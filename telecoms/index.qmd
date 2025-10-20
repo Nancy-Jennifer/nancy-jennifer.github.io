@@ -1,12 +1,12 @@
 ---
 title: "Télécoms — Qualité de Service & Réseau"
-image: 
-  path: "../assets/banners/banner-telecom.jpg"
-  alt: "Bannière Télécoms"
-  width: "100%"
-  height: "260px"
-  style: "object-fit: cover; border-radius: 12px; margin-bottom: 1.2rem;"
+toc: false
 ---
+
+<!-- ===== BANNIÈRE AVEC CONTRÔLE LARGEUR + HAUTEUR ===== -->
+<div class="hero-telecom-wrap">
+  <div class="hero-banner-telecom"></div>
+</div>
 
 **Spécialisée en Analytics Télécoms**, je transforme la donnée télécom en insights utiles pour **optimiser la QoS**, **orienter le déploiement réseau** et **améliorer l’expérience client mobile**.
 
@@ -14,3 +14,28 @@ image:
 
 [🔎 Voir les projets Télécoms](projets.qmd){.btn .btn-primary}
 [Méthodologie analytique](../methode/index.qmd){.btn .btn-outline-primary}
+
+```{=html}
+<style>
+/* ---- Contrainte de LARGEUR (longueur) + centrage ---- */
+.hero-telecom-wrap{
+  width: min(92vw, 1100px);   /* ⬅️ largeur max = 1100px, sinon 92% de la fenêtre */
+  margin: 0 auto 10px auto;   /* centre horizontalement */
+}
+
+/* ---- Bannière: HAUTEUR et recadrage ---- */
+.hero-banner-telecom{
+  height: 240px; /* ⬅️ ajuste ici : 220 / 240 / 260 px */
+  background-image: url('/assets/banners/banner-telecom-1920x720.jpg'); /* mets le bon nom si différent */
+  background-size: cover;
+  background-position: 55% 50%;  /* focus antenne + fibre; mets 50% 50% si tu veux strict centre */
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 600px){
+  .hero-telecom-wrap{ width: calc(100vw - 32px); } /* petits marges côtés */
+  .hero-banner-telecom{ height: 200px; }
+}
+</style>
