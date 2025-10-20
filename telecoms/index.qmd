@@ -3,9 +3,13 @@ title: "Télécoms — Qualité de Service & Réseau"
 toc: false
 ---
 
-<!-- ===== BANNIÈRE AVEC CONTRÔLE LARGEUR + HAUTEUR ===== -->
+<!-- Bannière contrôlée (largeur + hauteur), avec <img> pour voir tout de suite si le chemin est bon -->
 <div class="hero-telecom-wrap">
-  <div class="hero-banner-telecom"></div>
+  
+  <!-- ===== CAS B : si tu l'as nommé banner-telecom.jpg (ou autre) =====
+  <img src="../assets/banners/banner-telecom.jpg"
+       alt="Bannière Télécoms" class="hero-banner-telecom" loading="eager" />
+  -->
 </div>
 
 **Spécialisée en Analytics Télécoms**, je transforme la donnée télécom en insights utiles pour **optimiser la QoS**, **orienter le déploiement réseau** et **améliorer l’expérience client mobile**.
@@ -17,25 +21,27 @@ toc: false
 
 ```{=html}
 <style>
-/* ---- Contrainte de LARGEUR (longueur) + centrage ---- */
+/* Contrainte de longueur (largeur) + centrage */
 .hero-telecom-wrap{
-  width: min(92vw, 1100px);   /* ⬅️ largeur max = 1100px, sinon 92% de la fenêtre */
-  margin: 0 auto 10px auto;   /* centre horizontalement */
+  width: min(92vw, 1100px);  /* largeur max 1100px, sinon 92% de l'écran */
+  margin: 0 auto 10px auto;  /* centré */
 }
 
-/* ---- Bannière: HAUTEUR et recadrage ---- */
+/* Bannière : même rendu que tes autres pages */
 .hero-banner-telecom{
-  height: 240px; /* ⬅️ ajuste ici : 220 / 240 / 260 px */
-  background-image: url('/assets/banners/banner-telecom-1920x720.jpg'); /* mets le bon nom si différent */
-  background-size: cover;
-  background-position: 55% 50%;  /* focus antenne + fibre; mets 50% 50% si tu veux strict centre */
+  width: 100%;
+  height: 240px;            /* ajuste 220 / 240 / 260 */
+  object-fit: cover;        /* recadrage propre */
+  object-position: 55% 50%; /* focus antenne+fibre (mets 50% 50% si tu veux centre exact) */
   border-radius: 12px;
+  display: block;
   box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  margin: 0 0 24px 0;
 }
 
-/* ---- Mobile ---- */
+/* Mobile */
 @media (max-width: 600px){
-  .hero-telecom-wrap{ width: calc(100vw - 32px); } /* petits marges côtés */
+  .hero-telecom-wrap{ width: calc(100vw - 32px); }
   .hero-banner-telecom{ height: 200px; }
 }
 </style>
