@@ -7,8 +7,6 @@ page-layout: full
 <!-- ===== BANNIÈRE : URL absolues + fallback ===== -->
 <div class="hero-telecom-wrap">
   <picture>
-    <!-- 1er essai : version recadrée 1920×720 -->
-    <source srcset="https://nancy-jennifer.github.io/assets/banners/banner-telecom-1920x720.jpg">
     <!-- 2e essai : version simple -->
     <source srcset="https://nancy-jennifer.github.io/assets/banners/banner-telecom.jpg">
     <!-- Fallback final -->
