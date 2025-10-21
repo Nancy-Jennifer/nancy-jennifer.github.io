@@ -1,0 +1,109 @@
+---
+title: "P1 — Analyse de la QoS Télécom en France Métropolitaine – Scoring Voix/SMS/Data – ARCEP 2022)"
+description: "Analyse comparative QoS voix/SMS/data, détection d’anomalies et recommandations opérationnelles alignées avec les standards internationaux."
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    theme: cosmo
+    smooth-scroll: true
+    code-fold: false
+    link-external-newwindow: true
+page-layout: article
+categories: ["Télécoms", "QoS", "ARCEP 2022", "People/Tech Skills"]
+image: "images/telecoms/p1_arcep2022_cover.jpg"
+date: 2022-12-31
+keywords: ["ARCEP", "Qualité de service", "Voix", "SMS", "Data", "Réseaux mobiles", "France"]
+---
+
+::: {.callout-note}
+**Version PRO S2/T2** — page synthétique & technique alignée sur le style de ton portfolio (structure claire, narration orientée résultats, références sectorielles).
+:::
+
+## 1) Contexte & enjeux
+Dans un marché mature où l’**expérience client** est un différenciateur décisif, la **Qualité de Service (QoS)** des réseaux mobiles conditionne la satisfaction et la fidélisation. À partir des mesures ARCEP 2022, nous **comparons la performance voix/SMS/data des opérateurs** (zones d’habitation & axes de transport) pour **prioriser les actions d’amélioration**.
+
+**Objectif** : traduire des **constats techniques** en **recommandations métier** exploitables (opérateurs, DSI, régulateur, décideurs publics).
+
+## 2) Données & périmètre
+- **Source** : ARCEP — campagne de mesures **2022**, France métropolitaine (voix, SMS, data).
+- **Unités d’observation** : points de mesure géolocalisés (zones d’habitation, axes de transport).
+- **Granularité analytique** : opérateur × zone (urbain, péri-urbain, rural, transport).
+- **Variables clés** :
+  - **Voix** : taux de réussite, durée d’établissement, qualité perçue (MOS)
+  - **SMS** : taux d’envoi réussi, délai d’acheminement
+  - **Data** : débits descendant/montant, temps de chargement/latence
+
+> _Garantie de traçabilité_ : Data dictionary, contrôles qualité (valeurs manquantes, doublons, cohérence géographique), journal de nettoyage.
+
+## 3) Méthodologie (S2/T2)
+1. **Nettoyage & audit** : gestion des valeurs extrêmes, harmonisation des libellés opérateurs, vérification géo.
+2. **Standardisation** : normalisation des indicateurs par zone et contexte d’usage.
+3. **Scoring QoS** : pondération multi-critères (voix/SMS/data) + seuils d’alerte (zones à risque).
+4. **Comparaison inter-opérateurs** : médianes/quantiles + tests de robustesse (variabilité intra-zone).
+5. **Cartographie** : signalement des **points faibles structurels** (rural, axes ferroviaires, tunnels).
+6. **Synthèse métier** : hiérarchisation des priorités d’investissement & quick wins.
+
+::: {.callout-tip}
+**Lecture PRO** : le scoring privilégie la **régularité** et la **stabilité** (expérience perçue) plutôt que des pics de performance ponctuels.
+:::
+
+## 4) Résultats clés (exemples structurés)
+- **Voix (zones d’habitation)** : opérateur A présente un **taux de réussite supérieur** (p50) et une **durée d’établissement plus courte** en urbain/péri-urbain ; **écarts s’accentuent en rural**.
+- **SMS (transport)** : latences hétérogènes selon axes ; **pics d’acheminement** sur tronçons spécifiques → **surveillance ciblée**.
+- **Data (mix zones)** : **débits médians robustes** pour l’opérateur B en urbain ; **variabilité** marquée pour C en rural ; **temps de chargement** à lisser pour D sur segments ferroviaires.
+
+**Insight transverse** : la **variabilité** intra-opérateur est **autant** un risque d’expérience que le niveau moyen.  
+**Implication** : orienter les investissements vers la **réduction des écarts** (p90–p10) plutôt que la seule hausse du p50.
+
+## 5) Zones à risque & priorités d’action
+- **Rural dispersé** : trous de couverture voix/data → plan de comblement ciblé.
+- **Axes de transport** : latence SMS & data instable → optimisation sur tronçons récurrents.
+- **Nœuds urbains denses** : saturation ponctuelle → actions capacitaires/antennaire.
+
+::: {.callout-warning}
+**Impact client** : une **régularité insuffisante** accroît la **probabilité d’incidents** (appels échoués, pages qui ne chargent pas), dégradant NPS/CSAT.
+:::
+
+## 6) Recommandations (opérationnelles & priorisées)
+**R1. Rural — voix accessible et fiable (priorité haute)**  
+- Renforcer la **couverture voix** sur communes faiblement desservies, alignée sur les corridors de mobilité locale.  
+- KPI : _Taux de réussite appels (rural)_, _Durée d’établissement médiane_, _% zones < seuil MOS_.
+
+**R2. Transport — lisser la latence (priorité haute)**  
+- Optimiser la **continuité de service** sur axes ferroviaires/bus interurbains (handovers, densification ciblée).  
+- KPI : _Délai SMS p90_, _Temps de chargement p95_, _% segments instables_.
+
+**R3. Urbain dense — stabilité data (priorité moyenne)**  
+- Gestion proactive de la **surcharge** (heures pleines) : allocation intelligente, modernisation antennaire.  
+- KPI : _Débit descendant p50/p10_, _Variabilité session-to-session_.
+
+**R4. Transparence QoS — pédagogie client (priorité utile)**  
+- **Tableau de bord public** par zone d’usage (habitation/transport) avec **indicateurs simples** et engagements minimums.  
+- KPI : _CSAT par zone_, _Taux de réclamation QoS_, _% engagements tenus_.
+
+## 7) Impact attendu (métier)
+- **Expérience** : baisse des irritants majeurs (appels échoués, lenteurs).
+- **Marque** : différenciation par la **régularité** perçue (pas seulement la pointe).
+- **Régulation** : meilleure lisibilité des écarts territoriaux (ciblage des investissements).
+- **ROI** : amélioration du ratio **coût d’intervention / réclamations évitées**.
+
+## 8) Livrables & ouvertures
+- **Rapport complet** (technique) et **synthèse exécutive** (slides).
+- **Cartes** (zones à risque), **radar voix/SMS/data** (comparaison opérateurs).
+- **Pistes** : analyses longitudinales 2022→2024, corrélation QoS ↔ satisfaction.
+
+## 9) Compétences mobilisées (version recruteur)
+- **Data Analytics Télécoms** : QoS voix/SMS/data, normalisation, scoring multivarié.
+- **Géostatistiques & Carto** : analyses par zones d’usage, repérage hotspots.
+- **Data Quality & Traçabilité** : audits, dictionnaire, gestion outliers.
+- **Storytelling & Décision** : synthèse claire, recommandations actionnables.
+- **Outils** : R/Tidyverse, ggplot2, Leaflet, Quarto, Git/GitHub, (optionnel: Python/GeoPandas).
+
+---
+
+### Annexes (optionnel)
+- Métriques détaillées par opérateur et zone
+- Spécification du score et pondérations
+- Exemples de contrôles qualité (tables d’audit)
