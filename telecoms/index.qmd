@@ -33,9 +33,9 @@ page-layout: full
 
   <!-- P2 -->
   <article class="proj-card muted">
-    <h3>P2 — ARCEP 2024 (réservé)</h3>
-    <p class="subtitle">Tendances 2022→2024 · Gap vs standards internationaux</p>
-    <p>Comparaisons, évolutions, alignements benchmark.</p>
+    <h3>P2 — Optimiser l’expérience client mobile en France</h3>
+    <p class="subtitle">analyse de la qualité de service au regard des standards internationaux</p>
+    <p>Comparaisons, évolutions, alignements benchmark, recommandations orientées expérience client.</p>
     <a class="btn btn-secondary disabled" aria-disabled="true" tabindex="-1">↗️ Bientôt disponible</a>
   </article>
 </div>
