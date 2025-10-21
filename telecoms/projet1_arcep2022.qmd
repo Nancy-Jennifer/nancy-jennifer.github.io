@@ -1,5 +1,5 @@
 ---
-title: "P1 — Analyse de la QoS Télécom en France Métropolitaine – Scoring Voix/SMS/Data – ARCEP 2022)"
+title: "P1 — Analyse de la QoS Télécom en France Métropolitaine – Scoring Voix/SMS/Data – ARCEP 2022"
 description: "Analyse comparative QoS voix/SMS/data, détection d’anomalies et recommandations opérationnelles alignées avec les standards internationaux."
 format:
   html:
