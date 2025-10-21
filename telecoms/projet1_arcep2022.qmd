@@ -1,5 +1,5 @@
 ---
-title: "P1 — Analyse de la QoS Télécom en France Métropolitaine – Scoring Voix/SMS/Data – ARCEP 2022"
+title: "Analyse de la QoS Télécom en France Métropolitaine – Scoring Voix/SMS/Data – ARCEP 2022"
 description: "Analyse comparative QoS voix/SMS/data, détection d’anomalies et recommandations opérationnelles alignées avec les standards internationaux."
 format:
   html:
@@ -11,11 +11,12 @@ format:
     code-fold: false
     link-external-newwindow: true
 page-layout: article
+image: "assets/images/telecoms/banner_P1_ARCEP2022.jpg"
 categories: ["Télécoms", "QoS", "ARCEP 2022", "People/Tech Skills"]
-image: "images/telecoms/p1_arcep2022_cover.jpg"
 date: 2022-12-31
 keywords: ["ARCEP", "Qualité de service", "Voix", "SMS", "Data", "Réseaux mobiles", "France"]
 ---
+
 
 ::: {.callout-note}
 **Version PRO S2/T2** — page synthétique & technique alignée sur le style de ton portfolio (structure claire, narration orientée résultats, références sectorielles).
