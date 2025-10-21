@@ -34,7 +34,7 @@ page-layout: full
   <!-- P2 -->
   <article class="proj-card muted">
     <h3>P2 — Optimiser l’expérience client mobile en France</h3>
-    <p class="subtitle">analyse de la qualité de service au regard des standards internationaux</p>
+    <p class="subtitle">Analyse de la qualité de service au regard des standards internationaux</p>
     <p>Comparaisons, évolutions, alignements benchmark, recommandations orientées expérience client.</p>
     <a class="btn btn-secondary disabled" aria-disabled="true" tabindex="-1">↗️ Bientôt disponible</a>
   </article>
