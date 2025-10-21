@@ -4,18 +4,12 @@ toc: false
 page-layout: full
 ---
 
-<!-- ===== BANNIÈRE : URL absolues + fallback ===== -->
+<!-- ===== BANNIÈRE 2/3 LARGEUR ===== -->
 <div class="hero-telecom-wrap">
   <picture>
-    <!-- 2e essai : version simple -->
     <source srcset="https://nancy-jennifer.github.io/assets/banners/banner-telecom.jpg">
-    <!-- Fallback final -->
-    <img
-      src="https://nancy-jennifer.github.io/assets/banners/banner-telecom.jpg"
-      alt="Bannière Télécoms"
-      class="hero-banner-telecom"
-      loading="eager"
-    />
+    <img src="https://nancy-jennifer.github.io/assets/banners/banner-telecom.jpg"
+         alt="Bannière Télécoms" class="hero-banner-telecom" loading="eager" />
   </picture>
 </div>
 
@@ -28,27 +22,50 @@ page-layout: full
 
 ```{=html}
 <style>
-/* Contrainte de largeur (longueur) + centrage */
+/* ===== BANNIÈRE — 2/3 de la largeur, centrée ===== */
 .hero-telecom-wrap{
-  width: min(92vw, 1100px);  /* largeur max 1100px ; s'adapte sur petits écrans */
-  margin: 0 auto 10px auto;  /* centré */
+  width: 66%;
+  max-width: 1100px;       /* garde une limite agréable sur écrans larges */
+  margin: 0 auto 10px auto; /* centrée */
 }
 
-/* Bannière : hauteur fixe + recadrage propre */
+/* Hauteur et cadrage visuel */
 .hero-banner-telecom{
   width: 100%;
-  height: 240px;            /* ⇦ ajuste 220 / 240 / 260 au besoin */
+  height: 240px;           /* ajuste 220/240/260 si tu veux */
   object-fit: cover;
-  object-position: 55% 50%; /* focus antenne + fibre ; mets 50% 50% pour centre exact */
+  object-position: 55% 50%;
   border-radius: 12px;
   display: block;
   box-shadow: 0 6px 18px rgba(0,0,0,.08);
   margin: 0 0 24px 0;
 }
 
-/* Mobile */
-@media (max-width: 600px){
+/* Mobile : pleine largeur et un peu plus compacte */
+@media (max-width: 900px){
   .hero-telecom-wrap{ width: calc(100vw - 32px); }
+}
+@media (max-width: 600px){
   .hero-banner-telecom{ height: 200px; }
+}
+
+/* ===== BOUTONS — corrige la visibilité du texte ===== */
+/* Bouton plein (primaire) */
+.btn-primary{
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+/* Bouton contour (visibles sans survol) */
+.btn-outline-primary{
+  background: transparent !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+.btn-outline-primary:hover{
+  background: var(--accent) !important;
+  color: #fff !important;
 }
 </style>
