@@ -20,6 +20,24 @@ page-layout: full
 [🔎 Voir les projets Télécoms](projets.qmd){.btn .btn-primary}
 [Méthodologie analytique](../methode/index.qmd){.btn .btn-outline-primary}
 
+## Projets phares
+
+::: {.grid cols=2}
+::: {.g-col}
+### P1 — Analyse de la QoS Télécom en France Métropolitaine – Scoring Voix/SMS/Data – ARCEP 2022
+EDA **voix/SMS/data** · KPI *(réussite, latence, débits)* · lecture par **contextes** *(urbain, rural, transport, indoor)*
+
+[🚀 Ouvrir le projet P1](projet1_arcep2022.qmd){.btn .btn-success}
+:::
+
+::: {.g-col}
+### P2 — ARCEP 2024 – EDA & Gap vs standards (réservé)
+Tendances **2022→2024**, comparaisons, alignement **benchmarks internationaux**.
+
+[↗️ Bientôt disponible](#){.btn .btn-secondary disabled}
+:::
+:::
+
 ```{=html}
 <style>
 /* ===== BANNIÈRE — 2/3 de la largeur, ALIGNÉE À GAUCHE ===== */
@@ -67,4 +85,3 @@ page-layout: full
   color: #fff !important;
 }
 </style>
-
