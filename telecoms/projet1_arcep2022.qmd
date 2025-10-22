@@ -95,7 +95,7 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
 - **Cartes** (zones à risque), **radar voix/SMS/data** (comparaison opérateurs).
 - **Pistes** : analyses longitudinales 2022→2024, corrélation QoS ↔ satisfaction.
 
-## 9) Compétences mobilisées (version recruteur)
+## 9) Compétences mobilisées
 - **Data Analytics Télécoms** : QoS voix/SMS/data, normalisation, scoring multivarié.
 - **Géostatistiques & Carto** : analyses par zones d’usage, repérage hotspots.
 - **Data Quality & Traçabilité** : audits, dictionnaire, gestion outliers.
