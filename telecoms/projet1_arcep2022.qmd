@@ -13,7 +13,7 @@ format:
 page-layout: article
 image: "assets/images/telecoms/banner_P1_ARCEP2022.jpg"
 categories: ["Télécoms", "QoS", "ARCEP 2022", "People/Tech Skills"]
-date: 2022-12-31
+date: 2025-06-28
 keywords: ["ARCEP", "Qualité de service", "Voix", "SMS", "Data", "Réseaux mobiles", "France"]
 ---
 
