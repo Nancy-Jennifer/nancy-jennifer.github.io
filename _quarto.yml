@@ -10,18 +10,35 @@ website:
   navbar:
     left:
       - text: "Accueil"
-        href: index.qmd
+        file: index.qmd
       - text: "Qui suis-je ?"
-        href: about.qmd
+        file: about.qmd
       - text: "Télécoms"
-        href: telecoms/index.qmd
+        file: telecoms/index.qmd
       - text: "People Analytics"
-        href: people-analytics/index.qmd
+        file: people-analytics/index.qmd
       - text: "Méthodologie Analytique"
-        href: methode/index.qmd
+        file: methode/index.qmd
       - text: "Contributions bénévoles"
-        href: contributions/index.qmd
+        file: contributions/index.qmd
     right:
+      - icon: github
+        href: https://github.com/nancy-jennifer
+
+  page-footer:
+    left: |
+      © <span id="year"></span> Nancy Lee YIMBERE ALAPINI – Data Analyst | Télécommunications &amp; People Analytics – Portfolio personnel –
+      <a href="https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626" target="_blank" rel="noopener">LinkedIn</a> |
+      <a href="mailto:nancylee.yimbere@gmail.com">nancylee.yimbere@gmail.com</a>
+      <script>
+        (function(){
+          var y = new Date().getFullYear();
+          var el = document.getElementById('year');
+          if (el) el.textContent = y;
+        })();
+      </script>
+    right: ""
+
       - icon: github
         href: https://github.com/nancy-jennifer
 
