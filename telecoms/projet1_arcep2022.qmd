@@ -17,6 +17,9 @@ date: 2025-06-28
 keywords: ["ARCEP", "Qualité de service", "Voix", "SMS", "Data", "Réseaux mobiles", "France"]
 ---
 
+<div class="nav-inline">
+  <a href="index.qmd" class="btn btn-outline-secondary">⬅ Retour Télécoms</a>
+</div>
 
 ::: {.callout-note}
 **Version PRO S2/T2** — page synthétique & technique alignée sur le style de ton portfolio (structure claire, narration orientée résultats, références sectorielles).
@@ -108,3 +111,21 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
 - Métriques détaillées par opérateur et zone
 - Spécification du score et pondérations
 - Exemples de contrôles qualité (tables d’audit)
+
+<hr>
+
+<div class="nav-inline">
+  <a href="index.qmd" class="btn btn-outline-secondary">⬅ Retour Télécoms</a>
+  <a href="../index.qmd" class="btn btn-light">🏠 Accueil</a>
+</div>
+
+```{=html}
+<style>
+.nav-inline{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 8px 0 16px;
+}
+</style>
+```
