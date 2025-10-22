@@ -107,19 +107,29 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
 
 ---
 
-### Annexes (optionnel)
-- Métriques détaillées par opérateur et zone
-- Spécification du score et pondérations
-- Exemples de contrôles qualité (tables d’audit)
+## Ressources techniques (GitHub)
 
-<hr>
+1. **Rapport complet (PDF)**  
+   Ce rapport présente l’intégralité de l’analyse menée sur les données ARCEP 2022 : contexte, méthodologie, résultats détaillés, visuels clés et recommandations finales.  
+   👉 [Ouvrir le dépôt GitHub](https://github.com/Nancy-Jennifer/Rapport_-complet_QoS_ARCEP-2022){target="_blank"}
+
+2. **Code R (R Markdown)**  
+   Version technique (code R, étapes de traitement, graphiques et commentaires intégrés). Consultable en ligne ou téléchargeable.  
+   👉 [Ouvrir le dépôt GitHub](https://github.com/Nancy-Jennifer/Rapport_-Markdown_QoS_ARCEP-2022){target="_blank"}
+
+3. **Présentation (slides)**  
+   Synthèse exécutive pour lecture rapide par un recruteur/décideur.  
+   👉 [Ouvrir le dépôt GitHub](https://github.com/Nancy-Jennifer/Presentation_QoS_Telecom_-ARCEP-FRANCE_2022){target="_blank"}
+
+4. **Carte interactive Leaflet**  
+   Visualisation géographique interactive (MOS / QoS) pour explorer zones et contextes d’usage.  
+   👉 [Voir la carte](https://nancy-jennifer.github.io/carte-leaflet/carte_leaflet_mos.html){target="_blank"}
 
 <div class="nav-inline">
   <a href="index.qmd" class="btn btn-outline-secondary">⬅ Retour Télécoms</a>
   <a href="../index.qmd" class="btn btn-light">🏠 Accueil</a>
 </div>
 
-```{=html}
 <style>
 .nav-inline{
   display: flex;
