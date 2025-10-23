@@ -1,5 +1,5 @@
 ---
-title: "Optimiser l’expérience client mobile en France — ARCEP 2024"
+title: "France 2024 : où se situe la qualité de service mobile face aux standards internationaux ?"
 description: "Analyse de la qualité de service au regard des standards internationaux — Tendances 2022→2024, écarts vs benchmarks, recommandations orientées expérience client."
 format:
   html:
