@@ -21,10 +21,10 @@ keywords: ["ARCEP", "Qualité de service", "Voix", "SMS", "Data", "Réseaux mobi
   <a href="index.qmd" class="btn btn-outline-secondary">⬅ Retour Télécoms</a>
 </div>
 
-::: {.callout-info}
-**Version professionnelle — Synthèse + impact métier**  
-Cette page présente une analyse structurée, orientée résultats et lisible rapidement pour un décideur.
-:::
+<div style="background-color:#f2f5f7;padding:8px 15px;border-left:4px solid #0d6efd;border-radius:4px;margin-bottom:18px;">
+<b>Version professionnelle — Synthèse + impact métier</b><br>
+<small>Analyse structurée et orientée résultats, adaptée à un public décisionnel.</small>
+</div>
 
 ## 1) Contexte & enjeux
 Dans un marché mature où l’**expérience client** est un différenciateur décisif, la **Qualité de Service (QoS)** des réseaux mobiles conditionne la satisfaction et la fidélisation. À partir des mesures ARCEP 2022, nous **comparons la performance voix/SMS/data des opérateurs** (zones d’habitation & axes de transport) pour **prioriser les actions d’amélioration**.
