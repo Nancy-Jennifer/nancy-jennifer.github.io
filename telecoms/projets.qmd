@@ -17,7 +17,7 @@ EDA **voix/SMS/data** · KPI (réussite, latence, débits) · lecture par **cont
 :::
 
 ::: {.card}
-### P2 — ARCEP 2024 + standards ITU *(à venir)*
+### P2 — France 2024 : où se situe la qualité de service mobile face aux standards internationaux ?
 Standardisation, **z-scores**, **Gap Analysis** Macro vs QoS, recommandations **orientées réseau**  
 [🔧 Bientôt disponible](#){.btn .btn-outline-secondary}
 :::
