@@ -13,7 +13,7 @@ page-layout: full
 ::: {.card}
 ### P1 — Analyse de la QoS Télécom en France Métropolitaine – Scoring Voix/SMS/Data – ARCEP 2022
 EDA **voix/SMS/data** · KPI (réussite, latence, débits) · lecture par **contextes** (urbain, rural, transport, indoor)  
-[🚀 Ouvrir le projet P1](p1-arcep-2022.qmd){.btn .btn-primary}
+[🚀 Ouvrir le projet P1](projet1_arcep2022.qmd){.btn .btn-primary}
 :::
 
 ::: {.card}
