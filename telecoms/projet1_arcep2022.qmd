@@ -21,8 +21,9 @@ keywords: ["ARCEP", "Qualité de service", "Voix", "SMS", "Data", "Réseaux mobi
   <a href="index.qmd" class="btn btn-outline-secondary">⬅ Retour Télécoms</a>
 </div>
 
-::: {.callout-note}
-**Version PRO S2/T2** — page synthétique & technique alignée sur le style de ton portfolio (structure claire, narration orientée résultats, références sectorielles).
+::: info
+**Version professionnelle — Synthèse + impact métier**  
+Cette page présente une analyse structurée, orientée résultats et lisible rapidement pour un décideur.
 :::
 
 ## 1) Contexte & enjeux
