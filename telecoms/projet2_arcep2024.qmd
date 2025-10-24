@@ -12,7 +12,7 @@ format:
 [← Retour Télécoms](../index.qmd)
 
 ::: info
-**Version professionnelle — Synthèse + impact métier**  
+**Positionnement de l’analyse**  
 Cette analyse compare la qualité de service mobile (QoS) de la France à un panel international afin d’identifier des leviers concrets d’amélioration de la qualité d’expérience (QoE) client.
 :::
 
