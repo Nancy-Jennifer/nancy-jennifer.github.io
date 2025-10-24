@@ -16,47 +16,12 @@ Construire des indicateurs **comparables** entre pays et agréger les métriques
 
 ## 3.2 Ingestion & préparation
 
-1. Charger les 3 sources propres depuis `data/clean/`.  
-2. Uniformiser les noms de pays (**ISO3** si dispo) et restreindre au **panel** (France, UE5, Top monde).  
-3. Aligner les **années les plus récentes** par indicateur (priorité 2024).  
-4. Harmoniser les **unités** : débit en **Mbps**, latence en **ms**, couverture en **% population**.
+1. **Charger les 3 sources** depuis `data/clean/`.
 
 ```{r}
 #| label: ingestion_R
 #| eval: false
 library(readr); library(dplyr); library(stringr)
-
-# 1) Chargement
 arcep <- read_csv("data/clean/arcep_2024_indicateurs_globaux_clean.csv")
 itu   <- read_csv("data/clean/ITU_Key_ICT_Indicators_clean.csv")
 wb    <- read_csv("data/clean/4_1_wb_consolidated.csv")
-
-# 2) Normalisation noms pays (exemple minimal — adapte si besoin)
-normalise_pays <- function(x){
-  x |>
-    mutate(country = str_trim(country)) |>
-    mutate(country = case_when(
-      country %in% c("UK") ~ "United Kingdom",
-      country %in% c("Deutschland") ~ "Germany",
-      country %in% c("Espana","España") ~ "Spain",
-      TRUE ~ country
-    ))
-}
-arcep <- normalise_pays(arcep)
-itu   <- normalise_pays(itu)
-wb    <- normalise_pays(wb)
-
-# 3) Panel (France + UE5 + top monde — ajuste la liste finale)
-panel <- c("France","Germany","United Kingdom","Italy","Spain",
-           "United States","Korea, Rep.","Japan","Finland","Singapore")
-
-# 4) Filtrage panel si colonne 'country' présente
-if ("country" %in% names(arcep)) arcep <- arcep |> filter(country %in% panel)
-if ("country" %in% names(itu))   itu   <- itu   |> filter(country %in% panel)
-if ("country" %in% names(wb))    wb    <- wb    |> filter(country %in% panel)
-
-# 5) Millésime le plus récent si colonne 'year' présente
-if("year" %in% names(itu)) itu <- itu |> group_by(country) |> filter(year == max(year, na.rm=TRUE)) |> ungroup()
-if("year" %in% names(wb))  wb  <- wb  |> group_by(country) |> filter(year == max(year, na.rm=TRUE))  |> ungroup()
-
-# 6) (Optionnel) joindre / préparer un df_panel plus tard
