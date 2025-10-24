@@ -48,3 +48,34 @@ Cette analyse répond à trois questions structurantes :
 
 ---
 
+## 2) Sources & structure des données
+
+L’analyse s’appuie sur trois référentiels complémentaires :
+
+- **ARCEP 2024 (France)** : mesures QoS terrain (voix, data, couverture, latence, continuité) – granularité nationale / zones.  
+- **ITU / UIT** : indicateurs internationaux de performance et d’adoption mobile – comparaisons pays.  
+- **Banque Mondiale (World Bank)** : contextes structurels (infrastructure, usage, indicateurs macro utiles au cadrage).
+
+### 2.1 Jeux de données utilisés (fichiers propres)
+
+| Source | Contenu | Fichier (chemin relatif) | Granularité | Maj |
+|---|---|---|---|---|
+| ARCEP 2024 | Indicateurs QoS France (voix, couverture 4G/5G, débits, latence, continuité) | `data/clean/arcep_2024_indicateurs_globaux_clean.csv` | France / zones | 2024 |
+| ITU (UIT) | Indicateurs clés mobile & proxys QoS (latence/data, performances pays) | `data/clean/ITU_Key_ICT_Indicators_clean.csv` | Pays | 2023–2024 |
+| World Bank | Indicateurs contextuels (pénétration, usage data, contexte socio-éco) | `data/clean/4_1_wb_consolidated.csv` | Pays | 2024 |
+
+> 🔎 **Note** : conserver ces chemins relatifs pour la portabilité GitHub Pages.
+
+### 2.2 Dictionnaire minimal (extraits utiles)
+
+- **ARCEP** : `taux_coupure_voix`, `taux_etablissement_appel`, `debit_dl_mbps`, `debit_ul_mbps`, `latence_ms`, `continuite_service_score`, `couv_4g_pop_%`, `couv_5g_pop_%`  
+- **ITU** : `country`, `latency_ms_median`, `download_mbps_median`, `upload_mbps_median`, `mobile_broadband_penetration`  
+- **WorldBank** : `country`, `mobile_subscriptions_per_100`, `fixed_broadband_subs_per_100`, `gni_per_capita`, `urban_population_%`
+
+### 2.3 Clés & panel
+
+- **Clé** : `country` (ISO3 si dispo : `iso3c`)  
+- **Panel** : France + Allemagne + Royaume-Uni + Italie + Espagne + **top 5 mondiaux** (data/latence/couverture selon ITU)  
+- **Règle** : prendre l’**année la plus récente** par source (2024 si dispo ; 2023 pour certains indicateurs ITU).
+
+[→ Passer à la Section 3 : Méthodologie](sections/3_methodologie.qmd)
