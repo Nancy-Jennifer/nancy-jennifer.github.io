@@ -78,4 +78,4 @@ L’analyse s’appuie sur trois référentiels complémentaires :
 - **Panel** : France + Allemagne + Royaume-Uni + Italie + Espagne + **top 5 mondiaux** (data/latence/couverture selon ITU)  
 - **Règle** : prendre l’**année la plus récente** par source (2024 si dispo ; 2023 pour certains indicateurs ITU).
 
-[→ Passer à la Section 3 : Méthodologie](sections/3_methodologie.qmd)
+[→ Passer à la Section 3 : Méthodologie](projet2_sections/S3.qmd)
