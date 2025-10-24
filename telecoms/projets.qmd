@@ -19,6 +19,6 @@ EDA **voix/SMS/data** · KPI (réussite, latence, débits) · lecture par **cont
 ::: {.card}
 ### P2 — France 2024 : où se situe la qualité de service mobile face aux standards internationaux ?
 Standardisation, **z-scores**, **Gap Analysis** Macro vs QoS, recommandations **orientées réseau**  
-[🔧 Bientôt disponible](#){.btn .btn-outline-secondary}
+[🚀 Ouvrir le projet P2](projet2_arcep2024.qmd){.btn .btn-primary}
 :::
 :::
