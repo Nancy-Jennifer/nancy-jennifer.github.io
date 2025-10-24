@@ -1,41 +1,50 @@
 ---
 title: "France 2024 : où se situe la qualité de service mobile face aux standards internationaux ?"
-description: "Analyse de la qualité de service au regard des standards internationaux — Tendances 2022→2024, écarts vs benchmarks, recommandations orientées expérience client."
+subtitle: "Analyse comparative ARCEP 2024 – ITU – Banque Mondiale"
+categories: [Télécoms, Qualité de service, Benchmark international, Data Analysis]
 format:
   html:
     toc: true
     toc-depth: 3
-    number-sections: false
-    theme: cosmo
-    smooth-scroll: true
     code-fold: false
-    link-external-newwindow: true
-page-layout: article
-image: "assets/images/telecoms/banner_P1_ARCEP2022.jpg"   # provisoire : on réutilise la bannière en attendant la A2 de P2
-categories: ["Télécoms", "QoS", "ARCEP 2024", "Benchmarks internationaux"]
-date: 2024-12-31
-keywords: ["ARCEP 2024", "Qualité de service", "Voix", "SMS", "Data", "Expérience client", "Benchmarks"]
 ---
 
-<div class="nav-inline">
-  <a href="index.qmd" class="btn btn-outline-secondary">⬅ Retour Télécoms</a>
-  <a href="../index.qmd" class="btn btn-light">🏠 Accueil</a>
-</div>
+[← Retour Télécoms](../index.qmd)
 
-::: {.callout-warning}
-**À venir** — Cette page est en cours de rédaction.  
-Le périmètre inclura : tendances **2022→2024**, comparaisons inter-opérateurs, **écarts vs standards internationaux**, et recommandations orientées **expérience client**.
+::: info
+**Version professionnelle — Synthèse + impact métier**  
+Cette analyse compare la qualité de service mobile (QoS) de la France à un panel international afin d’identifier des leviers concrets d’amélioration de la qualité d’expérience (QoE) client.
 :::
 
-## Objectifs (pré-cadre)
-- Mettre en évidence les **évolutions** de la QoS (voix/SMS/data) entre 2022 et 2024.
-- Quantifier les **gaps** vs benchmarks internationaux et **prioriser** les actions.
-- Dériver des recommandations **centrées expérience client** (régularité, stabilité, latence perçue).
+## 🎯 Introduction
 
-<hr>
+La qualité de service mobile (QoS) est devenue un enjeu stratégique majeur pour la compétitivité numérique d’un pays. Au-delà de la couverture théorique, c’est désormais la **qualité d’expérience perçue par le client (QoE)** qui constitue l’indicateur de référence pour évaluer la performance réelle d’un réseau mobile. Dans ce contexte, il ne suffit plus de mesurer la qualité du réseau en interne : il faut la **positionner par rapport à un référentiel externe**, c’est-à-dire **comparer la France aux standards internationaux du secteur**.
 
-```{=html}
-<style>
-.nav-inline{ display:flex; gap:12px; flex-wrap:wrap; margin:8px 0 16px; }
-</style>
-```
+Afin d’évaluer ce positionnement, cette étude s’appuie sur les données officielles de **l’ARCEP (France – 2024)** et les ensembles d’indicateurs internationaux issus de **l’ITU (Union Internationale des Télécommunications)** et de la **Banque Mondiale**. Elle mesure la performance mobile de la France sur cinq dimensions critiques de la QoS :
+
+- **Qualité voix** (taux de coupure, taux de succès des appels),
+- **Couverture 4G/5G**,  
+- **Débit descendant et montant (Data)**,  
+- **Latence**,  
+- **Continuité de service (usage réel)**.
+
+Contrairement à un simple benchmarking descriptif, l’objectif de cette étude est **d’utiliser la comparaison internationale comme levier décisionnel**. L’enjeu n’est pas seulement de savoir **où se situe la France**, mais de **comprendre pourquoi** et **quelles actions prioriser** pour **renforcer la performance réseau perçue par l’utilisateur final**.
+
+Ce projet s’inscrit dans la continuité du **Projet P1 – Analyse QoS France 2022**, qui avait mis en évidence des disparités de performance entre zones **urbaines, rurales et zones de transport**. Le **Projet P2** élargit cette perspective en apportant **une dimension comparative mondiale** permettant de :
+
+✅ Positionner objectivement la France dans la compétition numérique internationale  
+✅ Identifier les indicateurs critiques influençant la **qualité perçue (QoE)**  
+✅ Prioriser des **axes d’amélioration réseau** exploitables par les opérateurs et le régulateur  
+
+---
+
+### Questions clés
+
+Cette analyse répond à trois questions structurantes :
+
+1. **Où se situe la France en 2024 en matière de qualité de service mobile face aux standards internationaux ?**
+2. **Quels indicateurs réseau influencent réellement la qualité perçue (QoE) par les utilisateurs ?**
+3. **Quelles priorités techniques recommander pour améliorer l’expérience mobile en France ?**
+
+---
+
