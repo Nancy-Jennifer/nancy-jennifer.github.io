@@ -33,10 +33,10 @@ page-layout: full
 
   <!-- P2 -->
   <article class="proj-card muted">
-    <h3>P2 — Optimiser l’expérience client mobile en France</h3>
-    <p class="subtitle">Analyse de la qualité de service au regard des standards internationaux</p>
+    <h3>P2 — France 2024 : où se situe la qualité de service mobile face aux standards internationaux ?</h3>
+    <p class="subtitle">Analyse comparative ARCEP 2024 – ITU – Banque Mondiale</p>
     <p>Comparaisons, évolutions, alignements benchmark, recommandations orientées expérience client</p>
-    <a class="btn btn-secondary disabled" aria-disabled="true" tabindex="-1">↗️ Bientôt disponible</a>
+     <a class="btn btn-success" href="projet2_arcep2024.qmd">🚀 Ouvrir le projet P2</a>
   </article>
 </div>
 
