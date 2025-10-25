@@ -29,7 +29,7 @@ Objectif : produire des tables **propres, comparables** et **traçables** pour l
 ---
 
 ### Chargement des données
-```python
+python
 #| label: ingestion_py
 #| eval: false
 import pandas as pd
@@ -42,7 +42,7 @@ wb    = pd.read_csv("data/clean/4_1_wb_consolidated.csv")
 ### Harmonisation des noms de pays
 * Nettoyage des espaces
 * Normalisation de quelques alias fréquents (ex. “UK” → “United Kingdom”)
-```python
+python
 #| label: normalize_names_py
 #| eval: false
 def normalise_pays(df):
@@ -64,7 +64,7 @@ wb    = normalise_pays(wb)
 
 ### Restreindre au panel comparatif
 Panel de référence (ajustable) : France + UE5 + top monde
-```python
+python
 #| label: filter_panel_py
 #| eval: false
 panel = [
@@ -82,7 +82,7 @@ wb    = keep_panel(wb)
 
 ### Sélection du millésime le plus récent (si year présent)
 On retient le dernier millésime par pays pour ITU et WB afin d’assurer la comparabilité temporelle.
-```python
+python
 #| label: latest_year_py
 #| eval: false
 def last_year_per_country(df):
@@ -101,7 +101,7 @@ wb  = last_year_per_country(wb)
 
 ### Vérifications structurelles (sanity check)
 But : s’assurer que les colonnes attendues sont présentes et que les tailles sont cohérentes.
-```python
+python
 #| label: sanity_py
 #| eval: false
 sanity = {
