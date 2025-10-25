@@ -13,7 +13,6 @@ format:
 Construire des indicateurs **comparables** entre pays et agréger les métriques en un **Indice QoS composite (5 dimensions)** afin de positionner la France dans un benchmark international et d’identifier les **leviers d’amélioration QoE**.
 
 ---
-
 <!-- ===== SECTION 3.2 : DÉBUT ===== -->
 ## 3.2 Ingestion & préparation des données (Python)
 
@@ -28,8 +27,9 @@ Objectif : produire des tables **propres, comparables** et **traçables** pour l
 
 ---
 
-### Chargement des données
-python
+### 📥 Chargement des données
+
+```python
 #| label: ingestion_py
 #| eval: false
 import pandas as pd
@@ -37,12 +37,13 @@ import pandas as pd
 arcep = pd.read_csv("data/clean/arcep_2024_indicateurs_globaux_clean.csv")
 itu   = pd.read_csv("data/clean/ITU_Key_ICT_Indicators_clean.csv")
 wb    = pd.read_csv("data/clean/4_1_wb_consolidated.csv")
+```
+
 ---
 
-### Harmonisation des noms de pays
-* Nettoyage des espaces
-* Normalisation de quelques alias fréquents (ex. “UK” → “United Kingdom”)
-python
+### 🧼 Harmonisation des noms de pays
+
+```python
 #| label: normalize_names_py
 #| eval: false
 def normalise_pays(df):
@@ -60,16 +61,18 @@ def normalise_pays(df):
 arcep = normalise_pays(arcep)
 itu   = normalise_pays(itu)
 wb    = normalise_pays(wb)
+```
+
 ---
 
-### Restreindre au panel comparatif
-Panel de référence (ajustable) : France + UE5 + top monde
-python
+### 🌍 Restriction au panel comparatif
+
+```python
 #| label: filter_panel_py
 #| eval: false
 panel = [
     "France","Germany","United Kingdom","Italy","Spain",  # UE5
-    "United States","Korea, Rep.","Japan","Finland","Singapore"  # top monde
+    "United States","Korea, Rep.","Japan","Finland","Singapore"  # Top monde
 ]
 
 def keep_panel(df, col="country", panel=panel):
@@ -80,9 +83,11 @@ itu   = keep_panel(itu)
 wb    = keep_panel(wb)
 ```
 
-### Sélection du millésime le plus récent (si year présent)
-On retient le dernier millésime par pays pour ITU et WB afin d’assurer la comparabilité temporelle.
-python
+---
+
+### 🕒 Sélection du millésime le plus récent
+
+```python
 #| label: latest_year_py
 #| eval: false
 def last_year_per_country(df):
@@ -99,9 +104,11 @@ itu = last_year_per_country(itu)
 wb  = last_year_per_country(wb)
 ```
 
-### Vérifications structurelles (sanity check)
-But : s’assurer que les colonnes attendues sont présentes et que les tailles sont cohérentes.
-python
+---
+
+### ✅ Vérification structurelle (sanity check)
+
+```python
 #| label: sanity_py
 #| eval: false
 sanity = {
@@ -114,11 +121,10 @@ sanity = {
 }
 sanity
 ```
+
 > **Colonnes attendues (adaptables selon tes fichiers)**  
-> **ARCEP** : `country`, `taux_coupure_voix`, `taux_etablissement_appel`, `debit_dl_mbps`, `debit_ul_mbps`, `latence_ms`, `continuite_service_score`, `couv_4g_pop_pct`, `couv_5g_pop_pct`  
-> **ITU** : `country`, `year`, `download_mbps_median`, `upload_mbps_median`, `latency_ms_median`  
-> **WB** : `country`, `year`, … (variables de contexte éventuelles)
+> ✅ **ARCEP** : `country`, `taux_coupure_voix`, `taux_etablissement_appel`, `debit_dl_mbps`, `debit_ul_mbps`, `latence_ms`, `continuite_service_score`, `couv_4g_pop_pct`, `couv_5g_pop_pct`  
+> ✅ **ITU** : `country`, `year`, `download_mbps_median`, `upload_mbps_median`, `latency_ms_median`  
+> ✅ **WB** : `country`, `year`, *(variables contextuelles optionnelles)*
 
-
-
-
+<!-- ===== SECTION 3.2 : FIN ===== -->
