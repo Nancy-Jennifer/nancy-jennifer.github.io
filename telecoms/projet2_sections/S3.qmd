@@ -14,14 +14,111 @@ Construire des indicateurs **comparables** entre pays et agréger les métriques
 
 ---
 
-## 3.2 Ingestion & préparation
+<!-- ===== SECTION 3.2 : DÉBUT ===== -->
+## 3.2 Ingestion & préparation des données (Python)
 
-1. **Charger les 3 sources** depuis `data/clean/`.
+Dans ce projet, **toute l’ingestion et la préparation** (chargement, harmonisation, panel, millésime) sont réalisées **exclusivement en Python**.  
+Objectif : produire des tables **propres, comparables** et **traçables** pour les étapes de normalisation et de scoring.
 
-```{r}
-#| label: ingestion_R
+### ✅ Sources utilisées
+- **ARCEP 2024** — indicateurs QoS France (voix, data, latence, continuité, couverture)
+- **ITU** — métriques internationales de performance mobile
+- **Banque Mondiale** — variables de contexte (optionnel)
+- Dossier d’entrée : `data/clean/`
+
+---
+
+### Chargement des données
+```python
+#| label: ingestion_py
 #| eval: false
-library(readr); library(dplyr); library(stringr)
-arcep <- read_csv("data/clean/arcep_2024_indicateurs_globaux_clean.csv")
-itu   <- read_csv("data/clean/ITU_Key_ICT_Indicators_clean.csv")
-wb    <- read_csv("data/clean/4_1_wb_consolidated.csv")
+import pandas as pd
+
+arcep = pd.read_csv("data/clean/arcep_2024_indicateurs_globaux_clean.csv")
+itu   = pd.read_csv("data/clean/ITU_Key_ICT_Indicators_clean.csv")
+wb    = pd.read_csv("data/clean/4_1_wb_consolidated.csv")
+---
+
+### Harmonisation des noms de pays
+* Nettoyage des espaces
+* Normalisation de quelques alias fréquents (ex. “UK” → “United Kingdom”)
+```python
+#| label: normalize_names_py
+#| eval: false
+def normalise_pays(df):
+    if "country" in df.columns:
+        df["country"] = (
+            df["country"].astype(str).str.strip().replace({
+                "UK": "United Kingdom",
+                "Deutschland": "Germany",
+                "Espana": "Spain",
+                "España": "Spain"
+            })
+        )
+    return df
+
+arcep = normalise_pays(arcep)
+itu   = normalise_pays(itu)
+wb    = normalise_pays(wb)
+---
+
+### Restreindre au panel comparatif
+Panel de référence (ajustable) : France + UE5 + top monde
+```python
+#| label: filter_panel_py
+#| eval: false
+panel = [
+    "France","Germany","United Kingdom","Italy","Spain",  # UE5
+    "United States","Korea, Rep.","Japan","Finland","Singapore"  # top monde
+]
+
+def keep_panel(df, col="country", panel=panel):
+    return df[df[col].isin(panel)].copy() if col in df.columns else df
+
+arcep = keep_panel(arcep)
+itu   = keep_panel(itu)
+wb    = keep_panel(wb)
+```
+
+### Sélection du millésime le plus récent (si year présent)
+On retient le dernier millésime par pays pour ITU et WB afin d’assurer la comparabilité temporelle.
+```python
+#| label: latest_year_py
+#| eval: false
+def last_year_per_country(df):
+    if "country" in df.columns and "year" in df.columns:
+        return (
+            df.sort_values(["country","year"])
+              .groupby("country", as_index=False)
+              .tail(1)
+              .reset_index(drop=True)
+        )
+    return df
+
+itu = last_year_per_country(itu)
+wb  = last_year_per_country(wb)
+```
+
+### Vérifications structurelles (sanity check)
+But : s’assurer que les colonnes attendues sont présentes et que les tailles sont cohérentes.
+```python
+#| label: sanity_py
+#| eval: false
+sanity = {
+    "arcep_cols": arcep.columns.tolist(),
+    "itu_cols": itu.columns.tolist(),
+    "wb_cols": wb.columns.tolist(),
+    "n_arcep": len(arcep),
+    "n_itu": len(itu),
+    "n_wb": len(wb)
+}
+sanity
+```
+> **Colonnes attendues (adaptables selon tes fichiers)**  
+> **ARCEP** : `country`, `taux_coupure_voix`, `taux_etablissement_appel`, `debit_dl_mbps`, `debit_ul_mbps`, `latence_ms`, `continuite_service_score`, `couv_4g_pop_pct`, `couv_5g_pop_pct`  
+> **ITU** : `country`, `year`, `download_mbps_median`, `upload_mbps_median`, `latency_ms_median`  
+> **WB** : `country`, `year`, … (variables de contexte éventuelles)
+
+
+
+
