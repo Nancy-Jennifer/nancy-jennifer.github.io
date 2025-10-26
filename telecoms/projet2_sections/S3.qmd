@@ -146,3 +146,141 @@ sanity
 
 <!-- Sortie attendue de 3.2 : trois DataFrames alignés (`arcep`, `itu`, `wb`) prêts pour 3.3 -->
 <!-- ===== SECTION 3.2 : FIN ===== -->
+
+<!-- ===== TRANSITION 3.2 → 3.3 ===== -->
+> ✅ **Résumé étape 3.2 — Ingestion OK**  
+> ✔️ Données chargées (ARCEP / ITU / WB)  
+> ✔️ Noms de pays harmonisés  
+> ✔️ Panel comparatif appliqué  
+> ✔️ Millésimes alignés  
+> ➡️ **Étape suivante : rendre toutes les variables comparables** via une **normalisation statistique (z-score)**
+
+---
+
+<!-- ===== SECTION 3.3 : DÉBUT ===== -->
+## 3.3 Normalisation statistique
+
+### Objectif
+Mettre toutes les métriques **sur une même échelle** pour permettre des comparaisons justes et construire un **indice composite**.
+
+### Méthode appliquée (z-score)
+Pour chaque variable \(x\) dans le panel :
+\[
+z_i = \frac{x_i - \mu_x}{\sigma_x}
+\]
+- **Bénéfiques (↑ mieux)** : débits DL/UL, couverture 4G/5G, taux d’établissement, continuité → **score = z**  
+- **Coûts (↓ mieux)** : latence, taux de coupure voix → **score = −z** *(inversion après standardisation)*
+
+> **Pré-requis** : un DataFrame `df_panel` (merge propre des sources) contient au moins :  
+> `debit_dl_mbps`, `debit_ul_mbps`, `couv_4g_pop_pct`, `couv_5g_pop_pct`, `latence_ms`,  
+> `continuite_service_score`, `taux_etablissement_appel`, `taux_coupure_voix`.
+
+### Code — Python (prioritaire)
+```python
+#| label: normalize_py
+#| eval: false
+from sklearn.preprocessing import StandardScaler
+
+# Standardise chaque variable quand elle existe
+for col in [
+    "debit_dl_mbps","debit_ul_mbps",
+    "couv_4g_pop_pct","couv_5g_pop_pct",
+    "latence_ms","continuite_service_score",
+    "taux_etablissement_appel","taux_coupure_voix"
+]:
+    if col in df_panel.columns:
+        df_panel["z_"+col] = StandardScaler().fit_transform(df_panel[[col]])
+
+# Renommage pour un schéma commun
+rename_map = {
+    "z_debit_dl_mbps":"z_dl",
+    "z_debit_ul_mbps":"z_ul",
+    "z_couv_4g_pop_pct":"z_c4g",
+    "z_couv_5g_pop_pct":"z_c5g",
+    "z_continuite_service_score":"z_css",
+    "z_taux_etablissement_appel":"z_cset"
+}
+df_panel = df_panel.rename(columns={k:v for k,v in rename_map.items() if k in df_panel.columns})
+
+# Inversions sur les "coûts"
+if "z_latence_ms" in df_panel.columns:
+    df_panel["z_lat"]  = -df_panel["z_latence_ms"]
+if "z_taux_coupure_voix" in df_panel.columns:
+    df_panel["z_drop"] = -df_panel["z_taux_coupure_voix"]
+```
+
+### Code — R (support compétence)
+```r
+#| label: normalize_R
+#| eval: false
+library(dplyr)
+
+norm <- function(v) as.numeric(scale(v))
+
+df_panel <- df_panel |>
+  mutate(
+    z_dl   = if ("debit_dl_mbps"           %in% names(.)) norm(debit_dl_mbps)           else NA_real_,
+    z_ul   = if ("debit_ul_mbps"           %in% names(.)) norm(debit_ul_mbps)           else NA_real_,
+    z_c4g  = if ("couv_4g_pop_pct"         %in% names(.)) norm(couv_4g_pop_pct)         else NA_real_,
+    z_c5g  = if ("couv_5g_pop_pct"         %in% names(.)) norm(couv_5g_pop_pct)         else NA_real_,
+    z_css  = if ("continuite_service_score"%in% names(.)) norm(continuite_service_score)else NA_real_,
+    z_cset = if ("taux_etablissement_appel"%in% names(.)) norm(taux_etablissement_appel)else NA_real_,
+    z_lat  = if ("latence_ms"              %in% names(.)) -norm(latence_ms)             else NA_real_,
+    z_drop = if ("taux_coupure_voix"       %in% names(.)) -norm(taux_coupure_voix)      else NA_real_
+  )
+```
+
+> **Sortie attendue 3.3** : colonnes standardisées  
+> `z_dl, z_ul, z_c4g, z_c5g, z_lat, z_css, z_cset, z_drop`.
+
+<!-- ===== SECTION 3.3 : FIN ===== -->
+
+---
+
+<!-- ===== SECTION 3.4 : DÉBUT ===== -->
+## 3.4 Construction des scores par familles QoS
+
+### Objectif
+Regrouper les indicateurs en **familles cohérentes métier** pour lisser le bruit et préparer l’indice composite.
+
+- **Voix (V)** : `z_cset` (établissement) + `z_drop` (coupure, inversé)  
+- **Couverture (C)** : `z_c4g`, `z_c5g`  
+- **Débit (D)** : `z_dl`, `z_ul`  
+- **Latence (L)** : `z_lat`  
+- **Continuité (CS)** : `z_css`
+
+### Code — Python
+```python
+#| label: families_py
+#| eval: false
+import numpy as np
+
+def safe_mean(cols):
+    avail = [c for c in cols if c in df_panel.columns]
+    return np.nanmean(df_panel[avail].values, axis=1) if len(avail) else np.nan
+
+df_panel["S_V"]  = safe_mean(["z_cset","z_drop"])
+df_panel["S_C"]  = safe_mean(["z_c4g","z_c5g"])
+df_panel["S_D"]  = safe_mean(["z_dl","z_ul"])
+df_panel["S_L"]  = df_panel["z_lat"]  if "z_lat"  in df_panel.columns else np.nan
+df_panel["S_CS"] = df_panel["z_css"]  if "z_css"  in df_panel.columns else np.nan
+```
+
+### Code — R
+```r
+#| label: families_R
+#| eval: false
+library(dplyr)
+df_panel <- df_panel |>
+  mutate(
+    S_V  = rowMeans(cbind(z_cset, z_drop), na.rm = TRUE),
+    S_C  = rowMeans(cbind(z_c4g,  z_c5g),  na.rm = TRUE),
+    S_D  = rowMeans(cbind(z_dl,   z_ul),   na.rm = TRUE),
+    S_L  = z_lat,
+    S_CS = z_css
+  )
+```
+
+> **Sortie attendue 3.4** : `S_V, S_C, S_D, S_L, S_CS` — scores familiaux prêts pour l’**indice composite** (3.5).
+
+<!-- ===== SECTION 3.4 : FIN ===== -->
