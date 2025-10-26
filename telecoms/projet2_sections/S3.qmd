@@ -44,7 +44,7 @@ Objectif : produire des tables **propres, comparables** et **traçables** pour l
 
 ---
 
-### 📥 Chargement des données
+### Chargement des données
 
 ```python
 #| label: ingestion_py
