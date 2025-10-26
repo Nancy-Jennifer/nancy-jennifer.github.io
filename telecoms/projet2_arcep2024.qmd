@@ -16,7 +16,7 @@ format:
 Cette analyse compare la qualité de service mobile (QoS) de la France à un panel international afin d’identifier des leviers concrets d’amélioration de la qualité d’expérience (QoE) client.
 :::
 
-## 🎯 Introduction
+## Introduction
 
 La qualité de service mobile (QoS) est devenue un enjeu stratégique majeur pour la compétitivité numérique d’un pays. Au-delà de la couverture théorique, c’est désormais la **qualité d’expérience perçue par le client (QoE)** qui constitue l’indicateur de référence pour évaluer la performance réelle d’un réseau mobile. Dans ce contexte, il ne suffit plus de mesurer la qualité du réseau en interne : il faut la **positionner par rapport à un référentiel externe**, c’est-à-dire **comparer la France aux standards internationaux du secteur**.
 
