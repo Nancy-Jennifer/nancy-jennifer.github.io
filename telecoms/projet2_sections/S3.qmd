@@ -1,29 +1,45 @@
 ---
-title: "Section 3 — Méthodologie"
+title: "Section 3 — Méthodologie analytique"
+subtitle: "Construction d’un indice QoS international et identification des leviers d’amélioration QoE France 2024"
 format:
   html:
     toc: true
     toc-depth: 3
+    code-fold: true
+    code-summary: "Voir / masquer le code"
 ---
 
 <!-- Séparation obligatoire après YAML -->
-  
+
 [← Retour au P2](../projet2_arcep2024.qmd) · [→ Section 4 (Résultats)](S4.qmd)
 
+> 🔗 **Navigation rapide**  
+> • [3.1 Objectif](#31-objectif) · [3.2 Ingestion & préparation](#32-ingestion--préparation-des-données-python) · 3.3 Normalisation · 3.4 Scores · 3.5 Indice composite · 3.6 Robustesse · 3.7 Contrôle qualité
+
+---
+
+<!-- ===== SECTION 3.1 : DÉBUT ===== -->
 ## 3.1 Objectif
-Construire des indicateurs **comparables** entre pays et agréger les métriques en un **Indice QoS composite (5 dimensions)** afin de positionner la France dans un benchmark international et d’identifier les **leviers d’amélioration QoE**.
+
+Cette section décrit le **pipeline analytique** mis en place pour construire un **indice composite de qualité de service mobile (QoS)** et identifier les **leviers techniques** ayant le plus d’impact sur la **qualité d’expérience (QoE)** perçue par les utilisateurs en France, au regard d’un **référentiel international** (ARCEP, ITU, Banque Mondiale).
+
+- **Finalité métier** : fournir un **cadre de décision** aux équipes Réseau / Qualité (priorisation des actions, ciblage des écarts).  
+- **Exigences data** : indicateurs **comparables entre pays**, **reproductibles**, **traçables**.
+
+<!-- ===== SECTION 3.1 : FIN ===== -->
+
 ---
 
 <!-- ===== SECTION 3.2 : DÉBUT ===== -->
 ## 3.2 Ingestion & préparation des données (Python)
 
 Dans ce projet, **toute l’ingestion et la préparation** (chargement, harmonisation, panel, millésime) sont réalisées **exclusivement en Python**.  
-Objectif : produire des tables **propres, comparables** et **traçables** pour les étapes de normalisation et de scoring.
+Objectif : produire des tables **propres, comparables** et **traçables** pour la normalisation (3.3) et le scoring (3.4–3.5).
 
 ### ✅ Sources utilisées
-- **ARCEP 2024** — indicateurs QoS France (voix, data, latence, continuité, couverture)
-- **ITU** — métriques internationales de performance mobile
-- **Banque Mondiale** — variables de contexte (optionnel)
+- **ARCEP 2024** — indicateurs QoS France (voix, data, latence, continuité, couverture)  
+- **ITU** — métriques internationales de performance mobile  
+- **Banque Mondiale** — variables de contexte (optionnel)  
 - Dossier d’entrée : `data/clean/`
 
 ---
@@ -123,9 +139,10 @@ sanity = {
 sanity
 ```
 
-> **Colonnes attendues (adaptables selon tes fichiers)**  
-> ✅ **ARCEP** : `country`, `taux_coupure_voix`, `taux_etablissement_appel`, `debit_dl_mbps`, `debit_ul_mbps`, `latence_ms`, `continuite_service_score`, `couv_4g_pop_pct`, `couv_5g_pop_pct`  
-> ✅ **ITU** : `country`, `year`, `download_mbps_median`, `upload_mbps_median`, `latency_ms_median`  
-> ✅ **WB** : `country`, `year`, *(variables contextuelles optionnelles)*
+> **Colonnes attendues (adaptables)**  
+> **ARCEP** : `country`, `taux_coupure_voix`, `taux_etablissement_appel`, `debit_dl_mbps`, `debit_ul_mbps`, `latence_ms`, `continuite_service_score`, `couv_4g_pop_pct`, `couv_5g_pop_pct`  
+> **ITU** : `country`, `year`, `download_mbps_median`, `upload_mbps_median`, `latency_ms_median`  
+> **WB** : `country`, `year`, *(variables contextuelles optionnelles)*
 
+<!-- Sortie attendue de 3.2 : trois DataFrames alignés (`arcep`, `itu`, `wb`) prêts pour 3.3 -->
 <!-- ===== SECTION 3.2 : FIN ===== -->
