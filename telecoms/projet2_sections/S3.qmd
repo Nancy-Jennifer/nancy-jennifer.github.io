@@ -58,7 +58,7 @@ wb    = pd.read_csv("data/clean/4_1_wb_consolidated.csv")
 
 ---
 
-### 🧼 Harmonisation des noms de pays
+### Harmonisation des noms de pays
 
 ```python
 #| label: normalize_names_py
@@ -82,7 +82,7 @@ wb    = normalise_pays(wb)
 
 ---
 
-### 🌍 Restriction au panel comparatif
+### Restriction au panel comparatif
 
 ```python
 #| label: filter_panel_py
@@ -102,7 +102,7 @@ wb    = keep_panel(wb)
 
 ---
 
-### 🕒 Sélection du millésime le plus récent
+### Sélection du millésime le plus récent
 
 ```python
 #| label: latest_year_py
@@ -123,7 +123,7 @@ wb  = last_year_per_country(wb)
 
 ---
 
-### ✅ Vérification structurelle (sanity check)
+### Vérification structurelle (sanity check)
 
 ```python
 #| label: sanity_py
