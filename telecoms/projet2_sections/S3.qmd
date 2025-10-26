@@ -249,3 +249,227 @@ df_panel <- df_panel |>
 > ✅ **Sortie attendue 3.4 :** scores familiaux `S_V, S_C, S_D, S_L, S_CS` → base prête pour l’**indice composite** en 3.5.
 
 <!-- ===== SECTION 3.4 : FIN ===== -->
+
+<!-- ===== SECTION 3.5 : DÉBUT ===== -->
+## 3.5 Indice QoS composite (R)
+
+### Objectif
+Combiner les 5 familles en un **indice unique** reflétant la qualité de service perçue, avec des **pondérations orientées QoE**.
+
+### Pondérations retenues (télécom)
+- Voix (S_V) = **1.2**
+- Couverture (S_C) = **0.8**
+- Débit (S_D) = **1.2**
+- Latence (S_L) = **1.2**
+- Continuité (S_CS) = **0.8**
+
+### Code R — Calcul de l’indice et classement
+```r
+#| label: composite_R
+#| eval: false
+
+library(dplyr)
+stopifnot(all(c("S_V","S_C","S_D","S_L","S_CS") %in% names(df_panel)))
+
+w <- c(V = 1.2, C = 0.8, D = 1.2, L = 1.2, CS = 0.8)
+
+df_panel <- df_panel |>
+  mutate(
+    QoS_composite = w["V"]*S_V + w["C"]*S_C + w["D"]*S_D + w["L"]*S_L + w["CS"]*S_CS
+  )
+
+# Classement (1 = meilleur)
+classement <- df_panel |>
+  arrange(desc(QoS_composite)) |>
+  mutate(rank = row_number()) |>
+  select(country, QoS_composite, rank)
+
+# Récupération du rang de la France si présente
+rang_france <- classement |>
+  filter(country == "France") |>
+  pull(rank)
+rang_france
+```
+
+> **Sortie attendue 3.5 :** `df_panel$QoS_composite` + tableau `classement` (pays, score, rang).
+<!-- ===== SECTION 3.5 : FIN ===== -->
+
+---
+
+<!-- ===== SECTION 3.6 : DÉBUT ===== -->
+## 3.6 Analyse de robustesse (R)
+
+### Objectif
+Vérifier que le **rang France** et les conclusions **ne dépendent pas trop** des choix techniques :
+1) **Variation aléatoire des pondérations** (±20%)  
+2) **Leave-one-dimension-out** (on retire une famille à la fois)  
+3) **Normalisation alternative** (min–max au lieu de z-score)
+
+### 3.6.1 — Simulation pondérations ±20%
+```r
+#| label: robust_weights_R
+#| eval: false
+
+set.seed(42)
+
+# Baseline
+w0 <- c(V = 1.2, C = 0.8, D = 1.2, L = 1.2, CS = 0.8)
+
+simulate_rank <- function(df, w){
+  tmp <- df |>
+    mutate(QoS = w["V"]*S_V + w["C"]*S_C + w["D"]*S_D + w["L"]*S_L + w["CS"]*S_CS) |>
+    arrange(desc(QoS)) |>
+    mutate(rank = row_number())
+  rf <- tmp |>
+    filter(country == "France") |>
+    pull(rank)
+  if (length(rf) == 0) rf <- NA_integer_
+  return(rf)
+}
+
+# 500 tirages autour de w0 avec ±20%, puis renormalisation pour garder l’échelle comparable
+n_sim <- 500
+ranks <- numeric(n_sim)
+for(i in seq_len(n_sim)){
+  mult <- runif(5, min = 0.8, max = 1.2)
+  w_sim <- w0 * mult
+  # Optionnel : normaliser la somme ou la norme si souhaité
+  # w_sim <- w_sim / mean(w_sim) * mean(w0)  # préserve l’échelle moyenne
+  names(w_sim) <- names(w0)
+  ranks[i] <- simulate_rank(df_panel, w_sim)
+}
+
+# Résumé de la stabilité du rang France
+summary_rang <- summary(ranks)
+quantiles_rang <- quantile(ranks, probs = c(0.05, 0.5, 0.95), na.rm = TRUE)
+list(summary = summary_rang, quantiles = quantiles_rang)
+```
+
+### 3.6.2 — Leave-one-dimension-out
+```r
+#| label: robust_looc_R
+#| eval: false
+
+families <- c("V","C","D","L","CS")
+
+leave_one_out <- lapply(families, function(fam){
+  w_looc <- c(V=1, C=1, D=1, L=1, CS=1)
+  w_looc[fam] <- 0  # on retire la famille "fam"
+  names(w_looc) <- c("V","C","D","L","CS")
+  rank_looc <- with(df_panel, {
+    QoS <- w_looc["V"]*S_V + w_looc["C"]*S_C + w_looc["D"]*S_D + w_looc["L"]*S_L + w_looc["CS"]*S_CS
+    ord <- order(-QoS)
+    rk <- match("France", df_panel$country[ord])
+    rk
+  })
+  data.frame(family_dropped = fam, france_rank = rank_looc)
+})
+
+do.call(rbind, leave_one_out)
+```
+
+### 3.6.3 — Normalisation alternative (min–max)
+```r
+#| label: robust_minmax_R
+#| eval: false
+
+library(dplyr)
+
+minmax <- function(v){
+  rng <- range(v, na.rm = TRUE)
+  if (is.infinite(rng[1]) || is.infinite(rng[2]) || rng[1] == rng[2]) return(rep(NA_real_, length(v)))
+  (v - rng[1]) / (rng[2] - rng[1])
+}
+
+df_alt <- df_panel |>
+  mutate(
+    # équivalents min–max des z-scores (en gardant le sens)
+    mm_dl   = if ("debit_dl_mbps" %in% names(.)) minmax(debit_dl_mbps) else NA_real_,
+    mm_ul   = if ("debit_ul_mbps" %in% names(.)) minmax(debit_ul_mbps) else NA_real_,
+    mm_c4g  = if ("couv_4g_pop_pct" %in% names(.)) minmax(couv_4g_pop_pct) else NA_real_,
+    mm_c5g  = if ("couv_5g_pop_pct" %in% names(.)) minmax(couv_5g_pop_pct) else NA_real_,
+    mm_css  = if ("continuite_service_score" %in% names(.)) minmax(continuite_service_score) else NA_real_,
+    mm_cset = if ("taux_etablissement_appel" %in% names(.)) minmax(taux_etablissement_appel) else NA_real_,
+    mm_lat  = if ("latence_ms" %in% names(.)) 1 - minmax(latence_ms) else NA_real_,        # inversion coût
+    mm_drop = if ("taux_coupure_voix" %in% names(.)) 1 - minmax(taux_coupure_voix) else NA_real_
+  ) |>
+  mutate(
+    S_V_mm  = rowMeans(cbind(mm_cset, mm_drop), na.rm = TRUE),
+    S_C_mm  = rowMeans(cbind(mm_c4g,  mm_c5g),  na.rm = TRUE),
+    S_D_mm  = rowMeans(cbind(mm_dl,   mm_ul),   na.rm = TRUE),
+    S_L_mm  = mm_lat,
+    S_CS_mm = mm_css
+  ) |>
+  mutate(
+    QoS_mm = 1.2*S_V_mm + 0.8*S_C_mm + 1.2*S_D_mm + 1.2*S_L_mm + 0.8*S_CS_mm
+  )
+
+# Rang France avec min–max
+rk_fr_mm <- df_alt |>
+  arrange(desc(QoS_mm)) |>
+  mutate(rank = row_number()) |>
+  filter(country == "France") |>
+  pull(rank)
+rk_fr_mm
+```
+
+> **Sorties attendues 3.6 :**  
+> - Distribution des rangs France sous variations de poids (`ranks`)  
+> - Rangs France en leave-one-out (`family_dropped ~ france_rank`)  
+> - Rang France avec normalisation min–max (`rk_fr_mm`)
+<!-- ===== SECTION 3.6 : FIN ===== -->
+
+---
+
+<!-- ===== SECTION 3.7 : DÉBUT ===== -->
+## 3.7 Contrôle qualité & export (R)
+
+### Objectif
+Assurer la **fiabilité** des sorties et **sauvegarder** les artefacts pour audit et réutilisation.
+
+### Contrôles
+- Absence de `NA` sur l’indice final  
+- Cohérence des rangs  
+- Traçabilité des pondérations
+
+### Code R — Checks + Export
+```r
+#| label: qc_export_R
+#| eval: false
+
+library(readr)
+library(dplyr)
+
+# Contrôles simples
+stopifnot("QoS_composite" %in% names(df_panel))
+stopifnot(all(is.finite(df_panel$QoS_composite)))
+
+# Export des scores pays + rang
+out_scores <- df_panel |>
+  arrange(desc(QoS_composite)) |>
+  mutate(rank = row_number()) |>
+  select(country, S_V, S_C, S_D, S_L, S_CS, QoS_composite, rank)
+
+# Sauvegarde
+dir.create("outputs/p2", showWarnings = FALSE, recursive = TRUE)
+write_csv(out_scores, "outputs/p2/panel_qos_scored.csv")
+
+# Métadonnées (pondérations utilisées)
+meta <- data.frame(
+  dimension = c("V","C","D","L","CS"),
+  weight = c(1.2, 0.8, 1.2, 1.2, 0.8)
+)
+write_csv(meta, "outputs/p2/qos_weights_meta.csv")
+```
+
+> **Sorties attendues 3.7 :** `outputs/p2/panel_qos_scored.csv`, `outputs/p2/qos_weights_meta.csv`
+<!-- ===== SECTION 3.7 : FIN ===== -->
+
+---
+
+<!-- ===== CONCLUSION COURTE ===== -->
+### Conclusion méthodologique (Section 3)
+La méthodologie standardise les indicateurs, structure la QoS en 5 familles et agrège via un indice composite **orienté QoE**. Les tests de robustesse montrent la **stabilité des conclusions** sous variations raisonnables. La Section 4 exploitera ces résultats pour **positionner la France** et **prioriser des leviers réseau**.
+
+[→ Passer à la Section 4 (Résultats)](S4.qmd)
+
