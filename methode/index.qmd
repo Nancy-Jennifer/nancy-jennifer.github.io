@@ -1,5 +1,5 @@
 ---
-title: "Méthodes et approches analytiques"
+title: "METHODES ET APPROCHES ANALYTIQUES"
 page-layout: full
 ---
 
