@@ -1,5 +1,5 @@
 ---
-title: "Qui suis-je ?"
+title: "QUI SUIS-JE ?"
 page-layout: full
 ---
 
