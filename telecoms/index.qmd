@@ -1,5 +1,5 @@
 ---
-title: "Télécoms — Qualité de Service & Réseau"
+title: "TELECOMS — QUALITE DE SERVICE & RESEAU"
 toc: false
 page-layout: full
 ---
