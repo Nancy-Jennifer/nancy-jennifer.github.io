@@ -9,17 +9,17 @@ website:
   description: "Portfolio Data Analyst Technique — Télécoms QoS & People Analytics"
   navbar:
     left:
-      - text: "Accueil"
+      - text: "ACCUEIL"
         file: index.qmd
-      - text: "Qui suis-je ?"
+      - text: "QUI SUIS-JE ?"
         file: about.qmd
-      - text: "Télécoms"
+      - text: "TELECOMS"
         file: telecoms/index.qmd
-      - text: "People Analytics"
+      - text: "PEOPLE ANALYTICS"
         file: people-analytics/index.qmd
-      - text: "Méthodologie Analytique"
+      - text: "METHODOLOGIE ANALYTIQUE"
         file: methode/index.qmd
-      - text: "Contributions bénévoles"
+      - text: "CONTRIBUTIONS BENEVOLES"
         file: contributions/index.qmd
     right:
       - icon: github
