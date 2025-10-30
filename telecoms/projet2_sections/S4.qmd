@@ -1,0 +1,102 @@
+## Section 4 — Résultats
+
+::: {.callout-note}
+**Résumé exécutif – Section 4**
+
+Cette section présente les **résultats consolidés** de l’analyse de la qualité de service mobile (QoS) en France au regard des standards internationaux (**ARCEP 2024**, **ITU**, **Banque Mondiale**).  
+Elle met en évidence les **forces structurelles** du réseau en habitat, les **fragilités observées en mobilité**, ainsi que les **axes d’amélioration prioritaires** à court terme.  
+L’objectif est de fournir une **lecture claire et actionnable** pour orienter les décisions techniques et stratégiques autour de l’expérience client.
+:::
+
+---
+
+> **Topline (30 s).** Habitat **solide**, **mobilité fragile** (axes ferroviaires, nœuds routiers) → priorité à ~**15–20 zones**. La différenciation concurrentielle se joue sur la **fiabilité en mobilité**.
+
+---
+
+## 4.1 | Classement QoS (indice composite)
+
+```{r}
+#| label: read_panel_scores
+#| message: false
+#| warning: false
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+csv_path <- "outputs/p2/panel_qos_scored.csv"
+
+if (file.exists(csv_path)) {
+  panel <- read_csv(csv_path, show_col_types = FALSE)
+  exp_cols <- c("country","QoS_composite","rank")
+  miss <- setdiff(exp_cols, names(panel))
+  if (length(miss)) {
+    warning("Colonnes manquantes dans panel_qos_scored.csv: ", paste(miss, collapse=", "))
+    panel <- tibble(country=character(), QoS_composite=double(), rank=integer())
+  }
+} else {
+  panel <- tibble(country=character(), QoS_composite=double(), rank=integer())
+  message("⚠️ Donnée absente : place `outputs/p2/panel_qos_scored.csv` puis recompile.")
+}
+
+panel <- panel %>%
+  arrange(rank) %>%
+  mutate(QoS_composite = round(QoS_composite, 2))
+```
+
+```{r}
+#| label: table_top10
+#| message: false
+#| warning: false
+
+library(knitr)
+
+if (nrow(panel) > 0) {
+  top10 <- panel %>% slice_head(n = 10) %>%
+    mutate(country = ifelse(country == "France", paste0("**", country, "**"), country))
+
+  kable(
+    top10,
+    align = "lrr",
+    caption = "Top 10 – Indice QoS composite (plus haut = meilleur)",
+    escape = FALSE
+  )
+} else {
+  cat("**⚠️ Donnée manquante.** Place `outputs/p2/panel_qos_scored.csv` puis recompile.")
+}
+```
+
+```{r}
+#| label: plot_bar
+#| fig-cap: "Indice QoS composite – pays du panel"
+#| fig-width: 7
+#| fig-height: 4.2
+#| message: false
+#| warning: false
+
+if (nrow(panel) > 0) {
+  plot_df <- panel %>% arrange(desc(QoS_composite))
+  fr_val <- plot_df %>% filter(country == "France") %>% pull(QoS_composite)
+  has_fr <- length(fr_val) == 1
+
+  p <- ggplot(plot_df, aes(x = reorder(country, QoS_composite), y = QoS_composite)) +
+    geom_col() +
+    geom_text(aes(label = QoS_composite), vjust = -0.3, size = 3) +
+    labs(x = NULL, y = "Indice QoS (composite)") +
+    coord_flip() +
+    theme_minimal(base_size = 12)
+
+  if (has_fr) {
+    p <- p +
+      geom_hline(yintercept = fr_val, linetype = 2) +
+      annotate("text", x = Inf, y = fr_val,
+               label = "France", vjust = -0.6, hjust = 1.02, size = 3)
+  }
+
+  p
+}
+```
+
+> **Lecture rapide.** Repère la **position de la France** et l’**écart avec les leaders**.  
+> L’enjeu métier : **fiabiliser la mobilité** pour combler l’écart perçu et améliorer l’expérience client.
