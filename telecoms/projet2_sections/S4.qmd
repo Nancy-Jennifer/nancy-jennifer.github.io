@@ -14,89 +14,31 @@ L’objectif est de fournir une **lecture claire et actionnable** pour orienter 
 
 ---
 
-## 4.1 | Classement QoS (indice composite)
+## 4.1 | Classement QoS (indice composite) — lecture exécutive
 
-```{r}
-#| label: read_panel_scores
-#| message: false
-#| warning: false
+> **Idée-clé.** La France présente une **qualité solide en habitat**, mais un **décrochage en mobilité** (axes ferroviaires, nœuds routiers).  
+> L’enjeu concurrentiel se joue sur la **fiabilité en mobilité**. Prioriser **~15–20 zones** à fort impact client permet un **gain rapide** de QoS perçue.
 
-library(readr)
-library(dplyr)
-library(ggplot2)
+### Points saillants (lecture rapide)
+- **Habitat** : base robuste et relativement homogène entre opérateurs.  
+- **Transport** : **écart significatif** vs habitat ; incidents d’établissement d’appel et **coupures** sur axes à forte charge.  
+- **Différenciation** : la **continuité en mobilité** devient le vrai terrain de jeu concurrentiel.  
+- **Benchmarks ITU/WB** : position macro correcte, mais **adoption haut débit mobile** perfectible (maturité d’usage).
 
-csv_path <- "outputs/p2/panel_qos_scored.csv"
+### Classement & positionnement (exécutif)
+- **France** : position correcte **au global**, mais **écart vs leaders** sur la dimension **mobilité**.  
+- **Priorités 90 jours** :  
+  1) **Axes ferroviaires/métros** : retuning + tests terrain itératifs  
+  2) **Poches rurales** : comblement des trous de qualité & continuité  
+  3) **Monitoring hebdo** habitat vs transport (écarts, outliers, alerting)  
+  4) **Mesure effet client** avant/après (NPS mobilité, réclamations)
 
-if (file.exists(csv_path)) {
-  panel <- read_csv(csv_path, show_col_types = FALSE)
-  exp_cols <- c("country","QoS_composite","rank")
-  miss <- setdiff(exp_cols, names(panel))
-  if (length(miss)) {
-    warning("Colonnes manquantes dans panel_qos_scored.csv: ", paste(miss, collapse=", "))
-    panel <- tibble(country=character(), QoS_composite=double(), rank=integer())
-  }
-} else {
-  panel <- tibble(country=character(), QoS_composite=double(), rank=integer())
-  message("⚠️ Donnée absente : place `outputs/p2/panel_qos_scored.csv` puis recompile.")
-}
+::: {.callout-note}
+**Pourquoi pas de tableau/charts ici ?**  
+Cette page “Résultats” est **narrative** pour le **portfolio recruteur**. Les **tableaux/charts détaillés** restent consultables dans le **rapport HTML complet** (code, contrôles, traçabilité).
+:::
 
-panel <- panel %>%
-  arrange(rank) %>%
-  mutate(QoS_composite = round(QoS_composite, 2))
-```
+::: {.btn-row}
+[📄 Ouvrir le rapport complet (HTML)](../../assets/reports/EDA_version-definitive_Projet-ARCEP_Internationa_FIXED10_MERGE.html){.btn}
+:::
 
-```{r}
-#| label: table_top10
-#| message: false
-#| warning: false
-
-library(knitr)
-
-if (nrow(panel) > 0) {
-  top10 <- panel %>% slice_head(n = 10) %>%
-    mutate(country = ifelse(country == "France", paste0("**", country, "**"), country))
-
-  kable(
-    top10,
-    align = "lrr",
-    caption = "Top 10 – Indice QoS composite (plus haut = meilleur)",
-    escape = FALSE
-  )
-} else {
-  cat("**⚠️ Donnée manquante.** Place `outputs/p2/panel_qos_scored.csv` puis recompile.")
-}
-```
-
-```{r}
-#| label: plot_bar
-#| fig-cap: "Indice QoS composite – pays du panel"
-#| fig-width: 7
-#| fig-height: 4.2
-#| message: false
-#| warning: false
-
-if (nrow(panel) > 0) {
-  plot_df <- panel %>% arrange(desc(QoS_composite))
-  fr_val <- plot_df %>% filter(country == "France") %>% pull(QoS_composite)
-  has_fr <- length(fr_val) == 1
-
-  p <- ggplot(plot_df, aes(x = reorder(country, QoS_composite), y = QoS_composite)) +
-    geom_col() +
-    geom_text(aes(label = QoS_composite), vjust = -0.3, size = 3) +
-    labs(x = NULL, y = "Indice QoS (composite)") +
-    coord_flip() +
-    theme_minimal(base_size = 12)
-
-  if (has_fr) {
-    p <- p +
-      geom_hline(yintercept = fr_val, linetype = 2) +
-      annotate("text", x = Inf, y = fr_val,
-               label = "France", vjust = -0.6, hjust = 1.02, size = 3)
-  }
-
-  p
-}
-```
-
-> **Lecture rapide.** Repère la **position de la France** et l’**écart avec les leaders**.  
-> L’enjeu métier : **fiabiliser la mobilité** pour combler l’écart perçu et améliorer l’expérience client.
