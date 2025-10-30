@@ -17,6 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,6 +43,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install jupyter numpy pandas matplotlib
 
+      # ✅ Étape ajoutée : installer les packages R requis
+      - name: Install R packages required by Quarto
+        run: |
+          Rscript -e 'install.packages(c(
+            "knitr","rmarkdown","readr","dplyr","ggplot2"
+          ), repos = "https://cloud.r-project.org")'
+
       - name: Render with Quarto
         uses: quarto-dev/quarto-actions/render@v2
 
@@ -60,4 +68,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deploy
         uses: actions/deploy-pages@v4
-
