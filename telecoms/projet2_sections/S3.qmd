@@ -471,5 +471,5 @@ write_csv(meta, "outputs/p2/qos_weights_meta.csv")
 ### Conclusion méthodologique (Section 3)
 La méthodologie standardise les indicateurs, structure la QoS en 5 familles et agrège via un indice composite **orienté QoE**. Les tests de robustesse montrent la **stabilité des conclusions** sous variations raisonnables. La Section 4 exploitera ces résultats pour **positionner la France** et **prioriser des leviers réseau**.
 
-[→ Passer à la Section 4 (Résultats)](S4.qmd)
+[→ Passer à la Section 4 (Résultats)](Resultats.qmd)
 
