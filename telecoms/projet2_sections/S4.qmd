@@ -41,13 +41,9 @@ Les données Voix issues des campagnes ARCEP 2024 sont centralisées, nettoyées
 
 ```{mermaid}
 flowchart LR
-    A[Import ARCEP 2024] --> B[Nettoyage & harmonisation<br/>(habitat / transport)]
-    B --> C[Standardisation colonnes clés<br/>(operateur, lieu_strate, kpi, valeur)]
-    C --> D[Fusion & validation cohérence]
-    style A fill:#eef,stroke:#447
-    style B fill:#eef,stroke:#447
-    style C fill:#eef,stroke:#447
-    style D fill:#eef,stroke:#447
+  A["Import ARCEP 2024"] --> B["Nettoyage et harmonisation (habitat / transport)"]
+  B --> C["Standardisation colonnes clés (operateur, lieu_strate, kpi, valeur)"]
+  C --> D["Fusion et validation de la cohérence"]
 ```
 
 > **Lecture métier :** cette étape garantit une base unifiée et fiable avant tout calcul de performance. Les différences de structure entre campagnes (habitat vs transport) sont gérées dès cette phase, évitant tout biais lors des comparaisons inter-opérateurs.
