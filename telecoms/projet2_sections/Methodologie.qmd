@@ -11,7 +11,7 @@ format:
 
 <!-- Séparation obligatoire après YAML -->
 
-[← Retour au P2](../projet2_arcep2024.qmd) · [→ Section 4 (Résultats)](S4.qmd)
+[← Retour au P2](../projet2_arcep2024.qmd) · [→ Section 4 (Résultats)](Resultats.qmd)
 
 > 🔗 **Navigation rapide**  
 > • [3.1 Objectif](#31-objectif) · [3.2 Ingestion & préparation](#32-ingestion--préparation-des-données-python) · 3.3 Normalisation · 3.4 Scores · 3.5 Indice composite · 3.6 Robustesse · 3.7 Contrôle qualité
