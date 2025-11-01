@@ -6,55 +6,8 @@ code-fold: false
 freeze: true
 categories: [Télécoms, ARCEP 2024, Résultats]
 description: "Synthèse exécutive et accès aux sous-sections Voix, Data et SMS."
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
-
-# Résumé exécutif – Résultats
-
-::: callout-note
-**Objectif.** Cette section regroupe les **résultats consolidés** de la qualité de service mobile en France (ARCEP 2024), confrontés aux standards internationaux lorsque pertinent.  
-Elle met en évidence :  
-- les **forces structurelles** en habitat,  
-- les **fragilités en mobilité** (axes ferroviaires et routiers),  
-- les **zones à risque** à prioriser pour l’optimisation réseau.
-:::
-
-::: callout-tip
-**Topline (30 s).** Habitat **solide**, mobilité **à renforcer** (fiabilité et continuité des appels / data sur axes de transport).  
-Les recommandations portent sur la **stabilité en mouvement**, l’**optimisation ciblée** des zones à alerte récurrente et le **suivi post-optimisation** par KPI.
-:::
-
-## Sommaire visuel
-
-<div class="grid cards" style="--cards-per-row: 3; --card-height: 140px;">
-  <div class="card">
-    <a href="Resultats_1_voix.qmd">
-      <h3>📞 Voix</h3>
-      <p>Qualité d’appel & stabilité (taux de réussite, coupures, délai d’établissement)<br>
-      → <em>Scores 0–100, comparaisons opérateurs & environnements, flags de risque.</em></p>
-    </a>
-  </div>
-
-  <div class="card">
-    <a href="Resultats_2_data.qmd">
-      <h3>📶 Data</h3>
-      <p>Débit & performance mobile (down/up, latence, disponibilité)<br>
-      → <em>Bench inter-opérateurs, habitat vs transport, zones à améliorer.</em></p>
-    </a>
-  </div>
-
-  <div class="card">
-    <a href="Resultats_3_sms.qmd">
-      <h3>💬 SMS</h3>
-      <p>Taux de réussite & délais d’acheminement<br>
-      → <em>Niveaux de service et écarts résiduels par opérateur / environnement.</em></p>
-    </a>
-  </div>
-</div>
-
----
-
-### Notes de lecture
-
-- Les sous-pages **masquent le code** (code-fold par défaut) et affichent des **visuels synthétiques** (barres/colonnes).
-- Les seuils de **flag** sont business-oriented (ex. voix: réussite < 95 %, coupures > 2 %, délai > 6 s).
-- Chaque sous-page se conclut par une **synthèse analytique** et **recommandations actionnables**.
