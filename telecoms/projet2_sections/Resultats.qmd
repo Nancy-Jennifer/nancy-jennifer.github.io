@@ -25,8 +25,8 @@ Elle met en évidence :
 - les **zones à risque** à prioriser pour l’optimisation réseau.
 :::
 
-::: callout-tip
-**Topline (30 s).** Habitat **solide**, mobilité **à renforcer** (fiabilité et continuité des appels / data sur axes de transport).  
+::: {.callout-tip title="Topline (30 s)" icon="lightbulb"}
+Habitat **solide**, mobilité **à renforcer** (fiabilité et continuité des appels / data sur axes de transport).  
 Les recommandations portent sur la **stabilité en mouvement**, l’**optimisation ciblée** des zones à alerte récurrente et le **suivi post-optimisation** par KPI.
 :::
 
