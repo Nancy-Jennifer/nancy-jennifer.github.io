@@ -10,4 +10,57 @@ execute:
   echo: false
   warning: false
   message: false
+format:
+  html:
+    theme: cosmo
 ---
+
+# Résumé exécutif – Résultats
+
+::: callout-note
+**Objectif.** Cette section regroupe les **résultats consolidés** de la qualité de service mobile en France (ARCEP 2024), confrontés aux standards internationaux lorsque pertinent.  
+Elle met en évidence :  
+- les **forces structurelles** en habitat,  
+- les **fragilités en mobilité** (axes ferroviaires et routiers),  
+- les **zones à risque** à prioriser pour l’optimisation réseau.
+:::
+
+::: callout-tip
+**Topline (30 s).** Habitat **solide**, mobilité **à renforcer** (fiabilité et continuité des appels / data sur axes de transport).  
+Les recommandations portent sur la **stabilité en mouvement**, l’**optimisation ciblée** des zones à alerte récurrente et le **suivi post-optimisation** par KPI.
+:::
+
+## Sommaire visuel
+
+::: {.grid .cards cols=3}
+::: {.card}
+[## 📞 Voix](Resultats_1_voix.qmd)
+
+Qualité d’appel & stabilité  
+*(taux de réussite, coupures, délai d’établissement)*  
+→ *Scores 0–100, comparaisons opérateurs & environnements, flags de risque.*
+:::
+
+::: {.card}
+[## 📶 Data](Resultats_2_data.qmd)
+
+Débit & performance mobile  
+*(down/up, latence, disponibilité)*  
+→ *Bench inter-opérateurs, habitat vs transport, zones à améliorer.*
+:::
+
+::: {.card}
+[## 💬 SMS](Resultats_3_sms.qmd)
+
+Taux de réussite & délais d’acheminement  
+→ *Niveaux de service & écarts résiduels par opérateur / environnement.*
+:::
+:::
+
+---
+
+### Notes de lecture
+
+- Les sous-pages **masquent le code** (code-fold par défaut) et affichent des **visuels synthétiques** (barres/colonnes).  
+- Les seuils de **flag** sont orientés métier (ex. voix : réussite < 95 %, coupures > 2 %, délai > 6 s).  
+- Chaque sous-page se conclut par une **synthèse analytique** et des **recommandations actionnables**.
