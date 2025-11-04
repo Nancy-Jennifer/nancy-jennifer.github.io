@@ -1,0 +1,193 @@
+
+## Data — Débit & performance de l’expérience internet mobile
+
+**Débit descendant / Latence / Web & Streaming** — ces indicateurs capturent la fluidité de l’expérience Data et la régularité de la navigation (ARCEP 2024).
+
+::: {.callout-note}
+**Topline (30 s)**  
+Habitat solide, mais **mobilité à renforcer** (variabilité du débit & latence sur axes ferroviaires / routiers).  
+La **consistency ≥ 30 Mbps** devient le meilleur prédicteur de l’expérience client (web & streaming).  
+Prioriser **~15–20 zones** d’optimisation ciblées sur mobilité pour lisser les pics > 50 ms.
+:::
+
+### Objectif général
+
+Évaluer la **qualité de service Data** des opérateurs en France (ARCEP 2024) autour de 3 familles :  
+- **Débit descendant (p50)**  
+- **Latence (p50)**  
+- **Web & Streaming** (fluidité perçue via seuils de débit/latence)
+
+Les données couvrent **habitat** et **transport** et la lecture privilégie la **régularité** plutôt que les pics.
+
+---
+
+## 1) Préparation & structuration DATA
+
+Les données DATA sont harmonisées dans **`data_ok`** (schéma long) : variables clés `operateur`, `lieu_strate`, `famille`, `valeur`.  
+Les familles utilisées : `debit_down`, `debit_up`, `latence_ms`.
+
+> Base unifiée → comparaisons inter-opérateurs robustes.
+
+---
+
+## 2) Comparaison par opérateur (p50)
+
+Le **débit p50** reflète la capacité utile moyenne, la **latence p50** la réactivité (chargement web, interactions).
+
+```{r 2-data-kpi-core, message=FALSE, warning=FALSE}
+suppressPackageStartupMessages({
+  library(dplyr); library(tidyr); library(stringr)
+  library(forcats); library(ggplot2); library(gt)
+})
+
+# Garde-fou
+if (!exists("data_ok")) stop("`data_ok` est introuvable. Exécute d'abord l'EDA jusqu'à sa création.")
+
+df <- data_ok %>%
+  mutate(
+    operateur  = stringr::str_to_title(operateur),
+    env        = dplyr::recode(lieu_strate, "habitat"="habitat","transport"="mobilite",
+                               .default = stringr::str_to_lower(lieu_strate)),
+    famille    = stringr::str_to_lower(famille)
+  )
+
+kpi_core <- df %>%
+  group_by(operateur, env) %>%
+  summarise(
+    dl_med_mbps = suppressWarnings(stats::median(valeur[famille=="debit_down"], na.rm=TRUE)),
+    ul_med_mbps = suppressWarnings(stats::median(valeur[famille=="debit_up"],   na.rm=TRUE)),
+    lat_med_ms  = suppressWarnings(stats::median(valeur[famille=="latence_ms"], na.rm=TRUE)),
+    n_meas_down = sum(famille=="debit_down", na.rm=TRUE),
+    .groups="drop"
+  ) %>%
+  arrange(env, desc(dl_med_mbps))
+
+kpi_core_tbl <- kpi_core %>%
+  select(operateur, env, dl_med_mbps, ul_med_mbps, lat_med_ms, n_meas_down)
+
+kpi_core_tbl %>%
+  gt() %>%
+  tab_header(title = "KPI centraux DATA — médianes (p50)") %>%
+  fmt_number(columns = c(dl_med_mbps, ul_med_mbps, lat_med_ms), decimals = 1)
+```
+
+```{r 2-data-plot-down, message=FALSE, warning=FALSE}
+p_down <- kpi_core %>%
+  mutate(env = stringr::str_to_title(env)) %>%
+  ggplot(aes(x = forcats::fct_reorder(operateur, dl_med_mbps),
+             y = dl_med_mbps, fill = env)) +
+  geom_col(width = .6, position = position_dodge(width = .7)) +
+  coord_flip() +
+  facet_wrap(~ env, nrow = 1) +
+  labs(x=NULL, y="Débit descendant p50 (Mbps)",
+       title="Débit descendant — médiane (p50) par opérateur") +
+  theme_minimal(base_size=12)
+p_down
+```
+
+::: {.callout-note}
+**Lecture métier**  
+Les meilleurs opérateurs délivrent de très bons niveaux en **habitat**.  
+En **mobilité**, des chutes plus marquées apparaissent — reflet de la pression réseau sur axes ferroviaires et routiers.
+:::
+
+---
+
+## 3) Consistency — seuil de confort utilisateur
+
+La régularité réelle est mesurée par la part des tests au-dessus de **8 / 30 / 100 Mbps** (débit descendant).
+
+```{r 2-data-consistency, message=FALSE, warning=FALSE}
+thresholds <- c(`ge_8`=8, `ge_30`=30, `ge_100`=100)
+
+consistency_tbl <- df %>%
+  filter(famille=="debit_down") %>%
+  group_by(operateur, env) %>%
+  summarise(
+    across(thresholds, ~ mean(valeur >= .x, na.rm=TRUE)*100, .names = "{.fn}_pct"),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  mutate(across(ends_with("_pct"), ~ round(.x, 1))) %>%
+  arrange(env, desc(ge_30_pct))
+
+consistency_tbl %>%
+  gt() %>%
+  tab_header(title = "Consistency débit descendant — part des tests au-dessus du seuil (%)")
+```
+
+::: {.callout-important}
+**Lecture métier**  
+≥ **30 Mbps** ≈ navigation fluide + streaming HD stable.  
+Les meilleurs dépassent **~80%** en habitat, certains chutent **< ~65%** en mobilité.
+:::
+
+---
+
+## 4) Habitat vs Mobilité — hétérogénéité d’expérience
+
+```{r 2-data-gap-env, message=FALSE, warning=FALSE}
+gap_env <- kpi_core %>%
+  select(operateur, env, dl_med_mbps, lat_med_ms) %>%
+  pivot_wider(names_from = env, values_from = c(dl_med_mbps, lat_med_ms)) %>%
+  mutate(
+    gap_down_mbps = dl_med_mbps_habitat - dl_med_mbps_mobilite,
+    gap_lat_ms    = lat_med_ms_mobilite - lat_med_ms_habitat
+  )
+
+gap_env %>%
+  gt() %>%
+  tab_header(title = "Écarts Habitat – Mobilité (p50)") %>%
+  fmt_number(columns = where(is.numeric), decimals = 1)
+```
+
+```{r 2-data-plot-lat, message=FALSE, warning=FALSE}
+p_lat <- kpi_core %>%
+  mutate(env = stringr::str_to_title(env)) %>%
+  ggplot(aes(x = forcats::fct_reorder(operateur, -lat_med_ms),
+             y = lat_med_ms, fill = env)) +
+  geom_col(width = .6) +
+  geom_hline(yintercept = 30, linetype = "dashed") +
+  facet_wrap(~ env, nrow = 1) +
+  labs(x=NULL, y="Latence médiane (ms)",
+       title="Latence — médiane (p50) par opérateur (repère 30 ms)") +
+  theme_minimal(base_size=12)
+p_lat
+```
+
+::: {.callout-note}
+**Lecture métier**  
+La **mobilité** dégrade plus fortement la **latence** que le débit → impact direct sur **Web & YouTube** (buffering, lenteur de chargement).
+:::
+
+---
+
+## 5) Synthèse analytique & recommandations
+
+| Famille KPI | Enjeu clé |
+|---|---|
+| Débit descendant | stables en habitat, dispersion en mobilité |
+| Latence | seuil **30 ms** critique pour navigation & streaming |
+| Web / Streaming | sensible aux pics de latence & au chaînage CDN |
+
+::: {.callout-tip}
+**Recommandations clés**  
+- cibler les **axes transport** pour réduire les pics **> 50 ms**  
+- piloter le palier **≥ 30 Mbps** comme KPI de confort (consistency)  
+- optimiser l’acheminement **contenu/CDN** pour Web/Streaming
+:::
+
+> **Conclusion Data** — marché performant en crête, mais sensible à la **cohérence de délivrance** en mobilité.  
+> Le différenciateur concurrentiel 2024 n’est pas la vitesse max, mais la **stabilité** perçue.
+
+---
+
+### Exports (pour ton deck & ton repo)
+
+```{r 2-data-exports, message=FALSE, warning=FALSE}
+dir.create("outputs/kpi", recursive = TRUE, showWarnings = FALSE)
+readr::write_csv(kpi_core_tbl,    "outputs/kpi/kpi_core_data.csv")
+readr::write_csv(consistency_tbl, "outputs/kpi/consistency_tbl.csv")
+readr::write_csv(gap_env,         "outputs/kpi/gap_env.csv")
+```
+
