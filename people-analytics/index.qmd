@@ -1,0 +1,11 @@
+---
+title: "People Analytics"
+format:
+  html:
+    toc: true
+page-layout: article
+description: "Accueil People Analytics – en cours de rédaction"
+---
+
+Page d’accueil **People Analytics** (placeholder).  
+Cette page existe pour stabiliser les liens et le build. Le contenu arrive très vite.
