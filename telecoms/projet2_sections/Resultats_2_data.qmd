@@ -7,77 +7,76 @@ execute:
 ---
 
 ```{r 0-deps, include=FALSE}
-# Dépendances minimales (pas de gt/juicyjuice/V8/curl)
+# Paquets minimaux
 req <- c("dplyr","tidyr","stringr","forcats","ggplot2","readr","purrr")
 miss <- setdiff(req, rownames(installed.packages()))
 if (length(miss)) install.packages(miss, repos = "https://cloud.r-project.org")
 invisible(lapply(req, function(p) suppressPackageStartupMessages(library(p, character.only = TRUE))))
 
-# --- utilitaires de chargement auto ---
+# --- utilitaires ---
 canonize_cols <- function(df) {
-  # tolère différentes casses / noms proches
-  nm <- names(df)
-  names(df) <- stringr::str_to_lower(nm)
-  # normalise quelques variantes fréquentes
+  nm <- names(df); names(df) <- stringr::str_to_lower(nm)
   names(df) <- dplyr::recode(names(df),
-                             "operateur"="operateur",
-                             "opérateur"="operateur",
-                             "operator" ="operateur",
-                             "lieu"     ="lieu_strate",
-                             "environnement"="lieu_strate",
-                             "env"      ="lieu_strate",
-                             "valeur"   ="valeur",
-                             "value"    ="valeur",
-                             .default = names(df))
+    "opérateur"="operateur","operator"="operateur",
+    "environnement"="lieu_strate","env"="lieu_strate","lieu"="lieu_strate",
+    "value"="valeur", .default = names(df))
   df
 }
-
 read_safely <- function(path) {
-  tryCatch({
-    readr::read_csv(path, show_col_types = FALSE) |> canonize_cols()
-  }, error = function(e) NULL)
+  tryCatch({ readr::read_csv(path, show_col_types = FALSE) |> canonize_cols() }, error=function(e) NULL)
 }
 
-# Cherche des fichiers CSV dans plusieurs répertoires racines
+# --- où chercher les CSV versionnés ---
 roots <- c("data/clean", "data/raw", "telecoms/data", "data")
-candidates <- unlist(purrr::map(roots, ~ if (dir.exists(.x)) list.files(.x, pattern="\\.csv$", full.names=TRUE) else character(0)))
-candidates <- unique(candidates)
+candidates <- unique(unlist(purrr::map(roots, ~ if (dir.exists(.x)) list.files(.x, pattern="\\.csv$", full.names=TRUE) else character(0))))
 
-# Classe les fichiers par famille à partir du nom
-is_down  <- stringr::str_detect(basename(candidates), "(?i)debit[_-]?down|download|downlink")
-is_up    <- stringr::str_detect(basename(candidates), "(?i)debit[_-]?up|upload|uplink")
-is_lat   <- stringr::str_detect(basename(candidates), "(?i)latence|latency|ping")
+# --- classer par familles via le nom de fichier ---
+is_down <- stringr::str_detect(basename(candidates), "(?i)debit[_-]?down|download|downlink")
+is_up   <- stringr::str_detect(basename(candidates), "(?i)debit[_-]?up|upload|uplink")
+is_lat  <- stringr::str_detect(basename(candidates), "(?i)latence|latency|ping")
 
-paths_down <- candidates[is_down]
-paths_up   <- candidates[is_up]
-paths_lat  <- candidates[is_lat]
-
-# Lit & taggue
-tbl_down <- purrr::map(paths_down, read_safely) |> purrr::compact() |> purrr::list_rbind()
+tbl_down <- purrr::map(candidates[is_down], read_safely) |> purrr::compact() |> purrr::list_rbind()
 if (NROW(tbl_down)) tbl_down$famille <- "debit_down"
-
-tbl_up   <- purrr::map(paths_up,   read_safely) |> purrr::compact() |> purrr::list_rbind()
+tbl_up   <- purrr::map(candidates[is_up],   read_safely) |> purrr::compact() |> purrr::list_rbind()
 if (NROW(tbl_up))   tbl_up$famille   <- "debit_up"
-
-tbl_lat  <- purrr::map(paths_lat,  read_safely) |> purrr::compact() |> purrr::list_rbind()
+tbl_lat  <- purrr::map(candidates[is_lat],  read_safely) |> purrr::compact() |> purrr::list_rbind()
 if (NROW(tbl_lat))  tbl_lat$famille  <- "latence_ms"
 
 data_long <- dplyr::bind_rows(tbl_down, tbl_up, tbl_lat) |>
   dplyr::mutate(
-    operateur  = operateur |> stringr::str_trim() |> stringr::str_to_lower(),
-    lieu_strate= lieu_strate |> stringr::str_trim() |> stringr::str_to_lower(),
-    famille    = famille |> stringr::str_trim() |> stringr::str_to_lower()
+    operateur   = stringr::str_to_lower(stringr::str_trim(operateur)),
+    lieu_strate = stringr::str_to_lower(stringr::str_trim(lieu_strate)),
+    famille     = stringr::str_to_lower(stringr::str_trim(famille))
   ) |>
   dplyr::filter(!is.na(valeur))
 
-# Garde-fou clair si rien n'a été trouvé
-if (!NROW(data_long)) {
-  stop(paste0(
-    "Aucun CSV exploitable trouvé.\n",
-    "- Place des CSV dans data/clean/ ou data/raw/ (ou telecoms/data/),\n",
-    "- avec au minimum les colonnes: operateur, lieu_strate, valeur,\n",
-    "- et des noms de fichiers contenant: 'debit_down'/'download', 'debit_up'/'upload', 'latence'/'latency'."
-  ))
+# **Flag de présence données**
+have_data <- NROW(data_long) > 0
+
+# Désactiver tous les chunks d'analyse si pas de données
+if (!have_data) {
+  knitr::opts_chunk$set(eval = FALSE)
+}
+```
+
+```{r data-empty-note, echo=FALSE, results='asis'}
+if (!have_data) {
+  cat("
+::: {.callout-warning}
+**Données manquantes — rendu sans analyse**
+
+Aucun CSV exploitable n'a été trouvé dans `data/clean/`, `data/raw/`, `telecoms/data/` ou `data/`.
+
+**Attendu (colonnes minimales)** : `operateur`, `lieu_strate` (`habitat` ou `transport`), `valeur`.
+
+**Noms de fichiers reconnus** :
+- débit descendant : contient `debit_down`, `download`, `downlink`
+- débit montant : contient `debit_up`, `upload`, `uplink`
+- latence : contient `latence`, `latency`, `ping`
+
+Une fois les fichiers ajoutés et commités, la page calculera automatiquement les KPI/graphes.
+:::
+")
 }
 ```
 
