@@ -1,201 +1,76 @@
+---
+title: "Résultats – Data (Internet mobile)"
+subtitle: "Médianes p50 – DL / UL / RSRP"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    code-fold: show
+execute:
+  echo: true
+  warning: false
+  message: false
+---
 
-## 2) Résultats DATA — vitesses & radio (p50)
+## Résultats DATA – p50 essentiels
 
-```{r bootstrap-data, include=FALSE}
+```{r data-p50-setup, echo=FALSE, message=FALSE, warning=FALSE}
 suppressPackageStartupMessages({
-  library(dplyr); library(stringr); library(tidyr)
-  library(forcats); library(ggplot2); library(readr); library(knitr)
+  library(dplyr); library(ggplot2); library(forcats)
 })
 
-# ---- 1) Détection des sources persistées (si présentes) ----
-has_obj <- exists("data_scored_norm") || exists("data_scored_clean") || exists("data_scored")
-rds_candidates  <- c("outputs/interim/data_scored_norm.rds",
-                     "outputs/interim/data_scored_clean.rds",
-                     "outputs/interim/data_scored.rds")
-csv_candidates  <- c("outputs/interim/data_scored_norm.csv",
-                     "outputs/interim/data_scored_clean.csv",
-                     "outputs/interim/data_scored.csv")
+# === on standardise les noms pour être robustes FR/EN ===
+dsn <- data_scored_norm |>
+  rename_with(~tolower(gsub("[^a-z0-9]+","_",.x)))
 
-load_first_existing <- function(paths, fun){
-  for (p in paths) if (file.exists(p)) return(fun(p))
-  return(NULL)
-}
+# mapping minimal des colonnes brutes
+col_op   <- grep("operat|brand|provider", names(dsn), value=TRUE)[1]
+col_dl   <- grep("download|descend|downlink|mbps.*down|dl", names(dsn), value=TRUE)[1]
+col_ul   <- grep("upload|montant|uplink|mbps.*up|ul", names(dsn), value=TRUE)[1]
+col_rsrp <- grep("\\brsrp\\b|rsrp_dbm|signal", names(dsn), value=TRUE)[1]
 
-df <- NULL
-if (has_obj) {
-  df <- get(c("data_scored_norm","data_scored_clean","data_scored")[which(sapply(
-    c("data_scored_norm","data_scored_clean","data_scored"), exists))[1]])
-} else {
-  df <- load_first_existing(rds_candidates, readRDS)
-  if (is.null(df)) df <- load_first_existing(csv_candidates, readr::read_csv)
-}
-
-# ---- 2) Normalisation minimale & classification ----
-family_map <- function(ind_l, kpi_l){
-  d <- str_detect
-  case_when(
-    d(ind_l, "descend|download|\\bdl\\b|down|mbps|throughput") |
-      d(kpi_l, "descend|download|\\bdl\\b|down|mbps|throughput") ~ "debit_down",
-    d(ind_l, "montant|upload|\\bul\\b|up") |
-      d(kpi_l, "montant|upload|\\bul\\b|up")                     ~ "debit_up",
-    d(ind_l, "^rsrp$") | d(kpi_l, "^rsrp$")                      ~ "rsrp",
-    TRUE ~ "autres"
-  )
-}
-
-safe_prepare <- function(df){
-  req <- c("operateur","lieu_strate","indicateur","kpi","valeur")
-  miss <- setdiff(req, names(df))
-  if (length(miss)) return(NULL)
-  df %>% mutate(
-    operateur = str_to_title(as.character(operateur)),
-    env       = dplyr::recode(str_to_lower(as.character(lieu_strate)),
-                              "habitat"="Habitat","mobilite"="Mobilité",
-                              .default = str_to_title(as.character(lieu_strate))),
-    indic_l   = str_to_lower(as.character(indicateur)),
-    kpi_l     = str_to_lower(as.character(kpi)),
-    famille   = family_map(indic_l, kpi_l),
-    valeur    = suppressWarnings(as.numeric(valeur))
-  )
-}
-
-df <- if (!is.null(df)) safe_prepare(df) else NULL
-HAS_DATA <- !is.null(df) && any(df$famille %in% c("debit_down","debit_up","rsrp"))
-
-# ---- 3) Placeholders si données absentes ----
-if (!HAS_DATA) {
-  kpi_core <- tibble(
-    operateur = character(), env = character(),
-    `median_val__debit_down` = numeric(),
-    `median_val__debit_up`   = numeric(),
-    `median_val__rsrp`       = numeric(),
-    `n_meas__debit_down`     = integer()
+df <- dsn |>
+  transmute(
+    operateur = dsn[[col_op]] |> as.character() |> tolower() |> tools::toTitleCase(),
+    dl = suppressWarnings(as.numeric(dsn[[col_dl]])),
+    ul = suppressWarnings(as.numeric(dsn[[col_ul]])),
+    rsrp = suppressWarnings(as.numeric(dsn[[col_rsrp]]))
+  ) |>
+  group_by(operateur) |>
+  summarise(
+    dl_p50 = median(dl, na.rm=TRUE),
+    ul_p50 = median(ul, na.rm=TRUE),
+    rsrp_p50 = median(rsrp, na.rm=TRUE),
+    .groups="drop"
   )
 
-  p_dl   <- ggplot() + theme_void() + ggtitle("Débit descendant — données non trouvées")
-  p_ul   <- ggplot() + theme_void() + ggtitle("Débit montant — données non trouvées")
-  p_rsrp <- ggplot() + theme_void() + ggtitle("RSRP — données non trouvées")
-
-  WARNING_HTML <- TRUE
-} else {
-  WARNING_HTML <- FALSE
-}
+# ordre UX = classer par DL p50 décroissant
+df <- df |> mutate(operateur = fct_reorder(operateur, dl_p50, .desc=TRUE))
+theme_set(theme_minimal(base_size=13))
 ```
 
-```{r warning-box, results='asis', echo=FALSE}
-if (exists("WARNING_HTML") && WARNING_HTML) {
-  cat('
-::: {.callout-warning}
-**Données non chargées pour cette page.**  
-Cette page rend quand même pour ne pas bloquer le CI.
-
-**Pour activer les vrais graphes :**
-1) Dans l’EDA, *sauvegarde* l’un des fichiers :
-   - `outputs/interim/data_scored_norm.rds` (recommandé), ou
-   - `outputs/interim/data_scored_norm.csv`
-   (les variantes `data_scored_clean` / `data_scored` sont acceptées).
-2) Relance le render du site.
-:::
-')
-}
+### Débit descendant — p50
+```{r data-p50-dl, fig.width=8, fig.height=4.4}
+ggplot(df, aes(operateur, dl_p50)) +
+  geom_col() +
+  geom_text(aes(label=round(dl_p50,1)), vjust=-0.3, size=3.5) +
+  labs(title="Débit descendant — médiane p50", y="Mb/s", x=NULL)
 ```
 
-::: {.callout-note}
-**Lecture métier (30 s)**  
-- **Habitat** : bons niveaux DL/UL ; **Mobilité** : plus de dispersion.  
-- **RSRP** médian explique les cas de DL/UL faibles (repère ≈ **−100 dBm**).  
-- Priorités 2024 : lisser la cohérence en mobilité (axes ferroviaires/routiers).
-:::
-
-```{r kpi-core, message=FALSE, warning=FALSE}
-if (HAS_DATA) {
-  kpi_core <- df %>%
-    dplyr::filter(famille %in% c("debit_down","debit_up","rsrp")) %>%
-    dplyr::group_by(operateur, env, famille) %>%
-    dplyr::summarise(
-      median_val = suppressWarnings(stats::median(valeur, na.rm = TRUE)),
-      n_meas     = sum(!is.na(valeur)),
-      .groups="drop"
-    ) %>%
-    tidyr::pivot_wider(
-      names_from = famille,
-      values_from = c(median_val, n_meas),
-      names_sep = "__"
-    ) %>%
-    dplyr::arrange(env, dplyr::desc(median_val__debit_down))
-}
-
-knitr::kable(
-  kpi_core,
-  caption = "KPI DATA — médianes (p50) par opérateur & environnement",
-  digits = 1,
-  align = "lcccccc"
-)
+### Débit montant — p50
+```{r data-p50-ul, fig.width=8, fig.height=4.4}
+ggplot(df, aes(operateur, ul_p50)) +
+  geom_col() +
+  geom_text(aes(label=round(ul_p50,1)), vjust=-0.3, size=3.5) +
+  labs(title="Débit montant — médiane p50", y="Mb/s", x=NULL)
 ```
 
-```{r plots, message=FALSE, warning=FALSE}
-if (HAS_DATA) {
-  dl_tbl <- df %>%
-    dplyr::filter(famille == "debit_down") %>%
-    dplyr::group_by(operateur, env) %>%
-    dplyr::summarise(dl_med_mbps = median(valeur, na.rm = TRUE), .groups="drop")
-
-  p_dl <- ggplot(dl_tbl, aes(x = forcats::fct_reorder(operateur, dl_med_mbps),
-                             y = dl_med_mbps, fill = env)) +
-    geom_col(width = .65, position = position_dodge(width = .7)) +
-    coord_flip() +
-    facet_wrap(~ env, nrow = 1, scales = "free_y") +
-    labs(x = NULL, y = "Débit descendant médian (Mb/s)",
-         title = "Débit descendant — p50 par opérateur",
-         subtitle = "Lecture : plus haut = navigation/streaming plus fluide") +
-    theme_minimal(base_size = 12)
-
-  ul_tbl <- df %>%
-    dplyr::filter(famille == "debit_up") %>%
-    dplyr::group_by(operateur, env) %>%
-    dplyr::summarise(ul_med_mbps = median(valeur, na.rm = TRUE), .groups="drop")
-
-  p_ul <- ggplot(ul_tbl, aes(x = forcats::fct_reorder(operateur, ul_med_mbps),
-                             y = ul_med_mbps, fill = env)) +
-    geom_col(width = .65, position = position_dodge(width = .7)) +
-    coord_flip() +
-    facet_wrap(~ env, nrow = 1, scales = "free_y") +
-    labs(x = NULL, y = "Débit montant médian (Mb/s)",
-         title = "Débit montant — p50 par opérateur",
-         subtitle = "UL impacte envoi médias / cloud / messageries") +
-    theme_minimal(base_size = 12)
-
-  rsrp_tbl <- df %>%
-    dplyr::filter(famille == "rsrp") %>%
-    dplyr::group_by(operateur, env) %>%
-    dplyr::summarise(rsrp_med_dbm = median(valeur, na.rm = TRUE), .groups="drop")
-
-  p_rsrp <- ggplot(rsrp_tbl, aes(x = forcats::fct_reorder(operateur, rsrp_med_dbm),
-                                 y = rsrp_med_dbm, fill = env)) +
-    geom_col(width = .65, position = position_dodge(width = .7)) +
-    coord_flip() +
-    facet_wrap(~ env, nrow = 1, scales = "free_y") +
-    geom_hline(yintercept = -100, linetype = "dashed") +
-    labs(x = NULL, y = "RSRP médian (dBm)",
-         title = "Qualité radio (RSRP) — p50 par opérateur",
-         subtitle = "Repère : -100 dBm (ligne pointillée) ≈ seuil de confort 4G") +
-    theme_minimal(base_size = 12)
-}
-
-p_dl
-p_ul
-p_rsrp
+### RSRP — p50
+```{r data-p50-rsrp, fig.width=8, fig.height=4.4}
+ggplot(df, aes(operateur, rsrp_p50)) +
+  geom_col() +
+  geom_hline(yintercept=-100, linetype="dashed") +
+  geom_text(aes(label=round(rsrp_p50,0)), vjust=-0.3, size=3.5) +
+  labs(title="RSRP — médiane p50", y="dBm (plus proche de 0 = meilleur)", x=NULL)
 ```
-
-```{r exports-safe, message=FALSE, warning=FALSE}
-dir.create("outputs/kpi", recursive = TRUE, showWarnings = FALSE)
-dir.create("outputs/img", recursive = TRUE, showWarnings = FALSE)
-
-if (HAS_DATA) {
-  readr::write_csv(kpi_core, "outputs/kpi/data_kpi_core_p50.csv")
-  ggplot2::ggsave("outputs/img/data_dl_p50.png",   p_dl,   width = 9, height = 4.2, dpi = 200)
-  ggplot2::ggsave("outputs/img/data_ul_p50.png",   p_ul,   width = 9, height = 4.2, dpi = 200)
-  ggplot2::ggsave("outputs/img/data_rsrp_p50.png", p_rsrp, width = 9, height = 4.2, dpi = 200)
-}
-```
-
