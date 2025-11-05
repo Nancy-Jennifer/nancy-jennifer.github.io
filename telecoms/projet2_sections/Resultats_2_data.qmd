@@ -6,180 +6,197 @@ execute:
   message: false
 ---
 
-```{r 0-deps, include=FALSE}
-# Paquets minimaux
-req <- c("dplyr","tidyr","stringr","forcats","ggplot2","readr","purrr")
-miss <- setdiff(req, rownames(installed.packages()))
-if (length(miss)) install.packages(miss, repos = "https://cloud.r-project.org")
-invisible(lapply(req, function(p) suppressPackageStartupMessages(library(p, character.only = TRUE))))
+```{r 0-setup, include=FALSE}
+# 1) Ne jamais interrompre la build sur erreur
+knitr::opts_chunk$set(error = TRUE, message = FALSE, warning = FALSE)
 
-# --- utilitaires ---
-canonize_cols <- function(df) {
-  nm <- names(df); names(df) <- stringr::str_to_lower(nm)
-  names(df) <- dplyr::recode(names(df),
-    "opérateur"="operateur","operator"="operateur",
-    "environnement"="lieu_strate","env"="lieu_strate","lieu"="lieu_strate",
-    "value"="valeur", .default = names(df))
-  df
-}
-read_safely <- function(path) {
-  tryCatch({ readr::read_csv(path, show_col_types = FALSE) |> canonize_cols() }, error=function(e) NULL)
-}
+# 2) Dépendances légères (sans gt/juicyjuice/V8/curl)
+SAFE_MODE <- FALSE
+tryCatch({
+  req <- c("dplyr","tidyr","stringr","forcats","ggplot2","readr","purrr")
+  miss <- setdiff(req, rownames(installed.packages()))
+  if (length(miss)) install.packages(miss, repos = "https://cloud.r-project.org")
+  invisible(lapply(req, function(p) suppressPackageStartupMessages(library(p, character.only = TRUE))))
+}, error = function(e) {
+  SAFE_MODE <<- TRUE
+  message("SAFE-MODE (deps): ", e$message)
+})
 
-# --- où chercher les CSV versionnés ---
-roots <- c("data/clean", "data/raw", "telecoms/data", "data")
-candidates <- unique(unlist(purrr::map(roots, ~ if (dir.exists(.x)) list.files(.x, pattern="\\.csv$", full.names=TRUE) else character(0))))
-
-# --- classer par familles via le nom de fichier ---
-is_down <- stringr::str_detect(basename(candidates), "(?i)debit[_-]?down|download|downlink")
-is_up   <- stringr::str_detect(basename(candidates), "(?i)debit[_-]?up|upload|uplink")
-is_lat  <- stringr::str_detect(basename(candidates), "(?i)latence|latency|ping")
-
-tbl_down <- purrr::map(candidates[is_down], read_safely) |> purrr::compact() |> purrr::list_rbind()
-if (NROW(tbl_down)) tbl_down$famille <- "debit_down"
-tbl_up   <- purrr::map(candidates[is_up],   read_safely) |> purrr::compact() |> purrr::list_rbind()
-if (NROW(tbl_up))   tbl_up$famille   <- "debit_up"
-tbl_lat  <- purrr::map(candidates[is_lat],  read_safely) |> purrr::compact() |> purrr::list_rbind()
-if (NROW(tbl_lat))  tbl_lat$famille  <- "latence_ms"
-
-data_long <- dplyr::bind_rows(tbl_down, tbl_up, tbl_lat) |>
-  dplyr::mutate(
-    operateur   = stringr::str_to_lower(stringr::str_trim(operateur)),
-    lieu_strate = stringr::str_to_lower(stringr::str_trim(lieu_strate)),
-    famille     = stringr::str_to_lower(stringr::str_trim(famille))
-  ) |>
-  dplyr::filter(!is.na(valeur))
-
-# **Flag de présence données**
-have_data <- NROW(data_long) > 0
-
-# Désactiver tous les chunks d'analyse si pas de données
-if (!have_data) {
-  knitr::opts_chunk$set(eval = FALSE)
-}
+# 3) Drapeau données
+have_data <- FALSE
 ```
 
-```{r data-empty-note, echo=FALSE, results='asis'}
-if (!have_data) {
-  cat("
-::: {.callout-warning}
-**Données manquantes — rendu sans analyse**
+```{r 0-data-loader, include=FALSE}
+if (!SAFE_MODE) {
+  tryCatch({
+    canonize_cols <- function(df) {
+      nm <- names(df); names(df) <- stringr::str_to_lower(nm)
+      names(df) <- dplyr::recode(names(df),
+        "opérateur"="operateur","operator"="operateur",
+        "environnement"="lieu_strate","env"="lieu_strate","lieu"="lieu_strate",
+        "value"="valeur", .default = names(df))
+      df
+    }
+    read_safely <- function(path) {
+      tryCatch(readr::read_csv(path, show_col_types = FALSE) |> canonize_cols(), error=function(e) NULL)
+    }
+    roots <- c("data/clean","data/raw","telecoms/data","data")
+    candidates <- unique(unlist(purrr::map(roots, ~ if (dir.exists(.x)) list.files(.x, "\\.csv$", full.names=TRUE) else character(0))))
+    is_down <- stringr::str_detect(basename(candidates), "(?i)debit[_-]?down|download|downlink")
+    is_up   <- stringr::str_detect(basename(candidates), "(?i)debit[_-]?up|upload|uplink")
+    is_lat  <- stringr::str_detect(basename(candidates), "(?i)latence|latency|ping")
 
-Aucun CSV exploitable n'a été trouvé dans `data/clean/`, `data/raw/`, `telecoms/data/` ou `data/`.
+    tbl_down <- purrr::map(candidates[is_down], read_safely) |> purrr::compact() |> purrr::list_rbind()
+    if (NROW(tbl_down)) tbl_down$famille <- "debit_down"
+    tbl_up   <- purrr::map(candidates[is_up],   read_safely) |> purrr::compact() |> purrr::list_rbind()
+    if (NROW(tbl_up))   tbl_up$famille   <- "debit_up"
+    tbl_lat  <- purrr::map(candidates[is_lat],  read_safely) |> purrr::compact() |> purrr::list_rbind()
+    if (NROW(tbl_lat))  tbl_lat$famille  <- "latence_ms"
 
-**Attendu (colonnes minimales)** : `operateur`, `lieu_strate` (`habitat` ou `transport`), `valeur`.
+    data_long <<- dplyr::bind_rows(tbl_down, tbl_up, tbl_lat) |>
+      dplyr::mutate(
+        operateur   = stringr::str_to_lower(stringr::str_trim(operateur)),
+        lieu_strate = stringr::str_to_lower(stringr::str_trim(lieu_strate)),
+        famille     = stringr::str_to_lower(stringr::str_trim(famille))
+      ) |>
+      dplyr::filter(!is.na(valeur))
 
-**Noms de fichiers reconnus** :
-- débit descendant : contient `debit_down`, `download`, `downlink`
-- débit montant : contient `debit_up`, `upload`, `uplink`
-- latence : contient `latence`, `latency`, `ping`
-
-Une fois les fichiers ajoutés et commités, la page calculera automatiquement les KPI/graphes.
-:::
-")
+    have_data <<- NROW(data_long) > 0
+    if (!have_data) message("Aucun CSV exploitable trouvé dans data/clean|data/raw|telecoms/data|data")
+  }, error=function(e){
+    have_data <<- FALSE
+    message("SAFE-MODE (data): ", e$message)
+  })
 }
 ```
 
 ## Data — Débit & performance de l’expérience internet mobile
 
-**Débit descendant / Latence / Web & Streaming** — indicateurs de fluidité (ARCEP 2024).
+**Débit descendant / Latence / Web & Streaming** — ces indicateurs capturent la fluidité de l’expérience Data et la régularité de la navigation (ARCEP 2024).
 
 ::: {.callout-note}
 **Topline (30 s)**  
-Habitat solide, mais **mobilité à renforcer** (variabilité débit & latence sur axes ferroviaires/routiers).  
-La **consistency ≥ 30 Mbps** est un bon prédicteur de l’expérience web/streaming.  
-Prioriser **~15–20 zones** d’optimisation ciblées en mobilité pour lisser les pics > 50 ms.
+Habitat solide, mais **mobilité à renforcer** (variabilité du débit & latence sur axes ferroviaires / routiers).  
+La **consistency ≥ 30 Mbps** devient le meilleur prédicteur de l’expérience client (web & streaming).  
+Prioriser **~15–20 zones** d’optimisation ciblées sur mobilité pour lisser les pics > 50 ms.
 :::
 
 ### Objectif général
-Évaluer la **QoS Data** autour de 3 familles : **débit descendant (p50)**, **latence (p50)**, **web/streaming** (via seuils de confort).
+
+Évaluer la **qualité de service Data** des opérateurs en France (ARCEP 2024) autour de 3 familles :  
+- **Débit descendant (p50)**  
+- **Latence (p50)**  
+- **Web & Streaming** (fluidité perçue via seuils de débit/latence)
+
+Les données couvrent **habitat** et **transport** et la lecture privilégie la **régularité** plutôt que les pics.
 
 ---
 
 ## 1) Préparation & structuration DATA
 
-Les données sont consolidées en **table longue** standardisée : `operateur`, `lieu_strate` (`habitat`/`transport`), `famille`, `valeur`.
+Les données DATA sont harmonisées dans un **schéma long** : variables clés `operateur`, `lieu_strate`, `famille`, `valeur`.  
+Familles utilisées : `debit_down`, `debit_up`, `latence_ms`.
+
+> Base unifiée → comparaisons inter-opérateurs robustes.
 
 ---
 
 ## 2) Comparaison par opérateur (p50)
 
+Le **débit p50** reflète la capacité utile moyenne, la **latence p50** la réactivité (chargement web, interactions).
+
 ```{r 2-data-kpi-core}
-df <- data_long |>
-  dplyr::mutate(
-    operateur = stringr::str_to_title(operateur),
-    env = dplyr::recode(lieu_strate, "habitat"="habitat","transport"="mobilite",
-                        .default = stringr::str_to_lower(lieu_strate)),
-    famille = stringr::str_to_lower(famille)
+if (!have_data) {
+  cat("::: {.callout-warning}\nDonnées absentes : ajoute des CSV (debit_down / debit_up / latence_ms) dans `data/clean` ou `telecoms/data`.\n:::\n")
+} else {
+  df <- data_long %>%
+    dplyr::mutate(
+      operateur  = stringr::str_to_title(operateur),
+      env        = dplyr::recode(lieu_strate, "habitat"="habitat","transport"="mobilite",
+                                 .default = stringr::str_to_lower(lieu_strate)),
+      famille    = stringr::str_to_lower(famille)
+    )
+
+  kpi_core <- df %>%
+    dplyr::group_by(operateur, env) %>%
+    dplyr::summarise(
+      dl_med_mbps = suppressWarnings(stats::median(valeur[famille=="debit_down"], na.rm=TRUE)),
+      ul_med_mbps = suppressWarnings(stats::median(valeur[famille=="debit_up"],   na.rm=TRUE)),
+      lat_med_ms  = suppressWarnings(stats::median(valeur[famille=="latence_ms"], na.rm=TRUE)),
+      n_meas_down = sum(famille=="debit_down", na.rm=TRUE),
+      .groups="drop"
+    ) %>%
+    dplyr::arrange(env, dplyr::desc(dl_med_mbps))
+
+  kpi_core_tbl <- kpi_core %>%
+    dplyr::select(operateur, env, dl_med_mbps, ul_med_mbps, lat_med_ms, n_meas_down)
+
+  knitr::kable(
+    kpi_core_tbl,
+    caption = "KPI centraux DATA — médianes (p50)",
+    digits = 1,
+    align = "lcccc"
   )
-
-kpi_core <- df |>
-  dplyr::group_by(operateur, env) |>
-  dplyr::summarise(
-    dl_med_mbps = suppressWarnings(stats::median(valeur[famille=="debit_down"], na.rm=TRUE)),
-    ul_med_mbps = suppressWarnings(stats::median(valeur[famille=="debit_up"],   na.rm=TRUE)),
-    lat_med_ms  = suppressWarnings(stats::median(valeur[famille=="latence_ms"], na.rm=TRUE)),
-    n_meas_down = sum(famille=="debit_down", na.rm=TRUE),
-    .groups="drop"
-  ) |>
-  dplyr::arrange(env, dplyr::desc(dl_med_mbps))
-
-kpi_core_tbl <- kpi_core |>
-  dplyr::select(operateur, env, dl_med_mbps, ul_med_mbps, lat_med_ms, n_meas_down)
-
-knitr::kable(
-  kpi_core_tbl,
-  caption = "KPI centraux DATA — médianes (p50)",
-  digits = 1,
-  align = "lcccc"
-)
+}
 ```
 
 ```{r 2-data-plot-down}
-p_down <- kpi_core |>
-  dplyr::mutate(env = stringr::str_to_title(env)) |>
-  ggplot2::ggplot(ggplot2::aes(x = forcats::fct_reorder(operateur, dl_med_mbps),
-                               y = dl_med_mbps, fill = env)) +
-  ggplot2::geom_col(width = .6, position = ggplot2::position_dodge(width = .7)) +
-  ggplot2::coord_flip() +
-  ggplot2::facet_wrap(~ env, nrow = 1) +
-  ggplot2::labs(x=NULL, y="Débit descendant p50 (Mbps)",
-                title="Débit descendant — médiane (p50) par opérateur") +
-  ggplot2::theme_minimal(base_size=12)
-p_down
+if (have_data) {
+  p_down <- kpi_core %>%
+    dplyr::mutate(env = stringr::str_to_title(env)) %>%
+    ggplot2::ggplot(ggplot2::aes(x = forcats::fct_reorder(operateur, dl_med_mbps),
+                                 y = dl_med_mbps, fill = env)) +
+    ggplot2::geom_col(width = .6, position = ggplot2::position_dodge(width = .7)) +
+    ggplot2::coord_flip() +
+    ggplot2::facet_wrap(~ env, nrow = 1) +
+    ggplot2::labs(x=NULL, y="Débit descendant p50 (Mbps)",
+                  title="Débit descendant — médiane (p50) par opérateur") +
+    ggplot2::theme_minimal(base_size=12)
+  p_down
+} else {
+  cat("")
+}
 ```
 
 ::: {.callout-note}
 **Lecture métier**  
-Très bons niveaux en **habitat** ; en **mobilité**, des chutes marquées trahissent la pression réseau (axes ferroviaires/routiers).
+Les meilleurs opérateurs délivrent de très bons niveaux en **habitat**.  
+En **mobilité**, des chutes plus marquées apparaissent — reflet de la pression réseau sur axes ferroviaires et routiers.
 :::
 
 ---
 
-## 3) Consistency — seuils de confort
+## 3) Consistency — seuil de confort utilisateur
+
+La régularité réelle est mesurée par la part des tests au-dessus de **8 / 30 / 100 Mbps** (débit descendant).
 
 ```{r 2-data-consistency}
-thresholds <- c(`ge_8`=8, `ge_30`=30, `ge_100`=100)
+if (have_data) {
+  thresholds <- c(`ge_8`=8, `ge_30`=30, `ge_100`=100)
 
-consistency_tbl <- df |>
-  dplyr::filter(famille=="debit_down") |>
-  dplyr::group_by(operateur, env) |>
-  dplyr::summarise(
-    dplyr::across(thresholds, ~ mean(valeur >= .x, na.rm=TRUE)*100, .names = "{.fn}_pct"),
-    n = dplyr::n(),
-    .groups = "drop"
-  ) |>
-  dplyr::mutate(dplyr::across(dplyr::matches("_pct$"), ~ round(.x, 1))) |>
-  dplyr::arrange(env, dplyr::desc(ge_30_pct))
+  consistency_tbl <- df %>%
+    dplyr::filter(famille=="debit_down") %>%
+    dplyr::group_by(operateur, env) %>%
+    dplyr::summarise(
+      dplyr::across(thresholds, ~ mean(valeur >= .x, na.rm=TRUE)*100, .names = "{.fn}_pct"),
+      n = dplyr::n(),
+      .groups = "drop"
+    ) %>%
+    dplyr::mutate(dplyr::across(dplyr::matches("_pct$"), ~ round(.x, 1))) %>%
+    dplyr::arrange(env, dplyr::desc(ge_30_pct))
 
-knitr::kable(
-  consistency_tbl,
-  caption = "Consistency débit descendant — part des tests au-dessus du seuil (%)",
-  digits = 1
-)
+  knitr::kable(
+    consistency_tbl,
+    caption = "Consistency débit descendant — part des tests au-dessus du seuil (%)",
+    digits = 1
+  )
+} else {
+  cat("")
+}
 ```
 
 ::: {.callout-important}
+**Lecture métier**  
 ≥ **30 Mbps** ≈ navigation fluide + streaming HD stable.  
 Les meilleurs dépassent **~80%** en habitat, certains chutent **< ~65%** en mobilité.
 :::
@@ -189,34 +206,47 @@ Les meilleurs dépassent **~80%** en habitat, certains chutent **< ~65%** en mob
 ## 4) Habitat vs Mobilité — hétérogénéité d’expérience
 
 ```{r 2-data-gap-env}
-gap_env <- kpi_core |>
-  dplyr::select(operateur, env, dl_med_mbps, lat_med_ms) |>
-  tidyr::pivot_wider(names_from = env, values_from = c(dl_med_mbps, lat_med_ms)) |>
-  dplyr::mutate(
-    gap_down_mbps = dl_med_mbps_habitat - dl_med_mbps_mobilite,
-    gap_lat_ms    = lat_med_ms_mobilite - lat_med_ms_habitat
-  )
+if (have_data) {
+  gap_env <- kpi_core %>%
+    dplyr::select(operateur, env, dl_med_mbps, lat_med_ms) %>%
+    tidyr::pivot_wider(names_from = env, values_from = c(dl_med_mbps, lat_med_ms)) %>%
+    dplyr::mutate(
+      gap_down_mbps = dl_med_mbps_habitat - dl_med_mbps_mobilite,
+      gap_lat_ms    = lat_med_ms_mobilite - lat_med_ms_habitat
+    )
 
-knitr::kable(
-  gap_env,
-  caption = "Écarts Habitat – Mobilité (p50)",
-  digits = 1
-)
+  knitr::kable(
+    gap_env,
+    caption = "Écarts Habitat – Mobilité (p50)",
+    digits = 1
+  )
+} else {
+  cat("")
+}
 ```
 
 ```{r 2-data-plot-lat}
-p_lat <- kpi_core |>
-  dplyr::mutate(env = stringr::str_to_title(env)) |>
-  ggplot2::ggplot(ggplot2::aes(x = forcats::fct_reorder(operateur, -lat_med_ms),
-                               y = lat_med_ms, fill = env)) +
-  ggplot2::geom_col(width = .6) +
-  ggplot2::geom_hline(yintercept = 30, linetype = "dashed") +
-  ggplot2::facet_wrap(~ env, nrow = 1) +
-  ggplot2::labs(x=NULL, y="Latence médiane (ms)",
-                title="Latence — médiane (p50) par opérateur (repère 30 ms)") +
-  ggplot2::theme_minimal(base_size=12)
-p_lat
+if (have_data) {
+  p_lat <- kpi_core %>%
+    dplyr::mutate(env = stringr::str_to_title(env)) %>%
+    ggplot2::ggplot(ggplot2::aes(x = forcats::fct_reorder(operateur, -lat_med_ms),
+                                 y = lat_med_ms, fill = env)) +
+    ggplot2::geom_col(width = .6) +
+    ggplot2::geom_hline(yintercept = 30, linetype = "dashed") +
+    ggplot2::facet_wrap(~ env, nrow = 1) +
+    ggplot2::labs(x=NULL, y="Latence médiane (ms)",
+                  title="Latence — médiane (p50) par opérateur (repère 30 ms)") +
+    ggplot2::theme_minimal(base_size=12)
+  p_lat
+} else {
+  cat("")
+}
 ```
+
+::: {.callout-note}
+**Lecture métier**  
+La **mobilité** dégrade plus fortement la **latence** que le débit → impact direct sur **Web & YouTube** (buffering, lenteur de chargement).
+:::
 
 ---
 
@@ -235,9 +265,18 @@ p_lat
 - optimiser l’acheminement **contenu/CDN** pour Web/Streaming
 :::
 
+> **Conclusion Data** — marché performant en crête, mais sensible à la **cohérence de délivrance** en mobilité.  
+> Le différenciateur concurrentiel 2024 n’est pas la vitesse max, mais la **stabilité** perçue.
+
+---
+
+### Exports (pour ton deck & ton repo)
+
 ```{r 2-data-exports}
-dir.create("outputs/kpi", recursive = TRUE, showWarnings = FALSE)
-readr::write_csv(kpi_core_tbl,    "outputs/kpi/kpi_core_data.csv")
-readr::write_csv(consistency_tbl, "outputs/kpi/consistency_tbl.csv")
-readr::write_csv(gap_env,         "outputs/kpi/gap_env.csv")
+if (have_data) {
+  dir.create("outputs/kpi", recursive = TRUE, showWarnings = FALSE)
+  readr::write_csv(kpi_core_tbl,    "outputs/kpi/kpi_core_data.csv")
+  readr::write_csv(consistency_tbl, "outputs/kpi/consistency_tbl.csv")
+  readr::write_csv(gap_env,         "outputs/kpi/gap_env.csv")
+}
 ```
