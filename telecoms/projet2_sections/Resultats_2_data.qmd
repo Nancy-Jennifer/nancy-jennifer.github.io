@@ -1,6 +1,6 @@
 ---
 title: "Résultats – Data (Internet mobile)"
-subtitle: "Médianes p50 — DL / UL / RSRP (robuste au knit)"
+subtitle: "Médianes p50 — DL / UL / RSRP"
 format:
   html:
     toc: true
@@ -15,180 +15,146 @@ execute:
 
 ## Résultats DATA – p50 essentiels
 
-```{r data-p50-setup, echo=FALSE, message=FALSE, warning=FALSE}
+```{r setup-p50, echo=FALSE, message=FALSE, warning=FALSE}
 suppressPackageStartupMessages({
-  library(dplyr); library(tidyr); library(stringr)
-  library(forcats); library(ggplot2); library(knitr); library(tools)
+  library(dplyr); library(ggplot2); library(forcats)
 })
 
-# -------- utilitaires sûrs --------
-find_col <- function(nms, candidates, regex=FALSE){
-  nls <- tolower(nms)
-  if (!regex){
-    for (c in candidates){
-      i <- which(nls == tolower(c))
-      if (length(i)) return(nms[i[1]])
-    }
-  }
-  for (c in candidates){
-    i <- grep(c, nls, fixed = !regex, ignore.case = TRUE)
-    if (length(i)) return(nms[i[1]])
-  }
-  return(NA_character_)
-}
+# --- garde-fous : ne jamais casser le knit
+has_dsn <- exists("data_scored_norm") && is.data.frame(data_scored_norm)
 
-safe_num   <- function(x) suppressWarnings(as.numeric(x))
-placeholder <- function(title_txt, sub=""){
-  ggplot() + theme_void() +
-    annotate("text", x=0, y=0, label=title_txt, size=4) +
-    labs(subtitle=sub)
-}
+# Fonctions utilitaires minimalistes
+to_lower_chr <- function(x) { tolower(as.character(x)) }
+nz <- function(x, alt) { if(length(x)==0 || is.na(x)) alt else x }
 
-# -------- variables de sortie (toujours définies) --------
-ENV_TOP  <- "indéterminé"
-MIN_N    <- 50
-dl_p50   <- tibble(operateur=character(), p50=double(), n=integer())
-ul_p50   <- tibble(operateur=character(), p50=double(), n=integer())
-rsrp_p50 <- tibble(operateur=character(), p50=double(), n=integer())
-SETUP_ERROR <- NULL
-SETUP_WARN  <- NULL
+# Préparation très tolérante
+if (has_dsn) {
+  dsn <- data_scored_norm
+  nm  <- names(dsn)
 
-# -------- bloc principal protégé --------
-try({
-  if (!exists("data_scored_norm") || !is.data.frame(data_scored_norm)) {
-    SETUP_WARN <- "Objet `data_scored_norm` introuvable."
+  must_have <- all(c("operateur","lieu_strate","indicateur","kpi","valeur") %in% nm)
+  if (!must_have) {
+    # on fabrique un df vide pour que les chunks suivants restent sûrs
+    df <- data.frame(operateur=character(), env=character(),
+                     famille=character(), valeur=numeric(), stringsAsFactors = FALSE)
+    env_top <- "indéterminé"
   } else {
-    dsn <- data_scored_norm
-    nms <- names(dsn)
-
-    op_col  <- find_col(nms, c("operateur","operator","op","brand","provider"))
-    env_col <- find_col(nms, c("lieu_strate","environnement","env","area","zone","zone_strate"))
-    ind_col <- find_col(nms, c("indicateur","indicator","metric","mesure"))
-    kpi_col <- find_col(nms, c("kpi","metric_name","mesure_kpi","metric"))
-    val_col <- find_col(nms, c("valeur","value","measure","score","val"))
-
-    required <- c(op_col, env_col, ind_col, kpi_col, val_col)
-    if (any(is.na(required))) {
-      SETUP_WARN <- paste0(
-        "Colonnes manquantes dans `data_scored_norm`. ",
-        "Requis au minimum: operateur / lieu_strate / indicateur / kpi / valeur."
-      )
-    } else {
-      df0 <- tibble(
-        operateur   = toTitleCase(tolower(as.character(dsn[[op_col]]))),
-        lieu_strate = as.character(dsn[[env_col]]),
-        indic_l     = tolower(as.character(dsn[[ind_col]])),
-        kpi_l       = tolower(as.character(dsn[[kpi_col]])),
-        valeur      = safe_num(dsn[[val_col]])
+    df0 <- dsn %>%
+      mutate(
+        operateur = tools::toTitleCase(to_lower_chr(operateur)),
+        env_raw   = as.character(lieu_strate),
+        indic_l   = to_lower_chr(indicateur),
+        kpi_l     = to_lower_chr(kpi),
+        valeur    = suppressWarnings(as.numeric(valeur)),
+        famille   = dplyr::case_when(
+          grepl("download|descend|down|throughput|speed|\\bdl\\b", indic_l) |
+          grepl("download|descend|down|throughput|speed|\\bdl\\b", kpi_l) ~ "dl",
+          grepl("upload|montant|uplink|\\bul\\b|\\bup\\b", indic_l) |
+          grepl("upload|montant|uplink|\\bul\\b|\\bup\\b", kpi_l)         ~ "ul",
+          grepl("^rsrp$", indic_l) | grepl("^rsrp$", kpi_l)               ~ "rsrp",
+          TRUE ~ NA_character_
+        ),
+        env = ifelse(is.na(env_raw) | env_raw=="", "inconnu", env_raw)
       ) %>%
-        mutate(
-          fam = case_when(
-            str_detect(indic_l, "download|descend|down|throughput|speed|\\bdl\\b") |
-            str_detect(kpi_l,   "download|descend|down|throughput|speed|\\bdl\\b") ~ "dl",
-            str_detect(indic_l, "upload|montant|uplink|up|\\bul\\b") |
-            str_detect(kpi_l,   "upload|montant|uplink|up|\\bul\\b")                ~ "ul",
-            str_detect(indic_l, "\\brsrp\\b") | str_detect(kpi_l, "\\brsrp\\b")     ~ "rsrp",
-            TRUE ~ NA_character_
-          ),
-          env = ifelse(is.na(lieu_strate) | lieu_strate=="", "inconnu", lieu_strate)
-        )
+      filter(!is.na(famille))
 
-      # choisir l'environnement le plus représenté (hors 'inconnu' si possible)
-      ENV_TOP <- df0 %>% filter(env!="inconnu") %>% count(env, sort=TRUE) %>% slice_head(n=1) %>% pull(env)
-      if (length(ENV_TOP)==0 || is.na(ENV_TOP)) ENV_TOP <- "inconnu"
+    # Environnement le plus représenté (hors "inconnu" si possible)
+    env_counts <- df0 %>% count(env, sort = TRUE)
+    env_top <- if (nrow(env_counts)) {
+      cand <- env_counts %>% filter(env != "inconnu") %>% slice(1) %>% pull(env)
+      if (length(cand)==0) env_counts$env[1] else cand
+    } else "indéterminé"
 
-      df <- df0 %>% filter(env == ENV_TOP, fam %in% c("dl","ul","rsrp"))
-
-      agg_p50 <- function(family){
-        out <- df %>%
-          filter(fam == family, is.finite(valeur)) %>%
-          group_by(operateur) %>%
-          summarise(
-            p50 = median(valeur, na.rm = TRUE),
-            n   = sum(!is.na(valeur)),
-            .groups = "drop"
-          ) %>%
-          mutate(p50 = ifelse(n < MIN_N, NA_real_, p50))
-        if (!nrow(out)) tibble(operateur=character(), p50=double(), n=integer()) else out
-      }
-
-      dl_p50   <- agg_p50("dl")
-      ul_p50   <- agg_p50("ul")
-      rsrp_p50 <- agg_p50("rsrp")
-
-      # ordre opérateurs = DL décroissant si dispo, sinon alphabétique
-      ord <- if (nrow(dl_p50)) dl_p50 %>% arrange(desc(p50)) %>% pull(operateur) else sort(unique(df$operateur))
-      reord <- function(d) if (nrow(d)) d %>% mutate(operateur = factor(operateur, levels = ord)) else d
-      dl_p50   <- reord(dl_p50)
-      ul_p50   <- reord(ul_p50)
-      rsrp_p50 <- reord(rsrp_p50)
-    }
+    df <- df0 %>% filter(env == env_top)
   }
-}, silent = TRUE)
+} else {
+  df <- data.frame(operateur=character(), env=character(),
+                   famille=character(), valeur=numeric(), stringsAsFactors = FALSE)
+  env_top <- "indéterminé"
+}
 
-# S'il y a une erreur R inattendue, on la capture proprement
-if (exists(".Last.error") && is.null(SETUP_WARN)) {
-  SETUP_ERROR <- paste0("Erreur interne R: ", .Last.error)
+# Agrégations p50 par famille (avec n)
+agg_p50 <- function(d, fam) {
+  d %>%
+    filter(famille == fam, is.finite(valeur)) %>%
+    group_by(operateur) %>%
+    summarise(p50 = suppressWarnings(stats::median(valeur, na.rm=TRUE)),
+              n   = sum(!is.na(valeur)), .groups="drop")
 }
-```
 
-```{r data-p50-diagnostics, echo=FALSE, results='asis'}
-# Callout de diagnostic (n'empêche pas le knit)
-if (!is.null(SETUP_WARN)) {
-  cat('
-::: {.callout-warning}
-', SETUP_WARN, '
-:::
-')
+dl_tbl   <- agg_p50(df, "dl")
+ul_tbl   <- agg_p50(df, "ul")
+rsrp_tbl <- agg_p50(df, "rsrp")
+
+# Ordre opérateurs = DL décroissant si dispo
+if (nrow(dl_tbl)) {
+  ord_ops <- dl_tbl %>% arrange(desc(p50)) %>% pull(operateur)
+} else {
+  ord_ops <- sort(unique(df$operateur))
 }
-if (!is.null(SETUP_ERROR)) {
-  cat('
-::: {.callout-warning}
-', SETUP_ERROR, '
-:::
-')
-}
-cat("Environnement sélectionné (ENV_TOP) :", ENV_TOP, "\n")
-if (exists("data_scored_norm")) {
-  cat("\nNoms (extrait) de `data_scored_norm`:\n")
-  cat(paste(utils::head(names(data_scored_norm), 40), collapse=", "), "\n")
-}
+reord <- function(t) if (nrow(t)) t %>% mutate(operateur = factor(operateur, levels = ord_ops)) else t
+dl_tbl   <- reord(dl_tbl)
+ul_tbl   <- reord(ul_tbl)
+rsrp_tbl <- reord(rsrp_tbl)
+
+# Thème
+theme_set(theme_minimal(base_size = 13))
 ```
 
 ### Débit descendant — p50
-```{r data-p50-dl, fig.width=8, fig.height=4.4}
-theme_set(theme_minimal(base_size = 13))
-if (!nrow(dl_p50) || all(is.na(dl_p50$p50))) {
-  placeholder("DL p50 indisponible (famille absente ou n < 50)", paste("Environnement :", ENV_TOP))
+```{r plot-dl, fig.width=8, fig.height=4.4}
+if (!nrow(dl_tbl)) {
+  ggplot() + theme_void() +
+    annotate("text", x=0, y=0, label="Aucune donnée DL détectée pour l’environnement sélectionné.", size=4) +
+    labs(subtitle = paste("Environnement :", env_top))
 } else {
-  ggplot(dl_p50, aes(operateur, p50)) +
+  ggplot(dl_tbl, aes(operateur, p50)) +
     geom_col() +
-    geom_text(aes(label = ifelse(is.na(p50), "n<50", sprintf("%.1f", p50))), vjust=-0.25, size=3.5) +
-    labs(title="Débit descendant — médiane p50", subtitle=paste("Environnement :", ENV_TOP), x=NULL, y="Mb/s")
+    geom_text(aes(label = paste0(round(p50,1)," Mb/s (n=", n, ")")), vjust=-0.25, size=3.5) +
+    labs(title="Débit descendant — médiane p50",
+         subtitle=paste("Environnement :", env_top),
+         x=NULL, y="Mb/s")
 }
 ```
+
+**Lecture rapide – DL (p50).**  
+La médiane du débit descendant reflète la fluidité perçue (web, vidéo, apps). Les écarts entre opérateurs indiquent des différences de capacité radio/backhaul sur la zone **`r env_top`**. Priorité : consolider les bas de classement sur les axes à trafic fort.
 
 ### Débit montant — p50
-```{r data-p50-ul, fig.width=8, fig.height=4.4}
-if (!nrow(ul_p50) || all(is.na(ul_p50$p50))) {
-  placeholder("UL p50 indisponible (famille absente ou n < 50)", paste("Environnement :", ENV_TOP))
+```{r plot-ul, fig.width=8, fig.height=4.4}
+if (!nrow(ul_tbl)) {
+  ggplot() + theme_void() +
+    annotate("text", x=0, y=0, label="Aucune donnée UL détectée pour l’environnement sélectionné.", size=4) +
+    labs(subtitle = paste("Environnement :", env_top))
 } else {
-  ggplot(ul_p50, aes(operateur, p50)) +
+  ggplot(ul_tbl, aes(operateur, p50)) +
     geom_col() +
-    geom_text(aes(label = ifelse(is.na(p50), "n<50", sprintf("%.1f", p50))), vjust=-0.25, size=3.5) +
-    labs(title="Débit montant — médiane p50", subtitle=paste("Environnement :", ENV_TOP), x=NULL, y="Mb/s")
+    geom_text(aes(label = paste0(round(p50,1)," Mb/s (n=", n, ")")), vjust=-0.25, size=3.5) +
+    labs(title="Débit montant — médiane p50",
+         subtitle=paste("Environnement :", env_top),
+         x=NULL, y="Mb/s")
 }
 ```
 
+**Lecture rapide – UL (p50).**  
+Le débit montant médian impacte l’envoi de médias, le cloud et les messageries. Des valeurs faibles brident fortement l’expérience WhatsApp/Drive. Cibler les cellules sous-performantes sur **`r env_top`** améliore nettement l’usage social.
+
 ### RSRP — p50
-```{r data-p50-rsrp, fig.width=8, fig.height=4.4}
-if (!nrow(rsrp_p50) || all(is.na(rsrp_p50$p50))) {
-  placeholder("RSRP p50 indisponible (famille absente ou n < 50)", paste("Environnement :", ENV_TOP))
+```{r plot-rsrp, fig.width=8, fig.height=4.4}
+if (!nrow(rsrp_tbl)) {
+  ggplot() + theme_void() +
+    annotate("text", x=0, y=0, label="Aucune donnée RSRP détectée pour l’environnement sélectionné.", size=4) +
+    labs(subtitle = paste("Environnement :", env_top))
 } else {
-  ggplot(rsrp_p50, aes(operateur, p50)) +
+  ggplot(rsrp_tbl, aes(operateur, p50)) +
     geom_col() +
     geom_hline(yintercept=-100, linetype="dashed") +
-    geom_text(aes(label = ifelse(is.na(p50), "n<50", sprintf("%.0f", p50))), vjust=-0.25, size=3.5) +
-    labs(title="RSRP — médiane p50", subtitle=paste("Environnement :", ENV_TOP), x=NULL, y="dBm (plus proche de 0 = meilleur)")
+    geom_text(aes(label = paste0(round(p50,0)," dBm (n=", n, ")")), vjust=-0.25, size=3.5) +
+    labs(title="RSRP — médiane p50",
+         subtitle=paste("Environnement :", env_top, "— repère confort 4G ≈ −100 dBm (pointillé)"),
+         x=NULL, y="dBm (plus proche de 0 = meilleur)")
 }
 ```
+
+**Lecture rapide – RSRP (p50).**  
+Le niveau RSRP structure la performance radio. En-dessous d’environ **−100 dBm**, les débits chutent et la variabilité augmente. Aligner les poches < −100 dBm sur **`r env_top`** (optimisation tilt/puissance/PCI, densification ciblée) stabilise DL/UL.
