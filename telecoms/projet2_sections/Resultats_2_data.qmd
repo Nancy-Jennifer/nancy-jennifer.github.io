@@ -1,6 +1,6 @@
 ---
 title: "Résultats – Data (Internet mobile)"
-subtitle: "Médianes p50 – DL / UL / RSRP"
+subtitle: "Médianes p50 — DL / UL / RSRP"
 format:
   html:
     toc: true
@@ -17,60 +17,111 @@ execute:
 
 ```{r data-p50-setup, echo=FALSE, message=FALSE, warning=FALSE}
 suppressPackageStartupMessages({
-  library(dplyr); library(ggplot2); library(forcats)
+  library(dplyr); library(tidyr); library(stringr)
+  library(forcats); library(ggplot2)
 })
 
-# === on standardise les noms pour être robustes FR/EN ===
-dsn <- data_scored_norm |>
-  rename_with(~tolower(gsub("[^a-z0-9]+","_",.x)))
+stopifnot(exists("data_scored_norm"))
 
-# mapping minimal des colonnes brutes
-col_op   <- grep("operat|brand|provider", names(dsn), value=TRUE)[1]
-col_dl   <- grep("download|descend|downlink|mbps.*down|dl", names(dsn), value=TRUE)[1]
-col_ul   <- grep("upload|montant|uplink|mbps.*up|ul", names(dsn), value=TRUE)[1]
-col_rsrp <- grep("\\brsrp\\b|rsrp_dbm|signal", names(dsn), value=TRUE)[1]
+# ========= Paramètres =========
+# (optionnel) forcer un environnement précis; sinon, on prend le plus représenté (hors "inconnu")
+ENV_FORCE <- NA_character_   # ex: "transports - metros" ou "zones denses"
+MIN_N     <- 50              # seuil de fiabilité : on masque les p50 dont n < MIN_N
 
-df <- dsn |>
-  transmute(
-    operateur = dsn[[col_op]] |> as.character() |> tolower() |> tools::toTitleCase(),
-    dl = suppressWarnings(as.numeric(dsn[[col_dl]])),
-    ul = suppressWarnings(as.numeric(dsn[[col_ul]])),
-    rsrp = suppressWarnings(as.numeric(dsn[[col_rsrp]]))
-  ) |>
-  group_by(operateur) |>
-  summarise(
-    dl_p50 = median(dl, na.rm=TRUE),
-    ul_p50 = median(ul, na.rm=TRUE),
-    rsrp_p50 = median(rsrp, na.rm=TRUE),
-    .groups="drop"
+# ========= Préparation =========
+df0 <- data_scored_norm %>%
+  mutate(
+    operateur   = as.character(operateur),
+    lieu_strate = as.character(lieu_strate),
+    indic_l     = str_to_lower(indicateur),
+    kpi_l       = str_to_lower(kpi),
+    # familles métriques robustes (on regarde indicateur ET kpi)
+    fam = case_when(
+      str_detect(indic_l, "download|descend|down|throughput|speed") |
+      str_detect(kpi_l,   "download|descend|down|throughput|speed|\\bdl\\b") ~ "dl",
+      str_detect(indic_l, "upload|montant|uplink|up") |
+      str_detect(kpi_l,   "upload|montant|uplink|up|\\bul\\b")                ~ "ul",
+      str_detect(indic_l, "\\brsrp\\b") | str_detect(kpi_l, "\\brsrp\\b")     ~ "rsrp",
+      TRUE ~ NA_character_
+    )
   )
 
-# ordre UX = classer par DL p50 décroissant
-df <- df |> mutate(operateur = fct_reorder(operateur, dl_p50, .desc=TRUE))
-theme_set(theme_minimal(base_size=13))
+# Choix d'environnement (par défaut = le plus présent hors 'inconnu')
+env_top <- if (!is.na(ENV_FORCE)) {
+  ENV_FORCE
+} else {
+  df0 %>% filter(!is.na(lieu_strate), lieu_strate != "inconnu") %>%
+    count(lieu_strate, sort = TRUE) %>%
+    slice_head(n = 1) %>% pull(lieu_strate) %>%
+    { if (length(.) == 0) "inconnu" else . }
+}
+
+df <- df0 %>% filter(lieu_strate == env_top, fam %in% c("dl","ul","rsrp"))
+
+# Fonction utilitaire: calcule médiane & n par opérateur pour une famille
+agg_p50 <- function(family){
+  out <- df %>%
+    filter(fam == family, is.finite(valeur)) %>%
+    group_by(operateur) %>%
+    summarise(
+      p50 = suppressWarnings(median(valeur, na.rm = TRUE)),
+      n   = sum(!is.na(valeur)),
+      .groups = "drop"
+    ) %>%
+    mutate(p50 = ifelse(n < MIN_N, NA_real_, p50))
+  if (nrow(out) == 0) out <- tibble(operateur = character(), p50 = numeric(), n = integer())
+  out
+}
+
+dl_p50   <- agg_p50("dl")
+ul_p50   <- agg_p50("ul")
+rsrp_p50 <- agg_p50("rsrp")
+
+# Ordre des opérateurs = tri par DL p50 décroissant (quand dispo), sinon alphabétique
+ord <- if (nrow(dl_p50)) dl_p50 %>% arrange(desc(p50)) %>% pull(operateur) else sort(unique(df$operateur))
+reorder_ops <- function(d) if (nrow(d)) d %>% mutate(operateur = factor(operateur, levels = ord)) else d
+
+dl_p50   <- reorder_ops(dl_p50)
+ul_p50   <- reorder_ops(ul_p50)
+rsrp_p50 <- reorder_ops(rsrp_p50)
+
+theme_set(theme_minimal(base_size = 13))
+
+# Fonction de plot générique
+plot_bars <- function(dat, unit, title_txt, rsrp = FALSE){
+  if (!nrow(dat) || all(is.na(dat$p50))) {
+    ggplot() + theme_void() +
+      annotate("text", x = 0, y = 0,
+               label = paste0("Aucune donnée exploitable pour cette métrique\n",
+                              "(famille absente ou n <", MIN_N, ")"),
+               size = 4.2) +
+      labs(title = title_txt, subtitle = paste("Environnement :", env_top))
+  } else {
+    g <- ggplot(dat, aes(x = operateur, y = p50)) +
+      geom_col() +
+      geom_text(aes(label = ifelse(is.na(p50), "n<MIN_N", sprintf("%.1f", p50))),
+                vjust = -0.25, size = 3.5) +
+      labs(title = title_txt,
+           subtitle = paste("Environnement :", env_top, "— n minimal par opérateur =", MIN_N),
+           x = NULL, y = unit)
+    if (rsrp) g <- g + geom_hline(yintercept = -100, linetype = "dashed")
+    g
+  }
+}
 ```
 
 ### Débit descendant — p50
 ```{r data-p50-dl, fig.width=8, fig.height=4.4}
-ggplot(df, aes(operateur, dl_p50)) +
-  geom_col() +
-  geom_text(aes(label=round(dl_p50,1)), vjust=-0.3, size=3.5) +
-  labs(title="Débit descendant — médiane p50", y="Mb/s", x=NULL)
+plot_bars(dl_p50, unit = "Mb/s", title_txt = "Débit descendant — médiane p50")
 ```
 
 ### Débit montant — p50
 ```{r data-p50-ul, fig.width=8, fig.height=4.4}
-ggplot(df, aes(operateur, ul_p50)) +
-  geom_col() +
-  geom_text(aes(label=round(ul_p50,1)), vjust=-0.3, size=3.5) +
-  labs(title="Débit montant — médiane p50", y="Mb/s", x=NULL)
+plot_bars(ul_p50, unit = "Mb/s", title_txt = "Débit montant — médiane p50")
 ```
 
 ### RSRP — p50
 ```{r data-p50-rsrp, fig.width=8, fig.height=4.4}
-ggplot(df, aes(operateur, rsrp_p50)) +
-  geom_col() +
-  geom_hline(yintercept=-100, linetype="dashed") +
-  geom_text(aes(label=round(rsrp_p50,0)), vjust=-0.3, size=3.5) +
-  labs(title="RSRP — médiane p50", y="dBm (plus proche de 0 = meilleur)", x=NULL)
+# Rappel: en dBm, plus proche de 0 = meilleur. Ligne pointillée à -100 dBm à titre indicatif.
+plot_bars(rsrp_p50, unit = "dBm (plus proche de 0 = meilleur)", title_txt = "RSRP — médiane p50", rsrp = TRUE)
 ```
