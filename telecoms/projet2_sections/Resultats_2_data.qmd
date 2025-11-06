@@ -1,6 +1,6 @@
 ---
 title: "Résultats – Data (Internet mobile)"
-subtitle: "Médianes p50 — DL / UL / RSRP"
+subtitle: "Médianes p50 — DL / UL / RSRP (robuste au knit)"
 format:
   html:
     toc: true
@@ -18,166 +18,177 @@ execute:
 ```{r data-p50-setup, echo=FALSE, message=FALSE, warning=FALSE}
 suppressPackageStartupMessages({
   library(dplyr); library(tidyr); library(stringr)
-  library(forcats); library(ggplot2); library(knitr)
+  library(forcats); library(ggplot2); library(knitr); library(tools)
 })
 
-# ================== utilitaires ==================
-find_col <- function(nms, candidates){
+# -------- utilitaires sûrs --------
+find_col <- function(nms, candidates, regex=FALSE){
   nls <- tolower(nms)
-  for (c in candidates){
-    i <- which(nls == tolower(c))
-    if (length(i)) return(nms[i[1]])
+  if (!regex){
+    for (c in candidates){
+      i <- which(nls == tolower(c))
+      if (length(i)) return(nms[i[1]])
+    }
   }
-  # fallback: substring / grep souple
   for (c in candidates){
-    i <- grep(c, nls, fixed = FALSE)
+    i <- grep(c, nls, fixed = !regex, ignore.case = TRUE)
     if (length(i)) return(nms[i[1]])
   }
   return(NA_character_)
 }
 
-safe_as_num <- function(x){
-  suppressWarnings(as.numeric(x))
-}
-
-plot_placeholder <- function(title_txt, subtitle_txt=""){
+safe_num   <- function(x) suppressWarnings(as.numeric(x))
+placeholder <- function(title_txt, sub=""){
   ggplot() + theme_void() +
-    annotate("text", x=0, y=0, label=title_txt, size=4.2) +
-    labs(subtitle = subtitle_txt)
+    annotate("text", x=0, y=0, label=title_txt, size=4) +
+    labs(subtitle=sub)
 }
 
-# ================== entrée requise ==================
-HAS_DSN <- exists("data_scored_norm") && is.data.frame(data_scored_norm)
+# -------- variables de sortie (toujours définies) --------
+ENV_TOP  <- "indéterminé"
+MIN_N    <- 50
+dl_p50   <- tibble(operateur=character(), p50=double(), n=integer())
+ul_p50   <- tibble(operateur=character(), p50=double(), n=integer())
+rsrp_p50 <- tibble(operateur=character(), p50=double(), n=integer())
+SETUP_ERROR <- NULL
+SETUP_WARN  <- NULL
 
-if (!HAS_DSN){
-  WARNING_HTML <- TRUE
-  dl_p50 <- ul_p50 <- rsrp_p50 <- tibble(operateur=character(), p50=double(), n=integer())
-} else {
-  # ========== mapping minimal et tolérant ==========
-  dsn <- data_scored_norm
-  nms <- names(dsn)
+# -------- bloc principal protégé --------
+try({
+  if (!exists("data_scored_norm") || !is.data.frame(data_scored_norm)) {
+    SETUP_WARN <- "Objet `data_scored_norm` introuvable."
+  } else {
+    dsn <- data_scored_norm
+    nms <- names(dsn)
 
-  op_col   <- find_col(nms, c("operateur","operator","op","operateur_nom","brand","provider"))
-  env_col  <- find_col(nms, c("lieu_strate","environnement","env","area","zone","zone_strate"))
-  ind_col  <- find_col(nms, c("indicateur","indicator","metric","mesure"))
-  kpi_col  <- find_col(nms, c("kpi","metric_name","mesure_kpi","metric"))
-  val_col  <- find_col(nms, c("valeur","value","measure","score","val"))
+    op_col  <- find_col(nms, c("operateur","operator","op","brand","provider"))
+    env_col <- find_col(nms, c("lieu_strate","environnement","env","area","zone","zone_strate"))
+    ind_col <- find_col(nms, c("indicateur","indicator","metric","mesure"))
+    kpi_col <- find_col(nms, c("kpi","metric_name","mesure_kpi","metric"))
+    val_col <- find_col(nms, c("valeur","value","measure","score","val"))
 
-  # si une des colonnes vitales manque → pas de stop : on affichera un callout
-  REQUIRED <- c(op_col, env_col, ind_col, kpi_col, val_col)
-  MISSING  <- any(is.na(REQUIRED))
-  WARNING_HTML <- MISSING
-
-  # On construit un df standardisé UNIQUEMENT si on a au moins operateur/env/valeur
-  if (!MISSING){
-    df0 <- tibble(
-      operateur   = as.character(dsn[[op_col]]),
-      lieu_strate = as.character(dsn[[env_col]]),
-      indicateur  = as.character(dsn[[ind_col]]),
-      kpi         = as.character(dsn[[kpi_col]]),
-      valeur      = safe_as_num(dsn[[val_col]])
-    )
-
-    df0 <- df0 %>%
-      mutate(
-        operateur = tools::toTitleCase(tolower(operateur)),
-        env       = ifelse(is.na(lieu_strate),"inconnu", lieu_strate),
-        indic_l   = str_to_lower(indicateur),
-        kpi_l     = str_to_lower(kpi),
-        fam = case_when(
-          str_detect(indic_l, "download|descend|down|throughput|speed|\\bdl\\b") |
-          str_detect(kpi_l,   "download|descend|down|throughput|speed|\\bdl\\b") ~ "dl",
-          str_detect(indic_l, "upload|montant|uplink|up|\\bul\\b") |
-          str_detect(kpi_l,   "upload|montant|uplink|up|\\bul\\b")                ~ "ul",
-          str_detect(indic_l, "\\brsrp\\b") | str_detect(kpi_l, "\\brsrp\\b")     ~ "rsrp",
-          TRUE ~ NA_character_
-        )
+    required <- c(op_col, env_col, ind_col, kpi_col, val_col)
+    if (any(is.na(required))) {
+      SETUP_WARN <- paste0(
+        "Colonnes manquantes dans `data_scored_norm`. ",
+        "Requis au minimum: operateur / lieu_strate / indicateur / kpi / valeur."
       )
+    } else {
+      df0 <- tibble(
+        operateur   = toTitleCase(tolower(as.character(dsn[[op_col]]))),
+        lieu_strate = as.character(dsn[[env_col]]),
+        indic_l     = tolower(as.character(dsn[[ind_col]])),
+        kpi_l       = tolower(as.character(dsn[[kpi_col]])),
+        valeur      = safe_num(dsn[[val_col]])
+      ) %>%
+        mutate(
+          fam = case_when(
+            str_detect(indic_l, "download|descend|down|throughput|speed|\\bdl\\b") |
+            str_detect(kpi_l,   "download|descend|down|throughput|speed|\\bdl\\b") ~ "dl",
+            str_detect(indic_l, "upload|montant|uplink|up|\\bul\\b") |
+            str_detect(kpi_l,   "upload|montant|uplink|up|\\bul\\b")                ~ "ul",
+            str_detect(indic_l, "\\brsrp\\b") | str_detect(kpi_l, "\\brsrp\\b")     ~ "rsrp",
+            TRUE ~ NA_character_
+          ),
+          env = ifelse(is.na(lieu_strate) | lieu_strate=="", "inconnu", lieu_strate)
+        )
 
-    # choix env : plus représenté hors 'inconnu' (sinon 'inconnu')
-    env_top <- df0 %>% filter(!is.na(env), env != "inconnu") %>%
-      count(env, sort = TRUE) %>% slice_head(n=1) %>% pull(env)
-    if (length(env_top)==0) env_top <- "inconnu"
-    assign("ENV_TOP", env_top, envir = .GlobalEnv) # utile pour le sous-titre
+      # choisir l'environnement le plus représenté (hors 'inconnu' si possible)
+      ENV_TOP <- df0 %>% filter(env!="inconnu") %>% count(env, sort=TRUE) %>% slice_head(n=1) %>% pull(env)
+      if (length(ENV_TOP)==0 || is.na(ENV_TOP)) ENV_TOP <- "inconnu"
 
-    MIN_N <- 50
+      df <- df0 %>% filter(env == ENV_TOP, fam %in% c("dl","ul","rsrp"))
 
-    agg_p50 <- function(df, family){
-      out <- df %>%
-        filter(env == env_top, fam == family, is.finite(valeur)) %>%
-        group_by(operateur) %>%
-        summarise(
-          p50 = suppressWarnings(stats::median(valeur, na.rm=TRUE)),
-          n   = sum(!is.na(valeur)),
-          .groups="drop"
-        ) %>%
-        mutate(p50 = ifelse(n < MIN_N, NA_real_, p50))
-      if (!nrow(out)) tibble(operateur=character(), p50=double(), n=integer()) else out
+      agg_p50 <- function(family){
+        out <- df %>%
+          filter(fam == family, is.finite(valeur)) %>%
+          group_by(operateur) %>%
+          summarise(
+            p50 = median(valeur, na.rm = TRUE),
+            n   = sum(!is.na(valeur)),
+            .groups = "drop"
+          ) %>%
+          mutate(p50 = ifelse(n < MIN_N, NA_real_, p50))
+        if (!nrow(out)) tibble(operateur=character(), p50=double(), n=integer()) else out
+      }
+
+      dl_p50   <- agg_p50("dl")
+      ul_p50   <- agg_p50("ul")
+      rsrp_p50 <- agg_p50("rsrp")
+
+      # ordre opérateurs = DL décroissant si dispo, sinon alphabétique
+      ord <- if (nrow(dl_p50)) dl_p50 %>% arrange(desc(p50)) %>% pull(operateur) else sort(unique(df$operateur))
+      reord <- function(d) if (nrow(d)) d %>% mutate(operateur = factor(operateur, levels = ord)) else d
+      dl_p50   <- reord(dl_p50)
+      ul_p50   <- reord(ul_p50)
+      rsrp_p50 <- reord(rsrp_p50)
     }
-
-    dl_p50   <- agg_p50(df0, "dl")
-    ul_p50   <- agg_p50(df0, "ul")
-    rsrp_p50 <- agg_p50(df0, "rsrp")
-
-    # ordre opérateurs = DL décroissant si dispo
-    ord <- if (nrow(dl_p50)) dl_p50 %>% arrange(desc(p50)) %>% pull(operateur) else sort(unique(df0$operateur))
-    reord <- function(d) if (nrow(d)) d %>% mutate(operateur = factor(operateur, levels = ord)) else d
-    dl_p50   <- reord(dl_p50)
-    ul_p50   <- reord(ul_p50)
-    rsrp_p50 <- reord(rsrp_p50)
-
-  } else {
-    dl_p50 <- ul_p50 <- rsrp_p50 <- tibble(operateur=character(), p50=double(), n=integer())
-    ENV_TOP <- "indéterminé"
   }
-}
+}, silent = TRUE)
 
-theme_set(theme_minimal(base_size = 13))
-
-plot_bars <- function(dat, unit, title_txt, rsrp = FALSE){
-  if (!nrow(dat) || all(is.na(dat$p50))) {
-    plot_placeholder("Aucune donnée exploitable pour cette métrique\n(famille absente ou échantillon < seuil)",
-                     subtitle_txt = paste("Environnement :", ENV_TOP))
-  } else {
-    g <- ggplot(dat, aes(x = operateur, y = p50)) +
-      geom_col() +
-      geom_text(aes(label = ifelse(is.na(p50), "n<seuil", sprintf("%.1f", p50))),
-                vjust = -0.25, size = 3.5) +
-      labs(title = title_txt,
-           subtitle = paste("Environnement :", ENV_TOP, "— seuil n par opérateur = 50"),
-           x = NULL, y = unit)
-    if (rsrp) g <- g + geom_hline(yintercept = -100, linetype = "dashed")
-    g
-  }
+# S'il y a une erreur R inattendue, on la capture proprement
+if (exists(".Last.error") && is.null(SETUP_WARN)) {
+  SETUP_ERROR <- paste0("Erreur interne R: ", .Last.error)
 }
 ```
 
-```{r data-p50-warning, results='asis', echo=FALSE}
-if (exists("WARNING_HTML") && isTRUE(WARNING_HTML)) {
+```{r data-p50-diagnostics, echo=FALSE, results='asis'}
+# Callout de diagnostic (n'empêche pas le knit)
+if (!is.null(SETUP_WARN)) {
   cat('
 ::: {.callout-warning}
-**Colonnes attendues introuvables dans `data_scored_norm`.**  
-Requis (au minimum) : *operateur*, *lieu_strate*, *indicateur*, *kpi*, *valeur*.
-
-- Vérifie tes chunks EDA qui construisent `data_scored_norm`.
-- Si tes noms diffèrent, reviens vers moi pour adapter le mapping.
+', SETUP_WARN, '
 :::
 ')
+}
+if (!is.null(SETUP_ERROR)) {
+  cat('
+::: {.callout-warning}
+', SETUP_ERROR, '
+:::
+')
+}
+cat("Environnement sélectionné (ENV_TOP) :", ENV_TOP, "\n")
+if (exists("data_scored_norm")) {
+  cat("\nNoms (extrait) de `data_scored_norm`:\n")
+  cat(paste(utils::head(names(data_scored_norm), 40), collapse=", "), "\n")
 }
 ```
 
 ### Débit descendant — p50
 ```{r data-p50-dl, fig.width=8, fig.height=4.4}
-plot_bars(dl_p50, unit = "Mb/s", title_txt = "Débit descendant — médiane p50")
+theme_set(theme_minimal(base_size = 13))
+if (!nrow(dl_p50) || all(is.na(dl_p50$p50))) {
+  placeholder("DL p50 indisponible (famille absente ou n < 50)", paste("Environnement :", ENV_TOP))
+} else {
+  ggplot(dl_p50, aes(operateur, p50)) +
+    geom_col() +
+    geom_text(aes(label = ifelse(is.na(p50), "n<50", sprintf("%.1f", p50))), vjust=-0.25, size=3.5) +
+    labs(title="Débit descendant — médiane p50", subtitle=paste("Environnement :", ENV_TOP), x=NULL, y="Mb/s")
+}
 ```
 
 ### Débit montant — p50
 ```{r data-p50-ul, fig.width=8, fig.height=4.4}
-plot_bars(ul_p50, unit = "Mb/s", title_txt = "Débit montant — médiane p50")
+if (!nrow(ul_p50) || all(is.na(ul_p50$p50))) {
+  placeholder("UL p50 indisponible (famille absente ou n < 50)", paste("Environnement :", ENV_TOP))
+} else {
+  ggplot(ul_p50, aes(operateur, p50)) +
+    geom_col() +
+    geom_text(aes(label = ifelse(is.na(p50), "n<50", sprintf("%.1f", p50))), vjust=-0.25, size=3.5) +
+    labs(title="Débit montant — médiane p50", subtitle=paste("Environnement :", ENV_TOP), x=NULL, y="Mb/s")
+}
 ```
 
 ### RSRP — p50
 ```{r data-p50-rsrp, fig.width=8, fig.height=4.4}
-# Rappel: en dBm, plus proche de 0 = meilleur. Ligne pointillée à -100 dBm à titre indicatif.
-plot_bars(rsrp_p50, unit = "dBm (plus proche de 0 = meilleur)", title_txt = "RSRP — médiane p50", rsrp = TRUE)
+if (!nrow(rsrp_p50) || all(is.na(rsrp_p50$p50))) {
+  placeholder("RSRP p50 indisponible (famille absente ou n < 50)", paste("Environnement :", ENV_TOP))
+} else {
+  ggplot(rsrp_p50, aes(operateur, p50)) +
+    geom_col() +
+    geom_hline(yintercept=-100, linetype="dashed") +
+    geom_text(aes(label = ifelse(is.na(p50), "n<50", sprintf("%.0f", p50))), vjust=-0.25, size=3.5) +
+    labs(title="RSRP — médiane p50", subtitle=paste("Environnement :", ENV_TOP), x=NULL, y="dBm (plus proche de 0 = meilleur)")
+}
 ```
