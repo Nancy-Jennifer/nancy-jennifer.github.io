@@ -1,10 +1,10 @@
 ---
 title: "Résultats – Data (Internet mobile)"
-subtitle: "Médianes p50 — DL / UL / RSRP"
+subtitle: "Pass 5s/10s (pondéré) & qualité radio (RSRP/RSCP)"
 format:
   html:
     toc: true
-    toc-depth: 3
+    toc-depth: 2
     number-sections: false
     code-fold: show
 execute:
@@ -13,148 +13,160 @@ execute:
   message: false
 ---
 
-## Résultats DATA – p50 essentiels
+## Préparation
 
-```{r setup-p50, echo=FALSE, message=FALSE, warning=FALSE}
+```{r data-setup, include=FALSE}
 suppressPackageStartupMessages({
-  library(dplyr); library(ggplot2); library(forcats)
+  library(dplyr); library(ggplot2); library(forcats); library(stringr); library(scales)
 })
 
-# --- garde-fous : ne jamais casser le knit
-has_dsn <- exists("data_scored_norm") && is.data.frame(data_scored_norm)
-
-# Fonctions utilitaires minimalistes
-to_lower_chr <- function(x) { tolower(as.character(x)) }
-nz <- function(x, alt) { if(length(x)==0 || is.na(x)) alt else x }
-
-# Préparation très tolérante
-if (has_dsn) {
-  dsn <- data_scored_norm
-  nm  <- names(dsn)
-
-  must_have <- all(c("operateur","lieu_strate","indicateur","kpi","valeur") %in% nm)
-  if (!must_have) {
-    # on fabrique un df vide pour que les chunks suivants restent sûrs
-    df <- data.frame(operateur=character(), env=character(),
-                     famille=character(), valeur=numeric(), stringsAsFactors = FALSE)
-    env_top <- "indéterminé"
-  } else {
-    df0 <- dsn %>%
-      mutate(
-        operateur = tools::toTitleCase(to_lower_chr(operateur)),
-        env_raw   = as.character(lieu_strate),
-        indic_l   = to_lower_chr(indicateur),
-        kpi_l     = to_lower_chr(kpi),
-        valeur    = suppressWarnings(as.numeric(valeur)),
-        famille   = dplyr::case_when(
-          grepl("download|descend|down|throughput|speed|\\bdl\\b", indic_l) |
-          grepl("download|descend|down|throughput|speed|\\bdl\\b", kpi_l) ~ "dl",
-          grepl("upload|montant|uplink|\\bul\\b|\\bup\\b", indic_l) |
-          grepl("upload|montant|uplink|\\bul\\b|\\bup\\b", kpi_l)         ~ "ul",
-          grepl("^rsrp$", indic_l) | grepl("^rsrp$", kpi_l)               ~ "rsrp",
-          TRUE ~ NA_character_
-        ),
-        env = ifelse(is.na(env_raw) | env_raw=="", "inconnu", env_raw)
-      ) %>%
-      filter(!is.na(famille))
-
-    # Environnement le plus représenté (hors "inconnu" si possible)
-    env_counts <- df0 %>% count(env, sort = TRUE)
-    env_top <- if (nrow(env_counts)) {
-      cand <- env_counts %>% filter(env != "inconnu") %>% slice(1) %>% pull(env)
-      if (length(cand)==0) env_counts$env[1] else cand
-    } else "indéterminé"
-
-    df <- df0 %>% filter(env == env_top)
-  }
-} else {
-  df <- data.frame(operateur=character(), env=character(),
-                   famille=character(), valeur=numeric(), stringsAsFactors = FALSE)
-  env_top <- "indéterminé"
+if (!exists("data_scored_norm")) {
+  stop("Objet `data_scored_norm` introuvable. Attendu: colonnes operateur, lieu_strate, indicateur, kpi, valeur, base_val.")
 }
 
-# Agrégations p50 par famille (avec n)
-agg_p50 <- function(d, fam) {
-  d %>%
-    filter(famille == fam, is.finite(valeur)) %>%
-    group_by(operateur) %>%
-    summarise(p50 = suppressWarnings(stats::median(valeur, na.rm=TRUE)),
-              n   = sum(!is.na(valeur)), .groups="drop")
+# Normaliser les noms et garantir les colonnes de base
+df0 <- data_scored_norm %>%
+  rename_with(~tolower(gsub("[^a-z0-9]+","_", .x))) %>%
+  mutate(
+    operateur = tools::toTitleCase(as.character(operateur)),
+    base_val  = suppressWarnings(as.numeric(base_val)),
+    valeur    = suppressWarnings(as.numeric(valeur))
+  )
+
+# Sélecteurs d'indicateurs présents
+has_pass5  <- any(df0$indicateur == "loaded_in_less_5_secondes",  na.rm = TRUE)
+has_pass10 <- any(df0$indicateur == "loaded_in_less_10_secondes", na.rm = TRUE)
+has_rsrp   <- any(df0$indicateur == "rsrp",  na.rm = TRUE)
+has_rscp   <- any(df0$indicateur == "rscp",  na.rm = TRUE)
+
+# Pondération sûre
+wmean <- function(x, w){
+  x <- as.numeric(x); w <- as.numeric(w)
+  ok <- is.finite(x) & is.finite(w) & w >= 0
+  if (!any(ok)) return(NA_real_)
+  sum(x[ok] * w[ok]) / sum(w[ok])
 }
 
-dl_tbl   <- agg_p50(df, "dl")
-ul_tbl   <- agg_p50(df, "ul")
-rsrp_tbl <- agg_p50(df, "rsrp")
-
-# Ordre opérateurs = DL décroissant si dispo
-if (nrow(dl_tbl)) {
-  ord_ops <- dl_tbl %>% arrange(desc(p50)) %>% pull(operateur)
-} else {
-  ord_ops <- sort(unique(df$operateur))
-}
-reord <- function(t) if (nrow(t)) t %>% mutate(operateur = factor(operateur, levels = ord_ops)) else t
-dl_tbl   <- reord(dl_tbl)
-ul_tbl   <- reord(ul_tbl)
-rsrp_tbl <- reord(rsrp_tbl)
-
-# Thème
 theme_set(theme_minimal(base_size = 13))
 ```
 
-### Débit descendant — p50
-```{r plot-dl, fig.width=8, fig.height=4.4}
-if (!nrow(dl_tbl)) {
-  ggplot() + theme_void() +
-    annotate("text", x=0, y=0, label="Aucune donnée DL détectée pour l’environnement sélectionné.", size=4) +
-    labs(subtitle = paste("Environnement :", env_top))
-} else {
-  ggplot(dl_tbl, aes(operateur, p50)) +
+## Pass rates (chargement réussi < 5s / < 10s)
+
+```{r pass-rates, fig.width=8, fig.height=4.6}
+plots <- list()
+
+if (has_pass5) {
+  pass5 <- df0 %>%
+    filter(indicateur == "loaded_in_less_5_secondes") %>%
+    group_by(operateur) %>%
+    summarise(pass_5s_pct = 100 * wmean(valeur, ifelse(is.na(base_val), 1, base_val)),
+              n = sum(!is.na(valeur)), .groups = "drop") %>%
+    mutate(operateur = fct_reorder(operateur, pass_5s_pct, .desc = TRUE))
+
+  p5 <- ggplot(pass5, aes(operateur, pass_5s_pct)) +
     geom_col() +
-    geom_text(aes(label = paste0(round(p50,1)," Mb/s (n=", n, ")")), vjust=-0.25, size=3.5) +
-    labs(title="Débit descendant — médiane p50",
-         subtitle=paste("Environnement :", env_top),
-         x=NULL, y="Mb/s")
+    geom_text(aes(label = percent(pass_5s_pct/100, accuracy = 0.1)), vjust = -0.25, size = 3.6) +
+    coord_cartesian(ylim = c(0, max(pass5$pass_5s_pct, na.rm = TRUE) * 1.1)) +
+    labs(title = "Part des chargements < 5 s (pondéré)",
+         y = "% de succès", x = NULL)
+  plots$pass5 <- p5
+  print(p5)
+} else {
+  cat("Indicateur `loaded_in_less_5_secondes` absent — section sautée.\n")
+}
+
+if (has_pass10) {
+  pass10 <- df0 %>%
+    filter(indicateur == "loaded_in_less_10_secondes") %>%
+    group_by(operateur) %>%
+    summarise(pass_10s_pct = 100 * wmean(valeur, ifelse(is.na(base_val), 1, base_val)),
+              n = sum(!is.na(valeur)), .groups = "drop") %>%
+    mutate(operateur = fct_reorder(operateur, pass_10s_pct, .desc = TRUE))
+
+  p10 <- ggplot(pass10, aes(operateur, pass_10s_pct)) +
+    geom_col() +
+    geom_text(aes(label = percent(pass_10s_pct/100, accuracy = 0.1)), vjust = -0.25, size = 3.6) +
+    coord_cartesian(ylim = c(0, max(pass10$pass_10s_pct, na.rm = TRUE) * 1.1)) +
+    labs(title = "Part des chargements < 10 s (pondéré)",
+         y = "% de succès", x = NULL)
+  plots$pass10 <- p10
+  print(p10)
+} else {
+  cat("Indicateur `loaded_in_less_10_secondes` absent — section sautée.\n")
 }
 ```
 
-**Lecture rapide – DL (p50).**  
-La médiane du débit descendant reflète la fluidité perçue (web, vidéo, apps). Les écarts entre opérateurs indiquent des différences de capacité radio/backhaul sur la zone **`r env_top`**. Priorité : consolider les bas de classement sur les axes à trafic fort.
+**Lecture rapide.**  
+- Valeurs affichées = **moyennes pondérées** par `base_val` (quand présent).  
+- Un **écart >5 points** entre opérateurs sur `<5s` est perceptible par l’utilisateur final ; `<10s` sert de **filet** pour des zones plus congestionnées.
 
-### Débit montant — p50
-```{r plot-ul, fig.width=8, fig.height=4.4}
-if (!nrow(ul_tbl)) {
-  ggplot() + theme_void() +
-    annotate("text", x=0, y=0, label="Aucune donnée UL détectée pour l’environnement sélectionné.", size=4) +
-    labs(subtitle = paste("Environnement :", env_top))
+## Qualité radio (RSRP/RSCP) — médianes et fourchettes
+
+```{r radio-kpis, fig.width=8, fig.height=4.8}
+if (has_rsrp | has_rscp) {
+
+  radio <- df0 %>%
+    filter(indicateur %in% c("rsrp","rscp")) %>%
+    group_by(operateur, indicateur) %>%
+    summarise(
+      n      = sum(!is.na(valeur)),
+      p25    = quantile(valeur, 0.25, na.rm = TRUE),
+      p50    = quantile(valeur, 0.50, na.rm = TRUE),
+      p75    = quantile(valeur, 0.75, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    mutate(indicateur = factor(indicateur, levels = c("rsrp","rscp"),
+                               labels = c("RSRP (dBm)","RSCP (dBm)")))
+
+  # On trace la médiane avec un segment interquartile
+  p_radio <- ggplot(radio, aes(x = fct_reorder(operateur, p50, .desc = FALSE), y = p50)) +
+    geom_linerange(aes(ymin = p25, ymax = p75), linewidth = 2, alpha = 0.35) +
+    geom_point(size = 3) +
+    geom_hline(yintercept = -100, linetype = "dashed") +
+    facet_wrap(~ indicateur, scales = "free_y") +
+    labs(title = "Qualité radio — médiane (point) & IQR (segment)",
+         subtitle = "Plus proche de 0 dBm = meilleur",
+         x = NULL, y = "dBm")
+  print(p_radio)
+
 } else {
-  ggplot(ul_tbl, aes(operateur, p50)) +
-    geom_col() +
-    geom_text(aes(label = paste0(round(p50,1)," Mb/s (n=", n, ")")), vjust=-0.25, size=3.5) +
-    labs(title="Débit montant — médiane p50",
-         subtitle=paste("Environnement :", env_top),
-         x=NULL, y="Mb/s")
+  cat("Indicateurs `rsrp`/`rscp` absents — section sautée.\n")
 }
 ```
 
-**Lecture rapide – UL (p50).**  
-Le débit montant médian impacte l’envoi de médias, le cloud et les messageries. Des valeurs faibles brident fortement l’expérience WhatsApp/Drive. Cibler les cellules sous-performantes sur **`r env_top`** améliore nettement l’usage social.
+**À retenir.**  
+- **RSRP ~ -100 dBm** est une zone de confort relative pour la data en mobilité ; en-dessous (ex. -110 dBm), les pass rates se dégradent.  
+- Les **segments (IQR)** révèlent la **stabilité** : courts = expérience homogène, longs = variabilité forte.
 
-### RSRP — p50
-```{r plot-rsrp, fig.width=8, fig.height=4.4}
-if (!nrow(rsrp_tbl)) {
-  ggplot() + theme_void() +
-    annotate("text", x=0, y=0, label="Aucune donnée RSRP détectée pour l’environnement sélectionné.", size=4) +
-    labs(subtitle = paste("Environnement :", env_top))
-} else {
-  ggplot(rsrp_tbl, aes(operateur, p50)) +
-    geom_col() +
-    geom_hline(yintercept=-100, linetype="dashed") +
-    geom_text(aes(label = paste0(round(p50,0)," dBm (n=", n, ")")), vjust=-0.25, size=3.5) +
-    labs(title="RSRP — médiane p50",
-         subtitle=paste("Environnement :", env_top, "— repère confort 4G ≈ −100 dBm (pointillé)"),
-         x=NULL, y="dBm (plus proche de 0 = meilleur)")
+## Tableau récapitulatif (opérateur)
+
+```{r resume-table, echo=FALSE}
+# Assemble un petit tableau comparatif si les métriques existent
+tab <- df0 %>% group_by(operateur) %>% summarise(.groups="drop")
+
+if (has_pass5) {
+  tmp <- df0 %>% filter(indicateur=="loaded_in_less_5_secondes") %>%
+    group_by(operateur) %>% summarise(pass5 = 100*wmean(valeur, ifelse(is.na(base_val),1,base_val)))
+  tab <- tab %>% left_join(tmp, by="operateur")
 }
-```
+if (has_pass10) {
+  tmp <- df0 %>% filter(indicateur=="loaded_in_less_10_secondes") %>%
+    group_by(operateur) %>% summarise(pass10 = 100*wmean(valeur, ifelse(is.na(base_val),1,base_val)))
+  tab <- tab %>% left_join(tmp, by="operateur")
+}
+if (has_rsrp) {
+  tmp <- df0 %>% filter(indicateur=="rsrp") %>%
+    group_by(operateur) %>% summarise(rsrp_p50 = median(valeur, na.rm = TRUE))
+  tab <- tab %>% left_join(tmp, by="operateur")
+}
+if (has_rscp) {
+  tmp <- df0 %>% filter(indicateur=="rscp") %>%
+    group_by(operateur) %>% summarise(rscp_p50 = median(valeur, na.rm = TRUE))
+  tab <- tab %>% left_join(tmp, by="operateur")
+}
 
-**Lecture rapide – RSRP (p50).**  
-Le niveau RSRP structure la performance radio. En-dessous d’environ **−100 dBm**, les débits chutent et la variabilité augmente. Aligner les poches < −100 dBm sur **`r env_top`** (optimisation tilt/puissance/PCI, densification ciblée) stabilise DL/UL.
+tab %>%
+  arrange(operateur) %>%
+  mutate(across(starts_with("pass"), ~sprintf("%.1f%%", .x))) %>%
+  knitr::kable(col.names = c("Opérateur","<5s","<10s","RSRP p50","RSCP p50"))
+```
