@@ -4,76 +4,79 @@ subtitle: "Pass 5s/10s pondérés & radio (RSRP/RSCP) — rendu exécutif, sans 
 format:
   html:
     toc: true
-    toc-depth: 3
     number-sections: false
-    code-fold: false
 execute:
   echo: false
   warning: false
   message: false
 ---
 
-```{r setup, include=FALSE}
-suppressPackageStartupMessages({
-  library(dplyr)
-  library(readr)
-})
+```{r setup}
+# ===== Préparation minimale, 100% base R (aucun package externe) =====
+stopifnot(exists("data_scored_norm"))
 
-# =========================
-# 0) Préparer la source
-# =========================
-# Principe :
-# - Si data_scored_norm existe déjà -> on l'utilise.
-# - Sinon, si data_scored_clean existe -> on normalise ici (codes hors plage & clamp q01–q99).
-# - Dans tous les cas, on tente de sauvegarder un artefact pour les builds suivants.
+# noms propres
+dsn <- data_scored_norm
+names(dsn) <- tolower(gsub("[^a-z0-9]+","_", names(dsn)))
 
-build_norm_locally <- function(df_clean) {
-  clamp <- function(x, lo, hi) pmin(pmax(x, lo), hi)
-  df <- df_clean
+# utilitaires
+wmean <- function(x, w){
+  x <- as.numeric(x); w <- as.numeric(w)
+  if (!length(x)) return(NA_real_)
+  if (length(w) != length(x) || all(is.na(w))) return(mean(x, na.rm=TRUE))
+  stats::weighted.mean(x, w, na.rm=TRUE)
+}
+capfirst <- function(x) paste0(toupper(substring(x,1,1)), substring(x,2))
 
-  # Recode RSRP <= -141 dBm -> NA
-  df <- df %>%
-    mutate(valeur = ifelse(indicateur == "rsrp" & !is.na(valeur) & valeur <= -141, NA_real_, valeur))
+# jeux utiles
+need_indic <- c("loaded_in_less_5_secondes","loaded_in_less_10_secondes","rsrp","rscp")
+dsn <- dsn[dsn$indicateur %in% need_indic & dsn$service %in% c(NA,"data","internet","donnees",""), ]
 
-  # Bornes q01–q99 sur RSCP/RSRP uniquement
-  bounds <- df %>%
-    filter(indicateur %in% c("rscp","rsrp"), !is.na(valeur)) %>%
-    group_by(indicateur) %>%
-    summarise(q01 = quantile(valeur, 0.01, na.rm = TRUE),
-              q99 = quantile(valeur, 0.99, na.rm = TRUE), .groups = "drop")
+# opérateurs (ordre stable)
+ops <- sort(unique(as.character(dsn$operateur)))
+ops <- ops[!is.na(ops)]
 
-  df_norm <- df %>%
-    left_join(bounds, by = "indicateur") %>%
-    mutate(valeur = ifelse(indicateur %in% c("rscp","rsrp") & !is.na(valeur),
-                           clamp(valeur, q01, q99), valeur)) %>%
-    select(-q01, -q99)
+# palette sobre (4 opérateurs max)
+pal <- c("#3182BD","#31A354","#E6550D","#756BB1")  # bleu, vert, orange, violet
+names(pal) <- ops
 
-  df_norm
+# ==== Aggrégations ====
+# Pass 5 s / 10 s (pondérés par base_val si dispo)
+sub5  <- dsn[dsn$indicateur=="loaded_in_less_5_secondes", ]
+sub10 <- dsn[dsn$indicateur=="loaded_in_less_10_secondes", ]
+
+pct5  <- setNames(numeric(length(ops)), ops)
+n5    <- setNames(integer(length(ops)), ops)
+pct10 <- setNames(numeric(length(ops)), ops)
+n10   <- setNames(integer(length(ops)), ops)
+
+for (op in ops){
+  s5   <- sub5[sub5$operateur==op, ]
+  s10  <- sub10[sub10$operateur==op, ]
+  pct5[op]  <- 100*wmean(s5$valeur,  if ("base_val" %in% names(s5))  s5$base_val  else 1)
+  n5[op]    <- sum(is.finite(s5$valeur))
+  pct10[op] <- 100*wmean(s10$valeur, if ("base_val" %in% names(s10)) s10$base_val else 1)
+  n10[op]   <- sum(is.finite(s10$valeur))
 }
 
-if (!exists("data_scored_norm")) {
-  if (exists("data_scored_clean")) {
-    data_scored_norm <- build_norm_locally(data_scored_clean)
-  } else if (file.exists("outputs/data_scored_norm.rds")) {
-    data_scored_norm <- readRDS("outputs/data_scored_norm.rds")
-  }
+# Radio : médiane & IQR (dBm) — plus proche de 0 = meilleur
+sub_rsrp <- dsn[dsn$indicateur=="rsrp", ]
+sub_rscp <- dsn[dsn$indicateur=="rscp", ]
+
+rsrp_med <- rsrp_q25 <- rsrp_q75 <- setNames(rep(NA_real_, length(ops)), ops)
+rscp_med <- rscp_q25 <- rscp_q75 <- setNames(rep(NA_real_, length(ops)), ops)
+
+for (op in ops){
+  v1 <- as.numeric(sub_rsrp$valeur[sub_rsrp$operateur==op]); v1 <- v1[is.finite(v1)]
+  v2 <- as.numeric(sub_rscp$valeur[sub_rscp$operateur==op]); v2 <- v2[is.finite(v2)]
+  if (length(v1)) { rsrp_med[op] <- median(v1); rsrp_q25[op] <- quantile(v1,.25); rsrp_q75[op] <- quantile(v1,.75) }
+  if (length(v2)) { rscp_med[op] <- median(v2); rscp_q25[op] <- quantile(v2,.25); rscp_q75[op] <- quantile(v2,.75) }
 }
 
-# Sauvegarde d'artefact (si on a quelque chose)
-if (exists("data_scored_norm")) {
-  dir.create("outputs", showWarnings = FALSE, recursive = TRUE)
-  saveRDS(data_scored_norm, "outputs/data_scored_norm.rds")
-}
-
-# Drapeaux de disponibilité pour piloter l'affichage
-has_norm  <- exists("data_scored_norm")
-has_pass5 <- has_norm && any(data_scored_norm$indicateur == "loaded_in_less_5_secondes",  na.rm = TRUE)
-has_pass10<- has_norm && any(data_scored_norm$indicateur == "loaded_in_less_10_secondes", na.rm = TRUE)
-has_rsrp  <- has_norm && any(data_scored_norm$indicateur == "rsrp",  na.rm = TRUE)
-has_rscp  <- has_norm && any(data_scored_norm$indicateur == "rscp",  na.rm = TRUE)
-
-# Palette sobre (base R)
-pal <- c("#0097A7", "#8E44AD", "#E67E22", "#2E86C1")  # 4 opérateurs max
+# ordres d'affichage (meilleur en tête)
+ord5  <- names(sort(pct5 , decreasing = TRUE))
+ord10 <- names(sort(pct10, decreasing = TRUE))
+ordrs <- names(sort(rsrp_med, decreasing = TRUE))  # -95 dBm > -105 dBm
 ```
 
 # Préparation (rappel)
@@ -81,128 +84,92 @@ pal <- c("#0097A7", "#8E44AD", "#E67E22", "#2E86C1")  # 4 opérateurs max
 Les indicateurs exploités : **pass < 5 s**, **pass < 10 s** (pondérés par *base_val*) et **RSRP/RSCP** (médianes & IQR, dBm : plus proche de 0 = meilleur).  
 Les résultats sont consolidés **par opérateur**, tous environnements confondus.
 
-::: tip
-**Lecture métier.**  
+**Lecture métier.**
 - *Pass < 5 s* : expérience instantanée perçue.  
 - *Pass < 10 s* : robustesse générale de chargement.  
 - *RSRP/RSCP* : qualité radio sous-jacente ; viser **médiane ≥ −100 dBm** et **IQR serré**.
-:::
+
+---
 
 # Pass rate < 5 secondes (pondéré)
 
 Une latence initiale maîtrisée (< 5 s) traduit une **expérience instantanée** satisfaisante dans les contextes les plus exigeants (pics de charge, nœuds de trafic).
 
-```{r pass5, fig.width=8.5, fig.height=4.4, fig.cap="Part des chargements < 5 s (pondérée par base_val)."}
-if (has_pass5) {
-  sub <- subset(data_scored_norm, indicateur == "loaded_in_less_5_secondes",
-                select = c("operateur","valeur","base_val"))
-  sub$operateur <- as.character(sub$operateur)
-  ops <- sort(unique(sub$operateur))
-  pct <- n_eff <- numeric(length(ops))
-
-  wmean <- function(x,w) { if (all(is.na(x))) return(NA_real_); stats::weighted.mean(x, w, na.rm = TRUE) }
-  for (i in seq_along(ops)) {
-    s <- sub[sub$operateur == ops[i], ]
-    pct[i] <- 100 * wmean(s$valeur, ifelse(is.na(s$base_val), 1, s$base_val))
-    n_eff[i] <- sum(is.finite(s$valeur))
-  }
-  ord <- order(pct, decreasing = TRUE); ops <- ops[ord]; pct <- pct[ord]
-  par(mar = c(7,4,2,1))
-  bp <- barplot(pct, names.arg = ops, col = pal, ylim = c(0, max(5, pct, na.rm = TRUE) * 1.12),
-                ylab = "% de succès", main = "Pass < 5 s – pondéré")
-  text(bp, pct, labels = sprintf("%.1f%%", pct), pos = 3, cex = .9)
-} else {
-  cat("**Résultat non publié** dans cette version du livrable (données insuffisantes ou non incluses).")
-}
+```{r fig.width=8, fig.height=4.2}
+op <- ord5; x <- pct5[op]; cols <- pal[op]
+oldpar <- par(no.readonly=TRUE); on.exit(par(oldpar), add=TRUE)
+par(mar=c(6,4,1,1))
+bp <- barplot(x, col=cols, ylim=c(0, max(95, ceiling(max(x, na.rm=TRUE)))*1.12),
+              ylab="% de succès", las=2)
+text(bp, x, labels=sprintf("%.1f%%", x), pos=3, cex=.9)
+box()
 ```
 
-::: note
-**Lecture métier.** Le *pass < 5 s* reflète l’instantané client. Un écart > 5 pts devient perceptible.  
-**Action.** Sécuriser les 5 s sur zones denses (gares, carrefours, centres commerciaux).
-:::
+**Lecture métier.** Le *pass < 5 s* reflète l’instantané client : écart > 5 pts **perceptible**.  
+**Action.** Sécuriser les < 5 s sur les zones denses (gares, carrefours, centres commerciaux).
+
+---
 
 # Pass rate < 10 secondes (pondéré)
 
 À 10 s, la plupart des contenus finissent par charger ; les écarts résiduels signalent des **goulots de capacité/couverture**.
 
-```{r pass10, fig.width=8.5, fig.height=4.4, fig.cap="Part des chargements < 10 s (pondérée par base_val)."}
-if (has_pass10) {
-  sub <- subset(data_scored_norm, indicateur == "loaded_in_less_10_secondes",
-                select = c("operateur","valeur","base_val"))
-  sub$operateur <- as.character(sub$operateur)
-  ops <- sort(unique(sub$operateur))
-  pct <- n_eff <- numeric(length(ops))
-
-  wmean <- function(x,w) { if (all(is.na(x))) return(NA_real_); stats::weighted.mean(x, w, na.rm = TRUE) }
-  for (i in seq_along(ops)) {
-    s <- sub[sub$operateur == ops[i], ]
-    pct[i] <- 100 * wmean(s$valeur, ifelse(is.na(s$base_val), 1, s$base_val))
-    n_eff[i] <- sum(is.finite(s$valeur))
-  }
-  ord <- order(pct, decreasing = TRUE); ops <- ops[ord]; pct <- pct[ord]
-  par(mar = c(7,4,2,1))
-  bp <- barplot(pct, names.arg = ops, col = pal, ylim = c(0, max(5, pct, na.rm = TRUE) * 1.12),
-                ylab = "% de succès", main = "Pass < 10 s – pondéré")
-  text(bp, pct, labels = sprintf("%.1f%%", pct), pos = 3, cex = .9)
-} else {
-  cat("**Résultat non publié** dans cette version du livrable (données insuffisantes ou non incluses).")
-}
+```{r fig.width=8, fig.height=4.2}
+op <- ord10; x <- pct10[op]; cols <- pal[op]
+oldpar <- par(no.readonly=TRUE); on.exit(par(oldpar), add=TRUE)
+par(mar=c(6,4,1,1))
+bp <- barplot(x, col=cols, ylim=c(0, max(98, ceiling(max(x, na.rm=TRUE)))*1.10),
+              ylab="% de succès", las=2)
+text(bp, x, labels=sprintf("%.1f%%", x), pos=3, cex=.9)
+box()
 ```
 
-::: note
 **Cible.** > 90 % sur les axes à fort trafic (ferroviaire/routier) avec pilotage **heures pleines**.
-:::
+
+---
 
 # Qualité radio — Médiane & IQR (RSRP / RSCP)
 
 Un plan radio solide soutient la QoE data : viser **médiane ≥ −100 dBm** et **IQR serré** (dispersion faible).
 
-```{r radio, fig.width=8.8, fig.height=5.4, fig.cap="RSRP/RSCP — médiane & IQR (écart inter-quartiles) par opérateur."}
-if (has_rsrp || has_rscp) {
-  do_box <- function(indic, col){
-    sub <- subset(data_scored_norm, indicateur == indic, select = c("operateur","valeur"))
-    sub$operateur <- as.character(sub$operateur)
-    ops <- sort(unique(sub$operateur))
-    med <- p25 <- p75 <- rep(NA_real_, length(ops))
-    for (i in seq_along(ops)) {
-      v <- sub$valeur[sub$operateur == ops[i]]
-      v <- v[is.finite(v)]
-      if (length(v) > 0) {
-        med[i] <- as.numeric(stats::quantile(v, .5,  na.rm = TRUE))
-        p25[i] <- as.numeric(stats::quantile(v, .25, na.rm = TRUE))
-        p75[i] <- as.numeric(stats::quantile(v, .75, na.rm = TRUE))
-      }
-    }
-    ord <- order(med, decreasing = FALSE)  # plus proche de 0 = meilleur
-    ops <- ops[ord]; med <- med[ord]; p25 <- p25[ord]; p75 <- p75[ord]
+```{r fig.width=8.5, fig.height=4.8}
+# Dot-range plots (médiane avec IQR) pour RSRP puis RSCP
+oldpar <- par(no.readonly=TRUE); on.exit(par(oldpar), add=TRUE)
+par(mfrow=c(1,2), mar=c(6,4,1,1))
 
-    par(mar = c(7,4,2,1))
-    plot(seq_along(ops), med, xaxt = "n", xlab = "", ylab = "dBm (plus proche de 0 = meilleur)",
-         pch = 19, col = col, main = paste0(toupper(indic), " — médiane & IQR"))
-    axis(1, at = seq_along(ops), labels = ops, las = 2, cex.axis = .9)
-    segments(x0 = seq_along(ops), y0 = p25, x1 = seq_along(ops), y1 = p75, lwd = 6, col = adjustcolor(col, .5))
-    abline(h = -100, lty = 2)
-    text(seq_along(ops), med, labels = round(med, 0), pos = 3, cex = .8)
-  }
+# --- RSRP ---
+op <- ordrs; med <- rsrp_med[op]; q25 <- rsrp_q25[op]; q75 <- rsrp_q75[op]
+xpos <- seq_along(op); cols <- pal[op]
+plot(xpos, med, xaxt="n", xlab="", ylab="dBm (plus proche de 0 = meilleur)",
+     pch=19, col=cols, ylim=range(c(q25,q75, -120), na.rm=TRUE))
+segments(x0=xpos, y0=q25, x1=xpos, y1=q75, lwd=5, col=adjustcolor(cols, .75))
+points(xpos, med, pch=19, cex=1.1, col=cols)
+abline(h=-100, lty=2)
+axis(1, at=xpos, labels=op, las=2)
+title("RSRP — médiane & IQR")
 
-  if (has_rsrp) do_box("rsrp", pal[3])
-  if (has_rscp) do_box("rscp", pal[4])
-} else {
-  cat("**Résultats radio non publiés** dans cette version du livrable (données insuffisantes ou non incluses).")
-}
+# --- RSCP ---
+# même ordre visuel pour faciliter la lecture
+op2 <- op; med <- rscp_med[op2]; q25 <- rscp_q25[op2]; q75 <- rscp_q75[op2]
+xpos <- seq_along(op2); cols <- pal[op2]
+plot(xpos, med, xaxt="n", xlab="", ylab="dBm (plus proche de 0 = meilleur)",
+     pch=19, col=cols, ylim=range(c(q25,q75, -120), na.rm=TRUE))
+segments(x0=xpos, y0=q25, x1=xpos, y1=q75, lwd=5, col=adjustcolor(cols, .75))
+points(xpos, med, pch=19, cex=1.1, col=cols)
+abline(h=-100, lty=2)
+axis(1, at=xpos, labels=op2, las=2)
+title("RSCP — médiane & IQR")
 ```
 
-::: note
-**Actions.** Réduire les queues < −110 dBm sur les couloirs ferroviaires via **petites cellules** / réglages paramétriques.
-:::
+**Actions.** Réduire les queues < −110 dBm sur les couloirs ferroviaires via **petites cellules / réglages paramétriques**.
+
+---
 
 # Synthèse analytique & recommandations
 
-- **Expérience immédiate (5 s)** : viser 85–90 % en zones denses ; traiter les poches sous-seuil via **dimensionnement PRB/layering** & **optim radio**.  
-- **Robustesse (10 s)** : au-delà de 90 %, les irritants restants sont **localisés** ; plan d’actions ciblé par **corridors** (TGV/RER/autoroutes).  
+- **Expérience immédiate (5 s)** : viser **85–90 %** en zones denses ; traiter les poches sous-seuil via **dimensionnement PRB/layering & optimisation radio**.  
+- **Robustesse (10 s)** : au-delà de **90 %**, les irritants restants sont **localisés** ; plan d’actions ciblé par **corridors** (TGV/RER/autoroutes).  
 - **Radio** : sécuriser une **médiane ≥ −100 dBm** et **resserrer l’IQR** ; chasse aux < −110 dBm avec boucle **mesure → optimisation → re-mesure**.
 
-::: tip
-**Conclusion.** Performances élevées mais **variabilité par contexte** (mobilité vs habitat).  
-Un pilotage mensuel des **pass-rates pondérés** et des **médianes radio** aligne QoE et investissements.
-:::
+**Conclusion.** Performances élevées, mais **variabilité par contexte** (mobilité vs habitat). Un pilotage mensuel des **pass-rates pondérés** et des **médianes radio** aligne QoE et investissements.
+```
