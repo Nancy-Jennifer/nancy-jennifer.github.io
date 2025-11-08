@@ -29,7 +29,7 @@ Les résultats sont consolidés **par opérateur**, tous environnements confondu
 
 Une latence initiale maîtrisée (< 5 s) traduit une **expérience instantanée** satisfaisante dans les contextes les plus exigeants (pics de charge, nœuds de trafic).
 
-![Pass < 5 s (pondéré) — par opérateur](assets/images/telecoms/pass5s_pondere_operateur.png){fig-align="center"}
+![Pass < 5 s (pondéré) — par opérateur](../assets/images/telecoms/pass5s_pondere_operateur.png){fig-align="center"}
 
 **Lecture métier.** Le *pass < 5 s* reflète l’instantané client. Un écart **> 5 pts** devient perceptible.  
 **Action.** Sécuriser les 5 s sur zones denses (gares, carrefours, centres commerciaux).
@@ -40,7 +40,7 @@ Une latence initiale maîtrisée (< 5 s) traduit une **expérience instantanée*
 
 À 10 s, la plupart des contenus finissent par charger ; les écarts résiduels signalent des **goulots de capacité/couverture**.
 
-![Pass < 10 s (pondéré) — par opérateur](assets/images/telecoms/pass10s_pondere_operateur.png){fig-align="center"}
+![Pass < 10 s (pondéré) — par opérateur](../assets/images/telecoms/pass10s_pondere_operateur.png){fig-align="center"}
 
 **Cible.** **> 90 %** sur les axes à fort trafic (ferroviaire/routier) avec pilotage **heures pleines**.
 
@@ -50,7 +50,7 @@ Une latence initiale maîtrisée (< 5 s) traduit une **expérience instantanée*
 
 Un plan radio solide soutient la QoE data : viser **médiane ≥ −100 dBm** et **IQR serré** (dispersion faible).
 
-![Radio — RSRP médiane & IQR (plus proche de 0 = meilleur)](assets/images/telecoms/radio_rsrp_mediane_iqr.png){fig-align="center"}
+![Radio — RSRP médiane & IQR (plus proche de 0 = meilleur)](../assets/images/telecoms/radio_rsrp_mediane_iqr.png){fig-align="center"}
 
 **Actions.** Réduire les *queues* < −110 dBm sur les couloirs ferroviaires via **petites cellules** / **réglages paramétriques** (power/tilt, PRB/layering, voisinage).
 
