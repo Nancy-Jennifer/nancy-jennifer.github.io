@@ -40,7 +40,7 @@ Une latence initiale maîtrisée (< 5 s) traduit une **expérience instantanée*
 
 À 10 s, la plupart des contenus finissent par charger ; les écarts résiduels signalent des **goulots de capacité/couverture**.
 
-![Pass < 10 s (pondéré) — par opérateur](assets/images/telecoms/dpass10s_pondere_operateur.png){fig-align="center"}
+![Pass < 10 s (pondéré) — par opérateur](assets/images/telecoms/pass10s_pondere_operateur.png){fig-align="center"}
 
 **Cible.** **> 90 %** sur les axes à fort trafic (ferroviaire/routier) avec pilotage **heures pleines**.
 
