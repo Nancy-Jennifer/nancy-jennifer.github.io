@@ -1,6 +1,6 @@
 ---
 title: "Résultats – Data (Internet mobile)"
-subtitle: "Pass 5s/10s pondérés & radio (RSRP/RSCP) — rendu exécutif, sans code visible"
+subtitle: "Pass 5s/10s pondérés & radio (RSRP/RSCP)"
 format:
   html:
     toc: true
