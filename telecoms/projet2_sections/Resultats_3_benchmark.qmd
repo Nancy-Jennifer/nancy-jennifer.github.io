@@ -1,0 +1,88 @@
+---
+title: "Résultats – Benchmark international"
+subtitle: "France vs UE/OCDE/Monde — potentiel macro, structure d’usage et QoS réalisée"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    code-fold: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+> **Objectif**  
+> Donner une vue **rigoureuse et directement exploitable** par un recruteur :  
+> 1) le **potentiel macro** (PIB/hab PPP), 2) la **structure d’usage** (urbanisation),  
+> 3) l’**alignement Macro → QoS réalisée** (z-scores, **pondérés par la volumétrie**).
+
+---
+
+## 1) Potentiel macro (GDP per capita, PPP)
+
+**Constat 2024**  
+La France se situe au niveau des économies avancées (≈ 61 k$ PPP par habitant), **alignée avec l’OCDE et au-dessus de la moyenne UE**.  
+Cela place la France **dans la zone qui “appelle” une QoS premium** (exigence client élevée, services critiques, marché mature).
+
+**Lecture métier**  
+- Le **niveau de richesse** ne limite pas la qualité : au contraire, il **crée une attente**.  
+- Les **écarts de QoS** ne peuvent donc pas être justifiés par des contraintes macroéconomiques.
+
+*Figure : France vs UE/OCDE — GDP PPP (2015$/intl), dernier millésime commun.*  
+_Image suggérée_: `outputs/4_2_line_FRA_EU_gdp.png`
+
+---
+
+## 2) Structure d’usage (Urbanisation)
+
+**Constat 2024**  
+La France est **plus urbaine** que la moyenne UE (~ 82 % vs ~ 76 %), proche OCDE.  
+Conséquences directes : **charge radio concentrée**, **contraintes indoor**, et **pics de trafic** dans les **transports** (métro/RER/TGV).
+
+**Lecture métier**  
+- Les conditions d’ingénierie sont **plus exigeantes que la moyenne européenne**.  
+- La performance se joue sur l’**optimisation densité & indoor** (dimensionnement, interférences, DAS/small cells).
+
+*Figure : France vs UE/OCDE — Urbanisation (% pop.), dernier millésime commun.*  
+_Image suggérée_: `outputs/4_3_line_FRA_EU_urb.png`
+
+---
+
+## 3) Alignement Macro → QoS réalisée (France)
+
+**KPI clé – z-scores 2024 (pondérés volumétrie)**  
+- **z_macro** : **+0.575**  
+- **z_QoS (pondérée)** : **−0.202**  
+- **Δ (QoS − Macro)** : **−0.777** → **QoS en-dessous du potentiel macro**.
+
+**Interprétation analytique**  
+- Le sujet n’est **pas** l’absence d’infrastructure, mais la **conversion du potentiel en qualité mesurée** (expérience data).  
+- Les **écarts résident essentiellement** en **zones denses & environnements contraints** (indoor/transport).
+
+**Lecture métier**  
+- **Prioriser** l’optimisation radio où la volumétrie est la plus différenciante.  
+- **Piloter par indicateurs combinés** (volumétrie × QoS) pour capter la réalité d’usage.
+
+*Figure : Heatmap France — z_macro / z_qos / Δ, pondération volumétrie (2024).*  
+_Image suggérée_: `outputs/5_6_gap_heatmap_fr_weighted.png`
+
+---
+
+## Points à retenir
+
+- **Potentiel “premium”** confirmé (niveau PPP & maturité marché).  
+- **Contrainte d’usage** supérieure à la moyenne (urbanisation, indoor, transport).  
+- **Gap QoS vs potentiel** (Δ = −0.777) : **exécution & optimisation** plutôt que “capex indiscriminé”.  
+- **Focales ROI** : densité/indoor, corridors de transport, standardisation inter-opérateurs des KPI d’expérience.
+
+---
+
+## Pistes d’action immédiates
+
+1. **Plans d’amélioration ciblés** sur **zones denses & transport** (RER/métro/TGV) avec objectifs mesurables.  
+2. **KPI inter-opérateurs harmonisés** (QoS pondérée par volumétrie) pour suivre **écarts résiduels**.  
+3. **Ingénierie indoor** (DAS/small cells) : réduire la variabilité **≥ 30 %** à horizon 12–18 mois.  
+4. **Boucles d’optimisation** “traffic-aware” (heures de pointe, micro-zones, priorisation 5G SA/LTE-A).  
+
