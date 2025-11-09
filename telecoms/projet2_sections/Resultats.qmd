@@ -50,10 +50,10 @@ Débit & performance mobile
 :::
 
 ::: {.card}
-[## 💬 SMS](Resultats_3_sms.qmd)
+[## 🌍 Benchmark international](Resultats_3_benchmark.qmd)
 
-Taux de réussite & délais d’acheminement  
-→ *Niveaux de service & écarts résiduels par opérateur / environnement.*
+Potentiel macro, structure d’usage et alignement QoS  
+→ *France vs UE/OCDE/Monde : où se situe la qualité délivrée par rapport au niveau attendu ?*
 :::
 :::
 
