@@ -31,7 +31,7 @@ Cela place la France **dans la zone qui “appelle” une QoS premium** (exigenc
 - Les **écarts de QoS** ne peuvent donc pas être justifiés par des contraintes macroéconomiques.
 
 *Figure : France vs UE/OCDE — GDP PPP (2015$/intl), dernier millésime commun.*  
-_Image suggérée_: `outputs/4_2_line_FRA_EU_gdp.png`
+_Image (statique)_: `../../assets/images/telecoms/benchmark_gdp_ppp_fra_vs_eu.png`
 
 ---
 
@@ -46,7 +46,7 @@ Conséquences directes : **charge radio concentrée**, **contraintes indoor**, e
 - La performance se joue sur l’**optimisation densité & indoor** (dimensionnement, interférences, DAS/small cells).
 
 *Figure : France vs UE/OCDE — Urbanisation (% pop.), dernier millésime commun.*  
-_Image suggérée_: `outputs/4_3_line_FRA_EU_urb.png`
+_Image (statique)_: `../../assets/images/telecoms/benchmark_urbanisation_fra_vs_eu.png`
 
 ---
 
@@ -66,7 +66,7 @@ _Image suggérée_: `outputs/4_3_line_FRA_EU_urb.png`
 - **Piloter par indicateurs combinés** (volumétrie × QoS) pour capter la réalité d’usage.
 
 *Figure : Heatmap France — z_macro / z_qos / Δ, pondération volumétrie (2024).*  
-_Image suggérée_: `outputs/5_6_gap_heatmap_fr_weighted.png`
+_Image (statique)_: `../../assets/images/telecoms/benchmark_qos_heatmap_fr_2024.png`
 
 ---
 
@@ -84,5 +84,4 @@ _Image suggérée_: `outputs/5_6_gap_heatmap_fr_weighted.png`
 1. **Plans d’amélioration ciblés** sur **zones denses & transport** (RER/métro/TGV) avec objectifs mesurables.  
 2. **KPI inter-opérateurs harmonisés** (QoS pondérée par volumétrie) pour suivre **écarts résiduels**.  
 3. **Ingénierie indoor** (DAS/small cells) : réduire la variabilité **≥ 30 %** à horizon 12–18 mois.  
-4. **Boucles d’optimisation** “traffic-aware” (heures de pointe, micro-zones, priorisation 5G SA/LTE-A).  
-
+4. **Boucles d’optimisation** “traffic-aware” (heures de pointe, micro-zones, priorisation 5G SA/LTE-A).
