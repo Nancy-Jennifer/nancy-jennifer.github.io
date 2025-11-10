@@ -1,0 +1,26 @@
+
+---
+title: "Compétences démontrées"
+subtitle: "Ce que ce projet prouve — côté technique & métier"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: false
+---
+
+## Technique (Data/Analytics)
+- Ingestion multi-sources (WDI/ITU/ARCEP) & normalisation robuste (année commune, patches WDI).
+- Consolidation **offline** et logique de **tolérance** (t_obs / t_obs−5) pour éviter les NA.
+- Indicateurs comparatifs (scores base 100, z-scores), **pondération par volumétrie** pour refléter l’usage réel.
+- Visualisations propres “recruteur-ready” (barres, lignes FRA vs UE, heatmap).
+
+## Télécom (Domaine expertise)
+- Lecture QoS par contexte (urbain/rural/transport, indoor).
+- Traduction KPIs radio → **impacts clients** (débit/latence/couverture).
+- Priorisation ROI : axes densité, corridors de transport, harmonisation inter-opérateurs.
+
+## Produit/Exécution
+- **Plan 90 jours** (quick wins) + **chantiers 6–18 mois** (structurants).
+- KPI de suivi actionnables (seuils, fréquences, sources) alignés UE/OCDE/ITU.
+- Storytelling métier clair, orienté décision.
