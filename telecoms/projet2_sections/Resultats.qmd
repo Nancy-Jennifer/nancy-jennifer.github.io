@@ -55,6 +55,14 @@ Débit & performance mobile
 Potentiel macro, structure d’usage et alignement QoS  
 → *France vs UE/OCDE/Monde : où se situe la qualité délivrée par rapport au niveau attendu ?*
 :::
+
+::: {.card}
+[## 🧠 Insights & Actions prioritaires](Resultats_4_insights.qmd)
+
+Synthèse stratégique : ce qui explique l’écart **Potentiel macro → QoS vécue**,  
+et les **actions prioritaires** à fort ROI.
+:::
+
 :::
 
 ---
