@@ -1,0 +1,89 @@
+
+---
+title: "Résultats – Insights & Actions prioritaires"
+subtitle: "Transformer l’EDA en décisions exécutables"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    code-fold: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+> **Cette section traduit les résultats EDA en décisions opérationnelles pour un acteur télécom (opérateurs, régulateur, business unit technique).**
+
+---
+
+## 1) Objectif
+
+Clore l’analyse exploratoire en **insights stratégiques** et **pistes d’action concrètes**, alignés sur les **référentiels UE/OCDE/ITU** et priorisés selon l’impact client et la faisabilité.
+
+---
+
+## 2) Récapitulatif des constats majeurs
+
+| Catégorie | Constat principal | Interprétation analytique | Impact métier |
+|---|---|---|---|
+| **Points forts** | Haut niveau d’équipement mobile & fixe (pénétration > 100 %, haut débit fixe ~48/100 hab.) | Marché mature, infrastructures solides | Atout pour la compétitivité numérique |
+|  | Forte fiabilité voix/SMS (>95 % réussite, délais <10 s) | Stabilité sur usages de base | Qualité perçue élevée pour grand public & services critiques |
+| **Points faibles** | Performances data inégales selon contexte (urbain/rural/transport) | Saturation zones denses, déficit rural | Risque d’insatisfaction, fracture d’usage |
+|  | Écarts inter-opérateurs marqués | Variabilité d’expérience | Besoin de pilotage QoS harmonisé |
+| **Décalage macro → QoS** | QoS **en-dessous** du potentiel (Δ pondéré ≈ −0.78) | Exécution/optimisation perfectibles | Monter au niveau **OCDE/UE** ciblé |
+
+---
+
+## 3) Orientations stratégiques (priorisées)
+
+| Axe | Recommandation | Objectif opérationnel | Horizon |
+|---|---|---|---|
+| **1. Couverture & qualité en environnements critiques** | Accélérer sur **transport** (RER/métro/TGV) & **rural** | < **2 %** zones hors couverture | 2025–2027 |
+| **2. Réduction des écarts inter-opérateurs** | KPI communs ARCEP/opérateurs, seuils & pénalités | Écart QoS inter-opérateurs **≤ 5 %** | 2025 |
+| **3. Fiabilisation de la mesure QoS** | Détection d’anomalies + nouvelles métriques (débit réel, latence 5G) | **+20 %** de granularité data | 2025 |
+| **4. Focus indoor & densité** | Planification radio + **DAS/small cells** | −**30 %** de variabilité indoor | 2026 |
+
+---
+
+## 4) Alignement avec les cadres UE/OCDE/ONU/ITU
+
+| Cadre | Attendu | Cohérence France 2024 |
+|---|---|---|
+| **Stratégie numérique UE 2030** | Connectivité quasi-universelle, 5G généralisée | Couverture 5G >90 %, **hétérogénéité indoor** à corriger |
+| **OCDE** | Amélioration QoS & haut débit disponible | Conformité partielle : débit correct, **QoS perfectible** |
+| **ITU-T E.804** | Indicateurs harmonisés Voix/SMS/Data | Alignement en cours (standardisation ARCEP–ITU) |
+| **ONU – Indice IDI** | Usages numériques & infrastructures durables | France **“advanced”**, z-score ~ +0.45 |
+
+**Insight clé :** transformer l’**avance structurelle** (PPP, équipements, urbanisation) en **qualité vécue** mesurable, avec un **reste à faire** indoor/transport et un **lissage inter-opérateurs**.
+
+---
+
+## 5) KPI de suivi (cibles 2025)
+
+| KPI | Description | Cible | Fréquence | Source |
+|---|---|---|---|---|
+| **% zones hors couverture** | Part du territoire sans 3G/4G/5G | **< 2 %** | Annuelle | ARCEP |
+| **RSRP médian métro (dBm)** | Signal moyen en souterrain | **≥ −95 dBm** | Semestrielle | ARCEP / Opérateurs |
+| **Débit descendant moyen (Mbps)** | Toutes techno confondues | **> 120 Mbps** | Annuelle | ARCEP |
+| **Δ QoS inter-opérateurs (z-score)** | Écart moyen (pondéré volumétrie) | **< 0.30** | Annuelle | ARCEP |
+| **Population >100 Mbps** | Connectivité avancée | **≥ 90 %** | Annuelle | ITU / WDI |
+
+---
+
+## 6) Plan « 90 jours » – actions rapides & mesurables
+
+1. **Ciblage “transport”** : 20 lignes/gare à forte affluence → retuning radio + tests terrain (heures de pointe).  
+2. **Dashboard hebdo “habitat vs transport”** : suivi des écarts & outliers avec alerting.  
+3. **Standard QoS inter-opérateurs** : mêmes seuils de réussite/délais pour comparabilité immédiate.  
+4. **Mesure expérience client** : NPS mobilité et réclamations « avant / après » sur les axes priorisés.
+
+---
+
+## 7) Conclusion
+
+En 2024, la France présente une **maturité télécom forte** (infrastructures, équipements, fiabilité Voix/SMS).  
+La **QoS data** reste **hétérogène** selon les contextes (indoor/transport/rural), ce qui **écarte** le pays de son **potentiel macro**.  
+Les leviers proposés — **couverture ciblée**, **harmonisation inter-opérateurs**, **mesure renforcée** — sont directement actionnables et alignés avec les **standards internationaux**. Ils maximisent l’**impact client** tout en sécurisant l’atteinte des objectifs **UE 2030**.
+
