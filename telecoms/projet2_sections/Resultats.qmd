@@ -64,7 +64,7 @@ et les **actions prioritaires** à fort ROI.
 :::
 
 ::: {.card}
-[## 🏁 Compétences démontrées](Resultats_5_competences.qmd)
+[## 🏁 Compétences démontrées](./Resultats_5_competences.qmd)
 
 Synthèse des compétences **techniques**, **télécom** et **exécution** prouvées par le projet.
 :::
