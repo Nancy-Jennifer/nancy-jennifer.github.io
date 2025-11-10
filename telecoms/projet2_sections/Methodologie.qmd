@@ -14,7 +14,7 @@ format:
 [← Retour au P2](../projet2_arcep2024.qmd) · [→ Section 4 (Résultats)](Resultats.qmd)
 
 ::: {.card}
-**⚡ Navigation rapide — Section 3 :**  
+**Navigation rapide:**  
 3.1 Objectif · 3.2 Ingestion & préparation · 3.3 Normalisation statistique · 3.4 Scores par familles · 3.5 Indice composite · 3.6 Robustesse · 3.7 Contrôle qualité & export
 :::
 
