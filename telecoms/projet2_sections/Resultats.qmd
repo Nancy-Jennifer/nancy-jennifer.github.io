@@ -15,7 +15,7 @@ format:
     theme: cosmo
 ---
 
-# Résumé exécutif – Résultats
+# Résumé exécutif
 
 ::: callout-note
 **Objectif.** Cette section regroupe les **résultats consolidés** de la qualité de service mobile en France (ARCEP 2024), confrontés aux standards internationaux lorsque pertinent.  
