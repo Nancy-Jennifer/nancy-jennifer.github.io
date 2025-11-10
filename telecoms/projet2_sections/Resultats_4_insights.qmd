@@ -87,3 +87,4 @@ En 2024, la France présente une **maturité télécom forte** (infrastructures,
 La **QoS data** reste **hétérogène** selon les contextes (indoor/transport/rural), ce qui **écarte** le pays de son **potentiel macro**.  
 Les leviers proposés — **couverture ciblée**, **harmonisation inter-opérateurs**, **mesure renforcée** — sont directement actionnables et alignés avec les **standards internationaux**. Ils maximisent l’**impact client** tout en sécurisant l’atteinte des objectifs **UE 2030**.
 
+> Voir aussi : [**Compétences démontrées**](Resultats_5_competences.qmd)
