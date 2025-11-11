@@ -7,8 +7,7 @@ format:
     toc-depth: 3
     number-sections: false
     code-fold: false
-  pdf: default
-  gfm: default
+  gfm: default           # (optionnel) export Markdown GitHub
 execute:
   echo: false
   warning: false
@@ -16,14 +15,14 @@ execute:
 ---
 
 ::: {.callout-note}
-**Exports** — Téléchargements rapides :
-- PDF : `01_prepa_python.pdf`
-- Markdown (GitHub) : `01_prepa_python.md`
+**Exports** :
+- HTML rendu par Quarto (page actuelle)
+- Markdown GitHub : `01_prepa_python.md`
 :::
 
 ## 1) Contexte & objectifs
 
-Ce document prépare et standardise les données **ARCEP 2024**, **ITU**, **Banque Mondiale** (et dérivés), puis **produit exactement** les fichiers nettoyés suivants (déclarés dans ton notebook) :
+Ce document prépare et standardise les données **ARCEP 2024**, **ITU**, **Banque Mondiale** (et dérivés), puis **produit exactement** les fichiers nettoyés suivants :
 
 - `arcep_2024_indicateurs_globaux_clean.csv`
 - `arcep_2024_indicateurs_globaux_complet.csv`
@@ -129,28 +128,38 @@ def schema_preview(df, name, n=3):
 schemas = {}
 ```
 
-## 5) Banque Mondiale – Cellular & WDI (sources détectées)
+## 5) Banque Mondiale – Cellular & WDI (sources robustes)
 
 ```{python}
 #| label: 1-3-wb
-wb_cell = read_csv_smart(WB_CELLULAR)
-wb_cell = normalize_colnames(wb_cell)
+wb_cell = pd.DataFrame()
+wb_wdi  = pd.DataFrame()
 
-wb_wdi = read_csv_smart(WB_WDI)
-wb_wdi = normalize_colnames(wb_wdi)
+if WB_CELLULAR.exists():
+    try:
+        wb_cell = read_csv_smart(WB_CELLULAR)
+        wb_cell = normalize_colnames(wb_cell)
+        for col in ("year","annee"):
+            if col in wb_cell.columns:
+                wb_cell = cast_int(wb_cell, [col]); break
+    except Exception:
+        wb_cell = pd.DataFrame()
 
-schemas["worldbank_cellular"] = schema_preview(wb_cell, "WorldBank_Cell")
-schemas["worldbank_wdi"] = schema_preview(wb_wdi, "WorldBank_WDI")
+if WB_WDI.exists():
+    try:
+        wb_wdi = read_csv_smart(WB_WDI)
+        wb_wdi = normalize_colnames(wb_wdi)
+        for col in ("year","annee"):
+            if col in wb_wdi.columns:
+                wb_wdi = cast_int(wb_wdi, [col]); break
+    except Exception:
+        wb_wdi = pd.DataFrame()
 
-# Harmonisation légère (si colonnes usuelles existent)
-for col in ("year","annee"):
-    if col in wb_cell.columns:
-        wb_cell = cast_int(wb_cell, [col])
-        break
-for col in ("year","annee"):
-    if col in wb_wdi.columns:
-        wb_wdi = cast_int(wb_wdi, [col])
-        break
+# Schémas (uniquement si non vides)
+if not wb_cell.empty:
+    schemas["worldbank_cellular"] = schema_preview(wb_cell, "WorldBank_Cell")
+if not wb_wdi.empty:
+    schemas["worldbank_wdi"] = schema_preview(wb_wdi, "WorldBank_WDI")
 ```
 
 ## 6) ITU – Indicateurs clés (export détecté)
@@ -217,7 +226,7 @@ def _norm(df):
 if ARCEP_XLSX_GLOBAUX.exists():
     df_raw = pd.read_excel(ARCEP_XLSX_GLOBAUX, sheet_name="Indicateurs globaux", header=0)
     df_glob = _norm(df_raw)
-    # Tu avais au moins un export "simplifié" et un "clean" → on persiste les 3 pour stabilité
+    # On persiste les 3 exports pour stabilité
     save_csv(df_glob, ARCEP_GLOBAUX_CLEAN)
     save_csv(df_glob, ARCEP_GLOBAUX_COMPLET)
     save_csv(df_glob, ARCEP_GLOBAUX_SIMPLIFIE)
@@ -239,8 +248,12 @@ for src, dst in [
     (CSV_DATA_TRP, DATA_TRP_CLEAN),
 ]:
     if src.exists():
-        df = _norm(_read_arcep_semicolon(src))
-        save_csv(df, dst)
+        try:
+            df = _norm(_read_arcep_semicolon(src))
+            save_csv(df, dst)
+        except Exception:
+            # fallback pour ne pas casser le build
+            save_csv(pd.DataFrame(columns=["operateur","indicateur","annee","valeur"]), dst)
     else:
         save_csv(pd.DataFrame(columns=["operateur","indicateur","annee","valeur"]), dst)
 ```
@@ -252,9 +265,9 @@ for src, dst in [
 # === ITU Key Indicators (ton .ipynb écrit ITU_Key_ICT_Indicators_clean.csv) ===
 ITU_CLEAN = PROC / "ITU_Key_ICT_Indicators_clean.csv"
 
-# Deux cas possibles dans ton notebook :
-# 1) tu pars d’un WDI "long" / agrégats → on mappe iso3/indicator_code/year/value si présents
-# 2) tu lis une source ITU brute séparée
+# Deux cas possibles :
+# 1) partir d’un WDI "long"/agrégats → mapping iso3/indicator_code/year/value
+# 2) source ITU brute séparée
 # On rend robuste, sans casser les noms d’exports.
 
 def _minimal_itu(df):
@@ -266,16 +279,14 @@ def _minimal_itu(df):
         rename["series_code"] = "indicator_code"
     df = df.rename(columns=rename)
     keep = [c for c in ["iso3","indicator_code","year","value"] if c in df.columns]
-    if keep:
-        df = df[keep].copy()
+    if keep: df = df[keep].copy()
     for y in ("year","annee"):
         if y in df.columns:
             df[y] = pd.to_numeric(df[y], errors="coerce").astype("Int64")
     return df
 
-# priorité aux fichiers que tu as déjà transformés côté World Bank
 candidate_sources = [
-    PROC / "03-WorldBank-WDI-long.csv",       # détecté dans ton .ipynb
+    PROC / "03-WorldBank-WDI-long.csv",
     RAW  / "03-WorldBank-WDI.csv",
     RAW  / "01-WorldBank-Cellular-EN.csv",
 ]
@@ -286,12 +297,12 @@ for c in candidate_sources:
         try:
             df0 = read_csv_smart(c)
             itu_df = _minimal_itu(df0)
-            break
+            if not itu_df.empty:
+                break
         except Exception:
             pass
 
 if itu_df is None:
-    # fallback sécurisant
     itu_df = pd.DataFrame(columns=["iso3","indicator_code","year","value"])
 
 save_csv(itu_df, ITU_CLEAN)
@@ -301,16 +312,15 @@ FF_FINAL   = CLEAN_FINAL / "ITU_FactsFigures2024_final_clean.csv"
 FF_SUMMARY = CLEAN_FINAL / "ITU_FactsFigures2024_summary_clean.csv"
 
 def _summary_from(df):
-    # résumé léger et informatif (fidèle à l’esprit de ta synthèse)
+    # résumé léger et informatif
     if df.empty:
         return pd.DataFrame(columns=["section","metric","value"])
     out = []
     out.append({"section":"global","metric":"rows", "value":len(df)})
-    for c in df.columns[:6]:  # limite raisonnable
+    for c in df.columns[:6]:
         out.append({"section":"cols", "metric":f"non_null_{c}", "value":int(df[c].notna().sum())})
     return pd.DataFrame(out)
 
-# si tu as une table finale issue de concat/groupby dans ton .ipynb
 ff_df = None
 for c in [PROC / "ITU_Key_ICT_Indicators_clean.csv", PROC / "03-WorldBank-WDI-long.csv"]:
     if c.exists():
@@ -348,7 +358,6 @@ qa_files = [
 def count_rows(path):
     if not path.exists(): return 0
     try:
-        # rapide & robuste
         return max(0, sum(1 for _ in open(path, encoding="utf-8", errors="ignore")) - 1)
     except Exception:
         return 0
@@ -360,8 +369,14 @@ qa = pd.DataFrame({
 })
 save_csv(qa, PROC / "p2_qa_prepa.csv")
 
-# Schéma de documentation (échantillons)
-schemas["itu_clean"] = schema_preview(pd.read_csv(qa_files[7]) if qa_files[7].exists() else pd.DataFrame(), "ITU_clean")
+# Schémas (échantillons si disponibles)
+schemas_local = {}
+try:
+    itu_preview = pd.read_csv(PROC / "ITU_Key_ICT_Indicators_clean.csv")
+    schemas_local["itu_clean"] = schema_preview(itu_preview, "ITU_clean")
+except Exception:
+    pass
+schemas.update(schemas_local)
 
 with open(SCHE / "p2_schema_preview.yaml", "w", encoding="utf-8") as f:
     yaml.safe_dump(schemas, f, allow_unicode=True, sort_keys=False)
@@ -371,6 +386,6 @@ qa
 
 ## 10) Notes & limites
 
-- Les blocs **ARCEP** et **ITU Facts & Figures** ont été calés pour **reproduire tes exports** tout en restant **portables** (chemins relatifs, lectures robustes, colonnes normalisées).
+- Les blocs **ARCEP** et **ITU Facts & Figures** reproduisent tes exports tout en restant **portables** (chemins relatifs, lectures robustes, colonnes normalisées).
 - Si un brut manque, un CSV vide structuré est créé pour **ne jamais casser le build** ; dès que tu poses les bruts, le rendu régénère des fichiers remplis.
 - Tous les **noms d’exports** sont **identiques** à ceux utilisés dans ton `.ipynb`.
