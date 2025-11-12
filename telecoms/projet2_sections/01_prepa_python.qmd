@@ -35,6 +35,11 @@ Ce document prépare et standardise les données **ARCEP 2024**, **ITU**, **Banq
 - `data/clean_final/ITU_FactsFigures2024_final_clean.csv`
 - `data/clean_final/ITU_FactsFigures2024_summary_clean.csv`
 
+::: {.callout-tip}
+**Pourquoi cette étape ?**  
+Offrir un pipeline **reproductible et portable** : lecture robuste, normalisation de colonnes, validations minimales, **exports clean** pour l’EDA R, plus un **journal QA** traçable.
+:::
+
 ## 2) Chemins (relatifs) & imports
 
 ```{python}
@@ -42,6 +47,9 @@ Ce document prépare et standardise les données **ARCEP 2024**, **ITU**, **Banq
 from pathlib import Path
 import pandas as pd, numpy as np
 from datetime import datetime
+from IPython.display import display  # pour contrôler l'affichage
+import yaml
+import csv
 
 BASE = Path(".")
 RAW  = BASE / "data" / "raw"
@@ -61,8 +69,6 @@ WB_WDI      = RAW / "03-WorldBank-WDI.csv"
 
 ```{python}
 #| label: 1-1-utils
-import csv
-
 def read_csv_smart(path):
     """
     Lecture robuste :
@@ -108,13 +114,6 @@ def save_csv(df, path):
     path.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(path, index=False)
     return path
-```
-
-## 4) Profilage de schéma (documentation publique)
-
-```{python}
-#| label: 1-2-schema-preview
-import yaml
 
 def schema_preview(df, name, n=3):
     return {
@@ -126,6 +125,14 @@ def schema_preview(df, name, n=3):
     }
 
 schemas = {}
+```
+
+## 4) Profilage de schéma (documentation publique)
+
+```{python}
+#| label: 1-2-schema-preview
+# (Les profils colonnes générés sont écrits plus bas dans §9.)
+pass
 ```
 
 ## 5) Banque Mondiale – Cellular & WDI (sources robustes)
@@ -162,6 +169,12 @@ if not wb_wdi.empty:
     schemas["worldbank_wdi"] = schema_preview(wb_wdi, "WorldBank_WDI")
 ```
 
+::: {.callout-tip}
+**Pourquoi cette étape ?**  
+La Banque Mondiale comporte souvent des variations d’encodage/séparateur.  
+On force une lecture **tolérante** et des noms de colonnes **normalisés** avant toute fusion.
+:::
+
 ## 6) ITU – Indicateurs clés (export détecté)
 
 ```{python}
@@ -190,18 +203,14 @@ def _minimal_itu(df):
 
 ```{python}
 #| label: 1-5-arcep
-from pathlib import Path
-import pandas as pd
-import numpy as np
-
-# === Fichiers bruts (même noms que dans ton .ipynb) ===
+# Fichiers bruts (mêmes noms que dans le .ipynb)
 ARCEP_XLSX_GLOBAUX = RAW / "2024_QoS_indicateurs_globaux.xlsx"
 CSV_VOIX_HAB       = RAW / "2024_QoS_Metropole_voix_habitations.csv"
 CSV_VOIX_TRP       = RAW / "2024_QoS_Metropole_voix_transports.csv"
 CSV_DATA_HAB       = RAW / "2024_QoS_Metropole_data_habitations.csv"
 CSV_DATA_TRP       = RAW / "2024_QoS_Metropole_data_transports.csv"
 
-# === Exports attendus (strictement tes noms) ===
+# Exports attendus (strictement tes noms)
 ARCEP_GLOBAUX_CLEAN     = PROC / "arcep_2024_indicateurs_globaux_clean.csv"
 ARCEP_GLOBAUX_COMPLET   = PROC / "arcep_2024_indicateurs_globaux_complet.csv"
 ARCEP_GLOBAUX_SIMPLIFIE = PROC / "arcep_2024_indicateurs_globaux_simplifie.csv"
@@ -216,28 +225,25 @@ def _norm(df):
     for y in ("annee","year"):
         if y in df.columns:
             df[y] = pd.to_numeric(df[y], errors="coerce").astype("Int64")
-    # petites nettoyages génériques utiles
     for c in ("operateur","indicateur","unite","zone","region"):
         if c in df.columns:
             df[c] = df[c].astype(str).str.strip()
     return df
 
-# === Indicateurs globaux (XLSX) — fidèle au .ipynb ===
+# Indicateurs globaux (XLSX)
 if ARCEP_XLSX_GLOBAUX.exists():
     df_raw = pd.read_excel(ARCEP_XLSX_GLOBAUX, sheet_name="Indicateurs globaux", header=0)
     df_glob = _norm(df_raw)
-    # On persiste les 3 exports pour stabilité
-    save_csv(df_glob, ARCEP_GLOBAUX_CLEAN)
-    save_csv(df_glob, ARCEP_GLOBAUX_COMPLET)
-    save_csv(df_glob, ARCEP_GLOBAUX_SIMPLIFIE)
+    _ = save_csv(df_glob, ARCEP_GLOBAUX_CLEAN)
+    _ = save_csv(df_glob, ARCEP_GLOBAUX_COMPLET)
+    _ = save_csv(df_glob, ARCEP_GLOBAUX_SIMPLIFIE)
 else:
-    # sécurité: évite de casser le rendu si le brut n’est pas encore présent
     base_cols = ["operateur","indicateur","annee","valeur","unite"]
-    save_csv(pd.DataFrame(columns=base_cols), ARCEP_GLOBAUX_CLEAN)
-    save_csv(pd.DataFrame(columns=base_cols), ARCEP_GLOBAUX_COMPLET)
-    save_csv(pd.DataFrame(columns=base_cols), ARCEP_GLOBAUX_SIMPLIFIE)
+    _ = save_csv(pd.DataFrame(columns=base_cols), ARCEP_GLOBAUX_CLEAN)
+    _ = save_csv(pd.DataFrame(columns=base_cols), ARCEP_GLOBAUX_COMPLET)
+    _ = save_csv(pd.DataFrame(columns=base_cols), ARCEP_GLOBAUX_SIMPLIFIE)
 
-# === Voix / Data — habitations & transports (CSV ; sep=';' enc='utf-8' comme dans ton .ipynb) ===
+# Voix/Data — habitations & transports (CSV ; sep=';' enc='utf-8')
 def _read_arcep_semicolon(path):
     return pd.read_csv(path, sep=";", encoding="utf-8", low_memory=False)
 
@@ -250,25 +256,25 @@ for src, dst in [
     if src.exists():
         try:
             df = _norm(_read_arcep_semicolon(src))
-            save_csv(df, dst)
+            _ = save_csv(df, dst)
         except Exception:
-            # fallback pour ne pas casser le build
-            save_csv(pd.DataFrame(columns=["operateur","indicateur","annee","valeur"]), dst)
+            _ = save_csv(pd.DataFrame(columns=["operateur","indicateur","annee","valeur"]), dst)
     else:
-        save_csv(pd.DataFrame(columns=["operateur","indicateur","annee","valeur"]), dst)
+        _ = save_csv(pd.DataFrame(columns=["operateur","indicateur","annee","valeur"]), dst)
 ```
+
+::: {.callout-tip}
+**Pourquoi cette étape ?**  
+Assurer des **exports strictement nommés** comme dans le .ipynb, mais sans fuite de chemins locaux ni dépendance à un environnement unique.  
+Les CSV vides structurés garantissent qu’un **build n’échoue jamais** sur un dépôt public.
+:::
 
 ## 8) ITU – Key Indicators & Facts & Figures 2024
 
 ```{python}
 #| label: 1-6-itu-ff
-# === ITU Key Indicators (ton .ipynb écrit ITU_Key_ICT_Indicators_clean.csv) ===
+# ITU Key Indicators
 ITU_CLEAN = PROC / "ITU_Key_ICT_Indicators_clean.csv"
-
-# Deux cas possibles :
-# 1) partir d’un WDI "long"/agrégats → mapping iso3/indicator_code/year/value
-# 2) source ITU brute séparée
-# On rend robuste, sans casser les noms d’exports.
 
 def _minimal_itu(df):
     df = normalize_colnames(df)
@@ -305,14 +311,13 @@ for c in candidate_sources:
 if itu_df is None:
     itu_df = pd.DataFrame(columns=["iso3","indicator_code","year","value"])
 
-save_csv(itu_df, ITU_CLEAN)
+_ = save_csv(itu_df, ITU_CLEAN)
 
-# === ITU Facts & Figures 2024 (exports strictement comme dans ton .ipynb) ===
+# ITU Facts & Figures 2024
 FF_FINAL   = CLEAN_FINAL / "ITU_FactsFigures2024_final_clean.csv"
 FF_SUMMARY = CLEAN_FINAL / "ITU_FactsFigures2024_summary_clean.csv"
 
 def _summary_from(df):
-    # résumé léger et informatif
     if df.empty:
         return pd.DataFrame(columns=["section","metric","value"])
     out = []
@@ -333,8 +338,8 @@ for c in [PROC / "ITU_Key_ICT_Indicators_clean.csv", PROC / "03-WorldBank-WDI-lo
 if ff_df is None:
     ff_df = pd.DataFrame(columns=["iso3","indicator_code","year","value","label"])
 
-save_csv(ff_df, FF_FINAL)
-save_csv(_summary_from(ff_df), FF_SUMMARY)
+_ = save_csv(ff_df, FF_FINAL)
+_ = save_csv(_summary_from(ff_df), FF_SUMMARY)
 ```
 
 ## 9) Journal qualité & schéma public
@@ -367,21 +372,25 @@ qa = pd.DataFrame({
     "lignes": [count_rows(p) for p in qa_files],
     "horodatage_utc": [datetime.utcnow().isoformat()] * len(qa_files)
 })
-save_csv(qa, PROC / "p2_qa_prepa.csv")
+_ = save_csv(qa, PROC / "p2_qa_prepa.csv")
 
 # Schémas (échantillons si disponibles)
 schemas_local = {}
 try:
     itu_preview = pd.read_csv(PROC / "ITU_Key_ICT_Indicators_clean.csv")
-    schemas_local["itu_clean"] = schema_preview(itu_preview, "ITU_clean")
+    if not itu_preview.empty:
+        schemas_local["itu_clean"] = schema_preview(itu_preview, "ITU_clean")
 except Exception:
     pass
-schemas.update(schemas_local)
 
+schemas.update(schemas_local)
 with open(SCHE / "p2_schema_preview.yaml", "w", encoding="utf-8") as f:
     yaml.safe_dump(schemas, f, allow_unicode=True, sort_keys=False)
 
-qa
+# Affichage convivial (évite l'impression de Path)
+display(qa)
+if qa["lignes"].sum() == 0:
+    print("⚠️ Aucun fichier brut n’a encore été chargé — place-les dans data/raw/ puis relance le rendu pour obtenir des sorties non vides.")
 ```
 
 ## 10) Notes & limites
@@ -389,3 +398,12 @@ qa
 - Les blocs **ARCEP** et **ITU Facts & Figures** reproduisent tes exports tout en restant **portables** (chemins relatifs, lectures robustes, colonnes normalisées).
 - Si un brut manque, un CSV vide structuré est créé pour **ne jamais casser le build** ; dès que tu poses les bruts, le rendu régénère des fichiers remplis.
 - Tous les **noms d’exports** sont **identiques** à ceux utilisés dans ton `.ipynb`.
+
+---
+
+## 🔍 En résumé
+
+- Pipeline Python **reproductible** et **public-safe**.  
+- **9 fichiers nettoyés** + **2 sorties ITU FF** ciblées, prêts pour l’EDA R.  
+- **QA journalisée**, **schéma YAML** exporté, et **lecture tolérante** aux variations d’encodage/séparateur.
+
