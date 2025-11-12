@@ -1,0 +1,282 @@
+---
+title: "P2 – EDA (R) : ARCEP 2024 · ITU · World Bank"
+subtitle: "France 2024 : où se situe la qualité de service mobile face aux standards internationaux ?"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: false
+    df-print: paged
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+## 0) Préambule
+
+```{r}
+suppressPackageStartupMessages({
+  library(readr); library(readxl)
+  library(dplyr); library(tidyr); library(stringr); library(forcats)
+  library(ggplot2); library(gt); library(janitor); library(purrr)
+})
+theme_set(theme_minimal(base_size = 13))
+
+base        <- "."
+proc_dir    <- file.path(base, "data", "processed")
+clean_final <- file.path(base, "data", "clean_final")
+
+exists_file <- function(...) file.exists(file.path(...))
+
+read_csv_safe <- function(path, ...) {
+  if (!file.exists(path)) return(tibble())
+  tryCatch(readr::read_csv(path, show_col_types = FALSE, ...), error = function(e) tibble())
+}
+
+norm_names <- function(df) {
+  if (nrow(df) == 0) return(df)
+  df %>% clean_names() %>%
+    rename_with(~ .x %>% str_replace_all("[^a-z0-9]+","_") %>% str_replace_all("_+","_") %>% str_replace("^_|_$",""))
+}
+```
+
+::: {.callout-note}
+**Entrées attendues** : exports `*_clean.csv` générés par *01_prepa_python.qmd* dans `data/processed/` et `data/clean_final/`.  
+Aucun chemin absolu ; rendu reproductible.
+:::
+
+## 1) Chargements
+
+```{r}
+# ARCEP – Globaux
+f_glob_clean     <- file.path(proc_dir, "arcep_2024_indicateurs_globaux_clean.csv")
+f_glob_complet   <- file.path(proc_dir, "arcep_2024_indicateurs_globaux_complet.csv")
+f_glob_simplifie <- file.path(proc_dir, "arcep_2024_indicateurs_globaux_simplifie.csv")
+
+# ARCEP – Voix / Data (habitations & transports)
+f_voix_hab  <- file.path(proc_dir, "2024_QoS_Metropole_voix_habitations_clean.csv")
+f_voix_trp  <- file.path(proc_dir, "2024_QoS_Metropole_voix_transports_clean.csv")
+f_data_hab  <- file.path(proc_dir, "2024_QoS_Metropole_data_habitations_clean.csv")
+f_data_trp  <- file.path(proc_dir, "2024_QoS_Metropole_data_transports_clean.csv")
+
+# ITU – Facts & Figures (final + summary)
+f_itu_ff    <- file.path(clean_final, "ITU_FactsFigures2024_final_clean.csv")
+f_itu_sum   <- file.path(clean_final, "ITU_FactsFigures2024_summary_clean.csv")
+
+arcep_clean     <- norm_names(read_csv_safe(f_glob_clean))
+arcep_complet   <- norm_names(read_csv_safe(f_glob_complet))
+arcep_simplifie <- norm_names(read_csv_safe(f_glob_simplifie))
+
+voix_hab <- norm_names(read_csv_safe(f_voix_hab))
+voix_trp <- norm_names(read_csv_safe(f_voix_trp))
+data_hab <- norm_names(read_csv_safe(f_data_hab))
+data_trp <- norm_names(read_csv_safe(f_data_trp))
+
+itu_ff   <- norm_names(read_csv_safe(f_itu_ff))
+itu_sum  <- norm_names(read_csv_safe(f_itu_sum))
+```
+
+### Panneau QA rapide
+
+```{r}
+qa_tbl <- tibble::tibble(
+  fichier = c("globaux_clean","globaux_complet","globaux_simplifie",
+              "voix_habitations","voix_transports","data_habitations","data_transports",
+              "itu_ff_final","itu_ff_summary"),
+  lignes  = c(nrow(arcep_clean), nrow(arcep_complet), nrow(arcep_simplifie),
+              nrow(voix_hab), nrow(voix_trp), nrow(data_hab), nrow(data_trp),
+              nrow(itu_ff), nrow(itu_sum))
+)
+qa_tbl |>
+  gt() |>
+  fmt_number(columns = lignes, decimals = 0) |>
+  tab_header(title = "Contrôle rapide des entrées (lignes)")
+```
+
+## 2) Globaux ARCEP – aperçu
+
+```{r}
+if (nrow(arcep_clean) > 0) {
+  val_col <- intersect(c("valeur","value"), names(arcep_clean)); val_col <- val_col[1] %||% "valeur"
+
+  df <- arcep_clean |>
+    mutate(across(any_of(c("annee","year")), as.integer)) |>
+    mutate(mesure = .data[[val_col]])
+
+  top_ind <- df |>
+    count(indicateur, sort = TRUE, name = "n_mesures") |>
+    head(10)
+
+  top_ind |>
+    gt() |>
+    fmt_number(columns = n_mesures, decimals = 0) |>
+    tab_header(title = "Indicateurs les plus présents (Top 10)")
+
+  df |>
+    filter(!is.na(operateur), !is.na(mesure)) |>
+    group_by(operateur) |>
+    summarise(n = n(), moyenne = mean(mesure, na.rm = TRUE), .groups = "drop") |>
+    arrange(desc(moyenne)) |>
+    head(10) |>
+    ggplot(aes(x = reorder(operateur, moyenne), y = moyenne)) +
+    geom_col() +
+    coord_flip() +
+    labs(x = NULL, y = "Moyenne (toutes mesures)", title = "Comparatif opérateurs (globaux)")
+}
+```
+
+## 3) Voix – normalisation, KPI & zones à risque
+
+```{r}
+# Fonction de reclassification KPI Voix
+classify_kpi <- function(s){
+  s <- tolower(s)
+  case_when(
+    str_detect(s, "delai|délai|setup|etablissement|établissement|time_to_call") ~ "delai_etablissement_appels",
+    str_detect(s, "coupure|drop|fail|échec|echec|non[ -]?reuss|non[ -]?réuss")   ~ "taux_echec_appels",
+    str_detect(s, "reuss|réuss|communic")                                       ~ "taux_reussite_appels",
+    TRUE ~ "autre"
+  )
+}
+
+bind_voix <- function(df){
+  if (nrow(df) == 0) return(tibble())
+  vals <- intersect(c("valeur","value"), names(df));   val <- vals[1] %||% "valeur"
+  ops  <- intersect(c("bouygues","free","orange","sfr","moyenne"), names(df))
+  if (length(ops) > 0) {
+    df <- df |>
+      pivot_longer(all_of(ops), names_to = "operateur", values_to = val)
+  }
+  df |>
+    mutate(indicateur = coalesce(indicateur, "")) |>
+    mutate(kpi = classify_kpi(indicateur)) |>
+    filter(kpi != "autre") |>
+    mutate(
+      across(any_of(c("annee","year")), as.integer),
+      across(all_of(val), ~ suppressWarnings(as.numeric(.x))),
+      base_val = suppressWarnings(as.numeric(coalesce(base_val, 1)))
+    ) |>
+    rename(valeur = all_of(val))
+}
+
+voix_raw <- bind_rows(bind_voix(voix_hab), bind_voix(voix_trp))
+
+# Rescaling : si valeurs en [0..100], conversion en [0..1]
+rescale_01 <- function(x){
+  if (all(is.na(x))) return(x)
+  mx <- suppressWarnings(max(x, na.rm = TRUE))
+  if (is.finite(mx) && mx > 1.5) x/100 else x
+}
+
+voix_scored <- voix_raw |>
+  mutate(
+    valeur_reussite = if_else(kpi == "taux_reussite_appels", rescale_01(valeur), NA_real_),
+    valeur_echec    = if_else(kpi == "taux_echec_appels",    rescale_01(valeur), NA_real_),
+    valeur_delai    = if_else(kpi == "delai_etablissement_appels", suppressWarnings(as.numeric(valeur)), NA_real_)
+  )
+
+# KPI agrégés (pondération éventuelle par base_val si disponible)
+voix_kpi <- voix_scored |>
+  mutate(poids = if_else(is.na(base_val) | base_val <= 0, 1, base_val)) |>
+  group_by(operateur, lieu_strate, kpi) |>
+  summarise(
+    p = if_else(kpi == "delai_etablissement_appels",
+                mean(valeur_delai, na.rm = TRUE),
+                sum(coalesce(valeur_reussite, valeur_echec, 0) * poids, na.rm = TRUE) /
+                sum(poids, na.rm = TRUE)),
+    .groups = "drop"
+  )
+
+# Classement opérateurs – réussite moyenne
+voix_kpi |>
+  filter(kpi == "taux_reussite_appels") |>
+  group_by(operateur) |>
+  summarise(score = mean(p, na.rm = TRUE), .groups = "drop") |>
+  mutate(operateur = fct_reorder(operateur, score)) |>
+  ggplot(aes(operateur, score)) +
+  geom_col() + coord_flip() +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(x = NULL, y = "Taux de réussite moyen", title = "Voix — classement opérateurs (moyenne)")
+
+# Zones à risque (ex. réussite < 95% ou échec > 2%)
+seuil_r <- 0.95; seuil_e <- 0.02
+voix_flags <- voix_scored |>
+  transmute(operateur, lieu_strate,
+            ok   = valeur_reussite,
+            fail = valeur_echec,
+            poids = if_else(is.na(base_val) | base_val <= 0, 1, base_val)) |>
+  group_by(operateur, lieu_strate) |>
+  summarise(p_ok = sum(ok*poids, na.rm=TRUE)/sum(poids,na.rm=TRUE),
+            p_f  = sum(fail*poids,na.rm=TRUE)/sum(poids,na.rm=TRUE),
+            .groups="drop") |>
+  mutate(flag = (is.finite(p_ok) & p_ok < seuil_r) | (is.finite(p_f) & p_f > seuil_e))
+
+voix_flags %>%
+  filter(flag) %>%
+  count(lieu_strate, sort = TRUE, name = "nb_alertes") %>%
+  head(15) %>%
+  ggplot(aes(x = reorder(lieu_strate, nb_alertes), y = nb_alertes)) +
+  geom_col() + coord_flip() +
+  labs(x = NULL, y = "Nombre d'alertes", title = "Voix — Top 15 zones à risque")
+```
+
+## 4) Data – comparatifs opérateurs
+
+```{r}
+plot_perf <- function(df, titre){
+  if (nrow(df) == 0) return(NULL)
+  val <- intersect(c("valeur","value"), names(df)); val <- val[1] %||% "valeur"
+  df |>
+    filter(!is.na(operateur), !is.na(.data[[val]])) |>
+    group_by(operateur) |>
+    summarise(moy = mean(.data[[val]], na.rm = TRUE), .groups = "drop") |>
+    mutate(operateur = fct_reorder(operateur, moy)) |>
+    ggplot(aes(operateur, moy)) +
+    geom_col() + coord_flip() +
+    labs(x = NULL, y = "Moyenne indicateur", title = titre)
+}
+
+data_hab_plot <- plot_perf(data_hab, "Data – zones habitées : classement opérateurs")
+data_trp_plot <- plot_perf(data_trp, "Data – transports : classement opérateurs")
+
+data_hab_plot
+data_trp_plot
+```
+
+## 5) ITU – Facts & Figures (aperçu)
+
+```{r}
+if (nrow(itu_ff) > 0) {
+  itu_ff |>
+    head(12) |>
+    gt() |>
+    tab_header(title = "ITU – Facts & Figures : aperçu (12 lignes)")
+}
+if (nrow(itu_sum) > 0) {
+  itu_sum |>
+    gt() |>
+    tab_header(title = "ITU – Facts & Figures : résumé")
+}
+```
+
+## 6) Points clés
+
+```{r}
+tibble::tibble(
+  axe   = c("Robustesse","Portabilité","Lecture"),
+  point = c("Lecture sûre + normalisation colonnes + EDA non bloquante",
+            "Chemins relatifs, aucune dépendance locale",
+            "Classements opérateurs, zones à risque, aperçus ITU")
+) |>
+  gt() |>
+  tab_header(title = "Synthèse EDA – points clés")
+```
+
+## 7) Limites & pistes
+
+- Les indicateurs ARCEP recouvrent des natures différentes (taux, délais, radio) : la comparaison nécessite des sous-ensembles homogènes et, idéalement, un **mapping indicateur → catégorie**.
+- Pour la **lecture métier**, construire des **KPI composites** par axe (Voix disponibilité, Data performance, Radio qualité), avec seuils cibles.
+- Intégrer un **contrôle d’anomalies** (z-scores / IQR) pour repérer des valeurs atypiques par opérateur/zone.
+
