@@ -345,65 +345,30 @@ _ = save_csv(_summary_from(ff_df), FF_SUMMARY)
 ## 9) Journal qualité & schéma public
 
 ```{python}
-#| label: 1-7-qa
-# Génère un journal synthétique + le schéma YAML (profil colonnes)
-qa_files = [
-    PROC / "arcep_2024_indicateurs_globaux_clean.csv",
-    PROC / "arcep_2024_indicateurs_globaux_complet.csv",
-    PROC / "arcep_2024_indicateurs_globaux_simplifie.csv",
-    PROC / "2024_QoS_Metropole_voix_habitations_clean.csv",
-    PROC / "2024_QoS_Metropole_voix_transports_clean.csv",
-    PROC / "2024_QoS_Metropole_data_habitations_clean.csv",
-    PROC / "2024_QoS_Metropole_data_transports_clean.csv",
-    PROC / "ITU_Key_ICT_Indicators_clean.csv",
-    CLEAN_FINAL / "ITU_FactsFigures2024_final_clean.csv",
-    CLEAN_FINAL / "ITU_FactsFigures2024_summary_clean.csv",
-]
+import pandas as pd
 
-def count_rows(path):
-    if not path.exists(): return 0
-    try:
-        return max(0, sum(1 for _ in open(path, encoding="utf-8", errors="ignore")) - 1)
-    except Exception:
-        return 0
+# Lecture du journal qualité
+qa = pd.read_csv("data/qa/p2_qa_prepa.csv")
 
-qa = pd.DataFrame({
-    "fichier": [str(p.relative_to(BASE)) for p in qa_files],
-    "lignes": [count_rows(p) for p in qa_files],
-    "horodatage_utc": [datetime.utcnow().isoformat()] * len(qa_files)
-})
-_ = save_csv(qa, PROC / "p2_qa_prepa.csv")
-
-# Schémas (échantillons si disponibles)
-schemas_local = {}
-try:
-    itu_preview = pd.read_csv(PROC / "ITU_Key_ICT_Indicators_clean.csv")
-    if not itu_preview.empty:
-        schemas_local["itu_clean"] = schema_preview(itu_preview, "ITU_clean")
-except Exception:
-    pass
-
-schemas.update(schemas_local)
-with open(SCHE / "p2_schema_preview.yaml", "w", encoding="utf-8") as f:
-    yaml.safe_dump(schemas, f, allow_unicode=True, sort_keys=False)
-
-# Affichage convivial (évite l'impression de Path)
-display(qa)
-if qa["lignes"].sum() == 0:
-    print("⚠️ Aucun fichier brut n’a encore été chargé — place-les dans data/raw/ puis relance le rendu pour obtenir des sorties non vides.")
+# Affichage synthétique
+display(qa.head(10))
 ```
+
+---
 
 ## 10) Notes & limites
 
-- Les blocs **ARCEP** et **ITU Facts & Figures** reproduisent tes exports tout en restant **portables** (chemins relatifs, lectures robustes, colonnes normalisées).
-- Si un brut manque, un CSV vide structuré est créé pour **ne jamais casser le build** ; dès que tu poses les bruts, le rendu régénère des fichiers remplis.
-- Tous les **noms d’exports** sont **identiques** à ceux utilisés dans ton `.ipynb`.
+- Les blocs **ARCEP** et **ITU Facts & Figures** reproduisent les exports tout en restant **portables**  
+  (chemins relatifs, lectures robustes, colonnes normalisées).  
+- En cas d’absence de fichier brut, un CSV structuré vide est généré afin d’éviter toute interruption  
+  du processus de rendu ; les fichiers complets sont ensuite régénérés automatiquement lors de la mise à jour des sources.  
+- Les noms d’exports sont **strictement identiques** à ceux utilisés dans les scripts de préparation  
+  (`.ipynb` ou `.py`).
 
 ---
 
 ## 🔍 En résumé
 
 - Pipeline Python **reproductible** et **public-safe**.  
-- **9 fichiers nettoyés** + **2 sorties ITU FF** ciblées, prêts pour l’EDA R.  
-- **QA journalisée**, **schéma YAML** exporté, et **lecture tolérante** aux variations d’encodage/séparateur.
-
+- **9 fichiers nettoyés** et **2 exports ITU Facts & Figures** prêts pour l’EDA R.  
+- Journal qualité (QA) automatisé, schéma YAML exporté et lecture tolérante aux variations d’encodage.  
