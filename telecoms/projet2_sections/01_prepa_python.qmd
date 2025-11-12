@@ -345,25 +345,63 @@ _ = save_csv(_summary_from(ff_df), FF_SUMMARY)
 ## 9) Journal qualité & schéma public
 
 ```{python}
+#| label: 1-7-qa
+from pathlib import Path
 import pandas as pd
+from datetime import datetime
+from IPython.display import display
+import yaml
 
-# Lecture du journal qualité
-qa = pd.read_csv("data/qa/p2_qa_prepa.csv")
+BASE = Path(".")
+RAW  = BASE / "data" / "raw"
+PROC = BASE / "data" / "processed"
+CLEAN_FINAL = BASE / "data" / "clean_final"
+SCHE = BASE / "schema"
 
-# Affichage synthétique
-display(qa.head(10))
+def count_rows(path: Path) -> int:
+    if not path.exists():
+        return 0
+    try:
+        # lignes de données (en enlevant l'entête)
+        return max(0, sum(1 for _ in open(path, encoding="utf-8", errors="ignore")) - 1)
+    except Exception:
+        return 0
+
+qa_files = [
+    PROC / "arcep_2024_indicateurs_globaux_clean.csv",
+    PROC / "arcep_2024_indicateurs_globaux_complet.csv",
+    PROC / "arcep_2024_indicateurs_globaux_simplifie.csv",
+    PROC / "2024_QoS_Metropole_voix_habitations_clean.csv",
+    PROC / "2024_QoS_Metropole_voix_transports_clean.csv",
+    PROC / "2024_QoS_Metropole_data_habitations_clean.csv",
+    PROC / "2024_QoS_Metropole_data_transports_clean.csv",
+    PROC / "ITU_Key_ICT_Indicators_clean.csv",
+    CLEAN_FINAL / "ITU_FactsFigures2024_final_clean.csv",
+    CLEAN_FINAL / "ITU_FactsFigures2024_summary_clean.csv",
+]
+
+qa = pd.DataFrame({
+    "fichier": [str(p.relative_to(BASE)) for p in qa_files],
+    "lignes": [count_rows(p) for p in qa_files],
+    "horodatage_utc": [datetime.utcnow().isoformat()] * len(qa_files)
+})
+
+# Sauvegarde standardisée (emplacement consistant avec le pipeline)
+qa_out = PROC / "p2_qa_prepa.csv"
+qa_out.parent.mkdir(parents=True, exist_ok=True)
+qa.to_csv(qa_out, index=False)
+
+# Affichage synthétique non-verbeux
+display(qa)
 ```
 
 ---
 
 ## 10) Notes & limites
 
-- Les blocs **ARCEP** et **ITU Facts & Figures** reproduisent les exports tout en restant **portables**  
-  (chemins relatifs, lectures robustes, colonnes normalisées).  
-- En cas d’absence de fichier brut, un CSV structuré vide est généré afin d’éviter toute interruption  
-  du processus de rendu ; les fichiers complets sont ensuite régénérés automatiquement lors de la mise à jour des sources.  
-- Les noms d’exports sont **strictement identiques** à ceux utilisés dans les scripts de préparation  
-  (`.ipynb` ou `.py`).
+- Les blocs **ARCEP** et **ITU Facts & Figures** reproduisent les exports tout en restant **portables** (chemins relatifs, lectures robustes, colonnes normalisées).  
+- En cas d’absence de fichier brut, un CSV structuré vide est généré afin d’éviter toute interruption du processus de rendu ; les fichiers complets sont ensuite régénérés automatiquement lors de la mise à jour des sources.  
+- Les noms d’exports sont **strictement identiques** à ceux utilisés dans les scripts de préparation (`.ipynb` ou `.py`).
 
 ---
 
@@ -371,4 +409,4 @@ display(qa.head(10))
 
 - Pipeline Python **reproductible** et **public-safe**.  
 - **9 fichiers nettoyés** et **2 exports ITU Facts & Figures** prêts pour l’EDA R.  
-- Journal qualité (QA) automatisé, schéma YAML exporté et lecture tolérante aux variations d’encodage.  
+- Journal qualité (QA) automatisé, schéma YAML exporté et lecture tolérante aux variations d’encodage.
