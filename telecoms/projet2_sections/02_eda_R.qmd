@@ -1,6 +1,6 @@
 ---
-title: "P2 – EDA (R) : ARCEP 2024 · ITU · World Bank"
-subtitle: "France 2024 : où se situe la qualité de service mobile face aux standards internationaux ?"
+title: "P2 – EDA (R) : Qualité de service mobile – France 2024"
+subtitle: "ARCEP 2024 · ITU Facts & Figures 2024"
 format:
   html:
     toc: true
@@ -14,10 +14,26 @@ execute:
   message: false
 ---
 
-## 0) Préambule
+## 1. Contexte & portée de l’analyse
+
+Ce document présente l’analyse exploratoire de la qualité de service mobile en France métropolitaine en 2024, à partir :
+
+- des mesures ARCEP (Voix, SMS, Web, Data, vidéo, débits, WhatsApp) ;
+- des mesures détaillées par appel / session data (habitations et transports) ;
+- d’un résumé des jeux de données internationaux ITU Facts & Figures 2024.
+
+L’objectif est de :
+
+- dresser un **profil quantitatif** de la QoS mobile (France 2024) ;
+- comparer les performances selon les **opérateurs** et les **zones** (habitations vs transports) ;
+- préparer le terrain pour un **benchmark international** plus détaillé (France vs standards internationaux).
+
+---
+
+## 2. Chargement des données & contrôle qualité
 
 ```{r}
-# Installation/chargement automatiques (CRAN)
+# 2.1. Chargement des packages ----
 ensure_packages <- function(pkgs) {
   repos <- getOption("repos")
   if (is.null(repos) || identical(repos["CRAN"], "@CRAN@")) {
@@ -36,16 +52,18 @@ ensure_packages(c(
 
 theme_set(ggplot2::theme_minimal(base_size = 13))
 
-# Chemins (relatifs)
-base        <- "."
-proc_dir    <- file.path(base, "data", "processed")
-clean_final <- file.path(base, "data", "clean_final")
+# 2.2. Chemins (relatifs au projet Quarto) ----
+base_dir   <- "."
+proc_dir   <- file.path(base_dir, "data", "processed")
+clean_dir  <- file.path(base_dir, "data", "clean_final")
 
-# Helpers sûrs/portables
+# 2.3. Helpers robustes ----
 read_csv_safe <- function(path, ...) {
   if (!file.exists(path)) return(tibble::tibble())
-  tryCatch(readr::read_csv(path, show_col_types = FALSE, ...),
-           error = function(e) tibble::tibble())
+  tryCatch(
+    readr::read_csv(path, show_col_types = FALSE, ...),
+    error = function(e) tibble::tibble()
+  )
 }
 
 norm_names <- function(df) {
@@ -68,286 +86,504 @@ first_present <- function(candidates, names_vec, default = NA_character_) {
 }
 ```
 
-::: {.callout-note}
-**Entrées attendues** : exports `*_clean.csv` générés par *01_prepa_python.qmd* dans `data/processed/` et `data/clean_final/`.  
-Aucun chemin absolu ; rendu reproductible.
-:::
-
-## 1) Chargements
-
 ```{r}
-# ARCEP – Globaux
+# 2.4. Fichiers utilisés ----
+
+# ARCEP – indicateurs globaux
 f_glob_clean     <- file.path(proc_dir, "arcep_2024_indicateurs_globaux_clean.csv")
 f_glob_complet   <- file.path(proc_dir, "arcep_2024_indicateurs_globaux_complet.csv")
 f_glob_simplifie <- file.path(proc_dir, "arcep_2024_indicateurs_globaux_simplifie.csv")
 
-# ARCEP – Voix / Data (habitations & transports)
+# ARCEP – Voix / Data par mesure individuelle
 f_voix_hab  <- file.path(proc_dir, "2024_QoS_Metropole_voix_habitations_clean.csv")
 f_voix_trp  <- file.path(proc_dir, "2024_QoS_Metropole_voix_transports_clean.csv")
 f_data_hab  <- file.path(proc_dir, "2024_QoS_Metropole_data_habitations_clean.csv")
 f_data_trp  <- file.path(proc_dir, "2024_QoS_Metropole_data_transports_clean.csv")
 
-# ITU – Facts & Figures (final + summary)
-f_itu_ff    <- file.path(clean_final, "ITU_FactsFigures2024_final_clean.csv")
-f_itu_sum   <- file.path(clean_final, "ITU_FactsFigures2024_summary_clean.csv")
+# ITU – Facts & Figures (résumé)
+f_itu_sum   <- file.path(clean_dir, "ITU_FactsFigures2024_summary_clean.csv")
 
-# Lecture (tolérante) + normalisation de noms
-arcep_clean     <- norm_names(read_csv_safe(f_glob_clean))
-arcep_complet   <- norm_names(read_csv_safe(f_glob_complet))
-arcep_simplifie <- norm_names(read_csv_safe(f_glob_simplifie))
+# 2.5. Lecture + normalisation des noms de colonnes ----
+arcep_glob        <- norm_names(read_csv_safe(f_glob_clean))
+arcep_glob_compl  <- norm_names(read_csv_safe(f_glob_complet))
+arcep_glob_simpl  <- norm_names(read_csv_safe(f_glob_simplifie))
 
 voix_hab <- norm_names(read_csv_safe(f_voix_hab))
 voix_trp <- norm_names(read_csv_safe(f_voix_trp))
 data_hab <- norm_names(read_csv_safe(f_data_hab))
 data_trp <- norm_names(read_csv_safe(f_data_trp))
 
-itu_ff   <- norm_names(read_csv_safe(f_itu_ff))
 itu_sum  <- norm_names(read_csv_safe(f_itu_sum))
 ```
 
-### Panneau QA rapide
-
 ```{r}
+# 2.6. Contrôle rapide : fichiers chargés & nombre de lignes ----
 qa_tbl <- tibble::tibble(
-  fichier = c("globaux_clean","globaux_complet","globaux_simplifie",
-              "voix_habitations","voix_transports","data_habitations","data_transports",
-              "itu_ff_final","itu_ff_summary"),
-  lignes  = c(nrow(arcep_clean), nrow(arcep_complet), nrow(arcep_simplifie),
-              nrow(voix_hab), nrow(voix_trp), nrow(data_hab), nrow(data_trp),
-              nrow(itu_ff), nrow(itu_sum))
+  fichier = c(
+    "arcep_2024_indicateurs_globaux_clean",
+    "arcep_2024_indicateurs_globaux_complet",
+    "arcep_2024_indicateurs_globaux_simplifie",
+    "2024_QoS_Metropole_voix_habitations_clean",
+    "2024_QoS_Metropole_voix_transports_clean",
+    "2024_QoS_Metropole_data_habitations_clean",
+    "2024_QoS_Metropole_data_transports_clean",
+    "ITU_FactsFigures2024_summary_clean"
+  ),
+  lignes = c(
+    nrow(arcep_glob),
+    nrow(arcep_glob_compl),
+    nrow(arcep_glob_simpl),
+    nrow(voix_hab),
+    nrow(voix_trp),
+    nrow(data_hab),
+    nrow(data_trp),
+    nrow(itu_sum)
+  )
 )
 
 qa_tbl |>
   gt::gt() |>
   gt::fmt_number(columns = lignes, decimals = 0) |>
-  gt::tab_header(title = "Contrôle rapide des entrées (lignes)")
+  gt::tab_header(title = "Contrôle des entrées – nombre de lignes par fichier")
 ```
 
-## 2) Globaux ARCEP – aperçu
+---
+
+## 3. Vue d’ensemble des indicateurs globaux ARCEP
+
+Cette section exploite les indicateurs agrégés ARCEP par **service** (Voix, SMS, Web, Data, vidéo, etc.) et par **opérateur**.
 
 ```{r}
-if (nrow(arcep_clean) > 0) {
-  val_col <- first_present(c("valeur","value"), names(arcep_clean), "valeur")
+# 3.1. Passage en format long (opérateurs) ----
+arcep_glob_long <- arcep_glob |>
+  dplyr::filter(!is.na(service), !is.na(indicateur)) |>
+  tidyr::pivot_longer(
+    cols = tidyselect::all_of(c("bouygues","free","orange","sfr")),
+    names_to = "operateur",
+    values_to = "valeur"
+  ) |>
+  dplyr::mutate(
+    operateur = dplyr::case_when(
+      operateur == "bouygues" ~ "Bouygues Telecom",
+      operateur == "free"     ~ "Free Mobile",
+      operateur == "orange"   ~ "Orange",
+      operateur == "sfr"      ~ "SFR",
+      TRUE ~ operateur
+    )
+  )
+```
 
-  df <- arcep_clean |>
-    dplyr::mutate(dplyr::across(dplyr::any_of(c("annee","year")), as.integer)) |>
-    dplyr::mutate(mesure = .data[[val_col]])
+### 3.1. Indicateurs clés – toutes zones d’habitation, tous usages
 
-  top_ind <- df |>
-    dplyr::count(indicateur, sort = TRUE, name = "n_mesures") |>
-    dplyr::slice_head(n = 10)
+```{r}
+glob_hab <- arcep_glob_long |>
+  dplyr::filter(
+    lieu_strate == "toutes zones d'habitation",
+    situation   == "tous usages"
+  )
 
-  top_ind |>
+# Vue synthétique : nombre de mesures par service / indicateur
+if (nrow(glob_hab) > 0) {
+  glob_hab |>
+    dplyr::count(service, indicateur, sort = TRUE, name = "n_mesures") |>
+    dplyr::slice_head(n = 15) |>
     gt::gt() |>
     gt::fmt_number(columns = n_mesures, decimals = 0) |>
-    gt::tab_header(title = "Indicateurs les plus présents (Top 10)")
-
-  df |>
-    dplyr::filter(!is.na(operateur), !is.na(mesure)) |>
-    dplyr::group_by(operateur) |>
-    dplyr::summarise(n = dplyr::n(), moyenne = mean(mesure, na.rm = TRUE), .groups = "drop") |>
-    dplyr::arrange(dplyr::desc(moyenne)) |>
-    dplyr::slice_head(n = 10) |>
-    ggplot2::ggplot(ggplot2::aes(x = reorder(operateur, moyenne), y = moyenne)) +
-    ggplot2::geom_col() +
-    ggplot2::coord_flip() +
-    ggplot2::labs(x = NULL, y = "Moyenne (toutes mesures)", title = "Comparatif opérateurs (globaux)")
+    gt::tab_header(title = "Indicateurs les plus représentés (toutes zones d'habitation, tous usages)")
 }
 ```
 
-## 3) Voix – normalisation robuste & zones à risque (si données disponibles)
+### 3.2. Voix – communications réussies & qualité perçue
 
 ```{r}
-# Classification souple des indicateurs Voix
-classify_kpi <- function(s){
-  s <- tolower(s %||% "")
-  dplyr::case_when(
-    stringr::str_detect(s, "delai|délai|setup|etablissement|établissement|time_to_call") ~ "delai_etablissement_appels",
-    stringr::str_detect(s, "coupure|drop|fail|échec|echec|non[ -]?reuss|non[ -]?réuss")   ~ "taux_echec_appels",
-    stringr::str_detect(s, "reuss|réuss|communic")                                       ~ "taux_reussite_appels",
-    TRUE ~ "autre"
-  )
+# Voix – toutes zones d'habitation, tous usages
+glob_voix <- glob_hab |>
+  dplyr::filter(service == "voix")
+
+# a) Taux de communications réussies
+voix_reussite <- glob_voix |>
+  dplyr::filter(stringr::str_detect(indicateur, "communications réussies$"))
+
+if (nrow(voix_reussite) > 0) {
+  voix_reussite |>
+    ggplot2::ggplot(ggplot2::aes(x = operateur, y = valeur, fill = operateur)) +
+    ggplot2::geom_col(show.legend = FALSE) +
+    ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    ggplot2::labs(
+      title = "Voix – taux de communications réussies",
+      subtitle = "Toutes zones d'habitation, tous usages",
+      x = NULL, y = "Taux de communications réussies"
+    )
 }
 
-bind_voix <- function(df){
-  if (nrow(df) == 0) return(tibble::tibble())
+# b) Communications sans perturbations audibles
+voix_sans_pert <- glob_voix |>
+  dplyr::filter(stringr::str_detect(indicateur, "sans perturbations audibles"))
 
-  # garantir indicateur
-  if (!"indicateur" %in% names(df)) df$indicateur <- NA_character_
+if (nrow(voix_sans_pert) > 0) {
+  voix_sans_pert |>
+    ggplot2::ggplot(ggplot2::aes(x = operateur, y = valeur, fill = operateur)) +
+    ggplot2::geom_col(show.legend = FALSE) +
+    ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    ggplot2::labs(
+      title = "Voix – communications réussies sans perturbations audibles",
+      subtitle = "Toutes zones d'habitation, tous usages",
+      x = NULL, y = "Taux de communications sans perturbations"
+    )
+}
 
-  # colonne valeur brute
-  val <- first_present(c("valeur","value"), names(df), NA_character_)
-  if (is.na(val)) return(tibble::tibble())
+# c) MOS moyen (qualité vocale perçue)
+voix_mos <- glob_voix |>
+  dplyr::filter(stringr::str_detect(indicateur, "^mos moyen$"))
 
-  # colonnes opérateurs étalées possibles
-  ops <- intersect(c("bouygues","free","orange","sfr","moyenne"), names(df))
-  if (length(ops) > 0) {
-    df <- df |>
-      tidyr::pivot_longer(tidyselect::all_of(ops), names_to = "operateur", values_to = val)
-  }
+if (nrow(voix_mos) > 0) {
+  voix_mos |>
+    ggplot2::ggplot(ggplot2::aes(x = operateur, y = valeur, fill = operateur)) +
+    ggplot2::geom_col(show.legend = FALSE) +
+    ggplot2::labs(
+      title = "Voix – MOS moyen",
+      subtitle = "Toutes zones d'habitation, tous usages",
+      x = NULL, y = "MOS moyen"
+    )
+}
+```
 
-  # base_val si absente
-  if (!"base_val" %in% names(df)) df$base_val <- 1
+### 3.3. Web & Data – délais de chargement des pages
+
+```{r}
+glob_web <- glob_hab |>
+  dplyr::filter(service == "web")
+
+web_10s <- glob_web |>
+  dplyr::filter(stringr::str_detect(indicateur, "10s"))
+web_5s  <- glob_web |>
+  dplyr::filter(stringr::str_detect(indicateur, "5s"))
+
+if (nrow(web_10s) > 0) {
+  web_10s |>
+    ggplot2::ggplot(ggplot2::aes(x = operateur, y = valeur, fill = operateur)) +
+    ggplot2::geom_col(show.legend = FALSE) +
+    ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    ggplot2::labs(
+      title    = "Web – accès au site en moins de 10s",
+      subtitle = "Toutes zones d'habitation, tous usages",
+      x = NULL, y = "Taux de pages chargées < 10s"
+    )
+}
+
+if (nrow(web_5s) > 0) {
+  web_5s |>
+    ggplot2::ggplot(ggplot2::aes(x = operateur, y = valeur, fill = operateur)) +
+    ggplot2::geom_col(show.legend = FALSE) +
+    ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    ggplot2::labs(
+      title    = "Web – accès au site en moins de 5s",
+      subtitle = "Toutes zones d'habitation, tous usages",
+      x = NULL, y = "Taux de pages chargées < 5s"
+    )
+}
+```
+
+### 3.4. Data – débits (scénario fichier 250 Mo)
+
+```{r}
+glob_dl <- arcep_glob_long |>
+  dplyr::filter(service == "dl250")
+
+if (nrow(glob_dl) > 0) {
+  glob_dl |>
+    dplyr::filter(lieu_strate == "toutes zones d'habitation") |>
+    dplyr::group_by(operateur, indicateur) |>
+    dplyr::summarise(valeur_moy = mean(valeur, na.rm = TRUE), .groups = "drop") |>
+    ggplot2::ggplot(ggplot2::aes(
+      x = operateur, y = valeur_moy, fill = indicateur
+    )) +
+    ggplot2::geom_col(position = "dodge") +
+    ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    ggplot2::labs(
+      title    = "Data – distribution des débits (scénario 250 Mo)",
+      subtitle = "Part des débits > 3 / 8 / 30 Mb/s – toutes zones d'habitation",
+      x = NULL, y = "Part des sessions (%)",
+      fill = "Seuil de débit"
+    )
+}
+```
+
+---
+
+## 4. Analyse Voix détaillée (habitations & transports)
+
+Cette section s’appuie sur les données de mesure par appel (Voix) en métropole, pour analyser :
+
+- le **temps d’établissement d’appel** (`time_to_call`) ;
+- la **qualité vocale** (MOS minimal) ;
+- les différences selon les **opérateurs** et les **types de zones**.
+
+```{r}
+# 4.1. Préparation d'un jeu consolidé Voix ----
+prepare_voix <- function(df, contexte) {
+  if (!is.data.frame(df) || nrow(df) == 0) return(tibble::tibble())
+  needed <- c("call_type","time_to_call","min_mos","zone","zone_name","operator")
+  if (!all(needed %in% names(df))) return(tibble::tibble())
 
   df |>
-    dplyr::mutate(indicateur = dplyr::coalesce(indicateur, "")) |>
-    dplyr::mutate(kpi = classify_kpi(indicateur)) |>
-    dplyr::filter(kpi != "autre") |>
     dplyr::mutate(
-      dplyr::across(dplyr::any_of(c("annee","year")), as.integer),
-      dplyr::across(tidyselect::all_of(val), ~ suppressWarnings(as.numeric(.x))),
-      base_val = suppressWarnings(as.numeric(base_val))
+      contexte = contexte,
+      operateur = dplyr::case_when(
+        stringr::str_detect(call_type, "Orange")   ~ "Orange",
+        stringr::str_detect(call_type, "SFR")      ~ "SFR",
+        stringr::str_detect(call_type, "Bouygues") ~ "Bouygues Telecom",
+        stringr::str_detect(call_type, "Free")     ~ "Free Mobile",
+        TRUE ~ NA_character_
+      ),
+      time_to_call = suppressWarnings(as.numeric(time_to_call)),
+      min_mos      = suppressWarnings(as.numeric(min_mos))
     ) |>
-    dplyr::rename(valeur = tidyselect::all_of(val))
+    dplyr::filter(!is.na(operateur))
 }
 
-voix_raw <- dplyr::bind_rows(bind_voix(voix_hab), bind_voix(voix_trp))
+voix_hab_prep <- prepare_voix(voix_hab, "Habitations")
+voix_trp_prep <- prepare_voix(voix_trp, "Transports")
 
-# Si on n'a pas au moins kpi + valeur, on arrête proprement la section Voix
-if (nrow(voix_raw) == 0 || !"valeur" %in% names(voix_raw) || !"kpi" %in% names(voix_raw)) {
-  voix_scored <- tibble::tibble()
-  voix_kpi    <- tibble::tibble()
-} else {
+voix_all <- dplyr::bind_rows(voix_hab_prep, voix_trp_prep)
+```
 
-  rescale_01 <- function(x){
-    if (all(is.na(x))) return(x)
-    mx <- suppressWarnings(max(x, na.rm = TRUE))
-    if (is.finite(mx) && mx > 1.5) x/100 else x
-  }
+### 4.1. Performances moyennes par opérateur
 
-  voix_scored <- voix_raw |>
-    dplyr::mutate(
-      valeur_reussite = dplyr::if_else(kpi == "taux_reussite_appels", rescale_01(valeur), NA_real_),
-      valeur_echec    = dplyr::if_else(kpi == "taux_echec_appels",    rescale_01(valeur), NA_real_),
-      valeur_delai    = dplyr::if_else(kpi == "delai_etablissement_appels", suppressWarnings(as.numeric(valeur)), NA_real_)
+```{r}
+if (nrow(voix_all) > 0) {
+  synth_voix_op <- voix_all |>
+    dplyr::group_by(contexte, operateur) |>
+    dplyr::summarise(
+      n_appels       = dplyr::n(),
+      pct_ttc_5s     = mean(time_to_call <= 5,  na.rm = TRUE),
+      pct_ttc_10s    = mean(time_to_call <= 10, na.rm = TRUE),
+      mos_median     = stats::median(min_mos, na.rm = TRUE),
+      .groups = "drop"
     )
 
-  loc_col <- first_present(c("lieu_strate","zone","region"), names(voix_scored), NA_character_)
-
-  voix_kpi <- voix_scored |>
-    dplyr::mutate(poids = dplyr::if_else(is.na(base_val) | base_val <= 0, 1, base_val))
-
-  if (!is.na(loc_col)) {
-    voix_kpi <- voix_kpi |>
-      dplyr::group_by(operateur, .data[[loc_col]], kpi) |>
-      dplyr::summarise(
-        p = dplyr::if_else(kpi == "delai_etablissement_appels",
-                  mean(valeur_delai, na.rm = TRUE),
-                  sum(dplyr::coalesce(valeur_reussite, valeur_echec, 0) * poids, na.rm = TRUE) /
-                  sum(poids, na.rm = TRUE)),
-        .groups = "drop"
-      )
-  } else {
-    voix_kpi <- voix_kpi |>
-      dplyr::group_by(operateur, kpi) |>
-      dplyr::summarise(
-        p = dplyr::if_else(kpi == "delai_etablissement_appels",
-                  mean(valeur_delai, na.rm = TRUE),
-                  sum(dplyr::coalesce(valeur_reussite, valeur_echec, 0) * poids, na.rm = TRUE) /
-                  sum(poids, na.rm = TRUE)),
-        .groups = "drop"
-      )
-  }
-
-  # Classement opérateurs – réussite moyenne
-  if (nrow(voix_kpi) > 0) {
-    df_rank <- voix_kpi |>
-      dplyr::filter(kpi == "taux_reussite_appels") |>
-      dplyr::group_by(operateur) |>
-      dplyr::summarise(score = mean(p, na.rm = TRUE), .groups = "drop")
-    if (nrow(df_rank) > 0) {
-      df_rank |>
-        dplyr::mutate(operateur = forcats::fct_reorder(operateur, score)) |>
-        ggplot2::ggplot(ggplot2::aes(operateur, score)) +
-        ggplot2::geom_col() + ggplot2::coord_flip() +
-        ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-        ggplot2::labs(x = NULL, y = "Taux de réussite moyen", title = "Voix — classement opérateurs (moyenne)")
-    }
-  }
-
-  # Zones à risque (si localisation dispo)
-  if (!is.na(loc_col) && nrow(voix_scored) > 0) {
-    seuil_r <- 0.95; seuil_e <- 0.02
-    voix_flags <- voix_scored |>
-      dplyr::transmute(operateur, loc = .data[[loc_col]],
-                       ok   = valeur_reussite,
-                       fail = valeur_echec,
-                       poids = dplyr::if_else(is.na(base_val) | base_val <= 0, 1, base_val)) |>
-      dplyr::group_by(operateur, loc) |>
-      dplyr::summarise(p_ok = sum(ok*poids, na.rm=TRUE)/sum(poids,na.rm=TRUE),
-                       p_f  = sum(fail*poids, na.rm=TRUE)/sum(poids,na.rm=TRUE),
-                       .groups="drop") |>
-      dplyr::mutate(flag = (is.finite(p_ok) & p_ok < seuil_r) | (is.finite(p_f) & p_f > seuil_e))
-
-    if (nrow(voix_flags) > 0) {
-      voix_flags %>%
-        dplyr::filter(flag) %>%
-        dplyr::count(loc, sort = TRUE, name = "nb_alertes") %>%
-        dplyr::slice_head(n = 15) %>%
-        ggplot2::ggplot(ggplot2::aes(x = reorder(loc, nb_alertes), y = nb_alertes)) +
-        ggplot2::geom_col() + ggplot2::coord_flip() +
-        ggplot2::labs(x = NULL, y = "Nombre d'alertes", title = "Voix — Top 15 zones à risque")
-    }
-  }
+  synth_voix_op |>
+    dplyr::arrange(contexte, dplyr::desc(pct_ttc_5s)) |>
+    gt::gt(rowname_col = "operateur") |>
+    gt::fmt_number(columns = c(pct_ttc_5s, pct_ttc_10s), decimals = 3) |>
+    gt::fmt_percent(columns = c(pct_ttc_5s, pct_ttc_10s), decimals = 1) |>
+    gt::fmt_number(columns = mos_median, decimals = 2) |>
+    gt::tab_header(title = "Voix – indicateurs de performance par opérateur et contexte")
 }
 ```
 
-## 4) Data – comparatifs opérateurs
+```{r}
+# Visualisation : temps d'établissement d'appel < 5s
+if (nrow(voix_all) > 0) {
+  voix_all |>
+    dplyr::mutate(ttc_5s = time_to_call <= 5) |>
+    dplyr::group_by(contexte, operateur) |>
+    dplyr::summarise(pct_ttc_5s = mean(ttc_5s, na.rm = TRUE), .groups = "drop") |>
+    ggplot2::ggplot(ggplot2::aes(x = operateur, y = pct_ttc_5s, fill = operateur)) +
+    ggplot2::geom_col(show.legend = FALSE) +
+    ggplot2::facet_wrap(~contexte) +
+    ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    ggplot2::labs(
+      title = "Voix – part des appels établis en moins de 5s",
+      x = NULL, y = "Part des appels (≤ 5s)"
+    )
+}
+```
+
+### 4.2. Zones à enjeu – qualité vocale (MOS)
 
 ```{r}
-plot_perf <- function(df, titre){
-  if (nrow(df) == 0) return(NULL)
-  val <- first_present(c("valeur","value"), names(df), NA_character_)
-  if (is.na(val)) return(NULL)
+if (nrow(voix_all) > 0) {
+  voix_zones <- voix_all |>
+    dplyr::group_by(contexte, zone, zone_name, operateur) |>
+    dplyr::summarise(
+      n_appels   = dplyr::n(),
+      mos_moyen  = mean(min_mos, na.rm = TRUE),
+      .groups    = "drop"
+    ) |>
+    dplyr::filter(n_appels >= 30)  # seuil minimal de robustesse
+
+  # Top 15 zones les plus fragiles (MOS moyen le plus faible)
+  voix_zones |>
+    dplyr::arrange(mos_moyen) |>
+    dplyr::slice_head(n = 15) |>
+    gt::gt() |>
+    gt::fmt_number(columns = c(n_appels, mos_moyen), decimals = 2) |>
+    gt::tab_header(title = "Voix – zones à enjeu (MOS moyen le plus faible, n_appels ≥ 30)")
+}
+```
+
+---
+
+## 5. Analyse Data détaillée (habitations & transports)
+
+Pour la Data, l’analyse s’appuie sur les indicateurs de :
+
+- temps de chargement des pages (`loaded_in_less_5_secondes`, `loaded_in_less_10_secondes`) ;
+- perception de la qualité (`quality_correct`, `quality_perfect`) ;
+- succès des transferts upload (`upload_ok`).
+
+```{r}
+prepare_data_hab <- function(df) {
+  if (!is.data.frame(df) || nrow(df) == 0) return(tibble::tibble())
+  needed <- c("operator","zone","zone_name",
+              "loaded_in_less_5_secondes","loaded_in_less_10_secondes",
+              "quality_correct","quality_perfect","upload_ok")
+  if (!all(needed %in% names(df))) return(tibble::tibble())
 
   df |>
-    dplyr::filter(!is.na(operateur), !is.na(.data[[val]])) |>
-    dplyr::group_by(operateur) |>
-    dplyr::summarise(moy = mean(.data[[val]], na.rm = TRUE), .groups = "drop") |>
-    dplyr::mutate(operateur = forcats::fct_reorder(operateur, moy)) |>
-    ggplot2::ggplot(ggplot2::aes(operateur, moy)) +
-    ggplot2::geom_col() + ggplot2::coord_flip() +
-    ggplot2::labs(x = NULL, y = "Moyenne indicateur", title = titre)
+    dplyr::mutate(
+      contexte  = "Habitations",
+      operateur = dplyr::case_when(
+        stringr::str_detect(operator, "Orange")   ~ "Orange",
+        stringr::str_detect(operator, "SFR")      ~ "SFR",
+        stringr::str_detect(operator, "Bouygues") ~ "Bouygues Telecom",
+        stringr::str_detect(operator, "Free")     ~ "Free Mobile",
+        TRUE ~ NA_character_
+      ),
+      loaded_5s  = suppressWarnings(as.numeric(loaded_in_less_5_secondes))  > 0,
+      loaded_10s = suppressWarnings(as.numeric(loaded_in_less_10_secondes)) > 0,
+      qual_corr  = suppressWarnings(as.numeric(quality_correct))            > 0,
+      qual_perf  = suppressWarnings(as.numeric(quality_perfect))            > 0,
+      upload_ok  = suppressWarnings(as.numeric(upload_ok))                  > 0
+    ) |>
+    dplyr::filter(!is.na(operateur))
 }
 
-data_hab_plot <- plot_perf(data_hab, "Data – zones habitées : classement opérateurs")
-data_trp_plot <- plot_perf(data_trp, "Data – transports : classement opérateurs")
+prepare_data_trp <- function(df) {
+  if (!is.data.frame(df) || nrow(df) == 0) return(tibble::tibble())
+  needed <- c("operator","axis","axis_name",
+              "loaded_in_less_5_secondes","loaded_in_less_10_secondes")
+  if (!all(needed %in% names(df))) return(tibble::tibble())
 
-data_hab_plot
-data_trp_plot
+  df |>
+    dplyr::mutate(
+      contexte  = "Transports",
+      zone      = axis,
+      zone_name = axis_name,
+      operateur = dplyr::case_when(
+        stringr::str_detect(operator, "Orange")   ~ "Orange",
+        stringr::str_detect(operator, "SFR")      ~ "SFR",
+        stringr::str_detect(operator, "Bouygues") ~ "Bouygues Telecom",
+        stringr::str_detect(operator, "Free")     ~ "Free Mobile",
+        TRUE ~ NA_character_
+      ),
+      loaded_5s  = suppressWarnings(as.numeric(loaded_in_less_5_secondes))  > 0,
+      loaded_10s = suppressWarnings(as.numeric(loaded_in_less_10_secondes)) > 0,
+      qual_corr  = NA,
+      qual_perf  = NA,
+      upload_ok  = NA
+    ) |>
+    dplyr::filter(!is.na(operateur))
+}
+
+data_hab_prep <- prepare_data_hab(data_hab)
+data_trp_prep <- prepare_data_trp(data_trp)
+
+data_all <- dplyr::bind_rows(data_hab_prep, data_trp_prep)
 ```
 
-## 5) ITU – Facts & Figures (aperçu)
+### 5.1. Performances moyennes par opérateur
 
 ```{r}
-if (nrow(itu_ff) > 0) {
-  itu_ff |>
-    dplyr::slice_head(n = 12) |>
-    gt::gt() |>
-    gt::tab_header(title = "ITU – Facts & Figures : aperçu (12 lignes)")
+if (nrow(data_all) > 0) {
+  synth_data_op <- data_all |>
+    dplyr::group_by(contexte, operateur) |>
+    dplyr::summarise(
+      n_sessions   = dplyr::n(),
+      pct_5s       = mean(loaded_5s,  na.rm = TRUE),
+      pct_10s      = mean(loaded_10s, na.rm = TRUE),
+      pct_qual_corr= mean(qual_corr,  na.rm = TRUE),
+      pct_qual_perf= mean(qual_perf,  na.rm = TRUE),
+      pct_upload_ok= mean(upload_ok,  na.rm = TRUE),
+      .groups      = "drop"
+    )
+
+  synth_data_op |>
+    gt::gt(rowname_col = "operateur") |>
+    gt::fmt_number(columns = n_sessions, decimals = 0) |>
+    gt::fmt_percent(columns = c(pct_5s,pct_10s,pct_qual_corr,pct_qual_perf,pct_upload_ok),
+                    decimals = 1) |>
+    gt::tab_header(title = "Data – indicateurs de performance par opérateur et contexte")
 }
+```
+
+```{r}
+# Visualisation : part des pages chargées en moins de 5s
+if (nrow(data_all) > 0) {
+  data_all |>
+    dplyr::group_by(contexte, operateur) |>
+    dplyr::summarise(pct_5s = mean(loaded_5s, na.rm = TRUE), .groups = "drop") |>
+    ggplot2::ggplot(ggplot2::aes(x = operateur, y = pct_5s, fill = operateur)) +
+    ggplot2::geom_col(show.legend = FALSE) +
+    ggplot2::facet_wrap(~contexte) +
+    ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    ggplot2::labs(
+      title = "Data – part des pages chargées en moins de 5s",
+      x = NULL, y = "Part des sessions (≤ 5s)"
+    )
+}
+```
+
+### 5.2. Zones & axes à enjeu
+
+```{r}
+if (nrow(data_all) > 0) {
+  data_zones <- data_all |>
+    dplyr::group_by(contexte, zone, zone_name, operateur) |>
+    dplyr::summarise(
+      n_sessions = dplyr::n(),
+      pct_5s     = mean(loaded_5s,  na.rm = TRUE),
+      pct_10s    = mean(loaded_10s, na.rm = TRUE),
+      .groups    = "drop"
+    ) |>
+    dplyr::filter(n_sessions >= 50)
+
+  data_zones |>
+    dplyr::arrange(pct_5s) |>
+    dplyr::slice_head(n = 20) |>
+    gt::gt() |>
+    gt::fmt_number(columns = c(n_sessions, pct_5s, pct_10s), decimals = 3) |>
+    gt::fmt_percent(columns = c(pct_5s, pct_10s), decimals = 1) |>
+    gt::tab_header(title = "Data – zones et axes à enjeu (part de pages ≤ 5s la plus faible)")
+}
+```
+
+---
+
+## 6. ITU Facts & Figures 2024 – synthèse des jeux de données
+
+Les fichiers ITU Facts & Figures 2024 permettent de replacer la situation française dans un contexte international (couverture mobile, usage d’Internet, propriété d’équipements, capacité internationale, etc.).
+
+```{r}
 if (nrow(itu_sum) > 0) {
   itu_sum |>
     gt::gt() |>
-    gt::tab_header(title = "ITU – Facts & Figures : résumé")
+    gt::fmt_number(columns = c(lignes, annees_min, annees_max, pays_regions, zones),
+                   decimals = 0) |>
+    gt::tab_header(title = "ITU Facts & Figures 2024 – synthèse des jeux de données disponibles")
 }
 ```
 
-## 6) Points clés
+---
 
-```{r}
-tibble::tibble(
-  axe   = c("Robustesse","Portabilité","Lecture"),
-  point = c("Lecture sûre + normalisation colonnes + EDA non bloquante",
-            "Chemins relatifs, aucune dépendance locale",
-            "Classements opérateurs, zones à risque (si données disponibles), aperçus ITU")
-) |>
-  gt::gt() |>
-  gt::tab_header(title = "Synthèse EDA – points clés")
-```
+## 7. Points clés (résumé exécutif)
 
-## 7) Limites & pistes
+- **Voix – niveau global élevé**, avec des taux de communications réussies et des MOS moyens très élevés, mais des **écarts subsistent entre opérateurs** et notamment entre contextes *Habitation* et *Transports*.
+- **Data – expérience de navigation** : la majorité des pages se charge en moins de 10 secondes, mais l’objectif de **chargement systématique ≤ 5 secondes** n’est pas encore atteint partout, en particulier sur certains **axes de transport**.
+- Les analyses par **zones / axes** mettent en évidence des **poches de fragilité**, où la qualité vocale (MOS) et/ou les temps de chargement sont inférieurs à la moyenne.
+- Les jeux de données **ITU Facts & Figures 2024** offrent un cadre pour **positionner la France** par rapport à d’autres pays sur des indicateurs de couverture, d’usage et de capacité internationale.
 
-- Les indicateurs ARCEP recouvrent des natures différentes (taux, délais, radio) : la comparaison nécessite des sous-ensembles homogènes et, idéalement, un **mapping indicateur → catégorie**.
-- Pour la **lecture métier**, construire des **KPI composites** par axe (Voix disponibilité, Data performance, Radio qualité), avec seuils cibles.
-- Intégrer un **contrôle d’anomalies** (z-scores / IQR) pour repérer des valeurs atypiques par opérateur/zone.
+---
+
+## 8. Limites & pistes de prolongement
+
+- Les indicateurs globaux ARCEP agrègent des mesures de nature différente (taux, délais, niveaux radio). Une étape complémentaire consisterait à **structurer un dictionnaire de KPI** par axe (Voix, Data, Radio) et à définir des **indices composites** par opérateur.
+- Les analyses par zones / axes sont ici limitées à des **agrégations simples** (moyennes, proportions) ; elles peuvent être complétées par :
+  - des **analyses de tendance** (heure, jour, saison) ;
+  - des **analyses d’anomalies** (détection de valeurs atypiques par opérateur / zone).
+- L’intégration détaillée des données ITU, World Bank et autres sources internationales permettra de construire un **benchmark complet** : France vs moyenne UE, OCDE, pays leaders en QoS mobile.
+- Cet EDA constitue ainsi une **base technique structurée** pour alimenter :
+  - un **rapport de synthèse métier**,
+  - des **dashboards interactifs** (par exemple opérateur / zone / indicateur),
+  - et des **recommandations opérationnelles** (priorisation des zones à optimiser).
