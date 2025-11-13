@@ -17,10 +17,10 @@ execute:
 ## 0) Préambule
 
 ```{r}
-# Installation auto des packages manquants (CRAN)
+# Installation/chargement automatiques (CRAN)
 ensure_packages <- function(pkgs) {
   repos <- getOption("repos")
-  if (is.null(repos) || repos["CRAN"] == "@CRAN@") {
+  if (is.null(repos) || identical(repos["CRAN"], "@CRAN@")) {
     options(repos = c(CRAN = "https://cloud.r-project.org"))
   }
   to_install <- pkgs[!pkgs %in% installed.packages()[,"Package"]]
@@ -30,16 +30,18 @@ ensure_packages <- function(pkgs) {
 
 ensure_packages(c(
   "readr","readxl","dplyr","tidyr","stringr","forcats",
-  "ggplot2","gt","janitor","purrr","tibble","scales"
+  "ggplot2","gt","janitor","purrr","tibble","scales",
+  "rlang","tidyselect"
 ))
 
 theme_set(ggplot2::theme_minimal(base_size = 13))
 
+# Chemins (relatifs)
 base        <- "."
 proc_dir    <- file.path(base, "data", "processed")
 clean_final <- file.path(base, "data", "clean_final")
 
-# Helpers sûrs
+# Helpers sûrs/portables
 read_csv_safe <- function(path, ...) {
   if (!file.exists(path)) return(tibble::tibble())
   tryCatch(readr::read_csv(path, show_col_types = FALSE, ...),
@@ -56,8 +58,11 @@ norm_names <- function(df) {
       stringr::str_replace("^_|_$",""))
 }
 
-# Renvoie le premier nom présent parmi 'candidates' ou 'default'
-first_present <- function(candidates, names_vec, default) {
+# Coalescence et sélection robuste de colonnes
+`%||%` <- function(a, b) {
+  if (is.null(a) || (is.atomic(a) && length(a) == 0) || (length(a) == 1 && is.na(a))) b else a
+}
+first_present <- function(candidates, names_vec, default = NA_character_) {
   x <- intersect(candidates, names_vec)
   if (length(x) > 0) x[[1]] else default
 }
@@ -86,6 +91,7 @@ f_data_trp  <- file.path(proc_dir, "2024_QoS_Metropole_data_transports_clean.csv
 f_itu_ff    <- file.path(clean_final, "ITU_FactsFigures2024_final_clean.csv")
 f_itu_sum   <- file.path(clean_final, "ITU_FactsFigures2024_summary_clean.csv")
 
+# Lecture (tolérante) + normalisation de noms
 arcep_clean     <- norm_names(read_csv_safe(f_glob_clean))
 arcep_complet   <- norm_names(read_csv_safe(f_glob_complet))
 arcep_simplifie <- norm_names(read_csv_safe(f_glob_simplifie))
@@ -124,7 +130,7 @@ if (nrow(arcep_clean) > 0) {
   val_col <- first_present(c("valeur","value"), names(arcep_clean), "valeur")
 
   df <- arcep_clean |>
-    dplyr::mutate(dplyr::across(dplyr::any_of(c("annee","year")), as.integer)) |>
+    dplyr::mutate(dplyr::across(dplyselect::any_of(c("annee","year")), as.integer)) |>
     dplyr::mutate(mesure = .data[[val_col]])
 
   top_ind <- df |>
@@ -152,6 +158,7 @@ if (nrow(arcep_clean) > 0) {
 ## 3) Voix – normalisation, KPI & zones à risque
 
 ```{r}
+# Classification souple des indicateurs Voix
 classify_kpi <- function(s){
   s <- tolower(s %||% "")
   dplyr::case_when(
@@ -162,9 +169,7 @@ classify_kpi <- function(s){
   )
 }
 
-# remplace l'opérateur %||% (rlang) par une fonction locale
-`%||%` <- function(a, b) if (is.null(a) || (is.character(a) && length(a) == 0)) b else a
-
+# Pivot/standardisation Voix (si colonnes opérateurs étalées)
 bind_voix <- function(df){
   if (nrow(df) == 0) return(tibble::tibble())
   val <- first_present(c("valeur","value"), names(df), NA_character_)
@@ -190,6 +195,7 @@ bind_voix <- function(df){
 
 voix_raw <- dplyr::bind_rows(bind_voix(voix_hab), bind_voix(voix_trp))
 
+# Rescaling simple [0..100] -> [0..1]
 rescale_01 <- function(x){
   if (all(is.na(x))) return(x)
   mx <- suppressWarnings(max(x, na.rm = TRUE))
@@ -203,51 +209,73 @@ voix_scored <- voix_raw |>
     valeur_delai    = dplyr::if_else(kpi == "delai_etablissement_appels", suppressWarnings(as.numeric(valeur)), NA_real_)
   )
 
+# Choix dynamique de la localisation (si absente, agrégation nationale)
+loc_col <- first_present(c("lieu_strate","zone","region"), names(voix_scored), NA_character_)
+
 voix_kpi <- voix_scored |>
-  dplyr::mutate(poids = dplyr::if_else(is.na(base_val) | base_val <= 0, 1, base_val)) |>
-  dplyr::group_by(operateur, lieu_strate, kpi) |>
-  dplyr::summarise(
-    p = dplyr::if_else(kpi == "delai_etablissement_appels",
+  dplyr::mutate(poids = dplyr::if_else(is.na(base_val) | base_val <= 0, 1, base_val))
+
+if (!is.na(loc_col)) {
+  voix_kpi <- voix_kpi |>
+    dplyr::group_by(operateur, .data[[loc_col]], kpi) |>
+    dplyr::summarise(
+      p = dplyr::if_else(kpi == "delai_etablissement_appels",
                 mean(valeur_delai, na.rm = TRUE),
                 sum(dplyr::coalesce(valeur_reussite, valeur_echec, 0) * poids, na.rm = TRUE) /
                 sum(poids, na.rm = TRUE)),
-    .groups = "drop"
-  )
-
-# Classement opérateurs – réussite moyenne
-if (nrow(voix_kpi) > 0) {
-  voix_kpi |>
-    dplyr::filter(kpi == "taux_reussite_appels") |>
-    dplyr::group_by(operateur) |>
-    dplyr::summarise(score = mean(p, na.rm = TRUE), .groups = "drop") |>
-    dplyr::mutate(operateur = forcats::fct_reorder(operateur, score)) |>
-    ggplot2::ggplot(ggplot2::aes(operateur, score)) +
-    ggplot2::geom_col() + ggplot2::coord_flip() +
-    ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-    ggplot2::labs(x = NULL, y = "Taux de réussite moyen", title = "Voix — classement opérateurs (moyenne)")
+      .groups = "drop"
+    )
+} else {
+  voix_kpi <- voix_kpi |>
+    dplyr::group_by(operateur, kpi) |>
+    dplyr::summarise(
+      p = dplyr::if_else(kpi == "delai_etablissement_appels",
+                mean(valeur_delai, na.rm = TRUE),
+                sum(dplyr::coalesce(valeur_reussite, valeur_echec, 0) * poids, na.rm = TRUE) /
+                sum(poids, na.rm = TRUE)),
+      .groups = "drop"
+    )
 }
 
-# Zones à risque (ex. réussite < 95% ou échec > 2%)
-if (nrow(voix_scored) > 0) {
+# Classement opérateurs – réussite moyenne (si dispo)
+if (nrow(voix_kpi) > 0) {
+  df_rank <- voix_kpi |>
+    dplyr::filter(kpi == "taux_reussite_appels") |>
+    dplyr::group_by(operateur) |>
+    dplyr::summarise(score = mean(p, na.rm = TRUE), .groups = "drop")
+  if (nrow(df_rank) > 0) {
+    df_rank |>
+      dplyr::mutate(operateur = forcats::fct_reorder(operateur, score)) |>
+      ggplot2::ggplot(ggplot2::aes(operateur, score)) +
+      ggplot2::geom_col() + ggplot2::coord_flip() +
+      ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+      ggplot2::labs(x = NULL, y = "Taux de réussite moyen", title = "Voix — classement opérateurs (moyenne)")
+  }
+}
+
+# Zones à risque (ex. réussite < 95% ou échec > 2%), si colonnes disponibles
+if (!is.na(loc_col) && nrow(voix_scored) > 0) {
   seuil_r <- 0.95; seuil_e <- 0.02
   voix_flags <- voix_scored |>
-    dplyr::transmute(operateur, lieu_strate,
+    dplyr::transmute(operateur, loc = .data[[loc_col]],
                      ok   = valeur_reussite,
                      fail = valeur_echec,
                      poids = dplyr::if_else(is.na(base_val) | base_val <= 0, 1, base_val)) |>
-    dplyr::group_by(operateur, lieu_strate) |>
+    dplyr::group_by(operateur, loc) |>
     dplyr::summarise(p_ok = sum(ok*poids, na.rm=TRUE)/sum(poids,na.rm=TRUE),
                      p_f  = sum(fail*poids,na.rm=TRUE)/sum(poids,na.rm=TRUE),
                      .groups="drop") |>
     dplyr::mutate(flag = (is.finite(p_ok) & p_ok < seuil_r) | (is.finite(p_f) & p_f > seuil_e))
 
-  voix_flags %>%
-    dplyr::filter(flag) %>%
-    dplyr::count(lieu_strate, sort = TRUE, name = "nb_alertes") %>%
-    dplyr::slice_head(n = 15) %>%
-    ggplot2::ggplot(ggplot2::aes(x = reorder(lieu_strate, nb_alertes), y = nb_alertes)) +
-    ggplot2::geom_col() + ggplot2::coord_flip() +
-    ggplot2::labs(x = NULL, y = "Nombre d'alertes", title = "Voix — Top 15 zones à risque")
+  if (nrow(voix_flags) > 0) {
+    voix_flags %>%
+      dplyr::filter(flag) %>%
+      dplyr::count(loc, sort = TRUE, name = "nb_alertes") %>%
+      dplyr::slice_head(n = 15) %>%
+      ggplot2::ggplot(ggplot2::aes(x = reorder(loc, nb_alertes), y = nb_alertes)) +
+      ggplot2::geom_col() + ggplot2::coord_flip() +
+      ggplot2::labs(x = NULL, y = "Nombre d'alertes", title = "Voix — Top 15 zones à risque")
+  }
 }
 ```
 
@@ -308,5 +336,5 @@ tibble::tibble(
 ## 7) Limites & pistes
 
 - Les indicateurs ARCEP recouvrent des natures différentes (taux, délais, radio) : la comparaison nécessite des sous-ensembles homogènes et, idéalement, un **mapping indicateur → catégorie**.
-- Pour la **lecture métier**, construire des **KPI composites** par axe (Voix disponibilité, Data performance, Radio qualité), avec seuils cibles.
+- Pour une **lecture métier**, construire des **KPI composites** par axe (Voix disponibilité, Data performance, Radio qualité), avec seuils cibles.
 - Intégrer un **contrôle d’anomalies** (z-scores / IQR) pour repérer des valeurs atypiques par opérateur/zone.
