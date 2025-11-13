@@ -58,10 +58,10 @@ norm_names <- function(df) {
       stringr::str_replace("^_|_$",""))
 }
 
-# Coalescence et choix robuste de colonnes
 `%||%` <- function(a, b) {
   if (is.null(a) || (is.atomic(a) && length(a) == 0) || (length(a) == 1 && is.na(a))) b else a
 }
+
 first_present <- function(candidates, names_vec, default = NA_character_) {
   x <- intersect(candidates, names_vec)
   if (length(x) > 0) x[[1]] else default
@@ -155,7 +155,7 @@ if (nrow(arcep_clean) > 0) {
 }
 ```
 
-## 3) Voix – normalisation, KPI & zones à risque
+## 3) Voix – normalisation robuste & zones à risque (si données disponibles)
 
 ```{r}
 # Classification souple des indicateurs Voix
@@ -169,21 +169,25 @@ classify_kpi <- function(s){
   )
 }
 
-# Pivot/standardisation Voix
 bind_voix <- function(df){
   if (nrow(df) == 0) return(tibble::tibble())
-  # Garantir indicateur
+
+  # garantir indicateur
   if (!"indicateur" %in% names(df)) df$indicateur <- NA_character_
-  # Trouver la colonne valeur (valeur/value)
+
+  # colonne valeur brute
   val <- first_present(c("valeur","value"), names(df), NA_character_)
   if (is.na(val)) return(tibble::tibble())
 
-  # Cas colonnes opérateurs étalées
+  # colonnes opérateurs étalées possibles
   ops <- intersect(c("bouygues","free","orange","sfr","moyenne"), names(df))
   if (length(ops) > 0) {
     df <- df |>
       tidyr::pivot_longer(tidyselect::all_of(ops), names_to = "operateur", values_to = val)
   }
+
+  # base_val si absente
+  if (!"base_val" %in% names(df)) df$base_val <- 1
 
   df |>
     dplyr::mutate(indicateur = dplyr::coalesce(indicateur, "")) |>
@@ -192,96 +196,98 @@ bind_voix <- function(df){
     dplyr::mutate(
       dplyr::across(dplyr::any_of(c("annee","year")), as.integer),
       dplyr::across(tidyselect::all_of(val), ~ suppressWarnings(as.numeric(.x))),
-      base_val = suppressWarnings(as.numeric(dplyr::coalesce(base_val, 1)))
+      base_val = suppressWarnings(as.numeric(base_val))
     ) |>
     dplyr::rename(valeur = tidyselect::all_of(val))
 }
 
 voix_raw <- dplyr::bind_rows(bind_voix(voix_hab), bind_voix(voix_trp))
 
-# Si malgré tout kpi absent (datasets vides), le créer pour éviter erreurs
-if (!"kpi" %in% names(voix_raw)) voix_raw$kpi <- "autre"
-
-# Rescaling simple [0..100] -> [0..1]
-rescale_01 <- function(x){
-  if (all(is.na(x))) return(x)
-  mx <- suppressWarnings(max(x, na.rm = TRUE))
-  if (is.finite(mx) && mx > 1.5) x/100 else x
-}
-
-voix_scored <- voix_raw |>
-  dplyr::mutate(
-    valeur_reussite = dplyr::if_else(kpi == "taux_reussite_appels", rescale_01(valeur), NA_real_),
-    valeur_echec    = dplyr::if_else(kpi == "taux_echec_appels",    rescale_01(valeur), NA_real_),
-    valeur_delai    = dplyr::if_else(kpi == "delai_etablissement_appels", suppressWarnings(as.numeric(valeur)), NA_real_)
-  )
-
-# Choix dynamique de la localisation (si absente, agrégation nationale)
-loc_col <- first_present(c("lieu_strate","zone","region"), names(voix_scored), NA_character_)
-
-voix_kpi <- voix_scored |>
-  dplyr::mutate(poids = dplyr::if_else(is.na(base_val) | base_val <= 0, 1, base_val))
-
-if (!is.na(loc_col)) {
-  voix_kpi <- voix_kpi |>
-    dplyr::group_by(operateur, .data[[loc_col]], kpi) |>
-    dplyr::summarise(
-      p = dplyr::if_else(kpi == "delai_etablissement_appels",
-                mean(valeur_delai, na.rm = TRUE),
-                sum(dplyr::coalesce(valeur_reussite, valeur_echec, 0) * poids, na.rm = TRUE) /
-                sum(poids, na.rm = TRUE)),
-      .groups = "drop"
-    )
+# Si on n'a pas au moins kpi + valeur, on arrête proprement la section Voix
+if (nrow(voix_raw) == 0 || !"valeur" %in% names(voix_raw) || !"kpi" %in% names(voix_raw)) {
+  voix_scored <- tibble::tibble()
+  voix_kpi    <- tibble::tibble()
 } else {
-  voix_kpi <- voix_kpi |>
-    dplyr::group_by(operateur, kpi) |>
-    dplyr::summarise(
-      p = dplyr::if_else(kpi == "delai_etablissement_appels",
-                mean(valeur_delai, na.rm = TRUE),
-                sum(dplyr::coalesce(valeur_reussite, valeur_echec, 0) * poids, na.rm = TRUE) /
-                sum(poids, na.rm = TRUE)),
-      .groups = "drop"
-    )
-}
 
-# Classement opérateurs – réussite moyenne (si dispo)
-if (nrow(voix_kpi) > 0) {
-  df_rank <- voix_kpi |>
-    dplyr::filter(kpi == "taux_reussite_appels") |>
-    dplyr::group_by(operateur) |>
-    dplyr::summarise(score = mean(p, na.rm = TRUE), .groups = "drop")
-  if (nrow(df_rank) > 0) {
-    df_rank |>
-      dplyr::mutate(operateur = forcats::fct_reorder(operateur, score)) |>
-      ggplot2::ggplot(ggplot2::aes(operateur, score)) +
-      ggplot2::geom_col() + ggplot2::coord_flip() +
-      ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-      ggplot2::labs(x = NULL, y = "Taux de réussite moyen", title = "Voix — classement opérateurs (moyenne)")
+  rescale_01 <- function(x){
+    if (all(is.na(x))) return(x)
+    mx <- suppressWarnings(max(x, na.rm = TRUE))
+    if (is.finite(mx) && mx > 1.5) x/100 else x
   }
-}
 
-# Zones à risque (ex. réussite < 95% ou échec > 2%), si colonnes disponibles
-if (!is.na(loc_col) && nrow(voix_scored) > 0) {
-  seuil_r <- 0.95; seuil_e <- 0.02
-  voix_flags <- voix_scored |>
-    dplyr::transmute(operateur, loc = .data[[loc_col]],
-                     ok   = valeur_reussite,
-                     fail = valeur_echec,
-                     poids = dplyr::if_else(is.na(base_val) | base_val <= 0, 1, base_val)) |>
-    dplyr::group_by(operateur, loc) |>
-    dplyr::summarise(p_ok = sum(ok*poids, na.rm=TRUE)/sum(poids,na.rm=TRUE),
-                     p_f  = sum(fail*poids, na.rm=TRUE)/sum(poids,na.rm=TRUE),
-                     .groups="drop") |>
-    dplyr::mutate(flag = (is.finite(p_ok) & p_ok < seuil_r) | (is.finite(p_f) & p_f > seuil_e))
+  voix_scored <- voix_raw |>
+    dplyr::mutate(
+      valeur_reussite = dplyr::if_else(kpi == "taux_reussite_appels", rescale_01(valeur), NA_real_),
+      valeur_echec    = dplyr::if_else(kpi == "taux_echec_appels",    rescale_01(valeur), NA_real_),
+      valeur_delai    = dplyr::if_else(kpi == "delai_etablissement_appels", suppressWarnings(as.numeric(valeur)), NA_real_)
+    )
 
-  if (nrow(voix_flags) > 0) {
-    voix_flags %>%
-      dplyr::filter(flag) %>%
-      dplyr::count(loc, sort = TRUE, name = "nb_alertes") %>%
-      dplyr::slice_head(n = 15) %>%
-      ggplot2::ggplot(ggplot2::aes(x = reorder(loc, nb_alertes), y = nb_alertes)) +
-      ggplot2::geom_col() + ggplot2::coord_flip() +
-      ggplot2::labs(x = NULL, y = "Nombre d'alertes", title = "Voix — Top 15 zones à risque")
+  loc_col <- first_present(c("lieu_strate","zone","region"), names(voix_scored), NA_character_)
+
+  voix_kpi <- voix_scored |>
+    dplyr::mutate(poids = dplyr::if_else(is.na(base_val) | base_val <= 0, 1, base_val))
+
+  if (!is.na(loc_col)) {
+    voix_kpi <- voix_kpi |>
+      dplyr::group_by(operateur, .data[[loc_col]], kpi) |>
+      dplyr::summarise(
+        p = dplyr::if_else(kpi == "delai_etablissement_appels",
+                  mean(valeur_delai, na.rm = TRUE),
+                  sum(dplyr::coalesce(valeur_reussite, valeur_echec, 0) * poids, na.rm = TRUE) /
+                  sum(poids, na.rm = TRUE)),
+        .groups = "drop"
+      )
+  } else {
+    voix_kpi <- voix_kpi |>
+      dplyr::group_by(operateur, kpi) |>
+      dplyr::summarise(
+        p = dplyr::if_else(kpi == "delai_etablissement_appels",
+                  mean(valeur_delai, na.rm = TRUE),
+                  sum(dplyr::coalesce(valeur_reussite, valeur_echec, 0) * poids, na.rm = TRUE) /
+                  sum(poids, na.rm = TRUE)),
+        .groups = "drop"
+      )
+  }
+
+  # Classement opérateurs – réussite moyenne
+  if (nrow(voix_kpi) > 0) {
+    df_rank <- voix_kpi |>
+      dplyr::filter(kpi == "taux_reussite_appels") |>
+      dplyr::group_by(operateur) |>
+      dplyr::summarise(score = mean(p, na.rm = TRUE), .groups = "drop")
+    if (nrow(df_rank) > 0) {
+      df_rank |>
+        dplyr::mutate(operateur = forcats::fct_reorder(operateur, score)) |>
+        ggplot2::ggplot(ggplot2::aes(operateur, score)) +
+        ggplot2::geom_col() + ggplot2::coord_flip() +
+        ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+        ggplot2::labs(x = NULL, y = "Taux de réussite moyen", title = "Voix — classement opérateurs (moyenne)")
+    }
+  }
+
+  # Zones à risque (si localisation dispo)
+  if (!is.na(loc_col) && nrow(voix_scored) > 0) {
+    seuil_r <- 0.95; seuil_e <- 0.02
+    voix_flags <- voix_scored |>
+      dplyr::transmute(operateur, loc = .data[[loc_col]],
+                       ok   = valeur_reussite,
+                       fail = valeur_echec,
+                       poids = dplyr::if_else(is.na(base_val) | base_val <= 0, 1, base_val)) |>
+      dplyr::group_by(operateur, loc) |>
+      dplyr::summarise(p_ok = sum(ok*poids, na.rm=TRUE)/sum(poids,na.rm=TRUE),
+                       p_f  = sum(fail*poids, na.rm=TRUE)/sum(poids,na.rm=TRUE),
+                       .groups="drop") |>
+      dplyr::mutate(flag = (is.finite(p_ok) & p_ok < seuil_r) | (is.finite(p_f) & p_f > seuil_e))
+
+    if (nrow(voix_flags) > 0) {
+      voix_flags %>%
+        dplyr::filter(flag) %>%
+        dplyr::count(loc, sort = TRUE, name = "nb_alertes") %>%
+        dplyr::slice_head(n = 15) %>%
+        ggplot2::ggplot(ggplot2::aes(x = reorder(loc, nb_alertes), y = nb_alertes)) +
+        ggplot2::geom_col() + ggplot2::coord_flip() +
+        ggplot2::labs(x = NULL, y = "Nombre d'alertes", title = "Voix — Top 15 zones à risque")
+    }
   }
 }
 ```
@@ -334,7 +340,7 @@ tibble::tibble(
   axe   = c("Robustesse","Portabilité","Lecture"),
   point = c("Lecture sûre + normalisation colonnes + EDA non bloquante",
             "Chemins relatifs, aucune dépendance locale",
-            "Classements opérateurs, zones à risque, aperçus ITU")
+            "Classements opérateurs, zones à risque (si données disponibles), aperçus ITU")
 ) |>
   gt::gt() |>
   gt::tab_header(title = "Synthèse EDA – points clés")
