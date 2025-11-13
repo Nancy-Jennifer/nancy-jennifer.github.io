@@ -58,7 +58,7 @@ norm_names <- function(df) {
       stringr::str_replace("^_|_$",""))
 }
 
-# Coalescence et sélection robuste de colonnes
+# Coalescence et choix robuste de colonnes
 `%||%` <- function(a, b) {
   if (is.null(a) || (is.atomic(a) && length(a) == 0) || (length(a) == 1 && is.na(a))) b else a
 }
@@ -130,7 +130,7 @@ if (nrow(arcep_clean) > 0) {
   val_col <- first_present(c("valeur","value"), names(arcep_clean), "valeur")
 
   df <- arcep_clean |>
-    dplyr::mutate(dplyr::across(dplyselect::any_of(c("annee","year")), as.integer)) |>
+    dplyr::mutate(dplyr::across(dplyr::any_of(c("annee","year")), as.integer)) |>
     dplyr::mutate(mesure = .data[[val_col]])
 
   top_ind <- df |>
@@ -169,12 +169,16 @@ classify_kpi <- function(s){
   )
 }
 
-# Pivot/standardisation Voix (si colonnes opérateurs étalées)
+# Pivot/standardisation Voix
 bind_voix <- function(df){
   if (nrow(df) == 0) return(tibble::tibble())
+  # Garantir indicateur
+  if (!"indicateur" %in% names(df)) df$indicateur <- NA_character_
+  # Trouver la colonne valeur (valeur/value)
   val <- first_present(c("valeur","value"), names(df), NA_character_)
   if (is.na(val)) return(tibble::tibble())
 
+  # Cas colonnes opérateurs étalées
   ops <- intersect(c("bouygues","free","orange","sfr","moyenne"), names(df))
   if (length(ops) > 0) {
     df <- df |>
@@ -194,6 +198,9 @@ bind_voix <- function(df){
 }
 
 voix_raw <- dplyr::bind_rows(bind_voix(voix_hab), bind_voix(voix_trp))
+
+# Si malgré tout kpi absent (datasets vides), le créer pour éviter erreurs
+if (!"kpi" %in% names(voix_raw)) voix_raw$kpi <- "autre"
 
 # Rescaling simple [0..100] -> [0..1]
 rescale_01 <- function(x){
@@ -263,7 +270,7 @@ if (!is.na(loc_col) && nrow(voix_scored) > 0) {
                      poids = dplyr::if_else(is.na(base_val) | base_val <= 0, 1, base_val)) |>
     dplyr::group_by(operateur, loc) |>
     dplyr::summarise(p_ok = sum(ok*poids, na.rm=TRUE)/sum(poids,na.rm=TRUE),
-                     p_f  = sum(fail*poids,na.rm=TRUE)/sum(poids,na.rm=TRUE),
+                     p_f  = sum(fail*poids, na.rm=TRUE)/sum(poids,na.rm=TRUE),
                      .groups="drop") |>
     dplyr::mutate(flag = (is.finite(p_ok) & p_ok < seuil_r) | (is.finite(p_f) & p_f > seuil_e))
 
@@ -336,5 +343,5 @@ tibble::tibble(
 ## 7) Limites & pistes
 
 - Les indicateurs ARCEP recouvrent des natures différentes (taux, délais, radio) : la comparaison nécessite des sous-ensembles homogènes et, idéalement, un **mapping indicateur → catégorie**.
-- Pour une **lecture métier**, construire des **KPI composites** par axe (Voix disponibilité, Data performance, Radio qualité), avec seuils cibles.
+- Pour la **lecture métier**, construire des **KPI composites** par axe (Voix disponibilité, Data performance, Radio qualité), avec seuils cibles.
 - Intégrer un **contrôle d’anomalies** (z-scores / IQR) pour repérer des valeurs atypiques par opérateur/zone.
