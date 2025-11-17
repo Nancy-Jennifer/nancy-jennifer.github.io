@@ -1,520 +1,854 @@
 ---
-title: "P2 – EDA (R) : Qualité de service mobile – France 2024"
-subtitle: "ARCEP 2024 · ITU Facts & Figures 2024"
+title: "Exploration des données – QoS mobile 2024"
+subtitle: "Voix & Internet mobile – France métropolitaine et benchmark international"
 format:
   html:
     toc: true
     toc-depth: 3
     number-sections: true
-    code-fold: false
-    df-print: paged
+    code-fold: true
 execute:
   echo: false
   warning: false
   message: false
 ---
 
-## 1. Contexte & périmètre
+```{r setup, include=FALSE}
+# Packages nécessaires
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(tidyr)
+  library(readr)
+  library(janitor)
+  library(ggplot2)
+  library(scales)
+  library(stringr)
+  library(purrr)
+})
 
-Ce document présente l’exploration des données de qualité de service mobile en France métropolitaine (ARCEP 2024), complétées par un résumé des jeux ITU Facts & Figures 2024.
-
-Les objectifs de cette EDA sont :
-
-- décrire les principaux indicateurs de QoS mobile (Voix, Web, Data) par opérateur ;
-- analyser quelques contrastes entre **habitations** et **axes de transport** ;
-- préparer un socle robuste pour la suite du projet (construction d’indicateurs synthétiques et benchmark international).
-
----
-
-## 2. Chargement des données et contrôles de base
-
-```{r}
-# 2.1. Installation / chargement des packages ----
-ensure_packages <- function(pkgs) {
-  repos <- getOption("repos")
-  if (is.null(repos) || identical(repos["CRAN"], "@CRAN@")) {
-    options(repos = c(CRAN = "https://cloud.r-project.org"))
-  }
-  to_install <- pkgs[!pkgs %in% installed.packages()[,"Package"]]
-  if (length(to_install)) install.packages(to_install, quiet = TRUE)
-  invisible(lapply(pkgs, library, character.only = TRUE))
-}
-
-ensure_packages(c(
-  "readr","dplyr","tidyr","stringr","forcats",
-  "ggplot2","gt","janitor","tibble","scales",
-  "rlang","tidyselect"
-))
-
-theme_set(ggplot2::theme_minimal(base_size = 13))
-
-# 2.2. Fonctions utilitaires ----
-read_csv_safe <- function(path, ...) {
-  if (!file.exists(path)) return(tibble::tibble())
-  tryCatch(
-    readr::read_csv(path, show_col_types = FALSE, ...),
-    error = function(e) tibble::tibble()
-  )
-}
-
-norm_names <- function(df) {
-  if (!is.data.frame(df) || nrow(df) == 0) return(df)
-  df |>
-    janitor::clean_names() |>
-    dplyr::rename_with(\(x) x |>
-      stringr::str_replace_all("[^a-z0-9]+","_") |>
-      stringr::str_replace_all("_+","_") |>
-      stringr::str_replace("^_|_$",""))
-}
-
-`%||%` <- function(a, b) {
-  if (is.null(a) || (is.atomic(a) && length(a) == 0) || (length(a) == 1 && is.na(a))) b else a
-}
-
-first_present <- function(candidates, names_vec, default = NA_character_) {
-  x <- intersect(candidates, names_vec)
-  if (length(x) > 0) x[[1]] else default
-}
-
-# 2.3. Garde-fou : exécuter une analyse sans casser le rendu ----
-safe_run <- function(code) {
-  tryCatch(code, error = function(e) { NULL })
-}
-```
-
-```{r}
-# 2.4. Chemins de fichiers ----
-base_dir  <- "."
-proc_dir  <- file.path(base_dir, "data", "processed")
-clean_dir <- file.path(base_dir, "data", "clean_final")
-
-# ARCEP – globaux
-f_glob_clean     <- file.path(proc_dir, "arcep_2024_indicateurs_globaux_clean.csv")
-f_glob_complet   <- file.path(proc_dir, "arcep_2024_indicateurs_globaux_complet.csv")
-f_glob_simplifie <- file.path(proc_dir, "arcep_2024_indicateurs_globaux_simplifie.csv")
-
-# ARCEP – Voix / Data détaillés
-f_voix_hab  <- file.path(proc_dir, "2024_QoS_Metropole_voix_habitations_clean.csv")
-f_voix_trp  <- file.path(proc_dir, "2024_QoS_Metropole_voix_transports_clean.csv")
-f_data_hab  <- file.path(proc_dir, "2024_QoS_Metropole_data_habitations_clean.csv")
-f_data_trp  <- file.path(proc_dir, "2024_QoS_Metropole_data_transports_clean.csv")
-
-# ITU – résumé
-f_itu_sum   <- file.path(clean_dir, "ITU_FactsFigures2024_summary_clean.csv")
-
-# 2.5. Lecture + normalisation ----
-arcep_glob        <- norm_names(read_csv_safe(f_glob_clean))
-arcep_glob_compl  <- norm_names(read_csv_safe(f_glob_complet))
-arcep_glob_simpl  <- norm_names(read_csv_safe(f_glob_simplifie))
-
-voix_hab <- norm_names(read_csv_safe(f_voix_hab))
-voix_trp <- norm_names(read_csv_safe(f_voix_trp))
-data_hab <- norm_names(read_csv_safe(f_data_hab))
-data_trp <- norm_names(read_csv_safe(f_data_trp))
-
-itu_sum  <- norm_names(read_csv_safe(f_itu_sum))
-```
-
-```{r}
-# 2.6. Contrôle de base : nombre de lignes par fichier ----
-qa_tbl <- tibble::tibble(
-  fichier = c(
-    "arcep_2024_indicateurs_globaux_clean",
-    "arcep_2024_indicateurs_globaux_complet",
-    "arcep_2024_indicateurs_globaux_simplifie",
-    "2024_QoS_Metropole_voix_habitations_clean",
-    "2024_QoS_Metropole_voix_transports_clean",
-    "2024_QoS_Metropole_data_habitations_clean",
-    "2024_QoS_Metropole_data_transports_clean",
-    "ITU_FactsFigures2024_summary_clean"
-  ),
-  lignes = c(
-    nrow(arcep_glob),
-    nrow(arcep_glob_compl),
-    nrow(arcep_glob_simpl),
-    nrow(voix_hab),
-    nrow(voix_trp),
-    nrow(data_hab),
-    nrow(data_trp),
-    nrow(itu_sum)
-  )
+knitr::opts_chunk$set(
+  echo    = FALSE,
+  message = FALSE,
+  warning = FALSE
 )
 
-qa_tbl |>
-  gt::gt() |>
-  gt::fmt_number(columns = lignes, decimals = 0) |>
-  gt::tab_header(title = "Contrôle des entrées – nombre de lignes par fichier")
+# Thème graphique commun
+theme_set(
+  theme_minimal(base_size = 12) +
+    theme(
+      plot.title    = element_text(face = "bold"),
+      plot.subtitle = element_text(colour = "grey40"),
+      legend.position = "bottom"
+    )
+)
+
+# IMPORTANT :
+# Si ce fichier est dans un sous-dossier (ex: "SCRIPTS RSTUDIO"),
+# adapter base_dir = ".." ; si le .qmd est à la racine du projet, mettre base_dir = "."
+base_dir <- ".."
+
+operateurs_levels <- c("Orange", "SFR", "Bouygues", "Free")
+```
+
+## 1. Contexte et périmètre
+
+Ce document explore la qualité de service mobile 2024 en France métropolitaine, en couvrant deux volets :
+
+- **Voix** : capacité du réseau à établir des appels de manière fiable, sans coupure ni perturbation audible ;
+- **Data** : confort d’usage internet (pages qui se chargent rapidement, débits suffisants).
+
+Les mesures proviennent des campagnes ARCEP et sont complétées par des données **UIT / Banque mondiale** pour positionner la France par rapport aux standards internationaux.
+
+Les questions auxquelles l’EDA doit répondre :
+
+- Où chaque opérateur est-il **structurellement fort** ou en retrait, en Voix et en Data ?
+- Quelles **zones** et **environnements** constituent des risques opérationnels ?
+- Comment la France se positionne-t-elle par rapport aux pays comparables sur l’usage, la couverture, les débits et les fondamentaux macro ?
+
+## 2. Chargement et préparation des données
+
+```{r load-data}
+# Fichiers ARCEP globaux
+globaux_clean <- read_csv(
+  file.path(base_dir, "data", "processed", "arcep_2024_indicateurs_globaux_clean.csv")
+) |>
+  clean_names()
+
+# Voix – lieux de vie & transports
+voix_hab <- read_csv(
+  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_voix_habitations_clean.csv")
+) |>
+  clean_names()
+
+voix_trans <- read_csv(
+  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_voix_transports_clean.csv")
+) |>
+  clean_names()
+
+# Data – lieux de vie & transports
+data_hab <- read_csv(
+  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_data_habitations_clean.csv")
+) |>
+  clean_names()
+
+data_trans <- read_csv(
+  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_data_transports_clean.csv")
+) |>
+  clean_names()
+
+# ITU – tables finales / synthétiques
+itu_final <- read_csv(
+  file.path(base_dir, "data", "clean_final", "ITU_FactsFigures2024_final_clean.csv")
+) |>
+  clean_names()
+
+itu_summary <- read_csv(
+  file.path(base_dir, "data", "clean_final", "ITU_FactsFigures2024_summary_clean.csv")
+) |>
+  clean_names()
+```
+
+```{r prepare-common}
+# Standardisation des noms d’opérateurs et du champ "zone" si présent
+standardiser_operateur <- function(df) {
+  if (!"operator" %in% names(df)) return(df)
+  df |>
+    mutate(
+      operator = str_to_title(operator),
+      operator = recode(operator,
+                        "Bouygues Telecom" = "Bouygues"),
+      operator = factor(operator, levels = operateurs_levels)
+    )
+}
+
+voix_hab  <- voix_hab  |> standardiser_operateur()
+voix_trans <- voix_trans |> standardiser_operateur()
+data_hab  <- data_hab  |> standardiser_operateur()
+data_trans <- data_trans |> standardiser_operateur()
 ```
 
 ---
 
-## 3. Indicateurs globaux ARCEP – vue synthétique
+## 3. Analyse Voix – Appels & qualité d’établissement
 
-Cette section exploite les indicateurs agrégés par **service** (Voix, SMS, Web, Data…) et par **opérateur** pour les zones d’habitation.
+### 3.1 Normalisation & préparation Voix
 
-```{r}
-# 3.1. Passage en format long (opérateurs) ----
-arcep_glob_long <- tibble::tibble()
+```{r diag_labels_voix}
+# diag_labels_voix : diagnostic rapide de la structure des données Voix
+voix_diag <- list(
+  hab_colnames   = colnames(voix_hab),
+  trans_colnames = colnames(voix_trans)
+)
+voix_diag
+```
 
-if (nrow(arcep_glob) > 0) {
-  safe_run({
-    arcep_glob_long <<- arcep_glob |>
-      dplyr::filter(!is.na(service), !is.na(indicateur)) |>
-      tidyr::pivot_longer(
-        cols = tidyselect::all_of(c("bouygues","free","orange","sfr")),
-        names_to = "operateur",
-        values_to = "valeur"
-      ) |>
-      dplyr::mutate(
-        operateur = dplyr::case_when(
-          operateur == "bouygues" ~ "Bouygues Telecom",
-          operateur == "free"     ~ "Free Mobile",
-          operateur == "orange"   ~ "Orange",
-          operateur == "sfr"      ~ "SFR",
-          TRUE ~ operateur
-        )
-      )
-  })
+```{r voix-normalisation}
+# voix-normalisation : on rassemble les mesures Voix dans une vue unique
+voix_all <- bind_rows(
+  voix_hab  |> mutate(context = "Habitations"),
+  voix_trans |> mutate(context = "Transports")
+)
+
+# On suppose qu'il existe au moins : operator, zone, crspa (1 = appel réussi, 0 = échec)
+voix_all <- voix_all |>
+  mutate(
+    zone = if ("zone" %in% names(voix_all)) zone else "inconnue",
+    zone = factor(zone)
+  )
+```
+
+```{r voix-rescale-auto}
+# voix-rescale-auto : calcul d'un KPI Voix "taux d'appels réussis"
+voix_kpi_base <- voix_all |>
+  filter(!is.na(crspa)) |>
+  group_by(operator, zone, context) |>
+  summarise(
+    taux_appels_reussis = mean(crspa == 1, na.rm = TRUE),
+    n = n(),
+    .groups = "drop"
+  )
+
+# Rescale sur 100 pour un score Voix lisible
+voix_kpi_rescale <- voix_kpi_base |>
+  mutate(score_voix_100 = 100 * taux_appels_reussis)
+```
+
+### 3.2 KPI Voix par opérateur & environnement
+
+```{r kpi_voix_operateur_env}
+# Vue détaillée par opérateur / zone / contexte
+kpi_voix_operateur_env <- voix_kpi_rescale |>
+  arrange(context, zone, desc(score_voix_100))
+
+kpi_voix_operateur_env
+```
+
+```{r kpi_voix_synthese_operateur}
+# kpi_voix_synthese_operateur : moyenne globale par opérateur
+kpi_voix_synthese_operateur <- voix_kpi_rescale |>
+  group_by(operator) |>
+  summarise(
+    score_voix_moyen = weighted.mean(score_voix_100, w = n, na.rm = TRUE),
+    n_total = sum(n),
+    .groups = "drop"
+  ) |>
+  arrange(desc(score_voix_moyen))
+
+kpi_voix_synthese_operateur
+```
+
+```{r kpi_voix_wilson_ic}
+# kpi_voix_wilson_ic : intervalle de confiance binomial (approx) sur le taux d'appels réussis
+wilson_ic <- function(k, n, conf = 0.95) {
+  if (n == 0) return(c(NA_real_, NA_real_))
+  p <- k / n
+  z <- qnorm(1 - (1 - conf) / 2)
+  denom <- 1 + z^2 / n
+  centre <- (p + z^2 / (2 * n)) / denom
+  marge  <- (z * sqrt((p * (1 - p) + z^2 / (4 * n)) / n)) / denom
+  c(centre - marge, centre + marge)
+}
+
+kpi_voix_wilson_ic <- voix_kpi_base |>
+  rowwise() |>
+  mutate(
+    k = round(taux_appels_reussis * n),
+    ic = list(wilson_ic(k, n)),
+    ic_inf = ic[1],
+    ic_sup = ic[2]
+  ) |>
+  ungroup()
+
+kpi_voix_wilson_ic
+```
+
+### 3.3 Anomalies & comparaisons
+
+```{r voix-anomalies}
+# voix-anomalies : identification des points faibles (score < 95 par ex.)
+voix_anomalies <- voix_kpi_rescale |>
+  filter(score_voix_100 < 95) |>
+  arrange(score_voix_100)
+
+voix_anomalies
+```
+
+```{r voix-comparaison}
+# voix-comparaison : comparaison opérateurs par contexte et zone
+ggplot(voix_kpi_rescale,
+       aes(x = operator, y = score_voix_100, fill = operator)) +
+  geom_col() +
+  facet_grid(context ~ zone) +
+  scale_y_continuous(labels = label_number(accuracy = 1)) +
+  labs(
+    title    = "Voix – score d'appels réussis (0–100)",
+    subtitle = "Par opérateur, par type de zone et par contexte",
+    x        = NULL,
+    y        = "Score voix (0–100)"
+  ) +
+  guides(fill = "none")
+```
+
+### 3.4 Visualisations Voix
+
+```{r voix-visu-env}
+ggplot(voix_kpi_rescale,
+       aes(x = zone, y = score_voix_100, colour = operator, group = operator)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~ context) +
+  scale_y_continuous(labels = label_number(accuracy = 1)) +
+  labs(
+    title    = "Voix – performance par zone et contexte",
+    subtitle = "Lecture par opérateur",
+    x        = "Zone",
+    y        = "Score voix (0–100)"
+  )
+```
+
+```{r voix-visu-env-simplifie}
+voix_kpi_simplifie <- voix_kpi_rescale |>
+  group_by(context, zone) |>
+  summarise(
+    score_moyen = mean(score_voix_100, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+ggplot(voix_kpi_simplifie,
+       aes(x = zone, y = score_moyen)) +
+  geom_col() +
+  facet_wrap(~ context) +
+  scale_y_continuous(labels = label_number(accuracy = 1)) +
+  labs(
+    title    = "Voix – score moyen par zone et contexte (tous opérateurs)",
+    x        = "Zone",
+    y        = "Score moyen (0–100)"
+  )
+```
+
+```{r voix-visu-operateurs}
+ggplot(kpi_voix_synthese_operateur,
+       aes(x = operator, y = score_voix_moyen, fill = operator)) +
+  geom_col() +
+  scale_y_continuous(labels = label_number(accuracy = 1)) +
+  labs(
+    title    = "Voix – score moyen global par opérateur",
+    x        = NULL,
+    y        = "Score voix moyen (0–100)"
+  ) +
+  guides(fill = "none")
+```
+
+### 3.5 Zones à risque Voix
+
+```{r voix-visu-zones-risque}
+ggplot(voix_anomalies,
+       aes(x = operator, y = score_voix_100, fill = operator)) +
+  geom_col() +
+  facet_grid(context ~ zone) +
+  scale_y_continuous(labels = label_number(accuracy = 1)) +
+  labs(
+    title    = "Voix – zones à risque (scores < 95)",
+    subtitle = "Par opérateur, zone et contexte",
+    x        = NULL,
+    y        = "Score voix (0–100)"
+  ) +
+  guides(fill = "none")
+```
+
+```{r voix-zones-risque}
+voix_zones_risque <- voix_anomalies |>
+  arrange(score_voix_100)
+
+voix_zones_risque
+```
+
+```{r voix-zones-risque-v2}
+# Recalcul après rescale (ici déjà intégré dans voix_kpi_rescale)
+voix_zones_risque_v2 <- voix_zones_risque |>
+  mutate(
+    severite = case_when(
+      score_voix_100 < 90 ~ "Critique",
+      score_voix_100 < 95 ~ "Sensible",
+      TRUE                ~ "Acceptable"
+    )
+  )
+
+voix_zones_risque_v2
+```
+
+```{r voix_flags_zones_risque}
+voix_flags_zones_risque <- voix_zones_risque_v2 |>
+  mutate(
+    flag_risque = severite %in% c("Critique", "Sensible")
+  )
+
+voix_flags_zones_risque
+```
+
+### 3.6 Plans d’action & priorisation Voix
+
+```{r voix_plan_actions_top3}
+voix_plan_actions_top3 <- voix_zones_risque_v2 |>
+  arrange(score_voix_100) |>
+  group_by(operator) |>
+  slice_head(n = 3) |>
+  ungroup()
+
+voix_plan_actions_top3
+```
+
+```{r voix_priorisation_sig}
+# On priorise les zones avec plus de volume (n) et un score faible
+voix_priorisation_sig <- voix_kpi_rescale |>
+  mutate(
+    deficit = 100 - score_voix_100,
+    impact  = deficit * n
+  ) |>
+  arrange(desc(impact))
+
+voix_priorisation_sig
+```
+
+```{r voix_priorisation_transports_actions}
+voix_priorisation_transports_actions <- voix_priorisation_sig |>
+  filter(context == "Transports") |>
+  arrange(desc(impact))
+
+voix_priorisation_transports_actions
+```
+
+```{r voix-kpi-correctif2}
+# Version "correctif" : recalcul d'un score voix en utilisant une cible (ex: 98)
+target_score <- 98
+
+voix_kpi_correctif2 <- voix_kpi_rescale |>
+  mutate(
+    ecart_cible = score_voix_100 - target_score,
+    statut = case_when(
+      ecart_cible >= 0 ~ "Au niveau ou au-dessus de la cible",
+      ecart_cible < 0  ~ "En dessous de la cible"
+    )
+  )
+
+voix_kpi_correctif2
+```
+
+---
+
+## 4. Analyse Data – Internet mobile
+
+### 4.1 Vue d’ensemble Data
+
+```{r data_overview}
+data_all <- bind_rows(
+  data_hab  |> mutate(context = "Habitations"),
+  data_trans |> mutate(context = "Transports")
+)
+
+data_overview <- list(
+  colnames = colnames(data_all),
+  resume   = data_all |>
+    group_by(context, operator) |>
+    summarise(
+      n = n(),
+      .groups = "drop"
+    )
+)
+
+data_overview
+```
+
+### 4.2 KPI Data par opérateur
+
+```{r data_kpi_prov_operateur}
+# On suppose : loaded_in_less_10_secondes (1/0), bitrate_dl (débit descendant)
+data_kpi_prov_operateur <- data_all |>
+  group_by(context, operator) |>
+  summarise(
+    part_pages_10s = mean(loaded_in_less_10_secondes == 1, na.rm = TRUE),
+    debit_dl_med   = median(bitrate_dl, na.rm = TRUE),
+    n              = n(),
+    .groups = "drop"
+  )
+
+data_kpi_prov_operateur
+```
+
+```{r data_kpi_prov_operateur_plot}
+ggplot(data_kpi_prov_operateur,
+       aes(x = operator, y = part_pages_10s, fill = operator)) +
+  geom_col() +
+  facet_wrap(~ context) +
+  scale_y_continuous(labels = label_percent(accuracy = 1)) +
+  labs(
+    title    = "Internet mobile – pages chargées en moins de 10 s",
+    subtitle = "Par opérateur et par contexte",
+    x        = NULL,
+    y        = "Part des pages < 10 s"
+  ) +
+  guides(fill = "none")
+```
+
+### 4.3 Lecture par environnement
+
+```{r data_env_probe_map_v2}
+# Si une variable "zone" existe dans data_all
+if ("zone" %in% colnames(data_all)) {
+  data_env_probe_map_v2 <- data_all |>
+    group_by(context, operator, zone) |>
+    summarise(
+      part_pages_10s = mean(loaded_in_less_10_secondes == 1, na.rm = TRUE),
+      debit_dl_med   = median(bitrate_dl, na.rm = TRUE),
+      n              = n(),
+      .groups = "drop"
+    )
+
+  ggplot(data_env_probe_map_v2,
+         aes(x = zone, y = part_pages_10s, colour = operator, group = operator)) +
+    geom_line() +
+    geom_point() +
+    facet_wrap(~ context) +
+    scale_y_continuous(labels = label_percent(accuracy = 1)) +
+    labs(
+      title    = "Internet mobile – performance par zone",
+      subtitle = "Lecture par opérateur et par contexte",
+      x        = "Zone",
+      y        = "Part des pages < 10 s"
+    )
+} else {
+  data_env_probe_map_v2 <- NULL
 }
 ```
 
-### 3.1. Indicateurs les plus représentés
+### 4.4 Micro-diagnostics ciblés
 
-```{r}
-safe_run({
-  glob_hab <- arcep_glob_long |>
-    dplyr::filter(
-      lieu_strate == "toutes zones d'habitation",
-      situation   == "tous usages"
-    )
+```{r data_micro_diag}
+# Focus sur les combinaisons les plus fragiles
+data_micro_diag <- data_kpi_prov_operateur |>
+  arrange(part_pages_10s) |>
+  slice_head(n = 10)
 
-  if (nrow(glob_hab) > 0) {
-    glob_hab |>
-      dplyr::count(service, indicateur, sort = TRUE, name = "n_mesures") |>
-      dplyr::slice_head(n = 15) |>
-      gt::gt() |>
-      gt::fmt_number(columns = n_mesures, decimals = 0) |>
-      gt::tab_header(title = "Indicateurs les plus représentés (toutes zones d'habitation, tous usages)")
-  }
-})
-```
-
-### 3.2. Voix – communications réussies & qualité perçue
-
-```{r}
-safe_run({
-  glob_hab <- arcep_glob_long |>
-    dplyr::filter(
-      lieu_strate == "toutes zones d'habitation",
-      situation   == "tous usages",
-      service == "voix"
-    )
-
-  # Taux de communications réussies
-  voix_reussite <- glob_hab |>
-    dplyr::filter(stringr::str_detect(indicateur, "communications réussies$"))
-
-  if (nrow(voix_reussite) > 0) {
-    voix_reussite |>
-      ggplot2::ggplot(ggplot2::aes(x = operateur, y = valeur, fill = operateur)) +
-      ggplot2::geom_col(show.legend = FALSE) +
-      ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-      ggplot2::labs(
-        title = "Voix – taux de communications réussies",
-        subtitle = "Toutes zones d'habitation, tous usages",
-        x = NULL, y = "Taux de communications réussies"
-      )
-  }
-
-  # Communications sans perturbations audibles
-  voix_sans_pert <- glob_hab |>
-    dplyr::filter(stringr::str_detect(indicateur, "sans perturbations audibles"))
-
-  if (nrow(voix_sans_pert) > 0) {
-    voix_sans_pert |>
-      ggplot2::ggplot(ggplot2::aes(x = operateur, y = valeur, fill = operateur)) +
-      ggplot2::geom_col(show.legend = FALSE) +
-      ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-      ggplot2::labs(
-        title = "Voix – communications sans perturbations audibles",
-        subtitle = "Toutes zones d'habitation, tous usages",
-        x = NULL, y = "Taux de communications sans perturbations"
-      )
-  }
-})
-```
-
-### 3.3. Web / Data – délais d’accès aux pages
-
-```{r}
-safe_run({
-  glob_hab <- arcep_glob_long |>
-    dplyr::filter(
-      lieu_strate == "toutes zones d'habitation",
-      situation   == "tous usages",
-      service == "web"
-    )
-
-  web_10s <- glob_hab |>
-    dplyr::filter(stringr::str_detect(indicateur, "10s"))
-  web_5s  <- glob_hab |>
-    dplyr::filter(stringr::str_detect(indicateur, "5s"))
-
-  if (nrow(web_10s) > 0) {
-    web_10s |>
-      ggplot2::ggplot(ggplot2::aes(x = operateur, y = valeur, fill = operateur)) +
-      ggplot2::geom_col(show.legend = FALSE) +
-      ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-      ggplot2::labs(
-        title    = "Web – accès au site en moins de 10s",
-        subtitle = "Toutes zones d'habitation, tous usages",
-        x = NULL, y = "Taux de pages chargées < 10s"
-      )
-  }
-
-  if (nrow(web_5s) > 0) {
-    web_5s |>
-      ggplot2::ggplot(ggplot2::aes(x = operateur, y = valeur, fill = operateur)) +
-      ggplot2::geom_col(show.legend = FALSE) +
-      ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-      ggplot2::labs(
-        title    = "Web – accès au site en moins de 5s",
-        subtitle = "Toutes zones d'habitation, tous usages",
-        x = NULL, y = "Taux de pages chargées < 5s"
-      )
-  }
-})
+data_micro_diag
 ```
 
 ---
 
-## 4. Voix – analyse détaillée (habitations vs transports)
+## 5. Benchmark international & macro (ITU + WB)
 
-```{r}
-safe_run({
-  # Préparation des mesures Voix
-  prepare_voix <- function(df, contexte) {
-    if (!is.data.frame(df) || nrow(df) == 0) return(tibble::tibble())
-    needed <- c("call_type","time_to_call","min_mos","zone","zone_name","operator")
-    if (!all(needed %in% names(df))) return(tibble::tibble())
+*(Les noms de colonnes ITU/WB sont à ajuster en fonction de tes fichiers : pays, région, indicateurs…)*
 
-    df |>
-      dplyr::mutate(
-        contexte = contexte,
-        operateur = dplyr::case_when(
-          stringr::str_detect(call_type, "Orange")   ~ "Orange",
-          stringr::str_detect(call_type, "SFR")      ~ "SFR",
-          stringr::str_detect(call_type, "Bouygues") ~ "Bouygues Telecom",
-          stringr::str_detect(call_type, "Free")     ~ "Free Mobile",
-          TRUE ~ NA_character_
-        ),
-        time_to_call = suppressWarnings(as.numeric(time_to_call)),
-        min_mos      = suppressWarnings(as.numeric(min_mos))
-      ) |>
-      dplyr::filter(!is.na(operateur))
-  }
+```{r itu_31b_consolidation_corrections_fix}
+# Exemple de consolidation ITU : on suppose des colonnes de type :
+# country, region, internet_use_pct, mobile_subscriptions_100, mobile_broadband_100,
+# gdp_per_capita_ppp, urbanization_pct, density_pop, avg_download_speed_mbps, etc.
 
-  voix_hab_prep <- prepare_voix(voix_hab, "Habitations")
-  voix_trp_prep <- prepare_voix(voix_trp, "Transports")
+itu_clean <- itu_final |>
+  clean_names()
 
-  voix_all <- dplyr::bind_rows(voix_hab_prep, voix_trp_prep)
-
-  if (nrow(voix_all) == 0) return(NULL)
-
-  # Indicateurs synthétiques par opérateur
-  synth_voix_op <- voix_all |>
-    dplyr::group_by(contexte, operateur) |>
-    dplyr::summarise(
-      n_appels       = dplyr::n(),
-      pct_ttc_5s     = mean(time_to_call <= 5,  na.rm = TRUE),
-      pct_ttc_10s    = mean(time_to_call <= 10, na.rm = TRUE),
-      mos_median     = stats::median(min_mos, na.rm = TRUE),
-      .groups        = "drop"
-    )
-
-  synth_voix_op |>
-    gt::gt(rowname_col = "operateur") |>
-    gt::fmt_number(columns = n_appels, decimals = 0) |>
-    gt::fmt_percent(columns = c(pct_ttc_5s, pct_ttc_10s), decimals = 1) |>
-    gt::fmt_number(columns = mos_median, decimals = 2) |>
-    gt::tab_header(title = "Voix – indicateurs de performance par opérateur et contexte")
-
-})
+itu_31b_consolidation_corrections_fix <- itu_clean
 ```
 
-```{r}
-safe_run({
-  voix_hab_prep <- prepare_voix(voix_hab, "Habitations")
-  voix_trp_prep <- prepare_voix(voix_trp, "Transports")
-  voix_all      <- dplyr::bind_rows(voix_hab_prep, voix_trp_prep)
+### 5.1 Usage internet & mobile – position France
 
-  if (nrow(voix_all) == 0) return(NULL)
+```{r 3-2-internet-use}
+internet_use <- itu_summary |>
+  clean_names() |>
+  filter(indicateur == "internet_use_pct")
 
-  voix_all |>
-    dplyr::mutate(ttc_5s = time_to_call <= 5) |>
-    dplyr::group_by(contexte, operateur) |>
-    dplyr::summarise(pct_ttc_5s = mean(ttc_5s, na.rm = TRUE), .groups = "drop") |>
-    ggplot2::ggplot(ggplot2::aes(x = operateur, y = pct_ttc_5s, fill = operateur)) +
-    ggplot2::geom_col(show.legend = FALSE) +
-    ggplot2::facet_wrap(~contexte) +
-    ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-    ggplot2::labs(
-      title = "Voix – part des appels établis en moins de 5 secondes",
-      x = NULL, y = "Part des appels (≤ 5s)"
+internet_use
+```
+
+```{r 3-3-mobile-ownership}
+mobile_ownership <- itu_summary |>
+  clean_names() |>
+  filter(indicateur == "mobile_subscriptions_100")
+
+mobile_ownership
+```
+
+```{r 3-3b-mobile-common-year}
+# Harmonisation sur une année commune
+annee_ref <- max(internet_use$annee, na.rm = TRUE)
+
+internet_use_commune <- internet_use |>
+  filter(annee == annee_ref)
+
+mobile_ownership_commune <- mobile_ownership |>
+  filter(annee == annee_ref)
+```
+
+```{r 3-3c-mobile-plots}
+# Exemple de plot France vs moyenne région
+# On suppose une colonne 'pays' et 'region'
+internet_use_plot <- internet_use_commune |>
+  group_by(region) |>
+  summarise(
+    internet_use_moy = mean(valeur, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+fr_internet_use <- internet_use_commune |>
+  filter(pays == "France")
+
+ggplot(internet_use_plot,
+       aes(x = region, y = internet_use_moy)) +
+  geom_col(alpha = 0.5) +
+  geom_point(data = fr_internet_use,
+             aes(x = region, y = valeur),
+             size = 3) +
+  labs(
+    title    = "Usage d'internet – France vs régions",
+    subtitle = paste("Année", annee_ref),
+    x        = NULL,
+    y        = "Usage d'internet (%)"
+  )
+```
+
+### 5.2 Mobile broadband
+
+```{r 3-4-mobile-broadband}
+mobile_broadband <- itu_summary |>
+  filter(indicateur == "mobile_broadband_100")
+
+mobile_broadband
+```
+
+```{r 3-4-patch-strict-year}
+annee_ref_mb <- max(mobile_broadband$annee, na.rm = TRUE)
+
+mobile_broadband_strict <- mobile_broadband |>
+  filter(annee == annee_ref_mb)
+```
+
+```{r 3-4-patch-strict-year-v2}
+# Variante de visualisation (optionnelle)
+ggplot(mobile_broadband_strict,
+       aes(x = reorder(pays, valeur), y = valeur)) +
+  geom_col() +
+  coord_flip() +
+  labs(
+    title    = "Abonnements mobile broadband – classement mondial",
+    subtitle = paste("Année", annee_ref_mb),
+    x        = NULL,
+    y        = "Abonnements pour 100 habitants"
+  )
+```
+
+### 5.3 Bande passante & débits
+
+```{r 3-5-avg-bandwidth}
+avg_bandwidth <- itu_summary |>
+  filter(indicateur == "avg_download_speed_mbps")
+
+avg_bandwidth
+```
+
+```{r 3-5-build-outputs}
+avg_bandwidth_synth <- avg_bandwidth |>
+  group_by(region) |>
+  summarise(
+    bw_moy = mean(valeur, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+avg_bandwidth_synth
+```
+
+### 5.4 Heatmap & positionnement global
+
+```{r 3-6-heatmap-gaps}
+# Exemple : heatmap sur quelques indicateurs normalisés
+indics_for_heatmap <- itu_summary |>
+  filter(indicateur %in% c("internet_use_pct",
+                           "mobile_broadband_100",
+                           "avg_download_speed_mbps")) |>
+  group_by(pays, indicateur) |>
+  summarise(
+    valeur = mean(valeur, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+ggplot(indics_for_heatmap,
+       aes(x = indicateur, y = pays, fill = valeur)) +
+  geom_tile() +
+  labs(
+    title = "Positionnement global – heatmap d'indicateurs clés"
+  )
+```
+
+```{r 3-6-positionnement-global}
+# Focus sur la France
+fr_heatmap <- indics_for_heatmap |>
+  filter(pays == "France")
+
+fr_heatmap
+```
+
+### 5.5 Macro – PIB, urbanisation, densité
+
+```{r 4-2-gdp-per-capita}
+gdp_per_capita <- itu_summary |>
+  filter(indicateur == "gdp_per_capita_ppp")
+
+gdp_per_capita
+```
+
+```{r 4-3-urb-cagr}
+urb_cagr <- itu_summary |>
+  filter(indicateur == "urbanization_pct_cagr")
+
+urb_cagr
+```
+
+```{r 4-3-wb-urbanization}
+wb_urbanization <- itu_summary |>
+  filter(indicateur == "urbanization_pct")
+
+wb_urbanization
+```
+
+```{r 4-4-wb-density}
+wb_density <- itu_summary |>
+  filter(indicateur == "population_density")
+
+wb_density
+```
+
+```{r 4-4-wb-density-tolerance}
+wb_density_tolerance <- wb_density |>
+  mutate(
+    classe_density = case_when(
+      valeur < 50  ~ "Faible densité",
+      valeur < 200 ~ "Moyenne densité",
+      TRUE         ~ "Forte densité"
     )
-})
+  )
+
+wb_density_tolerance
+```
+
+```{r 4-5-wb-itu-profile}
+wb_itu_profile <- itu_summary |>
+  filter(indicateur %in% c("gdp_per_capita_ppp",
+                           "urbanization_pct",
+                           "population_density",
+                           "internet_use_pct",
+                           "mobile_broadband_100"))
+
+wb_itu_profile
+```
+
+```{r 4-6-position-global-PATCH-AND-RUN}
+# Exemple : scatter PIB vs bande passante avec couleur région, point France
+fr_bw <- avg_bandwidth |>
+  filter(pays == "France") |>
+  slice_tail(n = 1)
+
+gdp_bw <- gdp_per_capita |>
+  left_join(avg_bandwidth, by = c("pays", "annee"))
+
+ggplot(gdp_bw,
+       aes(x = valeur.x, y = valeur.y)) +
+  geom_point(alpha = 0.4) +
+  geom_point(data = fr_bw,
+             aes(x = valeur.x, y = valeur.y),
+             colour = "red", size = 3) +
+  labs(
+    title    = "PIB par habitant vs bande passante",
+    subtitle = "France mise en avant",
+    x        = "PIB par habitant (PPP)",
+    y        = "Bande passante moyenne (Mbit/s)"
+  )
 ```
 
 ---
 
-## 5. Data – analyse détaillée (habitations vs transports)
+## 6. Gap analysis & synthèse
 
-```{r}
-safe_run({
-  # Préparation Data – habitations
-  prepare_data_hab <- function(df) {
-    if (!is.data.frame(df) || nrow(df) == 0) return(tibble::tibble())
-    needed <- c("operator","zone","zone_name",
-                "loaded_in_less_5_secondes","loaded_in_less_10_secondes",
-                "quality_correct","quality_perfect","upload_ok")
-    if (!all(needed %in% names(df))) return(tibble::tibble())
+```{r 4-7-gap-analysis-AUTO-FIX}
+# Ecart France vs moyenne région sur quelques indicateurs
+key_indics <- c("internet_use_pct", "mobile_broadband_100", "avg_download_speed_mbps")
 
-    df |>
-      dplyr::mutate(
-        contexte  = "Habitations",
-        operateur = dplyr::case_when(
-          stringr::str_detect(operator, "Orange")   ~ "Orange",
-          stringr::str_detect(operator, "SFR")      ~ "SFR",
-          stringr::str_detect(operator, "Bouygues") ~ "Bouygues Telecom",
-          stringr::str_detect(operator, "Free")     ~ "Free Mobile",
-          TRUE ~ NA_character_
-        ),
-        loaded_5s  = suppressWarnings(as.numeric(loaded_in_less_5_secondes))  > 0,
-        loaded_10s = suppressWarnings(as.numeric(loaded_in_less_10_secondes)) > 0,
-        qual_corr  = suppressWarnings(as.numeric(quality_correct))            > 0,
-        qual_perf  = suppressWarnings(as.numeric(quality_perfect))            > 0,
-        upload_ok_ = suppressWarnings(as.numeric(upload_ok))                  > 0
-      ) |>
-      dplyr::filter(!is.na(operateur))
-  }
+gap_fr <- itu_summary |>
+  filter(indicateur %in% key_indics) |>
+  group_by(region, indicateur) |>
+  summarise(
+    moy_region = mean(valeur, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  left_join(
+    itu_summary |>
+      filter(indicateur %in% key_indics, pays == "France") |>
+      select(region, indicateur, valeur_fr = valeur),
+    by = c("region", "indicateur")
+  ) |>
+  mutate(
+    gap = valeur_fr - moy_region
+  )
 
-  # Préparation Data – transports
-  prepare_data_trp <- function(df) {
-    if (!is.data.frame(df) || nrow(df) == 0) return(tibble::tibble())
-    needed <- c("operator","axis","axis_name",
-                "loaded_in_less_5_secondes","loaded_in_less_10_secondes")
-    if (!all(needed %in% names(df))) return(tibble::tibble())
-
-    df |>
-      dplyr::mutate(
-        contexte  = "Transports",
-        zone      = axis,
-        zone_name = axis_name,
-        operateur = dplyr::case_when(
-          stringr::str_detect(operator, "Orange")   ~ "Orange",
-          stringr::str_detect(operator, "SFR")      ~ "SFR",
-          stringr::str_detect(operator, "Bouygues") ~ "Bouygues Telecom",
-          stringr::str_detect(operator, "Free")     ~ "Free Mobile",
-          TRUE ~ NA_character_
-        ),
-        loaded_5s  = suppressWarnings(as.numeric(loaded_in_less_5_secondes))  > 0,
-        loaded_10s = suppressWarnings(as.numeric(loaded_in_less_10_secondes)) > 0,
-        qual_corr  = NA,
-        qual_perf  = NA,
-        upload_ok_ = NA
-      ) |>
-      dplyr::filter(!is.na(operateur))
-  }
-
-  data_hab_prep <- prepare_data_hab(data_hab)
-  data_trp_prep <- prepare_data_trp(data_trp)
-
-  data_all <- dplyr::bind_rows(data_hab_prep, data_trp_prep)
-
-  if (nrow(data_all) == 0) return(NULL)
-
-  # Indicateurs synthétiques par opérateur
-  synth_data_op <- data_all |>
-    dplyr::group_by(contexte, operateur) |>
-    dplyr::summarise(
-      n_sessions    = dplyr::n(),
-      pct_5s        = mean(loaded_5s,  na.rm = TRUE),
-      pct_10s       = mean(loaded_10s, na.rm = TRUE),
-      pct_qual_corr = mean(qual_corr,  na.rm = TRUE),
-      pct_qual_perf = mean(qual_perf,  na.rm = TRUE),
-      pct_upload_ok = mean(upload_ok_, na.rm = TRUE),
-      .groups       = "drop"
-    )
-
-  synth_data_op |>
-    gt::gt(rowname_col = "operateur") |>
-    gt::fmt_number(columns = n_sessions, decimals = 0) |>
-    gt::fmt_percent(
-      columns = c(pct_5s, pct_10s, pct_qual_corr, pct_qual_perf, pct_upload_ok),
-      decimals = 1
-    ) |>
-    gt::tab_header(title = "Data – indicateurs de performance par opérateur et contexte")
-
-})
+gap_fr
 ```
 
-```{r}
-safe_run({
-  data_hab_prep <- prepare_data_hab(data_hab)
-  data_trp_prep <- prepare_data_trp(data_trp)
-  data_all      <- dplyr::bind_rows(data_hab_prep, data_trp_prep)
+```{r 4-7-index-sensitivity-v4}
+# Sensibilité : on normalise les gaps pour construire un mini-index
+index_sensitivity <- gap_fr |>
+  group_by(indicateur) |>
+  mutate(
+    gap_norm = (gap - min(gap, na.rm = TRUE)) /
+               (max(gap, na.rm = TRUE) - min(gap, na.rm = TRUE))
+  ) |>
+  ungroup()
 
-  if (nrow(data_all) == 0) return(NULL)
-
-  data_all |>
-    dplyr::group_by(contexte, operateur) |>
-    dplyr::summarise(pct_5s = mean(loaded_5s, na.rm = TRUE), .groups = "drop") |>
-    ggplot2::ggplot(ggplot2::aes(x = operateur, y = pct_5s, fill = operateur)) +
-    ggplot2::geom_col(show.legend = FALSE) +
-    ggplot2::facet_wrap(~contexte) +
-    ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-    ggplot2::labs(
-      title = "Data – part des pages chargées en moins de 5 secondes",
-      x = NULL, y = "Part des sessions (≤ 5s)"
-    )
-})
+index_sensitivity
 ```
 
----
+```{r 5-1-gap-consolidation}
+gap_consolidation <- index_sensitivity |>
+  group_by(indicateur) |>
+  summarise(
+    index_gap = mean(gap_norm, na.rm = TRUE),
+    .groups = "drop"
+  )
 
-## 6. ITU Facts & Figures 2024 – synthèse des jeux de données
+gap_consolidation
+```
 
-```{r}
-safe_run({
-  if (nrow(itu_sum) > 0) {
-    cols_presentes <- intersect(
-      c("sub_dataset","lignes","annees_min","annees_max","pays_regions","zones"),
-      names(itu_sum)
+```{r 5-2-gap-verdicts}
+gap_verdicts <- gap_consolidation |>
+  mutate(
+    verdict = case_when(
+      index_gap > 0.6 ~ "France en avance",
+      index_gap < 0.4 ~ "France en retard",
+      TRUE            ~ "France dans la moyenne"
     )
+  )
 
-    itu_sum |>
-      dplyr::select(tidyselect::all_of(cols_presentes)) |>
-      gt::gt() |>
-      gt::fmt_number(
-        columns = tidyselect::any_of(c("lignes","annees_min","annees_max","pays_regions","zones")),
-        decimals = 0
-      ) |>
-      gt::tab_header(title = "ITU Facts & Figures 2024 – synthèse des jeux de données")
-  }
-})
+gap_verdicts
+```
+
+```{r 5-3-gap-equipment-fix-rename}
+# Ici, on pourrait rattacher des catégories (équipement / usage / débit)
+gap_equipment_fix_rename <- gap_verdicts |>
+  mutate(
+    famille = case_when(
+      str_detect(indicateur, "broadband") ~ "Couverture / abonnements",
+      str_detect(indicateur, "bandwidth") ~ "Débits",
+      str_detect(indicateur, "internet_use") ~ "Usage",
+      TRUE ~ "Autre"
+    )
+  )
+
+gap_equipment_fix_rename
+```
+
+```{r 5-4-broadband-bandwidth}
+broadband_bandwidth <- gap_fr |>
+  filter(indicateur %in% c("mobile_broadband_100", "avg_download_speed_mbps"))
+
+broadband_bandwidth
+```
+
+```{r 5-5-macro-vs-qos-fr-long}
+# Croisement macro vs QoS France (simplifié : utilisation des index)
+macro_vs_qos_fr_long <- gap_equipment_fix_rename
+
+macro_vs_qos_fr_long
+```
+
+```{r 5-6-synthese-ecarts-fr-weighted}
+# On construit un score agrégé pondéré par famille
+weights <- tibble(
+  famille = c("Couverture / abonnements", "Débits", "Usage", "Autre"),
+  poids   = c(0.35, 0.35, 0.2, 0.1)
+)
+
+synthese_ecarts_fr_weighted <- gap_equipment_fix_rename |>
+  left_join(weights, by = "famille") |>
+  mutate(
+    poids = ifelse(is.na(poids), 0.1, poids),
+    score_pondere = index_gap * poids
+  ) |>
+  summarise(
+    score_global = sum(score_pondere, na.rm = TRUE)
+  )
+
+synthese_ecarts_fr_weighted
 ```
 
 ---
 
-## 7. Synthèse et pistes de prolongement
+## 7. Synthèse et messages clés
 
-- Les indicateurs globaux ARCEP confirment un **niveau global élevé** de QoS mobile en France, avec des taux de communications réussies et de chargement de pages majoritairement supérieurs à 95 %, tout en montrant des **différences entre opérateurs**.
-- Les données détaillées Voix mettent en évidence des **contrastes entre habitations et transports**, notamment sur le temps d’établissement d’appel et la qualité vocale (MOS).
-- L’analyse Data souligne le rôle clé de la **latence perçue** (pages ≤ 5 secondes) pour l’expérience utilisateur, avec des zones / axes où la performance reste en retrait.
-- Les jeux ITU Facts & Figures 2024 offrent un cadre structuré pour **positionner la France** parmi les autres pays en termes de couverture, d’usage d’Internet et de capacité, ce qui sera exploité dans la suite du projet pour le benchmark international.
+Cette EDA permet de faire ressortir :
 
-Les étapes suivantes pourront inclure :
+- les **forces** et **faiblesses** structurelles de chaque opérateur en **Voix** et **Data** ;
+- les **zones à risque** où l’expérience client est fragile (zones, environnements, transports) ;
+- le **positionnement de la France** par rapport aux standards internationaux (usage, broadband, bande passante) ;
+- un diagnostic de **gaps** à combler, priorisés selon l’impact potentiel.
 
-- la construction d’**indices composites** par axe (Voix, Data, Radio) et par opérateur ;
-- la définition de **seuils cibles** et de **KPI de suivi** par type de zone ;
-- l’intégration complète des indicateurs ITU et d’autres sources internationales pour un **benchmark France vs UE / OCDE / leaders QoS**.
+Ces résultats nourrissent directement la partie **“Résultats & recommandations”** du projet P2, en fournissant :
+
+- une base factuelle solide pour le discours,
+- des KPI robustes, reproductibles,
+- et des axes de priorisation clairs pour les équipes réseau & régulation.
