@@ -1,0 +1,1095 @@
+country,year,indicator,value,source,jeu_donnees,source_file,theme,sub_dataset,region,area,network_type
+,2006.0,Internet use (%),1.1471,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2007.0,Internet use (%),1.3661,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2008.0,Internet use (%),1.5553,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2009.0,Internet use (%),1.7496,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2010.0,Internet use (%),1.9934,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2011.0,Internet use (%),2.1918,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2012.0,Internet use (%),2.3968,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2013.0,Internet use (%),2.571,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2014.0,Internet use (%),2.7574,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2015.0,Internet use (%),2.9686,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2016.0,Internet use (%),3.2263,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2017.0,Internet use (%),3.4536,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2018.0,Internet use (%),3.7402,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2019.0,Internet use (%),4.1245,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2020.0,Internet use (%),4.6172,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2021.0,Internet use (%),4.9036,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2022.0,Internet use (%),5.1005,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2023.0,Internet use (%),5.2818,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2024.0,Internet use (%),5.5088,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+,2005.0,Internet use (%),1.0236,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+17.2,2006.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+20.2,2007.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+22.8,2008.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+25.3,2009.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+28.4,2010.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+30.9,2011.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+33.3,2012.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+35.3,2013.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+37.4,2014.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+39.8,2015.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+42.7,2016.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+45.2,2017.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+48.4,2018.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+52.9,2019.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+58.6,2020.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+61.7,2021.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+63.7,2022.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+65.4,2023.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+67.6,2024.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+15.6,2005.0,Internet use (%),,ITU,01- InternetUse1,01- InternetUse1.csv,InternetUse,InternetUse,,,
+World,,Internet use (%),1.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+,,Internet use (%),2.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+Africa,,Internet use (%),3.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+Americas,,Internet use (%),4.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+Arab States,,Internet use (%),5.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+Asia-Pacific,,Internet use (%),6.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+CIS,,Internet use (%),7.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+Europe,,Internet use (%),8.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+,,Internet use (%),9.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+Low-income,,Internet use (%),10.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+Lower-middle-income,,Internet use (%),11.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+Upper-middle-income,,Internet use (%),12.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+High-income,,Internet use (%),13.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+,,Internet use (%),14.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+LDCs,,Internet use (%),15.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+LLDCs,,Internet use (%),16.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+SIDS,,Internet use (%),17.0,ITU,02- InternetUse2,02- InternetUse2.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),1.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),1.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),1.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),1.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),2.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),2.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),2.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),2.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),3.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),3.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),3.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),3.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),4.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),4.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),4.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),4.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),5.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),5.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),5.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),5.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),6.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),6.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),6.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),6.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),7.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),7.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),7.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),7.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),8.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),8.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),8.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),8.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),9.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),9.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),9.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),9.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),12.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),12.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),12.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),12.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),13.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),13.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),13.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),13.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Male,,Internet use (%),14.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2019,,Internet use (%),14.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+2024,,Internet use (%),14.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+Female,,Internet use (%),14.0,ITU,03- InternetUse3&4,03- InternetUse3&4.csv,InternetUse,InternetUse,,,
+78.51816800403265,,Internet use (%),1.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+,,Internet use (%),2.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+52.99112306321191,,Internet use (%),3.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+94.77512294243478,,Internet use (%),4.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+86.14164511118007,,Internet use (%),5.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+80.59576838370118,,Internet use (%),6.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+97.35568881765948,,Internet use (%),7.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+98.40445069235294,,Internet use (%),8.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+,,Internet use (%),9.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+42.60140384913575,,Internet use (%),10.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+70.63664465809086,,Internet use (%),11.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+96.75942111984548,,Internet use (%),12.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+98.8040650154324,,Internet use (%),13.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+,,Internet use (%),14.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+51.55170826223689,,Internet use (%),15.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+50.92780472025031,,Internet use (%),16.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+77.7533348255746,,Internet use (%),17.0,ITU,18- YouthInternetUse,18- YouthInternetUse.csv,InternetUse,InternetUse,,,
+Low-income,,Internet use (%),2021.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+Low-income,,Internet use (%),2022.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+Low-income,,Internet use (%),2023.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+Low-income,,Internet use (%),2024.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+Lower-middle-income,,Internet use (%),2021.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+Lower-middle-income,,Internet use (%),2022.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+Lower-middle-income,,Internet use (%),2023.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+Lower-middle-income,,Internet use (%),2024.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+Upper-middle-income,,Internet use (%),2021.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+Upper-middle-income,,Internet use (%),2022.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+Upper-middle-income,,Internet use (%),2023.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+Upper-middle-income,,Internet use (%),2024.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+High-income,,Internet use (%),2021.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+High-income,,Internet use (%),2022.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+High-income,,Internet use (%),2023.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+High-income,,Internet use (%),2024.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+World,,Internet use (%),2021.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+World,,Internet use (%),2022.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+World,,Internet use (%),2023.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+World,,Internet use (%),2024.0,ITU,06- UrbRurInternetUse,06- UrbRurInternetUse.csv,InternetUse,InternetUse,,,
+,2016.0,,,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,5G
+,2017.0,,,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,5G
+,2018.0,,,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,5G
+,2019.0,,,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,5G
+,2020.0,,9.2,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,5G
+,2021.0,,18.7,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,5G
+,2022.0,,32.0,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,5G
+,2023.0,,44.5,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,5G
+,2024.0,,51.2,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,5G
+,2015.0,,,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,5G
+,2016.0,,63.8,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,4G
+,2017.0,,74.5,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,4G
+,2018.0,,79.3,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,4G
+,2019.0,,82.9,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,4G
+,2020.0,,76.1,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,4G
+,2021.0,,68.1,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,4G
+,2022.0,,57.3,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,4G
+,2023.0,,46.900000000000006,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,4G
+,2024.0,,40.6,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,4G
+,2015.0,,43.5,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,4G
+,2016.0,,20.40000000000001,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,3G
+,2017.0,,13.200000000000005,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,3G
+,2018.0,,11.299999999999995,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,3G
+,2019.0,,9.699999999999989,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,3G
+,2020.0,,7.799999999999997,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,3G
+,2021.0,,7.0,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,3G
+,2022.0,,5.200000000000003,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,3G
+,2023.0,,4.0,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,3G
+,2024.0,,3.799999999999997,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,3G
+,2015.0,,34.5,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,3G
+,2016.0,,11.299999999999995,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,2G
+,2017.0,,8.5,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,2G
+,2018.0,,5.900000000000006,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,2G
+,2019.0,,4.300000000000011,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,2G
+,2020.0,,3.9000000000000057,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,2G
+,2021.0,,3.5,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,2G
+,2022.0,,3.0,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,2G
+,2023.0,,2.299999999999997,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,2G
+,2024.0,,2.300000000000012,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,2G
+,2015.0,,16.900000000000006,ITU,15- MobCoverage01,15- MobCoverage01.csv,MobCoverage,MobCoverage,,,2G
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,World,,3.799999999999997
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,World,,2.300000000000012
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,World,,51.2
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,World,,40.6
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Africa,,15.0
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Africa,,7.899999999999991
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Africa,,11.0
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Africa,,59.900000000000006
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Americas,,2.0
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Americas,,1.2000000000000028
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Americas,,63.4
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Americas,,30.300000000000004
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Arab States,,8.0
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Arab States,,2.5
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Arab States,,12.7
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Arab States,,74.2
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Asia-Pacific,,1.3999999999999917
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Asia-Pacific,,1.3000000000000114
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Asia-Pacific,,62.3
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Asia-Pacific,,33.900000000000006
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,CIS,,3.299999999999997
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,CIS,,1.5
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,CIS,,12.0
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,CIS,,82.3
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Europe,,0.1000000000000085
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Europe,,0.3999999999999915
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Europe,,72.3
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Europe,,27.0
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Low-income,,28.3
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Low-income,,10.799999999999995
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Low-income,,3.5
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Low-income,,48.5
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Lower-middle-income,,2.299999999999997
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Lower-middle-income,,3.6000000000000085
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Lower-middle-income,,35.4
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Lower-middle-income,,57.6
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Upper-middle-income,,0.5999999999999943
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Upper-middle-income,,1.5
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Upper-middle-income,,65.2
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,Upper-middle-income,,32.3
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,High-income,,0.7000000000000028
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,High-income,,0.0999999999999943
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,High-income,,83.8
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,High-income,,15.0
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,,,
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,LDCs,,17.60000000000001
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,LDCs,,8.899999999999991
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,LDCs,,5.7
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,LDCs,,61.39999999999999
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,LLDCs,,24.700000000000003
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,LLDCs,,10.099999999999994
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,LLDCs,,9.7
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,LLDCs,,51.6
+,,,3G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,SIDS,,14.700000000000005
+,,,2G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,SIDS,,6.700000000000003
+,,,5G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,SIDS,,26.9
+,,,4G,ITU,16- MobCoverage02,16- MobCoverage02.csv,MobCoverage,MobCoverage,SIDS,,43.2
+,,,52.5,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,World,Rural,4G
+,,,5.200000000000003,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,World,Rural,2G
+,,,29.2,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,World,Rural,5G
+,,,8.099999999999994,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,World,Rural,3G
+,,,32.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,World,Urban,4G
+,,,0.0999999999999943,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,World,Urban,2G
+,,,67.1,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,World,Urban,5G
+,,,0.8000000000000114,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,World,Urban,3G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,4G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,2G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,5G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,3G
+,,,49.3,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Africa,Rural,4G
+,,,14.099999999999994,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Africa,Rural,2G
+,,,0.1,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Africa,Rural,5G
+,,,25.6,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Africa,Rural,3G
+,,,73.39999999999999,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Africa,Urban,4G
+,,,0.0999999999999943,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Africa,Urban,2G
+,,,25.2,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Africa,Urban,5G
+,,,1.3000000000000114,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Africa,Urban,3G
+,,,41.3,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Americas,Rural,4G
+,,,6.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Americas,Rural,2G
+,,,30.7,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Americas,Rural,5G
+,,,4.400000000000006,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Americas,Rural,3G
+,,,28.099999999999994,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Americas,Urban,4G
+,,,0.2999999999999971,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Americas,Urban,2G
+,,,70.4,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Americas,Urban,5G
+,,,1.2000000000000028,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Americas,Urban,3G
+,,,68.7,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Arab States,Rural,4G
+,,,5.699999999999989,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Arab States,Rural,2G
+,,,0.8,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Arab States,Rural,5G
+,,,18.40000000000001,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Arab States,Rural,3G
+,,,77.8,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Arab States,Urban,4G
+,,,0.4000000000000057,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Arab States,Urban,2G
+,,,20.7,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Arab States,Urban,5G
+,,,1.0999999999999943,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Arab States,Urban,3G
+,,,53.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Asia-Pacific,Rural,4G
+,,,2.5,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Asia-Pacific,Rural,2G
+,,,41.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Asia-Pacific,Rural,5G
+,,,1.0999999999999943,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Asia-Pacific,Rural,3G
+,,,17.39999999999999,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Asia-Pacific,Urban,4G
+,,,0.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Asia-Pacific,Urban,2G
+,,,81.9,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Asia-Pacific,Urban,5G
+,,,0.7000000000000028,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Asia-Pacific,Urban,3G
+,,,83.3,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,CIS,Rural,4G
+,,,4.599999999999994,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,CIS,Rural,2G
+,,,0.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,CIS,Rural,5G
+,,,9.600000000000009,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,CIS,Rural,3G
+,,,81.9,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,CIS,Urban,4G
+,,,0.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,CIS,Urban,2G
+,,,18.1,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,CIS,Urban,5G
+,,,0.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,CIS,Urban,3G
+,,,51.2,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Europe,Rural,4G
+,,,1.4000000000000057,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Europe,Rural,2G
+,,,45.8,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Europe,Rural,5G
+,,,0.5999999999999943,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Europe,Rural,3G
+,,,19.40000000000001,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Europe,Urban,4G
+,,,0.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Europe,Urban,2G
+,,,80.6,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Europe,Urban,5G
+,,,0.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Europe,Urban,3G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,4G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,2G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,5G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,3G
+,,,30.4,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Low-income,Rural,4G
+,,,16.599999999999994,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Low-income,Rural,2G
+,,,0.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Low-income,Rural,5G
+,,,39.1,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Low-income,Rural,3G
+,,,81.4,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Low-income,Urban,4G
+,,,0.2000000000000028,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Low-income,Urban,2G
+,,,9.8,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Low-income,Urban,5G
+,,,8.599999999999994,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Low-income,Urban,3G
+,,,66.4,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Lower-middle-income,Rural,4G
+,,,4.1000000000000085,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Lower-middle-income,Rural,2G
+,,,22.3,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Lower-middle-income,Rural,5G
+,,,3.3999999999999915,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Lower-middle-income,Rural,3G
+,,,45.2,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Lower-middle-income,Urban,4G
+,,,0.2000000000000028,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Lower-middle-income,Urban,2G
+,,,53.7,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Lower-middle-income,Urban,5G
+,,,0.8999999999999915,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Lower-middle-income,Urban,3G
+,,,40.3,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Upper-middle-income,Rural,4G
+,,,2.5999999999999943,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Upper-middle-income,Rural,2G
+,,,51.9,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Upper-middle-income,Rural,5G
+,,,1.7000000000000028,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Upper-middle-income,Rural,3G
+,,,28.700000000000003,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Upper-middle-income,Urban,4G
+,,,0.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Upper-middle-income,Urban,2G
+,,,71.1,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Upper-middle-income,Urban,5G
+,,,0.2000000000000028,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,Upper-middle-income,Urban,3G
+,,,35.7,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,High-income,Rural,4G
+,,,0.9000000000000057,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,High-income,Rural,2G
+,,,57.7,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,High-income,Rural,5G
+,,,3.6999999999999886,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,High-income,Rural,3G
+,,,10.5,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,High-income,Urban,4G
+,,,0.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,High-income,Urban,2G
+,,,89.5,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,High-income,Urban,5G
+,,,0.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,High-income,Urban,3G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,4G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,2G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,5G
+,,,,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,,,3G
+,,,49.1,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LDCs,Rural,4G
+,,,14.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LDCs,Rural,2G
+,,,0.0,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LDCs,Rural,5G
+,,,26.800000000000004,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LDCs,Rural,3G
+,,,82.3,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LDCs,Urban,4G
+,,,0.0999999999999943,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LDCs,Urban,2G
+,,,15.4,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LDCs,Urban,5G
+,,,2.200000000000003,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LDCs,Urban,3G
+,,,43.3,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LLDCs,Rural,4G
+,,,14.899999999999991,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LLDCs,Rural,2G
+,,,0.1,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LLDCs,Rural,5G
+,,,36.00000000000001,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LLDCs,Rural,3G
+,,,68.80000000000001,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LLDCs,Urban,4G
+,,,0.2000000000000028,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LLDCs,Urban,2G
+,,,29.6,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LLDCs,Urban,5G
+,,,1.3999999999999917,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,LLDCs,Urban,3G
+,,,42.5,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,SIDS,Rural,4G
+,,,16.799999999999997,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,SIDS,Rural,2G
+,,,2.8,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,SIDS,Rural,5G
+,,,15.5,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,SIDS,Rural,3G
+,,,43.6,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,SIDS,Urban,4G
+,,,0.7000000000000028,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,SIDS,Urban,2G
+,,,41.4,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,SIDS,Urban,5G
+,,,14.200000000000005,ITU,17- MobCoverage03,17- MobCoverage03.csv,MobCoverage,MobCoverage,SIDS,Urban,3G
+,,,World,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,10.200000000000005
+,,,,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,
+,,,Africa,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,25.0
+,,,Americas,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,23.599999999999994
+,,,Arab States,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,12.099999999999994
+,,,Asia-Pacific,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,4.900000000000006
+,,,CIS,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,7.099999999999994
+,,,Europe,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,2.4000000000000057
+,,,,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,
+,,,Low-income,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,30.5
+,,,Lower-middle-income,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,7.900000000000006
+,,,Upper-middle-income,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,6.099999999999994
+,,,High-income,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,2.9000000000000057
+,,,,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,
+,,,LDCs,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,24.099999999999994
+,,,LLDCs,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,20.599999999999994
+,,,SIDS,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Rural,,39.2
+,,,World,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.0999999999999943
+,,,,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,
+,,,Africa,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.0999999999999943
+,,,Americas,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.2999999999999971
+,,,Arab States,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.4000000000000057
+,,,Asia-Pacific,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.0
+,,,CIS,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.0
+,,,Europe,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.0
+,,,,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,
+,,,Low-income,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.2000000000000028
+,,,Lower-middle-income,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.2000000000000028
+,,,Upper-middle-income,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.0
+,,,High-income,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.0
+,,,,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,
+,,,LDCs,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.0999999999999943
+,,,LLDCs,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.2000000000000028
+,,,SIDS,ITU,19-MobCoverage04_alt,19-MobCoverage04_alt.csv,MobCoverage,MobCoverage,Urban,,0.7999999999999972
+World,,79.7,67.6,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+,,,,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+Africa,,66.23359166383412,37.5,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+Americas,,88.77992367524055,86.5,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+Arab States,,83.06562076204223,69.6,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+Asia-Pacific,,76.89037660532378,66.1,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+CIS,,94.41378234364804,91.5,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+Europe,,95.28461949984548,91.2,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+Low-income,,56.1832558366941,26.5,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+Lower-middle-income,,72.02706732840112,54.0,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+Upper-middle-income,,84.16272990014507,80.7,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+High-income,,96.09199033568142,93.4,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+LDCs,,62.81884438845204,35.0,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+LLDCs,,64.55778222303529,39.4,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+SIDS,,75.01836497991918,64.8,ITU,Mobileownership01,Mobileownership01.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.9338149000999918,World,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.9089618150957424,World,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,,,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,,,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.8074391109406239,Africa,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.7757533455354895,Africa,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,1.0136472229763616,Americas,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.991677085897839,Americas,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.9017917319222668,Arab States,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.9053470588487692,Arab States,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.9237853511080965,Asia-Pacific,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.88898900341299,Asia-Pacific,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.9943100900389932,CIS,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.975227779424214,CIS,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.9960178352139034,Europe,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.9850990775050976,Europe,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.7189213217699646,Low-income,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.6717842211246575,Low-income,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.8587872687311962,Lower-middle-income,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.8206531907973994,Lower-middle-income,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.975437752712308,Upper-middle-income,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.9411884341344416,Upper-middle-income,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,1.0028204178522169,High-income,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.9989646948060872,High-income,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.774134456784107,LDCs,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.7298130454540631,LDCs,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.8148404241659498,LLDCs,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.7599095192230779,LLDCs,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2024,,0.9671615744581364,SIDS,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+2021,,0.9689138462720088,SIDS,ITU,Mobileownership03,Mobileownership03.csv,MobileOwnership,MobileOwnership,,,
+72.7871753305583,,World,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+76.96801121826205,,World,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+,,Blank1,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+53.4669981823067,,Africa,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+59.2511361433152,,Africa,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+86.6615736522776,,Americas,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+89.37805249791434,,Americas,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+77.83814938836854,,Arab States,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+78.63660775084116,,Arab States,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+68.6713615344067,,Asia-Pacific,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+73.86481904498032,,Asia-Pacific,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+90.63900454577151,,CIS,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+94.16314860130164,,CIS,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+92.7298398511616,,Europe,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+95.08618004082751,,Europe,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+,,Blank2,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+40.57951379842447,,Low-income,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+47.22865607994211,,Low-income,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+60.913046021503725,,Lower-middle-income,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+66.39118544570081,,Lower-middle-income,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+79.60702875427145,,Upper-middle-income,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+84.30017012591601,,Upper-middle-income,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+94.7603981445471,,High-income,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+96.1070073970436,,High-income,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+,,Blank3,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+48.26430932026323,,LDCs,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+54.9061124785901,,LDCs,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+50.83914980308904,,LLDCs,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+58.05183019407151,,LLDCs,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+70.18438406790033,,SIDS,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+73.76661455073078,,SIDS,Women,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+80.07726410695429,,World,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+82.42319886951944,,World,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+,,Blank1,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+68.92267818116767,,Africa,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+73.38155328429751,,Africa,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+87.38890399369915,,Americas,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+88.17471253507163,,Americas,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+85.97603386191676,,Arab States,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+87.20040888290107,,Arab States,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+77.2465815333653,,Asia-Pacific,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+79.95885511323405,,Asia-Pacific,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+92.94136863009156,,CIS,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+94.70199442269454,,CIS,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+94.13250095210016,,Europe,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+95.46634274918073,,Europe,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+,,Blank2,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+60.40557744939123,,Low-income,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+65.69377573009861,,Low-income,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+74.22507668838367,,Lower-middle-income,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+77.30806902131839,,Lower-middle-income,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+84.58139291467344,,Upper-middle-income,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+86.42291103815745,,Upper-middle-income,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+94.85860575176922,,High-income,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+95.83670783536704,,High-income,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+,,Blank3,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+66.13242887462354,,LDCs,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+70.9258088145048,,LDCs,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+66.90158303986817,,LLDCs,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+71.24318881637703,,LLDCs,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+72.43614521346932,,SIDS,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+76.27124205390334,,SIDS,Men,ITU,Mobileownership03_alt,Mobileownership03_alt.csv,MobileOwnership,MobileOwnership,,,
+2018,,Arab States,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,The Americas,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,The Americas,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2021,,The Americas,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,The Americas,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,The Americas,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,CIS countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,CIS countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2021,,CIS countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,CIS countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2015,,CIS countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,CIS countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,CIS countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,CIS countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2015,,Arab States,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,Arab States,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,Arab States,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,Arab States,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Arab States,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,Arab States,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2021,,Arab States,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,Arab States,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,Arab States,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2021,,Asia & Pacific,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,Asia & Pacific,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,CIS countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2021,,Europe countries,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,Europe countries,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,Europe countries,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2015,,The Americas,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,The Americas,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,The Americas,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,Asia & Pacific,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Asia & Pacific,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,Asia & Pacific,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Africa,Low-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,Africa,Low-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2015,,Africa,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,Africa,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,Africa,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Africa,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,Asia & Pacific,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Asia & Pacific,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,The Americas,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,The Americas,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,The Americas,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,Africa,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,Africa,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,Other Economies,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2015,,Europe countries,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,Europe countries,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,Europe countries,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,Europe countries,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,Europe countries,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,Arab States,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2015,,Arab States,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,Arab States,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Arab States,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,Arab States,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,Arab States,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2015,,Africa,Low-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,Africa,Low-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,Europe countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,Europe countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,Europe countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Europe countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,Europe countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2021,,Europe countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,Europe countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,Europe countries,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,The Americas,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2015,,Asia & Pacific,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,Asia & Pacific,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,Asia & Pacific,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,Asia & Pacific,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2021,,Asia & Pacific,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2015,,Asia & Pacific,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,Asia & Pacific,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,Asia & Pacific,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,Asia & Pacific,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Asia & Pacific,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,Asia & Pacific,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2021,,Asia & Pacific,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,Asia & Pacific,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,Asia & Pacific,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2015,,Asia & Pacific,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,Asia & Pacific,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,Asia & Pacific,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,Asia & Pacific,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Arab States,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,Arab States,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,Asia & Pacific,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Europe countries,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,Africa,Low-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,Africa,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,Africa,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Africa,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,Africa,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2021,,Arab States,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,Other Economies,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Other Economies,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,Other Economies,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,Other Economies,Upper-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,Arab States,Low-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,Other Economies,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,Other Economies,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,Other Economies,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,Other Economies,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,Other Economies,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2016,,Europe countries,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,Europe countries,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2021,,Europe countries,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,The Americas,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,The Americas,High-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2017,,CIS countries,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2018,,CIS countries,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2019,,CIS countries,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,CIS countries,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2021,,CIS countries,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,CIS countries,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2023,,CIS countries,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2022,,Asia & Pacific,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+2020,,Africa,Lower-middle-income,ITU,Mobileownership04,Mobileownership04.csv,MobileOwnership,MobileOwnership,,,
+World,,mobile_subs,10.3,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+,,mobile_subs,,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Africa,,mobile_subs,0.6,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Americas,,mobile_subs,16.7,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Arab States,,mobile_subs,9.1,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Asia-Pacific,,mobile_subs,8.3,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+CIS,,mobile_subs,14.1,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Europe,,mobile_subs,28.5,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Low-income,,mobile_subs,0.9,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Lower-middle-income,,mobile_subs,2.6,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Upper-middle-income,,mobile_subs,11.8,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+High-income,,mobile_subs,29.4,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+LDCs,,mobile_subs,0.6,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+LLDCs,,mobile_subs,3.2,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+SIDS,,mobile_subs,11.5,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+2006,,mobile_subs,19.2,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2007,,mobile_subs,18.8,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2008,,mobile_subs,18.5,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2009,,mobile_subs,18.4,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2010,,mobile_subs,17.8,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2011,,mobile_subs,17.2,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2012,,mobile_subs,16.7,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2013,,mobile_subs,16.0,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2014,,mobile_subs,15.1,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2015,,mobile_subs,14.1,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2016,,mobile_subs,13.4,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2017,,mobile_subs,13.0,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2018,,mobile_subs,12.4,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2019,,mobile_subs,11.9,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2020,,mobile_subs,11.5,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2021,,mobile_subs,11.2,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2022,,mobile_subs,10.9,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2023,,mobile_subs,10.5,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2024,,mobile_subs,10.3,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2005,,mobile_subs,19.1,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2006,,mobile_subs,4.3,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2007,,mobile_subs,5.2,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2008,,mobile_subs,6.1,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2009,,mobile_subs,6.9,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2010,,mobile_subs,7.6,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2011,,mobile_subs,8.6,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2012,,mobile_subs,9.2,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2013,,mobile_subs,9.7,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2014,,mobile_subs,10.1,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2015,,mobile_subs,11.3,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2016,,mobile_subs,12.2,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2017,,mobile_subs,13.5,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2018,,mobile_subs,14.0,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2019,,mobile_subs,14.7,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2020,,mobile_subs,15.6,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2021,,mobile_subs,16.8,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2022,,mobile_subs,17.7,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2023,,mobile_subs,18.6,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2024,,mobile_subs,19.6,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2005,,mobile_subs,3.4,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2006,,mobile_subs,41.7,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2007,,mobile_subs,50.6,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2008,,mobile_subs,59.7,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2009,,mobile_subs,68.0,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2010,,mobile_subs,76.6,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2011,,mobile_subs,84.2,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2012,,mobile_subs,88.5,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2013,,mobile_subs,93.1,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2014,,mobile_subs,96.7,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2015,,mobile_subs,96.1,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2016,,mobile_subs,99.3,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2017,,mobile_subs,101.4,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2018,,mobile_subs,103.1,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2019,,mobile_subs,105.9,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2020,,mobile_subs,104.9,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2021,,mobile_subs,106.7,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2022,,mobile_subs,108.1,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2023,,mobile_subs,109.4,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2024,,mobile_subs,112.1,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2005,,mobile_subs,33.9,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2006,,mobile_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2007,,mobile_subs,4.0,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2008,,mobile_subs,6.3,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2009,,mobile_subs,9.0,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2010,,mobile_subs,11.5,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2011,,mobile_subs,16.9,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2012,,mobile_subs,21.9,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2013,,mobile_subs,27.4,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2014,,mobile_subs,36.8,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2015,,mobile_subs,44.6,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2016,,mobile_subs,51.8,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2017,,mobile_subs,62.5,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2018,,mobile_subs,68.6,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2019,,mobile_subs,74.2,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2020,,mobile_subs,76.7,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2021,,mobile_subs,80.9,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2022,,mobile_subs,85.9,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2023,,mobile_subs,89.9,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2024,,mobile_subs,94.6,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2005,,mobile_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+52.9,,mobile_subs,World,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+67.6,,mobile_subs,World,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+,,mobile_subs,Blank1,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+25.1,,mobile_subs,Africa,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+37.5,,mobile_subs,Africa,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+76.0,,mobile_subs,Americas,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+86.5,,mobile_subs,Americas,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+53.8,,mobile_subs,Arab States,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+69.6,,mobile_subs,Arab States,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+48.3,,mobile_subs,Asia-Pacific,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+66.1,,mobile_subs,Asia-Pacific,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+76.2,,mobile_subs,CIS,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+91.5,,mobile_subs,CIS,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+81.8,,mobile_subs,Europe,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+91.2,,mobile_subs,Europe,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+,,mobile_subs,Blank2,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+17.2,,mobile_subs,Low-income,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+26.5,,mobile_subs,Low-income,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+33.5,,mobile_subs,Lower-middle-income,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+54.0,,mobile_subs,Lower-middle-income,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+64.5,,mobile_subs,Upper-middle-income,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+80.7,,mobile_subs,Upper-middle-income,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+87.5,,mobile_subs,High-income,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+93.4,,mobile_subs,High-income,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+,,mobile_subs,Blank3,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+21.8,,mobile_subs,LDCs,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+35.0,,mobile_subs,LDCs,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+27.5,,mobile_subs,LLDCs,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+39.4,,mobile_subs,LLDCs,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+56.0,,mobile_subs,SIDS,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+64.8,,mobile_subs,SIDS,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+World,,fixed_subs,112.1,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+,,fixed_subs,,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Africa,,fixed_subs,97.5,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Americas,,fixed_subs,114.1,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Arab States,,fixed_subs,103.7,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Asia-Pacific,,fixed_subs,112.4,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+CIS,,fixed_subs,147.1,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Europe,,fixed_subs,125.1,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Low-income,,fixed_subs,71.0,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Lower-middle-income,,fixed_subs,94.5,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Upper-middle-income,,fixed_subs,129.5,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+High-income,,fixed_subs,138.2,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+LDCs,,fixed_subs,89.3,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+LLDCs,,fixed_subs,91.2,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+SIDS,,fixed_subs,97.0,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+2006,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2007,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2008,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2009,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2010,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2011,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2012,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2013,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2014,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2015,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2016,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2017,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2018,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2019,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2020,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2021,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2022,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2023,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2024,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2005,,fixed_subs,Fixed-telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2006,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2007,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2008,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2009,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2010,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2011,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2012,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2013,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2014,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2015,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2016,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2017,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2018,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2019,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2020,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2021,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2022,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2023,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2024,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2005,,fixed_subs,Fixed-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2006,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2007,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2008,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2009,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2010,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2011,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2012,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2013,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2014,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2015,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2016,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2017,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2018,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2019,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2020,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2021,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2022,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2023,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2024,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2005,,fixed_subs,Mobile-cellular telephone subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2006,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2007,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2008,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2009,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2010,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2011,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2012,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2013,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2014,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2015,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2016,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2017,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2018,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2019,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2020,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2021,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2022,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2023,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2024,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2005,,fixed_subs,Active mobile-broadband subscriptions,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+52.9,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+67.6,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+25.1,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+37.5,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+76.0,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+86.5,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+53.8,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+69.6,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+48.3,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+66.1,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+76.2,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+91.5,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+81.8,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+91.2,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+17.2,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+26.5,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+33.5,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+54.0,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+64.5,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+80.7,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+87.5,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+93.4,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+21.8,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+35.0,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+27.5,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+39.4,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+56.0,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+64.8,,fixed_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+World,,broadband_subs,19.6,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+,,broadband_subs,,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Africa,,broadband_subs,0.9,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Americas,,broadband_subs,26.6,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Arab States,,broadband_subs,12.5,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Asia-Pacific,,broadband_subs,20.8,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+CIS,,broadband_subs,25.3,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Europe,,broadband_subs,37.2,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Low-income,,broadband_subs,0.5,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Lower-middle-income,,broadband_subs,4.8,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Upper-middle-income,,broadband_subs,32.0,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+High-income,,broadband_subs,38.1,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+LDCs,,broadband_subs,2.0,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+LLDCs,,broadband_subs,5.1,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+SIDS,,broadband_subs,9.3,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+2006,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2007,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2008,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2009,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2010,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2011,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2012,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2013,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2014,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2015,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2016,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2017,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2018,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2019,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2020,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2021,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2022,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2023,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2024,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2005,,broadband_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+52.9,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+67.6,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+25.1,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+37.5,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+76.0,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+86.5,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+53.8,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+69.6,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+48.3,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+66.1,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+76.2,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+91.5,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+81.8,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+91.2,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+17.2,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+26.5,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+33.5,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+54.0,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+64.5,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+80.7,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+87.5,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+93.4,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+21.8,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+35.0,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+27.5,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+39.4,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+56.0,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+64.8,,broadband_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+World,,other_subs,94.6,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+,,other_subs,,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Africa,,other_subs,51.5,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Americas,,other_subs,124.7,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Arab States,,other_subs,85.2,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Asia-Pacific,,other_subs,96.8,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+CIS,,other_subs,107.8,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Europe,,other_subs,111.6,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Low-income,,other_subs,40.1,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Lower-middle-income,,other_subs,66.3,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+Upper-middle-income,,other_subs,111.7,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+High-income,,other_subs,152.7,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+LDCs,,other_subs,51.3,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+LLDCs,,other_subs,59.3,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+SIDS,,other_subs,66.4,ITU,08- Subs9to12,08- Subs9to12.csv,Subscriptions,Subscriptions,,,
+2006,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2007,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2008,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2009,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2010,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2011,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2012,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2013,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2014,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2015,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2016,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2017,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2018,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2019,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2020,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2021,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2022,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2023,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2024,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+2005,,other_subs,,ITU,09- Subs0alt,09- Subs0alt.csv,Subscriptions,Subscriptions,,,
+52.9,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+67.6,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+25.1,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+37.5,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+76.0,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+86.5,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+53.8,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+69.6,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+48.3,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+66.1,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+76.2,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+91.5,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+81.8,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+91.2,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+17.2,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+26.5,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+33.5,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+54.0,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+64.5,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+80.7,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+87.5,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+93.4,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+21.8,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+35.0,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+27.5,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+39.4,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+56.0,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+64.8,,other_subs,,ITU,02-InternetUse2alt,02-InternetUse2alt.csv,Subscriptions,Subscriptions,,,
+Africa,2018.0,International bandwidth (kbps per user),6.77727825,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Africa,2019.0,International bandwidth (kbps per user),10.27927008,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Africa,2020.0,International bandwidth (kbps per user),20.63428416,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Africa,2021.0,International bandwidth (kbps per user),28.04651973,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Africa,2022.0,International bandwidth (kbps per user),38.5046,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Africa,2017.0,International bandwidth (kbps per user),5.218067349999999,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Americas,2018.0,International bandwidth (kbps per user),70.89980091666668,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Americas,2019.0,International bandwidth (kbps per user),100.81864045,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Americas,2020.0,International bandwidth (kbps per user),134.92478478668818,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Americas,2021.0,International bandwidth (kbps per user),172.00777074,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Americas,2022.0,International bandwidth (kbps per user),224.0065,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Americas,2017.0,International bandwidth (kbps per user),51.82477672,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Arab States,2018.0,International bandwidth (kbps per user),17.821673009999998,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Arab States,2019.0,International bandwidth (kbps per user),23.92739957,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Arab States,2020.0,International bandwidth (kbps per user),31.911117933,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Arab States,2021.0,International bandwidth (kbps per user),42.07289125,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Arab States,2022.0,International bandwidth (kbps per user),55.002,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Arab States,2017.0,International bandwidth (kbps per user),13.023270728414344,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Asia-Pacific,2018.0,International bandwidth (kbps per user),174.8436147,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Asia-Pacific,2019.0,International bandwidth (kbps per user),247.627413,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Asia-Pacific,2020.0,International bandwidth (kbps per user),310.9584663170704,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Asia-Pacific,2021.0,International bandwidth (kbps per user),441.95798120048,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Asia-Pacific,2022.0,International bandwidth (kbps per user),541.985,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Asia-Pacific,2017.0,International bandwidth (kbps per user),124.30646767,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+CIS,2018.0,International bandwidth (kbps per user),11.355149,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+CIS,2019.0,International bandwidth (kbps per user),12.623715,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+CIS,2020.0,International bandwidth (kbps per user),16.61152525,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+CIS,2021.0,International bandwidth (kbps per user),20.465362,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+CIS,2022.0,International bandwidth (kbps per user),23.8511,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+CIS,2017.0,International bandwidth (kbps per user),10.510903,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Europe,2018.0,International bandwidth (kbps per user),85.603808,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Europe,2019.0,International bandwidth (kbps per user),119.968346,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Europe,2020.0,International bandwidth (kbps per user),152.42898330900002,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Europe,2021.0,International bandwidth (kbps per user),195.450455,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Europe,2022.0,International bandwidth (kbps per user),243.6924,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Europe,2017.0,International bandwidth (kbps per user),61.444273,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Other Economies,2018.0,International bandwidth (kbps per user),38.02639621472393,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Other Economies,2019.0,International bandwidth (kbps per user),44.09741577325078,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Other Economies,2020.0,International bandwidth (kbps per user),51.5779428431,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Other Economies,2021.0,International bandwidth (kbps per user),79.974098,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Other Economies,2022.0,International bandwidth (kbps per user),101.6655,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+Other Economies,2017.0,International bandwidth (kbps per user),26.142845,ITU,13- Bandwidth1,13- Bandwidth1.csv,Bandwidth,Bandwidth,,,
+World,,International bandwidth (kbps per user),1.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+,,International bandwidth (kbps per user),2.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+Africa,,International bandwidth (kbps per user),3.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+Americas,,International bandwidth (kbps per user),4.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+Arab States,,International bandwidth (kbps per user),5.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+Asia-Pacific,,International bandwidth (kbps per user),6.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+CIS,,International bandwidth (kbps per user),7.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+Europe,,International bandwidth (kbps per user),8.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+,,International bandwidth (kbps per user),9.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+Low-income,,International bandwidth (kbps per user),10.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+Lower-middle-income,,International bandwidth (kbps per user),11.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+Upper-middle-income,,International bandwidth (kbps per user),12.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+High Income,,International bandwidth (kbps per user),,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+,,International bandwidth (kbps per user),14.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+LDCs,,International bandwidth (kbps per user),15.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,
+LLDCs,,International bandwidth (kbps per user),16.0,ITU,14- Bandwidth2,14- Bandwidth2.csv,Bandwidth,Bandwidth,,,

@@ -1,0 +1,6 @@
+sub_dataset,lignes,annees_min,annees_max,pays_regions,zones
+Bandwidth,58,2017.0,2022.0,14.0,
+InternetUse,162,2005.0,2024.0,52.0,
+MobCoverage,266,2015.0,2024.0,,16.0
+MobileOwnership,230,,,80.0,
+Subscriptions,378,,,62.0,
