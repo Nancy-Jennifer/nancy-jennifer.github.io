@@ -14,16 +14,28 @@ execute:
 ---
 
 ```{r setup, include=FALSE}
-# Packages nécessaires
+# Liste des packages nécessaires
+needed_packages <- c(
+  "dplyr",
+  "tidyr",
+  "readr",
+  "janitor",
+  "ggplot2",
+  "scales",
+  "stringr",
+  "purrr"
+)
+
+# Installation automatique des packages manquants
+missing_pkgs <- needed_packages[!sapply(needed_packages, requireNamespace, quietly = TRUE)]
+
+if (length(missing_pkgs) > 0) {
+  install.packages(missing_pkgs, repos = "https://cloud.r-project.org")
+}
+
+# Chargement silencieux des packages
 suppressPackageStartupMessages({
-  library(dplyr)
-  library(tidyr)
-  library(readr)
-  library(janitor)
-  library(ggplot2)
-  library(scales)
-  library(stringr)
-  library(purrr)
+  lapply(needed_packages, library, character.only = TRUE)
 })
 
 knitr::opts_chunk$set(
@@ -43,8 +55,9 @@ theme_set(
 )
 
 # IMPORTANT :
-# Si ce fichier est dans un sous-dossier (ex: "SCRIPTS RSTUDIO"),
-# adapter base_dir = ".." ; si le .qmd est à la racine du projet, mettre base_dir = "."
+# Si 02_eda_R.qmd est dans "telecoms/projet2_sections",
+# et que le dossier "data" est à la RACINE du repo,
+# il faut bien rester sur :
 base_dir <- ".."
 
 operateurs_levels <- c("Orange", "SFR", "Bouygues", "Free")
