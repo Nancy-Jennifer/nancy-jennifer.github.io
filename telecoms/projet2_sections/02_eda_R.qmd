@@ -105,7 +105,7 @@ data_hab <- read_csv(
   clean_names()
 
 data_trans <- read_csv(
-  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_data_transports_clean.csv")
+  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_data_transports_clean.csv.gz")
 ) |>
   clean_names()
 
