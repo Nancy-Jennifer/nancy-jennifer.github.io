@@ -48,17 +48,18 @@ knitr::opts_chunk$set(
 theme_set(
   theme_minimal(base_size = 12) +
     theme(
-      plot.title    = element_text(face = "bold"),
-      plot.subtitle = element_text(colour = "grey40"),
+      plot.title      = element_text(face = "bold"),
+      plot.subtitle   = element_text(colour = "grey40"),
       legend.position = "bottom"
     )
 )
 
 # IMPORTANT :
-# Si 02_eda_R.qmd est dans "telecoms/projet2_sections",
-# et que le dossier "data" est à la RACINE du repo,
-# il faut bien rester sur :
-base_dir <- ".."
+# 02_eda_R.qmd est dans "telecoms/projet2_sections"
+# Le dossier "data" est à la RACINE du repo ("nancy-jennifer.github.io")
+# → il faut remonter DEUX niveaux depuis le working dir :
+#   telecoms/projet2_sections -> telecoms -> nancy-jennifer.github.io
+base_dir <- "../.."
 
 operateurs_levels <- c("Orange", "SFR", "Bouygues", "Free")
 ```
@@ -134,9 +135,9 @@ standardiser_operateur <- function(df) {
     )
 }
 
-voix_hab  <- voix_hab  |> standardiser_operateur()
+voix_hab   <- voix_hab   |> standardiser_operateur()
 voix_trans <- voix_trans |> standardiser_operateur()
-data_hab  <- data_hab  |> standardiser_operateur()
+data_hab   <- data_hab   |> standardiser_operateur()
 data_trans <- data_trans |> standardiser_operateur()
 ```
 
@@ -158,7 +159,7 @@ voix_diag
 ```{r voix-normalisation}
 # voix-normalisation : on rassemble les mesures Voix dans une vue unique
 voix_all <- bind_rows(
-  voix_hab  |> mutate(context = "Habitations"),
+  voix_hab   |> mutate(context = "Habitations"),
   voix_trans |> mutate(context = "Transports")
 )
 
@@ -177,8 +178,8 @@ voix_kpi_base <- voix_all |>
   group_by(operator, zone, context) |>
   summarise(
     taux_appels_reussis = mean(crspa == 1, na.rm = TRUE),
-    n = n(),
-    .groups = "drop"
+    n                   = n(),
+    .groups             = "drop"
   )
 
 # Rescale sur 100 pour un score Voix lisible
@@ -202,8 +203,8 @@ kpi_voix_synthese_operateur <- voix_kpi_rescale |>
   group_by(operator) |>
   summarise(
     score_voix_moyen = weighted.mean(score_voix_100, w = n, na.rm = TRUE),
-    n_total = sum(n),
-    .groups = "drop"
+    n_total          = sum(n),
+    .groups          = "drop"
   ) |>
   arrange(desc(score_voix_moyen))
 
@@ -214,8 +215,8 @@ kpi_voix_synthese_operateur
 # kpi_voix_wilson_ic : intervalle de confiance binomial (approx) sur le taux d'appels réussis
 wilson_ic <- function(k, n, conf = 0.95) {
   if (n == 0) return(c(NA_real_, NA_real_))
-  p <- k / n
-  z <- qnorm(1 - (1 - conf) / 2)
+  p     <- k / n
+  z     <- qnorm(1 - (1 - conf) / 2)
   denom <- 1 + z^2 / n
   centre <- (p + z^2 / (2 * n)) / denom
   marge  <- (z * sqrt((p * (1 - p) + z^2 / (4 * n)) / n)) / denom
@@ -225,8 +226,8 @@ wilson_ic <- function(k, n, conf = 0.95) {
 kpi_voix_wilson_ic <- voix_kpi_base |>
   rowwise() |>
   mutate(
-    k = round(taux_appels_reussis * n),
-    ic = list(wilson_ic(k, n)),
+    k      = round(taux_appels_reussis * n),
+    ic     = list(wilson_ic(k, n)),
     ic_inf = ic[1],
     ic_sup = ic[2]
   ) |>
@@ -247,7 +248,7 @@ voix_anomalies
 ```
 
 ```{r voix-comparaison}
-# voix-comparaison : comparaison opérateurs par contexte et zone
+# Comparaison opérateurs par contexte et zone
 ggplot(voix_kpi_rescale,
        aes(x = operator, y = score_voix_100, fill = operator)) +
   geom_col() +
@@ -284,7 +285,7 @@ voix_kpi_simplifie <- voix_kpi_rescale |>
   group_by(context, zone) |>
   summarise(
     score_moyen = mean(score_voix_100, na.rm = TRUE),
-    .groups = "drop"
+    .groups     = "drop"
   )
 
 ggplot(voix_kpi_simplifie,
@@ -293,9 +294,9 @@ ggplot(voix_kpi_simplifie,
   facet_wrap(~ context) +
   scale_y_continuous(labels = label_number(accuracy = 1)) +
   labs(
-    title    = "Voix – score moyen par zone et contexte (tous opérateurs)",
-    x        = "Zone",
-    y        = "Score moyen (0–100)"
+    title = "Voix – score moyen par zone et contexte (tous opérateurs)",
+    x     = "Zone",
+    y     = "Score moyen (0–100)"
   )
 ```
 
@@ -305,9 +306,9 @@ ggplot(kpi_voix_synthese_operateur,
   geom_col() +
   scale_y_continuous(labels = label_number(accuracy = 1)) +
   labs(
-    title    = "Voix – score moyen global par opérateur",
-    x        = NULL,
-    y        = "Score voix moyen (0–100)"
+    title = "Voix – score moyen global par opérateur",
+    x     = NULL,
+    y     = "Score voix moyen (0–100)"
   ) +
   guides(fill = "none")
 ```
@@ -398,9 +399,9 @@ target_score <- 98
 voix_kpi_correctif2 <- voix_kpi_rescale |>
   mutate(
     ecart_cible = score_voix_100 - target_score,
-    statut = case_when(
+    statut      = case_when(
       ecart_cible >= 0 ~ "Au niveau ou au-dessus de la cible",
-      ecart_cible < 0  ~ "En dessous de la cible"
+      ecart_cible <  0 ~ "En dessous de la cible"
     )
   )
 
@@ -415,7 +416,7 @@ voix_kpi_correctif2
 
 ```{r data_overview}
 data_all <- bind_rows(
-  data_hab  |> mutate(context = "Habitations"),
+  data_hab   |> mutate(context = "Habitations"),
   data_trans |> mutate(context = "Transports")
 )
 
@@ -424,7 +425,7 @@ data_overview <- list(
   resume   = data_all |>
     group_by(context, operator) |>
     summarise(
-      n = n(),
+      n       = n(),
       .groups = "drop"
     )
 )
@@ -442,7 +443,7 @@ data_kpi_prov_operateur <- data_all |>
     part_pages_10s = mean(loaded_in_less_10_secondes == 1, na.rm = TRUE),
     debit_dl_med   = median(bitrate_dl, na.rm = TRUE),
     n              = n(),
-    .groups = "drop"
+    .groups        = "drop"
   )
 
 data_kpi_prov_operateur
@@ -474,7 +475,7 @@ if ("zone" %in% colnames(data_all)) {
       part_pages_10s = mean(loaded_in_less_10_secondes == 1, na.rm = TRUE),
       debit_dl_med   = median(bitrate_dl, na.rm = TRUE),
       n              = n(),
-      .groups = "drop"
+      .groups        = "drop"
     )
 
   ggplot(data_env_probe_map_v2,
@@ -508,8 +509,6 @@ data_micro_diag
 ---
 
 ## 5. Benchmark international & macro (ITU + WB)
-
-*(Les noms de colonnes ITU/WB sont à ajuster en fonction de tes fichiers : pays, région, indicateurs…)*
 
 ```{r itu_31b_consolidation_corrections_fix}
 # Exemple de consolidation ITU : on suppose des colonnes de type :
@@ -558,7 +557,7 @@ internet_use_plot <- internet_use_commune |>
   group_by(region) |>
   summarise(
     internet_use_moy = mean(valeur, na.rm = TRUE),
-    .groups = "drop"
+    .groups           = "drop"
   )
 
 fr_internet_use <- internet_use_commune |>
@@ -621,7 +620,7 @@ avg_bandwidth
 avg_bandwidth_synth <- avg_bandwidth |>
   group_by(region) |>
   summarise(
-    bw_moy = mean(valeur, na.rm = TRUE),
+    bw_moy  = mean(valeur, na.rm = TRUE),
     .groups = "drop"
   )
 
@@ -638,7 +637,7 @@ indics_for_heatmap <- itu_summary |>
                            "avg_download_speed_mbps")) |>
   group_by(pays, indicateur) |>
   summarise(
-    valeur = mean(valeur, na.rm = TRUE),
+    valeur  = mean(valeur, na.rm = TRUE),
     .groups = "drop"
   )
 
@@ -692,7 +691,7 @@ wb_density
 wb_density_tolerance <- wb_density |>
   mutate(
     classe_density = case_when(
-      valeur < 50  ~ "Faible densité",
+      valeur <  50 ~ "Faible densité",
       valeur < 200 ~ "Moyenne densité",
       TRUE         ~ "Forte densité"
     )
@@ -748,7 +747,7 @@ gap_fr <- itu_summary |>
   group_by(region, indicateur) |>
   summarise(
     moy_region = mean(valeur, na.rm = TRUE),
-    .groups = "drop"
+    .groups    = "drop"
   ) |>
   left_join(
     itu_summary |>
@@ -781,7 +780,7 @@ gap_consolidation <- index_sensitivity |>
   group_by(indicateur) |>
   summarise(
     index_gap = mean(gap_norm, na.rm = TRUE),
-    .groups = "drop"
+    .groups    = "drop"
   )
 
 gap_consolidation
@@ -805,10 +804,10 @@ gap_verdicts
 gap_equipment_fix_rename <- gap_verdicts |>
   mutate(
     famille = case_when(
-      str_detect(indicateur, "broadband") ~ "Couverture / abonnements",
-      str_detect(indicateur, "bandwidth") ~ "Débits",
+      str_detect(indicateur, "broadband")   ~ "Couverture / abonnements",
+      str_detect(indicateur, "bandwidth")   ~ "Débits",
       str_detect(indicateur, "internet_use") ~ "Usage",
-      TRUE ~ "Autre"
+      TRUE                                  ~ "Autre"
     )
   )
 
@@ -839,7 +838,7 @@ weights <- tibble(
 synthese_ecarts_fr_weighted <- gap_equipment_fix_rename |>
   left_join(weights, by = "famille") |>
   mutate(
-    poids = ifelse(is.na(poids), 0.1, poids),
+    poids         = ifelse(is.na(poids), 0.1, poids),
     score_pondere = index_gap * poids
   ) |>
   summarise(
