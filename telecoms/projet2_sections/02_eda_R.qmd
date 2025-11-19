@@ -189,7 +189,7 @@ voix_kpi_rescale <- voix_kpi_base |>
   dplyr::mutate(score_voix_100 = 100 * taux_appels_reussis)
 ```
 
-```{r voix-kpi-plot, fig-cap="Score voix (0–100) par opérateur, type de zone et contexte (habitations vs transports)."}
+```{r voix-kpi-plot, fig.cap="Score voix (0–100) par opérateur, type de zone et contexte (habitations vs transports)."}
 ggplot2::ggplot(
   voix_kpi_rescale,
   ggplot2::aes(x = operator, y = score_voix_100, fill = operator)
@@ -227,7 +227,7 @@ voix_anomalies <- voix_kpi_rescale |>
   )
 ```
 
-```{r voix-zones-risque-plot, fig-cap="Zones à risque Voix par opérateur et contexte (scores < 95)."}
+```{r voix-zones-risque-plot, fig.cap="Zones à risque Voix par opérateur et contexte (scores < 95)."}
 ggplot2::ggplot(
   voix_anomalies,
   ggplot2::aes(x = operator, y = score_voix_100, fill = operator)
@@ -269,7 +269,7 @@ data_kpi_prov_operateur <- data_all |>
   )
 ```
 
-```{r data-kpi-plot, fig-cap="Part des pages chargées en moins de 10 s par opérateur et contexte."}
+```{r data-kpi-plot, fig.cap="Part des pages chargées en moins de 10 s par opérateur et contexte."}
 ggplot2::ggplot(
   data_kpi_prov_operateur,
   ggplot2::aes(x = operator, y = part_pages_10s, fill = operator)
@@ -309,7 +309,7 @@ if ("zone" %in% colnames(data_all)) {
 }
 ```
 
-```{r data-zone-plot, eval=!"is.null(data_env_probe_map_v2)", fig-cap="Performance Data par zone – part des pages < 10 s."}
+```{r data-zone-plot, eval = !is.null(data_env_probe_map_v2), fig.cap="Performance Data par zone – part des pages < 10 s."}
 if (!is.null(data_env_probe_map_v2)) {
   ggplot2::ggplot(
     data_env_probe_map_v2,
@@ -361,7 +361,7 @@ if (nrow(internet_use) > 0 && "year" %in% names(internet_use)) {
 }
 ```
 
-```{r internet-use-plot, eval=nrow(internet_use_commune) > 0, fig-cap="Usage d’internet : France vs moyennes régionales (dernière année disponible)."}
+```{r internet-use-plot, eval = nrow(internet_use_commune) > 0, fig.cap="Usage d’internet : France vs moyennes régionales (dernière année disponible)."}
 internet_use_plot <- internet_use_commune |>
   dplyr::group_by(region) |>
   dplyr::summarise(
@@ -416,7 +416,7 @@ mobile_broadband_strict <- if (!is.na(annee_ref_mb)) {
 }
 ```
 
-```{r mobile-broadband-plot, eval=nrow(mobile_broadband_strict) > 0, fig-cap="Abonnements mobile broadband pour 100 habitants – classement mondial (France mise en évidence)."}
+```{r mobile-broadband-plot, eval = nrow(mobile_broadband_strict) > 0, fig.cap="Abonnements mobile broadband pour 100 habitants – classement mondial (France mise en évidence)."}
 ggplot2::ggplot(
   mobile_broadband_strict,
   ggplot2::aes(x = stats::reorder(country, value), y = value)
@@ -453,7 +453,7 @@ indics_for_heatmap <- itu_summary |>
   )
 ```
 
-```{r heatmap-indics-plot, eval=nrow(indics_for_heatmap) > 0, fig-cap="Positionnement global de quelques indicateurs QoS / usage."}
+```{r heatmap-indics-plot, eval = nrow(indics_for_heatmap) > 0, fig.cap="Positionnement global de quelques indicateurs QoS / usage."}
 ggplot2::ggplot(
   indics_for_heatmap,
   ggplot2::aes(x = indicator, y = country, fill = value)
@@ -488,7 +488,7 @@ fr_bw <- gdp_bw |>
   dplyr::slice_tail(n = 1)
 ```
 
-```{r gdp-bandwidth-plot, eval=nrow(gdp_bw) > 0, fig-cap="PIB par habitant vs bande passante moyenne – France mise en évidence."}
+```{r gdp-bandwidth-plot, eval = nrow(gdp_bw) > 0, fig.cap="PIB par habitant vs bande passante moyenne – France mise en évidence."}
 ggplot2::ggplot(
   gdp_bw,
   ggplot2::aes(x = value_gdp, y = value_bw)
@@ -562,7 +562,7 @@ gap_consolidation <- index_sensitivity |>
   )
 ```
 
-```{r gap-barplot, eval=nrow(gap_consolidation) > 0, fig-cap="Synthèse des écarts France vs moyennes régionales par indicateur clé."}
+```{r gap-barplot, eval = nrow(gap_consolidation) > 0, fig.cap="Synthèse des écarts France vs moyennes régionales par indicateur clé."}
 ggplot2::ggplot(
   gap_consolidation,
   ggplot2::aes(x = indicator, y = index_gap, fill = verdict)
