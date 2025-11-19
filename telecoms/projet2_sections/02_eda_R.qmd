@@ -5,8 +5,7 @@ format:
   html:
     toc: true
     toc-depth: 3
-    number-sections: true
-    code-fold: false
+    number-sections: false
 execute:
   echo: false
   warning: false
@@ -20,17 +19,17 @@ knitr::opts_chunk$set(
   warning = FALSE
 )
 
-# Remplace janitor::clean_names() par une version locale simple
+# Fonction locale pour nettoyer les noms de colonnes (remplace janitor::clean_names)
 clean_names_local <- function(df) {
   new <- names(df)
   new <- tolower(new)
-  new <- gsub("[^a-z0-9]+", "_", new)  # remplace espaces, points, etc. par "_"
-  new <- gsub("^_|_$", "", new)        # enlève "_" au début/fin
+  new <- gsub("[^a-z0-9]+", "_", new)
+  new <- gsub("^_|_$", "", new)
   names(df) <- new
   df
 }
 
-# Repertoire de base (data/ est à la racine du repo)
+# Chemin de base (data/ est à la racine du repo)
 base_dir <- "../.."
 
 operateurs_levels <- c("Orange", "SFR", "Bouygues", "Free")
@@ -48,25 +47,20 @@ ggplot2::theme_set(
 
 ## 1. Contexte et questions d’analyse
 
-Ce rapport explore la **qualité de service mobile 2024** en France métropolitaine, sur deux volets :
+Ce rapport explore la qualité de service mobile 2024 en France métropolitaine, sur deux volets :
 
-- **Voix** : capacité à établir des appels de manière fiable, sans coupure ni perturbation audible ;
-- **Data** : confort d’usage internet (pages qui se chargent rapidement, débits suffisants).
+- Voix : capacité à établir des appels de manière fiable, sans coupure ni perturbation audible ;
+- Data : confort d’usage internet (pages qui se chargent rapidement, débits suffisants).
 
-Les mesures ARCEP sont complétées par des indicateurs **UIT / Banque mondiale** pour positionner la France par rapport aux standards internationaux.
+Les mesures ARCEP sont complétées par des indicateurs UIT / Banque mondiale pour positionner la France par rapport aux standards internationaux.
 
 Les questions auxquelles l’EDA répond :
 
-- Quels opérateurs sont **structurellement en avance** ou en retrait, en Voix et en Data ?
-- Quelles **zones et environnements** constituent des **zones à risque** pour l’expérience client ?
-- Comment la France se situe-t-elle face aux autres régions du monde sur :
-  - l’**usage d’internet** ;
-  - les **abonnements mobile broadband** ;
-  - les **débits descendants moyens** ?
+- Quels opérateurs sont structurellement en avance ou en retrait, en Voix et en Data ?
+- Quelles zones et environnements constituent des zones à risque pour l’expérience client ?
+- Comment la France se situe-t-elle face aux autres régions du monde sur l’usage d’internet, les abonnements mobile broadband et les débits descendants moyens ?
 
----
-
-## 2. Chargement et préparation des données
+## 2. Données et préparation
 
 # ARCEP France
 globaux_clean <- readr::read_csv(
@@ -138,11 +132,9 @@ voix_trans <- standardiser_operateur(voix_trans)
 data_hab   <- standardiser_operateur(data_hab)
 data_trans <- standardiser_operateur(data_trans)
 
----
-
 ## 3. Voix – fiabilité des appels
 
-### 3.1 Construction du KPI Voix (0–100)
+### 3.1 Score Voix 0–100 par opérateur
 
 voix_all <- dplyr::bind_rows(
   voix_hab   |> dplyr::mutate(context = "Habitations"),
@@ -182,18 +174,10 @@ knitr::kable(
   digits = 1
 )
 
-**Lecture :**
-
-- Score voix sur **0–100**, pondéré par le nombre de mesures.  
-- Permet de dégager un **classement global** des opérateurs sur la fiabilité des appels.
-
-### 3.2 Comparaison par zone et environnement
-
 ggplot2::ggplot(voix_kpi_rescale,
        ggplot2::aes(x = operator, y = score_voix_100, fill = operator)) +
   ggplot2::geom_col() +
   ggplot2::facet_grid(context ~ zone) +
-  ggplot2::scale_y_continuous(labels = scales::label_number(accuracy = 1)) +
   ggplot2::labs(
     title    = "Voix – score d'appels réussis (0–100)",
     subtitle = "Lecture croisée opérateur × zone × contexte",
@@ -202,12 +186,12 @@ ggplot2::ggplot(voix_kpi_rescale,
   ) +
   ggplot2::guides(fill = "none")
 
-**Insights :**
+Lecture rapide :
 
-- Les environnements **Transports** sont plus exigeants que les lieux de vie.  
-- Certains opérateurs présentent une performance **homogène** entre zones, d’autres ont des **points faibles ciblés**.
+- Score sur 0–100, pondéré par le volume de mesures.
+- Vue d’ensemble du classement opérateur en fiabilité d’établissement d’appel.
 
-### 3.3 Zones à risque Voix
+### 3.2 Zones à risque Voix
 
 voix_anomalies <- voix_kpi_rescale |>
   dplyr::filter(score_voix_100 < 95) |>
@@ -222,25 +206,24 @@ voix_zones_risque <- voix_anomalies |>
     )
   )
 
-ggplot2::ggplot(voix_zones_risque,
-       ggplot2::aes(x = operator, y = score_voix_100, fill = operator)) +
-  ggplot2::geom_col() +
-  ggplot2::facet_grid(context ~ zone) +
-  ggplot2::scale_y_continuous(labels = scales::label_number(accuracy = 1)) +
-  ggplot2::labs(
-    title    = "Voix – zones à risque (scores < 95)",
-    subtitle = "Par opérateur, zone et contexte",
-    x        = NULL,
-    y        = "Score voix (0–100)"
-  ) +
-  ggplot2::guides(fill = "none")
+if (nrow(voix_zones_risque) > 0) {
+  ggplot2::ggplot(voix_zones_risque,
+         ggplot2::aes(x = operator, y = score_voix_100, fill = operator)) +
+    ggplot2::geom_col() +
+    ggplot2::facet_grid(context ~ zone) +
+    ggplot2::labs(
+      title    = "Voix – zones à risque (scores < 95)",
+      subtitle = "Par opérateur, zone et contexte",
+      x        = NULL,
+      y        = "Score voix (0–100)"
+    ) +
+    ggplot2::guides(fill = "none")
+}
 
-**Interprétation opérationnelle :**
+Interprétation opérationnelle :
 
-- < 90 : zones **critiques**, à traiter en priorité (plan d’action court terme).  
-- 90–95 : zones **sensibles**, à sécuriser dans un plan d’amélioration à 6–12 mois.
-
----
+- Moins de 90 : zones critiques, à adresser en priorité (risque fort sur l’expérience client).
+- 90–95 : zones sensibles, à intégrer dans un plan d’amélioration sur 6–12 mois.
 
 ## 4. Data – confort d’usage internet mobile
 
@@ -251,7 +234,7 @@ data_all <- dplyr::bind_rows(
   data_trans |> dplyr::mutate(context = "Transports")
 )
 
-data_kpi_prov_operateur <- data_all |>
+data_kpi_prov_operateur <- data_all ||
   dplyr::group_by(context, operator) |>
   dplyr::summarise(
     part_pages_10s = mean(loaded_in_less_10_secondes == 1, na.rm = TRUE),
@@ -270,7 +253,6 @@ ggplot2::ggplot(data_kpi_prov_operateur,
        ggplot2::aes(x = operator, y = part_pages_10s, fill = operator)) +
   ggplot2::geom_col() +
   ggplot2::facet_wrap(~ context) +
-  ggplot2::scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
   ggplot2::labs(
     title    = "Internet mobile – pages chargées en moins de 10 s",
     subtitle = "Par opérateur et par contexte",
@@ -279,7 +261,7 @@ ggplot2::ggplot(data_kpi_prov_operateur,
   ) +
   ggplot2::guides(fill = "none")
 
-### 4.2 Performance par zone (si disponible)
+### 4.2 Performance Data par zone (si disponible)
 
 if ("zone" %in% colnames(data_all)) {
   data_env_probe_map <- data_all |>
@@ -299,15 +281,12 @@ ggplot2::ggplot(data_env_probe_map,
   ggplot2::geom_line() +
   ggplot2::geom_point() +
   ggplot2::facet_wrap(~ context) +
-  ggplot2::scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
   ggplot2::labs(
     title    = "Internet mobile – performance par zone",
     subtitle = "Lecture par opérateur et par contexte",
     x        = "Zone",
     y        = "Part des pages < 10 s"
   )
-
----
 
 ## 5. Benchmark international – position de la France
 
@@ -322,7 +301,7 @@ if (nrow(internet_use) > 0 && "annee" %in% names(internet_use)) {
     dplyr::filter(annee == annee_ref)
 } else {
   annee_ref <- NA_real_
-  internet_use_commune <- tibble::tibble()
+  internet_use_commune <- data.frame()
 }
 
 internet_use_plot <- internet_use_commune |>
@@ -348,7 +327,7 @@ ggplot2::ggplot(internet_use_plot,
     y        = "Usage d'internet (%)"
   )
 
-### 5.2 Mobile broadband & bande passante
+### 5.2 Mobile broadband
 
 mobile_broadband <- itu_summary |>
   dplyr::filter(indicateur == "mobile_broadband_100")
@@ -359,7 +338,7 @@ if (nrow(mobile_broadband) > 0) {
     dplyr::filter(annee == annee_ref_mb)
 } else {
   annee_ref_mb <- NA_real_
-  mobile_broadband_strict <- tibble::tibble()
+  mobile_broadband_strict <- data.frame()
 }
 
 ggplot2::ggplot(mobile_broadband_strict,
@@ -373,6 +352,8 @@ ggplot2::ggplot(mobile_broadband_strict,
     y        = "Abonnements pour 100 habitants"
   )
 
+### 5.3 Bande passante moyenne
+
 avg_bandwidth <- itu_summary |>
   dplyr::filter(indicateur == "avg_download_speed_mbps")
 
@@ -384,7 +365,7 @@ if (nrow(avg_bandwidth) > 0) {
       .groups = "drop"
     )
 } else {
-  avg_bandwidth_synth <- tibble::tibble()
+  avg_bandwidth_synth <- data.frame()
 }
 
 ggplot2::ggplot(avg_bandwidth_synth,
@@ -396,11 +377,9 @@ ggplot2::ggplot(avg_bandwidth_synth,
     y     = "Débit descendant moyen (Mbit/s)"
   )
 
----
-
 ## 6. Gap analysis – France vs moyennes régionales
 
-gap_verdicts <- tibble::tibble()
+gap_verdicts <- data.frame()
 
 if (all(c("indicateur", "region", "valeur", "pays") %in% names(itu_summary))) {
 
@@ -460,16 +439,10 @@ knitr::kable(
   digits = 2
 )
 
----
+## 7. Synthèse pour décideurs
 
-## 7. Messages clés pour décideurs
+- Voix : niveau global élevé, mais des zones à risque clairement identifiées par opérateur, environnement et type de zone.
+- Data : contrastes plus marqués entre opérateurs, en particulier sur les transports et la fluidité de navigation.
+- International : la France est bien positionnée sur certains indicateurs, en retrait sur d’autres, ce qui justifie une priorisation des gaps (usage, abonnements, débits).
 
-- **Voix** : niveau global élevé, mais des **zones à risque** clairement identifiées (par opérateur, zone, environnement).  
-- **Data** : contrastes plus marqués entre opérateurs sur la **fluidité de navigation** et les **transports**.  
-- **International** : la France est bien positionnée sur certains indicateurs, en retrait sur d’autres, ce qui justifie une **priorisation des gaps** (usage, abonnements, débits).  
-
-Ce rapport fournit :
-
-- une base factuelle solide pour la partie **“Résultats & recommandations”** du projet P2 ;
-- des **KPI clairs et actionnables** pour les équipes réseau et régulation ;
-- un support de communication structuré pour un **recruteur** ou un **décideur non technique**.
+Ces éléments fournissent une base solide pour la partie « Résultats & recommandations » du projet P2, et un support de discussion pour un recruteur ou un décideur non technique.
