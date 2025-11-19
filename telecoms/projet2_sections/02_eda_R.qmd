@@ -26,7 +26,7 @@ if (length(missing_pkgs) > 0) {
 }
 
 suppressPackageStartupMessages({
-  lapply(needed_packages, library, character.only = TRUE)
+  lapply(needed_pkgs, library, character.only = TRUE)
 })
 
 knitr::opts_chunk$set(
@@ -102,7 +102,7 @@ itu_summary <- readr::read_csv(
 ) |>
   janitor::clean_names()
 
-# Harmonisation colonnes ITU
+# Harmonisation colonnes ITU (robuste)
 nms <- names(itu_summary)
 
 if (!"indicateur" %in% nms) {
@@ -299,11 +299,6 @@ ggplot2::ggplot(data_kpi_prov_operateur,
   ggplot2::guides(fill = "none")
 ```
 
-**Lecture :**
-
-- KPI centré sur l’**expérience utilisateur** (temps de chargement perçu).  
-- Sert à comparer les opérateurs sur la **fluidité de navigation**.
-
 ### 3.2 Performance par zone (si disponible)
 
 ```{r data-env, include=FALSE}
@@ -321,7 +316,7 @@ if ("zone" %in% colnames(data_all)) {
 }
 ```
 
-```{r data-env-plot, eval = !is.null(data_env_probe_map_v2), fig.cap="Performance internet mobile par zone, opérateur et contexte (si la granularité zone est disponible)."}
+```{r data-env-plot, eval = exists("data_env_probe_map_v2") && !is.null(data_env_probe_map_v2), fig.cap="Performance internet mobile par zone, opérateur et contexte (si la granularité zone est disponible)."}
 ggplot2::ggplot(data_env_probe_map_v2,
        ggplot2::aes(x = zone, y = part_pages_10s, colour = operator, group = operator)) +
   ggplot2::geom_line() +
@@ -343,19 +338,46 @@ ggplot2::ggplot(data_env_probe_map_v2,
 ### 4.1 Usage d’internet & abonnements mobiles
 
 ```{r itu-usage, include=FALSE}
-internet_use <- itu_summary |>
-  dplyr::filter(indicateur == "internet_use_pct")
+# Initialisation défensive
+internet_use         <- NULL
+mobile_ownership     <- NULL
+internet_use_commune <- NULL
+annee_ref            <- NA_real_
 
-mobile_ownership <- itu_summary |>
-  dplyr::filter(indicateur == "mobile_subscriptions_100")
+if (exists("itu_summary") &&
+    all(c("indicateur", "annee", "valeur") %in% names(itu_summary))) {
 
-annee_ref <- max(internet_use$annee, na.rm = TRUE)
+  tmp_internet <- itu_summary |>
+    dplyr::filter(indicateur == "internet_use_pct")
 
-internet_use_commune <- internet_use |>
-  dplyr::filter(annee == annee_ref)
+  tmp_mobile <- itu_summary |>
+    dplyr::filter(indicateur == "mobile_subscriptions_100")
+
+  if (nrow(tmp_internet) > 0 && "annee" %in% names(tmp_internet)) {
+    annee_ref <- max(tmp_internet$annee, na.rm = TRUE)
+
+    if (is.finite(annee_ref)) {
+      internet_use_commune <- tmp_internet |>
+        dplyr::filter(annee == annee_ref)
+    } else {
+      internet_use_commune <- tibble::tibble()
+    }
+  } else {
+    internet_use_commune <- tibble::tibble()
+  }
+
+  internet_use     <- tmp_internet
+  mobile_ownership <- tmp_mobile
+} else {
+  # Si la structure attendue n'est pas là, on met des tibbles vides
+  internet_use         <- tibble::tibble()
+  mobile_ownership     <- tibble::tibble()
+  internet_use_commune <- tibble::tibble()
+  annee_ref            <- NA_real_
+}
 ```
 
-```{r internet-use-plot, fig.cap="Usage d’internet : France comparée aux moyennes régionales (année de référence)."}
+```{r internet-use-plot, eval = !is.null(internet_use_commune) && nrow(internet_use_commune) > 0, fig.cap="Usage d’internet : France comparée aux moyennes régionales (année de référence)."}
 internet_use_plot <- internet_use_commune |>
   dplyr::group_by(region) |>
   dplyr::summarise(
@@ -374,7 +396,7 @@ ggplot2::ggplot(internet_use_plot,
              size = 3) +
   ggplot2::labs(
     title    = "Usage d'internet – France vs régions",
-    subtitle = paste("Année", annee_ref),
+    subtitle = if (is.finite(annee_ref)) paste("Année", annee_ref) else "Année non disponible",
     x        = NULL,
     y        = "Usage d'internet (%)"
   )
@@ -383,41 +405,75 @@ ggplot2::ggplot(internet_use_plot,
 ### 4.2 Mobile broadband & bande passante
 
 ```{r itu-broadband, include=FALSE}
-mobile_broadband <- itu_summary |>
-  dplyr::filter(indicateur == "mobile_broadband_100")
+mobile_broadband      <- NULL
+mobile_broadband_strict <- NULL
+annee_ref_mb          <- NA_real_
 
-annee_ref_mb <- max(mobile_broadband$annee, na.rm = TRUE)
+if (exists("itu_summary") &&
+    all(c("indicateur", "annee", "valeur", "pays") %in% names(itu_summary))) {
 
-mobile_broadband_strict <- mobile_broadband |>
-  dplyr::filter(annee == annee_ref_mb)
+  mobile_broadband <- itu_summary |>
+    dplyr::filter(indicateur == "mobile_broadband_100")
+
+  if (nrow(mobile_broadband) > 0) {
+    annee_ref_mb <- max(mobile_broadband$annee, na.rm = TRUE)
+
+    if (is.finite(annee_ref_mb)) {
+      mobile_broadband_strict <- mobile_broadband |>
+        dplyr::filter(annee == annee_ref_mb)
+    } else {
+      mobile_broadband_strict <- tibble::tibble()
+    }
+  } else {
+    mobile_broadband_strict <- tibble::tibble()
+  }
+} else {
+  mobile_broadband       <- tibble::tibble()
+  mobile_broadband_strict <- tibble::tibble()
+  annee_ref_mb           <- NA_real_
+}
 ```
 
-```{r broadband-plot, fig.cap="Abonnements mobile broadband pour 100 habitants – position de la France dans le classement mondial."}
+```{r broadband-plot, eval = !is.null(mobile_broadband_strict) && nrow(mobile_broadband_strict) > 0, fig.cap="Abonnements mobile broadband pour 100 habitants – position de la France dans le classement mondial."}
 ggplot2::ggplot(mobile_broadband_strict,
        ggplot2::aes(x = reorder(pays, valeur), y = valeur)) +
   ggplot2::geom_col() +
   ggplot2::coord_flip() +
   ggplot2::labs(
     title    = "Abonnements mobile broadband – classement mondial",
-    subtitle = paste("Année", annee_ref_mb),
+    subtitle = if (is.finite(annee_ref_mb)) paste("Année", annee_ref_mb) else "Année non disponible",
     x        = NULL,
     y        = "Abonnements pour 100 habitants"
   )
 ```
 
 ```{r itu-bandwidth, include=FALSE}
-avg_bandwidth <- itu_summary |>
-  dplyr::filter(indicateur == "avg_download_speed_mbps")
+avg_bandwidth      <- NULL
+avg_bandwidth_synth <- NULL
 
-avg_bandwidth_synth <- avg_bandwidth |>
-  dplyr::group_by(region) |>
-  dplyr::summarise(
-    bw_moy  = mean(valeur, na.rm = TRUE),
-    .groups = "drop"
-  )
+if (exists("itu_summary") &&
+    all(c("indicateur", "valeur", "region") %in% names(itu_summary))) {
+
+  avg_bandwidth <- itu_summary |>
+    dplyr::filter(indicateur == "avg_download_speed_mbps")
+
+  if (nrow(avg_bandwidth) > 0) {
+    avg_bandwidth_synth <- avg_bandwidth |>
+      dplyr::group_by(region) |>
+      dplyr::summarise(
+        bw_moy  = mean(valeur, na.rm = TRUE),
+        .groups = "drop"
+      )
+  } else {
+    avg_bandwidth_synth <- tibble::tibble()
+  }
+} else {
+  avg_bandwidth       <- tibble::tibble()
+  avg_bandwidth_synth <- tibble::tibble()
+}
 ```
 
-```{r bandwidth-plot, fig.cap="Bande passante moyenne par région (données UIT)."}
+```{r bandwidth-plot, eval = !is.null(avg_bandwidth_synth) && nrow(avg_bandwidth_synth) > 0, fig.cap="Bande passante moyenne par région (données UIT)."}
 ggplot2::ggplot(avg_bandwidth_synth,
        ggplot2::aes(x = region, y = bw_moy)) +
   ggplot2::geom_col() +
@@ -433,51 +489,69 @@ ggplot2::ggplot(avg_bandwidth_synth,
 ## 5. Gap analysis – France vs moyennes régionales
 
 ```{r gap-build, include=FALSE}
-key_indics <- c("internet_use_pct", "mobile_broadband_100", "avg_download_speed_mbps")
+gap_fr            <- NULL
+index_sensitivity <- NULL
+gap_consolidation <- NULL
+gap_verdicts      <- NULL
 
-gap_fr <- itu_summary |>
-  dplyr::filter(indicateur %in% key_indics) |>
-  dplyr::group_by(region, indicateur) |>
-  dplyr::summarise(
-    moy_region = mean(valeur, na.rm = TRUE),
-    .groups    = "drop"
-  ) |>
-  dplyr::left_join(
-    itu_summary |>
-      dplyr::filter(indicateur %in% key_indics, pays == "France") |>
-      dplyr::select(region, indicateur, valeur_fr = valeur),
-    by = c("region", "indicateur")
-  ) |>
-  dplyr::mutate(
-    gap = valeur_fr - moy_region
-  )
+if (exists("itu_summary") &&
+    all(c("indicateur", "region", "valeur", "pays") %in% names(itu_summary))) {
 
-index_sensitivity <- gap_fr |>
-  dplyr::group_by(indicateur) |>
-  dplyr::mutate(
-    gap_norm = (gap - min(gap, na.rm = TRUE)) /
-               (max(gap, na.rm = TRUE) - min(gap, na.rm = TRUE))
-  ) |>
-  dplyr::ungroup()
+  key_indics <- c("internet_use_pct", "mobile_broadband_100", "avg_download_speed_mbps")
 
-gap_consolidation <- index_sensitivity |>
-  dplyr::group_by(indicateur) |>
-  dplyr::summarise(
-    index_gap = mean(gap_norm, na.rm = TRUE),
-    .groups    = "drop"
-  )
+  tmp <- itu_summary |>
+    dplyr::filter(indicateur %in% key_indics)
 
-gap_verdicts <- gap_consolidation |>
-  dplyr::mutate(
-    verdict = dplyr::case_when(
-      index_gap > 0.6 ~ "France en avance",
-      index_gap < 0.4 ~ "France en retard",
-      TRUE            ~ "France dans la moyenne"
-    )
-  )
+  if (nrow(tmp) > 0) {
+    gap_fr <- tmp |>
+      dplyr::group_by(region, indicateur) |>
+      dplyr::summarise(
+        moy_region = mean(valeur, na.rm = TRUE),
+        .groups    = "drop"
+      ) |>
+      dplyr::left_join(
+        tmp |>
+          dplyr::filter(pays == "France") |>
+          dplyr::select(region, indicateur, valeur_fr = valeur),
+        by = c("region", "indicateur")
+      ) |>
+      dplyr::mutate(
+        gap = valeur_fr - moy_region
+      )
+
+    index_sensitivity <- gap_fr |>
+      dplyr::group_by(indicateur) |>
+      dplyr::mutate(
+        gap_norm = (gap - min(gap, na.rm = TRUE)) /
+                   (max(gap, na.rm = TRUE) - min(gap, na.rm = TRUE))
+      ) |>
+      dplyr::ungroup()
+
+    gap_consolidation <- index_sensitivity |>
+      dplyr::group_by(indicateur) |>
+      dplyr::summarise(
+        index_gap = mean(gap_norm, na.rm = TRUE),
+        .groups    = "drop"
+      )
+
+    gap_verdicts <- gap_consolidation |>
+      dplyr::mutate(
+        verdict = dplyr::case_when(
+          index_gap > 0.6 ~ "France en avance",
+          index_gap < 0.4 ~ "France en retard",
+          TRUE            ~ "France dans la moyenne"
+        )
+      )
+  } else {
+    gap_verdicts <- tibble::tibble()
+  }
+
+} else {
+  gap_verdicts <- tibble::tibble()
+}
 ```
 
-```{r gap-table}
+```{r gap-table, eval = !is.null(gap_verdicts) && nrow(gap_verdicts) > 0}
 knitr::kable(
   gap_verdicts,
   caption = "Gap analysis – synthèse du positionnement de la France par indicateur clé.",
