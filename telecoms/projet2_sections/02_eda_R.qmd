@@ -134,22 +134,30 @@ Les tables ITU/Banque mondiale fournissent les principaux indicateurs internatio
 ## Harmonisation des noms de colonnes ITU
 
 ```{r itu-harmonisation}
+# Harmonisation robuste : on garantit la présence de indicator, country, year, value
 nms <- names(itu_summary)
 
+# Indicator
 if ("indicateur" %in% nms && !"indicator" %in% nms) {
   itu_summary <- dplyr::rename(itu_summary, indicator = indicateur)
-} else if ("indicator_code" %in% nms && !"indicator" %in% nms) {
-  itu_summary <- dplyr::rename(itu_summary, indicator = indicator_code)
+}
+if (!"indicator" %in% names(itu_summary)) {
+  if ("indicator_code" %in% names(itu_summary)) {
+    itu_summary$indicator <- itu_summary$indicator_code
+  }
 }
 
+# Country
 if ("pays" %in% names(itu_summary) && !"country" %in% names(itu_summary)) {
   itu_summary <- dplyr::rename(itu_summary, country = pays)
 }
 
+# Year
 if ("annee" %in% names(itu_summary) && !"year" %in% names(itu_summary)) {
   itu_summary <- dplyr::rename(itu_summary, year = annee)
 }
 
+# Value
 if ("valeur" %in% names(itu_summary) && !"value" %in% names(itu_summary)) {
   itu_summary <- dplyr::rename(itu_summary, value = valeur)
 }
