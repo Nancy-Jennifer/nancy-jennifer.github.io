@@ -14,30 +14,11 @@ execute:
 ---
 
 ```{r setup, include=FALSE}
-# Chargement simple des packages (sans installation auto)
-library(dplyr)
-library(tidyr)
-library(readr)
-library(janitor)
-library(ggplot2)
-library(scales)
-library(stringr)
-library(purrr)
-library(tibble)
-
+# Chunk setup ultra-simple pour éviter toute erreur dans GitHub Actions
 knitr::opts_chunk$set(
   echo    = FALSE,
   message = FALSE,
   warning = FALSE
-)
-
-theme_set(
-  theme_minimal(base_size = 12) +
-    theme(
-      plot.title      = element_text(face = "bold"),
-      plot.subtitle   = element_text(colour = "grey40"),
-      legend.position = "bottom"
-    )
 )
 
 # 02_eda_R.qmd est dans "telecoms/projet2_sections"
@@ -61,7 +42,7 @@ Les questions clés :
 - Comment la France se situe-t-elle par rapport à des pays comparables en termes d’usage, de couverture et de débits ?
 
 ```{r load-data, include=FALSE}
-# ARCEP France
+# Chargement des données avec namespaces explicites (pas besoin de library())
 globaux_clean <- readr::read_csv(
   file.path(base_dir, "data", "processed", "arcep_2024_indicateurs_globaux_clean.csv")
 ) |>
@@ -245,11 +226,6 @@ ggplot2::ggplot(voix_zones_risque_v2,
   ggplot2::guides(fill = "none")
 ```
 
-**Insights & actions :**
-
-- < 90 : zones **critiques**, risque fort de réclamations.  
-- 90–95 : zones **sensibles**, à sécuriser dans un plan d’amélioration à 6–12 mois.
-
 ---
 
 ## 3. Data – confort d’usage internet mobile
@@ -365,7 +341,6 @@ if (exists("itu_summary") &&
   internet_use     <- tmp_internet
   mobile_ownership <- tmp_mobile
 } else {
-  # Si la structure attendue n'est pas là, on met des tibbles vides
   internet_use         <- tibble::tibble()
   mobile_ownership     <- tibble::tibble()
   internet_use_commune <- tibble::tibble()
@@ -401,9 +376,9 @@ ggplot2::ggplot(internet_use_plot,
 ### 4.2 Mobile broadband & bande passante
 
 ```{r itu-broadband, include=FALSE}
-mobile_broadband      <- NULL
+mobile_broadband        <- NULL
 mobile_broadband_strict <- NULL
-annee_ref_mb          <- NA_real_
+annee_ref_mb            <- NA_real_
 
 if (exists("itu_summary") &&
     all(c("indicateur", "annee", "valeur", "pays") %in% names(itu_summary))) {
@@ -424,9 +399,9 @@ if (exists("itu_summary") &&
     mobile_broadband_strict <- tibble::tibble()
   }
 } else {
-  mobile_broadband       <- tibble::tibble()
+  mobile_broadband        <- tibble::tibble()
   mobile_broadband_strict <- tibble::tibble()
-  annee_ref_mb           <- NA_real_
+  annee_ref_mb            <- NA_real_
 }
 ```
 
@@ -444,7 +419,7 @@ ggplot2::ggplot(mobile_broadband_strict,
 ```
 
 ```{r itu-bandwidth, include=FALSE}
-avg_bandwidth      <- NULL
+avg_bandwidth       <- NULL
 avg_bandwidth_synth <- NULL
 
 if (exists("itu_summary") &&
