@@ -14,7 +14,7 @@ execute:
 ---
 
 ```{r setup, include=FALSE}
-# Petit helper pour nettoyer les noms de colonnes sans janitor
+# Helper pour nettoyer les noms de colonnes sans dépendre de janitor
 clean_names_local <- function(df) {
   nms <- names(df)
   nms <- tolower(nms)
@@ -35,20 +35,23 @@ ggplot2::theme_set(
     )
 )
 
-# IMPORTANT : base_dir = racine du repo
+# Racine du repo (02_eda_R.qmd est dans telecoms/projet2_sections)
 base_dir <- "../.."
 
 operateurs_levels <- c("Orange", "SFR", "Bouygues", "Free")
 
+# Standardisation des opérateurs sans stringr
 standardiser_operateur <- function(df) {
   if (!"operator" %in% names(df)) return(df)
-  dplyr::mutate(
-    df,
-    operator = stringr::str_to_title(operator),
-    operator = dplyr::recode(operator, "Bouygues Telecom" = "Bouygues"),
-    operator = factor(operator, levels = operateurs_levels)
-  )
+  df$operator <- as.character(df$operator)
+  df$operator[df$operator == "Bouygues Telecom"] <- "Bouygues"
+  df$operator <- factor(df$operator, levels = operateurs_levels)
+  df
 }
+
+# Petites fonctions de formatage sans scales
+label_num1 <- function(x) sprintf("%.1f", x)
+label_pct  <- function(x) sprintf("%d%%", round(100 * x))
 ```
 
 # 1. Contexte et questions d’analyse
@@ -196,7 +199,7 @@ ggplot2::ggplot(
 ) +
   ggplot2::geom_col() +
   ggplot2::facet_grid(context ~ zone) +
-  ggplot2::scale_y_continuous(labels = scales::label_number(accuracy = 1)) +
+  ggplot2::scale_y_continuous(labels = label_num1) +
   ggplot2::labs(
     title    = "Voix – score d'appels réussis (0–100)",
     subtitle = "Lecture croisée opérateur × zone × contexte",
@@ -206,11 +209,11 @@ ggplot2::ggplot(
   ggplot2::guides(fill = "none")
 ```
 
-**Lecture métier**
+Lecture métier :
 
 - Classement clair des opérateurs en fiabilité d’établissement d’appel.
 - Visualisation immédiate des environnements **structurellement plus fragiles** (par ex. transports vs lieux de vie).
-- Permet de prioriser les **plans d’amélioration réseau** par opérateur et type de zone.
+- Priorisation des **plans d’amélioration réseau** par opérateur et type de zone.
 
 ## 3.2 Zones à risque Voix
 
@@ -234,7 +237,7 @@ ggplot2::ggplot(
 ) +
   ggplot2::geom_col() +
   ggplot2::facet_grid(context ~ zone) +
-  ggplot2::scale_y_continuous(labels = scales::label_number(accuracy = 1)) +
+  ggplot2::scale_y_continuous(labels = label_num1) +
   ggplot2::labs(
     title    = "Voix – zones à risque (scores < 95)",
     subtitle = "Focus sur les combinaisons les plus fragiles",
@@ -244,10 +247,10 @@ ggplot2::ggplot(
   ggplot2::guides(fill = "none")
 ```
 
-**Lecture métier**
+Lecture métier :
 
-- En dessous de **95**, l’expérience client commence à devenir sensible ; en dessous de **90**, les zones sont critiques.
-- Le graphe permet de cibler les **3–5 combinaisons opérateur × zone × contexte** à traiter en priorité dans un plan d’action 90 jours.
+- En dessous de **95**, l’expérience client devient sensible ; en dessous de **90**, les zones sont critiques.
+- Liste courte des combinaisons opérateur × zone × contexte à traiter en priorité dans un **plan d’action 90 jours**.
 
 # 4. Data – confort d’usage internet mobile
 
@@ -276,7 +279,7 @@ ggplot2::ggplot(
 ) +
   ggplot2::geom_col() +
   ggplot2::facet_wrap(~ context) +
-  ggplot2::scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
+  ggplot2::scale_y_continuous(labels = label_pct) +
   ggplot2::labs(
     title    = "Internet mobile – pages chargées en moins de 10 s",
     subtitle = "Par opérateur et par contexte",
@@ -286,11 +289,11 @@ ggplot2::ggplot(
   ggplot2::guides(fill = "none")
 ```
 
-**Lecture métier**
+Lecture métier :
 
-- Donne une vision directe du **confort de navigation web** par opérateur.
-- Met en évidence les **écarts de QoE Data** entre lieux de vie et transports.
-- Sert de base à des objectifs **contractuels** (ex. ≥ 95 % de pages < 10 s).
+- Vision directe du **confort de navigation web** par opérateur.
+- Mise en évidence des **écarts de QoE Data** entre lieux de vie et transports.
+- Base pour des objectifs **contractuels** (ex. ≥ 95 % de pages < 10 s).
 
 ## 4.2 Performance Data par zone (si disponible)
 
@@ -318,7 +321,7 @@ if (!is.null(data_env_probe_map_v2)) {
     ggplot2::geom_line() +
     ggplot2::geom_point() +
     ggplot2::facet_wrap(~ context) +
-    ggplot2::scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
+    ggplot2::scale_y_continuous(labels = label_pct) +
     ggplot2::labs(
       title    = "Internet mobile – performance par zone",
       subtitle = "Lecture par opérateur et par contexte",
@@ -328,10 +331,10 @@ if (!is.null(data_env_probe_map_v2)) {
 }
 ```
 
-**Lecture métier**
+Lecture métier :
 
-- Permet d’identifier les **zones Data en sous-performance** à la maille opérateur.
-- Utile pour prioriser les **investissements radio** dans les zones à fort trafic mais QoE dégradée.
+- Identification des **zones Data en sous-performance** à la maille opérateur.
+- Priorisation des **investissements radio** dans les zones à fort trafic mais QoE dégradée.
 
 ## 4.3 Micro-diagnostics ciblés
 
@@ -341,7 +344,7 @@ data_micro_diag <- data_kpi_prov_operateur |>
   dplyr::slice_head(n = 10)
 ```
 
-Les 10 combinaisons les plus faibles constituent une **liste courte** pour les équipes techniques : elles concentrent à la fois un **volume significatif** et un **risque d’insatisfaction client**.
+Les 10 combinaisons les plus faibles constituent une **liste courte** pour les équipes techniques : volume significatif et **risque d’insatisfaction client** élevé.
 
 # 5. Benchmark international – position de la France
 
@@ -390,11 +393,10 @@ ggplot2::ggplot(
   )
 ```
 
-**Lecture métier**
+Lecture métier :
 
-- Situe la **France** par rapport aux grandes régions (Europe, Amériques, etc.).
-- Permet de vérifier si la QoS France est **cohérente** avec le niveau d’usage :  
-  usage élevé + QoS moyenne = risque de perception négative.
+- Positionne la **France** par rapport aux grandes régions (Europe, Amériques, etc.).
+- Vérifie la cohérence entre **niveau d’usage** et **niveau de QoS**.
 
 ## 5.2 Mobile broadband
 
@@ -416,7 +418,7 @@ mobile_broadband_strict <- if (!is.na(annee_ref_mb)) {
 }
 ```
 
-```{r mobile-broadband-plot, eval = nrow(mobile_broadband_strict) > 0, fig.cap="Abonnements mobile broadband pour 100 habitants – classement mondial (France mise en évidence)."}
+```{r mobile-broadband-plot, eval = nrow(mobile_broadband_strict) > 0, fig.cap="Abonnements mobile broadband pour 100 habitants – classement mondial."}
 ggplot2::ggplot(
   mobile_broadband_strict,
   ggplot2::aes(x = stats::reorder(country, value), y = value)
@@ -431,11 +433,10 @@ ggplot2::ggplot(
   )
 ```
 
-**Lecture métier**
+Lecture métier :
 
 - Montre si la France est **en avance, dans la moyenne ou en retard** sur la diffusion du mobile broadband.
-- Sert de support à un discours de type :  
-  “Le niveau de QoS observé est-il aligné avec le niveau d’équipement du pays ?”
+- Support pour un discours de régulation : cohérence entre **niveau d’équipement** et **niveau de QoS**.
 
 ## 5.3 Heatmap d’indicateurs clés
 
@@ -466,10 +467,10 @@ ggplot2::ggplot(
   )
 ```
 
-**Lecture métier**
+Lecture métier :
 
 - Vue synthétique pour comparer la **France** à un panel de pays sur plusieurs indicateurs simultanément.
-- Met en évidence les axes où la France est **forte**, **alignée** ou **en retrait**.
+- Mise en évidence des axes où la France est **forte**, **alignée** ou **en retrait**.
 
 ## 5.4 PIB vs bande passante
 
@@ -507,11 +508,10 @@ ggplot2::ggplot(
   )
 ```
 
-**Lecture métier**
+Lecture métier :
 
 - Permet de voir si la **France** “sur-performe” ou “sous-performe” en QoS par rapport à son niveau de richesse.
-- Très utile pour un discours de régulation :  
-  “À niveau de PIB comparable, la France est plutôt en avance / dans la moyenne / en retard sur les débits.”
+- Utile pour un discours de régulation : à **PIB comparable**, la France est en avance / dans la moyenne / en retard sur les débits.
 
 # 6. Gap analysis – France vs moyennes régionales
 
@@ -568,7 +568,7 @@ ggplot2::ggplot(
   ggplot2::aes(x = indicator, y = index_gap, fill = verdict)
 ) +
   ggplot2::geom_col() +
-  ggplot2::scale_y_continuous(labels = scales::label_number(accuracy = 0.01)) +
+  ggplot2::scale_y_continuous(labels = label_num1) +
   ggplot2::labs(
     title = "Gap analysis – France vs moyennes régionales",
     x     = "Indicateur",
@@ -576,18 +576,18 @@ ggplot2::ggplot(
   )
 ```
 
-**Lecture métier**
+Lecture métier :
 
-- Résume, en **un seul graphe**, où la France est en avance, en retard ou dans la moyenne.
+- Résume, en un seul graphe, où la France est en avance, en retard ou dans la moyenne.
 - Support direct pour la **synthèse exécutive** et la définition des axes prioritaires (usage, couverture, débits).
 
 # 7. Synthèse pour décideurs
 
 Cette EDA met en évidence :
 
-- les **forces** et **faiblesses** de chaque opérateur sur la Voix et la Data,  
-- les **zones à risque** à court terme pour l’expérience client,  
-- le **positionnement de la France** face aux standards internationaux,  
+- les **forces** et **faiblesses** de chaque opérateur sur la Voix et la Data,
+- les **zones à risque** à court terme pour l’expérience client,
+- le **positionnement de la France** face aux standards internationaux,
 - et une **gap analysis consolidée** permettant de prioriser les actions.
 
 Ce document peut être :
