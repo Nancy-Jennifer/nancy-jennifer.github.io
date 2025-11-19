@@ -19,7 +19,7 @@ needed_packages <- c(
   "ggplot2", "scales", "stringr", "purrr", "tibble"
 )
 
-missing_pkgs <- needed_packages[!sapply(needed_pkgs, requireNamespace, quietly = TRUE)]
+missing_pkgs <- needed_packages[!sapply(needed_packages, requireNamespace, quietly = TRUE)]
 
 if (length(missing_pkgs) > 0) {
   install.packages(missing_pkgs, repos = "https://cloud.r-project.org")
@@ -130,7 +130,8 @@ standardiser_operateur <- function(df) {
   df |>
     dplyr::mutate(
       operator = stringr::str_to_title(operator),
-      operator = dplyr::recode(operator, "Bouygues Telecom" = "Bouygues"),
+      operator = dplyr::recode(operator,
+                               "Bouygues Telecom" = "Bouygues"),
       operator = factor(operator, levels = operateurs_levels)
     )
 }
@@ -191,13 +192,12 @@ knitr::kable(
 
 **Lecture :**
 
-- Le **score voix moyen** est calculé sur une échelle **0–100**, en pondérant par le volume de mesures.  
-- Cette vue fournit un **classement global** des opérateurs sur la fiabilité des appels, tous environnements confondus.  
-- Un recruteur peut rapidement lire la **position relative de chaque acteur** sans entrer dans le détail technique.
+- Score voix **0–100** pondéré par le volume de mesures.  
+- Vue synthétique du **classement global** des opérateurs sur la fiabilité des appels.
 
 ### 2.2 Comparaison par opérateur et environnement
 
-```{r voix-comparaison, fig-cap="Score voix (0–100) par opérateur, type de zone et contexte (habitations vs transports)."}
+```{r voix-comparaison, fig.cap="Score voix (0–100) par opérateur, type de zone et contexte (habitations vs transports)."}
 ggplot2::ggplot(voix_kpi_rescale,
        ggplot2::aes(x = operator, y = score_voix_100, fill = operator)) +
   ggplot2::geom_col() +
@@ -214,9 +214,8 @@ ggplot2::ggplot(voix_kpi_rescale,
 
 **Insights clés :**
 
-- Les **habitations** offrent en général des scores plus élevés que les **transports**, où le réseau est plus sollicité.  
-- Certains opérateurs sont **très homogènes** entre zones, d’autres montrent des **écarts marqués** entre zones denses / rurales.  
-- Pour un décideur réseau, cette vue sert à **prioriser les environnements** à renforcer (par ex. transports pour un opérateur spécifique).
+- Les **transports** sont en général plus exigeants que les lieux de vie.  
+- Certains opérateurs sont **homogènes** entre zones, d’autres présentent des **écarts marqués**.
 
 ### 2.3 Zones à risque Voix
 
@@ -235,7 +234,7 @@ voix_zones_risque_v2 <- voix_anomalies |>
   )
 ```
 
-```{r voix-visu-zones-risque, fig-cap="Zones où le score voix est inférieur à 95/100, classées par opérateur, contexte et type de zone."}
+```{r voix-visu-zones-risque, fig.cap="Zones où le score voix est inférieur à 95/100, classées par opérateur, contexte et type de zone."}
 ggplot2::ggplot(voix_zones_risque_v2,
        ggplot2::aes(x = operator, y = score_voix_100, fill = operator)) +
   ggplot2::geom_col() +
@@ -252,9 +251,8 @@ ggplot2::ggplot(voix_zones_risque_v2,
 
 **Insights & actions :**
 
-- Les zones où le score est **< 90/100** peuvent être considérées comme **critiques** : risque fort de réclamations client.  
-- Les zones **90–95/100** sont **sensibles** : à sécuriser dans un plan d’amélioration à 6–12 mois.  
-- Un **plan d’action priorisé** peut être construit en croisant la sévérité du score et le volume de mesures.
+- < 90 : zones **critiques**, risque fort de réclamations.  
+- 90–95 : zones **sensibles**, à sécuriser dans un plan d’amélioration à 6–12 mois.
 
 ---
 
@@ -286,7 +284,7 @@ knitr::kable(
 )
 ```
 
-```{r data_kpi_plot, fig-cap="Part des pages chargées en moins de 10 s par opérateur, séparée selon le contexte (habitations vs transports)."}
+```{r data_kpi_plot, fig.cap="Part des pages chargées en moins de 10 s par opérateur, séparée selon le contexte (habitations vs transports)."}
 ggplot2::ggplot(data_kpi_prov_operateur,
        ggplot2::aes(x = operator, y = part_pages_10s, fill = operator)) +
   ggplot2::geom_col() +
@@ -303,9 +301,8 @@ ggplot2::ggplot(data_kpi_prov_operateur,
 
 **Lecture :**
 
-- La **part des pages < 10 s** est un proxy direct de l’**expérience utilisateur** (navigation fluide vs lente).  
-- Certains opérateurs peuvent être forts en Voix mais légèrement en retrait sur ce KPI Data.  
-- Un recruteur voit ici ta capacité à **choisir des indicateurs orientés usage**, pas seulement techniques.
+- KPI centré sur l’**expérience utilisateur** (temps de chargement perçu).  
+- Sert à comparer les opérateurs sur la **fluidité de navigation**.
 
 ### 3.2 Performance par zone (si disponible)
 
@@ -324,7 +321,7 @@ if ("zone" %in% colnames(data_all)) {
 }
 ```
 
-```{r data-env-plot, fig-cap="Performance internet mobile par zone, opérateur et contexte (si la granularité zone est disponible).", eval=!"is.null(data_env_probe_map_v2)"}
+```{r data-env-plot, eval = !is.null(data_env_probe_map_v2), fig.cap="Performance internet mobile par zone, opérateur et contexte (si la granularité zone est disponible)."}
 ggplot2::ggplot(data_env_probe_map_v2,
        ggplot2::aes(x = zone, y = part_pages_10s, colour = operator, group = operator)) +
   ggplot2::geom_line() +
@@ -338,12 +335,6 @@ ggplot2::ggplot(data_env_probe_map_v2,
     y        = "Part des pages < 10 s"
   )
 ```
-
-**Insight opérationnel :**
-
-- Cette vue sert à identifier des **zones géographiques prioritaires** :  
-  - zones où un opérateur décroche fortement vs ses concurrents,  
-  - zones où tous les opérateurs sont en difficulté (problème partagé d’infrastructure).
 
 ---
 
@@ -364,7 +355,7 @@ internet_use_commune <- internet_use |>
   dplyr::filter(annee == annee_ref)
 ```
 
-```{r internet-use-plot, fig-cap="Usage d’internet : France comparée aux moyennes régionales (année de référence)."}
+```{r internet-use-plot, fig.cap="Usage d’internet : France comparée aux moyennes régionales (année de référence)."}
 internet_use_plot <- internet_use_commune |>
   dplyr::group_by(region) |>
   dplyr::summarise(
@@ -389,11 +380,6 @@ ggplot2::ggplot(internet_use_plot,
   )
 ```
 
-**Message pour décideurs :**
-
-- On voit si la France est **en avance, dans la moyenne ou en retard** sur l’usage d’internet vs sa région.  
-- Ce type de graphique parle autant à un **régulateur** qu’à un **marketing stratégique**.
-
 ### 4.2 Mobile broadband & bande passante
 
 ```{r itu-broadband, include=FALSE}
@@ -406,7 +392,7 @@ mobile_broadband_strict <- mobile_broadband |>
   dplyr::filter(annee == annee_ref_mb)
 ```
 
-```{r broadband-plot, fig-cap="Abonnements mobile broadband pour 100 habitants – position de la France dans le classement mondial."}
+```{r broadband-plot, fig.cap="Abonnements mobile broadband pour 100 habitants – position de la France dans le classement mondial."}
 ggplot2::ggplot(mobile_broadband_strict,
        ggplot2::aes(x = reorder(pays, valeur), y = valeur)) +
   ggplot2::geom_col() +
@@ -431,7 +417,7 @@ avg_bandwidth_synth <- avg_bandwidth |>
   )
 ```
 
-```{r bandwidth-plot, fig-cap="Bande passante moyenne par région (données UIT)."}
+```{r bandwidth-plot, fig.cap="Bande passante moyenne par région (données UIT)."}
 ggplot2::ggplot(avg_bandwidth_synth,
        ggplot2::aes(x = region, y = bw_moy)) +
   ggplot2::geom_col() +
@@ -499,22 +485,12 @@ knitr::kable(
 )
 ```
 
-**Interprétation :**
-
-- Pour chaque indicateur (usage, broadband, bande passante), on obtient un **verdict simple** :  
-  - *France en avance*  
-  - *France dans la moyenne*  
-  - *France en retard*  
-- C’est typiquement le type de tableau qu’un **top management** peut lire en quelques secondes.
-
 ---
 
 ## 6. Synthèse pour décideurs
 
-- Côté **Voix**, les scores sont globalement élevés, mais certaines **zones / contextes** restent sous le seuil de confort (95/100) et doivent être intégrées dans un **plan d’amélioration priorisé**.  
-- Côté **Data**, les opérateurs se différencient davantage : la **part des pages < 10 s** permet d’identifier les acteurs les plus compétitifs sur l’expérience internet.  
-- À l’international, la France se situe à des niveaux **contrastés** selon les indicateurs (usage, broadband, bande passante) : d’où la nécessité de suivre une **gap analysis structurée**.  
-- Cette approche combinée (Voix + Data + benchmark international) donne une vision **360°** de la QoS et fournit un socle solide pour :  
-  - des **plans d’investissement réseau**,  
-  - des **arguments marketing** (zones de force par opérateur),  
-  - et des **échanges avec le régulateur** sur la trajectoire de qualité de service.
+- **Voix** : scores élevés mais avec des **zones à risque** identifiées, à traiter dans des plans d’amélioration priorisés.  
+- **Data** : différenciation plus nette entre opérateurs sur la **fluidité de navigation**.  
+- **International** : position contrastée selon les indicateurs (usage, broadband, bande passante), justifiant une **gap analysis structurée**.  
+
+Ces éléments peuvent alimenter des décisions **réseau**, **marketing** et **régulation** sur un horizon 12–24 mois.
