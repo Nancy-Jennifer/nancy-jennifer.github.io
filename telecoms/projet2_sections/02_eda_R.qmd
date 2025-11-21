@@ -200,21 +200,26 @@ Lecture métier :
 - **< 90** : zones critiques à adresser en priorité (risque fort sur l’expérience client) ;
 - **90–95** : zones sensibles, à intégrer dans un plan d’amélioration 6–12 mois.
 
-```{r voix-zones-risque-plot, fig.cap="Voix – zones à risque (score < 95) par opérateur, zone et contexte."}
-if (nrow(voix_anomalies) > 0) {
-  ggplot(voix_anomalies,
-         aes(x = operator, y = score_voix_100, fill = operator)) +
-    geom_col() +
-    facet_grid(context ~ zone) +
+```{r voix-zones-risque-plot-hab, fig.cap="Voix – zones à risque (scores < 95) – Habitations."}
+voix_anomalies_hab <- voix_anomalies |>
+  dplyr::filter(context == "Habitations")
+
+if (nrow(voix_anomalies_hab) > 0) {
+  ggplot(
+    voix_anomalies_hab,
+    aes(x = zone, y = score_voix_100, fill = operator)
+  ) +
+    geom_col(position = position_dodge(width = 0.7)) +
     scale_y_continuous(limits = c(0, 100)) +
     labs(
       title    = "Voix – zones à risque (scores < 95)",
-      subtitle = "Par opérateur, zone et contexte",
-      x        = NULL,
-      y        = "Score voix (0–100)"
-    ) +
-    guides(fill = "none")
+      subtitle = "Habitations – lecture par zone et opérateur",
+      x        = "Zone",
+      y        = "Score Voix (0–100)",
+      fill     = "Opérateur"
+    )
 }
+
 ```
 
 ---
@@ -341,20 +346,21 @@ Cette EDA met en évidence :
 
 - en **Voix**, un score global élevé mais avec des **poches de risque** sur certains couples *opérateur × zone × contexte* ;
 - en **Data**, des écarts plus marqués entre opérateurs, en particulier sur :
-  - la **part des pages < 10 s**,
+  - la **part des pages < 10 s** ;
   - les zones où la performance se dégrade fortement.
 
-Pour un recruteur ou un décideur réseau, ce rapport montre que tu es capable de :
+Pour un recruteur ou un décideur réseau, ce rapport démontre que je suis capable de :
 
 - construire des **KPI robustes** (Voix 0–100, Data < 10 s, débits médians) ;
-- identifier des **zones à risque** priorisables dans un plan d’action ;
+- identifier des **zones à risque** et les prioriser dans un plan d’action ;
+- analyser les écarts de performance entre opérateurs et environnements (habitations vs transports, zones denses vs rurales, etc.) ;
 - proposer une lecture orientée **qualité d’expérience client** et **priorisation opérationnelle** ;
 - articuler ces constats avec un **benchmark international** fondé sur les données UIT / Banque mondiale.
 
 Recommandations opérationnelles (exemples structurants) :
 
 - **Voix**
-  - cibler en priorité les couples *opérateur × zone* dont le score voix est < 90 ;
+  - cibler en priorité les couples *opérateur × zone* dont le score Voix est < 90 ;
   - vérifier, pour ces zones, la qualité radio (couverture outdoor/indoor, interférences, dimensionnement cœur de réseau) ;
   - mettre en place un suivi mensuel des KPI Voix par zone, avec alerte automatique sous un certain seuil.
 
@@ -366,10 +372,10 @@ Recommandations opérationnelles (exemples structurants) :
 - **Pilotage & communication**
   - consolider ces KPI dans un **tableau de bord exécutif** (Voix / Data / benchmark international) ;
   - formaliser un **plan 90 jours / 12 mois** avec indicateurs cibles, responsables et jalons ;
-  - communiquer régulièrement les progrès aux parties prenantes (technique, marketing, régulation).
+  - communiquer régulièrement les progrès aux parties prenantes (équipes techniques, marketing, régulation).
 
-En résumé, ce fichier démontre ta capacité à :
+En résumé, ce fichier illustre ma capacité à :
 
-- structurer une EDA télécom complète (ingestion, préparation, KPI, visualisations, zones à risque) ;
-- relier des mesures terrain à des standards internationaux ;
+- structurer une **EDA télécom complète** (ingestion, préparation, KPI, visualisations, zones à risque) ;
+- relier des **mesures terrain** à des **standards internationaux** ;
 - traduire les résultats en **recommandations réseau concrètes**, lisibles pour un décideur non technique.
