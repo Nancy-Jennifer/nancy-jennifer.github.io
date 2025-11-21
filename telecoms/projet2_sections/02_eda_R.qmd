@@ -56,7 +56,7 @@ standardiser_operateur <- function(df) {
 base_dir <- "../.."
 ```
 
-# 1. Contexte et questions d’analyse
+# Contexte et questions d’analyse
 
 Ce rapport explore la **qualité de service mobile 2024** en France métropolitaine, sur deux volets :
 
@@ -70,9 +70,9 @@ Les objectifs de l’EDA :
 - repérer les **zones à risque** pour l’expérience client (habitations vs transports, types de zones) ;
 - préparer des **messages clés** exploitables par un recruteur ou un décideur réseau.
 
-# 2. Données et préparation
+# Données et préparation
 
-## 2.1 ARCEP France – Chargement des fichiers
+## ARCEP France – Chargement des fichiers
 
 ```{r load-data-fr}
 globaux_clean <- read_csv(
@@ -105,7 +105,7 @@ data_trans <- read_csv(
   standardiser_operateur()
 ```
 
-## 2.2 Harmonisation des structures
+## Harmonisation des structures
 
 ```{r standardisation-operateurs}
 # Concat Voix (habitations + transports)
@@ -133,9 +133,9 @@ data_all$zone <- factor(data_all$zone)
 
 ---
 
-# 3. Voix – fiabilité des appels
+# Voix – fiabilité des appels
 
-## 3.1 Score Voix 0–100 par opérateur
+## Score Voix 0–100 par opérateur
 
 ```{r voix-kpi}
 # On suppose une variable binaire crspa (1 = appel réussi, 0 = échec)
@@ -185,7 +185,7 @@ ggplot(voix_kpi_rescale,
   guides(fill = "none")
 ```
 
-## 3.2 Zones à risque Voix
+## Zones à risque Voix
 
 ```{r voix-zones-risque}
 voix_anomalies <- voix_kpi_rescale |>
@@ -219,9 +219,9 @@ if (nrow(voix_anomalies) > 0) {
 
 ---
 
-# 4. Data – confort d’usage internet mobile
+# Data – confort d’usage internet mobile
 
-## 4.1 KPI Data par opérateur
+## KPI Data par opérateur
 
 ```{r data-kpi}
 # On suppose :
@@ -261,7 +261,7 @@ Lecture métier :
 - **Part des pages < 10 s** : indicateur direct de **confort de navigation** ;
 - **Débit descendant médian** : vision de la **capacité radio** disponible par opérateur.
 
-## 4.2 Performance Data par zone (si disponible)
+## Performance Data par zone (si disponible)
 
 ```{r data-zone-kpi}
 if ("zone" %in% colnames(data_all)) {
@@ -298,7 +298,7 @@ if (!is.null(data_env_probe_map) && nrow(data_env_probe_map) > 0) {
 }
 ```
 
-## 4.3 Micro-diagnostics ciblés
+## Micro-diagnostics ciblés
 
 ```{r data-micro}
 data_micro_diag <- data_kpi_prov_operateur |>
@@ -315,7 +315,27 @@ Lecture métier :
 
 ---
 
-# 5. Synthèse pour décideurs
+# Benchmark international – position de la France
+
+Cette section s’appuie sur les jeux de données internationaux prétraités dans le dossier `data/clean_final` (fichiers `ITU_FactsFigures2024_final_clean.csv` et `ITU_FactsFigures2024_summary_clean.csv`). Ils permettent de replacer les résultats ARCEP dans un cadre plus large.
+
+Les indicateurs disponibles couvrent notamment :
+
+- l’**usage d’internet** dans la population ;
+- les **abonnements mobile broadband** (par 100 habitants) ;
+- des indicateurs de **couverture** et de **capacité réseau** (ex. couverture 4G/5G, débits).
+
+Dans le projet complet, ces données sont exploitées dans un fichier dédié pour :
+
+- comparer la France à différentes zones de référence (monde, régions, groupes de pays) ;
+- illustrer si la France se situe plutôt dans un groupe de **leaders**, de **pays dans la moyenne** ou de **pays en retard** selon les indicateurs ;
+- relier ces écarts macroscopiques aux constats issus des mesures terrain ARCEP.
+
+Ici, on garde la section volontairement synthétique pour ne pas alourdir la lecture : le message clé pour un recruteur est que tu sais **brancher une EDA nationale sur des sources internationales normalisées** et construire un **benchmark structuré** autour de tes KPI Voix / Data.
+
+---
+
+# Recommandations & synthèse pour décideurs
 
 Cette EDA met en évidence :
 
@@ -328,9 +348,28 @@ Pour un recruteur ou un décideur réseau, ce rapport montre que tu es capable d
 
 - construire des **KPI robustes** (Voix 0–100, Data < 10 s, débits médians) ;
 - identifier des **zones à risque** priorisables dans un plan d’action ;
-- proposer une lecture orientée **qualité d’expérience client** et **priorisation opérationnelle**.
+- proposer une lecture orientée **qualité d’expérience client** et **priorisation opérationnelle** ;
+- articuler ces constats avec un **benchmark international** fondé sur les données UIT / Banque mondiale.
 
-Les sections suivantes du projet (hors de ce fichier) pourront ensuite :
+Recommandations opérationnelles (exemples structurants) :
 
-- détailler les **recommandations réseau** (plan 90 jours / 12 mois) ;
-- ouvrir sur un **benchmark international** dans un autre document dédié, pour garder ce fichier stable et lisible.
+- **Voix**
+  - cibler en priorité les couples *opérateur × zone* dont le score voix est < 90 ;
+  - vérifier, pour ces zones, la qualité radio (couverture outdoor/indoor, interférences, dimensionnement cœur de réseau) ;
+  - mettre en place un suivi mensuel des KPI Voix par zone, avec alerte automatique sous un certain seuil.
+
+- **Data**
+  - fixer un objectif de **part des pages < 10 s** (ex. ≥ 95 %) par opérateur et par contexte ;
+  - prioriser les zones où la part des pages < 10 s et le débit médian chutent simultanément ;
+  - utiliser la table de **micro-diagnostics** comme backlog pour les actions d’optimisation radio.
+
+- **Pilotage & communication**
+  - consolider ces KPI dans un **tableau de bord exécutif** (Voix / Data / benchmark international) ;
+  - formaliser un **plan 90 jours / 12 mois** avec indicateurs cibles, responsables et jalons ;
+  - communiquer régulièrement les progrès aux parties prenantes (technique, marketing, régulation).
+
+En résumé, ce fichier démontre ta capacité à :
+
+- structurer une EDA télécom complète (ingestion, préparation, KPI, visualisations, zones à risque) ;
+- relier des mesures terrain à des standards internationaux ;
+- traduire les résultats en **recommandations réseau concrètes**, lisibles pour un décideur non technique.
