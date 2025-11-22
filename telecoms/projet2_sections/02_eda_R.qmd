@@ -371,21 +371,113 @@ Lecture métier :
 
 # Benchmark international – position de la France
 
-Cette section s’appuie sur les jeux de données internationaux prétraités dans le dossier `data/clean_final` (fichiers `ITU_FactsFigures2024_final_clean.csv` et `ITU_FactsFigures2024_summary_clean.csv`). Ils permettent de replacer les résultats ARCEP dans un cadre plus large.
+Cette section s’appuie sur les jeux de données internationaux prétraités dans le dossier `data/clean_final`  
+(fichiers `ITU_FactsFigures2024_final_clean.csv` et `ITU_FactsFigures2024_summary_clean.csv`).
 
-Les indicateurs disponibles couvrent notamment :
+Elle permet de répondre directement à la question centrale du projet :  
+**« Où se situe la France par rapport à l’international ? »**
 
-- l’**usage d’internet** dans la population ;
-- les **abonnements mobile broadband** (par 100 habitants) ;
-- des indicateurs de **couverture** et de **capacité réseau** (ex. couverture 4G/5G, débits).
+---
 
-Dans le projet complet, ces données sont exploitées dans un fichier dédié pour :
+```{r itu_benchmark_load}
+itu_final <- read_csv(
+  file.path(base_dir, "data", "clean_final", "ITU_FactsFigures2024_final_clean.csv")
+) |>
+  clean_names_local()
 
-- comparer la France à différentes zones de référence (monde, régions, groupes de pays) ;
-- illustrer si la France se situe plutôt dans un groupe de **leaders**, de **pays dans la moyenne** ou de **pays en retard** selon les indicateurs ;
-- relier ces écarts macroscopiques aux constats issus des mesures terrain ARCEP.
+itu_2024 <- itu_final |>
+  dplyr::filter(year == 2024, !is.na(value))
 
-Ici, on garde la section volontairement synthétique pour ne pas alourdir la lecture : le message clé pour un recruteur est que je sais **brancher une EDA nationale sur des sources internationales normalisées** et construire un **benchmark structuré** autour de mes KPI Voix / Data.
+regions_focus <- c(
+  "World",
+  "Europe",
+  "Americas",
+  "Asia-Pacific",
+  "Africa",
+  "Arab States",
+  "CIS"
+)
+```
+
+## Usage d’Internet – grandes régions (UIT 2024)
+
+```{r itu_internet_use, fig.cap="Usage d’Internet – grandes régions (UIT 2024)."}
+internet_region_2024 <- itu_2024 |>
+  dplyr::filter(
+    grepl("internet", indicator, ignore.case = TRUE),
+    grepl("use", indicator, ignore.case = TRUE),
+    region %in% regions_focus
+  ) |>
+  dplyr::group_by(region) |>
+  dplyr::summarise(
+    internet_use_pct = mean(value, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  dplyr::arrange(internet_use_pct) |>
+  dplyr::mutate(region = factor(region, levels = region))
+
+if (nrow(internet_region_2024) > 0) {
+  ggplot(
+    internet_region_2024,
+    aes(x = internet_use_pct, y = region, fill = region == "Europe")
+  ) +
+    geom_col() +
+    labs(
+      title    = "Usage d’Internet – position de l’Europe",
+      subtitle = "Comparaison avec les grandes régions du monde (UIT 2024)",
+      x        = "Part de la population utilisant Internet (%)",
+      y        = NULL
+    ) +
+    guides(fill = "none")
+}
+```
+
+### Lecture métier
+
+- L’Europe fait partie des **régions les plus connectées au monde**.  
+- La France, en tant que pays européen, s’inscrit donc dans un **écosystème globalement avancé** en termes de pénétration internet.
+
+---
+
+## Abonnements mobile broadband pour 100 habitants – grandes régions (UIT 2024)
+
+```{r itu_broadband, fig.cap="Abonnements mobile broadband pour 100 habitants – grandes régions (UIT 2024)."}
+broadband_region_2024 <- itu_2024 |>
+  dplyr::filter(
+    grepl("broadband", indicator, ignore.case = TRUE),
+    grepl("subs", indicator, ignore.case = TRUE),
+    region %in% regions_focus
+  ) |>
+  dplyr::group_by(region) |>
+  dplyr::summarise(
+    broadband_per_100 = mean(value, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  dplyr::arrange(broadband_per_100) |>
+  dplyr::mutate(region = factor(region, levels = region))
+
+if (nrow(broadband_region_2024) > 0) {
+  ggplot(
+    broadband_region_2024,
+    aes(x = broadband_per_100, y = region, fill = region == "Europe")
+  ) +
+    geom_col() +
+    labs(
+      title    = "Abonnements mobile broadband (par 100 habitants)",
+      subtitle = "Europe vs autres régions (UIT 2024)",
+      x        = "Abonnements / 100 habitants",
+      y        = NULL
+    ) +
+    guides(fill = "none")
+}
+```
+
+### Lecture métier
+
+- L’Europe se situe **nettement au-dessus de la moyenne mondiale**.
+- Cela indique un parc mobile haut-débit **dense**, cohérent avec les performances Data observées en France.
+
+---
 
 ---
 
