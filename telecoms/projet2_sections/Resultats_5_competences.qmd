@@ -15,7 +15,7 @@ format:
 - Indicateurs comparatifs (scores base 100, z-scores), **pondération par volumétrie** pour refléter l’usage réel.
 - Visualisations propres “recruteur-ready” (barres, lignes FRA vs UE, heatmap).
 
-## Télécom (Domaine expertise)
+## Télécom (Domaine d'expertise)
 - Lecture QoS par contexte (urbain/rural/transport, indoor).
 - Traduction KPIs radio → **impacts clients** (débit/latence/couverture).
 - Priorisation ROI : axes densité, corridors de transport, harmonisation inter-opérateurs.
