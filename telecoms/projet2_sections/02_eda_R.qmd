@@ -170,7 +170,7 @@ Lecture métier (Voix – score global) :
 - **Score sur 0–100**, pondéré par le volume de mesures ;
 - Classement des opérateurs en **fiabilité d’établissement d’appel**.
 
-```{r voix-kpi-plot, fig.cap="Score voix (0–100) par opérateur, zone et contexte (habitations vs transports)."}
+```{r voix-kpi-plot, fig.cap="Score Voix (0–100) par opérateur, zone et contexte (habitations vs transports)."}
 ggplot(voix_kpi_rescale,
        aes(x = operator, y = score_voix_100, fill = operator)) +
   geom_col() +
@@ -180,9 +180,10 @@ ggplot(voix_kpi_rescale,
     title    = "Voix – score d’appels réussis (0–100)",
     subtitle = "Lecture croisée opérateur × zone × contexte",
     x        = NULL,
-    y        = "Score voix (0–100)"
+    y        = "Score Voix (0–100)"
   ) +
-  guides(fill = "none")
+  guides(fill = "none") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 ## Zones à risque Voix
@@ -217,9 +218,31 @@ if (nrow(voix_anomalies_hab) > 0) {
       x        = "Zone",
       y        = "Score Voix (0–100)",
       fill     = "Opérateur"
-    )
+    ) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
+```
 
+```{r voix-zones-risque-plot-trans, fig.cap="Voix – zones à risque (scores < 95) – Transports."}
+voix_anomalies_trans <- voix_anomalies |>
+  dplyr::filter(context == "Transports")
+
+if (nrow(voix_anomalies_trans) > 0) {
+  ggplot(
+    voix_anomalies_trans,
+    aes(x = zone, y = score_voix_100, fill = operator)
+  ) +
+    geom_col(position = position_dodge(width = 0.7)) +
+    scale_y_continuous(limits = c(0, 100)) +
+    labs(
+      title    = "Voix – zones à risque (scores < 95)",
+      subtitle = "Transports – lecture par zone et opérateur",
+      x        = "Zone",
+      y        = "Score Voix (0–100)",
+      fill     = "Opérateur"
+    ) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+}
 ```
 
 ---
@@ -258,7 +281,8 @@ ggplot(data_kpi_prov_operateur,
     x        = NULL,
     y        = "Part des pages < 10 s (%)"
   ) +
-  guides(fill = "none")
+  guides(fill = "none") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 Lecture métier :
@@ -266,7 +290,7 @@ Lecture métier :
 - **Part des pages < 10 s** : indicateur direct de **confort de navigation** ;
 - **Débit descendant médian** : vision de la **capacité radio** disponible par opérateur.
 
-## Performance Data par zone (si disponible)
+## Performance Data par zone
 
 ```{r data-zone-kpi}
 if ("zone" %in% colnames(data_all)) {
@@ -286,20 +310,45 @@ if ("zone" %in% colnames(data_all)) {
 data_env_probe_map
 ```
 
-```{r data-zone-plot, fig.cap="Internet mobile – performance par zone et opérateur (si variable zone disponible)."}
+```{r data-zone-plot-hab, fig.cap="Internet mobile – performance par zone – Habitations."}
 if (!is.null(data_env_probe_map) && nrow(data_env_probe_map) > 0) {
-  ggplot(data_env_probe_map,
-         aes(x = zone, y = part_pages_10s_100, colour = operator, group = operator)) +
-    geom_line() +
-    geom_point() +
-    facet_wrap(~ context) +
-    scale_y_continuous(limits = c(0, 100)) +
-    labs(
-      title    = "Internet mobile – performance par zone",
-      subtitle = "Lecture par opérateur et par contexte",
-      x        = "Zone",
-      y        = "Part des pages < 10 s (%)"
-    )
+  data_hab_zones <- data_env_probe_map |> dplyr::filter(context == "Habitations")
+
+  if (nrow(data_hab_zones) > 0) {
+    ggplot(data_hab_zones,
+           aes(x = zone, y = part_pages_10s_100, fill = operator)) +
+      geom_col(position = position_dodge(width = 0.7)) +
+      scale_y_continuous(limits = c(0, 100)) +
+      labs(
+        title    = "Internet mobile – performance par zone",
+        subtitle = "Habitations – part des pages < 10 s par opérateur",
+        x        = "Zone",
+        y        = "Part des pages < 10 s (%)",
+        fill     = "Opérateur"
+      ) +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  }
+}
+```
+
+```{r data-zone-plot-trans, fig.cap="Internet mobile – performance par zone – Transports."}
+if (!is.null(data_env_probe_map) && nrow(data_env_probe_map) > 0) {
+  data_trans_zones <- data_env_probe_map |> dplyr::filter(context == "Transports")
+
+  if (nrow(data_trans_zones) > 0) {
+    ggplot(data_trans_zones,
+           aes(x = zone, y = part_pages_10s_100, fill = operator)) +
+      geom_col(position = position_dodge(width = 0.7)) +
+      scale_y_continuous(limits = c(0, 100)) +
+      labs(
+        title    = "Internet mobile – performance par zone",
+        subtitle = "Transports – part des pages < 10 s par opérateur",
+        x        = "Zone",
+        y        = "Part des pages < 10 s (%)",
+        fill     = "Opérateur"
+      ) +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  }
 }
 ```
 
@@ -336,7 +385,7 @@ Dans le projet complet, ces données sont exploitées dans un fichier dédié po
 - illustrer si la France se situe plutôt dans un groupe de **leaders**, de **pays dans la moyenne** ou de **pays en retard** selon les indicateurs ;
 - relier ces écarts macroscopiques aux constats issus des mesures terrain ARCEP.
 
-Ici, on garde la section volontairement synthétique pour ne pas alourdir la lecture : le message clé pour un recruteur est que tu sais **brancher une EDA nationale sur des sources internationales normalisées** et construire un **benchmark structuré** autour de tes KPI Voix / Data.
+Ici, on garde la section volontairement synthétique pour ne pas alourdir la lecture : le message clé pour un recruteur est que je sais **brancher une EDA nationale sur des sources internationales normalisées** et construire un **benchmark structuré** autour de mes KPI Voix / Data.
 
 ---
 
@@ -349,13 +398,11 @@ Cette EDA met en évidence :
   - la **part des pages < 10 s** ;
   - les zones où la performance se dégrade fortement.
 
-Pour un recruteur ou un décideur réseau, ce rapport démontre que je suis capable de :
+Pour un décideur réseau, les messages clés sont :
 
-- construire des **KPI robustes** (Voix 0–100, Data < 10 s, débits médians) ;
-- identifier des **zones à risque** et les prioriser dans un plan d’action ;
-- analyser les écarts de performance entre opérateurs et environnements (habitations vs transports, zones denses vs rurales, etc.) ;
-- proposer une lecture orientée **qualité d’expérience client** et **priorisation opérationnelle** ;
-- articuler ces constats avec un **benchmark international** fondé sur les données UIT / Banque mondiale.
+- une vision structurée des performances Voix / Data par opérateur et par environnement (habitations vs transports, zones denses vs rurales, etc.) ;
+- une cartographie claire des **zones à risque**, priorisables dans un plan d’action ;
+- des indicateurs alignés avec un **benchmark international** (UIT / Banque mondiale), permettant de positionner la France dans le paysage mondial.
 
 Recommandations opérationnelles (exemples structurants) :
 
