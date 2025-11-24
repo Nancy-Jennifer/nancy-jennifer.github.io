@@ -369,105 +369,102 @@ data_micro_diag
 
 ---
 
-
 # Benchmark international – position de la France
 
-L’objectif de cette section est de replacer les performances ARCEP 2024 dans un cadre international, en utilisant des jeux de données UIT prétraités.
+Cette section compare la France à deux références internationales standardisées (Union Européenne et Monde) sur :
+- **l’usage d’Internet (% population)**  
+- **les abonnements mobile broadband (pour 100 habitants)**  
 
-Les deux indicateurs retenus sont :
+Les données proviennent des fichiers normalisés ITU *Facts & Figures 2024* contenus dans :  
+`data/clean_final/ITU_FactsFigures2024_final_clean.csv`.
 
-- **Internet use (% population utilisant internet)** ;
-- **Mobile broadband subscriptions (abonnements haut-débit mobile pour 100 habitants)**.
+Elles permettent de replacer les résultats ARCEP France dans un contexte global cohérent.
 
-```{r benchmark-data, message=FALSE, warning=FALSE}
-library(tibble)
-library(dplyr)
-library(ggplot2)
+---
 
-# ------------------------------------------------------------------
-# Internet use – France vs régions du monde (UIT 2024)
-# ------------------------------------------------------------------
-# ⚠️ Remplace les valeurs ci-dessous par les vraies valeurs UIT 2024
-#    (France, Europe, Monde) que tu as déjà calculées dans ton projet.
-itu_internet_use <- tribble(
-  ~category,   ~internet_use_pct,
-  "France",    92,   # <-- à remplacer par la valeur exacte UIT
-  "Europe",    88,   # <-- idem
-  "Monde",     70    # <-- idem
+## Chargement des données ITU
+
+```{r load-itu}
+itu_final <- readr::read_csv(
+  file.path(base_dir, "data", "clean_final", "ITU_FactsFigures2024_final_clean.csv")
 ) |>
-  mutate(
-    category = factor(category, levels = c("Monde", "Europe", "France"))
-  )
-
-# ------------------------------------------------------------------
-# 5Abonnements mobile broadband – France vs régions (UIT 2024)
-# ------------------------------------------------------------------
-# ⚠️ Même principe : remplace les valeurs par les chiffres UIT 2024.
-itu_mbb <- tribble(
-  ~category,   ~mbb_100,
-  "France",    115,  # <-- valeur UIT pour la France
-  "Europe",    120,  # <-- moyenne régionale Europe
-  "Monde",     95    # <-- moyenne mondiale
-) |>
-  mutate(
-    category = factor(category, levels = c("Monde", "Europe", "France"))
-  )
+  clean_names_local()
 ```
 
-## Internet use – France vs régions du monde
+---
 
-```{r itu-internet-use-plot, fig.cap="Usage d’internet – France vs moyennes régionales (UIT 2024)."}
-itu_internet_use
+## Usage d’internet – France vs Europe vs Monde
 
-ggplot(itu_internet_use,
-       aes(x = category, y = internet_use_pct, fill = category)) +
+On sélectionne l’indicateur exact :  
+**indicator == "internet_use_(%)"**
+
+```{r itu-internet-use}
+internet_use_df <- itu_final |>
+  dplyr::filter(
+    indicator == "internet_use_(%)",
+    country %in% c("France", "European Union", "World")
+  ) |>
+  dplyr::arrange(country)
+
+internet_use_df
+```
+
+```{r itu-internet-use-plot, fig.cap="Usage d’Internet (% population) – France vs Europe vs Monde."}
+ggplot(internet_use_df,
+       aes(x = country, y = value, fill = country)) +
   geom_col(width = 0.6) +
-  coord_flip() +
-  scale_y_continuous(limits = c(0, 100)) +
+  scale_y_continuous(limits = c(0,100)) +
   labs(
-    title    = "Usage d’internet (% population)",
-    subtitle = "Comparaison France vs moyennes régionales – UIT 2024",
+    title    = "Usage d’Internet (% population)",
+    subtitle = "Comparaison France – Union Européenne – Monde",
     x        = NULL,
-    y        = "% de la population"
+    y        = "Taux d’usage (%)"
   ) +
   guides(fill = "none")
 ```
 
-**Lecture métier:**
+**Lecture métier :**
 
-- La **France** se situe dans le groupe des régions à **très forte pénétration internet**.
-- L’**Europe** est globalement au-dessus de la moyenne mondiale, la France restant alignée ou légèrement au-dessus.
-- Le **monde** reste en retrait, ce qui met en perspective le niveau de maturité numérique français.
+- La France se situe **au-dessus de la moyenne mondiale**  
+- Elle se place **au niveau des standards européens**, ce qui montre une maturité numérique élevée  
+- Ce niveau d’usage contextualise les attentes QoS : **une population très connectée = faible tolérance aux lenteurs**
 
-## Abonnements mobile broadband – France vs régions
+---
 
-```{r itu-mbb-plot, fig.cap="Abonnements mobile haut-débit mobile – France vs régions mondiales (UIT 2024)."}
-itu_mbb
+## Abonnements Mobile Broadband (pour 100 habitants)
 
-ggplot(itu_mbb,
-       aes(x = category, y = mbb_100, fill = category)) +
+Indicateur exact dans tes données :  
+**indicator == "broadband_subs"**
+
+```{r itu-mbb}
+mbb_df <- itu_final |>
+  dplyr::filter(
+    indicator == "broadband_subs",
+    country %in% c("France", "European Union", "World")
+  ) |>
+  dplyr::arrange(country)
+
+mbb_df
+```
+
+```{r itu-mbb-plot, fig.cap="Mobile Broadband (pour 100 habitants) – France vs Europe vs Monde."}
+ggplot(mbb_df,
+       aes(x = country, y = value, fill = country)) +
   geom_col(width = 0.6) +
-  coord_flip() +
   labs(
-    title    = "Abonnements haut-débit mobile (pour 100 habitants)",
-    subtitle = "France vs moyennes régionales – UIT 2024",
+    title    = "Mobile Broadband – abonnements pour 100 habitants",
+    subtitle = "France comparée à ses deux zones de référence",
     x        = NULL,
     y        = "Abonnements / 100 habitants"
   ) +
   guides(fill = "none")
 ```
 
-**Lecture métier:**
+**Lecture métier :**
 
-- La **densité d’abonnements mobile broadband** en France est **très élevée**, cohérente avec une forte intensité d’usage Data.
-- L’**Europe** se situe également au-dessus de la moyenne mondiale, ce qui confirme un environnement mobile très connecté.
-- Le **monde** reste en-dessous : la France évolue donc dans un contexte de **maturité numérique avancée**.
-
-**Synthèse Benchmark**
-
-- La France se situe dans un groupe à **forte maturité numérique** selon l’usage d’internet.
-- Le niveau d’abonnements mobile broadband montre une **forte intensité d’usage**, cohérente avec les attentes QoS mesurées par l’ARCEP.
-- Ce benchmark offre un cadre international permettant de **mettre en perspective** les performances nationales Voix & Data.
+- La France présente un niveau d’abonnements mobile broadband **aligné avec les pays développés**  
+- L’écart avec la moyenne mondiale reste important → **la France se situe dans la zone haute** en termes d’équipement  
+- Cela renforce la nécessité d’un **réseau robuste, homogène et performant** sur l’ensemble du territoire.
 
 ---
 
