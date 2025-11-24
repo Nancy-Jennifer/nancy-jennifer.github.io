@@ -385,7 +385,7 @@ library(dplyr)
 library(ggplot2)
 
 # ------------------------------------------------------------------
-# 5.1 Internet use – France vs régions du monde (UIT 2024)
+# Internet use – France vs régions du monde (UIT 2024)
 # ------------------------------------------------------------------
 # ⚠️ Remplace les valeurs ci-dessous par les vraies valeurs UIT 2024
 #    (France, Europe, Monde) que tu as déjà calculées dans ton projet.
@@ -400,7 +400,7 @@ itu_internet_use <- tribble(
   )
 
 # ------------------------------------------------------------------
-# 5.2 Abonnements mobile broadband – France vs régions (UIT 2024)
+# 5Abonnements mobile broadband – France vs régions (UIT 2024)
 # ------------------------------------------------------------------
 # ⚠️ Même principe : remplace les valeurs par les chiffres UIT 2024.
 itu_mbb <- tribble(
@@ -414,7 +414,7 @@ itu_mbb <- tribble(
   )
 ```
 
-## 5.1 Internet use – France vs régions du monde
+## Internet use – France vs régions du monde
 
 ```{r itu-internet-use-plot, fig.cap="Usage d’internet – France vs moyennes régionales (UIT 2024)."}
 itu_internet_use
@@ -433,13 +433,13 @@ ggplot(itu_internet_use,
   guides(fill = "none")
 ```
 
-### 5.1.1 Lecture métier
+### Lecture métier
 
 - La **France** se situe dans le groupe des régions à **très forte pénétration internet**.
 - L’**Europe** est globalement au-dessus de la moyenne mondiale, la France restant alignée ou légèrement au-dessus.
 - Le **monde** reste en retrait, ce qui met en perspective le niveau de maturité numérique français.
 
-## 5.2 Abonnements mobile broadband – France vs régions
+## Abonnements mobile broadband – France vs régions
 
 ```{r itu-mbb-plot, fig.cap="Abonnements mobile haut-débit mobile – France vs régions mondiales (UIT 2024)."}
 itu_mbb
@@ -457,13 +457,13 @@ ggplot(itu_mbb,
   guides(fill = "none")
 ```
 
-### 5.2.1 Lecture métier
+### Lecture métier
 
 - La **densité d’abonnements mobile broadband** en France est **très élevée**, cohérente avec une forte intensité d’usage Data.
 - L’**Europe** se situe également au-dessus de la moyenne mondiale, ce qui confirme un environnement mobile très connecté.
 - Le **monde** reste en-dessous : la France évolue donc dans un contexte de **maturité numérique avancée**.
 
-## 5.3 Synthèse Benchmark
+## Synthèse Benchmark
 
 - La France se situe dans un groupe à **forte maturité numérique** selon l’usage d’internet.
 - Le niveau d’abonnements mobile broadband montre une **forte intensité d’usage**, cohérente avec les attentes QoS mesurées par l’ARCEP.
