@@ -165,7 +165,7 @@ kpi_voix_synthese_operateur <- voix_kpi_rescale |>
 kpi_voix_synthese_operateur
 ```
 
-Lecture métier (Voix – score global) :
+**Lecture métier (Voix – score global) :**
 
 - **Score sur 0–100**, pondéré par le volume de mesures ;
 - Classement des opérateurs en **fiabilité d’établissement d’appel**.
@@ -196,7 +196,7 @@ voix_anomalies <- voix_kpi_rescale |>
 voix_anomalies
 ```
 
-Lecture métier :
+**Lecture métier :**
 
 - **< 90** : zones critiques à adresser en priorité (risque fort sur l’expérience client) ;
 - **90–95** : zones sensibles, à intégrer dans un plan d’amélioration 6–12 mois.
@@ -285,7 +285,7 @@ ggplot(data_kpi_prov_operateur,
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-Lecture métier :
+**Lecture métier :**
 
 - **Part des pages < 10 s** : indicateur direct de **confort de navigation** ;
 - **Débit descendant médian** : vision de la **capacité radio** disponible par opérateur.
@@ -362,7 +362,7 @@ data_micro_diag <- data_kpi_prov_operateur |>
 data_micro_diag
 ```
 
-Lecture métier :
+**Lecture métier :**
 
 - Top 10 des **combinaisons opérateur × contexte** les plus fragiles en Data ;
 - Entrée directe pour un **plan d’action Data** (optimisation radio, capacité cœur de réseau, etc.).
@@ -433,7 +433,7 @@ ggplot(itu_internet_use,
   guides(fill = "none")
 ```
 
-### Lecture métier
+**Lecture métier:**
 
 - La **France** se situe dans le groupe des régions à **très forte pénétration internet**.
 - L’**Europe** est globalement au-dessus de la moyenne mondiale, la France restant alignée ou légèrement au-dessus.
@@ -457,13 +457,13 @@ ggplot(itu_mbb,
   guides(fill = "none")
 ```
 
-### Lecture métier
+**Lecture métier:**
 
 - La **densité d’abonnements mobile broadband** en France est **très élevée**, cohérente avec une forte intensité d’usage Data.
 - L’**Europe** se situe également au-dessus de la moyenne mondiale, ce qui confirme un environnement mobile très connecté.
 - Le **monde** reste en-dessous : la France évolue donc dans un contexte de **maturité numérique avancée**.
 
-## Synthèse Benchmark
+**Synthèse Benchmark**
 
 - La France se situe dans un groupe à **forte maturité numérique** selon l’usage d’internet.
 - Le niveau d’abonnements mobile broadband montre une **forte intensité d’usage**, cohérente avec les attentes QoS mesurées par l’ARCEP.
