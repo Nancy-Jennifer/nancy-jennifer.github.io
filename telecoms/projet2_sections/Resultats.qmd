@@ -64,6 +64,21 @@ et les **actions prioritaires** à fort ROI.
 :::
 
 ::: {.card}
+
+## 📊 Exploration des données – QoS mobile 2024
+
+Analyse détaillée des mesures ARCEP 2024 en France métropolitaine :
+
+- KPI Voix 0–100 par opérateur et par zone  
+- Zones à risque (Voix & Data) à prioriser  
+- Confort d’usage Internet mobile (habitations vs transports)  
+- Benchmark international synthétique (UIT 2024)
+
+[➡️ Ouvrir l’exploration complète](projet2_sections/02_eda_R.html)
+
+:::
+
+::: {.card}
 [## 🏁 Compétences démontrées](Resultats_5_competences.qmd)
 
 Synthèse des compétences **techniques**, **télécom** et **exécution** prouvées par le projet.
