@@ -20,7 +20,7 @@ execute:
 - Markdown GitHub : `01_prepa_python.md`
 :::
 
-## 1) Contexte & objectifs
+## Contexte & objectifs
 
 Ce document prépare et standardise les données **ARCEP 2024**, **ITU**, **Banque Mondiale** (et dérivés), puis **produit exactement** les fichiers nettoyés suivants :
 
@@ -40,7 +40,7 @@ Ce document prépare et standardise les données **ARCEP 2024**, **ITU**, **Banq
 Offrir un pipeline **reproductible et portable** : lecture robuste, normalisation de colonnes, validations minimales, **exports clean** pour l’EDA R, plus un **journal QA** traçable.
 :::
 
-## 2) Chemins (relatifs) & imports
+## Chemins (relatifs) & imports
 
 ```{python}
 #| label: 1-0-setup
@@ -415,5 +415,5 @@ display(qa)
 ## 🔄 Étape suivante : Analyse exploratoire & Benchmark
 
 Poursuivre vers l’EDA complète :  
-➡️ [02_eda_R.qmd](02_eda_R.qmd)
+➡️ [Accéder à l'exploration des données](02_eda_R.qmd)
 :::
