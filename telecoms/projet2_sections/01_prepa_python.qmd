@@ -1,5 +1,5 @@
 ---
-title: "P2 – Ingestion & Préparation (Python)"
+title: "Ingestion & Préparation (Python)"
 subtitle: "France 2024 : où se situe la qualité de service mobile face aux standards internationaux ?"
 format:
   html:
@@ -410,3 +410,10 @@ display(qa)
 - Pipeline Python **reproductible** et **public-safe**.  
 - **9 fichiers nettoyés** et **2 exports ITU Facts & Figures** prêts pour l’EDA R.  
 - Journal qualité (QA) automatisé, schéma YAML exporté et lecture tolérante aux variations d’encodage.
+
+::: {.callout-note}
+## 🔄 Étape suivante : Analyse exploratoire & Benchmark
+
+Poursuivre vers l’EDA complète :  
+➡️ [02_eda_R.qmd](02_eda_R.qmd)
+:::
