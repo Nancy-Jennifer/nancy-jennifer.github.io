@@ -81,7 +81,7 @@ Pipeline analytique complet du projet :
 - Benchmark International (R)
 - Mini-synthèse technique
 
-➡️ [Accéder à la préparation (01_prepa_python.qmd)]
+➡️ [Accéder à la préparation](01_prepa_python.qmd)
 :::
 
 :::
