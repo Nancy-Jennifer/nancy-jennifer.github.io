@@ -70,18 +70,18 @@ Synthèse des compétences **techniques**, **télécom** et **exécution** prouv
 :::
 
 ::: {.card}
-## 🧪 Rapport Technique
+[## 🧪 Rapport Technique](01_prepa_python.qmd)
 
 Pipeline analytique complet du projet :
 
-- **Ingestion & cleaning (Python)**
-- **Préparation & harmonisation des données**
-- **KPI & EDA Voix (R)**
-- **KPI & EDA Data (R)**
-- **Benchmark International (R)**
-- **Mini-synthèse technique**
+- Ingestion & cleaning (Python)
+- Préparation & harmonisation des données
+- KPI & EDA Voix (R)
+- KPI & EDA Data (R)
+- Benchmark International (R)
+- Mini-synthèse technique
 
-➡️ [Accéder à la préparation (01_prepa_python.qmd)](../telecoms/projet2_sections/01_prepa_python.qmd)
+➡️ [Accéder à la préparation (01_prepa_python.qmd)]
 :::
 
 :::
