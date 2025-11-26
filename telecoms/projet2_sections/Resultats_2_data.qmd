@@ -5,7 +5,7 @@ format:
   html:
     toc: true
     toc-depth: 3
-    number-sections: false
+    number-sections: true
     code-fold: false
 execute:
   echo: false
@@ -18,7 +18,7 @@ execute:
 Les indicateurs exploités : **pass < 5 s**, **pass < 10 s** (pondérés par *base_val*) et **RSRP/RSCP** (médianes & IQR, dBm : plus proche de 0 = meilleur).  
 Les résultats sont consolidés **par opérateur**, tous environnements confondus.
 
-**Lecture métier.**
+**Lecture métier:**
 - *Pass < 5 s* : expérience instantanée perçue.  
 - *Pass < 10 s* : robustesse générale de chargement.  
 - *RSRP/RSCP* : qualité radio sous-jacente ; viser **médiane ≥ −100 dBm** et **IQR serré**.
@@ -31,7 +31,7 @@ Une latence initiale maîtrisée (< 5 s) traduit une **expérience instantanée*
 
 ![Pass < 5 s (pondéré) — par opérateur](../../assets/images/telecoms/pass5s_pondere_operateur.png){fig-align="center"}
 
-**Lecture métier.** Le *pass < 5 s* reflète l’instantané client. Un écart **> 5 pts** devient perceptible.  
+**Lecture métier:** Le *pass < 5 s* reflète l’instantané client. Un écart **> 5 pts** devient perceptible.  
 **Action.** Sécuriser les 5 s sur zones denses (gares, carrefours, centres commerciaux).
 
 ---
@@ -42,7 +42,7 @@ Une latence initiale maîtrisée (< 5 s) traduit une **expérience instantanée*
 
 ![Pass < 10 s (pondéré) — par opérateur](../../assets/images/telecoms/pass10s_pondere_operateur.png){fig-align="center"}
 
-**Cible.** **> 90 %** sur les axes à fort trafic (ferroviaire/routier) avec pilotage **heures pleines**.
+**Cible:** **> 90 %** sur les axes à fort trafic (ferroviaire/routier) avec pilotage **heures pleines**.
 
 ---
 
@@ -52,7 +52,7 @@ Un plan radio solide soutient la QoE data : viser **médiane ≥ −100 dBm** et
 
 ![Radio — RSRP médiane & IQR (plus proche de 0 = meilleur)](../../assets/images/telecoms/radio_rsrp_mediane_iqr.png){fig-align="center"}
 
-**Actions.** Réduire les *queues* < −110 dBm sur les couloirs ferroviaires via **petites cellules** / **réglages paramétriques** (power/tilt, PRB/layering, voisinage).
+**Actions:** Réduire les *queues* < −110 dBm sur les couloirs ferroviaires via **petites cellules** / **réglages paramétriques** (power/tilt, PRB/layering, voisinage).
 
 ---
 
@@ -62,4 +62,4 @@ Un plan radio solide soutient la QoE data : viser **médiane ≥ −100 dBm** et
 - **Robustesse (10 s)** : au-delà de **90 %**, les irritants restants sont **localisés** ; plan d’actions ciblé par **corridors** (TGV/RER/autoroutes).  
 - **Radio** : sécuriser une **médiane ≥ −100 dBm** et **resserrer l’IQR** ; chasse aux < −110 dBm avec boucle **mesure → optimisation → re-mesure**.
 
-**Conclusion.** Performances élevées mais **variabilité par contexte** (mobilité vs habitat). Un pilotage mensuel des **pass-rates pondérés** et des **médianes radio** aligne QoE et investissements.
+**Conclusion:** Performances élevées mais **variabilité par contexte** (mobilité vs habitat). Un pilotage mensuel des **pass-rates pondérés** et des **médianes radio** aligne QoE et investissements.
