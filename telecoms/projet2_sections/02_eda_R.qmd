@@ -507,6 +507,5 @@ Cette EDA met en évidence :
 - relier des **mesures terrain** à des **standards internationaux** ;
 - traduire les résultats en **recommandations réseau concrètes**, lisibles pour un décideur non technique.
 
-[← Préparation & ingestion](01_prepa_python.qmd) 
-[← Retour à la section Résultats](Resultats.qmd)
+[← Préparation](01_prepa_python.qmd)  [← Retour à la section Résultats](Resultats.qmd)
 
