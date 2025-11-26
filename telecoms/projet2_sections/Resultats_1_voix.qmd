@@ -2,6 +2,7 @@
 title: "Voix — Qualité d’appel et stabilité"
 page-layout: article
 toc: true
+number-sections: true
 code-fold: true
 code-summary: "Voir le code"
 freeze: true
@@ -29,7 +30,7 @@ Prioriser ~**15–20 zones** d’amélioration ; la différenciation concurrenti
 
 ---
 
-### 1) Préparation et structuration des données
+### Préparation et structuration des données
 
 Les données Voix issues des campagnes ARCEP 2024 sont centralisées, nettoyées et harmonisées. Les variables clés  
 `operateur`, `lieu_strate`, `kpi`, `valeur` sont standardisées pour permettre les comparaisons et l’agrégation multi-niveaux.
@@ -47,7 +48,7 @@ Cette étape garantit une base **unie & fiable** avant tout calcul de performanc
 
 ---
 
-### 2) Construction du score voix (0–100)
+### Construction du score voix (0–100)
 
 Le **score global** est obtenu par normalisation *min–max* des indicateurs (réussite, coupures, délai) avec polarités harmonisées :
 - **up_is_good** → meilleur score = **valeur plus haute** (ex. taux de réussite)  
@@ -90,7 +91,7 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 
 ---
 
-### 3) Comparaison par environnement
+### Comparaison par environnement
 
 La performance varie selon l’environnement : en moyenne, **habitat > transport**, notamment à cause des contraintes de couverture le long des **axes ferroviaires** et **routiers**.
 
@@ -124,7 +125,7 @@ La **mobilité** dégrade la qualité voix, particulièrement pour **Free** et *
 
 ---
 
-### 4) Détection automatique des **zones à risque**
+### Détection automatique des **zones à risque**
 
 Système de **flags** (seuils métier) :
 - **Taux de réussite < 95 %**
@@ -159,7 +160,7 @@ Les zones identifiées (souvent **ferroviaires** ou **rurales**) concentrent la 
 
 ---
 
-### 5) **Synthèse analytique & recommandations**
+###  **Synthèse analytique & recommandations**
 
 | Indicateur            | Meilleur opérateur | Écart max | Environnement le plus sensible |
 |---|---:|---:|---|
