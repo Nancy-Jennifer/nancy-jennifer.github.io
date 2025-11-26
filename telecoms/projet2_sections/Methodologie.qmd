@@ -5,6 +5,7 @@ format:
   html:
     toc: true
     toc-depth: 3
+    number-sections: true
     code-fold: true
     code-summary: "Voir / masquer le code"
 ---
@@ -13,15 +14,10 @@ format:
 
 [← Retour au P2](../projet2_arcep2024.qmd) · [→ Section 4 (Résultats)](Resultats.qmd)
 
-::: {.card}
-**Navigation rapide:**  
-3.1 Objectif · 3.2 Ingestion & préparation · 3.3 Normalisation statistique · 3.4 Scores par familles · 3.5 Indice composite · 3.6 Robustesse · 3.7 Contrôle qualité & export
-:::
-
 ---
 
 <!-- ===== SECTION 3.1 : DÉBUT ===== -->
-## 3.1 Objectif
+## Objectif
 
 Cette section décrit le **pipeline analytique** mis en place pour construire un **indice composite de qualité de service mobile (QoS)** et identifier les **leviers techniques** ayant le plus d’impact sur la **qualité d’expérience (QoE)** perçue par les utilisateurs en France, au regard d’un **référentiel international** (ARCEP, ITU, Banque Mondiale).
 
@@ -33,7 +29,7 @@ Cette section décrit le **pipeline analytique** mis en place pour construire un
 ---
 
 <!-- ===== SECTION 3.2 : DÉBUT ===== -->
-## 3.2 Ingestion & préparation des données (Python)
+## Ingestion & préparation des données (Python)
 
 Dans ce projet, **toute l’ingestion et la préparation** (chargement, harmonisation, panel, millésime) sont réalisées **exclusivement en Python**.  
 Objectif : produire des tables **propres, comparables** et **traçables** pour la normalisation (3.3) et le scoring (3.4–3.5).
@@ -146,11 +142,11 @@ sanity
 > **ITU** : `country`, `year`, `download_mbps_median`, `upload_mbps_median`, `latency_ms_median`  
 > **WB** : `country`, `year`, *(variables contextuelles optionnelles)*
 
-<!-- Sortie attendue de 3.2 : trois DataFrames alignés (`arcep`, `itu`, `wb`) prêts pour 3.3 -->
+<!-- Sortie attendue de l'étape 2 : trois DataFrames alignés (`arcep`, `itu`, `wb`) prêts pour 3.3 -->
 <!-- ===== SECTION 3.2 : FIN ===== -->
 
 <!-- ===== TRANSITION 3.2 → 3.3 ===== -->
-> ✅ **Résumé étape 3.2 — Ingestion OK**  
+> ✅ **Résumé étape 2 — Ingestion OK**  
 > ✔️ Données chargées (ARCEP / ITU / WB)  
 > ✔️ Noms de pays harmonisés  
 > ✔️ Panel comparatif appliqué  
@@ -160,7 +156,7 @@ sanity
 ---
 
 <!-- ===== TRANSITION 3.2 → 3.3 ===== -->
-> **Résumé étape 3.2 — Ingestion validée**  
+> **Résumé étape 2 — Ingestion validée**  
 > Les données ont été importées (Python), harmonisées et restreintes au panel d’analyse.  
 > ✅ Sources cohérentes · ✅ Panel comparatif prêt · ✅ Millésimes alignés  
 > ➡️ Prochaine étape : **normaliser les indicateurs** pour rendre les pays comparables.
@@ -168,7 +164,7 @@ sanity
 ---
 
 <!-- ===== SECTION 3.3 : DÉBUT ===== -->
-## 3.3 Normalisation statistique (R)
+## Normalisation statistique (R)
 
 ### Objectif
 Standardiser les indicateurs afin d’éliminer les différences d’échelle (Mbps, %, ms, etc.) et permettre des **comparaisons fiables entre pays** avant la construction de l’indice QoS.
@@ -211,7 +207,7 @@ df_panel <- df_panel |>
   )
 ```
 
-> ✅ **Sortie attendue 3.3 :** colonnes normalisées `z_dl,z_ul,z_c4g,z_c5g,z_lat,z_css,z_cset,z_drop`  
+> ✅ **Sortie attendue étape 3 :** colonnes normalisées `z_dl,z_ul,z_c4g,z_c5g,z_lat,z_css,z_cset,z_drop`  
 > Ces valeurs sont désormais **comparables entre pays**.
 
 <!-- ===== SECTION 3.3 : FIN ===== -->
@@ -219,7 +215,7 @@ df_panel <- df_panel |>
 ---
 
 <!-- ===== SECTION 3.4 : DÉBUT ===== -->
-## 3.4 Construction des scores QoS par familles (R)
+## Construction des scores QoS par familles (R)
 
 ### Objectif
 Regrouper les indicateurs normalisés en **familles cohérentes métier** pour réduire le bruit statistique et structurer l’indice QoS.
@@ -248,12 +244,12 @@ df_panel <- df_panel |>
   )
 ```
 
-> ✅ **Sortie attendue 3.4 :** scores familiaux `S_V, S_C, S_D, S_L, S_CS` → base prête pour l’**indice composite** en 3.5.
+> ✅ **Sortie attendue étape 4 :** scores familiaux `S_V, S_C, S_D, S_L, S_CS` → base prête pour l’**indice composite** en 3.5.
 
 <!-- ===== SECTION 3.4 : FIN ===== -->
 
 <!-- ===== SECTION 3.5 : DÉBUT ===== -->
-## 3.5 Indice QoS composite (R)
+## Indice QoS composite (R)
 
 ### Objectif
 Combiner les 5 familles en un **indice unique** reflétant la qualité de service perçue, avec des **pondérations orientées QoE**.
@@ -293,13 +289,13 @@ rang_france <- classement |>
 rang_france
 ```
 
-> **Sortie attendue 3.5 :** `df_panel$QoS_composite` + tableau `classement` (pays, score, rang).
+> **Sortie attendue étape 5 :** `df_panel$QoS_composite` + tableau `classement` (pays, score, rang).
 <!-- ===== SECTION 3.5 : FIN ===== -->
 
 ---
 
 <!-- ===== SECTION 3.6 : DÉBUT ===== -->
-## 3.6 Analyse de robustesse (R)
+## Analyse de robustesse (R)
 
 ### Objectif
 Vérifier que le **rang France** et les conclusions **ne dépendent pas trop** des choix techniques :
@@ -307,7 +303,7 @@ Vérifier que le **rang France** et les conclusions **ne dépendent pas trop** d
 2) **Leave-one-dimension-out** (on retire une famille à la fois)  
 3) **Normalisation alternative** (min–max au lieu de z-score)
 
-### 3.6.1 — Simulation pondérations ±20%
+### Simulation pondérations ±20%
 ```r
 #| label: robust_weights_R
 #| eval: false
@@ -347,7 +343,7 @@ quantiles_rang <- quantile(ranks, probs = c(0.05, 0.5, 0.95), na.rm = TRUE)
 list(summary = summary_rang, quantiles = quantiles_rang)
 ```
 
-### 3.6.2 — Leave-one-dimension-out
+### Leave-one-dimension-out
 ```r
 #| label: robust_looc_R
 #| eval: false
@@ -370,7 +366,7 @@ leave_one_out <- lapply(families, function(fam){
 do.call(rbind, leave_one_out)
 ```
 
-### 3.6.3 — Normalisation alternative (min–max)
+### Normalisation alternative (min–max)
 ```r
 #| label: robust_minmax_R
 #| eval: false
@@ -415,7 +411,7 @@ rk_fr_mm <- df_alt |>
 rk_fr_mm
 ```
 
-> **Sorties attendues 3.6 :**  
+> **Sorties attendues étape 6 :**  
 > - Distribution des rangs France sous variations de poids (`ranks`)  
 > - Rangs France en leave-one-out (`family_dropped ~ france_rank`)  
 > - Rang France avec normalisation min–max (`rk_fr_mm`)
@@ -424,7 +420,7 @@ rk_fr_mm
 ---
 
 <!-- ===== SECTION 3.7 : DÉBUT ===== -->
-## 3.7 Contrôle qualité & export (R)
+## Contrôle qualité & export (R)
 
 ### Objectif
 Assurer la **fiabilité** des sorties et **sauvegarder** les artefacts pour audit et réutilisation.
@@ -464,7 +460,7 @@ meta <- data.frame(
 write_csv(meta, "outputs/p2/qos_weights_meta.csv")
 ```
 
-> **Sorties attendues 3.7 :** `outputs/p2/panel_qos_scored.csv`, `outputs/p2/qos_weights_meta.csv`
+> **Sorties attendues étape 7 :** `outputs/p2/panel_qos_scored.csv`, `outputs/p2/qos_weights_meta.csv`
 <!-- ===== SECTION 3.7 : FIN ===== -->
 
 ---
