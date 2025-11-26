@@ -478,13 +478,13 @@ Cette EDA met en évidence :
   - la **part des pages < 10 s** ;
   - les zones où la performance se dégrade fortement.
 
-Pour un décideur réseau, les messages clés sont :
+## Pour un décideur réseau, les messages clés sont :
 
 - une vision structurée des performances Voix / Data par opérateur et par environnement (habitations vs transports, zones denses vs rurales, etc.) ;
 - une cartographie claire des **zones à risque**, priorisables dans un plan d’action ;
 - des indicateurs alignés avec un **benchmark international** (UIT / Banque mondiale), permettant de positionner la France dans le paysage mondial.
 
-Recommandations opérationnelles (exemples structurants) :
+## Recommandations opérationnelles (exemples structurants) :
 
 - **Voix**
   - cibler en priorité les couples *opérateur × zone* dont le score Voix est < 90 ;
