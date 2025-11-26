@@ -198,7 +198,8 @@ df_panel <- df_panel |>
   )
 ```
 
-> ✅ **Sortie attendue étape 3 : ** colonnes normalisées `z_dl,z_ul,z_c4g,z_c5g,z_lat,z_css,z_cset,z_drop`  
+> ✅ **Sortie attendue étape 3 : ** 
+colonnes normalisées `z_dl,z_ul,z_c4g,z_c5g,z_lat,z_css,z_cset,z_drop`  
 > Ces valeurs sont désormais **comparables entre pays**.
 
 <!-- ===== SECTION 3.3 : FIN ===== -->
@@ -451,7 +452,8 @@ meta <- data.frame(
 write_csv(meta, "outputs/p2/qos_weights_meta.csv")
 ```
 
-> ✅ **Sorties attendues étape 7 :** `outputs/p2/panel_qos_scored.csv`, `outputs/p2/qos_weights_meta.csv`
+> ✅ **Sorties attendues étape 7 :** 
+`outputs/p2/panel_qos_scored.csv`, `outputs/p2/qos_weights_meta.csv`
 <!-- ===== SECTION 3.7 : FIN ===== -->
 
 ---
