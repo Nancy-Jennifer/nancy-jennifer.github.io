@@ -484,7 +484,7 @@ Cette EDA met en évidence :
 - une cartographie claire des **zones à risque**, priorisables dans un plan d’action ;
 - des indicateurs alignés avec un **benchmark international** (UIT / Banque mondiale), permettant de positionner la France dans le paysage mondial.
 
-## Recommandations opérationnelles (exemples structurants) :
+## Recommandations opérationnelles :
 
 - **Voix**
   - cibler en priorité les couples *opérateur × zone* dont le score Voix est < 90 ;
@@ -501,7 +501,7 @@ Cette EDA met en évidence :
   - formaliser un **plan 90 jours / 12 mois** avec indicateurs cibles, responsables et jalons ;
   - communiquer régulièrement les progrès aux parties prenantes (équipes techniques, marketing, régulation).
 
-En résumé, ce fichier illustre ma capacité à :
+**En résumé**, ce fichier illustre ma capacité à :
 
 - structurer une **EDA télécom complète** (ingestion, préparation, KPI, visualisations, zones à risque) ;
 - relier des **mesures terrain** à des **standards internationaux** ;
