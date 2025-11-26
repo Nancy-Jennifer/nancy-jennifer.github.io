@@ -5,7 +5,7 @@ format:
   html:
     toc: true
     toc-depth: 3
-    number-sections: false
+    number-sections: true
     theme: cosmo
     smooth-scroll: true
     code-fold: false
@@ -26,12 +26,12 @@ keywords: ["ARCEP", "Qualité de service", "Voix", "SMS", "Data", "Réseaux mobi
 <small>Analyse structurée et orientée résultats, adaptée à un public décisionnel.</small>
 </div>
 
-## 1) Contexte & enjeux
+## Contexte & enjeux
 Dans un marché mature où l’**expérience client** est un différenciateur décisif, la **Qualité de Service (QoS)** des réseaux mobiles conditionne la satisfaction et la fidélisation. À partir des mesures ARCEP 2022, nous **comparons la performance voix/SMS/data des opérateurs** (zones d’habitation & axes de transport) pour **prioriser les actions d’amélioration**.
 
 **Objectif** : traduire des **constats techniques** en **recommandations métier** exploitables (opérateurs, DSI, régulateur, décideurs publics).
 
-## 2) Données & périmètre
+## Données & périmètre
 - **Source** : ARCEP — campagne de mesures **2022**, France métropolitaine (voix, SMS, data).
 - **Unités d’observation** : points de mesure géolocalisés (zones d’habitation, axes de transport).
 - **Granularité analytique** : opérateur × zone (urbain, péri-urbain, rural, transport).
@@ -42,7 +42,7 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
 
 > _Garantie de traçabilité_ : Data dictionary, contrôles qualité (valeurs manquantes, doublons, cohérence géographique), journal de nettoyage.
 
-## 3) Méthodologie (S2/T2)
+## Méthodologie (S2/T2)
 1. **Nettoyage & audit** : gestion des valeurs extrêmes, harmonisation des libellés opérateurs, vérification géo.
 2. **Standardisation** : normalisation des indicateurs par zone et contexte d’usage.
 3. **Scoring QoS** : pondération multi-critères (voix/SMS/data) + seuils d’alerte (zones à risque).
@@ -54,7 +54,7 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
 **Lecture PRO** : le scoring privilégie la **régularité** et la **stabilité** (expérience perçue) plutôt que des pics de performance ponctuels.
 :::
 
-## 4) Résultats clés (exemples structurés)
+## Résultats clés (exemples structurés)
 - **Voix (zones d’habitation)** : opérateur A présente un **taux de réussite supérieur** (p50) et une **durée d’établissement plus courte** en urbain/péri-urbain ; **écarts s’accentuent en rural**.
 - **SMS (transport)** : latences hétérogènes selon axes ; **pics d’acheminement** sur tronçons spécifiques → **surveillance ciblée**.
 - **Data (mix zones)** : **débits médians robustes** pour l’opérateur B en urbain ; **variabilité** marquée pour C en rural ; **temps de chargement** à lisser pour D sur segments ferroviaires.
@@ -62,7 +62,7 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
 **Insight transverse** : la **variabilité** intra-opérateur est **autant** un risque d’expérience que le niveau moyen.  
 **Implication** : orienter les investissements vers la **réduction des écarts** (p90–p10) plutôt que la seule hausse du p50.
 
-## 5) Zones à risque & priorités d’action
+## Zones à risque & priorités d’action
 - **Rural dispersé** : trous de couverture voix/data → plan de comblement ciblé.
 - **Axes de transport** : latence SMS & data instable → optimisation sur tronçons récurrents.
 - **Nœuds urbains denses** : saturation ponctuelle → actions capacitaires/antennaire.
@@ -71,7 +71,7 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
 **Impact client** : une **régularité insuffisante** accroît la **probabilité d’incidents** (appels échoués, pages qui ne chargent pas), dégradant NPS/CSAT.
 :::
 
-## 6) Recommandations (opérationnelles & priorisées)
+## Recommandations (opérationnelles & priorisées)
 **R1. Rural — voix accessible et fiable (priorité haute)**  
 - Renforcer la **couverture voix** sur communes faiblement desservies, alignée sur les corridors de mobilité locale.  
 - KPI : _Taux de réussite appels (rural)_, _Durée d’établissement médiane_, _% zones < seuil MOS_.
@@ -88,18 +88,18 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
 - **Tableau de bord public** par zone d’usage (habitation/transport) avec **indicateurs simples** et engagements minimums.  
 - KPI : _CSAT par zone_, _Taux de réclamation QoS_, _% engagements tenus_.
 
-## 7) Impact attendu (métier)
+## Impact attendu (métier)
 - **Expérience** : baisse des irritants majeurs (appels échoués, lenteurs).
 - **Marque** : différenciation par la **régularité** perçue (pas seulement la pointe).
 - **Régulation** : meilleure lisibilité des écarts territoriaux (ciblage des investissements).
 - **ROI** : amélioration du ratio **coût d’intervention / réclamations évitées**.
 
-## 8) Livrables & ouvertures
+## Livrables & ouvertures
 - **Rapport complet** (technique) et **synthèse exécutive** (slides).
 - **Cartes** (zones à risque), **radar voix/SMS/data** (comparaison opérateurs).
 - **Pistes** : analyses longitudinales 2022→2024, corrélation QoS ↔ satisfaction.
 
-## 9) Compétences mobilisées
+## Compétences mobilisées
 - **Data Analytics Télécoms** : QoS voix/SMS/data, normalisation, scoring multivarié.
 - **Géostatistiques & Carto** : analyses par zones d’usage, repérage hotspots.
 - **Data Quality & Traçabilité** : audits, dictionnaire, gestion outliers.
