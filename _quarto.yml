@@ -17,8 +17,6 @@ website:
         file: telecoms/index.qmd
       - text: "PEOPLE ANALYTICS"
         file: people-analytics/index.qmd
-        text: "DATA FOR SOCIAL GOOD"
-        file: social-good/index.qmd
       - text: "METHODOLOGIE ANALYTIQUE"
         file: methode/index.qmd
       - text: "CONTRIBUTIONS BENEVOLES"
