@@ -6,7 +6,7 @@ format:
   html:
     toc: true
     toc-depth: 3
-    number-sections: false
+    number-sections: true
     code-fold: false
 execute:
   echo: false
@@ -18,13 +18,13 @@ execute:
 
 ---
 
-## 1) Objectif
+## Objectif
 
 Clore l’analyse exploratoire en **insights stratégiques** et **pistes d’action concrètes**, alignés sur les **référentiels UE/OCDE/ITU** et priorisés selon l’impact client et la faisabilité.
 
 ---
 
-## 2) Récapitulatif des constats majeurs
+## Récapitulatif des constats majeurs
 
 | Catégorie | Constat principal | Interprétation analytique | Impact métier |
 |---|---|---|---|
@@ -36,7 +36,7 @@ Clore l’analyse exploratoire en **insights stratégiques** et **pistes d’act
 
 ---
 
-## 3) Orientations stratégiques (priorisées)
+## Orientations stratégiques (priorisées)
 
 | Axe | Recommandation | Objectif opérationnel | Horizon |
 |---|---|---|---|
@@ -47,7 +47,7 @@ Clore l’analyse exploratoire en **insights stratégiques** et **pistes d’act
 
 ---
 
-## 4) Alignement avec les cadres UE/OCDE/ONU/ITU
+## Alignement avec les cadres UE/OCDE/ONU/ITU
 
 | Cadre | Attendu | Cohérence France 2024 |
 |---|---|---|
@@ -60,7 +60,7 @@ Clore l’analyse exploratoire en **insights stratégiques** et **pistes d’act
 
 ---
 
-## 5) KPI de suivi (cibles 2025)
+## KPI de suivi (cibles 2025)
 
 | KPI | Description | Cible | Fréquence | Source |
 |---|---|---|---|---|
@@ -72,7 +72,7 @@ Clore l’analyse exploratoire en **insights stratégiques** et **pistes d’act
 
 ---
 
-## 6) Plan « 90 jours » – actions rapides & mesurables
+## Plan « 90 jours » – actions rapides & mesurables
 
 1. **Ciblage “transport”** : 20 lignes/gare à forte affluence → retuning radio + tests terrain (heures de pointe).  
 2. **Dashboard hebdo “habitat vs transport”** : suivi des écarts & outliers avec alerting.  
@@ -81,7 +81,7 @@ Clore l’analyse exploratoire en **insights stratégiques** et **pistes d’act
 
 ---
 
-## 7) Conclusion
+## Conclusion
 
 En 2024, la France présente une **maturité télécom forte** (infrastructures, équipements, fiabilité Voix/SMS).  
 La **QoS data** reste **hétérogène** selon les contextes (indoor/transport/rural), ce qui **écarte** le pays de son **potentiel macro**.  
