@@ -198,7 +198,7 @@ df_panel <- df_panel |>
   )
 ```
 
-> ✅ **Sortie attendue étape 3 : ** 
+> ✅ **Sortie attendue étape 3 :** 
 colonnes normalisées `z_dl,z_ul,z_c4g,z_c5g,z_lat,z_css,z_cset,z_drop`  
 > Ces valeurs sont désormais **comparables entre pays**.
 
