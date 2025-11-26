@@ -1,2 +1,44 @@
-title: "En cours"
-subtitle: "En cours"
+---
+title: "Data for Social Good"
+subtitle: "Utiliser les données pour l'impact social"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    code-fold: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+## 🌍 Data for Social Good
+
+Cette section de mon portfolio regroupe des projets où les données sont mises au service de **l’impact social**, avec un focus particulier sur les thématiques telles que :
+- l’égalité femmes-hommes,
+- l’accès aux opportunités,
+- l’éducation, la santé, l’inclusion.
+
+L’objectif est de montrer comment une approche rigoureuse de l’analyse de données peut **soutenir des décisions concrètes** au service du bien commun.
+
+---
+
+## 📂 Projets en cours d’intégration
+
+- **Empowering Women with Data: The TIME Case Study**  
+  *Projet développé dans le cadre de la certification Google Data Analytics (Coursera).*  
+  → La version détaillée (FR + EN) sera prochainement intégrée avec :
+  - une landing page en français,
+  - les insights métier,
+  - le notebook et le rapport techniques en anglais.
+
+---
+
+## 🔧 Statut actuel
+
+Cette page est **provisoire** et sert de point d’entrée à la section **DATA FOR SOCIAL GOOD** de mon portfolio.  
+Elle sera enrichie progressivement avec :
+- la description détaillée des projets,
+- les visualisations interactives,
+- les liens vers les notebooks et ressources GitHub.
