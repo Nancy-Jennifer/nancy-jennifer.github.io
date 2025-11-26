@@ -6,6 +6,7 @@ format:
   html:
     toc: true
     toc-depth: 3
+    number-sections: true
     code-fold: false
 ---
 
@@ -16,7 +17,7 @@ format:
 Cette analyse compare la qualité de service mobile (QoS) de la France à un panel international afin d’identifier des leviers concrets d’amélioration de la qualité d’expérience (QoE) client.
 :::
 
-## 1) Introduction
+## Introduction
 
 La qualité de service mobile (QoS) est devenue un enjeu stratégique majeur pour la compétitivité numérique d’un pays. Au-delà de la couverture théorique, c’est désormais la **qualité d’expérience perçue par le client (QoE)** qui constitue l’indicateur de référence pour évaluer la performance réelle d’un réseau mobile. Dans ce contexte, il ne suffit plus de mesurer la qualité du réseau en interne : il faut la **positionner par rapport à un référentiel externe**, c’est-à-dire **comparer la France aux standards internationaux du secteur**.
 
@@ -38,7 +39,7 @@ Ce projet s’inscrit dans la continuité du **Projet P1 – Analyse QoS France 
 
 ---
 
-### Questions clés
+**Questions clés**
 
 Cette analyse répond à trois questions structurantes :
 
@@ -48,7 +49,7 @@ Cette analyse répond à trois questions structurantes :
 
 ---
 
-## 2) Sources & structure des données
+## Sources & structure des données
 
 L’analyse s’appuie sur trois référentiels complémentaires :
 
@@ -56,7 +57,7 @@ L’analyse s’appuie sur trois référentiels complémentaires :
 - **ITU / UIT** : indicateurs internationaux de performance et d’adoption mobile – comparaisons pays.  
 - **Banque Mondiale (World Bank)** : contextes structurels (infrastructure, usage, indicateurs macro utiles au cadrage).
 
-### 2.1 Jeux de données utilisés (fichiers propres)
+### Jeux de données utilisés (fichiers propres)
 
 | Source | Contenu | Fichier (chemin relatif) | Granularité | Maj |
 |---|---|---|---|---|
@@ -66,13 +67,13 @@ L’analyse s’appuie sur trois référentiels complémentaires :
 
 > 🔎 **Note** : conserver ces chemins relatifs pour la portabilité GitHub Pages.
 
-### 2.2 Dictionnaire minimal (extraits utiles)
+### Dictionnaire minimal (extraits utiles)
 
 - **ARCEP** : `taux_coupure_voix`, `taux_etablissement_appel`, `debit_dl_mbps`, `debit_ul_mbps`, `latence_ms`, `continuite_service_score`, `couv_4g_pop_%`, `couv_5g_pop_%`  
 - **ITU** : `country`, `latency_ms_median`, `download_mbps_median`, `upload_mbps_median`, `mobile_broadband_penetration`  
 - **WorldBank** : `country`, `mobile_subscriptions_per_100`, `fixed_broadband_subs_per_100`, `gni_per_capita`, `urban_population_%`
 
-### 2.3 Clés & panel
+### Clés & panel
 
 - **Clé** : `country` (ISO3 si dispo : `iso3c`)  
 - **Panel** : France + Allemagne + Royaume-Uni + Italie + Espagne + **top 5 mondiaux** (data/latence/couverture selon ITU)  
