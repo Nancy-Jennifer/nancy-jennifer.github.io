@@ -34,7 +34,7 @@ Cette section décrit le **pipeline analytique** mis en place pour construire un
 Dans ce projet, **toute l’ingestion et la préparation** (chargement, harmonisation, panel, millésime) sont réalisées **exclusivement en Python**.  
 Objectif : produire des tables **propres, comparables** et **traçables** pour la normalisation (3.3) et le scoring (3.4–3.5).
 
-### ✅ Sources utilisées
+### Sources utilisées
 - **ARCEP 2024** — indicateurs QoS France (voix, data, latence, continuité, couverture)  
 - **ITU** — métriques internationales de performance mobile  
 - **Banque Mondiale** — variables de contexte (optionnel)  
@@ -145,15 +145,6 @@ sanity
 <!-- Sortie attendue de l'étape 2 : trois DataFrames alignés (`arcep`, `itu`, `wb`) prêts pour 3.3 -->
 <!-- ===== SECTION 3.2 : FIN ===== -->
 
-<!-- ===== TRANSITION 3.2 → 3.3 ===== -->
-> ✅ **Résumé étape 2 — Ingestion OK**  
-> ✔️ Données chargées (ARCEP / ITU / WB)  
-> ✔️ Noms de pays harmonisés  
-> ✔️ Panel comparatif appliqué  
-> ✔️ Millésimes alignés  
-> ➡️ **Étape suivante : rendre toutes les variables comparables** via une **normalisation statistique (z-score)**
-
----
 
 <!-- ===== TRANSITION 3.2 → 3.3 ===== -->
 > **Résumé étape 2 — Ingestion validée**  
@@ -207,7 +198,7 @@ df_panel <- df_panel |>
   )
 ```
 
-> ✅ **Sortie attendue étape 3 :** colonnes normalisées `z_dl,z_ul,z_c4g,z_c5g,z_lat,z_css,z_cset,z_drop`  
+> ✅ **Sortie attendue étape 3 : ** colonnes normalisées `z_dl,z_ul,z_c4g,z_c5g,z_lat,z_css,z_cset,z_drop`  
 > Ces valeurs sont désormais **comparables entre pays**.
 
 <!-- ===== SECTION 3.3 : FIN ===== -->
@@ -289,7 +280,7 @@ rang_france <- classement |>
 rang_france
 ```
 
-> **Sortie attendue étape 5 :** `df_panel$QoS_composite` + tableau `classement` (pays, score, rang).
+>✅ **Sortie attendue étape 5 :** `df_panel$QoS_composite` + tableau `classement` (pays, score, rang).
 <!-- ===== SECTION 3.5 : FIN ===== -->
 
 ---
@@ -411,7 +402,7 @@ rk_fr_mm <- df_alt |>
 rk_fr_mm
 ```
 
-> **Sorties attendues étape 6 :**  
+>✅ **Sorties attendues étape 6 :**  
 > - Distribution des rangs France sous variations de poids (`ranks`)  
 > - Rangs France en leave-one-out (`family_dropped ~ france_rank`)  
 > - Rang France avec normalisation min–max (`rk_fr_mm`)
@@ -460,13 +451,13 @@ meta <- data.frame(
 write_csv(meta, "outputs/p2/qos_weights_meta.csv")
 ```
 
-> **Sorties attendues étape 7 :** `outputs/p2/panel_qos_scored.csv`, `outputs/p2/qos_weights_meta.csv`
+> ✅ **Sorties attendues étape 7 :** `outputs/p2/panel_qos_scored.csv`, `outputs/p2/qos_weights_meta.csv`
 <!-- ===== SECTION 3.7 : FIN ===== -->
 
 ---
 
 <!-- ===== CONCLUSION COURTE ===== -->
-### Conclusion méthodologique (Section 3)
+## Conclusion méthodologique (Section 3)
 La méthodologie standardise les indicateurs, structure la QoS en 5 familles et agrège via un indice composite **orienté QoE**. Les tests de robustesse montrent la **stabilité des conclusions** sous variations raisonnables. La Section 4 exploitera ces résultats pour **positionner la France** et **prioriser des leviers réseau**.
 
 [→ Passer à la Section 4 (Résultats)](Resultats.qmd)
