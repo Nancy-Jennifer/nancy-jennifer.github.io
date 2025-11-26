@@ -506,3 +506,7 @@ Cette EDA met en évidence :
 - structurer une **EDA télécom complète** (ingestion, préparation, KPI, visualisations, zones à risque) ;
 - relier des **mesures terrain** à des **standards internationaux** ;
 - traduire les résultats en **recommandations réseau concrètes**, lisibles pour un décideur non technique.
+
+[← Préparation & ingestion](01_prepa_python.qmd) 
+[← Retour à la section Résultats](Resultats.qmd)
+
