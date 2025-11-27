@@ -1,0 +1,151 @@
+---
+title: "Empowering Women with Data"
+subtitle: "The TIME Case Study (Bellabeat)"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    code-fold: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+::: {.hero}
+![Bannière du projet TIME](../assets/time_banner.jpg)
+:::
+
+## 🎯 Résumé du projet (FR)
+
+Ce projet explore comment les données issues de montres connectées peuvent être utilisées pour **mieux comprendre les habitudes de bien-être** (activité physique, sédentarité, sommeil) et pour **concevoir un produit plus utile pour les femmes** : la montre TIME de Bellabeat.
+
+À partir de données d’activité et de sommeil provenant de traqueurs similaires (dataset Fitbit disponible sur Kaggle), j’ai mis en place une **analyse exploratoire en R** pour :
+
+- comprendre les comportements des utilisatrices,
+- identifier les limites d’un discours marketing trop simpliste,
+- proposer des pistes d’amélioration produit et contenu.
+
+Ce projet a été réalisé dans le cadre de la **certification Google Data Analytics (Coursera)** et illustre ma capacité à transformer des données brutes en **recommandations concrètes** pour un produit connecté orienté bien-être.
+
+---
+
+## 🎯 Objectifs du projet
+
+**Objectif métier**
+
+- Identifier, à partir de données réelles de montres connectées, des **axes d’amélioration pour TIME**, la montre de bien-être de Bellabeat.
+- Proposer des **recommandations produit et marketing** pour mieux répondre aux besoins de femmes actives, souvent exposées à la sédentarité et à des troubles du sommeil.
+
+**Objectif analytique**
+
+- Analyser les relations entre :
+  - activité physique quotidienne (nombre de pas, temps actif),
+  - temps passé assis (sédentarité),
+  - durée et qualité du sommeil.
+- Mettre en évidence les corrélations, tendances et limites d’interprétation pour informer un positionnement produit réaliste.
+
+---
+
+## 🔍 Insights majeurs
+
+### 1. Plus on marche, moins on reste assis… mais tout le monde ne bouge pas assez
+
+Une analyse de la relation entre **nombre de pas quotidiens** et **temps sédentaire** montre une corrélation négative modérée (r ≈ -0,33) :  
+> les utilisatrices qui marchent davantage sont globalement moins sédentaires.
+
+**Implication produit & marketing :**
+
+- TIME doit encourager des **objectifs de marche réalistes et progressifs**, intégrés dans la journée (petits déplacements, pauses actives).
+- Le message clé : *chaque pas compte pour réduire la sédentarité*, même sans devenir sportive.
+
+---
+
+### 2. Temps au lit ≠ temps réellement dormi
+
+Les données de sommeil montrent une **durée moyenne de sommeil d’environ 7 heures**, mais avec un **écart important entre temps passé au lit et temps réellement endormi**.  
+Cela révèle des difficultés d’endormissement et/ou des réveils nocturnes pour une partie des utilisatrices.
+
+**Implication produit :**
+
+- La valeur ajoutée de TIME ne peut pas se limiter au “nombre d’heures de sommeil”.
+- Il faut suivre :
+  - la latence d’endormissement,
+  - les réveils nocturnes,
+  - l’irrégularité des nuits,
+  - le contexte (stress, habitudes, environnement).
+
+---
+
+### 3. Activité physique et sommeil : une relation réelle, mais faible
+
+Les analyses montrent que la corrélation entre **activité (nombre de pas)** et **durée de sommeil** est **faible**.  
+Marcher davantage est bénéfique pour la santé, mais **ne suffit pas à garantir un bon sommeil**.
+
+**Implication marketing :**
+
+- Impossible de positionner TIME comme une **“solution miracle pour mieux dormir”** uniquement via l’activité physique.
+- Le positionnement doit être **honnête et holistique** : TIME aide à mieux comprendre son sommeil, mais dans un ensemble plus large (stress, rythme de vie, hygiène de sommeil, etc.).
+
+---
+
+## 💡 Recommandations stratégiques
+
+### Pour le produit TIME
+
+- **Objectifs de marche personnalisés**
+  - Permettre de définir des objectifs de pas progressifs, adaptés au niveau réel de l’utilisatrice.
+  - Proposer des rappels de “micro-mouvements” pour casser les longues périodes assises.
+
+- **Fonctionnalités sommeil avancées**
+  - Suivi des cycles de sommeil, du temps d’endormissement et des réveils nocturnes.
+  - Suggestions personnalisées : routines apaisantes, sons relaxants, conseils d’hygiène de sommeil.
+
+- **Approche holistique du bien-être**
+  - Ne pas limiter TIME aux “pas” : intégrer stress, sommeil, nutrition, moments de repos.
+  - Construire un véritable **coach de bien-être personnalisé** plutôt qu’un simple compteur d’activité.
+
+---
+
+### Pour la stratégie marketing
+
+- **Messages clés**
+  - Mettre en avant la marche comme **levier simple et accessible** pour réduire la sédentarité.
+  - Sensibiliser aux risques d’un mode de vie trop sédentaire, chiffres à l’appui.
+
+- **Ciblage**
+  - Cibler notamment les **femmes souffrant de difficultés de sommeil** (insomnie, réveils nocturnes, fatigue chronique).
+  - Montrer comment TIME aide à *comprendre* leurs nuits, plutôt qu’à promettre un miracle.
+
+- **Storytelling & contenus**
+  - Slogans possibles :  
+    - *« Dormez mieux, sans rallonger vos nuits. »*  
+    - *« Chaque minute de sommeil compte. »*
+  - Proposer des contenus pédagogiques basés sur des données : bonnes pratiques de sommeil, liens entre activité, stress et repos.
+
+---
+
+## 📎 Ressources techniques (EN)
+
+Pour les recruteurs et partenaires souhaitant approfondir l’aspect technique, les livrables originaux en anglais sont disponibles ici :
+
+- **Project Overview (EN)** – business context & summary  
+  - `[Download – Project Overview (EN)](../../assets/docs/time_project_overview.pdf)`
+
+- **Data Analysis Report – TIME Project (EN)** – detailed EDA & insights  
+  - `[Download – Data Analysis Report (EN)](../../assets/docs/time_data_analysis_report.pdf)`
+
+- **TIME Case Study Presentation (EN)** – slides  
+  - `[Download – TIME Case Study Slides (EN)](../../assets/docs/time_presentation_slides.pdf)`
+
+> Les chemins des fichiers (`assets/docs/...`) sont à adapter en fonction de l’endroit où tu déposeras réellement les PDF sur ton repo GitHub.
+
+---
+
+## 🔚 Ce que ce projet démontre
+
+- Ma capacité à **structurer une analyse exploratoire complète** (data cleaning, agrégations, corrélations, visualisations).
+- Ma façon de relier les résultats à des **décisions produit & marketing concrètes**.
+- Mon intérêt pour des projets **à impact social**, où les données servent à améliorer la santé et le bien-être des femmes.
+- Ma capacité à travailler en **anglais** tout en rendant les **insights accessibles en français** pour les décideurs locaux.
