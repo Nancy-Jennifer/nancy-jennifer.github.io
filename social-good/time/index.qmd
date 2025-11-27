@@ -14,10 +14,10 @@ execute:
 ---
 
 ::: {.hero}
-![Bannière du projet TIME](../assets/time_banner.jpg)
+![Bannière du projet TIME](../assets/time_banner.jpg){width=70%}
 :::
 
-## 🎯 Résumé du projet (FR)
+## Résumé du projet (FR)
 
 Ce projet explore comment les données issues de montres connectées peuvent être utilisées pour **mieux comprendre les habitudes de bien-être** (activité physique, sédentarité, sommeil) et pour **concevoir un produit plus utile pour les femmes** : la montre TIME de Bellabeat.
 
@@ -27,11 +27,11 @@ Ce projet explore comment les données issues de montres connectées peuvent êt
 - identifier les limites d’un discours marketing trop simpliste,
 - proposer des pistes d’amélioration produit et contenu.
 
-Ce projet a été réalisé dans le cadre de la **certification Google Data Analytics (Coursera)** et illustre ma capacité à transformer des données brutes en **recommandations concrètes** pour un produit connecté orienté bien-être.
+Ce projet a été réalisé dans le cadre de ma **certification Google Data Analytics (Coursera)** et illustre ma capacité à transformer des données brutes en **recommandations concrètes** pour un produit connecté orienté bien-être.
 
 ---
 
-## 🎯 Objectifs du projet
+## Objectifs du projet
 
 **Objectif métier**
 
@@ -48,9 +48,9 @@ Ce projet a été réalisé dans le cadre de la **certification Google Data Anal
 
 ---
 
-## 🔍 Insights majeurs
+## Insights majeurs
 
-### 1. Plus on marche, moins on reste assis… mais tout le monde ne bouge pas assez
+### Plus on marche, moins on reste assis… mais tout le monde ne bouge pas assez
 
 Une analyse de la relation entre **nombre de pas quotidiens** et **temps sédentaire** montre une corrélation négative modérée (r ≈ -0,33) :  
 > les utilisatrices qui marchent davantage sont globalement moins sédentaires.
@@ -62,7 +62,7 @@ Une analyse de la relation entre **nombre de pas quotidiens** et **temps sédent
 
 ---
 
-### 2. Temps au lit ≠ temps réellement dormi
+### Temps au lit ≠ temps réellement dormi
 
 Les données de sommeil montrent une **durée moyenne de sommeil d’environ 7 heures**, mais avec un **écart important entre temps passé au lit et temps réellement endormi**.  
 Cela révèle des difficultés d’endormissement et/ou des réveils nocturnes pour une partie des utilisatrices.
@@ -78,7 +78,7 @@ Cela révèle des difficultés d’endormissement et/ou des réveils nocturnes p
 
 ---
 
-### 3. Activité physique et sommeil : une relation réelle, mais faible
+### Activité physique et sommeil : une relation réelle, mais faible
 
 Les analyses montrent que la corrélation entre **activité (nombre de pas)** et **durée de sommeil** est **faible**.  
 Marcher davantage est bénéfique pour la santé, mais **ne suffit pas à garantir un bon sommeil**.
@@ -90,7 +90,7 @@ Marcher davantage est bénéfique pour la santé, mais **ne suffit pas à garant
 
 ---
 
-## 💡 Recommandations stratégiques
+## Recommandations stratégiques
 
 ### Pour le produit TIME
 
@@ -126,7 +126,7 @@ Marcher davantage est bénéfique pour la santé, mais **ne suffit pas à garant
 
 ---
 
-## 📎 Ressources techniques (EN)
+## Ressources techniques
 
 Pour les recruteurs et partenaires souhaitant approfondir l’aspect technique, les livrables originaux en anglais sont disponibles ici :
 
@@ -143,7 +143,7 @@ Pour les recruteurs et partenaires souhaitant approfondir l’aspect technique, 
 
 ---
 
-## 🔚 Ce que ce projet démontre
+## Ce que ce projet démontre
 
 - Ma capacité à **structurer une analyse exploratoire complète** (data cleaning, agrégations, corrélations, visualisations).
 - Ma façon de relier les résultats à des **décisions produit & marketing concrètes**.
