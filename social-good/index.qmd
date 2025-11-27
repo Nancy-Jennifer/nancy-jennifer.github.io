@@ -1,6 +1,6 @@
 ---
 title: "Data for Social Good"
-subtitle: "Utiliser les données pour l'impact social"
+subtitle: "Analyser pour comprendre. Comprendre pour agir."
 format:
   html:
     toc: true
@@ -13,32 +13,65 @@ execute:
   message: false
 ---
 
-## 🌍 Data for Social Good
+## Pourquoi une section *Data for Social Good* ?
 
-Cette section de mon portfolio regroupe des projets où les données sont mises au service de **l’impact social**, avec un focus particulier sur les thématiques telles que :
-- l’égalité femmes-hommes,
-- l’accès aux opportunités,
-- l’éducation, la santé, l’inclusion.
+Dans un monde où les décisions publiques, sociales et humaines reposent de plus en plus sur les données, il devient essentiel de **mettre l’analyse au service de l’impact**.  
+Cette rubrique met en valeur des projets où la donnée n’est pas seulement un outil technique, mais un **levier d’inclusion, d’égalité et de progrès social**.
 
-L’objectif est de montrer comment une approche rigoureuse de l’analyse de données peut **soutenir des décisions concrètes** au service du bien commun.
+L’objectif est de montrer comment les données peuvent :
 
----
+- éclairer des problématiques humaines,
+- rendre visibles des réalités souvent sous-estimées,
+- guider des solutions concrètes,
+- contribuer à améliorer le bien-être des populations.
 
-## 📂 Projets en cours d’intégration
-
-- **Empowering Women with Data: The TIME Case Study**  
-  *Projet développé dans le cadre de la certification Google Data Analytics (Coursera).*  
-  → La version détaillée (FR + EN) sera prochainement intégrée avec :
-  - une landing page en français,
-  - les insights métier,
-  - le notebook et le rapport techniques en anglais.
+Cette approche s’inscrit dans une conviction forte :  
+> **la donnée peut transformer la société lorsqu’elle est utilisée pour comprendre, protéger, sensibiliser et autonomiser.**
 
 ---
 
-## 🔧 Statut actuel
+## Contexte & Problématiques abordées
 
-Cette page est **provisoire** et sert de point d’entrée à la section **DATA FOR SOCIAL GOOD** de mon portfolio.  
-Elle sera enrichie progressivement avec :
-- la description détaillée des projets,
-- les visualisations interactives,
-- les liens vers les notebooks et ressources GitHub.
+La rubrique *Data for Social Good* explore des thèmes tels que :
+
+- **l’égalité femmes-hommes**,  
+- **l’accès au bien-être et à la santé**,  
+- **la sécurité et l’empowerment**,  
+- **l’éducation et l’inclusion numérique**,  
+- **le renforcement des capacités personnelles et communautaires**.
+
+Ces problématiques touchent directement la vie quotidienne des individus.  
+En les étudiant à travers la donnée, on peut mieux :
+
+- identifier les besoins réels,
+- comprendre les comportements,
+- révéler les zones d’inégalités,
+- proposer des solutions adaptées et faisables.
+
+---
+
+## Projet phare actuellement disponible
+
+### **Empowering Women with Data: The TIME Case Study (Bellabeat)**  
+*(Projet réalisé dans le cadre du certificat Google Data Analytics – Coursera)*  
+
+Ce projet analyse les données issues de montres connectées pour comprendre les habitudes de bien-être (activité, sédentarité, sommeil) et proposer des **recommandations produit et marketing** destinées à soutenir la santé et l’autonomie des femmes.
+
+Il illustre parfaitement l’esprit *Data for Social Good* :  
+👉 **utiliser la donnée pour éclairer, sensibiliser et proposer des solutions réellement utiles.**
+
+🔗 *Accéder au projet* :  
+[➡️ Empowering Women with Data — The TIME Case Study](time/index.qmd)
+
+---
+
+## Projets à venir dans cette rubrique
+
+Cette section sera progressivement enrichie avec :
+
+- d’autres projets orientés égalité, santé publique, inclusion ou éducation,
+- des analyses de données ouvertes (open data) portant sur les questions sociales,
+- des visualisations interactives permettant de mieux comprendre les enjeux humains.
+
+---
+
