@@ -143,14 +143,45 @@ Marcher davantage est bénéfique pour la santé, mais **ne suffit pas à garant
 
 Voir les livrables originaux en anglais disponibles ici :
 
-**Project Overview (EN)** – business context & summary  
-  - [Download – Project Overview (EN)](docs/time_project_overview.pdf)
+<div class="row" style="margin-top: 1.5rem;">
 
-- **Data Analysis Report – TIME Project (EN)** – detailed EDA & insights  
-  - [Download – Data Analysis Report (EN)](docs/time_data_analysis_report.pdf)
+  <!-- Carte 1 -->
+  <div class="col-md-4">
+    <div class="card shadow-sm" style="padding: 1rem; border-radius: 10px;">
+      <div class="card-body">
+        <h5 class="card-title">📄 Project Overview (EN)</h5>
+        <a href="docs/time_project_overview.pdf" class="btn btn-primary" target="_blank">
+          Télécharger le PDF
+        </a>
+      </div>
+    </div>
+  </div>
 
-- **TIME Case Study Presentation (EN)** – slides  
-  - [Download – TIME Case Study Slides (EN)](docs/time_presentation_slides.pdf)
+  <!-- Carte 2 -->
+  <div class="col-md-4">
+    <div class="card shadow-sm" style="padding: 1rem; border-radius: 10px;">
+      <div class="card-body">
+        <h5 class="card-title">📊 Data Analysis Report (EN)</h5>
+        <a href="docs/time_data_analysis_report.pdf" class="btn btn-primary" target="_blank">
+          Télécharger le PDF
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte 3 -->
+  <div class="col-md-4">
+    <div class="card shadow-sm" style="padding: 1rem; border-radius: 10px;">
+      <div class="card-body">
+        <h5 class="card-title">🎞️ TIME Case Study – Slides (EN)</h5>
+        <a href="docs/time_presentation_slides.pdf" class="btn btn-primary" target="_blank">
+          Télécharger le PDF
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 ---
 
