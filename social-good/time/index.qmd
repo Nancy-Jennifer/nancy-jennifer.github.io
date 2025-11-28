@@ -137,49 +137,35 @@ Marcher davantage est bénéfique pour la santé, mais **ne suffit pas à garant
     - *« Chaque minute de sommeil compte. »*
   - Proposer des contenus pédagogiques basés sur des données : bonnes pratiques de sommeil, liens entre activité, stress et repos.
 
+---
+
 ## Ressources techniques
 
 Voir les livrables originaux en anglais disponibles ici :
 
-<div class="row" style="margin-top: 1.5rem;">
+::: {.columns}
 
-  <!-- Carte 1 -->
-  <div class="col-md-4">
-    <div class="card shadow-sm" style="padding: 1rem; border-radius: 10px;">
-      <div class="card-body">
-        <h5 class="card-title">📄 Project Overview (EN)</h5>
-        <a href="docs/time_project_overview.pdf" class="btn btn-primary" target="_blank">
-          Télécharger le PDF
-        </a>
-      </div>
-    </div>
-  </div>
+::: {.column}
+#### 📄 Project Overview (EN)
 
-  <!-- Carte 2 -->
-  <div class="col-md-4">
-    <div class="card shadow-sm" style="padding: 1rem; border-radius: 10px;">
-      <div class="card-body">
-        <h5 class="card-title">📊 Data Analysis Report (EN)</h5>
-        <a href="docs/time_data_analysis_report.pdf" class="btn btn-primary" target="_blank">
-          Télécharger le PDF
-        </a>
-      </div>
-    </div>
-  </div>
+[ Télécharger le PDF ](docs/time_project_overview.pdf){.btn .btn-primary target=_blank}
+:::
 
-  <!-- Carte 3 -->
-  <div class="col-md-4">
-    <div class="card shadow-sm" style="padding: 1rem; border-radius: 10px;">
-      <div class="card-body">
-        <h5 class="card-title">🎞️ TIME Case Study – Slides (EN)</h5>
-        <a href="docs/time_presentation_slides.pdf" class="btn btn-primary" target="_blank">
-          Télécharger le PDF
-        </a>
-      </div>
-    </div>
-  </div>
+::: {.column}
+#### 📊 Data Analysis Report (EN)
 
-</div>
+[ Télécharger le PDF ](docs/time_data_analysis_report.pdf){.btn .btn-primary target=_blank}
+:::
+
+::: {.column}
+#### 🎞️ TIME Case Study – Slides (EN)
+
+[ Télécharger le PDF ](docs/time_presentation_slides.pdf){.btn .btn-primary target=_blank}
+:::
+
+:::
+
+---
 
 ## Ce que ce projet démontre
 
