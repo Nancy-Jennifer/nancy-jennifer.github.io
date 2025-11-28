@@ -17,7 +17,7 @@ execute:
 ![](../assets/time_banner.jpg){width=40% fig-alt="Bannière du projet TIME" fig-cap=""}
 :::
 
-::: {.callout-note}
+::: {.callout}
 **<span style="color:red">Note au recruteur</span>**
 
 Ce projet est le tout premier que j’ai réalisé au début de ma reconversion vers les métiers de la data.  
