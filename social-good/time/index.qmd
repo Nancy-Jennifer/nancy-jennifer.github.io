@@ -13,8 +13,21 @@ execute:
   message: false
 ---
 
-::: {.hero}
-![](../assets/time_banner.jpg){width=80% fig-alt="Bannière du projet TIME" fig-cap=""}
+::: {.hero style="text-align:center;"}
+![](../assets/time_banner.jpg){width=40% fig-alt="Bannière du projet TIME" fig-cap=""}
+:::
+
+::: {.callout-note}
+**<span style="color:red">Note au recruteur</span>**
+
+Ce projet est le tout premier que j’ai réalisé au début de ma reconversion vers les métiers de la data.  
+Il a été développé dans le cadre de ma certification *Google Data Analytics (Coursera)* et représente ma première mise en pratique des notions fondamentales : nettoyage de données, analyse exploratoire (EDA), visualisation et formulation d’insights.
+
+Il n’a donc pas vocation à refléter l’étendue de mes compétences actuelles, mais plutôt à montrer le **point de départ** de mon parcours analytique.
+
+Les projets plus récents de mon portfolio (Télécoms QoS, People Analytics, Data for Social Good) témoignent d’une **progression rapide**, d’une meilleure structuration de mes analyses et d’une maîtrise plus avancée de la rigueur technique.
+
+Ce projet TIME reste important pour moi, car il marque le moment où j’ai pris confiance dans ma capacité à analyser des données, à aller au bout d’un projet, et à transformer ma reconversion en trajectoire professionnelle cohérente.
 :::
 
 ## Résumé du projet (FR)
