@@ -17,8 +17,8 @@ execute:
 ![](../assets/time_banner.jpg){width=40% fig-alt="Bannière du projet TIME" fig-cap=""}
 :::
 
-::: {.callout}
-**<span style="color:red">Note au recruteur</span>**
+::: {.callout-note}
+#### <span style="color:red">Note au recruteur</span>
 
 Ce projet est le tout premier que j’ai réalisé au début de ma reconversion vers les métiers de la data.  
 Il a été développé dans le cadre de ma certification *Google Data Analytics (Coursera)* et représente ma première mise en pratique des notions fondamentales : nettoyage de données, analyse exploratoire (EDA), visualisation et formulation d’insights.
