@@ -14,7 +14,7 @@ execute:
 ---
 
 ::: {.hero}
-![Bannière du projet TIME](../assets/time_banner.jpg){width=80%}
+![](../assets/time_banner.jpg){width=80% fig-alt="Bannière du projet TIME" fig-cap=""}
 :::
 
 ## Résumé du projet (FR)
