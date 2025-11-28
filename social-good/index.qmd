@@ -13,7 +13,7 @@ execute:
   message: false
 ---
 
-![Bannière – Data for Social Good](assets/data_for_social_good_banner.jpg){width=90%}
+<img src="assets/data_for_social_good_banner.jpg" alt="Bannière – Data for Social Good" style="width:90%;">
 
 ## Pourquoi une section *Data for Social Good* ?
 
