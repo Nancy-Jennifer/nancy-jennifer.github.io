@@ -13,6 +13,8 @@ execute:
   message: false
 ---
 
+![Bannière – Data for Social Good](assets/data_for_social_good_banner.jpg){width=100%}
+
 ## Pourquoi une section *Data for Social Good* ?
 
 Dans un monde où les décisions publiques, sociales et humaines reposent de plus en plus sur les données, il devient essentiel de **mettre l’analyse au service de l’impact**.  
@@ -58,10 +60,13 @@ En les étudiant à travers la donnée, on peut mieux :
 Ce projet analyse les données issues de montres connectées pour comprendre les habitudes de bien-être (activité, sédentarité, sommeil) et proposer des **recommandations produit et marketing** destinées à soutenir la santé et l’autonomie des femmes.
 
 Il illustre parfaitement l’esprit *Data for Social Good* :  
-👉 **utiliser la donnée pour éclairer, sensibiliser et proposer des solutions réellement utiles.**
+**utiliser la donnée pour éclairer, sensibiliser et proposer des solutions réellement utiles.**
 
-🔗 *Accéder au projet* :  
-[➡️ Empowering Women with Data — The TIME Case Study](time/index.qmd)
+<div style="margin: 1.5rem 0;">
+  <a class="btn btn-primary btn-lg" href="time/" role="button">
+    Découvrir le projet TIME
+  </a>
+</div>
 
 ---
 
@@ -72,6 +77,3 @@ Cette section sera progressivement enrichie avec :
 - d’autres projets orientés égalité, santé publique, inclusion ou éducation,
 - des analyses de données ouvertes (open data) portant sur les questions sociales,
 - des visualisations interactives permettant de mieux comprendre les enjeux humains.
-
----
-
