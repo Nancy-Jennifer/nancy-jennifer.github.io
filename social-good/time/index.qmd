@@ -146,19 +146,19 @@ Voir les livrables originaux en anglais disponibles ici :
 ::: {.columns}
 
 ::: {.column}
-#### 📄 Project Overview (EN)
+📄 Project Overview (EN)
 
 [ Télécharger le PDF ](docs/time_project_overview.pdf){.btn .btn-primary target=_blank}
 :::
 
 ::: {.column}
-#### 📊 Data Analysis Report (EN)
+📊 Data Analysis Report (EN)
 
 [ Télécharger le PDF ](docs/time_data_analysis_report.pdf){.btn .btn-primary target=_blank}
 :::
 
 ::: {.column}
-#### 🎞️ TIME Case Study – Slides (EN)
+🎞️ TIME Case Study – Slides (EN)
 
 [ Télécharger le PDF ](docs/time_presentation_slides.pdf){.btn .btn-primary target=_blank}
 :::
