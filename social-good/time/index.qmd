@@ -141,7 +141,7 @@ Marcher davantage est bénéfique pour la santé, mais **ne suffit pas à garant
 
 ## Ressources techniques
 
-Pour les recruteurs et partenaires souhaitant approfondir l’aspect technique, les livrables originaux en anglais sont disponibles ici :
+Voir les livrables originaux en anglais disponibles ici :
 
 - **Project Overview (EN)** – business context & summary  
   - `[Download – Project Overview (EN)](../../assets/docs/time_project_overview.pdf)`
@@ -151,8 +151,6 @@ Pour les recruteurs et partenaires souhaitant approfondir l’aspect technique, 
 
 - **TIME Case Study Presentation (EN)** – slides  
   - `[Download – TIME Case Study Slides (EN)](../../assets/docs/time_presentation_slides.pdf)`
-
-> Les chemins des fichiers (`assets/docs/...`) sont à adapter en fonction de l’endroit où tu déposeras réellement les PDF sur ton repo GitHub.
 
 ---
 
