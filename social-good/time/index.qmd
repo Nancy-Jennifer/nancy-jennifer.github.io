@@ -137,8 +137,6 @@ Marcher davantage est bénéfique pour la santé, mais **ne suffit pas à garant
     - *« Chaque minute de sommeil compte. »*
   - Proposer des contenus pédagogiques basés sur des données : bonnes pratiques de sommeil, liens entre activité, stress et repos.
 
----
-
 ## Ressources techniques
 
 Voir les livrables originaux en anglais disponibles ici :
@@ -182,8 +180,6 @@ Voir les livrables originaux en anglais disponibles ici :
   </div>
 
 </div>
-
----
 
 ## Ce que ce projet démontre
 
