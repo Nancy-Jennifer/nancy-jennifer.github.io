@@ -144,13 +144,13 @@ Marcher davantage est bénéfique pour la santé, mais **ne suffit pas à garant
 Voir les livrables originaux en anglais disponibles ici :
 
 - **Project Overview (EN)** – business context & summary  
-  - `[Download – Project Overview (EN)](../../assets/docs/time_project_overview.pdf)`
+  - [Download – Project Overview (EN)](../../assets/docs/time_project_overview.pdf)
 
 - **Data Analysis Report – TIME Project (EN)** – detailed EDA & insights  
-  - `[Download – Data Analysis Report (EN)](../../assets/docs/time_data_analysis_report.pdf)`
+  - [Download – Data Analysis Report (EN)](../../assets/docs/time_data_analysis_report.pdf)
 
 - **TIME Case Study Presentation (EN)** – slides  
-  - `[Download – TIME Case Study Slides (EN)](../../assets/docs/time_presentation_slides.pdf)`
+  - [Download – TIME Case Study Slides (EN)](../../assets/docs/time_presentation_slides.pdf)
 
 ---
 
