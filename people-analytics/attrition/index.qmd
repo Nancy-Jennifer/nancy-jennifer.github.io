@@ -1,0 +1,92 @@
+---
+title: "Analyse Attrition – IBM HR Analytics"
+subtitle: "Comprendre les déterminants du turnover des salariés"
+---
+
+# Comprendre les déterminants du turnover des salariés
+### Analyse exploratoire – Dataset IBM HR Attrition
+
+---
+
+## 📌 Contexte des départs volontaires en entreprise
+
+Le départ volontaire de salariés représente un véritable **enjeu stratégique** pour les organisations, tant sur le plan humain qu’opérationnel.  
+Un **taux de turnover élevé** peut révéler :
+
+- un climat social fragilisé,  
+- une insatisfaction professionnelle,  
+- un manque d’alignement entre les attentes des collaborateurs et les conditions proposées,  
+- ou encore une charge de travail mal répartie.
+
+Au-delà des coûts liés au recrutement, à la formation et à la perte de compétences clés, ces départs affectent la **continuité des activités** et fragilisent le **capital humain** de l’entreprise.  
+Dans un environnement RH où le **bien-être au travail** et la **fidélisation des talents** sont devenus des priorités majeures, comprendre les facteurs qui poussent les salariés à quitter l’entreprise est devenu essentiel pour agir **de manière préventive**.
+
+---
+
+## 🎯 Objectif du projet
+
+Ce projet vise à **identifier les déterminants des départs volontaires** à travers une analyse exploratoire approfondie d’un jeu de données RH simulé.  
+À partir des informations disponibles, l’objectif est de mettre en évidence les facteurs qui influencent significativement la décision de quitter l’entreprise, notamment :
+
+- l’âge,  
+- l’ancienneté,  
+- la satisfaction au travail,  
+- les conditions et comportements au travail (heures supplémentaires, évolution, promotions),  
+- ainsi que certaines caractéristiques organisationnelles.
+
+Cette démarche permet aux équipes RH de disposer d’enseignements concrets pour :
+
+- anticiper les situations à risque,  
+- renforcer les politiques de rétention,  
+- améliorer l’expérience collaborateur,  
+- et favoriser une gestion plus durable du capital humain.
+
+---
+
+## 🗂️ Jeu de données utilisé
+
+Pour cette analyse, nous utilisons le dataset RH simulé fourni par **IBM**, dans le cadre d’un cas d’étude en People Analytics.
+
+Il s’agit d’un fichier tabulaire contenant les informations de **1 470 salariés**, avec **35 variables** couvrant plusieurs dimensions de la vie professionnelle.  
+Ce jeu de données, bien structuré pour un usage éducatif, est disponible sur Kaggle :  
+👉 *IBM HR Analytics Employee Attrition & Performance*.
+
+### Les variables se répartissent en cinq grandes catégories :
+
+- **Données démographiques** : âge, sexe, état civil  
+- **Parcours professionnel** : poste, département, ancienneté, mobilité interne  
+- **Rémunération** : salaire mensuel, taux journalier, options d’achat d’actions  
+- **Engagement & bien-être** : satisfaction au travail, équilibre vie pro/perso, relation hiérarchique  
+- **Comportements au travail** : heures supplémentaires, formations, promotions, changements de poste
+
+---
+
+## 📝 À propos du renommage des variables
+
+::: {.callout-note icon="info-circle"}
+Le dataset original est en anglais.  
+Dans un souci de clarté et de cohérence avec un public francophone, **les noms des variables ont été traduits en français** lors de la phase de préparation des données (ex. *Attrition* → **Départ**, *JobRole* → **Poste**, etc.).
+
+Ce renommage n’a **aucun impact sur les valeurs ou l’intégrité analytique** du jeu de données.
+:::
+
+La **variable cible** de ce projet est :
+
+- **Départ** *(« Attrition » dans la version original)*  
+  → indique si un salarié a quitté volontairement l’entreprise (**Yes**) ou non (**No**).
+
+---
+
+## ▶️ Suite du projet
+
+L’analyse complète comprend :
+
+- l’exploration descriptive,  
+- l’évaluation de tes **6 hypothèses People Analytics**,  
+- les visualisations et insights clés,  
+- puis les **recommandations RH** basées sur les résultats.
+
+👉 Ces éléments sont disponibles dans les sous-pages suivantes :  
+- **EDA & Résultats**  
+- **Synthèse & Recommandations RH**  
+- **Notebook technique**
