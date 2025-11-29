@@ -2,7 +2,15 @@
 title: "PEOPLE ANALYTICS — TALENTS & PERFORMANCE"
 ---
 
-![](../assets/images/people-analytics/banner_people_analytics.jpg){style="border-radius: 18px;"}
+<div class="hero-telecom-wrap">
+  <picture>
+    <source srcset="../assets/images/people-analytics/banner_people_analytics.jpg">
+    <img src="../assets/images/people-analytics/banner_people_analytics.jpg"
+         alt="Bannière People Analytics"
+         class="hero-banner-telecom"
+         loading="eager" />
+  </picture>
+</div>
 
 **Spécialisée en People Analytics**, j’utilise la donnée RH pour éclairer des décisions clés : réduire le turnover, sécuriser l’onboarding, mieux cibler les plans de formation et améliorer l’engagement des collaborateurs.
 
