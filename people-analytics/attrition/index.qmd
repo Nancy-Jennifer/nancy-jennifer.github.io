@@ -8,7 +8,7 @@ subtitle: "Comprendre les déterminants du turnover des salariés"
 
 ---
 
-## 📌 Contexte des départs volontaires en entreprise
+## Contexte des départs volontaires en entreprise
 
 Le départ volontaire de salariés représente un véritable **enjeu stratégique** pour les organisations, tant sur le plan humain qu’opérationnel.  
 Un **taux de turnover élevé** peut révéler :
@@ -23,7 +23,7 @@ Dans un environnement RH où le **bien-être au travail** et la **fidélisation 
 
 ---
 
-## 🎯 Objectif du projet
+## Objectif du projet
 
 Ce projet vise à **identifier les déterminants des départs volontaires** à travers une analyse exploratoire approfondie d’un jeu de données RH simulé.  
 À partir des informations disponibles, l’objectif est de mettre en évidence les facteurs qui influencent significativement la décision de quitter l’entreprise, notamment :
@@ -43,7 +43,7 @@ Cette démarche permet aux équipes RH de disposer d’enseignements concrets po
 
 ---
 
-## 🗂️ Jeu de données utilisé
+## Jeu de données utilisé
 
 Pour cette analyse, nous utilisons le dataset RH simulé fourni par **IBM**, dans le cadre d’un cas d’étude en People Analytics.
 
@@ -61,7 +61,7 @@ Ce jeu de données, bien structuré pour un usage éducatif, est disponible sur 
 
 ---
 
-## 📝 À propos du renommage des variables
+## À propos du renommage des variables
 
 ::: {.callout-note icon="info-circle"}
 Le dataset original est en anglais.  
@@ -79,14 +79,17 @@ La **variable cible** de ce projet est :
 
 ## ▶️ Suite du projet
 
-L’analyse complète comprend :
+L’analyse se structure autour de quatre étapes clés :
 
-- l’exploration descriptive,  
-- l’évaluation de tes **6 hypothèses People Analytics**,  
-- les visualisations et insights clés,  
-- puis les **recommandations RH** basées sur les résultats.
+1. **Exploration descriptive (EDA)** : profil global des collaborateurs, indicateurs sociaux, distribution des variables clés.  
+2. **Validation des 6 hypothèses People Analytics** : analyses ciblées, visualisations, patterns critiques.  
+3. **Insights actionnables** : identification des signaux forts liés au risque de départ.  
+4. **Recommandations RH** : leviers concrets pour réduire le turnover et renforcer la fidélisation.
 
-👉 Ces éléments sont disponibles dans les sous-pages suivantes :  
-- **EDA & Résultats**  
-- **Synthèse & Recommandations RH**  
-- **Notebook technique**
+---
+
+### Pages du projet
+
+- **EDA & Résultats** — interprétations, visualisations, tests des hypothèses  
+- **Synthèse & Recommandations RH** — axes prioritaires, risques, leviers opérationnels  
+- **Notebook technique** — préparation des données, code Python, reproductibilité
