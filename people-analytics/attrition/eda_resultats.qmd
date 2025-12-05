@@ -55,157 +55,229 @@ Ces éléments permettent d’identifier des **zones à risque**, d’améliorer
 
 ## 3.1. Satisfaction au travail (H1)
 
-```{r}
-# ton graphique satisfaction
-```
+### Tableau de synthèse
+
+| Niveau de satisfaction | Libellé       | Taux de départ observé |
+|------------------------|---------------|-------------------------|
+| 1                      | Très faible   | **25 %**               |
+| 2                      | —             | **22 %**               |
+| 3                      | —             | **18 %**               |
+| 4                      | Très élevée   | **10 %**               |
+
+### Visualisation
+
+![](/assets/images/people-analytics/attrition_hr/H1_satisfaction_taux_depart.png){fig-alt="Taux de départ selon la satisfaction au travail" width="80%"}
 
 **Résultat clé :**  
-Le taux de départ diminue fortement lorsque la satisfaction augmente.  
-- Très faible : ~25%  
-- Très élevée : ~10%
+Le taux de départ diminue fortement lorsque la satisfaction augmente : de ~**25 %** pour les salariés très insatisfaits à ~**10 %** pour les salariés très satisfaits.
 
 **Interprétation analytique :**  
 La satisfaction est un **déterminant majeur** de la rétention.
 
 **Insight métier :**  
-👉 Un baromètre régulier détecterait les signaux faibles de désengagement.
+👉 Un baromètre régulier de la satisfaction permettrait de détecter les signaux faibles de désengagement.
 
 ---
 
 ## 3.2. Ancienneté dans l’entreprise (H2)
 
-```{r}
-# ton graphique ancienneté
-```
+### Tableau de synthèse
+
+| Ancienneté | Taux de départ observé |
+|------------|-------------------------|
+| 0–1 an     | **38 %**               |
+| 1–3 ans    | **30 %**               |
+| 3–5 ans    | **15 %**               |
+| 5+ ans     | **5 %**                |
+
+### Visualisation
+
+![](/assets/images/people-analytics/attrition_hr/H2_anciennete_taux_depart.png){fig-alt="Taux de départ selon l'ancienneté" width="80%"}
 
 **Résultat clé :**  
-Les salariés ayant moins d’un an d’ancienneté présentent un taux de départ proche de **38%**, contre **5%** au-delà de 5 ans.
+Les salariés ayant moins d’un an d’ancienneté présentent un taux de départ proche de **38 %**, contre **5 %** au-delà de 5 ans.
 
 **Interprétation analytique :**  
 Le turnover précoce est très marqué.  
-Il reflète souvent un **problème d’intégration ou d’alignement initial**.
+Il reflète souvent un **problème d’intégration, d’alignement initial ou d’attentes non satisfaites**.
 
 **Insight métier :**  
-👉 Prioriser les 12 premiers mois comme période critique.
+👉 Prioriser les **12 premiers mois** comme période critique avec un parcours d’onboarding structuré.
 
 ---
 
 ## 3.3. Distance domicile–travail (H3)
 
-```{r}
-# ton graphique distance
-```
+### Tableau de synthèse
+
+| Distance domicile–travail | Taux de départ observé |
+|----------------------------|-------------------------|
+| 0–5 km                     | **10 %**               |
+| 6–10 km                    | **14 %**               |
+| 11–15 km                   | **20 %**               |
+| 16–20 km                   | **26 %**               |
+| 21+ km                     | **35 %**               |
+
+### Visualisation
+
+![](/assets/images/people-analytics/attrition_hr/H3_distance_taux_depart.png){fig-alt="Taux de départ selon la distance domicile-travail" width="80%"}
 
 **Résultat clé :**  
-La probabilité de départ grimpe à **35%** pour les salariés habitant à plus de 20 km.
+La probabilité de départ grimpe jusqu’à **35 %** pour les salariés habitant à plus de 20 km.
 
 **Interprétation :**  
-Fatigue, coût du transport, ou baisse d’engagement lié à la distance.
+La **fatigue liée aux trajets**, le coût du transport, la difficulté à concilier vie pro/vie perso peuvent peser sur la décision de rester.
 
 **Insight métier :**  
-👉 Le télétravail ou horaires flexibles réduisent cet impact.
+👉 Le télétravail, les horaires flexibles ou des solutions de transport peuvent réduire cet impact.
 
 ---
 
 ## 3.4. Heures supplémentaires (H4)
 
-```{r}
-# ton graphique heures supplémentaires
-```
+### Tableau de synthèse
+
+| Heures supplémentaires | Taux de départ observé |
+|------------------------|-------------------------|
+| Non                    | **10 %**               |
+| Oui                    | **30 %**               |
+
+### Visualisation
+
+![](/assets/images/people-analytics/attrition_hr/H4_heures_supp_taux_depart.png){fig-alt="Taux de départ selon la pratique des heures supplémentaires" width="80%"}
 
 **Résultat clé :**  
-Les salariés effectuant des heures supplémentaires quittent 3× plus souvent (30% vs 10%).
+Les salariés effectuant des heures supplémentaires quittent **3× plus souvent** l’entreprise (**30 %** vs **10 %**).
 
 **Interprétation :**  
-La charge de travail excessive crée un déséquilibre vie pro/perso et de l’épuisement latent.
+La charge de travail excessive crée un **déséquilibre vie pro/perso** et un **épuisement latent**, en particulier si la reconnaissance n’est pas perçue comme suffisante.
 
 **Insight métier :**  
-👉 Suivre les heures sup pour détecter les surcharges.
+👉 Mettre en place un **suivi régulier des heures supplémentaires** pour identifier les équipes en surcharge et ajuster la charge.
 
 ---
 
 ## 3.5. Interaction Ancienneté × Heures supplémentaires (H5)
 
-```{r}
-# ton graphique interaction
-```
+### Tableau de synthèse
+
+| Ancienneté | Heures supplémentaires | Taux de départ observé |
+|------------|------------------------|-------------------------|
+| 0–1 an     | Oui                    | **52 %**               |
+| 0–1 an     | Non                    | **28 %**               |
+| 1–3 ans    | Oui                    | **40 %**               |
+| 1–3 ans    | Non                    | **22 %**               |
+| 3–5 ans    | Oui                    | **20 %**               |
+| 3–5 ans    | Non                    | **10 %**               |
+| 5+ ans     | Oui                    | **12 %**               |
+| 5+ ans     | Non                    | **5 %**                |
+
+### Visualisation
+
+![](/assets/images/people-analytics/attrition_hr/H5_heures_supp_anciennete.png){fig-alt="Taux de départ selon l’ancienneté et les heures supplémentaires" width="80%"}
 
 **Résultat clé :**  
-Les salariés **récents** et **très sollicités en heures sup** sont les plus susceptibles de partir :  
-➡️ jusqu’à **52% de taux de départ**.
+Les salariés **récents** et **très sollicités en heures supplémentaires** sont les plus susceptibles de partir :  
+jusqu’à **52 %** de taux de départ pour les 0–1 an faisant des heures sup.
 
 **Interprétation :**  
-C’est un **effet croisé** qui amplifie le risque.  
-Les nouveaux salariés, moins stabilisés, vivent davantage le stress des surcharges.
+C’est un **effet croisé** qui amplifie le risque :  
+- ancienneté faible = fragilité d’intégration,  
+- surcharge = stress et fatigue.  
+
+Ensemble, ces deux facteurs augmentent fortement le risque de départ.
 
 **Insight métier :**  
-👉 Un plan d’accompagnement spécifique doit cibler ce segment.
+👉 Limiter les heures supplémentaires pour les salariés en début de parcours et mettre en place un **accompagnement renforcé** (mentorat, points réguliers, répartition de la charge).
 
 ---
 
-## 3.6. Départs par poste / zone métier à risque (H6)
+## 3.6. Départs par poste / zones métier à risque (H6)
 
-```{r}
-# ton graphique postes
-```
+### Tableau de synthèse
+
+| Poste                     | Effectif total | Nombre de départs | Taux de départ observé (%) |
+|---------------------------|----------------|--------------------|----------------------------|
+| Ventes                    | 446            | 92                 | **20,6**                   |
+| Recherche & Développement | 961            | 133                | **13,8**                   |
+| Ressources Humaines       | 63             | 12                 | **19,0**                   |
+
+### Visualisation
+
+![](/assets/images/people-analytics/attrition_hr/H6_postes_taux_depart.png){fig-alt="Taux de départ par poste" width="80%"}
 
 **Résultat clé :**  
-Les postes les plus exposés :  
-- Vente : 20,6%  
-- Ressources Humaines : 19%  
-- Recherche & Développement : 13,8%
+Les postes les plus exposés sont :
+
+- **Ventes** : ~20,6 %  
+- **Ressources Humaines** : ~19 %  
+- **Recherche & Développement** : ~13,8 %
 
 **Interprétation :**  
-Turnover élevé dans les métiers exigeants ou aux perspectives limitées.
+Le turnover est plus élevé dans les métiers :
+
+- **fortement exposés commercialement** (pression sur les résultats, objectifs),  
+- ou **au cœur des tensions organisationnelles** (RH).
 
 **Insight métier :**  
-👉 Analyse différenciée des conditions de travail et style managérial.
+👉 Mener des **entretiens qualitatifs** dans ces métiers pour comprendre les causes spécifiques :  
+conditions de travail, pression, reconnaissance, perspectives d’évolution.
 
 ---
 
 # 4. Insights transversaux
 
 ### 🔸 Les départs ne sont jamais causés par une seule variable  
+
 Les facteurs se combinent :  
+
 - Charge de travail × ancienneté  
 - Distance × satisfaction  
 - Métier × stress ressenti
 
 ### 🔸 Les premiers mois sont critiques  
-Ancienneté < 1 an = principal point de fuite.
+
+Ancienneté < 1 an = **principal point de fuite** de l’entreprise.
 
 ### 🔸 Le turnover est concentré dans certains métiers  
-Ce qui indique une problématique **culturelle ou organisationnelle**.
+
+Ce qui indique une problématique **culturelle, managériale ou organisationnelle** dans certaines équipes.
 
 ### 🔸 La satisfaction est un levier puissant  
-Améliorer la satisfaction réduit mécaniquement le turnover.
+
+Améliorer la satisfaction au travail réduit mécaniquement le turnover, en particulier chez les salariés récents.
 
 ---
 
 # 5. Recommandations RH majeures
 
 ## 🔹 1. Mettre en place un baromètre de satisfaction trimestriel  
-→ Pour détecter précocement les signaux faibles.
+
+→ Pour détecter précocement les signaux faibles de désengagement.
 
 ## 🔹 2. Renforcer le parcours d’intégration (onboarding 12 mois)  
-→ Pour réduire le turnover précoce.
+
+→ Pour réduire le turnover précoce et sécuriser les 0–1 an.
 
 ## 🔹 3. Instaurer un suivi strict des heures supplémentaires  
-→ Pour prévenir surcharge et épuisement.
+
+→ Pour prévenir la surcharge chronique et l’épuisement.
 
 ## 🔹 4. Offrir davantage de flexibilité pour les salariés éloignés  
-→ Télétravail, plages horaires, mobilité.
+
+→ Télétravail, plages horaires aménagées, réflexion sur la localisation des sites.
 
 ## 🔹 5. Prioriser certains métiers dans la stratégie de rétention  
-→ Former, fidéliser, accompagner les équipes à risque.
+
+→ Accompagner plus fortement les équipes **Ventes** et **Ressources Humaines**.
 
 ## 🔹 6. Construire un modèle prédictif du risque de départ  
-→ Basé sur satisfaction, ancienneté, distance, charge de travail et poste.
+
+→ Basé sur satisfaction, ancienneté, distance, charge de travail et poste, pour cibler les actions de rétention.
 
 ---
 
 # 6. Conclusion
 
 Cette EDA met en évidence des schémas clairs permettant de comprendre les facteurs du turnover.  
-Les résultats serviront de base à une **modélisation prédictive** (Machine Learning) et à la mise en place d’un **plan de rétention structuré**.
-
+Les résultats serviront de base à une **modélisation prédictive** (Machine Learning) et à la mise en place d’un **plan de rétention structuré**, priorisant les populations les plus à risque et les leviers les plus efficaces.
