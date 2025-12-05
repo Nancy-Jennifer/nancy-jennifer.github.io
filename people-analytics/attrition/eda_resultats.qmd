@@ -44,7 +44,7 @@ Ces éléments permettent d’identifier des **zones à risque**, d’améliorer
 ➡️ **Hypothèse confirmée avec un écart marqué**
 
 ## H5 — L’entreprise affecte davantage les heures supplémentaires aux salariés récents  
-➡️ **Hypothèse confirmée (effet cumulatif)**
+➡️ **Hypothèse partiellement confirmée (effet cumulatif surtout chez les salariés récents)**
 
 ## H6 — Certains postes présentent des taux de départ plus élevés que d'autres  
 ➡️ **Hypothèse confirmée (zones à risque métier)**
@@ -177,18 +177,17 @@ La charge de travail excessive crée un **déséquilibre vie pro/perso** et un *
 ![](/assets/images/people-analytics/attrition_hr/H5_heures_supp_anciennete.png){fig-alt="Taux de départ selon l’ancienneté et les heures supplémentaires" width="80%"}
 
 **Résultat clé :**  
-Les salariés **récents** et **très sollicités en heures supplémentaires** sont les plus susceptibles de partir :  
-jusqu’à **52 %** de taux de départ pour les 0–1 an faisant des heures sup.
+L’effet des heures supplémentaires est **très marqué pour les salariés récents** (0–1 an, 1–3 ans), où le taux de départ dépasse **40–50 %** chez ceux qui font des heures sup.  
+Cet effet s’**atténue** ensuite, tout en restant supérieur à celui des salariés sans heures supplémentaires.
 
 **Interprétation :**  
-C’est un **effet croisé** qui amplifie le risque :  
-- ancienneté faible = fragilité d’intégration,  
-- surcharge = stress et fatigue.  
+On parle donc d’**hypothèse partiellement confirmée** :
 
-Ensemble, ces deux facteurs augmentent fortement le risque de départ.
+- oui, les heures supplémentaires renforcent le risque de départ,  
+- mais **surtout** pour les salariés les plus récents ; l’effet est moins prononcé chez les plus anciens.
 
 **Insight métier :**  
-👉 Limiter les heures supplémentaires pour les salariés en début de parcours et mettre en place un **accompagnement renforcé** (mentorat, points réguliers, répartition de la charge).
+👉 Limiter les heures supplémentaires pour les salariés en début de parcours et mettre en place un **accompagnement renforcé** (mentorat, points réguliers, répartition de la charge) sur les 2–3 premières années.
 
 ---
 
