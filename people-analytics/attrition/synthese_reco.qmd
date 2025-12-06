@@ -1,0 +1,18 @@
+---
+title: "Synthèse & recommendations"
+subtitle: "test"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    code-fold: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+# 1. Synthèse exécutive
+
+test :
