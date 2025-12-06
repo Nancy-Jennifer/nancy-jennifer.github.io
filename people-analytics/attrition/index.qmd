@@ -88,8 +88,9 @@ L’analyse se structure autour de quatre étapes clés :
 
 ---
 
-### Pages du projet
+#### Pages du projet
 
-- **EDA & Résultats** — interprétations, visualisations, tests des hypothèses  
-- **Synthèse & Recommandations RH** — axes prioritaires, risques, leviers opérationnels  
-- **Notebook technique** — préparation des données, code Python, reproductibilité
+- [**EDA & Résultats**](eda_resultats.qmd) — interprétations, visualisations, tests des hypothèses  
+- [**Synthèse & Recommandations RH**](synthese_reco.qmd) — axes prioritaires, risques, leviers opérationnels  
+- [**Notebook technique**](technique.qmd) — préparation des données, code Python, reproductibilité
+
