@@ -31,23 +31,23 @@ Ces éléments permettent d’identifier des **zones à risque**, d’améliorer
 
 # Hypothèses testées
 
-H1 — Les employés les moins satisfaits quittent davantage l’entreprise  
-➡️ **Hypothèse confirmée**
+**H1 — Les employés les moins satisfaits quittent davantage l’entreprise**  
+➡️ Hypothèse confirmée
 
-H2 — Les employés les plus récents partent davantage  
-➡️ **Hypothèse fortement confirmée**
+**H2 — Les employés les plus récents partent davantage**  
+➡️ Hypothèse fortement confirmée
 
-H3 — Plus la distance est grande, plus les salariés quittent l’entreprise  
-➡️ **Hypothèse confirmée (relation positive nette)**
+**H3 — Plus la distance est grande, plus les salariés quittent l’entreprise**  
+➡️ Hypothèse confirmée (relation positive nette)
 
-H4 — Les salariés faisant des heures supplémentaires quittent davantage  
-➡️ **Hypothèse confirmée avec un écart marqué**
+**H4 — Les salariés faisant des heures supplémentaires quittent davantage**  
+➡️ Hypothèse confirmée avec un écart marqué
 
-H5 — L’entreprise affecte davantage les heures supplémentaires aux salariés récents  
-➡️ **Hypothèse partiellement confirmée (effet cumulatif surtout chez les salariés récents)**
+**H5 — L’entreprise affecte davantage les heures supplémentaires aux salariés récents**  
+➡️ Hypothèse partiellement confirmée (effet cumulatif surtout chez les salariés récents)
 
-H6 — Certains postes présentent des taux de départ plus élevés que d'autres  
-➡️ **Hypothèse confirmée (zones à risque métier)**
+**H6 — Certains postes présentent des taux de départ plus élevés que d'autres**  
+➡️ Hypothèse confirmée (zones à risque métier)
 
 ---
 
@@ -250,27 +250,27 @@ Améliorer la satisfaction au travail réduit mécaniquement le turnover, en par
 
 # Recommandations RH majeures
 
-🔹 Mettre en place un baromètre de satisfaction trimestriel  
+**Recommandation 1 — Mettre en place un baromètre de satisfaction trimestriel**  
 
 → Pour détecter précocement les signaux faibles de désengagement.
 
-🔹 Renforcer le parcours d’intégration (onboarding 12 mois)  
+**Recommandation 2 — Renforcer le parcours d’intégration (onboarding 12 mois)**  
 
 → Pour réduire le turnover précoce et sécuriser les 0–1 an.
 
-🔹 Instaurer un suivi strict des heures supplémentaires  
+**Recommandation 3 — Instaurer un suivi strict des heures supplémentaires**  
 
 → Pour prévenir la surcharge chronique et l’épuisement.
 
-🔹 Offrir davantage de flexibilité pour les salariés éloignés  
+**Recommandation 4 — Offrir davantage de flexibilité pour les salariés éloignés**  
 
 → Télétravail, plages horaires aménagées, réflexion sur la localisation des sites.
 
-🔹 Prioriser certains métiers dans la stratégie de rétention  
+**Recommandation 5 — Prioriser certains métiers dans la stratégie de rétention**  
 
 → Accompagner plus fortement les équipes **Ventes** et **Ressources Humaines**.
 
-🔹 Construire un modèle prédictif du risque de départ  
+**Recommandation 6 — Construire un modèle prédictif du risque de départ**  
 
 → Basé sur satisfaction, ancienneté, distance, charge de travail et poste, pour cibler les actions de rétention.
 
