@@ -5,7 +5,7 @@ format:
   html:
     toc: true
     toc-depth: 3
-    number-sections: false
+    number-sections: true
     code-fold: false
 execute:
   echo: false
@@ -13,7 +13,7 @@ execute:
   message: false
 ---
 
-# 1. Synthèse exécutive
+# Synthèse exécutive
 
 Cette analyse exploratoire, réalisée à partir du dataset RH IBM (variables renommées en français), met en lumière **six facteurs clés associés aux départs volontaires** des salariés.  
 Les résultats montrent que le turnover est principalement influencé par :
@@ -29,7 +29,7 @@ Ces éléments permettent d’identifier des **zones à risque**, d’améliorer
 
 ---
 
-# 2. Hypothèses testées
+# Hypothèses testées
 
 ## H1 — Les employés les moins satisfaits quittent davantage l’entreprise  
 ➡️ **Hypothèse confirmée**
@@ -51,9 +51,9 @@ Ces éléments permettent d’identifier des **zones à risque**, d’améliorer
 
 ---
 
-# 3. Analyses détaillées
+# Analyses détaillées
 
-## 3.1. Satisfaction au travail (H1)
+## Satisfaction au travail (H1)
 
 ### Tableau de synthèse
 
@@ -79,7 +79,7 @@ La satisfaction est un **déterminant majeur** de la rétention.
 
 ---
 
-## 3.2. Ancienneté dans l’entreprise (H2)
+## Ancienneté dans l’entreprise (H2)
 
 ### Tableau de synthèse
 
@@ -106,7 +106,7 @@ Il reflète souvent un **problème d’intégration, d’alignement initial ou d
 
 ---
 
-## 3.3. Distance domicile–travail (H3)
+## Distance domicile–travail (H3)
 
 ### Tableau de synthèse
 
@@ -133,7 +133,7 @@ La **fatigue liée aux trajets**, le coût du transport, la difficulté à conci
 
 ---
 
-## 3.4. Heures supplémentaires (H4)
+## Heures supplémentaires (H4)
 
 ### Tableau de synthèse
 
@@ -157,7 +157,7 @@ La charge de travail excessive crée un **déséquilibre vie pro/perso** et un *
 
 ---
 
-## 3.5. Interaction Ancienneté × Heures supplémentaires (H5)
+## Interaction Ancienneté × Heures supplémentaires (H5)
 
 ### Tableau de synthèse
 
@@ -191,7 +191,7 @@ On parle donc d’**hypothèse partiellement confirmée** :
 
 ---
 
-## 3.6. Départs par poste / zones métier à risque (H6)
+## Départs par poste / zones métier à risque (H6)
 
 ### Tableau de synthèse
 
@@ -224,7 +224,7 @@ conditions de travail, pression, reconnaissance, perspectives d’évolution.
 
 ---
 
-# 4. Insights transversaux
+# Insights transversaux
 
 ### 🔸 Les départs ne sont jamais causés par une seule variable  
 
@@ -248,35 +248,35 @@ Améliorer la satisfaction au travail réduit mécaniquement le turnover, en par
 
 ---
 
-# 5. Recommandations RH majeures
+# Recommandations RH majeures
 
-## 🔹 1. Mettre en place un baromètre de satisfaction trimestriel  
+## 🔹 Mettre en place un baromètre de satisfaction trimestriel  
 
 → Pour détecter précocement les signaux faibles de désengagement.
 
-## 🔹 2. Renforcer le parcours d’intégration (onboarding 12 mois)  
+## 🔹 Renforcer le parcours d’intégration (onboarding 12 mois)  
 
 → Pour réduire le turnover précoce et sécuriser les 0–1 an.
 
-## 🔹 3. Instaurer un suivi strict des heures supplémentaires  
+## 🔹 Instaurer un suivi strict des heures supplémentaires  
 
 → Pour prévenir la surcharge chronique et l’épuisement.
 
-## 🔹 4. Offrir davantage de flexibilité pour les salariés éloignés  
+## 🔹 Offrir davantage de flexibilité pour les salariés éloignés  
 
 → Télétravail, plages horaires aménagées, réflexion sur la localisation des sites.
 
-## 🔹 5. Prioriser certains métiers dans la stratégie de rétention  
+## 🔹 Prioriser certains métiers dans la stratégie de rétention  
 
 → Accompagner plus fortement les équipes **Ventes** et **Ressources Humaines**.
 
-## 🔹 6. Construire un modèle prédictif du risque de départ  
+## 🔹 Construire un modèle prédictif du risque de départ  
 
 → Basé sur satisfaction, ancienneté, distance, charge de travail et poste, pour cibler les actions de rétention.
 
 ---
 
-# 6. Conclusion
+# Conclusion
 
 Cette EDA met en évidence des schémas clairs permettant de comprendre les facteurs du turnover.  
 Les résultats serviront de base à une **modélisation prédictive** (Machine Learning) et à la mise en place d’un **plan de rétention structuré**, priorisant les populations les plus à risque et les leviers les plus efficaces.
