@@ -1,0 +1,18 @@
+---
+title: "Notebook"
+subtitle: "Rapport technique"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    code-fold: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+# 1. Synthèse exécutive
+
+Rapport technique :
