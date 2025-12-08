@@ -1,18 +1,298 @@
 ---
-title: "Notebook"
-subtitle: "Rapport technique"
+title: "Notebook technique (Python)"
+subtitle: "Comprendre les déterminants du turnover des salariés"
 format:
   html:
     toc: true
     toc-depth: 3
-    number-sections: false
-    code-fold: false
+    number-sections: true
+    code-fold: true
 execute:
-  echo: false
+  echo: true
   warning: false
   message: false
 ---
 
-# 1. Synthèse exécutive
+# 1. Environnement & structure du projet
 
-Rapport technique :
+Ce document présente les détails techniques du projet People Analytics (dataset IBM Attrition) :
+
+- environnement **Python 3** et librairies utilisées ;
+- structure des fichiers de données ;
+- étapes de préparation des données ;
+- scripts de génération des figures PNG utilisées dans `eda_resultats.qmd`.
+
+```{python}
+import sys
+print("Version de Python :", sys.version)
+```
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
+
+sns.set(style="whitegrid")
+plt.rcParams["figure.figsize"] = (8, 5)
+
+# Dossier racine du projet (adapter si besoin)
+BASE_DIR = ".."
+
+# Dossier des figures utilisées dans eda_resultats.qmd
+FIG_DIR = f"{BASE_DIR}/assets/people-analytics"
+os.makedirs(FIG_DIR, exist_ok=True)
+
+print("Dossier des figures :", FIG_DIR)
+```
+
+# 2. Données & chemins d’accès
+
+Les données proviennent du dataset **IBM HR Employee Attrition**.
+
+- Fichier brut : `data/raw/WA_Fn-UseC_-HR-Employee-Attrition.csv`
+- Figures : `assets/people-analytics/*.png`
+
+```{python}
+path_raw = f"{BASE_DIR}/data/raw/WA_Fn-UseC_-HR-Employee-Attrition.csv"
+df = pd.read_csv(path_raw)
+
+print("Dimensions initiales :", df.shape)
+df.head()
+```
+
+```{python}
+df.dtypes.head()
+```
+
+# 3. Renommage des variables & indicateurs dérivés
+
+Les variables sont renommées en français pour cohérence avec l’ensemble du projet.
+
+```{python}
+df = df.rename(columns={
+    'Attrition': 'Départ',  # Variable cible
+    'BusinessTravel': 'Déplacements professionnels',
+    'Age': 'Âge',
+    'Department': 'Département',
+    'MonthlyIncome': 'Salaire mensuel',
+    'EducationField': 'Domaine d’études',
+    'TotalWorkingYears': 'Années de carrière',
+    'Gender': 'Sexe',
+    'YearsAtCompany': 'Ancienneté dans l’entreprise',
+    'JobRole': 'Poste',
+    'JobSatisfaction': 'Satisfaction au travail',
+    'MaritalStatus': 'État civil',
+    'EnvironmentSatisfaction': "Satisfaction environnement",
+    'OverTime': 'Heures supplémentaires',
+    'WorkLifeBalance': 'Équilibre vie pro/perso',
+    'DistanceFromHome': 'Distance domicile-travail'
+})
+
+df[['Départ', 'Sexe', 'Âge', 'Poste']].head()
+```
+
+Création de quelques indicateurs utiles pour l’EDA (en cohérence avec les hypothèses) :
+
+```{python}
+# Variable cible binaire
+df['Départ_oui'] = (df['Départ'] == 'Yes').astype(int)
+
+# Tranches d’âge (optionnel)
+bins_age = [18, 25, 35, 45, 55, 65]
+labels_age = ["18–25", "26–35", "36–45", "46–55", "56–65"]
+df['Tranche d’âge'] = pd.cut(df['Âge'], bins=bins_age, labels=labels_age, right=False)
+
+# Tranches d’ancienneté (pour H2 et H5)
+bins_anciennete = [0, 3, 6, 10, df['Ancienneté dans l’entreprise'].max()]
+labels_anciennete = ['0–3 ans', '4–6 ans', '7–10 ans', '10+ ans']
+df['Tranche ancienneté'] = pd.cut(
+    df['Ancienneté dans l’entreprise'],
+    bins=bins_anciennete,
+    labels=labels_anciennete,
+    right=False
+)
+
+df[['Départ', 'Départ_oui', 'Tranche d’âge', 'Tranche ancienneté']].head()
+```
+
+# 4. Contrôle qualité des données
+
+```{python}
+df.isnull().sum().sort_values(ascending=False).head(10)
+```
+
+```{python}
+print("Nombre de doublons :", df.duplicated().sum())
+print("Nombre de valeurs uniques par variable (top 15) :")
+df.nunique().sort_values(ascending=False).head(15)
+```
+
+Les données IBM étant déjà propres (très peu de valeurs manquantes, pas de doublons significatifs), aucune imputation ni suppression de ligne n’a été nécessaire.
+
+# 5. Variable cible : statut de départ
+
+```{python}
+df['Départ'].value_counts(), df['Départ'].value_counts(normalize=True) * 100
+```
+
+```{python}
+sns.countplot(data=df, x='Départ')
+plt.title("Répartition des employés selon le statut de départ")
+plt.xlabel("A quitté l'entreprise")
+plt.ylabel("Nombre d’employés")
+plt.tight_layout()
+plt.savefig(f"{FIG_DIR}/fig_global_depart.png", dpi=300, bbox_inches="tight")
+plt.close()
+```
+
+# 6. Hypothèses & génération des figures
+
+Cette section reprend la structure de ton notebook et génère les figures PNG utilisées dans `eda_resultats.qmd`.
+
+## 6.1 Hypothèse 1 – Satisfaction au travail
+
+> H1 : Les employés les moins satisfaits quittent davantage l’entreprise.
+
+```{python}
+table_H1 = pd.crosstab(df['Satisfaction au travail'], df['Départ'], normalize='index') * 100
+table_H1
+```
+
+```{python}
+table_H1.plot(kind='bar', stacked=True, figsize=(8, 5))
+plt.title("Répartition des départs selon la satisfaction au travail")
+plt.xlabel("Satisfaction au travail (1 = Très faible, 4 = Très élevée)")
+plt.ylabel("Proportion d’employés (%)")
+plt.legend(title="Départ", loc="upper right")
+plt.xticks(rotation=0)
+plt.tight_layout()
+plt.savefig(f"{FIG_DIR}/fig_H1_satisfaction_travail_depart.png", dpi=300, bbox_inches="tight")
+plt.close()
+```
+
+## 6.2 Hypothèse 2 – Ancienneté dans l’entreprise
+
+> H2 : Les employés les plus récents partent davantage.
+
+```{python}
+sns.boxplot(
+    data=df,
+    x='Départ',
+    y='Ancienneté dans l’entreprise',
+)
+plt.title("Ancienneté dans l’entreprise selon le statut de départ")
+plt.xlabel("Statut de départ")
+plt.ylabel("Ancienneté dans l’entreprise (années)")
+plt.tight_layout()
+plt.savefig(f"{FIG_DIR}/fig_H2_anciennete_depart.png", dpi=300, bbox_inches="tight")
+plt.close()
+```
+
+## 6.3 Hypothèse 3 – Distance domicile–travail
+
+> H3 : Plus la distance est grande, plus les salariés quittent l’entreprise.
+
+```{python}
+sns.histplot(
+    data=df,
+    x='Distance domicile-travail',
+    hue='Départ',
+    multiple='dodge',
+    bins=20
+)
+plt.title("Distribution de la distance domicile-travail selon le statut de départ")
+plt.xlabel("Distance domicile-travail (en km)")
+plt.ylabel("Nombre d’employés")
+plt.tight_layout()
+plt.savefig(f"{FIG_DIR}/fig_H3_distance_depart.png", dpi=300, bbox_inches="tight")
+plt.close()
+```
+
+## 6.4 Hypothèse 4 – Heures supplémentaires
+
+> H4 : Les salariés faisant des heures supplémentaires quittent davantage l’entreprise.
+
+```{python}
+table_H4 = pd.crosstab(df['Heures supplémentaires'], df['Départ'], normalize='index') * 100
+table_H4
+```
+
+```{python}
+table_H4.plot(kind='bar', stacked=True, figsize=(7, 5))
+plt.title("Répartition des départs selon les heures supplémentaires")
+plt.xlabel("Heures supplémentaires")
+plt.ylabel("Proportion d’employés (%)")
+plt.legend(title="Départ", loc="upper right")
+plt.xticks(rotation=0)
+plt.tight_layout()
+plt.savefig(f"{FIG_DIR}/fig_H4_heures_sup_depart.png", dpi=300, bbox_inches="tight")
+plt.close()
+```
+
+## 6.5 Hypothèse 5 – Heures supplémentaires × ancienneté
+
+> H5 : L’entreprise affecte davantage les heures supplémentaires aux salariés récents, ce qui pourrait contribuer à leur départ.
+
+```{python}
+table_H5 = pd.crosstab(
+    df['Tranche ancienneté'],
+    df['Heures supplémentaires'],
+    normalize='index'
+) * 100
+table_H5
+```
+
+```{python}
+table_H5.plot(kind='bar', stacked=True, figsize=(8, 5))
+plt.title("Répartition des heures supplémentaires par tranche d’ancienneté")
+plt.xlabel("Tranche d’ancienneté")
+plt.ylabel("Proportion d’employés (%)")
+plt.legend(title="Heures supplémentaires", loc="upper right")
+plt.xticks(rotation=0)
+plt.tight_layout()
+plt.savefig(f"{FIG_DIR}/fig_H5_anciennete_heures_sup.png", dpi=300, bbox_inches="tight")
+plt.close()
+```
+
+## 6.6 Hypothèse 6 – Postes à risque
+
+> H6 : Certains postes présentent des taux de départ plus élevés que d'autres (zones à risque métier).
+
+```{python}
+table_H6 = pd.crosstab(df['Poste'], df['Départ'], normalize='index') * 100
+table_H6.sort_values('Yes', ascending=False).head(10)
+```
+
+```{python}
+plt.figure(figsize=(10, 7))
+sns.heatmap(
+    table_H6.sort_values('Yes', ascending=False),
+    annot=True,
+    fmt=".1f"
+)
+plt.title("Taux de départ par poste")
+plt.xlabel("Statut de départ")
+plt.ylabel("Poste")
+plt.tight_layout()
+plt.savefig(f"{FIG_DIR}/fig_H6_poste_depart.png", dpi=300, bbox_inches="tight")
+plt.close()
+```
+
+# 7. Vérifications finales & reproductibilité
+
+```{python}
+print("Dimensions finales :", df.shape)
+
+print("\nModalités de 'Départ' :")
+print(df['Départ'].value_counts())
+
+print("\nModalités de 'Heures supplémentaires' :")
+print(df['Heures supplémentaires'].value_counts())
+
+print("\nModalités de 'Tranche ancienneté' :")
+print(df['Tranche ancienneté'].value_counts())
+```
+
+Ce notebook technique fournit tous les éléments nécessaires pour **rejouer l’analyse**, **générer les figures PNG** et vérifier la cohérence des résultats présentés dans `eda_resultats.qmd`.
