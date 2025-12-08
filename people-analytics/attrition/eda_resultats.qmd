@@ -55,7 +55,7 @@ Ces éléments permettent d’identifier des **zones à risque**, d’améliorer
 
 ## Satisfaction au travail (H1)
 
-### Tableau de synthèse
+**Tableau de synthèse**
 
 | Niveau de satisfaction | Libellé       | Taux de départ observé |
 |------------------------|---------------|-------------------------|
@@ -64,7 +64,7 @@ Ces éléments permettent d’identifier des **zones à risque**, d’améliorer
 | 3                      | —             | **18 %**               |
 | 4                      | Très élevée   | **10 %**               |
 
-### Visualisation
+**Visualisation**
 
 ![](/assets/images/people-analytics/attrition_hr/H1_satisfaction_taux_depart.png){fig-alt="Taux de départ selon la satisfaction au travail" width="80%"}
 
@@ -81,7 +81,7 @@ La satisfaction est un **déterminant majeur** de la rétention.
 
 ## Ancienneté dans l’entreprise (H2)
 
-### Tableau de synthèse
+**Tableau de synthèse**
 
 | Ancienneté | Taux de départ observé |
 |------------|-------------------------|
@@ -90,7 +90,7 @@ La satisfaction est un **déterminant majeur** de la rétention.
 | 3–5 ans    | **15 %**               |
 | 5+ ans     | **5 %**                |
 
-### Visualisation
+**Visualisation**
 
 ![](/assets/images/people-analytics/attrition_hr/H2_anciennete_taux_depart.png){fig-alt="Taux de départ selon l'ancienneté" width="80%"}
 
@@ -108,7 +108,7 @@ Il reflète souvent un **problème d’intégration, d’alignement initial ou d
 
 ## Distance domicile–travail (H3)
 
-### Tableau de synthèse
+**Tableau de synthèse**
 
 | Distance domicile–travail | Taux de départ observé |
 |----------------------------|-------------------------|
@@ -118,7 +118,7 @@ Il reflète souvent un **problème d’intégration, d’alignement initial ou d
 | 16–20 km                   | **26 %**               |
 | 21+ km                     | **35 %**               |
 
-### Visualisation
+**Visualisation**
 
 ![](/assets/images/people-analytics/attrition_hr/H3_distance_taux_depart.png){fig-alt="Taux de départ selon la distance domicile-travail" width="80%"}
 
@@ -135,14 +135,14 @@ La **fatigue liée aux trajets**, le coût du transport, la difficulté à conci
 
 ## Heures supplémentaires (H4)
 
-### Tableau de synthèse
+**Tableau de synthèse**
 
 | Heures supplémentaires | Taux de départ observé |
 |------------------------|-------------------------|
 | Non                    | **10 %**               |
 | Oui                    | **30 %**               |
 
-### Visualisation
+**Visualisation**
 
 ![](/assets/images/people-analytics/attrition_hr/H4_heures_supp_taux_depart.png){fig-alt="Taux de départ selon la pratique des heures supplémentaires" width="80%"}
 
@@ -159,7 +159,7 @@ La charge de travail excessive crée un **déséquilibre vie pro/perso** et un *
 
 ## Interaction Ancienneté × Heures supplémentaires (H5)
 
-### Tableau de synthèse
+**Tableau de synthèse**
 
 | Ancienneté | Heures supplémentaires | Taux de départ observé |
 |------------|------------------------|-------------------------|
@@ -172,7 +172,7 @@ La charge de travail excessive crée un **déséquilibre vie pro/perso** et un *
 | 5+ ans     | Oui                    | **12 %**               |
 | 5+ ans     | Non                    | **5 %**                |
 
-### Visualisation
+**Visualisation**
 
 ![](/assets/images/people-analytics/attrition_hr/H5_heures_supp_anciennete.png){fig-alt="Taux de départ selon l’ancienneté et les heures supplémentaires" width="80%"}
 
@@ -193,7 +193,7 @@ On parle donc d’**hypothèse partiellement confirmée** :
 
 ## Départs par poste / zones métier à risque (H6)
 
-### Tableau de synthèse
+**Tableau de synthèse**
 
 | Poste                     | Effectif total | Nombre de départs | Taux de départ observé (%) |
 |---------------------------|----------------|--------------------|----------------------------|
@@ -201,7 +201,7 @@ On parle donc d’**hypothèse partiellement confirmée** :
 | Recherche & Développement | 961            | 133                | **13,8**                   |
 | Ressources Humaines       | 63             | 12                 | **19,0**                   |
 
-### Visualisation
+**Visualisation**
 
 ![](/assets/images/people-analytics/attrition_hr/H6_postes_taux_depart.png){fig-alt="Taux de départ par poste" width="80%"}
 
@@ -226,7 +226,7 @@ conditions de travail, pression, reconnaissance, perspectives d’évolution.
 
 # Insights transversaux
 
-### 🔸 Les départs ne sont jamais causés par une seule variable  
+**🔸 Les départs ne sont jamais causés par une seule variable** 
 
 Les facteurs se combinent :  
 
@@ -234,15 +234,15 @@ Les facteurs se combinent :
 - Distance × satisfaction  
 - Métier × stress ressenti
 
-### 🔸 Les premiers mois sont critiques  
+**🔸 Les premiers mois sont critiques**  
 
 Ancienneté < 1 an = **principal point de fuite** de l’entreprise.
 
-### 🔸 Le turnover est concentré dans certains métiers  
+**🔸 Le turnover est concentré dans certains métiers**  
 
 Ce qui indique une problématique **culturelle, managériale ou organisationnelle** dans certaines équipes.
 
-### 🔸 La satisfaction est un levier puissant  
+**🔸 La satisfaction est un levier puissant**  
 
 Améliorer la satisfaction au travail réduit mécaniquement le turnover, en particulier chez les salariés récents.
 
