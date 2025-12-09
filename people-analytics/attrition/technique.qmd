@@ -1,18 +1,442 @@
 ---
-title: "Notebook"
-subtitle: "Rapport technique"
+title: "Notebook technique – IBM HR Attrition"
+subtitle: "Préparation des données & génération des figures EDA (H1 à H6)"
 format:
   html:
     toc: true
     toc-depth: 3
-    number-sections: false
-    code-fold: false
+    number-sections: true
+    code-fold: true
 execute:
-  echo: false
+  echo: true
   warning: false
   message: false
 ---
 
-# 1. Synthèse exécutive
+## 1. Contexte & objectif technique
 
-Rapport technique :
+Ce document reprend la logique du notebook Python initial :
+
+- importation & préparation du dataset **IBM HR Attrition**,
+- renommage des variables en français,
+- génération des figures correspondant aux **6 hypothèses People Analytics**,
+- **sauvegarde systématique en PNG** dans `assets/people-analytics/figures/` pour intégration dans `eda_resultats.qmd`.
+
+Aucune interprétation métier n’est donnée ici : on se concentre uniquement sur les **décisions techniques**.
+
+## 2. Import des bibliothèques & configuration
+
+```{python}
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Style de base pour les graphiques
+plt.style.use("default")
+plt.rcParams["figure.figsize"] = (8, 5)
+
+# Dossier de sortie des figures pour le portfolio
+OUTPUT_DIR = "assets/people-analytics/figures"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+print(f"Dossier de sortie des figures : {os.path.abspath(OUTPUT_DIR)}")
+```
+
+## 3. Chargement du jeu de données
+
+```{python}
+# Chemin officiel du fichier de données (depuis la racine du projet Quarto)
+data_path = "people-analytics/data/WA_Fn-UseC_-HR-Employee-Attrition.csv"
+
+if not os.path.exists(data_path):
+    raise FileNotFoundError(
+        f"Le fichier '{data_path}' est introuvable.\n"
+        "→ Vérifie qu'il est bien présent dans le dépôt GitHub."
+    )
+
+df = pd.read_csv(data_path)
+df.head()
+```
+
+## 4. Renommage des variables (version française)
+
+```{python}
+colonnes_renommees = {
+    "Attrition": "Départ",  # Variable cible
+    "BusinessTravel": "Déplacements professionnels",
+    "Age": "Âge",
+    "Department": "Département",
+    "MonthlyIncome": "Salaire mensuel",
+    "EducationField": "Domaine d’études",
+    "TotalWorkingYears": "Années de carrière",
+    "Gender": "Sexe",
+    "YearsAtCompany": "Ancienneté dans l’entreprise",
+    "JobRole": "Poste",
+    "JobSatisfaction": "Satisfaction au travail",
+    "MaritalStatus": "État civil",
+    "EnvironmentSatisfaction": "Satisfaction environnement",
+    "OverTime": "Heures supplémentaires",
+    "WorkLifeBalance": "Équilibre vie pro/perso",
+    "DistanceFromHome": "Distance domicile-travail",
+}
+
+df = df.rename(columns=colonnes_renommees)
+
+print("✅ Colonnes renommées (extrait) :")
+print(sorted([c for c in df.columns if c in colonnes_renommees.values()]))
+```
+
+## 5. Vérifications rapides (type & valeurs)
+
+```{python}
+df.info()
+```
+
+```{python}
+df.describe().T
+```
+
+```{python}
+df.describe(include="object").T
+```
+
+```{python}
+df["Départ"].value_counts()
+```
+
+---
+
+## 6. Figures pour l’EDA (H1 à H6)
+
+Chaque sous-section génère **un graphique clé** et l’enregistre en PNG dans  
+`assets/people-analytics/figures/`.
+
+---
+
+### 6.1 H1 – Satisfaction au travail × Départ
+
+> Hypothèse 1 : les employés les moins satisfaits quittent davantage l’entreprise.
+
+```{python}
+# Tableau croisé (proportions par niveau de satisfaction)
+table_h1 = pd.crosstab(
+    df["Satisfaction au travail"],
+    df["Départ"],
+    normalize="index"
+)
+
+table_h1
+```
+
+```{python}
+# Graphique H1 – barres empilées
+fig, ax = plt.subplots()
+
+bottom = np.zeros(len(table_h1))
+x = np.arange(len(table_h1.index))
+
+for status in table_h1.columns:
+    ax.bar(
+        x,
+        table_h1[status].values,
+        bottom=bottom,
+        label=status
+    )
+    bottom += table_h1[status].values
+
+ax.set_title("Répartition des départs selon la satisfaction au travail")
+ax.set_xlabel("Satisfaction au travail (1 = très faible, 4 = très élevée)")
+ax.set_ylabel("Proportion d'employés")
+ax.set_xticks(x)
+ax.set_xticklabels(table_h1.index)
+ax.legend(title="Départ")
+ax.grid(axis="y", alpha=0.3)
+
+fig_path_h1 = os.path.join(OUTPUT_DIR, "H1_satisfaction_depart.png")
+fig.savefig(fig_path_h1, bbox_inches="tight")
+plt.show()
+
+print("Figure H1 sauvegardée dans :", fig_path_h1)
+```
+
+---
+
+### 6.2 H2 – Ancienneté dans l’entreprise × Départ
+
+> Hypothèse 2 : les employés les plus récents partent davantage.
+
+```{python}
+col_anciennete = "Ancienneté dans l’entreprise"
+categories_depart = df["Départ"].unique()
+
+data_h2 = [
+    df.loc[df["Départ"] == cat, col_anciennete].dropna()
+    for cat in categories_depart
+]
+
+fig, ax = plt.subplots()
+
+ax.boxplot(
+    data_h2,
+    labels=categories_depart,
+    showfliers=True
+)
+
+ax.set_title("Ancienneté dans l’entreprise selon le statut de départ")
+ax.set_xlabel("Départ de l'entreprise")
+ax.set_ylabel("Ancienneté dans l’entreprise (en années)")
+ax.grid(axis="y", alpha=0.3)
+
+fig_path_h2 = os.path.join(OUTPUT_DIR, "H2_anciennete_depart.png")
+fig.savefig(fig_path_h2, bbox_inches="tight")
+plt.show()
+
+print("Figure H2 sauvegardée dans :", fig_path_h2)
+```
+
+---
+
+### 6.3 H3 – Distance domicile-travail × Départ
+
+> Hypothèse 3 : plus la distance est grande, plus les salariés quittent l’entreprise.
+
+```{python}
+col_distance = "Distance domicile-travail"
+
+fig, ax = plt.subplots()
+
+bins = 20
+for status, subset in df.groupby("Départ"):
+    ax.hist(
+        subset[col_distance].dropna(),
+        bins=bins,
+        alpha=0.5,
+        label=status
+    )
+
+ax.set_title("Distribution de la distance domicile-travail selon le départ")
+ax.set_xlabel("Distance domicile-travail (en km)")
+ax.set_ylabel("Nombre d’employés")
+ax.legend(title="Départ")
+ax.grid(axis="y", alpha=0.3)
+
+fig_path_h3 = os.path.join(OUTPUT_DIR, "H3_distance_depart.png")
+fig.savefig(fig_path_h3, bbox_inches="tight")
+plt.show()
+
+print("Figure H3 sauvegardée dans :", fig_path_h3)
+```
+
+---
+
+### 6.4 H4 – Heures supplémentaires × Départ
+
+> Hypothèse 4 : les salariés faisant des heures supplémentaires quittent davantage l’entreprise.
+
+```{python}
+table_h4 = pd.crosstab(
+    df["Heures supplémentaires"],
+    df["Départ"],
+    normalize="index"
+)
+
+table_h4
+```
+
+```{python}
+fig, ax = plt.subplots()
+
+bottom = np.zeros(len(table_h4))
+x = np.arange(len(table_h4.index))
+
+for status in table_h4.columns:
+    ax.bar(
+        x,
+        table_h4[status].values,
+        bottom=bottom,
+        label=status
+    )
+    bottom += table_h4[status].values
+
+ax.set_title("Répartition des départs selon les heures supplémentaires")
+ax.set_xlabel("Heures supplémentaires")
+ax.set_ylabel("Proportion d'employés")
+ax.set_xticks(x)
+ax.set_xticklabels(table_h4.index)
+ax.legend(title="Départ")
+ax.grid(axis="y", alpha=0.3)
+
+fig_path_h4 = os.path.join(OUTPUT_DIR, "H4_heures_sup_depart.png")
+fig.savefig(fig_path_h4, bbox_inches="tight")
+plt.show()
+
+print("Figure H4 sauvegardée dans :", fig_path_h4)
+```
+
+---
+
+### 6.5 H5 – Ancienneté × Heures supplémentaires × Départ
+
+> Hypothèse 5 : l’entreprise affecte davantage les heures supplémentaires aux salariés récents, ce qui pourrait contribuer à leur départ.
+
+#### 6.5.1 Heures sup par tranches d’ancienneté
+
+```{python}
+max_anc = df[col_anciennete].max()
+bins = [0, 3, 6, 10, max_anc]
+labels = ["0-3 ans", "4-6 ans", "7-10 ans", "10+ ans"]
+
+df["Tranche ancienneté"] = pd.cut(
+    df[col_anciennete],
+    bins=bins,
+    labels=labels,
+    include_lowest=True
+)
+
+table_h5 = pd.crosstab(
+    df["Tranche ancienneté"],
+    df["Heures supplémentaires"],
+    normalize="index"
+) * 100
+
+table_h5.round(1)
+```
+
+```{python}
+fig, ax = plt.subplots()
+
+bottom = np.zeros(len(table_h5))
+x = np.arange(len(table_h5.index))
+
+for hsup in table_h5.columns:
+    ax.bar(
+        x,
+        table_h5[hsup].values,
+        bottom=bottom,
+        label=hsup
+    )
+    bottom += table_h5[hsup].values
+
+ax.set_title("Répartition des heures supplémentaires par tranche d’ancienneté")
+ax.set_xlabel("Tranche d’ancienneté")
+ax.set_ylabel("Proportion d’employés (%)")
+ax.set_xticks(x)
+ax.set_xticklabels(table_h5.index)
+ax.legend(title="Heures supplémentaires")
+ax.grid(axis="y", alpha=0.3)
+
+fig_path_h5 = os.path.join(OUTPUT_DIR, "H5_anciennete_heures_sup.png")
+fig.savefig(fig_path_h5, bbox_inches="tight")
+plt.show()
+
+print("Figure H5 (tranches) sauvegardée dans :", fig_path_h5)
+```
+
+---
+
+### 6.6 H6 – Poste × Départ (zones métier à risque)
+
+> Hypothèse 6 : certains postes présentent des taux de départ plus élevés que d’autres.
+
+#### 6.6.1 Barres empilées par poste
+
+```{python}
+table_h6_bar = pd.crosstab(
+    df["Poste"],
+    df["Départ"],
+    normalize="index"
+)
+
+table_h6_bar.head()
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(10, 6))
+
+bottom = np.zeros(len(table_h6_bar))
+x = np.arange(len(table_h6_bar.index))
+
+for status in table_h6_bar.columns:
+    ax.bar(
+        x,
+        table_h6_bar[status].values,
+        bottom=bottom,
+        label=status
+    )
+    bottom += table_h6_bar[status].values
+
+ax.set_title("Taux de départ par poste (barres empilées)")
+ax.set_xlabel("Poste")
+ax.set_ylabel("Proportion d'employés")
+ax.set_xticks(x)
+ax.set_xticklabels(table_h6_bar.index, rotation=45, ha="right")
+ax.legend(title="Départ")
+ax.grid(axis="y", alpha=0.3)
+
+fig_path_h6_bar = os.path.join(OUTPUT_DIR, "H6_poste_depart_barres.png")
+fig.savefig(fig_path_h6_bar, bbox_inches="tight")
+plt.show()
+
+print("Figure H6 (barres) sauvegardée dans :", fig_path_h6_bar)
+```
+
+#### 6.6.2 Heatmap poste × départ
+
+```{python}
+heatmap_data = pd.crosstab(
+    df["Poste"],
+    df["Départ"],
+    normalize="index"
+)
+
+heatmap_data.round(2)
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(10, 6))
+
+im = ax.imshow(heatmap_data.values, aspect="auto")
+
+# Axes
+ax.set_xticks(np.arange(len(heatmap_data.columns)))
+ax.set_yticks(np.arange(len(heatmap_data.index)))
+ax.set_xticklabels(heatmap_data.columns)
+ax.set_yticklabels(heatmap_data.index)
+
+plt.setp(ax.get_yticklabels(), rotation=45, ha="right")
+
+ax.set_title("Taux de départ par poste (heatmap)")
+ax.set_xlabel("Départ")
+ax.set_ylabel("Poste")
+
+# Annotation des cellules
+for i in range(heatmap_data.shape[0]):
+    for j in range(heatmap_data.shape[1]):
+        value = heatmap_data.values[i, j]
+        ax.text(
+            j,
+            i,
+            f"{value:.2f}",
+            ha="center",
+            va="center",
+            color="white" if value > 0.5 else "black",
+            fontsize=8
+        )
+
+fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+
+fig_path_h6 = os.path.join(OUTPUT_DIR, "H6_poste_depart_heatmap.png")
+fig.savefig(fig_path_h6, bbox_inches="tight")
+plt.show()
+
+print("Figure H6 (heatmap) sauvegardée dans :", fig_path_h6)
+```
+
+---
+
+## 7. Récapitulatif des figures générées
+
+```{python}
+sorted(f for f in os.listdir(OUTPUT_DIR) if f.lower().endswith(".png"))
+```
