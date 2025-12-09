@@ -13,7 +13,7 @@ execute:
   message: false
 ---
 
-## 1. Contexte & objectif technique
+## Contexte & objectif technique
 
 Ce document reprend la logique du notebook Python initial :
 
@@ -24,7 +24,7 @@ Ce document reprend la logique du notebook Python initial :
 
 Aucune interprétation métier n’est donnée ici : on se concentre uniquement sur les **décisions techniques**.
 
-## 2. Import des bibliothèques & configuration
+## Import des bibliothèques & configuration
 
 ```{python}
 import os
@@ -46,7 +46,7 @@ DATA_AVAILABLE = True
 print(f"Dossier de sortie des figures : {os.path.abspath(OUTPUT_DIR)}")
 ```
 
-## 3. Chargement du jeu de données (avec mode dégradé)
+## Chargement du jeu de données (avec mode dégradé)
 
 ```{python}
 # Chemins possibles du fichier de données IBM Attrition
@@ -66,7 +66,7 @@ if data_path is None:
     # ⚠️ Mode dégradé : pas de données → pas de plantage
     print(
         "⚠️ Données IBM Attrition introuvables dans cet environnement.\n"
-        "→ Mode dégradé activé : le code reste visible mais les cellules dépendant du dataset ne seront pas exécutées.\n"
+        "→ Mode dégradé activé : les cellules dépendant du dataset sont ignorées ici.\n"
         "→ Pour générer les figures, exécuter ce document EN LOCAL là où le fichier CSV est présent."
     )
     DATA_AVAILABLE = False
@@ -77,11 +77,12 @@ else:
     df.head()
 ```
 
-## 4. Renommage des variables (version française)
+## Renommage des variables (version française)
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    # Mode dégradé : rien à faire ici
+    pass
 else:
     colonnes_renommees = {
         "Attrition": "Départ",  # Variable cible
@@ -108,52 +109,52 @@ else:
     print(sorted([c for c in df.columns if c in colonnes_renommees.values()]))
 ```
 
-## 5. Vérifications rapides (type & valeurs)
+## Vérifications rapides (type & valeurs)
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     df.info()
 ```
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     df.describe().T
 ```
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     df.describe(include="object").T
 ```
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     df["Départ"].value_counts()
 ```
 
 ---
 
-## 6. Figures pour l’EDA (H1 à H6)
+## Figures pour l’EDA (H1 à H6)
 
 Chaque sous-section génère **un graphique clé** et l’enregistre en PNG dans  
 `assets/people-analytics/figures/`.
 
 ---
 
-### 6.1 H1 – Satisfaction au travail × Départ
+### H1 – Satisfaction au travail × Départ
 
 > Hypothèse 1 : les employés les moins satisfaits quittent davantage l’entreprise.
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     # Tableau croisé (proportions par niveau de satisfaction)
     table_h1 = pd.crosstab(
@@ -167,7 +168,7 @@ else:
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     # Graphique H1 – barres empilées
     fig, ax = plt.subplots()
@@ -201,13 +202,13 @@ else:
 
 ---
 
-### 6.2 H2 – Ancienneté dans l’entreprise × Départ
+### H2 – Ancienneté dans l’entreprise × Départ
 
 > Hypothèse 2 : les employés les plus récents partent davantage.
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     col_anciennete = "Ancienneté dans l’entreprise"
     categories_depart = df["Départ"].unique()
@@ -239,13 +240,13 @@ else:
 
 ---
 
-### 6.3 H3 – Distance domicile-travail × Départ
+### H3 – Distance domicile-travail × Départ
 
 > Hypothèse 3 : plus la distance est grande, plus les salariés quittent l’entreprise.
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     col_distance = "Distance domicile-travail"
 
@@ -275,13 +276,13 @@ else:
 
 ---
 
-### 6.4 H4 – Heures supplémentaires × Départ
+### H4 – Heures supplémentaires × Départ
 
 > Hypothèse 4 : les salariés faisant des heures supplémentaires quittent davantage l’entreprise.
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     table_h4 = pd.crosstab(
         df["Heures supplémentaires"],
@@ -294,7 +295,7 @@ else:
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     fig, ax = plt.subplots()
 
@@ -327,15 +328,15 @@ else:
 
 ---
 
-### 6.5 H5 – Ancienneté × Heures supplémentaires × Départ
+### H5 – Ancienneté × Heures supplémentaires × Départ
 
 > Hypothèse 5 : l’entreprise affecte davantage les heures supplémentaires aux salariés récents, ce qui pourrait contribuer à leur départ.
 
-#### 6.5.1 Heures sup par tranches d’ancienneté
+#### Heures sup par tranches d’ancienneté
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     col_anciennete = "Ancienneté dans l’entreprise"
 
@@ -361,7 +362,7 @@ else:
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     fig, ax = plt.subplots()
 
@@ -394,15 +395,15 @@ else:
 
 ---
 
-### 6.6 H6 – Poste × Départ (zones métier à risque)
+### H6 – Poste × Départ (zones métier à risque)
 
 > Hypothèse 6 : certains postes présentent des taux de départ plus élevés que d’autres.
 
-#### 6.6.1 Barres empilées par poste
+#### Barres empilées par poste
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     table_h6_bar = pd.crosstab(
         df["Poste"],
@@ -415,7 +416,7 @@ else:
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -446,11 +447,11 @@ else:
     print("Figure H6 (barres) sauvegardée dans :", fig_path_h6_bar)
 ```
 
-#### 6.6.2 Heatmap poste × départ
+#### Heatmap poste × départ
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     heatmap_data = pd.crosstab(
         df["Poste"],
@@ -463,7 +464,7 @@ else:
 
 ```{python}
 if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Cellule ignorée dans cet environnement.")
+    pass
 else:
     fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -505,11 +506,11 @@ else:
 
 ---
 
-## 7. Récapitulatif des figures générées
+## Récapitulatif des figures générées
 
 ```{python}
 if not DATA_AVAILABLE:
     print("Données non disponibles (mode dégradé). Aucune figure générée dans cet environnement.")
 else:
-    sorted(f for f in os.listdir(OUTPUT_DIR) if f.lower().endswith(".png"))
+    print(sorted(f for f in os.listdir(OUTPUT_DIR) if f.lower().endswith(".png")))
 ```
