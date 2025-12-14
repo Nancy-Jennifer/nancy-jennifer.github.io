@@ -416,6 +416,6 @@ files
 ## 🔗 Navigation du projet
 
 - 📊 [Voir les Résultats de l’Analyse Exploratoire (EDA)](eda_resultats.qmd)
-- 📌 [Voir la Synthèse & Recommandations RH](synthese_recommandations.qmd)
+- 📌 [Voir la Synthèse & Recommandations RH](synthese_reco.qmd)
 - 🏠 [Retour à la page d’accueil du projet People Analytics](../index.qmd)
 
