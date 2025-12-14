@@ -1,6 +1,6 @@
 ---
 title: "Synthèse & Recommandations RH"
-subtitle: "Principaux enseignements de l'analyse et leviers opérationnels"
+subtitle: "Principaux enseignements de l’analyse et leviers opérationnels"
 format:
   html:
     toc: true
@@ -15,10 +15,17 @@ execute:
 
 # Introduction
 
-Cette synthèse présente les enseignements majeurs issus de l'analyse exploratoire menée sur le dataset RH IBM.  
-L’objectif : **identifier les déterminants du départ volontaire** et proposer des **leviers d’action concrets** pour réduire le turnover.
+Cette synthèse présente les **enseignements majeurs** issus de l’analyse exploratoire menée sur le dataset RH IBM (variables harmonisées en français pour la lecture métier).  
+L’objectif est double :
 
-Les résultats confirment que les départs ne reposent pas sur un facteur unique, mais sur la **combinaison** de variables telles que la satisfaction, la charge de travail, l’ancienneté, la distance domicile–travail ou encore le métier exercé.
+- **identifier les déterminants du départ volontaire**,  
+- **proposer des leviers d’action RH concrets et opérationnels** pour réduire le turnover.
+
+Les résultats confirment que les départs ne reposent pas sur un facteur unique, mais sur la **combinaison de plusieurs variables** : satisfaction au travail, ancienneté, charge de travail, distance domicile–travail et métier exercé.
+
+> 🔎 *Note méthodologique*  
+> Cette analyse repose sur un dataset RH d’entraînement (IBM Attrition), utilisé ici pour démontrer une **démarche People Analytics reproductible**.  
+> Les libellés sont harmonisés en français pour la lecture RH, tandis que le notebook technique conserve les noms d’origine pour garantir la reproductibilité.
 
 ---
 
@@ -27,10 +34,10 @@ Les résultats confirment que les départs ne reposent pas sur un facteur unique
 | Hypothèse | Résultat | Interprétation |
 |----------|----------|----------------|
 | H1 — Satisfaction au travail | ✔️ Confirmée | La satisfaction est un prédicteur majeur du risque de départ. |
-| H2 — Ancienneté | ✔️ Confirmée | Les 12 premiers mois sont la zone de risque maximale. |
-| H3 — Distance domicile–travail | ✔️ Confirmée | La distance accroît le risque de départ, surtout > 20 km. |
+| H2 — Ancienneté | ✔️ Confirmée | Les 12 premiers mois concentrent le risque maximal. |
+| H3 — Distance domicile–travail | ✔️ Confirmée | La distance accroît significativement le risque de départ (> 20 km). |
 | H4 — Heures supplémentaires | ✔️ Confirmée | La surcharge de travail est un facteur critique d’attrition. |
-| H5 — Ancienneté × Heures sup. | ⚠️ Partiellement confirmée | L’effet croisé amplifie le risque pour les nouveaux salariés. |
+| H5 — Ancienneté × Heures sup. | ⚠️ Partiellement confirmée | L’effet est amplifié chez les salariés récents. |
 | H6 — Métier exercé | ✔️ Confirmée | Certaines fonctions sont structurellement plus exposées. |
 
 ---
@@ -38,125 +45,158 @@ Les résultats confirment que les départs ne reposent pas sur un facteur unique
 # Enseignements clés
 
 ## Le risque de départ est concentré dans les 12 premiers mois
-Les salariés ayant moins d’un an d’ancienneté présentent un taux de départ **7 à 8 fois plus élevé** que ceux ayant plus de 5 ans.
 
-➡️ *Le turnover précoce est le principal point de fuite de l’entreprise.*
+Les salariés ayant moins d’un an d’ancienneté présentent un taux de départ proche de **38 %**, contre **5 %** au-delà de 5 ans, soit un risque **≈ 7,6 fois plus élevé**.
+
+➡️ *Le turnover précoce constitue le principal point de fuite de l’entreprise.*
 
 ---
 
-## La satisfaction est le levier le plus puissant
-Les salariés peu satisfaits quittent l’entreprise jusqu’à **2,5 fois plus** que les plus satisfaits.
+## La satisfaction est le levier le plus puissant de rétention
+
+Les salariés très peu satisfaits quittent l’entreprise à hauteur de **25 %**, contre **10 %** pour les salariés très satisfaits, soit un risque **≈ 2,5 fois plus élevé**.
 
 ➡️ *L’amélioration de l’expérience collaborateur est une priorité stratégique.*
 
 ---
 
-## La surcharge de travail fragilise la rétention
-Les employés effectuant des heures supplémentaires partent **3× plus souvent**.
+## La surcharge de travail fragilise fortement la rétention
 
-➡️ *Le déséquilibre charge × ressources est un signal d’alerte RH majeur.*
+Les employés effectuant des heures supplémentaires présentent un taux de départ de **30 %**, contre **10 %** pour ceux qui n’en font pas, soit un risque **≈ 3 fois supérieur**.
+
+➡️ *Le déséquilibre charge × ressources constitue un signal d’alerte RH majeur.*
 
 ---
 
-## La distance domicile–travail influence fortement l’engagement
-Au-delà de **20 km**, les départs atteignent **35 %**, un niveau très élevé.
+## La distance domicile–travail influence l’engagement
+
+Au-delà de **20 km**, les taux de départ atteignent **≈ 35 %**, un niveau particulièrement élevé.
 
 ➡️ *Le facteur géographique est un levier de fidélisation souvent sous-estimé.*
 
 ---
 
-## 5Effet combiné : Ancienneté + Heures supplémentaires
-Les salariés **récents** ET **surchargés** affichent les taux de départ les plus élevés (jusqu’à **52 %**).
+## Effet combiné : Ancienneté × Heures supplémentaires
 
-➡️ *La surcharge affecte fortement les nouveaux employés, encore en phase d'intégration.*
+Les salariés **récents** cumulant **faible ancienneté** et **heures supplémentaires** affichent les taux de départ les plus élevés, pouvant dépasser **50 %**.
+
+➡️ *La surcharge affecte particulièrement les nouveaux collaborateurs encore en phase d’intégration.*
 
 ---
 
 ## Certaines fonctions sont plus exposées au turnover
-- Vente : **20,6 %**
-- Ressources Humaines : **19 %**
-- R&D : **13,8 %**
 
-➡️ *Les métiers à forte pression opérationnelle doivent être accompagnés prioritairement.*
+Les métiers présentant les taux de départ les plus élevés sont :
+
+- **Ventes** : **≈ 20,6 %**  
+- **Ressources Humaines** : **≈ 19 %**  
+- **Recherche & Développement** : **≈ 13,8 %**
+
+➡️ *Les fonctions à forte pression opérationnelle ou organisationnelle doivent être accompagnées en priorité.*
 
 ---
 
 # Recommandations RH opérationnelles
 
+## 🔹 Priorités RH à court terme (90 jours)
+
+1. **Sécuriser l’onboarding (0–12 mois)**  
+2. **Piloter et réguler les heures supplémentaires**  
+3. **Mesurer régulièrement la satisfaction au travail**
+
+---
+
 ## 🔹 Renforcer le parcours d’intégration (0–12 mois)
+
 **Objectif : réduire le turnover précoce.**
 
 Actions recommandées :
 - Mentorat systématique sur les 3 premiers mois  
-- Points d’étape 30/60/90 jours  
+- Points d’étape 30 / 60 / 90 jours  
 - Plan de montée en compétences personnalisé  
 - Suivi RH dédié pour les équipes à risque  
+
+**KPI de suivi :**
+- Taux de départ < 12 mois  
+- Taux de complétion du parcours d’onboarding  
 
 ---
 
 ## 🔹 Mettre en place un baromètre de satisfaction trimestriel
+
 **Objectif : détecter les signaux faibles avant le départ.**
 
-Indicateurs à suivre :
+Indicateurs clés :
 - Satisfaction au travail  
 - Charge perçue  
 - Engagement  
-- Relation au manager  
+- Qualité de la relation managériale  
+
+**KPI de suivi :**
+- Score moyen de satisfaction  
+- % d’équipes sous seuil critique  
 
 ---
 
 ## 🔹 Suivre et réguler les heures supplémentaires
+
 **Objectif : prévenir la surcharge et l’épuisement latent.**
 
 Actions :
-- KPI mensuel : taux d’heures sup par équipe  
-- Alertes automatiques si seuil dépassé  
-- Renforts ponctuels si surcharge structurelle  
+- KPI mensuel : taux d’heures supplémentaires par équipe  
+- Alertes automatiques en cas de dépassement de seuil  
+- Ajustement des ressources en cas de surcharge structurelle  
 
 ---
 
-## 🔹 Proposer davantage de flexibilité (télétravail, horaires)
-**Objectif : réduire l'impact de la distance domicile–travail.**
+## 🔹 Proposer davantage de flexibilité organisationnelle
+
+**Objectif : réduire l’impact de la distance domicile–travail.**
 
 Options :
 - Télétravail partiel  
-- Début/fin de journée modulable  
-- Aménagement temporaire pour les salariés éloignés  
+- Horaires modulables  
+- Aménagements temporaires pour les salariés éloignés  
 
 ---
 
 ## 🔹 Prioriser les métiers à risque dans la stratégie de rétention
-**Objectif : renforcer les équipes critiques.**
+
+**Objectif : sécuriser les fonctions critiques.**
 
 Mesures :
 - Diagnostics managériaux ciblés  
 - Formations leadership / communication  
-- Programmes de bien-être et reconnaissance  
+- Programmes de reconnaissance et de bien-être  
 
 ---
 
 ## 🔹 Construire un modèle prédictif du risque de départ
+
 **Objectif : anticiper les départs avant qu’ils ne surviennent.**
 
 Variables clés :
 - Satisfaction  
-- Distance  
-- Heures supplémentaires  
 - Ancienneté  
+- Heures supplémentaires  
+- Distance domicile–travail  
 - Poste  
+
+> ⚠️ *Garde-fou éthique*  
+> Le modèle prédictif doit être utilisé comme **outil d’alerte RH**, et non comme outil de décision automatique.  
+> Toute action doit être validée par une analyse humaine afin d’éviter les biais ou discriminations indirectes.
 
 ---
 
 # Conclusion
 
-Cette analyse a permis d’identifier les leviers clés influençant le turnover.  
-La combinaison des facteurs observés montre qu’une stratégie efficace repose sur :  
+Cette analyse met en évidence des **schémas clairs et actionnables** permettant de comprendre les déterminants du turnover.  
+Elle montre qu’une stratégie de rétention efficace repose sur :
 
 - une **intégration solide**,  
-- un **pilotage rigoureux de la charge**,  
-- une **écoute active** des collaborateurs,  
+- un **pilotage rigoureux de la charge de travail**,  
+- une **écoute active des collaborateurs**,  
 - une **différenciation par métier**,  
-- une **approche prédictive** pour anticiper les risques.
+- une **approche prédictive encadrée et responsable**.
 
-Ces éléments constituent une base solide pour construire une politique RH orientée **fidélisation**, **bien-être**, et **performance durable**.
-
+Ces résultats constituent une base robuste pour une politique RH orientée **fidélisation**, **bien-être** et **performance durable**.
