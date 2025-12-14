@@ -22,6 +22,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 🔍 DEBUG — Hypothèse 2 : chemins & fichiers visibles par le runner
+      - name: Debug workspace paths
+        run: |
+          echo "===== DEBUG WORKSPACE ====="
+          echo "PWD:"
+          pwd
+          echo "---------------------------"
+          echo "Contenu racine du repo:"
+          ls
+          echo "---------------------------"
+          echo "people-analytics:"
+          ls people-analytics || echo "❌ people-analytics introuvable"
+          echo "---------------------------"
+          echo "people-analytics/data:"
+          ls people-analytics/data || echo "❌ people-analytics/data introuvable"
+          echo "---------------------------"
+          echo "Recherche du fichier CSV:"
+          find . -maxdepth 6 -type f -name "WA_Fn-UseC_-HR-Employee-Attrition.csv" -print || echo "❌ CSV introuvable"
+          echo "===== FIN DEBUG ====="
+
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
@@ -43,7 +63,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install jupyter numpy pandas matplotlib
 
-      # ✅ Étape ajoutée : installer les packages R requis
       - name: Install R packages required by Quarto
         run: |
           Rscript -e 'install.packages(c(
@@ -68,4 +87,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deploy
         uses: actions/deploy-pages@v4
-
