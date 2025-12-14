@@ -182,9 +182,16 @@ Variables clés :
 - Distance domicile–travail  
 - Poste  
 
-> ⚠️ *Garde-fou éthique*  
-> Le modèle prédictif doit être utilisé comme **outil d’alerte RH**, et non comme outil de décision automatique.  
-> Toute action doit être validée par une analyse humaine afin d’éviter les biais ou discriminations indirectes.
+::: {.callout-note}
+### 🔍 Perspective analytique & cadre d’usage responsable
+
+Cette analyse est **exploratoire et explicative**.  
+Elle vise à **comprendre les déterminants du turnover** et à identifier des **leviers d’action RH concrets**, sans automatiser de décisions.
+
+Une extension future vers un **modèle prédictif du risque de départ** pourrait être envisagée **uniquement comme un outil d’aide à la décision RH**, destiné à prioriser les actions de prévention.
+
+Toute utilisation opérationnelle devrait rester fondée sur une **analyse humaine**, afin de limiter les biais et prévenir toute forme de discrimination indirecte.
+:::
 
 ---
 
