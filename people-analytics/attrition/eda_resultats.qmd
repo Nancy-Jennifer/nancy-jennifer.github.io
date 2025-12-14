@@ -280,3 +280,12 @@ Améliorer la satisfaction au travail réduit mécaniquement le turnover, en par
 
 Cette EDA met en évidence des schémas clairs permettant de comprendre les facteurs du turnover.  
 Les résultats serviront de base à une **modélisation prédictive** (Machine Learning) et à la mise en place d’un **plan de rétention structuré**, priorisant les populations les plus à risque et les leviers les plus efficaces.
+
+---
+
+## 🔗 Navigation du projet
+
+- ⬅️ [Retour à la page d’accueil du projet People Analytics](../index.qmd)
+- 📌 [Voir la Synthèse & Recommandations RH](synthese_recommandations.qmd)
+- 🧠 [Accéder au Notebook technique (Python)](technique.qmd)
+
