@@ -200,3 +200,12 @@ Elle montre qu’une stratégie de rétention efficace repose sur :
 - une **approche prédictive encadrée et responsable**.
 
 Ces résultats constituent une base robuste pour une politique RH orientée **fidélisation**, **bien-être** et **performance durable**.
+
+---
+
+## 🔗 Navigation du projet
+
+- ⬅️ [Retour aux Résultats de l’Analyse Exploratoire (EDA)](eda_resultats.qmd)
+- 🧠 [Accéder au Notebook technique (Python)](technique.qmd)
+- 🏠 [Retour à la page d’accueil du projet People Analytics](../index.qmd)
+
