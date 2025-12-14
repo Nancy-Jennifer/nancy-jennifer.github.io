@@ -32,485 +32,376 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Style de base pour les graphiques
 plt.style.use("default")
 plt.rcParams["figure.figsize"] = (8, 5)
 
-# Dossier de sortie des figures pour le portfolio
-OUTPUT_DIR = "assets/people-analytics/figures"
+def find_repo_root(start_dir: str) -> str:
+    """
+    Remonte l'arborescence à partir de start_dir pour trouver la racine du projet
+    (repérée par la présence de _quarto.yml). Retourne start_dir si non trouvé.
+    """
+    current = os.path.abspath(start_dir)
+    while True:
+        if os.path.exists(os.path.join(current, "_quarto.yml")):
+            return current
+        parent = os.path.dirname(current)
+        if parent == current:
+            return os.path.abspath(start_dir)
+        current = parent
+
+REPO_ROOT = find_repo_root(os.getcwd())
+
+DATA_PATH = os.path.join(
+    REPO_ROOT, "people-analytics", "data", "WA_Fn-UseC_-HR-Employee-Attrition.csv"
+)
+
+OUTPUT_DIR = os.path.join(
+    REPO_ROOT, "assets", "people-analytics", "figures"
+)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Drapeau global : les données sont-elles disponibles ?
-DATA_AVAILABLE = True
-
-print(f"Dossier de sortie des figures : {os.path.abspath(OUTPUT_DIR)}")
+print("REPO_ROOT :", REPO_ROOT)
+print("DATA_PATH :", DATA_PATH)
+print("OUTPUT_DIR:", OUTPUT_DIR)
+print("CSV existe ?", os.path.exists(DATA_PATH))
 ```
 
-## Chargement du jeu de données (avec mode dégradé)
+## Chargement du jeu de données
 
 ```{python}
-# Chemins possibles du fichier de données IBM Attrition
-candidate_paths = [
-    "people-analytics/data/WA_Fn-UseC_-HR-Employee-Attrition.csv",
-    "data/WA_Fn-UseC_-HR-Employee-Attrition.csv",
-    "WA_Fn-UseC_-HR-Employee-Attrition.csv",
-]
-
-data_path = None
-for path in candidate_paths:
-    if os.path.exists(path):
-        data_path = path
-        break
-
-if data_path is None:
-    # ⚠️ Mode dégradé : pas de données → pas de plantage
-    print(
-        "⚠️ Données IBM Attrition introuvables dans cet environnement.\n"
-        "→ Mode dégradé activé : les cellules dépendant du dataset sont ignorées ici.\n"
-        "→ Pour générer les figures, exécuter ce document EN LOCAL là où le fichier CSV est présent."
+if not os.path.exists(DATA_PATH):
+    raise FileNotFoundError(
+        "CSV introuvable au chemin attendu.\n"
+        f"Chemin testé : {DATA_PATH}\n"
+        "👉 Vérifie qu'il est bien versionné dans le repo (people-analytics/data/) "
+        "et relance le rendu."
     )
-    DATA_AVAILABLE = False
-    df = None
-else:
-    print(f"✅ Fichier de données trouvé : {data_path}")
-    df = pd.read_csv(data_path)
-    df.head()
+
+df = pd.read_csv(DATA_PATH)
+df.head()
 ```
 
 ## Renommage des variables (version française)
 
 ```{python}
-if not DATA_AVAILABLE:
-    # Mode dégradé : rien à faire ici
-    pass
-else:
-    colonnes_renommees = {
-        "Attrition": "Départ",  # Variable cible
-        "BusinessTravel": "Déplacements professionnels",
-        "Age": "Âge",
-        "Department": "Département",
-        "MonthlyIncome": "Salaire mensuel",
-        "EducationField": "Domaine d’études",
-        "TotalWorkingYears": "Années de carrière",
-        "Gender": "Sexe",
-        "YearsAtCompany": "Ancienneté dans l’entreprise",
-        "JobRole": "Poste",
-        "JobSatisfaction": "Satisfaction au travail",
-        "MaritalStatus": "État civil",
-        "EnvironmentSatisfaction": "Satisfaction environnement",
-        "OverTime": "Heures supplémentaires",
-        "WorkLifeBalance": "Équilibre vie pro/perso",
-        "DistanceFromHome": "Distance domicile-travail",
-    }
+colonnes_renommees = {
+    "Attrition": "Départ",
+    "BusinessTravel": "Déplacements professionnels",
+    "Age": "Âge",
+    "Department": "Département",
+    "MonthlyIncome": "Salaire mensuel",
+    "EducationField": "Domaine d’études",
+    "TotalWorkingYears": "Années de carrière",
+    "Gender": "Sexe",
+    "YearsAtCompany": "Ancienneté dans l’entreprise",
+    "JobRole": "Poste",
+    "JobSatisfaction": "Satisfaction au travail",
+    "MaritalStatus": "État civil",
+    "EnvironmentSatisfaction": "Satisfaction environnement",
+    "OverTime": "Heures supplémentaires",
+    "WorkLifeBalance": "Équilibre vie pro/perso",
+    "DistanceFromHome": "Distance domicile-travail",
+}
 
-    df = df.rename(columns=colonnes_renommees)
+df = df.rename(columns=colonnes_renommees)
 
-    print("✅ Colonnes renommées (extrait) :")
-    print(sorted([c for c in df.columns if c in colonnes_renommees.values()]))
+# garde-fou: on vérifie que les colonnes critiques existent bien
+required_cols = [
+    "Départ",
+    "Satisfaction au travail",
+    "Ancienneté dans l’entreprise",
+    "Distance domicile-travail",
+    "Heures supplémentaires",
+    "Poste",
+]
+missing = [c for c in required_cols if c not in df.columns]
+if missing:
+    raise ValueError(f"Colonnes manquantes après renommage: {missing}")
+
+print("✅ Colonnes critiques OK.")
 ```
 
-## Vérifications rapides (type & valeurs)
+## Vérifications rapides (types & valeurs)
 
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    df.info()
-```
-
-```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    df.describe().T
-```
-
-```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    df.describe(include="object").T
+df.info()
 ```
 
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    df["Départ"].value_counts()
+df["Départ"].value_counts()
 ```
 
 ---
 
 ## Figures pour l’EDA (H1 à H6)
 
-Chaque sous-section génère **un graphique clé** et l’enregistre en PNG dans  
-`assets/people-analytics/figures/`.
-
----
+Chaque sous-section :
+1) génère un graphique clé,
+2) l’affiche dans le rendu,
+3) et l’enregistre en PNG dans `assets/people-analytics/figures/`.
 
 ### H1 – Satisfaction au travail × Départ
 
-> Hypothèse 1 : les employés les moins satisfaits quittent davantage l’entreprise.
-
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    # Tableau croisé (proportions par niveau de satisfaction)
-    table_h1 = pd.crosstab(
-        df["Satisfaction au travail"],
-        df["Départ"],
-        normalize="index"
-    )
-
-    table_h1
+table_h1 = pd.crosstab(
+    df["Satisfaction au travail"],
+    df["Départ"],
+    normalize="index"
+)
+table_h1
 ```
 
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    # Graphique H1 – barres empilées
-    fig, ax = plt.subplots()
+fig, ax = plt.subplots()
 
-    bottom = np.zeros(len(table_h1))
-    x = np.arange(len(table_h1.index))
+bottom = np.zeros(len(table_h1))
+x = np.arange(len(table_h1.index))
 
-    for status in table_h1.columns:
-        ax.bar(
-            x,
-            table_h1[status].values,
-            bottom=bottom,
-            label=status
-        )
-        bottom += table_h1[status].values
+for status in table_h1.columns:
+    ax.bar(x, table_h1[status].values, bottom=bottom, label=status)
+    bottom += table_h1[status].values
 
-    ax.set_title("Répartition des départs selon la satisfaction au travail")
-    ax.set_xlabel("Satisfaction au travail (1 = très faible, 4 = très élevée)")
-    ax.set_ylabel("Proportion d'employés")
-    ax.set_xticks(x)
-    ax.set_xticklabels(table_h1.index)
-    ax.legend(title="Départ")
-    ax.grid(axis="y", alpha=0.3)
+ax.set_title("Répartition des départs selon la satisfaction au travail")
+ax.set_xlabel("Satisfaction au travail (1 = très faible, 4 = très élevée)")
+ax.set_ylabel("Proportion d'employés")
+ax.set_xticks(x)
+ax.set_xticklabels(table_h1.index)
+ax.legend(title="Départ")
+ax.grid(axis="y", alpha=0.3)
 
-    fig_path_h1 = os.path.join(OUTPUT_DIR, "H1_satisfaction_depart.png")
-    fig.savefig(fig_path_h1, bbox_inches="tight")
-    plt.show()
+fig_path_h1 = os.path.join(OUTPUT_DIR, "H1_satisfaction_depart.png")
+fig.savefig(fig_path_h1, dpi=300, bbox_inches="tight")
+plt.show()
+plt.close(fig)
 
-    print("Figure H1 sauvegardée dans :", fig_path_h1)
+print("✅ Figure H1 sauvegardée :", fig_path_h1)
 ```
-
----
 
 ### H2 – Ancienneté dans l’entreprise × Départ
 
-> Hypothèse 2 : les employés les plus récents partent davantage.
-
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    col_anciennete = "Ancienneté dans l’entreprise"
-    categories_depart = df["Départ"].unique()
+col_anciennete = "Ancienneté dans l’entreprise"
 
-    data_h2 = [
-        df.loc[df["Départ"] == cat, col_anciennete].dropna()
-        for cat in categories_depart
-    ]
+# Ordre stable (pour éviter que Yes/No change selon l'environnement)
+order_depart = ["Yes", "No"]
+present = [c for c in order_depart if c in df["Départ"].unique()]
+if len(present) != len(order_depart):
+    present = list(df["Départ"].unique())
 
-    fig, ax = plt.subplots()
+data_h2 = [df.loc[df["Départ"] == cat, col_anciennete].dropna() for cat in present]
 
-    ax.boxplot(
-        data_h2,
-        labels=categories_depart,
-        showfliers=True
-    )
+fig, ax = plt.subplots()
+ax.boxplot(data_h2, labels=present, showfliers=True)
 
-    ax.set_title("Ancienneté dans l’entreprise selon le statut de départ")
-    ax.set_xlabel("Départ de l'entreprise")
-    ax.set_ylabel("Ancienneté dans l’entreprise (en années)")
-    ax.grid(axis="y", alpha=0.3)
+ax.set_title("Ancienneté dans l’entreprise selon le statut de départ")
+ax.set_xlabel("Départ de l'entreprise")
+ax.set_ylabel("Ancienneté dans l’entreprise (en années)")
+ax.grid(axis="y", alpha=0.3)
 
-    fig_path_h2 = os.path.join(OUTPUT_DIR, "H2_anciennete_depart.png")
-    fig.savefig(fig_path_h2, bbox_inches="tight")
-    plt.show()
+fig_path_h2 = os.path.join(OUTPUT_DIR, "H2_anciennete_depart.png")
+fig.savefig(fig_path_h2, dpi=300, bbox_inches="tight")
+plt.show()
+plt.close(fig)
 
-    print("Figure H2 sauvegardée dans :", fig_path_h2)
+print("✅ Figure H2 sauvegardée :", fig_path_h2)
 ```
-
----
 
 ### H3 – Distance domicile-travail × Départ
 
-> Hypothèse 3 : plus la distance est grande, plus les salariés quittent l’entreprise.
-
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    col_distance = "Distance domicile-travail"
+col_distance = "Distance domicile-travail"
 
-    fig, ax = plt.subplots()
+fig, ax = plt.subplots()
 
-    bins = 20
-    for status, subset in df.groupby("Départ"):
-        ax.hist(
-            subset[col_distance].dropna(),
-            bins=bins,
-            alpha=0.5,
-            label=status
-        )
+bins = 20
+for status, subset in df.groupby("Départ"):
+    ax.hist(subset[col_distance].dropna(), bins=bins, alpha=0.5, label=status)
 
-    ax.set_title("Distribution de la distance domicile-travail selon le départ")
-    ax.set_xlabel("Distance domicile-travail (en km)")
-    ax.set_ylabel("Nombre d’employés")
-    ax.legend(title="Départ")
-    ax.grid(axis="y", alpha=0.3)
+ax.set_title("Distribution de la distance domicile-travail selon le départ")
+ax.set_xlabel("Distance domicile-travail")
+ax.set_ylabel("Nombre d’employés")
+ax.legend(title="Départ")
+ax.grid(axis="y", alpha=0.3)
 
-    fig_path_h3 = os.path.join(OUTPUT_DIR, "H3_distance_depart.png")
-    fig.savefig(fig_path_h3, bbox_inches="tight")
-    plt.show()
+fig_path_h3 = os.path.join(OUTPUT_DIR, "H3_distance_depart.png")
+fig.savefig(fig_path_h3, dpi=300, bbox_inches="tight")
+plt.show()
+plt.close(fig)
 
-    print("Figure H3 sauvegardée dans :", fig_path_h3)
+print("✅ Figure H3 sauvegardée :", fig_path_h3)
 ```
-
----
 
 ### H4 – Heures supplémentaires × Départ
 
-> Hypothèse 4 : les salariés faisant des heures supplémentaires quittent davantage l’entreprise.
-
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    table_h4 = pd.crosstab(
-        df["Heures supplémentaires"],
-        df["Départ"],
-        normalize="index"
-    )
-
-    table_h4
+table_h4 = pd.crosstab(
+    df["Heures supplémentaires"],
+    df["Départ"],
+    normalize="index"
+)
+table_h4
 ```
 
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    fig, ax = plt.subplots()
+fig, ax = plt.subplots()
 
-    bottom = np.zeros(len(table_h4))
-    x = np.arange(len(table_h4.index))
+bottom = np.zeros(len(table_h4))
+x = np.arange(len(table_h4.index))
 
-    for status in table_h4.columns:
-        ax.bar(
-            x,
-            table_h4[status].values,
-            bottom=bottom,
-            label=status
-        )
-        bottom += table_h4[status].values
+for status in table_h4.columns:
+    ax.bar(x, table_h4[status].values, bottom=bottom, label=status)
+    bottom += table_h4[status].values
 
-    ax.set_title("Répartition des départs selon les heures supplémentaires")
-    ax.set_xlabel("Heures supplémentaires")
-    ax.set_ylabel("Proportion d'employés")
-    ax.set_xticks(x)
-    ax.set_xticklabels(table_h4.index)
-    ax.legend(title="Départ")
-    ax.grid(axis="y", alpha=0.3)
+ax.set_title("Répartition des départs selon les heures supplémentaires")
+ax.set_xlabel("Heures supplémentaires")
+ax.set_ylabel("Proportion d'employés")
+ax.set_xticks(x)
+ax.set_xticklabels(table_h4.index)
+ax.legend(title="Départ")
+ax.grid(axis="y", alpha=0.3)
 
-    fig_path_h4 = os.path.join(OUTPUT_DIR, "H4_heures_sup_depart.png")
-    fig.savefig(fig_path_h4, bbox_inches="tight")
-    plt.show()
+fig_path_h4 = os.path.join(OUTPUT_DIR, "H4_heures_sup_depart.png")
+fig.savefig(fig_path_h4, dpi=300, bbox_inches="tight")
+plt.show()
+plt.close(fig)
 
-    print("Figure H4 sauvegardée dans :", fig_path_h4)
+print("✅ Figure H4 sauvegardée :", fig_path_h4)
 ```
 
----
-
-### H5 – Ancienneté × Heures supplémentaires × Départ
-
-> Hypothèse 5 : l’entreprise affecte davantage les heures supplémentaires aux salariés récents, ce qui pourrait contribuer à leur départ.
-
-#### Heures sup par tranches d’ancienneté
+### H5 – Ancienneté × Heures supplémentaires
 
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    col_anciennete = "Ancienneté dans l’entreprise"
+max_anc = df[col_anciennete].max()
 
-    max_anc = df[col_anciennete].max()
-    bins = [0, 3, 6, 10, max_anc]
-    labels = ["0-3 ans", "4-6 ans", "7-10 ans", "10+ ans"]
+# garde-fou si valeurs étranges
+max_anc = 40 if pd.isna(max_anc) else float(max_anc)
+bins = [0, 3, 6, 10, max_anc]
+labels = ["0-3 ans", "4-6 ans", "7-10 ans", "10+ ans"]
 
-    df["Tranche ancienneté"] = pd.cut(
-        df[col_anciennete],
-        bins=bins,
-        labels=labels,
-        include_lowest=True
-    )
+df["Tranche ancienneté"] = pd.cut(
+    df[col_anciennete],
+    bins=bins,
+    labels=labels,
+    include_lowest=True
+)
 
-    table_h5 = pd.crosstab(
-        df["Tranche ancienneté"],
-        df["Heures supplémentaires"],
-        normalize="index"
-    ) * 100
+table_h5 = pd.crosstab(
+    df["Tranche ancienneté"],
+    df["Heures supplémentaires"],
+    normalize="index"
+) * 100
 
-    table_h5.round(1)
+table_h5.round(1)
 ```
 
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    fig, ax = plt.subplots()
+fig, ax = plt.subplots()
 
-    bottom = np.zeros(len(table_h5))
-    x = np.arange(len(table_h5.index))
+bottom = np.zeros(len(table_h5))
+x = np.arange(len(table_h5.index))
 
-    for hsup in table_h5.columns:
-        ax.bar(
-            x,
-            table_h5[hsup].values,
-            bottom=bottom,
-            label=hsup
-        )
-        bottom += table_h5[hsup].values
+for hsup in table_h5.columns:
+    ax.bar(x, table_h5[hsup].values, bottom=bottom, label=hsup)
+    bottom += table_h5[hsup].values
 
-    ax.set_title("Répartition des heures supplémentaires par tranche d’ancienneté")
-    ax.set_xlabel("Tranche d’ancienneté")
-    ax.set_ylabel("Proportion d’employés (%)")
-    ax.set_xticks(x)
-    ax.set_xticklabels(table_h5.index)
-    ax.legend(title="Heures supplémentaires")
-    ax.grid(axis="y", alpha=0.3)
+ax.set_title("Répartition des heures supplémentaires par tranche d’ancienneté")
+ax.set_xlabel("Tranche d’ancienneté")
+ax.set_ylabel("Proportion d’employés (%)")
+ax.set_xticks(x)
+ax.set_xticklabels(table_h5.index)
+ax.legend(title="Heures supplémentaires")
+ax.grid(axis="y", alpha=0.3)
 
-    fig_path_h5 = os.path.join(OUTPUT_DIR, "H5_anciennete_heures_sup.png")
-    fig.savefig(fig_path_h5, bbox_inches="tight")
-    plt.show()
+fig_path_h5 = os.path.join(OUTPUT_DIR, "H5_anciennete_heures_sup.png")
+fig.savefig(fig_path_h5, dpi=300, bbox_inches="tight")
+plt.show()
+plt.close(fig)
 
-    print("Figure H5 (tranches) sauvegardée dans :", fig_path_h5)
+print("✅ Figure H5 sauvegardée :", fig_path_h5)
 ```
-
----
 
 ### H6 – Poste × Départ (zones métier à risque)
 
-> Hypothèse 6 : certains postes présentent des taux de départ plus élevés que d’autres.
-
-#### Barres empilées par poste
-
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    table_h6_bar = pd.crosstab(
-        df["Poste"],
-        df["Départ"],
-        normalize="index"
-    )
+table_h6 = pd.crosstab(
+    df["Poste"],
+    df["Départ"],
+    normalize="index"
+)
 
-    table_h6_bar.head()
+# On trie par taux de départ "Yes" si présent
+if "Yes" in table_h6.columns:
+    table_h6 = table_h6.sort_values("Yes", ascending=False)
+
+table_h6.head()
 ```
 
 ```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(10, 6))
 
-    bottom = np.zeros(len(table_h6_bar))
-    x = np.arange(len(table_h6_bar.index))
+bottom = np.zeros(len(table_h6))
+x = np.arange(len(table_h6.index))
 
-    for status in table_h6_bar.columns:
-        ax.bar(
-            x,
-            table_h6_bar[status].values,
-            bottom=bottom,
-            label=status
+for status in table_h6.columns:
+    ax.bar(x, table_h6[status].values, bottom=bottom, label=status)
+    bottom += table_h6[status].values
+
+ax.set_title("Taux de départ par poste (barres empilées)")
+ax.set_xlabel("Poste")
+ax.set_ylabel("Proportion d'employés")
+ax.set_xticks(x)
+ax.set_xticklabels(table_h6.index, rotation=45, ha="right")
+ax.legend(title="Départ")
+ax.grid(axis="y", alpha=0.3)
+
+fig_path_h6_bar = os.path.join(OUTPUT_DIR, "H6_poste_depart_barres.png")
+fig.savefig(fig_path_h6_bar, dpi=300, bbox_inches="tight")
+plt.show()
+plt.close(fig)
+
+print("✅ Figure H6 (barres) sauvegardée :", fig_path_h6_bar)
+```
+
+```{python}
+# Heatmap "maison" (sans seaborn)
+heatmap_data = table_h6.copy()
+
+fig, ax = plt.subplots(figsize=(10, 6))
+im = ax.imshow(heatmap_data.values, aspect="auto")
+
+ax.set_xticks(np.arange(len(heatmap_data.columns)))
+ax.set_yticks(np.arange(len(heatmap_data.index)))
+ax.set_xticklabels(heatmap_data.columns)
+ax.set_yticklabels(heatmap_data.index)
+plt.setp(ax.get_yticklabels(), rotation=45, ha="right")
+
+ax.set_title("Taux de départ par poste (heatmap)")
+ax.set_xlabel("Départ")
+ax.set_ylabel("Poste")
+
+for i in range(heatmap_data.shape[0]):
+    for j in range(heatmap_data.shape[1]):
+        value = heatmap_data.values[i, j]
+        ax.text(
+            j, i, f"{value:.2f}",
+            ha="center", va="center",
+            color="white" if value > 0.5 else "black",
+            fontsize=8
         )
-        bottom += table_h6_bar[status].values
 
-    ax.set_title("Taux de départ par poste (barres empilées)")
-    ax.set_xlabel("Poste")
-    ax.set_ylabel("Proportion d'employés")
-    ax.set_xticks(x)
-    ax.set_xticklabels(table_h6_bar.index, rotation=45, ha="right")
-    ax.legend(title="Départ")
-    ax.grid(axis="y", alpha=0.3)
+fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
 
-    fig_path_h6_bar = os.path.join(OUTPUT_DIR, "H6_poste_depart_barres.png")
-    fig.savefig(fig_path_h6_bar, bbox_inches="tight")
-    plt.show()
+fig_path_h6_hm = os.path.join(OUTPUT_DIR, "H6_poste_depart_heatmap.png")
+fig.savefig(fig_path_h6_hm, dpi=300, bbox_inches="tight")
+plt.show()
+plt.close(fig)
 
-    print("Figure H6 (barres) sauvegardée dans :", fig_path_h6_bar)
+print("✅ Figure H6 (heatmap) sauvegardée :", fig_path_h6_hm)
 ```
-
-#### Heatmap poste × départ
-
-```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    heatmap_data = pd.crosstab(
-        df["Poste"],
-        df["Départ"],
-        normalize="index"
-    )
-
-    heatmap_data.round(2)
-```
-
-```{python}
-if not DATA_AVAILABLE:
-    pass
-else:
-    fig, ax = plt.subplots(figsize=(10, 6))
-
-    im = ax.imshow(heatmap_data.values, aspect="auto")
-
-    # Axes
-    ax.set_xticks(np.arange(len(heatmap_data.columns)))
-    ax.set_yticks(np.arange(len(heatmap_data.index)))
-    ax.set_xticklabels(heatmap_data.columns)
-    ax.set_yticklabels(heatmap_data.index)
-    plt.setp(ax.get_yticklabels(), rotation=45, ha="right")
-
-    ax.set_title("Taux de départ par poste (heatmap)")
-    ax.set_xlabel("Départ")
-    ax.set_ylabel("Poste")
-
-    # Annotation des cellules
-    for i in range(heatmap_data.shape[0]):
-        for j in range(heatmap_data.shape[1]):
-            value = heatmap_data.values[i, j]
-            ax.text(
-                j,
-                i,
-                f"{value:.2f}",
-                ha="center",
-                va="center",
-                color="white" if value > 0.5 else "black",
-                fontsize=8
-            )
-
-    fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
-
-    fig_path_h6 = os.path.join(OUTPUT_DIR, "H6_poste_depart_heatmap.png")
-    fig.savefig(fig_path_h6, bbox_inches="tight")
-    plt.show()
-
-    print("Figure H6 (heatmap) sauvegardée dans :", fig_path_h6)
-```
-
----
 
 ## Récapitulatif des figures générées
 
 ```{python}
-if not DATA_AVAILABLE:
-    print("Données non disponibles (mode dégradé). Aucune figure générée dans cet environnement.")
-else:
-    print(sorted(f for f in os.listdir(OUTPUT_DIR) if f.lower().endswith(".png")))
+files = sorted(f for f in os.listdir(OUTPUT_DIR) if f.lower().endswith(".png"))
+files
 ```
