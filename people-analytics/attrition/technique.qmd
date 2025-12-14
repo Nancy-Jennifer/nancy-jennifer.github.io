@@ -13,6 +13,11 @@ execute:
   message: false
 ---
 
+::: {.callout-note}
+🔎 Ce notebook documente la **préparation des données et l’EDA en Python**.  
+Pour l’interprétation métier et les décisions RH, consulter les pages ci-dessous.
+:::
+
 ## Contexte & objectif technique
 
 Ce document reprend la logique du notebook Python initial :
@@ -405,3 +410,12 @@ print("✅ Figure H6 (heatmap) sauvegardée :", fig_path_h6_hm)
 files = sorted(f for f in os.listdir(OUTPUT_DIR) if f.lower().endswith(".png"))
 files
 ```
+
+---
+
+## 🔗 Navigation du projet
+
+- 📊 [Voir les Résultats de l’Analyse Exploratoire (EDA)](eda_resultats.qmd)
+- 📌 [Voir la Synthèse & Recommandations RH](synthese_recommandations.qmd)
+- 🏠 [Retour à la page d’accueil du projet People Analytics](../index.qmd)
+
