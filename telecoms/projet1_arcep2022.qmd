@@ -126,11 +126,6 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
    Visualisation géographique interactive (MOS / QoS) pour explorer zones et contextes d’usage.  
    👉 [Voir la carte](https://nancy-jennifer.github.io/carte-leaflet/carte_leaflet_mos.html){target="_blank"}
 
-<div class="nav-inline">
-  <a href="index.qmd" class="btn btn-outline-secondary">⬅ Retour Télécoms</a>
-  <a href="../index.qmd" class="btn btn-light">🏠 Accueil</a>
-</div>
-
 <style>
 .nav-inline{
   display: flex;
