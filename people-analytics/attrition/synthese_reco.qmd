@@ -214,5 +214,5 @@ Ces résultats constituent une base robuste pour une politique RH orientée **fi
 
 - ⬅️ [Retour aux Résultats de l’Analyse Exploratoire (EDA)](eda_resultats.qmd)
 - 🧠 [Accéder au Notebook technique (Python)](technique.qmd)
-- 🏠 [Retour à la page d’accueil du projet People Analytics](../index.qmd)
+- 🏠 [Retour à la page d’accueil du projet](../attrition/index.qmd)
 
