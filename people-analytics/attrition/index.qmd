@@ -1,10 +1,15 @@
 ---
 title: "Analyse Attrition – IBM HR Analytics"
 subtitle: "Comprendre les déterminants du turnover des salariés"
+date: 2025-07-15
 ---
 
-# Comprendre les déterminants du turnover des salariés
-### Analyse exploratoire – Dataset IBM HR Attrition
+`PEOPLE ANALYTICS`{.badge} `ATTRITION`{.badge} `IBM HR ANALYTICS`{.badge} `TURNOVER`{.badge} `RH & TALENTS`{.badge}
+
+Analyse exploratoire des facteurs de départ des salariés (attrition) à partir du dataset IBM HR Analytics, avec recommandations RH opérationnelles.
+
+**MOTS CLÉS**  
+IBM HR Analytics, People Analytics, Turnover, Attrition RH, Satisfaction au travail, Heures supplémentaires, Ancienneté, Distance domicile-travail, Rétention des talents
 
 ---
 
@@ -93,4 +98,3 @@ L’analyse se structure autour de quatre étapes clés :
 - [**EDA & Résultats**](eda_resultats.qmd) — interprétations, visualisations, tests des hypothèses  
 - [**Synthèse & Recommandations RH**](synthese_reco.qmd) — axes prioritaires, risques, leviers opérationnels  
 - [**Notebook technique**](technique.qmd) — préparation des données, code Python, reproductibilité
-
