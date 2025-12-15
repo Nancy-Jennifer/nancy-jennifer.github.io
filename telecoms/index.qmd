@@ -123,3 +123,4 @@ page-layout: full
 .proj-card .btn{ margin-top: 6px; }
 </style>
 ```
+Cette rubrique sera enrichie progressivement avec d’autres projets, selon la même logique d’analyse et de rigueur méthodologique.
