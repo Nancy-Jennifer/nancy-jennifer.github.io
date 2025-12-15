@@ -1,0 +1,48 @@
+---
+title: "Projets Data for Social Good"
+subtitle: "Galerie des projets à impact : TIME, et projets à venir."
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    code-fold: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+# Galerie des projets Data for Social Good
+
+::: {.callout-note}
+Accédez aux projets *Data for Social Good* par analyse. Chaque carte résume rapidement la problématique, l’approche et le livrable.
+:::
+
+---
+
+## Projets disponibles
+
+### Empo‌wering Women with Data: The TIME Case Study (Bellabeat)  
+*Projet réalisé dans le cadre du certificat Google Data Analytics – Coursera*
+
+Analyse de données issues de montres connectées pour comprendre les habitudes de bien-être (activité, sédentarité, sommeil) et proposer des **recommandations produit et marketing** visant à soutenir la santé et l’autonomie des femmes.
+
+[Découvrir le projet TIME](time/){.btn .btn-primary}
+
+---
+
+## Projets à venir
+
+Cette rubrique sera progressivement enrichie avec :
+
+- des analyses open data sur la **santé publique** (prévention, accès aux soins, déterminants sociaux),  
+- des projets autour de l’**égalité & inclusion** (genre, éducation, accès au numérique),  
+- des visualisations interactives pour **rendre visibles des inégalités** ou des zones de fragilité,  
+- des études centrées sur l’**empowerment** et la prise de décision (individuelle ou communautaire).
+
+*(Contenu en cours de construction.)*
+
+---
+
+[← Retour à la rubrique Data for Social Good](index.qmd)
