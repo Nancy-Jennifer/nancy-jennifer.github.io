@@ -8,9 +8,13 @@ format:
     toc-depth: 3
     number-sections: true
     code-fold: false
+date: 2025-09-30
+
 ---
 
-[← Retour Télécoms](../index.qmd)
+<div class="nav-inline">
+  <a href="index.qmd" class="btn btn-outline-secondary">⬅ Retour Télécoms</a>
+</div>
 
 ::: info
 **Positionnement de l’analyse**  
