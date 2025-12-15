@@ -18,7 +18,6 @@ page-layout: full
 `ARCEP 2022`{.badge} `QoS voix · SMS · data`{.badge} `Comparaisons inter-opérateurs`{.badge} `Analyse par contextes d’usage`{.badge}
 
 [🔎 Voir les projets Télécoms](projets.qmd){.btn .btn-primary}
-[Méthodologie analytique](../methode/index.qmd){.btn .btn-outline-primary}
 
 ## Projets phares
 
