@@ -1,0 +1,47 @@
+---
+title: "Projets People Analytics"
+subtitle: "Galerie des analyses RH : P1, P2 et suivants."
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    code-fold: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+# Galerie des projets People Analytics
+
+::: {.callout-note}
+Accédez aux analyses People Analytics par projet. Chaque carte résume rapidement la problématique, l’approche et le livrable.
+:::
+
+---
+
+## Projets disponibles
+
+### P1 — Comprendre les déterminants du turnover des salariés  
+*Analyse exploratoire — Dataset IBM HR Attrition*
+
+Facteurs analysés : satisfaction au travail, ancienneté, distance domicile–travail, heures supplémentaires, postes à risque.  
+Objectif : produire des **insights actionnables** et des **recommandations RH opérationnelles** pour réduire les départs volontaires.
+
+[🚀 Ouvrir le projet P1 – Analyse Attrition (IBM)](attrition/index.qmd){.btn .btn-success}
+
+---
+
+## Projets à venir
+
+### P2 — Projet People Analytics (à venir)
+
+Un second projet viendra compléter cette rubrique pour illustrer d’autres enjeux RH :  
+**performance & formation**, **mobilité interne**, ou **baromètre d’engagement**.
+
+*(Contenu en cours de construction.)*
+
+---
+
+[← Retour à la rubrique People Analytics](index.qmd)
