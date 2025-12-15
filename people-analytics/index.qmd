@@ -4,7 +4,6 @@ title: "PEOPLE ANALYTICS — TALENTS & PERFORMANCE"
 
 ![](../assets/images/people-analytics/banner_people_analytics.jpg){width="75%" fig-align="left" style="border-radius: 18px; margin-left: 0;"}
 
-
 **Spécialisée en People Analytics**, j’utilise la donnée RH pour éclairer des décisions clés : réduire le turnover, sécuriser l’onboarding, mieux cibler les plans de formation et améliorer l’engagement des collaborateurs.
 
 En combinant **analyse statistique**, **visualisation de données** et **compréhension métier RH**, je transforme des fichiers RH bruts en **insights actionnables** pour les équipes Talent, RH et Direction :  
@@ -20,7 +19,7 @@ Dans cette section, chaque projet suit une approche rigoureuse :
 - **Attrition & rétention des talents** : identifier les profils à risque et les zones critiques du parcours salarié.  
 - **Onboarding & ancienneté** : comprendre ce qui se joue dans les premiers mois pour réduire les départs précoces.  
 - **Engagement, satisfaction & bien-être** : relier les scores de satisfaction aux départs, à la performance et aux conditions de travail.  
-- **Organisation du travail & charge** : analyser l’impact des **heures supplémentaires**, de la distance domicile–travail et des postes les plus exposés.  
+- **Organisation du travail & charge** : analyser l’impact des **heures supplémentaires**, de la distance domicile–travail et des postes les plus exposés.
 
 ---
 
@@ -43,3 +42,19 @@ par exemple **performance & formation**, **mobilité interne**, ou **baromètre 
 Il suivra la même logique : **problématique métier claire, rigueur analytique, recommandations RH actionnables.**
 
 *(Contenu en cours de construction.)*
+
+---
+
+## Explorations complémentaires & projets à venir
+
+Cette section regroupera progressivement d’autres analyses People Analytics menées selon la même logique méthodologique :  
+**question métier claire → analyse rigoureuse → recommandations concrètes**, en appui aux décisions RH.
+
+À terme, elle pourra inclure notamment :
+
+- Analyse **performance & formation** : liens entre investissement formation, performance et rétention  
+- Étude de la **mobilité interne** et des trajectoires de carrière  
+- Analyse d’un **baromètre d’engagement** et de satisfaction collaborateurs  
+- Explorations complémentaires à partir de données RH ouvertes ou simulées
+
+*Ces projets viendront enrichir progressivement le portfolio, sans remettre en cause la hiérarchie des projets phares présentés ci-dessus.*
