@@ -23,7 +23,7 @@ Dans cette section, chaque projet suit une approche rigoureuse :
 
 ---
 
-## Projets phares
+## Projet phare
 
 ### P1 — Comprendre les déterminants du turnover des salariés  
 **Analyse exploratoire basée sur le dataset IBM HR Attrition**
@@ -32,16 +32,6 @@ Ce projet s’intéresse aux facteurs qui influencent le **départ des collabora
 À partir de données RH anonymisées, j’explore plusieurs hypothèses métier (turnover des nouveaux arrivants, surcharge de travail, postes à risque…) pour proposer des **recommandations RH concrètes** : renforcer l’onboarding, mieux piloter les heures supplémentaires, cibler certains métiers critiques, suivre des KPI de rétention.
 
 [🚀 Ouvrir le projet P1 – Analyse Attrition (IBM)](attrition/index.qmd){.btn .btn-success}
-
----
-
-### P2 — Projet People Analytics (à venir)
-
-Un second projet viendra compléter cette section pour illustrer d’autres enjeux People Analytics :  
-par exemple **performance & formation**, **mobilité interne**, ou **baromètre d’engagement**.  
-Il suivra la même logique : **problématique métier claire, rigueur analytique, recommandations RH actionnables.**
-
-*(Contenu en cours de construction.)*
 
 ---
 
