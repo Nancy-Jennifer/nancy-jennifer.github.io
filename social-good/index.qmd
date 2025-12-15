@@ -70,10 +70,16 @@ Il illustre parfaitement l’esprit *Data for Social Good* :
 
 ---
 
-## Projets à venir dans cette rubrique
+## Explorations complémentaires & projets à venir
 
-Cette section sera progressivement enrichie avec :
+Cette section regroupera progressivement d’autres analyses *Data for Social Good*, construites selon la même logique :  
+**problématique sociale claire → analyse rigoureuse → recommandations actionnables**, avec une attention particulière à l’éthique et à l’impact réel.
 
-- d’autres projets orientés égalité, santé publique, inclusion ou éducation,
-- des analyses de données ouvertes (open data) portant sur les questions sociales,
-- des visualisations interactives permettant de mieux comprendre les enjeux humains.
+À terme, elle pourra inclure notamment :
+
+- analyses open data sur la **santé publique** (prévention, accès aux soins, déterminants sociaux),  
+- projets autour de l’**égalité & inclusion** (genre, éducation, accès au numérique),  
+- visualisations interactives pour **rendre visibles des inégalités** ou des zones de fragilité,  
+- études centrées sur l’**empowerment** et la prise de décision (individuelle ou communautaire).
+
+*Ces projets viendront enrichir progressivement le portfolio, sans remettre en cause la priorité donnée au projet phare présenté ci-dessus.*
