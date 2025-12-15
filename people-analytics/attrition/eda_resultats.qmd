@@ -285,7 +285,7 @@ Les résultats serviront de base à une **modélisation prédictive** (Machine L
 
 **🔗 Navigation du projet**
 
-- ⬅️ [Retour à la page d’accueil du projet People Analytics](../index.qmd)
+- ⬅️ [Retour à la page d’accueil du projet People Analytics](../attrition/index.qmd)
 - 📌 [Voir la Synthèse & Recommandations RH](synthese_reco.qmd)
 - 🧠 [Accéder au Notebook technique (Python)](technique.qmd)
 
