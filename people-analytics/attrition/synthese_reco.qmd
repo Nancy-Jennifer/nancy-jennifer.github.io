@@ -210,7 +210,7 @@ Ces résultats constituent une base robuste pour une politique RH orientée **fi
 
 ---
 
-## 🔗 Navigation du projet
+**🔗 Navigation du projet**
 
 - ⬅️ [Retour aux Résultats de l’Analyse Exploratoire (EDA)](eda_resultats.qmd)
 - 🧠 [Accéder au Notebook technique (Python)](technique.qmd)
