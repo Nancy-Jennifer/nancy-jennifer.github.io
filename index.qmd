@@ -35,6 +35,20 @@ Je conçois des analyses **Télécoms (QoS)** et **People Analytics**, avec une 
 - **Visualisation** — ggplot2, matplotlib, Plotly, Leaflet (cartes), dashboards.
 - **Reproductibilité** — Quarto / R Markdown, notebooks, code source public.
 
+## Ma méthodologie analytique
+
+Quel que soit le domaine (Télécoms, People Analytics ou projets à impact social), j’applique une **méthodologie analytique commune**, orientée compréhension métier et décision.
+
+Elle repose sur :
+- la **clarification de la problématique** et des enjeux opérationnels,
+- une **analyse exploratoire rigoureuse** pour comprendre les données avant toute modélisation,
+- la **formulation et le test d’hypothèses métier**,
+- la **traduction des résultats en recommandations actionnables**,
+- et une attention particulière à la **reproductibilité** et à la transparence des analyses.
+
+👉 La méthodologie complète est détaillée dans la rubrique dédiée :  
+[Découvrir la méthodologie analytique](methode/index.qmd)
+
 ## Ce que vous trouverez ici
 - **Études de cas** : Télécoms (Qualité de service), People Analytics (performance & rétention).
 - **Livrables** : rapports clairs, visualisations interactives, recommandations opérationnelles.
