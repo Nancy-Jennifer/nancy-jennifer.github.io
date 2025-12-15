@@ -1,6 +1,23 @@
 ---
 title: "Empowering Women with Data"
 subtitle: "The TIME Case Study (Bellabeat)"
+date: 2025-05-25
+description: "Étude de cas TIME (Bellabeat) : analyse exploratoire des données d’activité et de sommeil (Fitbit) pour produire des recommandations produit et marketing orientées bien-être et impact social."
+keywords:
+  - Bellabeat
+  - TIME Case Study
+  - Google Data Analytics
+  - Data for Social Good
+  - Women empowerment
+  - Bien-être
+  - Wearables
+  - Fitbit dataset
+  - Analyse exploratoire
+  - EDA
+  - R
+  - Visualisation de données
+  - Marketing analytics
+  - Product analytics
 format:
   html:
     toc: true
@@ -16,6 +33,9 @@ execute:
 ::: {.hero style="text-align:center;"}
 ![](../assets/time_banner.jpg){width=40% fig-alt="Bannière du projet TIME" fig-cap=""}
 :::
+
+**MOTS CLÉS**  
+Bellabeat, TIME, Wearables, Fitbit, Activité physique, Sédentarité, Sommeil, EDA, R, Product analytics, Marketing analytics, Data for Social Good, Empowerment féminin
 
 ::: {.callout-note}
 #### <span style="color:red">Note au recruteur</span>
