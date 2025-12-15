@@ -15,6 +15,8 @@ execute:
 
 <img src="assets/data_for_social_good_banner.jpg" alt="Bannière – Data for Social Good" style="width:90%;">
 
+[📚 Voir les projets Data for Social Good](projets.qmd){.btn .btn-primary}
+
 ## Pourquoi une section *Data for Social Good* ?
 
 Dans un monde où les décisions publiques, sociales et humaines reposent de plus en plus sur les données, il devient essentiel de **mettre l’analyse au service de l’impact**.  
