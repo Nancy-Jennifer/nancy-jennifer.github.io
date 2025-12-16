@@ -13,8 +13,6 @@ execute:
   message: false
 ---
 
-# Galerie des projets Data for Social Good
-
 ::: {.callout-note}
 Accédez aux projets *Data for Social Good* par analyse. Chaque carte résume rapidement la problématique, l’approche et le livrable.
 :::
