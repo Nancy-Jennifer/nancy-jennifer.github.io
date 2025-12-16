@@ -3,15 +3,15 @@ title: "CONTRIBUTIONS BENEVOLES"
 page-layout: full
 ---
 
-<!-- ===== Message d'état (rouge, pro) ===== -->
-<div class="status-contrib">🔧 Section en cours de construction</div>
-
 <!-- ===== BANNIÈRE (même logique que les autres pages) ===== -->
 <div class="hero-banner-contrib"></div>
 
+<!-- ===== Message d'état (rouge, pro) ===== -->
+<div class="status-contrib">Section en cours de construction</div>
+
 <!-- ===== Texte conservé, plus grand ===== -->
 <div class="intro-contrib">
-  🌱 Cette partie présentera mes engagements, projets associatifs, et contributions bénévoles liés à la Data, à l’éducation ou à la communauté tech.
+Cette partie présentera mes engagements, projets associatifs, et contributions bénévoles liés à la Data, à l’éducation ou à la communauté tech.
 </div>
 
 <!-- (Pas d’autre texte pour l’instant, comme demandé) -->
@@ -20,7 +20,7 @@ page-layout: full
 <style>
 /* ===== Bannière Contributions ===== */
 .hero-banner-contrib{
-  width: 60%;
+  width: 70%;
   height: 340px; /* ajuste 280–380px si besoin */
   background-image: url('/assets/banners/banniere-contributions.png');
   background-size: cover;
@@ -32,7 +32,7 @@ page-layout: full
 .status-contrib{
   color: #C62828;           /* rouge pro */
   font-weight: 800;
-  text-align: Left;
+  text-align: center;
   margin: 6px 0 14px 0;
   letter-spacing: .2px;
 }
