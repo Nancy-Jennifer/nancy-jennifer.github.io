@@ -12,8 +12,6 @@ quels profils quittent l’entreprise ? à quel moment du parcours salarié les 
 Dans cette section, chaque projet suit une approche rigoureuse :  
 **clarification de la question business → analyse exploratoire → tests d’hypothèses → recommandations RH opérationnelles**, accompagnées d’indicateurs de suivi (KPI) adaptés à la réalité terrain.
 
-[📚 Voir les projets People Analytics](projets.qmd){.btn .btn-primary}
-
 ---
 
 ## Thématiques People Analytics
@@ -24,6 +22,7 @@ Dans cette section, chaque projet suit une approche rigoureuse :
 - **Organisation du travail & charge** : analyser l’impact des **heures supplémentaires**, de la distance domicile–travail et des postes les plus exposés.
 
 ---
+[📚 Voir les projets People Analytics](projets.qmd){.btn .btn-primary}
 
 ## Projet phare
 
