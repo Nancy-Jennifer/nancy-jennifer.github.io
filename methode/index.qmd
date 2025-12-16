@@ -50,7 +50,7 @@ Python (pandas, scikit-learn), R (tidyverse), SQL, Quarto/Markdown, Git/GitHub, 
 
 /* ===== Bannière méthode (même logique que "Qui suis-je ?") ===== */
 .hero-banner-methode{
-  width: 100%;
+  width: 75%;
   height: 340px; /* ajuste 280–380px si besoin */
   background-image: url('/assets/banners/banniere-methode.png');
   background-size: cover;
