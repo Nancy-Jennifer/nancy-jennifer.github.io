@@ -13,7 +13,19 @@ execute:
   message: false
 ---
 
-<img src="assets/data_for_social_good_banner.jpg" alt="Bannière – Data for Social Good" style="width:90%;">
+
+```{=html}
+<style>
+/* ===== Bannière Social ===== */
+.hero-banner-contrib{
+  width: 70%;
+  height: 340px; /* ajuste 280–380px si besoin */
+  background-image: url('assets/data_for_social_good_banner.jpg');
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 24px; /* espace sous la bannière */
+}
+</style>
 
 [📚 Voir les projets Data for Social Good](projets.qmd){.btn .btn-primary}
 
