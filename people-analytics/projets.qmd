@@ -13,8 +13,6 @@ execute:
   message: false
 ---
 
-# Galerie des projets People Analytics
-
 ::: {.callout-note}
 Accédez aux analyses People Analytics par projet. Chaque carte résume rapidement la problématique, l’approche et le livrable.
 :::
@@ -39,8 +37,6 @@ Objectif : produire des **insights actionnables** et des **recommandations RH op
 
 Un second projet viendra compléter cette rubrique pour illustrer d’autres enjeux RH :  
 **performance & formation**, **mobilité interne**, ou **baromètre d’engagement**.
-
-*(Contenu en cours de construction.)*
 
 ---
 
