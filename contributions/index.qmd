@@ -3,11 +3,11 @@ title: "CONTRIBUTIONS BENEVOLES"
 page-layout: full
 ---
 
-<!-- ===== BANNIÈRE (même logique que les autres pages) ===== -->
-<div class="hero-banner-contrib"></div>
-
 <!-- ===== Message d'état (rouge, pro) ===== -->
 <div class="status-contrib">🔧 Section en cours de construction</div>
+
+<!-- ===== BANNIÈRE (même logique que les autres pages) ===== -->
+<div class="hero-banner-contrib"></div>
 
 <!-- ===== Texte conservé, plus grand ===== -->
 <div class="intro-contrib">
@@ -32,7 +32,7 @@ page-layout: full
 .status-contrib{
   color: #C62828;           /* rouge pro */
   font-weight: 800;
-  text-align: center;
+  text-align: Left;
   margin: 6px 0 14px 0;
   letter-spacing: .2px;
 }
