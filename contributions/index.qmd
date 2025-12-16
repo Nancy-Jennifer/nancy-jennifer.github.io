@@ -20,7 +20,7 @@ page-layout: full
 <style>
 /* ===== Bannière Contributions ===== */
 .hero-banner-contrib{
-  width: 75%;
+  width: 70%;
   height: 340px; /* ajuste 280–380px si besoin */
   background-image: url('/assets/banners/banniere-contributions.png');
   background-size: cover;
