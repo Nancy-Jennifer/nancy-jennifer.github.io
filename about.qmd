@@ -20,36 +20,35 @@ J’ai également compris que **l’humain est au cœur de la stratégie d’ent
 
 Je m’intéresse également à des projets de **data à impact social**, lorsque les données peuvent soutenir des décisions à valeur humaine ou sociétale.
 
----
+***
 
 ## 🎯 Ma double expertise
 
 Je mets aujourd’hui à profit ma double compétence :
 
 - 💡 Une **expertise métier télécoms solide**
-- 🧩 Une **maîtrise des outils d’analyse et de visualisation de données** : SQL, R, Python, Tableau, Power BI…
+- 🧩 Une **maîtrise des outils d’analyse de données** : SQL, R, Python
 
-À cela s’ajoute ma passion pour les **données liées à l’humain**, qui me pousse à explorer le champ de la People Analytics pour contribuer à des **décisions RH plus éclairées et centrées sur l’individu.**
+À cela s’ajoute un intérêt marqué pour les **données liées à l’humain**, qui me pousse à explorer le champ de la **People Analytics** afin de contribuer à des **décisions RH plus éclairées, justes et exploitables.**
 
----
+***
 
 ## 📚 Mes domaines de prédilection
 
-- **Télécoms & Qualité de service :**  
-  Analyse de données réseaux, optimisation de la qualité de service, prédiction de la demande, performance des équipements.
+- **Télécommunications & Qualité de Service (QoS)**  
+  Analyse de données réseaux, indicateurs de performance, qualité d’expérience, aide à la décision opérationnelle et stratégique.
 
-- **People Analytics :**  
-  Analyse des données RH pour améliorer le bien-être, la performance, la rétention des talents et la culture d’entreprise.
+- **People Analytics**  
+  Analyse des données RH pour mieux comprendre les dynamiques humaines, améliorer la rétention, le bien-être et la prise de décision managériale.
 
----
+***
 
 ## 💬 Ma philosophie
 
-> **Analyser, raconter, décider.**  
-> Une donnée n’a de valeur que lorsqu’elle **éclaire une décision** et **raconte une histoire utile.**
+> **Analyser, structurer, décider.**  
+> Une donnée n’a de valeur que lorsqu’elle est **fiable**, **traçable** et **directement exploitable pour la décision métier**.
 
-Contactez-moi si vous recherchez **une analyste capable de relier la technique à la stratégie**,  
-avec **rigueur, clarté et une vraie compréhension du terrain.**
+Je m’investis dans des environnements où la **qualité des données**, la **rigueur analytique** et la **compréhension du terrain** sont des enjeux critiques.
 
 ```{=html}
 <style>
@@ -62,25 +61,32 @@ avec **rigueur, clarté et une vraie compréhension du terrain.**
   background-position: center center;
 }
 
-/* ===== Slogan : bleu, un peu moins grand que le H1 ===== */
-.slogan{ margin: 16px auto 26px; max-width: 1100px; text-align: center; }
+/* ===== Slogan ===== */
+.slogan{
+  margin: 16px auto 26px;
+  max-width: 1100px;
+  text-align: center;
+}
 .slogan span{
   display:inline-block;
   font-weight: 800;
   color: #0A4E9B;
-  /* ↓ plus petit qu'avant, reste > corps de texte */
   font-size: clamp(1.6rem, 2.2vw + 0.5rem, 2.1rem);
   letter-spacing: .2px;
 }
 
-/* ===== Titre H1 en vert (humain) ===== */
-.quarto-title .title, .quarto-title h1.title{
+/* ===== Titre H1 ===== */
+.quarto-title .title,
+.quarto-title h1.title{
   color:#2E7D32 !important;
 }
 
 /* ===== Mobile ===== */
 @media (max-width: 600px){
   .hero-banner{ height: 240px; }
-  .slogan span{ font-size: clamp(1.4rem, 4.2vw + .2rem, 1.8rem); }
+  .slogan span{
+    font-size: clamp(1.4rem, 4.2vw + .2rem, 1.8rem);
+  }
 }
 </style>
+```
