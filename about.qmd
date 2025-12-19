@@ -12,7 +12,7 @@ page-layout: full
 </div>
 
 Ingénieure télécoms avec **onze (11) années d'expérience**, aujourd’hui **Data Analyst certifiée (Google)**,  
-**je transforme des **données fiables en décisions métiers éclairées.**
+**je transforme des données fiables en décisions métiers éclairées.**
 
 Mon évolution vers la data s’est imposée naturellement. Au fil des projets techniques et opérationnels, j’ai constaté un besoin croissant de **comprendre, visualiser et interpréter les données** pour améliorer la performance, la qualité de service et l’engagement client.
 
