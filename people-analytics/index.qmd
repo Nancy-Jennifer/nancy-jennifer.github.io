@@ -1,5 +1,5 @@
 ---
-title: "PEOPLE ANALYTICS — TALENTS & PERFORMANCE"
+title: "PEOPLE ANALYTICS - TALENTS & PERFORMANCE"
 ---
 
 ![](../assets/images/people-analytics/banner_people_analytics.jpg){width="70%" fig-align="left" style="border-radius: 18px; margin-left: 0;"}
@@ -16,17 +16,18 @@ Dans cette section, chaque projet suit une approche rigoureuse :
 
 ## Thématiques People Analytics
 
-- **Attrition & rétention des talents** : identifier les profils à risque et les zones critiques du parcours salarié.  
-- **Onboarding & ancienneté** : comprendre ce qui se joue dans les premiers mois pour réduire les départs précoces.  
-- **Engagement, satisfaction & bien-être** : relier les scores de satisfaction aux départs, à la performance et aux conditions de travail.  
-- **Organisation du travail & charge** : analyser l’impact des **heures supplémentaires**, de la distance domicile–travail et des postes les plus exposés.
+- **Attrition & rétention des talents** : identifier les profils à risque et les zones critiques du parcours salarié  
+- **Onboarding & ancienneté** : comprendre ce qui se joue dans les premiers mois pour réduire les départs précoces  
+- **Engagement, satisfaction & bien-être** : relier les scores de satisfaction aux départs, à la performance et aux conditions de travail  
+- **Organisation du travail & charge** : analyser l’impact des **heures supplémentaires**, de la distance domicile–travail et des postes les plus exposés  
 
 ---
+
 [📚 Voir les projets People Analytics](projets.qmd){.btn .btn-primary}
 
 ## Projet phare
 
-### P1 — Comprendre les déterminants du turnover des salariés  
+### P1 – Comprendre les déterminants du turnover des salariés  
 **Analyse exploratoire basée sur le dataset IBM HR Attrition**
 
 Ce projet s’intéresse aux facteurs qui influencent le **départ des collaborateurs** : satisfaction au travail, ancienneté, distance domicile–travail, heures supplémentaires, type de poste, etc.  
@@ -46,6 +47,6 @@ Cette section regroupera progressivement d’autres analyses People Analytics me
 - Analyse **performance & formation** : liens entre investissement formation, performance et rétention  
 - Étude de la **mobilité interne** et des trajectoires de carrière  
 - Analyse d’un **baromètre d’engagement** et de satisfaction collaborateurs  
-- Explorations complémentaires à partir de données RH ouvertes ou simulées
+- Explorations complémentaires à partir de données RH ouvertes ou simulées  
 
 *Ces projets viendront enrichir progressivement le portfolio, sans remettre en cause la hiérarchie des projets phares présentés ci-dessus.*
