@@ -18,14 +18,16 @@ Mon évolution vers la data s’est imposée naturellement. Au fil des projets t
 
 J’ai également compris que **l’humain est au cœur de la stratégie d’entreprise**, ce qui a éveillé mon intérêt pour la **People Analytics**, un domaine passionnant où les données permettent de **mieux comprendre, valoriser et accompagner les talents.**
 
+Je m’intéresse également à des projets de **data à impact social**, lorsque les données peuvent soutenir des décisions à valeur humaine ou sociétale.
+
 ---
 
 ## 🎯 Ma double expertise
 
 Je mets aujourd’hui à profit ma double compétence :
 
-- 💡 Une **expertise métier télécoms solide**
-- 🧩 Une **maîtrise des outils d’analyse et de visualisation de données** : SQL, R, Python, Tableau, Power BI…
+- Une **expertise métier télécoms solide**
+- Une **maîtrise des outils d’analyse et de visualisation de données** : SQL, R, Python, Tableau, Power BI…
 
 À cela s’ajoute ma passion pour les **données liées à l’humain**, qui me pousse à explorer le champ de la People Analytics pour contribuer à des **décisions RH plus éclairées et centrées sur l’individu.**
 
@@ -53,7 +55,7 @@ avec **rigueur, clarté et une vraie compréhension du terrain.**
 <style>
 /* ===== Bannière ===== */
 .hero-banner{
-  width: 100%;
+  width: 70%;
   height: 340px;
   background-image: url('/assets/banners/banniere-about.png');
   background-size: cover;
