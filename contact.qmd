@@ -1,49 +1,64 @@
---
-title: "CONTACT"
-page-layout: article
+---
+title: "Contact"
+format: html
 ---
 
-## Contact
+# Contact
 
-Vous souhaitez échanger à propos de mon profil, de mes projets ou d’une opportunité en *Data Analytics* ?  
-Je suis ouverte aux *échanges professionnels, **collaborations analytiques* et *opportunités data* en lien avec mes domaines d’expertise.
+Vous souhaitez échanger à propos d’un profil Data Analyst, d’un projet analytique ou d’une problématique métier nécessitant une analyse rigoureuse ?  
+Cette page vous permet de savoir quand, pourquoi et comment me contacter.
 
----
+## Vous êtes recruteur Data / Tech
 
-### 📧 Email
+Je travaille sur des analyses reproductibles, documentées et orientées décision, avec une exigence forte sur la qualité des données et la méthodologie.
 
-*nancylee.yimbere@gmail.com*  
+### Ce que je sais faire concrètement :
 
----
+- Analyse exploratoire structurée (Python, SQL, R)  
+- Construction et interprétation d’indicateurs de performance  
+- Détection d’anomalies, comparaisons temporelles et segmentées  
+- Restitution claire des résultats (insights, limites, recommandations)  
 
-### 🔗 LinkedIn
+### Ce que je privilégie :
 
-👉 [https://www.linkedin.com/in/ton-profil](https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626)  
-Profil professionnel actif : projets, analyses et réflexions autour de la data.
+- Données fiables ou problématiques clairement identifiées  
+- Démarche analytique explicite (hypothèses, choix méthodologiques)  
+- Livrables compréhensibles et exploitables  
 
----
+👉 Si vous recherchez un profil analytique sérieux, structuré et orienté impact, nous pouvons échanger.
 
-### 💻 GitHub
+## Vous êtes manager métier (Télécoms / RH)
 
-👉 [https://github.com/nancy-jennifer](https:https://nancy-jennifer.github.io/)  
-Dépôts de code, analyses reproductibles, documentation méthodologique et livrables de projets.
+J’interviens lorsque la donnée doit éclairer une décision concrète, pas simplement produire des chiffres.
 
----
+### Exemples de problématiques traitées :
 
-### 🌍 Disponibilité & périmètre de recherche
+- **Télécommunications** : qualité de service (QoS), performance réseau, analyses comparatives  
+- **People Analytics** : turnover, satisfaction, indicateurs RH, compréhension des dynamiques internes  
 
-Ouverte aux opportunités *Data Analyst* orientées :
+### Ma valeur ajoutée :
 
-- *Télécommunications* : qualité de service (QoS), performance réseau, analyses comparatives
-- *People Analytics* : turnover, satisfaction, indicateurs RH
+- Traduire des enjeux métiers en questions analytiques claires  
+- Mettre en évidence les leviers d’action, pas seulement les constats  
+- Expliquer les résultats sans jargon inutile  
 
-Avec une *préférence pour des contextes en télétravail, principalement en **Europe* et en *Afrique francophone*.
+👉 Si vous avez un problème à comprendre ou une décision à sécuriser, l’analyse est un moyen, pas une fin.
 
-📌 Je privilégie les environnements où :
-- la *fiabilité des données* est un enjeu central,
-- la *rigueur méthodologique* est attendue,
-- et la *compréhension des problématiques métier* guide l’analyse.
+## Disponibilité & cadre de collaboration
 
----
+- Ouverte aux opportunités Data Analyst  
+- Préférence pour des contextes en télétravail  
+- Zones privilégiées : Europe et Afrique francophone  
+- Environnements où la rigueur méthodologique et la compréhension métier sont attendues
 
-N’hésitez pas à me contacter pour échanger autour de problématiques data nécessitant une analyse rigoureuse, orientée décision et impact métier.
+## Me contacter
+
+**Email**  
+[nancylee.yimbere@gmail.com](mailto:nancylee.yimbere@gmail.com)  
+
+**LinkedIn**  
+[https://www.linkedin.com/in/ton-profil](https://www.linkedin.com/in/ton-profil)  
+
+**GitHub**  
+[https://github.com/nancy-jennifer](https://github.com/nancy-jennifer)  
+(codes, analyses reproductibles, documentation méthodologique)
