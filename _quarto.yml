@@ -8,7 +8,7 @@ website:
   title: ""
   description: "Portfolio Data Analyst Technique — Télécoms QoS & People Analytics"
   navbar:
-    left:
+        left:
       - text: "ACCUEIL"
         file: index.qmd
       - text: "QUI SUIS-JE ?"
@@ -23,6 +23,9 @@ website:
         file: methode/index.qmd
       - text: "CONTRIBUTIONS BENEVOLES"
         file: contributions/index.qmd
+      - text: "CONTACT"
+        file: contact.qmd
+
     right:
       - icon: github
         href: https://github.com/nancy-jennifer
