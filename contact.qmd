@@ -1,0 +1,49 @@
+--
+title: "CONTACT"
+page-layout: article
+---
+
+## Contact
+
+Vous souhaitez échanger à propos de mon profil, de mes projets ou d’une opportunité en *Data Analytics* ?  
+Je suis ouverte aux *échanges professionnels, **collaborations analytiques* et *opportunités data* en lien avec mes domaines d’expertise.
+
+---
+
+### 📧 Email
+
+*nancylee.yimbere@gmail.com*  
+
+---
+
+### 🔗 LinkedIn
+
+👉 [https://www.linkedin.com/in/ton-profil](https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626)  
+Profil professionnel actif : projets, analyses et réflexions autour de la data.
+
+---
+
+### 💻 GitHub
+
+👉 [https://github.com/nancy-jennifer](https:https://nancy-jennifer.github.io/)  
+Dépôts de code, analyses reproductibles, documentation méthodologique et livrables de projets.
+
+---
+
+### 🌍 Disponibilité & périmètre de recherche
+
+Ouverte aux opportunités *Data Analyst* orientées :
+
+- *Télécommunications* : qualité de service (QoS), performance réseau, analyses comparatives
+- *People Analytics* : turnover, satisfaction, indicateurs RH
+
+Avec une *préférence pour des contextes en télétravail, principalement en **Europe* et en *Afrique francophone*.
+
+📌 Je privilégie les environnements où :
+- la *fiabilité des données* est un enjeu central,
+- la *rigueur méthodologique* est attendue,
+- et la *compréhension des problématiques métier* guide l’analyse.
+
+---
+
+N’hésitez pas à me contacter pour échanger autour de problématiques data nécessitant une analyse rigoureuse, orientée décision et impact métier.
