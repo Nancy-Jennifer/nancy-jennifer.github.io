@@ -67,7 +67,7 @@ Au-delà des parcours académiques, mes compétences s’expriment avant tout à
 > **Analyser, raconter, décider.**  
 > Une donnée n’a de valeur que lorsqu’elle **éclaire une décision** et **raconte une histoire utile.**
 
-Contactez-moi si vous recherchez **une analyste capable de relier la technique à la stratégie**,  
+[Contactez-moi](contact.qmd) si vous recherchez **une analyste capable de relier la technique à la stratégie**,  
 avec **rigueur, clarté et une vraie compréhension du terrain.**
 
 ```{=html}
