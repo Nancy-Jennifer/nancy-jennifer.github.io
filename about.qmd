@@ -50,7 +50,7 @@ Je mets aujourd’hui à profit ma double compétence :
 
 ## 📜 Structuration analytique & certification
 
-Afin de consolider et formaliser mes pratiques analytiques, j’ai suivi la certification **[Google Data Analytics — Coursera]**(https://www.coursera.org/account/accomplishments/professional-cert/7770QUO62TDD).
+Afin de consolider et formaliser mes pratiques analytiques, j’ai suivi la certification [Google Data Analytics — Coursera](https://www.coursera.org/account/accomplishments/professional-cert/7770QUO62TDD).
 
 Cette certification est orientée vers :
 
