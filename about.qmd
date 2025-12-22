@@ -43,6 +43,26 @@ Je mets aujourd’hui à profit ma double compétence :
 
 ---
 
+## 📜 Structuration analytique & certification
+
+Afin de consolider et formaliser mes pratiques analytiques, j’ai suivi une certification reconnue dans le domaine de la data.
+
+**Google Data Analytics — Coursera**
+
+Cette certification est orientée vers :
+- l’analyse exploratoire des données (EDA),
+- le nettoyage, la structuration et la validation des données,
+- la visualisation et l’interprétation des résultats,
+- une approche analytique **reproductible, documentée et orientée décision**.
+
+Elle est venue **structurer méthodologiquement** des pratiques que j’appliquais déjà sur le terrain, notamment dans mes projets **Télécoms (qualité de service, performance réseau)** et **People Analytics**.
+
+**Au-delà des certifications**
+
+Au-delà des parcours académiques, mes compétences s’expriment avant tout à travers des **projets concrets**, accessibles dans mon portfolio, où chaque analyse est pensée pour **répondre à une problématique métier réelle**, avec des hypothèses claires, des limites explicitées et des recommandations actionnables.
+
+---
+
 ## 💬 Ma philosophie
 
 > **Analyser, raconter, décider.**  
