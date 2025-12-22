@@ -6,6 +6,11 @@ page-layout: full
 <!-- ===== BANNIÈRE FORCÉE ===== -->
 <div class="hero-banner"></div>
 
+<!-- ===== PHOTO DE PROFIL ===== -->
+<div class="profile-photo">
+  <img src="/assets/profile/photo-nancy.jpeg" alt="Photo professionnelle Nancy Lee Yimbere Alapini">
+</div>
+
 <!-- ===== SLOGAN (bleu, un peu moins grand) ===== -->
 <div class="slogan">
   <span>De l’expertise technique à la prise de décisions par les données.</span>
@@ -81,18 +86,35 @@ avec **rigueur, clarté et une vraie compréhension du terrain.**
   background-position: center center;
 }
 
-/* ===== Slogan : bleu, un peu moins grand que le H1 ===== */
+/* ===== Photo de profil ronde ===== */
+.profile-photo{
+  display: flex;
+  justify-content: center;
+  margin-top: -90px;
+  margin-bottom: 16px;
+}
+
+.profile-photo img{
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid #ffffff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  background-color: #fff;
+}
+
+/* ===== Slogan ===== */
 .slogan{ margin: 16px auto 26px; max-width: 1100px; text-align: center; }
 .slogan span{
   display:inline-block;
   font-weight: 800;
   color: #0A4E9B;
-  /* ↓ plus petit qu'avant, reste > corps de texte */
   font-size: clamp(1.6rem, 2.2vw + 0.5rem, 2.1rem);
   letter-spacing: .2px;
 }
 
-/* ===== Titre H1 en vert (humain) ===== */
+/* ===== Titre H1 ===== */
 .quarto-title .title, .quarto-title h1.title{
   color:#2E7D32 !important;
 }
@@ -100,6 +122,15 @@ avec **rigueur, clarté et une vraie compréhension du terrain.**
 /* ===== Mobile ===== */
 @media (max-width: 600px){
   .hero-banner{ height: 240px; }
-  .slogan span{ font-size: clamp(1.4rem, 4.2vw + .2rem, 1.8rem); }
+  .profile-photo{
+    margin-top: -70px;
+  }
+  .profile-photo img{
+    width: 140px;
+    height: 140px;
+  }
+  .slogan span{
+    font-size: clamp(1.4rem, 4.2vw + .2rem, 1.8rem);
+  }
 }
 </style>
