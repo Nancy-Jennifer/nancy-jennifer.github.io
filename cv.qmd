@@ -31,7 +31,7 @@ et produire des analyses **claires, exploitables et utiles aux décideurs**.
 🎯 **Valeur métier**  
 Aide à prioriser les actions d’amélioration réseau et à objectiver la qualité de service perçue par les clients.
 
-🔗 https://nancy-jennifer.github.io/telecoms/projet2_arcep2024.html
+🔗 [Voir le projet ARCEP 2022](https://nancy-jennifer.github.io/telecoms/projet1_arcep2022.html)
 
 ---
 
@@ -83,8 +83,9 @@ Data storytelling, dashboards orientés action, rapports clairs pour décideurs
 ---
 
 ## Contact
-📧 nancylee.yimbere@gmail.com  
-🔗 LinkedIn : https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/  
-💻 GitHub : https://github.com/nancy-jennifer  
+📧 [nancylee.yimbere@gmail.com](mailto:nancylee.yimbere@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/)  
+💻 [GitHub](https://github.com/nancy-jennifer)
+
 
 📍 Télétravail privilégié | Présentiel possible à Cotonou
