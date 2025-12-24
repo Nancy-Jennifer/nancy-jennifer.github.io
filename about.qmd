@@ -25,6 +25,13 @@ J’ai également compris que **l’humain est au cœur de la stratégie d’ent
 
 Je m’intéresse aussi à des projets de **data à impact social**, lorsque les données peuvent soutenir des décisions à valeur humaine ou sociétale.
 
+<!-- ===== BOUTON CV ===== -->
+<div class="cv-button-wrapper">
+  <a href="cv.qmd" class="cv-button">
+    Consulter mon CV détaillé – Data Analyst Technique
+  </a>
+</div>
+
 ---
 
 ## 🎯 Ma double expertise
@@ -50,7 +57,7 @@ Je mets aujourd’hui à profit ma double compétence :
 
 ## 📜 Structuration analytique & certification
 
-Afin de consolider et formaliser mes pratiques analytiques, j’ai suivi la certification [Google Data Analytics — Coursera](https://www.coursera.org/account/accomplishments/professional-cert/7770QUO62TDD).
+Afin de consolider et formaliser mes pratiques analytiques, j’ai suivi la certification [Google Data Analytics — Coursera](https://www.coursera.org/account/accomplishments/professional-cert/7770QUO62TDD).  
 
 Cette certification est orientée vers :
 
@@ -117,6 +124,31 @@ avec **rigueur, clarté et une vraie compréhension du terrain.**
   color:#2E7D32 !important;
 }
 
+/* ===== Bouton CV ===== */
+.cv-button-wrapper{
+  display: flex;
+  justify-content: center;
+  margin: 32px 0 24px;
+}
+
+.cv-button{
+  background: linear-gradient(135deg, #0A4E9B, #2E7D32);
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+  transition: all 0.25s ease;
+}
+
+.cv-button:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+  opacity: 0.95;
+}
+
 /* ===== Mobile ===== */
 @media (max-width: 600px){
   .hero-banner{ height: 240px; }
@@ -129,6 +161,12 @@ avec **rigueur, clarté et une vraie compréhension du terrain.**
   }
   .slogan span{
     font-size: clamp(1.4rem, 4.2vw + .2rem, 1.8rem);
+  }
+  .cv-button{
+    width: 100%;
+    text-align: center;
+    font-size: 0.95rem;
+    padding: 14px 20px;
   }
 }
 </style>
