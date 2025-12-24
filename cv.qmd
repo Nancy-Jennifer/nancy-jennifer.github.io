@@ -4,7 +4,7 @@ format: html
 toc: false
 ---
 
-# Nancy Jennifer  
+# Nancy Lee YIMBERE ALAPINI  
 **Data Analyst Technique | Analytics orienté performance & décisions métier**
 
 ---
@@ -43,7 +43,7 @@ Aide à prioriser les actions d’amélioration réseau et à objectiver la qual
 🎯 **Valeur métier**  
 Support à la prise de décision stratégique et à l’alignement des performances réseau sur les standards internationaux.
 
-🔗 https://nancy-jennifer.github.io/telecoms/projet2_arcep2024.html
+🔗 [Voir le projet ARCEP 2024](https://nancy-jennifer.github.io/telecoms/projet2_arcep2024.html)
 
 ---
 
@@ -55,7 +55,7 @@ Support à la prise de décision stratégique et à l’alignement des performan
 🎯 **Valeur métier**  
 Aide à la réduction du turnover et à l’amélioration de l’engagement collaborateur par des actions RH basées sur les données.
 
-🔗 https://nancy-jennifer.github.io/people-analytics/
+🔗 [Voir le projet People Analytics](https://nancy-jennifer.github.io/people-analytics/)
 
 ---
 
