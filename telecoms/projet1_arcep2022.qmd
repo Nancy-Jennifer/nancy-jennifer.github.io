@@ -141,8 +141,8 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
    👉 [Ouvrir le dépôt GitHub](https://github.com/Nancy-Jennifer/Presentation_QoS_Telecom_-ARCEP-FRANCE_2022){target="_blank"}
 
 4. **Carte interactive Leaflet**  
-   Visualisation géographique interactive (MOS / QoS) pour explorer zones et contextes d’usage.  
-   👉 [Voir la carte](https://nancy-jennifer.github.io/carte-leaflet/carte_leaflet_mos.html){target="_blank"}
+   👉 [Disponible sur demande](https://nancy-jennifer.github.io/carte-leaflet/carte_leaflet_mos.html)
+
 
 <style>
 .nav-inline{
