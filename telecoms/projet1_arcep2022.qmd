@@ -17,6 +17,24 @@ date: 2025-06-28
 keywords: ["ARCEP", "Qualité de service", "Voix", "SMS", "Data", "Réseaux mobiles", "France"]
 ---
 
+<div style="background-color:#f8d7da;padding:12px 15px;border-left:4px solid #721c24;border-radius:4px;margin-bottom:18px;">
+<span style="color:#0d1b4d;font-weight:bold;">
+Premier projet autonome post-certification, où j’ai manipulé des données ARCEP réelles.  
+Avec le recul, je ne changerais pas l’analyse, mais j’ai appris à rendre visibles les hypothèses et à orienter rapidement vers la décision.
+</span>
+</div>
+
+<div class="nav-inline">
+  <a href="index.qmd" class="btn btn-outline-secondary">⬅ Retour Télécoms</a>
+</div>
+
+<div style="background-color:#f2f5f7;padding:8px 15px;border-left:4px solid #0d6efd;border-radius:4px;margin-bottom:18px;">
+<b>Version professionnelle — Synthèse + impact métier</b><br>
+<small>Analyse structurée et orientée résultats, adaptée à un public décisionnel.</small>
+</div>
+
+---
+
 <div class="nav-inline">
   <a href="index.qmd" class="btn btn-outline-secondary">⬅ Retour Télécoms</a>
 </div>
