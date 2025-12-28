@@ -140,7 +140,7 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
    Synthèse exécutive pour lecture rapide par un recruteur/décideur.  
    👉 [Ouvrir le dépôt GitHub](https://github.com/Nancy-Jennifer/Presentation_QoS_Telecom_-ARCEP-FRANCE_2022){target="_blank"}
 
-4. **Carte interactive Leaflet**  
+4. **Carte interactive Leaflet – P1**  
    👉 [Disponible sur demande](https://nancy-jennifer.github.io/carte-leaflet/carte_leaflet_mos.html)
 
 
