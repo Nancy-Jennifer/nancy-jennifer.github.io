@@ -47,7 +47,7 @@ Elle repose sur :
 - et une attention particulière à la **reproductibilité** et à la transparence des analyses.
 
 👉 La méthodologie complète est détaillée dans la rubrique dédiée :  
-[Découvrir la méthodologie analytique](methode/index.qmd)
+[Découvrir ma méthodologie analytique](methode/index.qmd)
 
 ## Ce que vous trouverez ici
 - **Études de cas** : Télécoms (Qualité de service), People Analytics (performance & rétention).
