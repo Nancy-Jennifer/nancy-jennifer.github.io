@@ -10,7 +10,7 @@ toc: false
 ---
 
 ## À propos
-Ingénieure télécoms avec **11 ans d’expérience métier**, aujourd’hui **Data Analyst certifiée (Google)**(https://www.coursera.org/account/accomplishments/professional-cert/7770QUO62TDD),  
+Ingénieure télécoms avec **11 ans d’expérience métier**, aujourd’hui **Data Analyst certifiée (Google)(https://www.coursera.org/account/accomplishments/professional-cert/7770QUO62TDD)**,  
 je transforme des données complexes en **leviers d’aide à la décision**, notamment dans les domaines
 des **Télécommunications (Qualité de Service)** et de la **People Analytics**.
 
