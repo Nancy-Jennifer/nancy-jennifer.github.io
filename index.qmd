@@ -27,7 +27,7 @@ Je conçois des analyses **Télécoms (QoS)** et **People Analytics**, avec une 
 <!-- ===== Projets phares (toujours visibles) ===== -->
 <div class="projects-row">
   <a class="project-pill" href="telecoms/projet2_arcep2024.qmd">🚀 Projet phare — EDA Télécom France 2024</a>
-  <a class="project-pill" href="people-analytics/index.qmd">📊 People Analytics — HR Attrition</a>
+  <a class="project-pill" href="people-analytics/attrition/index.qmd">📊 People Analytics — HR Attrition</a>
 </div>
 
 ## Mes outils & pratiques
