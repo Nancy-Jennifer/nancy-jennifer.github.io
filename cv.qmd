@@ -75,10 +75,15 @@ Aide à la réduction du turnover et à l’amélioration de l’engagement coll
 SQL, Python, R, Tableau, Power BI, Plotly, ggplot2, Leaflet  
 
 **Analytique & métier**  
-KPIs de performance, Qualité de Service Télécom, analyses comparatives, segmentation, People Analytics  
+- Définition et suivi de **KPIs de performance orientés pilotage**
+- Qualité de Service Télécom (QoS) : **détection d’anomalies, comparaisons multi-zones, suivi temporel**
+- Analyses comparatives et segmentation pour **identifier écarts, priorités et leviers d’action**
+- People Analytics : analyses RH **orientées diagnostic et priorisation managériale**
 
 **Restitution & décision**  
-Data storytelling, dashboards orientés action, rapports clairs pour décideurs
+- Data storytelling pour **clarifier les enjeux et les options de décision**
+- Dashboards **orientés action** (quoi surveiller, quand agir, où prioriser)
+- Rapports synthétiques pour décideurs, **focalisés sur les signaux clés, les risques et les arbitrages possibles**
 
 ---
 
