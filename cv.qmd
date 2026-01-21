@@ -22,7 +22,7 @@ et produire des analyses **claires, exploitables et utiles aux décideurs**.
 
 ## Projets
 
-### 📡 Analyse QoS Télécom – France 2022 (ARCEP)
+### Analyse QoS Télécom – France 2022 (ARCEP)
 - Services analysés : Voix / SMS / Data  
 - KPIs : taux de réussite, latence, débits montants et descendants  
 - Analyses par contextes d’usage : urbain, rural, transport, indoor  
@@ -35,7 +35,7 @@ Aide à prioriser les actions d’amélioration réseau et à objectiver la qual
 
 ---
 
-### 🌍 Benchmark QoS – France 2024
+### Benchmark QoS – France 2024
 - Comparaisons des indicateurs QoS (ARCEP / ITU / Banque Mondiale)  
 - Analyses d’évolution temporelle et écarts aux standards internationaux  
 - Mise en évidence des marges de progression par rapport aux benchmarks
@@ -47,7 +47,7 @@ Support à la prise de décision stratégique et à l’alignement des performan
 
 ---
 
-### 👥 People Analytics – Analyse de l’attrition RH
+### People Analytics – Analyse de l’attrition RH
 - Étude de la rétention et de la satisfaction des collaborateurs  
 - Identification des facteurs explicatifs de l’attrition  
 - Analyses exploratoires et recommandations RH ciblées
@@ -97,4 +97,4 @@ SQL, Python, R, Tableau, ggplot2, Leaflet
 💻 [GitHub](https://github.com/nancy-jennifer)
 
 
-📍 Télétravail privilégié | Présentiel possible à Cotonou
+📍Télétravail privilégié | Présentiel possible à Cotonou
