@@ -1,8 +1,3 @@
----
-title: "QUI SUIS-JE ?"
-page-layout: full
----
-
 <!-- ===== BANNIÈRE FORCÉE ===== -->
 <div class="hero-banner"></div>
 
