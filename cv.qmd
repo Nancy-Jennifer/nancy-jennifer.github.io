@@ -1,6 +1,6 @@
 
 # Nancy Lee YIMBERE ALAPINI  
-**Performance & Decision Intelligence Analyst | SQL, Analytics & KPI | Telecom QoS & People Analytics**
+##Performance & Decision Intelligence Analyst | SQL, Analytics & KPI | Telecom QoS & People Analytics
 
 ---
 
@@ -8,9 +8,9 @@
 Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en analyse de la performance et aide à la décision par la data.
 
 J’interviens sur des problématiques où les données servent directement à piloter l’activité :
-* identifier les dérives de performance,
-* détecter les anomalies,
-* prioriser les actions,
+* identifier les dérives de performance
+* détecter les anomalies
+* prioriser les actions
 * éclairer les décisions opérationnelles et stratégiques.
 
 Mon approche consiste à relier données, enjeux métier et décisions concrètes..
@@ -23,9 +23,9 @@ Mon approche consiste à relier données, enjeux métier et décisions concrète
 Analyse des performances voix, SMS et data selon les contextes d’usage (urbain, rural, transport, indoor).
 
 Impact décisionnel :
-- identification des zones sous-performantes,
-- priorisation des actions d’optimisation réseau,
-- objectivation de la qualité perçue client.
+- identification des zones sous-performantes
+- priorisation des actions d’optimisation réseau
+- objectivation de la qualité perçue client
 🔗 [Voir le projet ARCEP 2022](https://nancy-jennifer.github.io/telecoms/projet1_arcep2022.html)
 
 ---
@@ -34,9 +34,9 @@ Impact décisionnel :
 Comparaison des performances nationales avec les standards internationaux (ITU, Banque Mondiale).
 
 Impact décisionnel :
-- mise en évidence des écarts critiques,
-- support à l’alignement stratégique,
-- aide à la priorisation des investissements réseau.
+- mise en évidence des écarts critiques
+- support à l’alignement stratégique
+- aide à la priorisation des investissements réseau
 🔗 [Voir le projet ARCEP 2024](https://nancy-jennifer.github.io/telecoms/projet2_arcep2024.html)
 
 ---
@@ -45,9 +45,9 @@ Impact décisionnel :
 Analyse des facteurs expliquant le turnover et la satisfaction collaborateurs.
 
 Impact décisionnel :
-- ciblage des leviers de rétention,
-- priorisation des actions RH,
-- amélioration de l’engagement.
+- ciblage des leviers de rétention
+- priorisation des actions RH
+- amélioration de l’engagement
 🔗 [Voir le projet People Analytics](https://nancy-jennifer.github.io/people-analytics/)
 
 ---
