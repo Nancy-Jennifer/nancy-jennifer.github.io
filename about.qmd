@@ -1,11 +1,14 @@
 <!-- ===== PHOTO DE PROFIL ===== -->
 <div class="profile-photo">
-  <img src="/assets/profile/photo-nancy.jpeg" alt="Photo professionnelle Nancy Lee Yimbere Alapini">
+  <img src="/assets/profile/photo-nancy.jpeg"
+       alt="Photo professionnelle Nancy Lee Yimbere Alapini"
+       style="width:160px; max-width:100%; height:auto; border-radius:12px;">
 </div>
 
 <!-- ===== SLOGAN (bleu, un peu moins grand) ===== -->
-<div class="slogan">
-  ## <span style="color:#1f4e79;">De l’expertise technique au pilotage de la performance par la donnée.</span>
+<p style="font-size:1.6rem; font-weight:700; color:#1f4e79; margin-bottom:0.6em;">
+De l’expertise technique au pilotage de la performance par la donnée.
+</p>
 
 Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en **analyse de la performance** et **aide à la décision**, je transforme des données en **leviers d’action concrets** pour les organisations.
 
