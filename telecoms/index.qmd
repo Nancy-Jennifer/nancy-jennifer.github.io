@@ -23,12 +23,12 @@ Spécialisée en **analytics télécoms**, j’analyse les données réseau pour
 - éclairer les décisions d’investissement et de déploiement
 
 👉 **L’objectif :** transformer les indicateurs techniques en leviers d’amélioration de la qualité de service et de l’expérience client mobile.
+
 `ARCEP 2022`{.badge} `QoS voix · SMS · data`{.badge} `Comparaisons inter-opérateurs`{.badge} `Analyse par contextes d’usage`{.badge}
 
-[🔎 Voir les projets Télécoms](projets.qmd){.btn .btn-primary}
+[Voir les projets Télécoms](projets.qmd){.btn .btn-primary}
 
 ---
-
 ## Projets orientés performance & décisions
 
 <div class="proj-grid">
@@ -39,13 +39,13 @@ Spécialisée en **analytics télécoms**, j’analyse les données réseau pour
     <p class="subtitle">France Métropolitaine · Voix / SMS / Data · ARCEP</p>
     
     <p>
- Identification des zones et contextes sous-performants afin de prioriser les actions d’optimisation réseau et objectiver la qualité de service perçue.
+    Identification des zones et contextes sous-performants afin de prioriser les actions d’optimisation réseau et objectiver la qualité de service perçue.
     </p>
 
     <a class="btn btn-success" href="projet1_arcep2022.qmd">🚀 Explorer le projet P1</a>
   </article>
 
-  <!-- P2 -->
+   <!-- P2 -->
   <article class="proj-card">
     <h3>P2 — Benchmark QoS France 2024 vs standards internationaux</h3>
     <p class="subtitle">ARCEP · ITU · Banque Mondiale</p>
@@ -56,10 +56,10 @@ Spécialisée en **analytics télécoms**, j’analyse les données réseau pour
 
      <a class="btn btn-success" href="projet2_arcep2024.qmd">🚀 Explorer le projet P2</a>
   </article>
+
 </div>
 
 ---
-
 ## Impact métier
 
 Ces analyses permettent notamment :
@@ -71,15 +71,96 @@ Ces analyses permettent notamment :
 - d’améliorer l’expérience client mobile
 
 ---
+
 ## Positionnement analytique
 
 Mon travail se situe à l’interface entre :
-
 - indicateurs techniques réseau
 - performance opérationnelle
 - décisions d’optimisation
 
-👉 **L’objectif :* est de relier la donnée réseau à des décisions concrètes.
+👉 **L’objectif :** relier la donnée réseau à des décisions concrètes.
 
 ---
 Cette rubrique sera enrichie progressivement avec d’autres analyses télécom, toujours orientées performance, qualité de service et aide à la décision.
+
+/* ===============================
+   BANNIÈRE — 2/3 largeur à gauche
+   =============================== */
+.hero-telecom-wrap{
+  width: 66%;
+  max-width: 1100px;
+  margin: 0 0 10px 0;      /* alignée à gauche */
+}
+.hero-banner-telecom{
+  width: 100%;
+  height: 360px;           /* même impression que la page Méthodo */
+  object-fit: cover;
+  object-position: 55% 50%;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  margin: 0 0 24px 0;
+}
+
+/* Responsive bannière */
+@media (max-width: 900px){
+  .hero-telecom-wrap{ width: calc(100vw - 32px); }
+  .hero-banner-telecom{ height: 280px; }
+}
+@media (max-width: 600px){
+  .hero-banner-telecom{ height: 220px; }
+}
+
+/* ===============================
+   Cartes "Projets phares"
+   =============================== */
+.proj-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 8px;
+}
+.proj-card{
+  background: var(--quarto-body-bg);
+  border: 1px solid #e9ecef;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.04);
+}
+.proj-card h3{
+  margin: 0 0 6px 0;
+  font-size: 1.18rem;
+  line-height: 1.25;
+}
+.proj-card .subtitle{
+  margin: 0 0 10px 0;
+  color: #667085;
+  font-size: 0.95rem;
+}
+.proj-card.muted{ opacity: .95; }
+
+/* ===============================
+   Boutons & états
+   =============================== */
+.btn-primary{
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+.btn-outline-primary{
+  background: transparent !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+.btn-outline-primary:hover{
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+.btn.disabled{
+  pointer-events: none;
+  opacity: .6;
+}
+.proj-card .btn{ margin-top: 6px; }
+</style>
