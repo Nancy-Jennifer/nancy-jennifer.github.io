@@ -1,6 +1,3 @@
-<!-- ===== BANNIÈRE FORCÉE ===== -->
-<div class="hero-banner"></div>
-
 <!-- ===== PHOTO DE PROFIL ===== -->
 <div class="profile-photo">
   <img src="/assets/profile/photo-nancy.jpeg" alt="Photo professionnelle Nancy Lee Yimbere Alapini">
