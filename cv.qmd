@@ -1,60 +1,53 @@
----
-title: "CV – Data Analyst Technique"
-format: html
-toc: false
----
 
 # Nancy Lee YIMBERE ALAPINI  
-**Data Analyst Technique | Analytics orienté performance & décisions métier**
+**Performance & Decision Intelligence Analyst | SQL, Analytics & KPI | Telecom QoS & People Analytics**
 
 ---
 
 ## À propos
-Ingénieure télécoms avec **11 ans d’expérience métier**, aujourd’hui **Data Analyst certifiée (Google)**,  
-je transforme des données complexes en **leviers d’aide à la décision**, notamment dans les domaines
-des **Télécommunications (Qualité de Service)** et de la **People Analytics**.
+Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en analyse de la performance et aide à la décision par la data.
 
-Mon approche est orientée **résolution de problèmes métier** :  
-partir d’un enjeu opérationnel réel, analyser les données avec rigueur,
-et produire des analyses **claires, exploitables et utiles aux décideurs**.
+J’interviens sur des problématiques où les données servent directement à piloter l’activité :
+* identifier les dérives de performance,
+* détecter les anomalies,
+* prioriser les actions,
+* éclairer les décisions opérationnelles et stratégiques.
+
+Mon approche consiste à relier données, enjeux métier et décisions concrètes..
 
 ---
 
 ## Projets
 
 ### Analyse QoS Télécom – France 2022 (ARCEP)
-- Services analysés : Voix / SMS / Data  
-- KPIs : taux de réussite, latence, débits montants et descendants  
-- Analyses par contextes d’usage : urbain, rural, transport, indoor  
-- Comparaisons inter-opérateurs et identification des zones à faible performance
+Analyse des performances voix, SMS et data selon les contextes d’usage (urbain, rural, transport, indoor).
 
-🎯 **Valeur métier**  
-Aide à prioriser les actions d’amélioration réseau et à objectiver la qualité de service perçue par les clients.
-
+Impact décisionnel :
+- identification des zones sous-performantes,
+- priorisation des actions d’optimisation réseau,
+- objectivation de la qualité perçue client.
 🔗 [Voir le projet ARCEP 2022](https://nancy-jennifer.github.io/telecoms/projet1_arcep2022.html)
 
 ---
 
 ### Benchmark QoS – France 2024
-- Comparaisons des indicateurs QoS (ARCEP / ITU / Banque Mondiale)  
-- Analyses d’évolution temporelle et écarts aux standards internationaux  
-- Mise en évidence des marges de progression par rapport aux benchmarks
+Comparaison des performances nationales avec les standards internationaux (ITU, Banque Mondiale).
 
-🎯 **Valeur métier**  
-Support à la prise de décision stratégique et à l’alignement des performances réseau sur les standards internationaux.
-
+Impact décisionnel :
+- mise en évidence des écarts critiques,
+- support à l’alignement stratégique,
+- aide à la priorisation des investissements réseau.
 🔗 [Voir le projet ARCEP 2024](https://nancy-jennifer.github.io/telecoms/projet2_arcep2024.html)
 
 ---
 
 ### People Analytics – Analyse de l’attrition RH
-- Étude de la rétention et de la satisfaction des collaborateurs  
-- Identification des facteurs explicatifs de l’attrition  
-- Analyses exploratoires et recommandations RH ciblées
+Analyse des facteurs expliquant le turnover et la satisfaction collaborateurs.
 
-🎯 **Valeur métier**  
-Aide à la réduction du turnover et à l’amélioration de l’engagement collaborateur par des actions RH basées sur les données.
-
+Impact décisionnel :
+- ciblage des leviers de rétention,
+- priorisation des actions RH,
+- amélioration de l’engagement.
 🔗 [Voir le projet People Analytics](https://nancy-jennifer.github.io/people-analytics/)
 
 ---
