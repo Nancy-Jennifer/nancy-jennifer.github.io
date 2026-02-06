@@ -11,9 +11,7 @@ page-layout: full
 ## Démarche analytique orientée impact
 
 Ma démarche analytique vise à transformer des données opérationnelles en décisions concrètes. Elle s’appuie sur une progression simple :
-comprendre la performance, identifier les causes, anticiper les risques et prioriser les actions.
-
-Cette approche est appliquée dans mes projets télécom (QoS) et People Analytics, où l’objectif est toujours le même : produire des analyses utiles au pilotage et à la décision.
+comprendre la performance, identifier les causes, anticiper les risques et prioriser les actions. Cette approche est appliquée dans mes projets télécom (QoS) et People Analytics, où l’objectif est toujours le même : produire des analyses utiles au pilotage et à la décision.
 
 ---
 
@@ -106,8 +104,6 @@ L’objectif reste constant : transformer la donnée en levier d’action.
 
 ## Positionnement
 
-L’analyse n’a de valeur que lorsqu’elle permet d’agir.
-
-Ma démarche vise à relier données, performance et décisions opérationnelles dans des contextes télécoms comme RH.
+L’analyse n’a de valeur que lorsqu’elle permet d’agir. Ma démarche vise à relier données, performance et décisions opérationnelles dans des contextes télécoms comme RH.
 
 ---
