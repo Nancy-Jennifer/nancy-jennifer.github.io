@@ -8,64 +8,85 @@ page-layout: full
 
 <!-- ===== CONTENU DE LA PAGE ===== -->
 
-## 🔎 Ma démarche analytique
+## Ma démarche analytique
 
-Dans mes projets Data Analytics, je mobilise différentes approches selon la **problématique métier** et les **données disponibles**.  
-Ces approches se déclinent en **quatre niveaux complémentaires** : descriptif, inférentiel, prédictif et prescriptif.
+Dans mes projets Data Analytics, j’adapte l’approche analytique à la problématique métier et au niveau de décision attendu.
 
-Chacun répond à une question clé et sert un objectif précis, allant de la simple observation à la recommandation opérationnelle.
+Mon objectif n’est pas uniquement d’analyser les données, mais de produire des éléments utiles au pilotage de la performance et à la prise de décision opérationnelle.
 
-Le tableau synthétique ci-dessous illustre ces niveaux, accompagnés d’exemples concrets issus de mes réalisations.
+J’interviens selon quatre niveaux analytiques complémentaires.
 
-| Niveau analytique | Question clé | Objectif principal | Exemple de mise en œuvre |
+---
+
+## Niveaux d’analyse
+
+| Niveau analytique | Question clé | Objectif | Exemple de mise en œuvre |
 |---|---|---|---|
-| Descriptif | Que s’est-il passé ? | Observer et résumer les faits passés. | Analyse QoS télécom (taux de coupure, latence, satisfaction client). |
-| Inférentiel | Pourquoi cela s’est-il produit ? | Expliquer, tester des hypothèses. | Tests statistiques / corrélations KPI réseau. |
-| Prédictif | Que va-t-il se passer ? | Anticiper, estimer un résultat futur. | Prévision de charge / trafic réseau, risque d’attrition. |
-| Prescriptif | Que doit-on faire ? | Recommander des actions optimales. | Priorisation des actions QoS, scénarios RH orientés valeur. |
+| **Descriptif** | Que s’est-il passé ? | Observer, mesurer, suivre la performance | Analyse QoS télécom : taux de coupure, latence, débits, satisfaction |
+| **Inférentiel** | Pourquoi cela s’est-il produit ? | Identifier les causes, tester des hypothèses | Corrélations KPI réseau, tests statistiques |
+| **Prédictif** | Que va-t-il se passer ? | Anticiper et estimer les évolutions | Prévision de trafic réseau, risque d’attrition |
+| **Prescriptif** | Que doit-on faire ? | Prioriser les actions et recommander des décisions | Priorisation des actions QoS, scénarios RH orientés valeur |
 
 ---
 
-## 🧭 Cadre méthodologique
-1) **Problème métier & hypothèses** → cadrage, KPIs, succès attendu  
-2) **Données & qualité** → dictionnaire, contrôles d’intégrité, valeurs manquantes  
-3) **EDA orientée métier** → tendances, segments, signaux faibles  
-4) **Modélisation** (si pertinent) → baselines, features, régularisation  
-5) **Validation & robustesse** → CV, métriques, analyses de sensibilité  
-6) **Interprétabilité & reco** → importance de variables/SHAP + plan d’action  
-7) **Reproductibilité** → scripts versionnés, chemins **relatifs**, livrables clairs
+## Cadre méthodologique
+
+### 1 — Problème métier & hypothèses
+- cadrage de l’enjeu
+- définition des KPIs
+- critères de succès
+
+### 2 — Données & qualité
+- dictionnaire de données
+- contrôles d’intégrité
+- gestion des valeurs manquantes
+
+### 3 — EDA orientée métier
+- tendances
+- segments
+- détection de signaux faibles
+
+### 4 — Modélisation (si pertinent)
+- baselines
+- sélection de variables
+- régularisation
+
+### 5 — Validation & robustesse
+- validation croisée
+- métriques adaptées au contexte
+- analyses de sensibilité
+
+### 6 — Interprétation & recommandations
+- importance des variables
+- SHAP / interprétabilité
+- plan d’action orienté décision
+
+### 7 — Reproductibilité
+- scripts versionnés
+- chemins relatifs
+- livrables documentés
 
 ---
 
-## 🧰 Outils
-Python (pandas, scikit-learn), R (tidyverse), SQL, Quarto/Markdown, Git/GitHub, Tableau, Plotly/ggplot2.
+## Outils
 
-<!-- ================= STYLES LOCAUX (ne s'affichent pas) ================= -->
-```{=html}
-<style>
-/* ===== Titre H1 en bleu ===== */
-.quarto-title .title, .quarto-title h1.title{
-  color:#0A4E9B !important;
-}
+- Python (pandas, scikit-learn)
+- R (tidyverse)
+- SQL
+- Quarto / Markdown
+- Git & GitHub
+- Tableau
+- Plotly / ggplot2
 
-/* ===== Bannière méthode (même logique que "Qui suis-je ?") ===== */
-.hero-banner-methode{
-  width: 75%;
-  height: 340px; /* ajuste 280–380px si besoin */
-  background-image: url('/assets/banners/banniere-methode.png');
-  background-size: cover;
-  background-position: center center;
-  margin-bottom: 24px; /* ← espace sous la bannière (1–2 lignes) */
-}
+---
 
-/* ===== Table stylée (CSS encapsulé) ===== */
-table { border-collapse: collapse; width: 100%; margin-top: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
-th { background-color: #2E7D32; color: white; padding: 8px; text-align: left; }
-td { padding: 8px; border-bottom: 1px solid #ddd; }
-tr:hover { background-color: #f6f6f6; }
+## Finalité
 
-/* ===== Mobile ===== */
-@media (max-width: 600px){
-  .hero-banner-methode{ height: 240px; margin-bottom: 20px; }
-}
-</style>
+Chaque analyse est pensée pour :
+
+- comprendre la performance
+- détecter les anomalies
+- éclairer les décisions
+- prioriser les actions opérationnelles
+
+---
