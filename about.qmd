@@ -13,160 +13,74 @@ page-layout: full
 
 <!-- ===== SLOGAN (bleu, un peu moins grand) ===== -->
 <div class="slogan">
-  <span>De l’expertise technique à la prise de décisions par les données.</span>
+  <span>De l’expertise technique au pilotage de la performance par la donnée.</span>
 </div>
 
-Ingénieure télécoms avec **onze (11) années d'expérience**, aujourd’hui **Data Analyst certifiée (Google)**,  
-**je transforme des données fiables en décisions métiers éclairées.**
+Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en **analyse de la performance** et **aide à la décision**, je transforme des données en **leviers d’action concrets** pour les organisations.
 
-Mon évolution vers la data s’est imposée naturellement. Au fil des projets techniques et opérationnels, j’ai constaté un besoin croissant de **comprendre, visualiser et interpréter les données** pour améliorer la performance, la qualité de service et l’engagement client.
+Mon travail consiste à relier **indicateurs**, **réalités terrain** et **décisions opérationnelles** : comprendre ce qui se passe, pourquoi, et **où agir en priorité**.
 
-J’ai également compris que **l’humain est au cœur de la stratégie d’entreprise**, ce qui a éveillé mon intérêt pour la **People Analytics**, un domaine passionnant où les données permettent de **mieux comprendre, valoriser et accompagner les talents.**
+Au fil de mon parcours, j’ai consolidé une expertise en **qualité de service** et **performance réseau** (télécoms), puis étendu cette approche à la **People Analytics**, où les données éclairent les décisions RH et organisationnelles.
 
-Je m’intéresse aussi à des projets de **data à impact social**, lorsque les données peuvent soutenir des décisions à valeur humaine ou sociétale.
+---
+
+## 🎯 Ma valeur
+
+J’interviens sur des problématiques où les données servent directement à :
+
+- **piloter la performance opérationnelle**
+- **détecter les anomalies et dérives** (signaux faibles)
+- **améliorer la qualité de service** et l’**expérience client**
+- **prioriser** les actions / investissements
+- soutenir des décisions **RH et organisationnelles** (People Analytics)
+
+---
+
+## Domaines d’intervention
+
+### Télécoms & performance réseau
+- QoS, suivi d’indicateurs, analyse des anomalies  
+- compréhension des écarts de performance (zones / contextes d’usage / temporalité)  
+- aide à la priorisation des actions d’optimisation
+
+### People Analytics
+- analyse rétention / engagement / performance équipes  
+- appui à des décisions RH basées sur des faits (diagnostic, priorisation, suivi)
+
+---
+
+## Approche analytique
+
+- structuration et **fiabilisation** des données
+- construction d’indicateurs et **contrôles de cohérence**
+- analyse orientée **impact métier**
+- interprétation opérationnelle et **recommandations actionnables**
+- documentation et reproductibilité (selon le contexte)
+
+**Outils :** SQL, Python, R, Tableau, Power BI.
+
+---
+
+## Ma philosophie
+
+Une donnée n’a de valeur que lorsqu’elle permet d’agir.  
+**Analyser, comprendre, décider.**
+
+---
+
+## Me contacter
+
+Si vous recherchez une analyste capable de transformer des données opérationnelles en **décisions utiles**, dans des contextes **télécoms** comme **RH**, je serai ravie d’échanger.
+
+- LinkedIn : [Ton lien LinkedIn](#)
+- Portfolio : [nancy-jennifer.github.io](https://nancy-jennifer.github.io)
+- Email : [nancylee.yimbere@gmail.com](mailto:nancylee.yimbere@gmail.com)
+
+---
 
 <!-- ===== BOUTON CV ===== -->
 <div class="cv-button-wrapper">
   <a href="cv.qmd" class="cv-button">
-    Consulter mon CV détaillé – Data Analyst Technique
+    Consulter mon CV détaillé – Performance & Decision Intelligence Analyst
   </a>
 </div>
-
----
-
-## 🎯 Ma double expertise
-
-Je mets aujourd’hui à profit ma double compétence :
-
-- Une **expertise métier télécoms solide**
-- Une **maîtrise des outils d’analyse et de visualisation de données** : SQL, R, Python, Tableau, Power BI…
-
-À cela s’ajoute ma passion pour les **données liées à l’humain**, qui me pousse à explorer le champ de la People Analytics pour contribuer à des **décisions RH plus éclairées et centrées sur l’individu.**
-
----
-
-## 📚 Mes domaines de prédilection
-
-- **Télécoms & Qualité de service :**  
-  Analyse de données réseaux, optimisation de la qualité de service, prédiction de la demande, performance des équipements.
-
-- **People Analytics :**  
-  Analyse des données RH pour améliorer le bien-être, la performance, la rétention des talents et la culture d’entreprise.
-
----
-
-## 📜 Structuration analytique & certification
-
-Afin de consolider et formaliser mes pratiques analytiques, j’ai suivi la certification [Google Data Analytics — Coursera](https://www.coursera.org/account/accomplishments/professional-cert/7770QUO62TDD).  
-
-Cette certification est orientée vers :
-
-- l’analyse exploratoire des données (EDA),
-- le nettoyage, la structuration et la validation des données,
-- la visualisation et l’interprétation des résultats,
-- une approche analytique **reproductible, documentée et orientée décision**.
-
-Elle est venue **structurer méthodologiquement** des pratiques que j’appliquais déjà sur le terrain, notamment dans mes projets **Télécoms (qualité de service, performance réseau)** et **People Analytics**.
-
-Au-delà des parcours académiques, mes compétences s’expriment avant tout à travers des **projets concrets**, accessibles dans mon portfolio, où chaque analyse est pensée pour **répondre à une problématique métier réelle**, avec des hypothèses claires, des limites explicitées et des recommandations actionnables.
-
----
-
-## 💬 Ma philosophie
-
-> **Analyser, raconter, décider.**  
-> Une donnée n’a de valeur que lorsqu’elle **éclaire une décision** et **raconte une histoire utile.**
-
-[Contactez-moi](contact.qmd) si vous recherchez **une analyste capable de relier la technique à la stratégie**,  
-avec **rigueur, clarté et une vraie compréhension du terrain.**
-
-```{=html}
-<style>
-/* ===== Bannière ===== */
-.hero-banner{
-  width: 65%;
-  height: 340px;
-  background-image: url('/assets/banners/banniere-about.png');
-  background-size: cover;
-  background-position: center center;
-}
-
-/* ===== Photo de profil ronde ===== */
-.profile-photo{
-  display: flex;
-  justify-content: center;
-  margin-top: -90px;
-  margin-bottom: 16px;
-}
-
-.profile-photo img{
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 6px solid #ffffff;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-  background-color: #fff;
-}
-
-/* ===== Slogan ===== */
-.slogan{ margin: 16px auto 26px; max-width: 1100px; text-align: center; }
-.slogan span{
-  display:inline-block;
-  font-weight: 800;
-  color: #0A4E9B;
-  font-size: clamp(1.6rem, 2.2vw + 0.5rem, 2.1rem);
-  letter-spacing: .2px;
-}
-
-/* ===== Titre H1 ===== */
-.quarto-title .title, .quarto-title h1.title{
-  color:#2E7D32 !important;
-}
-
-/* ===== Bouton CV ===== */
-.cv-button-wrapper{
-  display: flex;
-  justify-content: center;
-  margin: 32px 0 24px;
-}
-
-.cv-button{
-  background: linear-gradient(135deg, #0A4E9B, #2E7D32);
-  color: #ffffff;
-  padding: 14px 28px;
-  border-radius: 40px;
-  font-weight: 700;
-  font-size: 1rem;
-  text-decoration: none;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
-  transition: all 0.25s ease;
-}
-
-.cv-button:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
-  opacity: 0.95;
-}
-
-/* ===== Mobile ===== */
-@media (max-width: 600px){
-  .hero-banner{ height: 240px; }
-  .profile-photo{
-    margin-top: -70px;
-  }
-  .profile-photo img{
-    width: 140px;
-    height: 140px;
-  }
-  .slogan span{
-    font-size: clamp(1.4rem, 4.2vw + .2rem, 1.8rem);
-  }
-  .cv-button{
-    width: 100%;
-    text-align: center;
-    font-size: 0.95rem;
-    padding: 14px 20px;
-  }
-}
-</style>
