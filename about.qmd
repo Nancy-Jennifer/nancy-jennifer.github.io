@@ -5,7 +5,7 @@
 
 <!-- ===== SLOGAN (bleu, un peu moins grand) ===== -->
 <div class="slogan">
-  ## **<span style="color:#1f4e79;">De l’expertise technique au pilotage de la performance par la donnée.</span>**
+  ## <span style="color:#1f4e79;">De l’expertise technique au pilotage de la performance par la donnée.</span>
 
 Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en **analyse de la performance** et **aide à la décision**, je transforme des données en **leviers d’action concrets** pour les organisations.
 
