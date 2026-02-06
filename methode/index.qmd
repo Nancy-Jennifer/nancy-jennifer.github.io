@@ -8,85 +8,106 @@ page-layout: full
 
 <!-- ===== CONTENU DE LA PAGE ===== -->
 
-## Ma démarche analytique
+## Démarche analytique orientée impact
 
-Dans mes projets Data Analytics, j’adapte l’approche analytique à la problématique métier et au niveau de décision attendu.
+Ma démarche analytique vise à transformer des données opérationnelles en décisions concrètes. Elle s’appuie sur une progression simple :
+comprendre la performance, identifier les causes, anticiper les risques et prioriser les actions.
 
-Mon objectif n’est pas uniquement d’analyser les données, mais de produire des éléments utiles au pilotage de la performance et à la prise de décision opérationnelle.
-
-J’interviens selon quatre niveaux analytiques complémentaires.
+Cette approche est appliquée dans mes projets télécom (QoS) et People Analytics, où l’objectif est toujours le même : produire des analyses utiles au pilotage et à la décision.
 
 ---
 
-## Niveaux d’analyse
+## Finalité
 
-| Niveau analytique | Question clé | Objectif | Exemple de mise en œuvre |
-|---|---|---|---|
-| **Descriptif** | Que s’est-il passé ? | Observer, mesurer, suivre la performance | Analyse QoS télécom : taux de coupure, latence, débits, satisfaction |
-| **Inférentiel** | Pourquoi cela s’est-il produit ? | Identifier les causes, tester des hypothèses | Corrélations KPI réseau, tests statistiques |
-| **Prédictif** | Que va-t-il se passer ? | Anticiper et estimer les évolutions | Prévision de trafic réseau, risque d’attrition |
-| **Prescriptif** | Que doit-on faire ? | Prioriser les actions et recommander des décisions | Priorisation des actions QoS, scénarios RH orientés valeur |
+Chaque analyse est conçue pour :
+
+- comprendre la performance réelle
+- détecter les anomalies et dérives
+- éclairer les décisions opérationnelles
+- prioriser les actions et investissements
+- soutenir des décisions métier concrètes
+
+---
+
+## Niveaux d’analyse mobilisés
+
+Mon travail s’inscrit dans une progression analytique orientée performance et décision.
+
+| Niveau | Finalité | Positionnement |
+|---|---|---|
+| Observation | Suivre la performance et les indicateurs clés | Maîtrisé |
+| Diagnostic | Comprendre les causes et facteurs explicatifs | Utilisé régulièrement |
+| Anticipation | Identifier tendances et risques | En développement |
+| Décision | Prioriser les actions et recommandations | Orientation centrale |
 
 ---
 
 ## Cadre méthodologique
 
 ### 1 — Problème métier & hypothèses
-- cadrage de l’enjeu
-- définition des KPIs
-- critères de succès
+- cadrage de l’enjeu opérationnel  
+- définition des KPIs  
+- critères de succès attendus  
 
 ### 2 — Données & qualité
-- dictionnaire de données
-- contrôles d’intégrité
-- gestion des valeurs manquantes
+- dictionnaire de données  
+- contrôles d’intégrité  
+- gestion des valeurs manquantes  
 
-### 3 — EDA orientée métier
-- tendances
-- segments
-- détection de signaux faibles
+### 3 — Analyse exploratoire orientée métier
+- tendances et évolutions  
+- segmentation  
+- détection de signaux faibles  
 
 ### 4 — Modélisation (si pertinent)
-- baselines
-- sélection de variables
-- régularisation
+- baselines analytiques  
+- sélection de variables  
+- tests et régularisation  
 
 ### 5 — Validation & robustesse
-- validation croisée
-- métriques adaptées au contexte
-- analyses de sensibilité
+- validation croisée  
+- métriques adaptées au contexte  
+- analyses de sensibilité  
 
 ### 6 — Interprétation & recommandations
-- importance des variables
-- SHAP / interprétabilité
-- plan d’action orienté décision
+- importance des variables  
+- interprétation métier  
+- recommandations opérationnelles  
 
 ### 7 — Reproductibilité
-- scripts versionnés
-- chemins relatifs
-- livrables documentés
+- scripts versionnés  
+- documentation claire  
+- livrables exploitables  
+
+---
+
+## Application concrète
+
+Cette démarche est mobilisée dans :
+
+- les projets télécom : performance réseau, QoS, détection d’anomalies  
+- les projets People Analytics : rétention, engagement, priorisation RH  
+
+L’objectif reste constant : transformer la donnée en levier d’action.
 
 ---
 
 ## Outils
 
-- Python (pandas, scikit-learn)
-- R (tidyverse)
-- SQL
-- Quarto / Markdown
-- Git & GitHub
-- Tableau
-- Plotly / ggplot2
+- SQL  
+- Python (pandas, scikit-learn)  
+- R (tidyverse)  
+- Quarto / Markdown  
+- Git & GitHub  
+- Tableau  
+- Plotly / ggplot2  
 
 ---
 
-## Finalité
+## Positionnement
 
-Chaque analyse est pensée pour :
+L’analyse n’a de valeur que lorsqu’elle permet d’agir.
 
-- comprendre la performance
-- détecter les anomalies
-- éclairer les décisions
-- prioriser les actions opérationnelles
+Ma démarche vise à relier données, performance et décisions opérationnelles dans des contextes télécoms comme RH.
 
 ---
