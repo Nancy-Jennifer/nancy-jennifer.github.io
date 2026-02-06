@@ -51,7 +51,7 @@ J’interviens sur des problématiques où les données servent directement à :
 - interprétation opérationnelle et **recommandations actionnables**
 - documentation et reproductibilité (selon le contexte)
 
-**Outils :** SQL, Python, R, Tableau, Power BI.
+**Outils :** SQL, Python, R, Tableau.
 
 ---
 
