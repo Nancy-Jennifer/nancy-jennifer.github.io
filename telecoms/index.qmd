@@ -28,7 +28,6 @@ Spécialisée en **analytics télécoms**, j’analyse les données réseau pour
 
 [Voir les projets Télécoms](projets.qmd){.btn .btn-primary}
 
----
 ## Projets orientés performance & décisions
 
 <div class="proj-grid">
@@ -37,29 +36,28 @@ Spécialisée en **analytics télécoms**, j’analyse les données réseau pour
   <article class="proj-card">
     <h3>P1 — Analyse QoS Télécom 2022</h3>
     <p class="subtitle">France Métropolitaine · Voix / SMS / Data · ARCEP</p>
-    
+
     <p>
-    Identification des zones et contextes sous-performants afin de prioriser les actions d’optimisation réseau et objectiver la qualité de service perçue.
+      Identification des zones et contextes sous-performants afin de prioriser les actions d’optimisation réseau et objectiver la qualité de service perçue.
     </p>
 
     <a class="btn btn-success" href="projet1_arcep2022.qmd">🚀 Explorer le projet P1</a>
   </article>
 
-   <!-- P2 -->
+  <!-- P2 -->
   <article class="proj-card">
     <h3>P2 — Benchmark QoS France 2024 vs standards internationaux</h3>
     <p class="subtitle">ARCEP · ITU · Banque Mondiale</p>
 
     <p>
-    Analyse comparative des performances réseau afin d’identifier les écarts critiques, orienter les priorités d’investissement et soutenir les décisions stratégiques.
+      Analyse comparative des performances réseau afin d’identifier les écarts critiques, orienter les priorités d’investissement et soutenir les décisions stratégiques.
     </p>
 
-     <a class="btn btn-success" href="projet2_arcep2024.qmd">🚀 Explorer le projet P2</a>
+    <a class="btn btn-success" href="projet2_arcep2024.qmd">🚀 Explorer le projet P2</a>
   </article>
 
 </div>
 
----
 ## Impact métier
 
 Ces analyses permettent notamment :
@@ -70,8 +68,6 @@ Ces analyses permettent notamment :
 - d’orienter les décisions d’investissement
 - d’améliorer l’expérience client mobile
 
----
-
 ## Positionnement analytique
 
 Mon travail se situe à l’interface entre :
@@ -81,9 +77,10 @@ Mon travail se situe à l’interface entre :
 
 👉 **L’objectif :** relier la donnée réseau à des décisions concrètes.
 
----
 Cette rubrique sera enrichie progressivement avec d’autres analyses télécom, toujours orientées performance, qualité de service et aide à la décision.
 
+```{=html}
+<style>
 /* ===============================
    BANNIÈRE — 2/3 largeur à gauche
    =============================== */
@@ -113,7 +110,7 @@ Cette rubrique sera enrichie progressivement avec d’autres analyses télécom,
 }
 
 /* ===============================
-   Cartes "Projets phares"
+   Cartes "Projets"
    =============================== */
 .proj-grid{
   display: grid;
