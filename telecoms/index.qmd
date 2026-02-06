@@ -22,8 +22,7 @@ Spécialisée en **analytics télécoms**, j’analyse les données réseau pour
 - prioriser les actions d’optimisation
 - éclairer les décisions d’investissement et de déploiement
 
-L’objectif : transformer les indicateurs techniques en leviers d’amélioration de la qualité de service et de l’expérience client mobile.
-
+👉 **L’objectif :** transformer les indicateurs techniques en leviers d’amélioration de la qualité de service et de l’expérience client mobile.
 `ARCEP 2022`{.badge} `QoS voix · SMS · data`{.badge} `Comparaisons inter-opérateurs`{.badge} `Analyse par contextes d’usage`{.badge}
 
 [🔎 Voir les projets Télécoms](projets.qmd){.btn .btn-primary}
@@ -40,7 +39,7 @@ L’objectif : transformer les indicateurs techniques en leviers d’améliorati
     <p class="subtitle">France Métropolitaine · Voix / SMS / Data · ARCEP</p>
     
     <p>
-    Identification des zones et contextes sous-performants afin de prioriser les actions d’optimisation réseau et objectiver la qualité de service perçue.
+ Identification des zones et contextes sous-performants afin de prioriser les actions d’optimisation réseau et objectiver la qualité de service perçue.
     </p>
 
     <a class="btn btn-success" href="projet1_arcep2022.qmd">🚀 Explorer le projet P1</a>
@@ -57,7 +56,6 @@ L’objectif : transformer les indicateurs techniques en leviers d’améliorati
 
      <a class="btn btn-success" href="projet2_arcep2024.qmd">🚀 Explorer le projet P2</a>
   </article>
-
 </div>
 
 ---
@@ -73,7 +71,6 @@ Ces analyses permettent notamment :
 - d’améliorer l’expérience client mobile
 
 ---
-
 ## Positionnement analytique
 
 Mon travail se situe à l’interface entre :
@@ -82,26 +79,7 @@ Mon travail se situe à l’interface entre :
 - performance opérationnelle
 - décisions d’optimisation
 
-L’objectif est de relier la donnée réseau à des décisions concrètes.
+👉 **L’objectif :* est de relier la donnée réseau à des décisions concrètes.
 
 ---
-
 Cette rubrique sera enrichie progressivement avec d’autres analyses télécom, toujours orientées performance, qualité de service et aide à la décision.
-
----
-.hero-telecom-wrap{
-  width: 66%;
-  max-width: 1100px;
-  margin: 0 0 10px 0;
-}
-.hero-banner-telecom{
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  object-position: 55% 50%;
-  border-radius: 12px;
-  display: block;
-  box-shadow: 0 6px 18px rgba(0,0,0,.08);
-  margin: 0 0 24px 0;
-}
-
