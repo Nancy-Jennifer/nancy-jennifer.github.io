@@ -5,8 +5,8 @@
        style="width:160px; max-width:100%; height:auto; border-radius:12px;">
 </div>
 
-<!-- ===== SLOGAN (bleu, un peu moins grand) ===== -->
-<p style="font-size:1.6rem; font-weight:700; color:#1f4e79; margin-bottom:0.6em;">
+<!-- ===== SLOGAN (bleu, taille ajustée, 1 ligne) ===== -->
+<p style="font-size:1.35rem; font-weight:700; color:#1f4e79; margin-bottom:0.6em; white-space:nowrap;">
 De l’expertise technique au pilotage de la performance par la donnée.
 </p>
 
