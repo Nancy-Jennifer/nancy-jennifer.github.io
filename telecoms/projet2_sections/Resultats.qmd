@@ -5,7 +5,7 @@ toc: false
 code-fold: false
 freeze: true
 categories: [Télécoms, ARCEP 2024, Résultats]
-description: "Synthèse exécutive et accès aux sous-sections Voix, Data et SMS."
+description: "Synthèse exécutive et accès aux sous-sections Voix, Data et Benchmark."
 execute:
   echo: false
   warning: false
@@ -18,68 +18,93 @@ format:
 # Résumé exécutif
 
 ::: callout-note
-**Objectif.** Cette section regroupe les **résultats consolidés** de la qualité de service mobile en France (ARCEP 2024), confrontés aux standards internationaux lorsque pertinent.  
-Elle met en évidence :  
-- les **forces structurelles** en habitat,  
-- les **fragilités en mobilité** (axes ferroviaires et routiers),  
-- les **zones à risque** à prioriser pour l’optimisation réseau.
+**But de cette section.**  
+Présenter les résultats consolidés de la qualité de service mobile en France (ARCEP 2024), replacés dans un cadre de comparaison et traduits en éléments directement utilisables pour le pilotage réseau et la priorisation des actions.
+
+L’analyse met en évidence :
+- les **points forts structurels** du réseau en environnement résidentiel,
+- les **fragilités en situation de mobilité** (axes ferroviaires et routiers),
+- les **zones et configurations à surveiller en priorité**.
 :::
 
-::: {.callout-tip title="Topline (30 s)" icon="lightbulb"}
-Habitat **solide**, mobilité **à renforcer** (fiabilité et continuité des appels / data sur axes de transport).  
-Les recommandations portent sur la **stabilité en mouvement**, l’**optimisation ciblée** des zones à alerte récurrente et le **suivi post-optimisation** par KPI.
+::: {.callout-tip title="Lecture rapide (30 secondes)" icon="lightbulb"}
+- En environnement résidentiel, la qualité de service est globalement solide.  
+- En mobilité, la continuité d’expérience reste plus fragile (voix et data).  
+- Les écarts observés permettent d’identifier des **priorités techniques ciblées** plutôt que des actions globales.
 :::
+
+---
 
 ## Sommaire visuel
 
 ::: {.grid .cards cols=3}
+
 ::: {.card}
 [## 📞 Voix](Resultats_1_voix.qmd)
 
-Qualité d’appel & stabilité  
-*(taux de réussite, coupures, délai d’établissement)*  
-→ *Scores 0–100, comparaisons opérateurs & environnements, flags de risque.*
+**Fiabilité des appels et stabilité de la communication**
+
+- taux d’établissement,
+- coupures,
+- délai de mise en relation.
+
+→ Lecture opérateur × environnement, identification des zones sensibles.
 :::
 
 ::: {.card}
 [## 📶 Data](Resultats_2_data.qmd)
 
-Débit & performance mobile  
-*(down/up, latence, disponibilité)*  
-→ *Bench inter-opérateurs, habitat vs transport, zones à améliorer.*
+**Performance d’usage internet mobile**
+
+- débit descendant / montant,
+- latence,
+- accessibilité des services.
+
+→ Comparaison inter-opérateurs et analyse habitat vs transport.
 :::
 
 ::: {.card}
 [## 🌍 Benchmark international](Resultats_3_benchmark.qmd)
 
-Potentiel macro, structure d’usage et alignement QoS  
-→ *France vs UE/OCDE/Monde : où se situe la qualité délivrée par rapport au niveau attendu ?*
+**Positionnement de la France**
+
+- maturité d’usage,
+- niveau d’équipement,
+- cohérence entre potentiel et qualité délivrée.
+
+→ Lecture France vs UE / monde.
 :::
 
 ::: {.card}
-[## 🧠 Insights & Actions prioritaires](Resultats_4_insights.qmd)
+[## 🧠 Insights & actions prioritaires](Resultats_4_insights.qmd)
 
-Synthèse stratégique : ce qui explique l’écart **Potentiel macro → QoS vécue**,  
-et les **actions prioritaires** à fort ROI.
+**Synthèse stratégique**
+
+- facteurs expliquant les écarts observés,
+- priorités techniques,
+- leviers à impact rapide sur la QoE.
 :::
 
 ::: {.card}
 [## 🏁 Compétences démontrées](Resultats_5_competences.qmd)
 
-Synthèse des compétences **techniques**, **télécom** et **exécution** prouvées par le projet.
+**Ce que prouve concrètement ce projet**
+
+- maîtrise technique,
+- compréhension réseau,
+- capacité à transformer des KPI en décisions.
 :::
 
 ::: {.card}
-[## 🧪 Rapport Technique](01_prepa_python.qmd)
+[## 🧪 Rapport technique](01_prepa_python.qmd)
 
-Pipeline analytique complet du projet :
+Pipeline analytique détaillé :
 
-- Ingestion & cleaning (Python)
-- Préparation & harmonisation des données
-- KPI & EDA Voix (R)
-- KPI & EDA Data (R)
-- Benchmark International (R)
-- Mini-synthèse technique
+- ingestion & cleaning (Python),
+- préparation & harmonisation,
+- EDA Voix,
+- EDA Data,
+- benchmark international.
 
 ➡️ [Accéder à la préparation](01_prepa_python.qmd)
 :::
@@ -88,8 +113,42 @@ Pipeline analytique complet du projet :
 
 ---
 
-### Notes de lecture
+## Logique de lecture
 
-- Les sous-pages **masquent le code** (code-fold par défaut) et affichent des **visuels synthétiques** (barres/colonnes).  
-- Les seuils de **flag** sont orientés métier (ex. voix : réussite < 95 %, coupures > 2 %, délai > 6 s).  
-- Chaque sous-page se conclut par une **synthèse analytique** et des **recommandations actionnables**.
+Cette section ne cherche pas à multiplier les graphiques, mais à :
+
+1. **Isoler ce qui fonctionne réellement bien** (zones, contextes, opérateurs).
+2. **Identifier les situations où l’expérience se dégrade**.
+3. **Relier chaque résultat à un levier technique actionnable**.
+
+Les sous-sections sont construites pour permettre trois niveaux de lecture :
+
+- **niveau exécutif** : message clé en quelques secondes,
+- **niveau analytique** : compréhension des écarts,
+- **niveau opérationnel** : orientation des actions réseau.
+
+---
+
+## Points d’attention pour l’interprétation
+
+- Les indicateurs sont issus de **mesures terrain**, et non de déclarations opérateurs.  
+- Les seuils utilisés (réussite d’appel, latence, continuité…) sont orientés **expérience utilisateur**.  
+- Les écarts observés ne traduisent pas uniquement une performance radio :  
+  ils peuvent refléter des effets combinés (couverture, dimensionnement, mobilité, environnement d’usage).
+
+---
+
+## Ce que cette section permet concrètement
+
+À partir des résultats détaillés :
+
+- situer la performance réelle du réseau dans différents contextes d’usage,
+- identifier les zones où l’expérience client peut se dégrader,
+- orienter des actions ciblées plutôt que des optimisations globales,
+- alimenter un tableau de bord de pilotage réseau.
+
+---
+
+[→ Accéder aux résultats détaillés Voix](Resultats_1_voix.qmd)  
+[→ Accéder aux résultats détaillés Data](Resultats_2_data.qmd)  
+[→ Voir le benchmark international](Resultats_3_benchmark.qmd)
