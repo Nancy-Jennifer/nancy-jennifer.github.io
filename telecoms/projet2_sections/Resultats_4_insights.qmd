@@ -18,7 +18,7 @@ execute:
 
 ---
 
-## 1) Décisions clés à retenir
+## Décisions clés à retenir
 
 1. **Le différentiel d’expérience se joue en mobilité et en indoor** : c’est là que la variabilité QoS devient visible et coûteuse (irritants, réclamations, churn).  
 2. **Les écarts inter-opérateurs sont un sujet de pilotage** autant qu’un sujet technique : sans KPI harmonisés et seuils communs, on optimise “en aveugle”.  
@@ -26,7 +26,7 @@ execute:
 
 ---
 
-## 2) Synthèse structurée des constats
+## Synthèse structurée des constats
 
 | Domaine | Constats | Ce que ça signifie | Risque métier |
 |---|---|---|---|
@@ -37,7 +37,7 @@ execute:
 
 ---
 
-## 3) Priorités d’action (ordre d’exécution)
+## Priorités d’action (ordre d’exécution)
 
 ### Axe 1 — Stabiliser la QoS en mobilité (transport)
 **Pourquoi maintenant :** c’est le contexte le plus pénalisant et le plus visible (usage quotidien, pics de charge).  
@@ -81,7 +81,7 @@ execute:
 
 ---
 
-## 4) KPI de pilotage (cibles 2025)
+## KPI de pilotage (cibles 2025)
 
 | KPI | Pourquoi il compte | Cible | Fréquence | Source |
 |---|---|---:|---|---|
@@ -93,7 +93,7 @@ execute:
 
 ---
 
-## 5) Plan d’exécution “90 jours”
+## Plan d’exécution “90 jours”
 
 1. **Sélection 20 axes prioritaires** (transport + hubs) : volumétrie élevée + multi-alertes.  
 2. **Diagnostic rapide** (radio + paramètres + capacité) sur heures pleines.  
