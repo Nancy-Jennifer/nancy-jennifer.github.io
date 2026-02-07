@@ -16,23 +16,30 @@ format:
 
 ---
 
-<!-- ===== SECTION 3.1 : DÉBUT ===== -->
 ## Objectif
 
-Cette section décrit le **pipeline analytique** mis en place pour construire un **indice composite de qualité de service mobile (QoS)** et identifier les **leviers techniques** ayant le plus d’impact sur la **qualité d’expérience (QoE)** perçue par les utilisateurs en France, au regard d’un **référentiel international** (ARCEP, ITU, Banque Mondiale).
+Cette section décrit comment l’analyse est construite pour aboutir à **un résultat directement exploitable en pilotage** :
 
-- **Finalité métier** : fournir un **cadre de décision** aux équipes Réseau / Qualité (priorisation des actions, ciblage des écarts).  
-- **Exigences data** : indicateurs **comparables entre pays**, **reproductibles**, **traçables**.
+1) **un classement international** (indice QoS composite)  
+2) une lecture par **dimensions techniques** (voix, couverture, débit, latence, continuité)  
+3) une base solide pour formuler des **priorités d’action** sur la QoE en France.
 
-<!-- ===== SECTION 3.1 : FIN ===== -->
+Deux exigences guident tout le pipeline :
+
+- **Décision** : les résultats doivent permettre d’identifier *où agir*, *sur quoi agir* et *avec quelle priorité*.  
+- **Fiabilité** : les transformations doivent être reproductibles, traçables et comparables entre pays.
 
 ---
 
-<!-- ===== SECTION 3.2 : DÉBUT ===== -->
 ## Ingestion & préparation des données (Python)
 
-Dans ce projet, **toute l’ingestion et la préparation** (chargement, harmonisation, panel, millésime) sont réalisées **exclusivement en Python**.  
-Objectif : produire des tables **propres, comparables** et **traçables** pour la normalisation (3.3) et le scoring (3.4–3.5).
+Dans ce projet, l’ingestion et la préparation sont réalisées en Python afin de produire des tables :
+
+- **propres** (format, types, colonnes alignées),
+- **comparables** (panel cohérent, millésimes harmonisés),
+- **stables** (fichiers exportés de manière identique à chaque exécution).
+
+L’objectif est simple : éviter que les conclusions dépendent de “bricolages” manuels ou de formats hétérogènes.
 
 ### Sources utilisées
 - **ARCEP 2024** — indicateurs QoS France (voix, data, latence, continuité, couverture)  
@@ -58,6 +65,8 @@ wb    = pd.read_csv("data/clean/4_1_wb_consolidated.csv")
 
 ### Harmonisation des noms de pays
 
+Objectif : éviter les erreurs de jointure et garantir que chaque pays du panel soit reconnu de manière identique dans les trois sources.
+
 ```python
 #| label: normalize_names_py
 #| eval: false
@@ -82,6 +91,11 @@ wb    = normalise_pays(wb)
 
 ### Restriction au panel comparatif
 
+Le panel est volontairement limité à :
+- la France,
+- les comparables UE,
+- quelques pays “leaders” pour situer l’écart de performance.
+
 ```python
 #| label: filter_panel_py
 #| eval: false
@@ -101,6 +115,8 @@ wb    = keep_panel(wb)
 ---
 
 ### Sélection du millésime le plus récent
+
+Règle : prendre l’année la plus récente par pays lorsque la source est multi-annuelle, afin d’éviter un biais “France 2024 vs autres 2021”.
 
 ```python
 #| label: latest_year_py
@@ -123,6 +139,8 @@ wb  = last_year_per_country(wb)
 
 ### Vérification structurelle (sanity check)
 
+Contrôle minimal : structure attendue, colonnes présentes, volumes cohérents.
+
 ```python
 #| label: sanity_py
 #| eval: false
@@ -142,33 +160,27 @@ sanity
 > **ITU** : `country`, `year`, `download_mbps_median`, `upload_mbps_median`, `latency_ms_median`  
 > **WB** : `country`, `year`, *(variables contextuelles optionnelles)*
 
-<!-- Sortie attendue de l'étape 2 : trois DataFrames alignés (`arcep`, `itu`, `wb`) prêts pour 3.3 -->
-<!-- ===== SECTION 3.2 : FIN ===== -->
+---
 
-
-<!-- ===== TRANSITION 3.2 → 3.3 ===== -->
-> **Résumé étape 2 — Ingestion validée**  
-> Les données ont été importées (Python), harmonisées et restreintes au panel d’analyse.  
-> ✅ Sources cohérentes · ✅ Panel comparatif prêt · ✅ Millésimes alignés  
-> ➡️ Prochaine étape : **normaliser les indicateurs** pour rendre les pays comparables.
+> **Sortie de cette étape**  
+> Trois tables alignées (`arcep`, `itu`, `wb`) prêtes à être rendues comparables statistiquement (normalisation) et à alimenter un score.
 
 ---
 
-<!-- ===== SECTION 3.3 : DÉBUT ===== -->
 ## Normalisation statistique (R)
 
 ### Objectif
-Standardiser les indicateurs afin d’éliminer les différences d’échelle (Mbps, %, ms, etc.) et permettre des **comparaisons fiables entre pays** avant la construction de l’indice QoS.
+Mettre les indicateurs sur une échelle comparable pour éviter un faux classement dû aux unités : Mbps, %, millisecondes…
 
-### Méthode utilisée
-La normalisation repose sur le **z-score** :
+### Méthode
+Normalisation en **z-score** :
 
 \[
 z = \frac{x - \mu}{\sigma}
 \]
 
-- ✅ Variables bénéfiques (plus grand = meilleur) → **z normalisé**
-- ✅ Variables de coût (plus petit = meilleur, ex : latence) → **z inversé**
+- variables “mieux quand c’est plus élevé” → z-score direct  
+- variables “mieux quand c’est plus faible” (latence, coupures) → z-score inversé
 
 ### Code R – Normalisation
 
@@ -198,23 +210,19 @@ df_panel <- df_panel |>
   )
 ```
 
-> **Sortie attendue étape 3 :** 
-colonnes normalisées `z_dl,z_ul,z_c4g,z_c5g,z_lat,z_css,z_cset,z_drop`  
-> Ces valeurs sont désormais **comparables entre pays**.
-
-<!-- ===== SECTION 3.3 : FIN ===== -->
+> **Sortie attendue** : colonnes normalisées comparables entre pays.
 
 ---
 
-<!-- ===== SECTION 3.4 : DÉBUT ===== -->
 ## Construction des scores QoS par familles (R)
 
 ### Objectif
-Regrouper les indicateurs normalisés en **familles cohérentes métier** pour réduire le bruit statistique et structurer l’indice QoS.
+Passer d’une liste d’indicateurs à une lecture structurée “pilotable” :  
+voix, couverture, débit, latence, continuité.
 
 | Famille | Indicateurs utilisés | Intérêt métier |
 |----------|----------------------|----------------|
-| **V – Voix** | z_cset, z_drop | Qualité appels |
+| **V – Voix** | z_cset, z_drop | Qualité d’appel |
 | **C – Couverture** | z_c4g, z_c5g | Accès réseau |
 | **D – Débit** | z_dl, z_ul | Performance data |
 | **L – Latence** | z_lat | Réactivité réseau |
@@ -236,17 +244,22 @@ df_panel <- df_panel |>
   )
 ```
 
-> **Sortie attendue étape 4 :** scores familiaux `S_V, S_C, S_D, S_L, S_CS` → base prête pour l’**indice composite** en 3.5.
+> **Sortie attendue** : 5 scores familiaux lisibles.
 
-<!-- ===== SECTION 3.4 : FIN ===== -->
+---
 
-<!-- ===== SECTION 3.5 : DÉBUT ===== -->
 ## Indice QoS composite (R)
 
 ### Objectif
-Combiner les 5 familles en un **indice unique** reflétant la qualité de service perçue, avec des **pondérations orientées QoE**.
+Produire un indicateur synthétique unique qui permet :
+- de situer la France dans le panel,
+- de mesurer l’écart avec des pays comparables,
+- et de relier le classement aux dimensions techniques.
 
-### Pondérations retenues (télécom)
+### Pondérations
+Les pondérations reflètent une logique “expérience utilisateur” :  
+débit / latence / voix comptent fortement pour l’usage réel, couverture et continuité stabilisent la lecture.
+
 - Voix (S_V) = **1.2**
 - Couverture (S_C) = **0.8**
 - Débit (S_D) = **1.2**
@@ -254,6 +267,7 @@ Combiner les 5 familles en un **indice unique** reflétant la qualité de servic
 - Continuité (S_CS) = **0.8**
 
 ### Code R — Calcul de l’indice et classement
+
 ```r
 #| label: composite_R
 #| eval: false
@@ -281,21 +295,21 @@ rang_france <- classement |>
 rang_france
 ```
 
-> **Sortie attendue étape 5 :** `df_panel$QoS_composite` + tableau `classement` (pays, score, rang).
-<!-- ===== SECTION 3.5 : FIN ===== -->
-
 ---
 
-<!-- ===== SECTION 3.6 : DÉBUT ===== -->
 ## Analyse de robustesse (R)
 
 ### Objectif
-Vérifier que le **rang France** et les conclusions **ne dépendent pas trop** des choix techniques :
-1) **Variation aléatoire des pondérations** (±20%)  
-2) **Leave-one-dimension-out** (on retire une famille à la fois)  
-3) **Normalisation alternative** (min–max au lieu de z-score)
+S’assurer que la position de la France et les conclusions ne reposent pas sur un choix fragile (poids, normalisation, structure de l’indice).
+
+Trois contrôles :
+
+1) variation des pondérations (±20%)  
+2) retrait d’une dimension à la fois (pour vérifier la dépendance)  
+3) normalisation alternative (min–max au lieu du z-score)
 
 ### Simulation pondérations ±20%
+
 ```r
 #| label: robust_weights_R
 #| eval: false
@@ -323,8 +337,6 @@ ranks <- numeric(n_sim)
 for(i in seq_len(n_sim)){
   mult <- runif(5, min = 0.8, max = 1.2)
   w_sim <- w0 * mult
-  # Optionnel : normaliser la somme ou la norme si souhaité
-  # w_sim <- w_sim / mean(w_sim) * mean(w0)  # préserve l’échelle moyenne
   names(w_sim) <- names(w0)
   ranks[i] <- simulate_rank(df_panel, w_sim)
 }
@@ -336,6 +348,7 @@ list(summary = summary_rang, quantiles = quantiles_rang)
 ```
 
 ### Leave-one-dimension-out
+
 ```r
 #| label: robust_looc_R
 #| eval: false
@@ -344,7 +357,7 @@ families <- c("V","C","D","L","CS")
 
 leave_one_out <- lapply(families, function(fam){
   w_looc <- c(V=1, C=1, D=1, L=1, CS=1)
-  w_looc[fam] <- 0  # on retire la famille "fam"
+  w_looc[fam] <- 0
   names(w_looc) <- c("V","C","D","L","CS")
   rank_looc <- with(df_panel, {
     QoS <- w_looc["V"]*S_V + w_looc["C"]*S_C + w_looc["D"]*S_D + w_looc["L"]*S_L + w_looc["CS"]*S_CS
@@ -359,6 +372,7 @@ do.call(rbind, leave_one_out)
 ```
 
 ### Normalisation alternative (min–max)
+
 ```r
 #| label: robust_minmax_R
 #| eval: false
@@ -373,14 +387,13 @@ minmax <- function(v){
 
 df_alt <- df_panel |>
   mutate(
-    # équivalents min–max des z-scores (en gardant le sens)
     mm_dl   = if ("debit_dl_mbps" %in% names(.)) minmax(debit_dl_mbps) else NA_real_,
     mm_ul   = if ("debit_ul_mbps" %in% names(.)) minmax(debit_ul_mbps) else NA_real_,
     mm_c4g  = if ("couv_4g_pop_pct" %in% names(.)) minmax(couv_4g_pop_pct) else NA_real_,
     mm_c5g  = if ("couv_5g_pop_pct" %in% names(.)) minmax(couv_5g_pop_pct) else NA_real_,
     mm_css  = if ("continuite_service_score" %in% names(.)) minmax(continuite_service_score) else NA_real_,
     mm_cset = if ("taux_etablissement_appel" %in% names(.)) minmax(taux_etablissement_appel) else NA_real_,
-    mm_lat  = if ("latence_ms" %in% names(.)) 1 - minmax(latence_ms) else NA_real_,        # inversion coût
+    mm_lat  = if ("latence_ms" %in% names(.)) 1 - minmax(latence_ms) else NA_real_,
     mm_drop = if ("taux_coupure_voix" %in% names(.)) 1 - minmax(taux_coupure_voix) else NA_real_
   ) |>
   mutate(
@@ -394,7 +407,6 @@ df_alt <- df_panel |>
     QoS_mm = 1.2*S_V_mm + 0.8*S_C_mm + 1.2*S_D_mm + 1.2*S_L_mm + 0.8*S_CS_mm
   )
 
-# Rang France avec min–max
 rk_fr_mm <- df_alt |>
   arrange(desc(QoS_mm)) |>
   mutate(rank = row_number()) |>
@@ -403,26 +415,19 @@ rk_fr_mm <- df_alt |>
 rk_fr_mm
 ```
 
-> **Sorties attendues étape 6 :**  
-> - Distribution des rangs France sous variations de poids (`ranks`)  
-> - Rangs France en leave-one-out (`family_dropped ~ france_rank`)  
-> - Rang France avec normalisation min–max (`rk_fr_mm`)
-<!-- ===== SECTION 3.6 : FIN ===== -->
-
 ---
 
-<!-- ===== SECTION 3.7 : DÉBUT ===== -->
 ## Contrôle qualité & export (R)
 
 ### Objectif
-Assurer la **fiabilité** des sorties et **sauvegarder** les artefacts pour audit et réutilisation.
-
-### Contrôles
-- Absence de `NA` sur l’indice final  
-- Cohérence des rangs  
-- Traçabilité des pondérations
+Produire des sorties réutilisables et auditables :
+- scores par pays,
+- rang,
+- pondérations,
+- artefacts stockés dans le dépôt.
 
 ### Code R — Checks + Export
+
 ```r
 #| label: qc_export_R
 #| eval: false
@@ -430,21 +435,17 @@ Assurer la **fiabilité** des sorties et **sauvegarder** les artefacts pour audi
 library(readr)
 library(dplyr)
 
-# Contrôles simples
 stopifnot("QoS_composite" %in% names(df_panel))
 stopifnot(all(is.finite(df_panel$QoS_composite)))
 
-# Export des scores pays + rang
 out_scores <- df_panel |>
   arrange(desc(QoS_composite)) |>
   mutate(rank = row_number()) |>
   select(country, S_V, S_C, S_D, S_L, S_CS, QoS_composite, rank)
 
-# Sauvegarde
 dir.create("outputs/p2", showWarnings = FALSE, recursive = TRUE)
 write_csv(out_scores, "outputs/p2/panel_qos_scored.csv")
 
-# Métadonnées (pondérations utilisées)
 meta <- data.frame(
   dimension = c("V","C","D","L","CS"),
   weight = c(1.2, 0.8, 1.2, 1.2, 0.8)
@@ -452,15 +453,12 @@ meta <- data.frame(
 write_csv(meta, "outputs/p2/qos_weights_meta.csv")
 ```
 
-> **Sorties attendues étape 7 :** 
-`outputs/p2/panel_qos_scored.csv`, `outputs/p2/qos_weights_meta.csv`
-<!-- ===== SECTION 3.7 : FIN ===== -->
-
 ---
 
-<!-- ===== CONCLUSION COURTE ===== -->
 ## Conclusion méthodologique (Section 3)
-La méthodologie standardise les indicateurs, structure la QoS en 5 familles et agrège via un indice composite **orienté QoE**. Les tests de robustesse montrent la **stabilité des conclusions** sous variations raisonnables. La Section 4 exploitera ces résultats pour **positionner la France** et **prioriser des leviers réseau**.
+
+Le pipeline produit un indicateur composite QoS lisible et comparable entre pays, structuré en 5 dimensions.  
+Les contrôles de robustesse vérifient que le classement et la position de la France restent stables lorsque l’on fait varier les hypothèses raisonnables (poids, normalisation, dimensions).  
+La section suivante exploite ces sorties pour **positionner la France**, mettre en évidence les écarts, puis traduire ces écarts en **priorités techniques**.
 
 [→ Passer à la Section 4 (Résultats)](Resultats.qmd)
-
