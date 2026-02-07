@@ -18,38 +18,58 @@ date: 2025-09-30
 
 ::: info
 **Positionnement de l’analyse**  
-Cette analyse compare la qualité de service mobile (QoS) de la France à un panel international afin d’identifier des leviers concrets d’amélioration de la qualité d’expérience (QoE) client.
+Cette analyse positionne la performance mobile française dans un référentiel international afin d’identifier des leviers concrets d’amélioration de la qualité d’expérience (QoE) et d’orienter les décisions d’optimisation réseau.
 :::
 
 ## Introduction
 
-La qualité de service mobile (QoS) est devenue un enjeu stratégique majeur pour la compétitivité numérique d’un pays. Au-delà de la couverture théorique, c’est désormais la **qualité d’expérience perçue par le client (QoE)** qui constitue l’indicateur de référence pour évaluer la performance réelle d’un réseau mobile. Dans ce contexte, il ne suffit plus de mesurer la qualité du réseau en interne : il faut la **positionner par rapport à un référentiel externe**, c’est-à-dire **comparer la France aux standards internationaux du secteur**.
+La qualité de service mobile n’est plus uniquement un indicateur technique : elle constitue aujourd’hui un **levier direct de compétitivité, d’investissement réseau et de satisfaction client**.
 
-Afin d’évaluer ce positionnement, cette étude s’appuie sur les données officielles de **l’ARCEP (France – 2024)** et les ensembles d’indicateurs internationaux issus de **l’ITU (Union Internationale des Télécommunications)** et de la **Banque Mondiale**. Elle mesure la performance mobile de la France sur cinq dimensions critiques de la QoS :
+Dans un environnement où les usages mobiles structurent l’économie numérique, la performance réelle d’un réseau se mesure désormais à la **qualité d’expérience vécue (QoE)** : capacité à établir un appel, naviguer rapidement, maintenir la continuité de service et garantir une performance stable en situation réelle d’usage.
 
-- **Qualité voix** (taux de coupure, taux de succès des appels),
+Dans ce contexte, analyser la performance nationale sans référentiel externe limite fortement la portée décisionnelle.  
+La question n’est plus seulement :
+
+- le réseau fonctionne-t-il ?
+- mais **fonctionne-t-il au niveau attendu pour un pays à forte maturité numérique ?**
+
+Cette étude s’appuie sur les données officielles de **l’ARCEP (France – 2024)**, de **l’ITU (Union Internationale des Télécommunications)** et de la **Banque Mondiale** afin de positionner la France sur cinq dimensions critiques de la QoS :
+
+- **Qualité voix** (taux de coupure, taux de succès des appels),  
 - **Couverture 4G/5G**,  
-- **Débit descendant et montant (Data)**,  
+- **Débits data (montant et descendant)**,  
 - **Latence**,  
-- **Continuité de service (usage réel)**.
+- **Continuité de service en usage réel**.
 
-Contrairement à un simple benchmarking descriptif, l’objectif de cette étude est **d’utiliser la comparaison internationale comme levier décisionnel**. L’enjeu n’est pas seulement de savoir **où se situe la France**, mais de **comprendre pourquoi** et **quelles actions prioriser** pour **renforcer la performance réseau perçue par l’utilisateur final**.
+L’objectif n’est pas uniquement descriptif.  
+Il s’agit d’utiliser la comparaison internationale comme **outil de pilotage**, pour :
 
-Ce projet s’inscrit dans la continuité du **Projet P1 – Analyse QoS France 2022**, qui avait mis en évidence des disparités de performance entre zones **urbaines, rurales et zones de transport**. Le **Projet P2** élargit cette perspective en apportant **une dimension comparative mondiale** permettant de :
+- objectiver le niveau réel de performance,
+- identifier les écarts critiques,
+- orienter les priorités d’optimisation réseau.
 
-✅ Positionner objectivement la France dans la compétition numérique internationale  
-✅ Identifier les indicateurs critiques influençant la **qualité perçue (QoE)**  
-✅ Prioriser des **axes d’amélioration réseau** exploitables par les opérateurs et le régulateur  
+Ce projet prolonge l’analyse **QoS France 2022**, qui avait mis en évidence des disparités territoriales entre zones urbaines, rurales et axes de transport.  
+La présente étude introduit une dimension supplémentaire : le **positionnement international**, indispensable pour éclairer les décisions d’investissement et de priorisation technique.
 
 ---
 
-**Questions clés**
+## Finalité décisionnelle
+
+Cette analyse vise à transformer des indicateurs techniques en **leviers d’aide à la décision** pour les acteurs réseau et régulation. Trois enjeux opérationnels structurent la démarche :
+
+- déterminer si la performance française est **alignée avec son niveau d’équipement numérique** ;
+- identifier les **dimensions techniques qui dégradent réellement l’expérience client** ;
+- orienter les **priorités d’optimisation réseau** à plus fort impact.
+
+---
+
+## Questions clés
 
 Cette analyse répond à trois questions structurantes :
 
-1. **Où se situe la France en 2024 en matière de qualité de service mobile face aux standards internationaux ?**
+1. **Où se situe la France en 2024 en matière de performance mobile face aux standards internationaux ?**
 2. **Quels indicateurs réseau influencent réellement la qualité perçue (QoE) par les utilisateurs ?**
-3. **Quelles priorités techniques recommander pour améliorer l’expérience mobile en France ?**
+3. **Quelles priorités techniques recommander pour améliorer l’expérience mobile et la continuité d’usage ?**
 
 ---
 
@@ -59,7 +79,7 @@ L’analyse s’appuie sur trois référentiels complémentaires :
 
 - **ARCEP 2024 (France)** : mesures QoS terrain (voix, data, couverture, latence, continuité) – granularité nationale / zones.  
 - **ITU / UIT** : indicateurs internationaux de performance et d’adoption mobile – comparaisons pays.  
-- **Banque Mondiale (World Bank)** : contextes structurels (infrastructure, usage, indicateurs macro utiles au cadrage).
+- **Banque Mondiale (World Bank)** : variables de contexte structurel (infrastructure, usage, indicateurs macro utiles au cadrage).
 
 ### Jeux de données utilisés (fichiers propres)
 
@@ -79,8 +99,9 @@ L’analyse s’appuie sur trois référentiels complémentaires :
 
 ### Clés & panel
 
-- **Clé** : `country` (ISO3 si dispo : `iso3c`)  
-- **Panel** : France + Allemagne + Royaume-Uni + Italie + Espagne + **top 5 mondiaux** (data/latence/couverture selon ITU)  
-- **Règle** : prendre l’**année la plus récente** par source (2024 si dispo ; 2023 pour certains indicateurs ITU).
+- **Clé** : `country` (ISO3 si disponible : `iso3c`)  
+- **Panel comparatif** : France + Allemagne + Royaume-Uni + Italie + Espagne + pays leaders internationaux (data, latence, couverture)  
+- **Règle de sélection** : utilisation de l’**année la plus récente disponible** par source.
 
+---
 [→ Passer à la Section 3 : Méthodologie](projet2_sections/Methodologie.qmd)
