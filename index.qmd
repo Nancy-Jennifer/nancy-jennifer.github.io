@@ -63,7 +63,7 @@ Quel que soit le domaine (Télécoms, People Analytics ou projets à impact soci
 - **Études de cas** : Télécoms (Qualité de service), People Analytics (performance & rétention).
 - **Livrables** : rapports clairs, visualisations interactives, recommandations opérationnelles.
 
-{=html}
+```{=html}
 <style>
 /* Cache tout bloc-titre résiduel */
 .quarto-title-block { display:none; }
@@ -96,18 +96,18 @@ Quel que soit le domaine (Télécoms, People Analytics ou projets à impact soci
 
 /* 2 lignes d'espace avant la bannière */
 .spacer-2lines{
-  height: calc(1.35em * 2);   /* ~ 2 lignes en fonction de la taille du texte */
+  height: calc(1.35em * 2);
 }
 
 /* ===== Bannière accueil — même format que les autres pages ===== */
 .hero-banner-home{
   width: 100%;
-  height: 340px;                           /* ajuste 280–380px si besoin */
-  background-image: url('/assets/people-analytics.jpg');  /* remplace si besoin */
+  height: 340px;
+  background-image: url('/assets/people-analytics.jpg');
   background-size: cover;
   background-position: center center;
-  margin-bottom: 24px;                     /* espace sous la bannière */
-  border-radius: 0;                        /* garder en plein-bord si souhaité */
+  margin-bottom: 24px;
+  border-radius: 0;
 }
 
 /* ===== Légende "Projets phares :" (gras, noir) ===== */
@@ -125,10 +125,10 @@ Quel que soit le domaine (Télécoms, People Analytics ou projets à impact soci
   margin: 4px 0 22px 0;
 }
 
-/* Pastilles-projets visibles par défaut (aucun survol requis) */
+/* Pastilles-projets visibles par défaut */
 .project-pill{
   display: inline-block;
-  background: #2E7D32;       /* vert pro */
+  background: #2E7D32;
   color: #fff !important;
   text-decoration: none !important;
   padding: 10px 14px;
@@ -156,3 +156,4 @@ Quel que soit le domaine (Télécoms, People Analytics ou projets à impact soci
   .home-tagline{ font-size: 1rem; }
 }
 </style>
+```
