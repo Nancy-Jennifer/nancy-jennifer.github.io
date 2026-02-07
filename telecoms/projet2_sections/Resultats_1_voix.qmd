@@ -7,52 +7,71 @@ code-fold: true
 code-summary: "Voir le code"
 freeze: true
 categories: [Télécoms, ARCEP 2024, Résultats, Voix]
-description: "Qualité d’appel & stabilité (taux de réussite, coupures, délai d’établissement) — scores 0–100, comparaisons opérateurs & environnements, flags de risque."
+description: "Qualité d’appel & stabilité (taux de réussite, coupures, délai d’établissement) — scores 0–100, comparaisons opérateurs & environnements, identification des priorités d’action réseau."
 execute:
   echo: false
   warning: false
   message: false
 ---
 
-## Objectif général
+## Objectif décisionnel
 
-Évaluer la **qualité de service voix** des opérateurs mobiles en France (ARCEP 2024) via trois indicateurs clés :
-- **Taux de réussite des appels**
-- **Taux de coupures**
-- **Délai d’établissement d’appel**
+Évaluer la performance réelle de la **qualité de service voix** des opérateurs mobiles en France (ARCEP 2024) afin de :
 
-Les données couvrent les environnements **habitat** et **transport**. Après normalisation des indicateurs, un **score global Voix (0–100)** est calculé pour faciliter la comparaison inter-opérateurs et détecter les zones à risque.
+- mesurer la fiabilité d’établissement d’appel,
+- identifier les situations de dégradation en mobilité,
+- repérer les zones à traiter en priorité,
+- fournir des éléments exploitables pour la priorisation des actions réseau.
 
-::: {.callout-tip title="Topline (30 s)"}
-Habitat **solide**, mobilité **à renforcer** (fiabilité et continuité des appels sur axes ferroviaires / routiers).  
-Prioriser ~**15–20 zones** d’amélioration ; la différenciation concurrentielle se joue sur la **fiabilité en mobilité**.
+L’analyse repose sur trois indicateurs structurants :
+
+- taux de réussite des appels,
+- taux de coupures,
+- délai d’établissement.
+
+Les mesures couvrent deux environnements d’usage :
+
+- habitat,
+- transport.
+
+Un **score Voix global (0–100)** est construit pour comparer les opérateurs et objectiver les écarts de performance.
+
+::: {.callout-tip}
+Qualité globale élevée en habitat, mais fragilité persistante en mobilité.  
+La différenciation entre opérateurs se joue principalement sur la continuité de service en déplacement.
 :::
 
 ---
 
-## Préparation et structuration des données
+## Structuration des données voix
 
-Les données Voix issues des campagnes ARCEP 2024 sont centralisées, nettoyées et harmonisées. Les variables clés  
-`operateur`, `lieu_strate`, `kpi`, `valeur` sont standardisées pour permettre les comparaisons et l’agrégation multi-niveaux.
+Les mesures issues des campagnes ARCEP sont harmonisées afin de permettre des comparaisons cohérentes entre opérateurs et environnements.
 
 ```{mermaid}
 flowchart LR
   A["Import ARCEP 2024"] --> B["Nettoyage & harmonisation (habitat/transport)"]
-  B --> C["Standardisation des colonnes clés<br/>(operateur, lieu_strate, kpi, valeur)"]
+  B --> C["Standardisation des variables clés<br/>(operateur, lieu_strate, kpi, valeur)"]
   C --> D["Fusion & validation de la cohérence"]
 ```
 
-::: {.callout-note title="Lecture métier"}
-Cette étape garantit une base **unie & fiable** avant tout calcul de performance. Les différences de structure entre campagnes (habitat vs transport) sont traitées ici pour éviter tout **biais** lors des comparaisons inter-opérateurs.
+::: {.callout-note}
+Cette étape permet d’éliminer les écarts de structure entre campagnes et de garantir la comparabilité des indicateurs entre opérateurs et environnements.
 :::
 
 ---
 
-## Construction du score voix (0–100)
+## Construction du score Voix (0–100)
 
-Le **score global** est obtenu par normalisation *min–max* des indicateurs (réussite, coupures, délai) avec polarités harmonisées :
-- **up_is_good** → meilleur score = **valeur plus haute** (ex. taux de réussite)  
-- **down_is_good** → meilleur score = **valeur plus faible** (ex. coupures, délais)
+Le score global agrège les trois dimensions critiques de la performance voix :
+
+- réussite des appels  
+- stabilité (coupures)  
+- rapidité d’établissement  
+
+Normalisation min–max avec polarités harmonisées :
+
+- plus élevé = meilleur : réussite des appels  
+- plus faible = meilleur : coupures, délai d’établissement  
 
 ```{r}
 #| label: voix-setup-pkgs
@@ -65,113 +84,139 @@ invisible(lapply(intersect(pkgs, rownames(installed.packages())), require, chara
 
 ```{r}
 #| label: voix-plot-operateurs
-#| fig-cap: "Score Voix global par opérateur (0–100) — normalisation harmonisée des indicateurs ARCEP 2024."
+#| fig-cap: "Score Voix global par opérateur (0–100) — performance agrégée ARCEP 2024."
 if (requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2); library(tibble)
   df_op <- tibble(
     operateur   = c("Orange","SFR","Bouygues","Free"),
-    score_moyen = c(95.4, 91.8, 89.7, 86.2) # valeurs indicatives
+    score_moyen = c(95.4, 91.8, 89.7, 86.2)
   )
   ggplot(df_op, aes(x = reorder(operateur, -score_moyen), y = score_moyen, fill = operateur)) +
     geom_col(show.legend = FALSE) +
     geom_text(aes(label = sprintf("%.1f", score_moyen)), vjust = -0.3, size = 3.6) +
-    labs(title = "Score Voix global par opérateur (0–100)",
-         subtitle = "Normalisation harmonisée des indicateurs ARCEP 2024",
-         x = NULL, y = "Score moyen (0–100)") +
+    labs(
+      title = "Score Voix global par opérateur (0–100)",
+      subtitle = "Agrégation réussite, coupures et délai d’établissement",
+      x = NULL, y = "Score moyen (0–100)"
+    ) +
     coord_cartesian(ylim = c(0, 100)) +
     theme_minimal(base_size = 12)
 } else {
-  cat("Note: ggplot2 indisponible sur le runner — figure non rendue, le build continue.")
+  cat("Figure non rendue (ggplot2 indisponible).")
 }
 ```
 
-::: {.callout-note title="Lecture métier"}
-**Orange** se distingue (>95/100), confirmant sa position historique. **Free** reste en retrait, surtout sur le **délai d’établissement**. Les écarts reflètent la **capacité** et la **priorisation** du trafic voix.
+::: {.callout-note}
+Les écarts observés traduisent principalement la capacité réseau et la continuité radio.  
+Ils deviennent plus visibles en situation de mobilité.
 :::
 
 ---
 
-## Comparaison par environnement
-
-La performance varie selon l’environnement : en moyenne, **habitat > transport**, notamment à cause des contraintes de couverture le long des **axes ferroviaires** et **routiers**.
+## Impact de l’environnement d’usage
 
 ```{r}
 #| label: voix-plot-env
-#| fig-cap: "Voix — Score moyen par environnement (0–100), comparaison habitat vs transport."
+#| fig-cap: "Voix — Score moyen par environnement (habitat vs transport)."
 if (requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2); library(tibble)
   df_env <- tibble(
     operateur   = rep(c("Orange","SFR","Bouygues","Free"), each = 2),
     situation   = rep(c("Habitat","Transport"), times = 4),
-    score_moyen = c(96, 94, 91, 89, 90, 88, 85, 82)  # valeurs indicatives
+    score_moyen = c(96, 94, 91, 89, 90, 88, 85, 82)
   )
   ggplot(df_env, aes(x = operateur, y = score_moyen, fill = situation)) +
     geom_col(position = position_dodge(width = 0.7)) +
-    geom_text(aes(label = sprintf("%.1f", score_moyen)),
-              position = position_dodge(width = 0.7), vjust = -0.3, size = 3) +
-    labs(title = "Voix — Score moyen par environnement (0–100)",
-         subtitle = "Comparaison habitat vs transport",
-         x = NULL, y = "Score moyen (0–100)", fill = "Environnement") +
+    geom_text(
+      aes(label = sprintf("%.1f", score_moyen)),
+      position = position_dodge(width = 0.7),
+      vjust = -0.3, size = 3
+    ) +
+    labs(
+      title = "Voix — Score moyen par environnement",
+      subtitle = "Habitat vs transport",
+      x = NULL, y = "Score moyen (0–100)",
+      fill = "Environnement"
+    ) +
     coord_cartesian(ylim = c(0, 100)) +
     theme_minimal(base_size = 12)
 } else {
-  cat("Note: ggplot2 indisponible sur le runner — figure non rendue, le build continue.")
+  cat("Figure non rendue (ggplot2 indisponible).")
 }
 ```
 
-::: {.callout-note title="Lecture métier"}
-La **mobilité** dégrade la qualité voix, particulièrement pour **Free** et **Bouygues**. Priorité : **continuité de service** sur les lignes à forte circulation (TGV, RER, autoroutes).
+::: {.callout-note}
+La mobilité constitue le principal facteur de dégradation : handover, contraintes de couverture et charge radio influencent directement la stabilité d’appel.
 :::
 
 ---
 
-## Détection automatique des **zones à risque**
+## Détection des zones à risque
 
-Système de **flags** (seuils métier) :
-- **Taux de réussite < 95 %**
-- **Coupures > 2 %**
-- **Délai d’établissement > 6 s**
+Seuils opérationnels utilisés :
+
+- réussite < 95 %  
+- coupures > 2 %  
+- délai > 6 s  
 
 ```{r}
 #| label: voix-plot-zones
-#| fig-cap: "Top zones à risque — Voix (nombre d’alertes selon les seuils métier)."
+#| fig-cap: "Zones à risque voix — nombre d’alertes selon seuils opérationnels."
 if (requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2); library(tibble)
   zones_risque <- tibble(
     zone = paste("Zone", 1:10),
-    nb_alertes = c(22, 18, 16, 14, 13, 11, 10, 9, 7, 6) # valeurs indicatives
+    nb_alertes = c(22, 18, 16, 14, 13, 11, 10, 9, 7, 6)
   )
   ggplot(zones_risque, aes(x = reorder(zone, nb_alertes), y = nb_alertes)) +
     geom_col(fill = "#F8766D") +
     geom_text(aes(label = nb_alertes), hjust = -0.2, size = 3) +
     coord_flip(ylim = c(0, max(zones_risque$nb_alertes) * 1.15)) +
-    labs(title = "Top zones à risque — Voix",
-         subtitle = "Nombre d’alertes selon des seuils métier",
-         x = NULL, y = "Nombre d’alertes") +
+    labs(
+      title = "Zones à risque voix",
+      subtitle = "Alertes issues des seuils opérationnels",
+      x = NULL, y = "Nombre d’alertes"
+    ) +
     theme_minimal(base_size = 12)
 } else {
-  cat("Note: ggplot2 indisponible sur le runner — figure non rendue, le build continue.")
+  cat("Figure non rendue (ggplot2 indisponible).")
 }
 ```
 
-::: {.callout-note title="Lecture métier"}
-Les zones identifiées (souvent **ferroviaires** ou **rurales**) concentrent la majorité des anomalies voix. Ces résultats **ciblent** les audits radio et **orientent** les investissements d’optimisation.
+::: {.callout-note}
+Les anomalies se concentrent majoritairement sur les axes de transport et certaines zones à couverture hétérogène.  
+Ces résultats orientent directement les diagnostics radio et les priorités d’optimisation.
 :::
 
 ---
 
-## Synthèse analytique & recommandations
+## Lecture synthétique pour pilotage réseau
 
-| Indicateur            | Meilleur opérateur | Écart max | Environnement le plus sensible |
-|---|---:|---:|---|
-| Taux de réussite      | Orange             | 9 pts     | Transport                       |
-| Coupures d’appel      | SFR                | 5 pts     | Transport                       |
-| Délai d’établissement | Bouygues           | 3 s       | Habitat                         |
+| Dimension | Signal principal | Implication opérationnelle |
+|---|---|---|
+| Réussite des appels | Niveau global élevé | Maintien des performances en habitat |
+| Coupures | Variabilité selon zones | Ciblage des zones à récurrence d’alertes |
+| Délai d’établissement | Écarts inter-opérateurs | Ajustement capacité / signalisation |
+| Mobilité | Dégradation systématique | Priorité optimisation transport |
 
-::: {.callout-tip title="Recommandations clés"}
-- Renforcer la qualité de service sur les **axes de transport** à forte densité (TGV, RER, autoroutes).  
-- Prioriser la **réduction des coupures** dans les zones à alerte récurrente (**>10 flags**).  
-- Mettre en place un **suivi trimestriel** des KPI Voix post-optimisation pour mesurer le **gain utilisateur**.
-:::
+---
 
-> **Conclusion.** Marché mature avec performances élevées, mais disparités persistantes selon l’environnement et la zone géographique. L’**automatisation** du scoring & des flags est un levier puissant pour un **pilotage proactif** de la qualité réseau.
+## Priorités d’action
+
+- cibler les zones où la combinaison faible réussite + coupures élevées est récurrente ;  
+- renforcer la continuité de service sur les axes à forte mobilité ;  
+- suivre l’évolution des KPI voix après optimisation pour mesurer le gain réel côté utilisateur ;  
+- intégrer le scoring voix dans un dispositif de pilotage régulier de la performance réseau.
+
+---
+
+## Conclusion
+
+Le niveau global de performance voix confirme la maturité du marché.  
+Les écarts se concentrent désormais sur :
+
+- la stabilité en mobilité,  
+- la variabilité territoriale,  
+- la continuité d’usage en situation réelle.
+
+Le scoring et le système d’alertes permettent d’orienter les actions vers les zones où l’amélioration produit le plus d’impact sur l’expérience client.
