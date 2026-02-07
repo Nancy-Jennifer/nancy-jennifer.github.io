@@ -1,7 +1,6 @@
-
 ---
-title: "Résultats – Benchmark international"
-subtitle: "France vs UE/OCDE/Monde — potentiel macro, structure d’usage et QoS réalisée"
+title: "Benchmark international — Macro, usages et QoS réalisée"
+subtitle: "France vs UE/OCDE/Monde : niveau attendu, contraintes d’usage, et écart à combler"
 format:
   html:
     toc: true
@@ -14,73 +13,83 @@ execute:
   message: false
 ---
 
-> **Objectif**  
-> Donner une vue **rigoureuse et directement exploitable** par un recruteur :  
-> 1) le **potentiel macro** (PIB/hab PPP), 2) la **structure d’usage** (urbanisation),  
-> 3) l’**alignement Macro → QoS réalisée** (z-scores, **pondérés par la volumétrie**).
+## Intention de cette section
+
+L’enjeu n’est pas de “faire un benchmark pour faire un benchmark”, mais de **mettre en tension** :
+
+1) le **niveau attendu** (potentiel macro),  
+2) les **contraintes d’usage** (structure du territoire et de la mobilité),  
+3) la **qualité réellement délivrée** (QoS/QoE),  
+afin d’identifier **où investir**, **quoi optimiser** et **comment piloter**.
 
 ---
 
-## 1) Potentiel macro (GDP per capita, PPP)
+## 1) Potentiel macro : le niveau de service attendu
 
-**Constat 2024**  
-La France se situe au niveau des économies avancées (≈ 61 k$ PPP par habitant), **alignée avec l’OCDE et au-dessus de la moyenne UE**.  
-Cela place la France **dans la zone qui “appelle” une QoS premium** (exigence client élevée, services critiques, marché mature).
+### Lecture
 
-**Lecture métier**  
-- Le **niveau de richesse** ne limite pas la qualité : au contraire, il **crée une attente**.  
-- Les **écarts de QoS** ne peuvent donc pas être justifiés par des contraintes macroéconomiques.
+En 2024, la France se situe dans la catégorie des économies avancées (≈ 61 k$ PPP / habitant), au niveau OCDE et au-dessus de nombreux pays européens.  
+Dans ce contexte, le marché “attend” une **qualité premium** : usage intensif, services critiques, exigences client élevées.
+
+### Implication décisionnelle
+
+- Le potentiel macro **n’explique pas** une QoS insuffisante.
+- Si un écart existe, il renvoie d’abord à des sujets d’**exécution réseau** (pilotage, optimisation, stabilité en mobilité / indoor).
 
 ![France vs UE — PIB par habitant (PPP, dernier millésime commun)](../../assets/images/telecoms/benchmark_gdp_ppp_fra_vs_eu.png){fig-cap="France vs UE — PIB/habitant (PPP ; année commune ≤ 2024)" width="100%"}
 
 ---
 
-## 2) Structure d’usage (Urbanisation)
+## 2) Structure d’usage : contraintes réelles de délivrance
 
-**Constat 2024**  
-La France est **plus urbaine** que la moyenne UE (~ 82 % vs ~ 76 %), proche OCDE.  
-Conséquences directes : **charge radio concentrée**, **contraintes indoor**, et **pics de trafic** dans les **transports** (métro/RER/TGV).
+### Urbanisation
 
-**Lecture métier**  
-- Les conditions d’ingénierie sont **plus exigeantes que la moyenne européenne**.  
-- La performance se joue sur l’**optimisation densité & indoor** (dimensionnement, interférences, DAS/small cells).
+La France est plus urbaine que la moyenne UE (~82 % vs ~76 %).  
+Conséquences terrain : trafic plus concentré, contraintes indoor plus fortes, et charge accrue sur les environnements de transport.
+
+### Implication décisionnelle
+
+- Le défi n’est pas seulement la couverture : c’est la **densité**, l’**indoor**, la **mobilité**.
+- Les gains durables se jouent sur : dimensionnement, interférences, continuité de service, et renfort ciblé (DAS/small cells).
 
 ![France vs UE — Urbanisation (% population, dernier millésime commun)](../../assets/images/telecoms/benchmark_urbanisation_fra_vs_eu.png){fig-cap="France vs UE — Urbanisation (% population ; année commune ≤ 2024)" width="100%"}
 
 ---
 
-## 3) Alignement Macro → QoS réalisée (France)
+## 3) Alignement : potentiel macro → QoS réalisée (France)
 
-**KPI clé – z-scores 2024 (pondérés volumétrie)**  
+### Indicateurs synthétiques (z-scores 2024, pondérés par la volumétrie)
+
 - **z_macro** : **+0.575**  
 - **z_QoS (pondérée)** : **−0.202**  
-- **Δ (QoS − Macro)** : **−0.777** → **QoS en-dessous du potentiel macro**.
+- **Δ (QoS − Macro)** : **−0.777** → qualité délivrée **en dessous** du niveau attendu.
 
-**Interprétation analytique**  
-- Le sujet n’est **pas** l’absence d’infrastructure, mais la **conversion du potentiel en qualité mesurée** (expérience data).  
-- Les **écarts résident essentiellement** en **zones denses & environnements contraints** (indoor/transport).
+### Lecture orientée décision
 
-**Lecture métier**  
-- **Prioriser** l’optimisation radio où la volumétrie est la plus différenciante.  
-- **Piloter par indicateurs combinés** (volumétrie × QoS) pour capter la réalité d’usage.
+- Le sujet n’est pas “manque de potentiel”, mais **conversion du potentiel en expérience stable**.
+- Les écarts se concentrent typiquement dans les environnements où la volumétrie et la variabilité sont maximales : **zones denses**, **indoor**, **corridors de transport**.
+
+### Implication de pilotage
+
+- privilégier une lecture **volumétrie × QoS** : c’est là que se trouve la valeur (et la douleur client),
+- suivre des KPI d’expérience “traffic-aware” pour mesurer les gains là où l’usage est réel.
 
 ![France — Heatmap z_macro / z_qos / Δ (pondération volumétrie, 2024)](../../assets/images/telecoms/benchmark_qos_heatmap_fr_2024.png){fig-cap="France — Heatmap z_macro / z_qos / Δ ; pondération volumétrie (2024)" width="100%"}
 
 ---
 
-## Points à retenir
+## Ce que ce benchmark permet de trancher
 
-- **Potentiel “premium”** confirmé (niveau PPP & maturité marché).  
-- **Contrainte d’usage** supérieure à la moyenne (urbanisation, indoor, transport).  
-- **Gap QoS vs potentiel** (Δ = −0.777) : **exécution & optimisation** plutôt que “capex indiscriminé”.  
-- **Focales ROI** : densité/indoor, corridors de transport, standardisation inter-opérateurs des KPI d’expérience.
+- La France a un **niveau attendu élevé** (potentiel macro et maturité).
+- Les contraintes d’usage sont **plus exigeantes** que la moyenne : densité, indoor, mobilité.
+- Le gap (Δ = −0.777) indique une priorité **optimisation & exécution** plutôt qu’un “capex indiscriminé”.
+- Les leviers à meilleur rendement sont : **densification ciblée**, **indoor**, **corridors de transport**, et **pilotage unifié des KPI d’expérience**.
 
 ---
 
-## Pistes d’action immédiates
+## Actions prioritaires proposées
 
-1. **Plans d’amélioration ciblés** sur **zones denses & transport** (RER/métro/TGV) avec objectifs mesurables.  
-2. **KPI inter-opérateurs harmonisés** (QoS pondérée par volumétrie) pour suivre **écarts résiduels**.  
-3. **Ingénierie indoor** (DAS/small cells) : réduire la variabilité **≥ 30 %** à horizon 12–18 mois.  
-4. **Boucles d’optimisation** “traffic-aware” (heures de pointe, micro-zones, priorisation 5G SA/LTE-A).  
-
+1. **Plans d’optimisation ciblés** sur zones denses + transport (métro/RER/TGV/autoroutes), avec objectifs KPI et calendrier.  
+2. **Pilotage par KPI harmonisés** orientés expérience (QoS pondérée par volumétrie) pour suivre l’écart résiduel.  
+3. **Programme indoor** : réduire la variabilité (dispersion) via DAS/small cells et réglages radio, avec mesure avant/après.  
+4. **Boucles d’optimisation “traffic-aware”** : heures pleines, micro-zones, suivi mensuel, et re-mesures systématiques.
