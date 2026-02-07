@@ -40,7 +40,7 @@ L’analyse met en évidence :
 ::: {.grid .cards cols=3}
 
 ::: {.card}
-[## 📞 Voix](Resultats_1_voix.qmd)
+[📞 Voix](Resultats_1_voix.qmd)
 
 **Fiabilité des appels et stabilité de la communication**
 
@@ -52,7 +52,7 @@ L’analyse met en évidence :
 :::
 
 ::: {.card}
-[## 📶 Data](Resultats_2_data.qmd)
+[📶 Data](Resultats_2_data.qmd)
 
 **Performance d’usage internet mobile**
 
@@ -64,7 +64,7 @@ L’analyse met en évidence :
 :::
 
 ::: {.card}
-[## 🌍 Benchmark international](Resultats_3_benchmark.qmd)
+[🌍 Benchmark international](Resultats_3_benchmark.qmd)
 
 **Positionnement de la France**
 
@@ -76,7 +76,7 @@ L’analyse met en évidence :
 :::
 
 ::: {.card}
-[## 🧠 Insights & actions prioritaires](Resultats_4_insights.qmd)
+[🧠 Insights & actions prioritaires](Resultats_4_insights.qmd)
 
 **Synthèse stratégique**
 
@@ -86,7 +86,7 @@ L’analyse met en évidence :
 :::
 
 ::: {.card}
-[## 🏁 Compétences démontrées](Resultats_5_competences.qmd)
+[🏁 Compétences démontrées](Resultats_5_competences.qmd)
 
 **Ce que prouve concrètement ce projet**
 
@@ -96,7 +96,7 @@ L’analyse met en évidence :
 :::
 
 ::: {.card}
-[## 🧪 Rapport technique](01_prepa_python.qmd)
+[🧪 Rapport technique](01_prepa_python.qmd)
 
 Pipeline analytique détaillé :
 
