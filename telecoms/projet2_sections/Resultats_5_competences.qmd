@@ -1,7 +1,6 @@
-
 ---
 title: "Compétences démontrées"
-subtitle: "Ce que ce projet prouve — côté technique & métier"
+subtitle: "Apports techniques, métier et exécution issus du projet"
 format:
   html:
     toc: true
@@ -9,18 +8,44 @@ format:
     number-sections: false
 ---
 
-## Technique (Data/Analytics)
-- Ingestion multi-sources (WDI/ITU/ARCEP) & normalisation robuste (année commune, patches WDI).
-- Consolidation **offline** et logique de **tolérance** (t_obs / t_obs−5) pour éviter les NA.
-- Indicateurs comparatifs (scores base 100, z-scores), **pondération par volumétrie** pour refléter l’usage réel.
-- Visualisations propres “recruteur-ready” (barres, lignes FRA vs UE, heatmap).
+## 1) Ingénierie data & analytique
 
-## Télécom (Domaine d'expertise)
-- Lecture QoS par contexte (urbain/rural/transport, indoor).
-- Traduction KPIs radio → **impacts clients** (débit/latence/couverture).
-- Priorisation ROI : axes densité, corridors de transport, harmonisation inter-opérateurs.
+- Structuration d’un pipeline multi-sources (ARCEP, ITU, Banque mondiale) avec harmonisation des millésimes et des nomenclatures.  
+- Nettoyage, consolidation et normalisation des indicateurs (z-scores, scores comparatifs base 100).  
+- Pondération par la volumétrie afin de refléter l’usage réel plutôt que des moyennes théoriques.  
+- Construction d’indicateurs synthétiques lisibles pour la décision (scores Voix/Data, écarts, zones à risque).  
+- Production de visualisations directement exploitables (comparaisons opérateurs, environnements, benchmark international).
 
-## Produit/Exécution
-- **Plan 90 jours** (quick wins) + **chantiers 6–18 mois** (structurants).
-- KPI de suivi actionnables (seuils, fréquences, sources) alignés UE/OCDE/ITU.
-- Storytelling métier clair, orienté décision.
+---
+
+## 2) Expertise télécom & lecture QoS
+
+- Analyse des performances selon les contextes d’usage : habitat, mobilité, indoor, zones denses.  
+- Interprétation des indicateurs radio et service (débit, latence, couverture, continuité) en termes d’expérience client.  
+- Identification des zones critiques et des facteurs de variabilité (transport, densité, dispersion radio).  
+- Priorisation des leviers techniques à fort impact : optimisation radio, densification ciblée, traitement des corridors de transport.  
+
+---
+
+## 3) Passage de l’analyse à la décision
+
+- Traduction des constats analytiques en actions concrètes (priorités d’optimisation, ciblage géographique, séquencement).  
+- Définition d’indicateurs de pilotage opérationnels (seuils, fréquences de suivi, sources de mesure).  
+- Structuration d’un plan d’exécution combinant actions rapides et chantiers structurants.  
+- Capacité à relier résultats techniques, impacts clients et arbitrages d’investissement.
+
+---
+
+## 4) Positionnement stratégique & benchmark
+
+- Mise en perspective des performances nationales avec des référentiels internationaux (UE, OCDE, ITU).  
+- Analyse du décalage entre potentiel structurel (équipement, maturité, urbanisation) et qualité mesurée.  
+- Lecture orientée performance : où concentrer les efforts pour maximiser le gain d’expérience utilisateur.
+
+---
+
+## 5) Communication analytique orientée décision
+
+- Restitution claire pour profils techniques et non techniques (réseau, produit, régulation, direction).  
+- Narration structurée : contexte → constats → implications → décisions possibles.  
+- Capacité à rendre comparables des résultats complexes et à soutenir une prise de décision rapide.
