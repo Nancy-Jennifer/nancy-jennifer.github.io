@@ -1,100 +1,102 @@
 ---
 title: "Analyse Attrition – IBM HR Analytics"
-subtitle: "Comprendre les déterminants du turnover des salariés"
+subtitle: "Identifier les déterminants du turnover des salariés"
 date: 2025-07-15
 ---
 
 `PEOPLE ANALYTICS`{.badge} `ATTRITION`{.badge} `IBM HR ANALYTICS`{.badge} `TURNOVER`{.badge} `RH & TALENTS`{.badge}
 
-Analyse exploratoire des facteurs de départ des salariés (attrition) à partir du dataset IBM HR Analytics, avec recommandations RH opérationnelles.
+Analyse exploratoire des facteurs associés aux départs volontaires des salariés à partir du dataset IBM HR Analytics, avec une lecture orientée décision RH et priorisation des leviers de rétention.
 
 **MOTS CLÉS**  
 IBM HR Analytics, People Analytics, Turnover, Attrition RH, Satisfaction au travail, Heures supplémentaires, Ancienneté, Distance domicile-travail, Rétention des talents
 
 ---
 
-## Contexte des départs volontaires en entreprise
+## Enjeu RH : comprendre et anticiper les départs volontaires
 
-Le départ volontaire de salariés représente un véritable **enjeu stratégique** pour les organisations, tant sur le plan humain qu’opérationnel.  
-Un **taux de turnover élevé** peut révéler :
+Le turnover représente un enjeu structurant pour les organisations, à la fois sur le plan humain, opérationnel et économique.  
+Un niveau élevé de départs volontaires peut révéler :
 
-- un climat social fragilisé,  
-- une insatisfaction professionnelle,  
-- un manque d’alignement entre les attentes des collaborateurs et les conditions proposées,  
-- ou encore une charge de travail mal répartie.
+- un désalignement entre attentes des collaborateurs et conditions de travail,  
+- des difficultés d’intégration ou de gestion de la charge,  
+- des tensions organisationnelles ou managériales,  
+- ou encore un déficit d’engagement durable.
 
-Au-delà des coûts liés au recrutement, à la formation et à la perte de compétences clés, ces départs affectent la **continuité des activités** et fragilisent le **capital humain** de l’entreprise.  
-Dans un environnement RH où le **bien-être au travail** et la **fidélisation des talents** sont devenus des priorités majeures, comprendre les facteurs qui poussent les salariés à quitter l’entreprise est devenu essentiel pour agir **de manière préventive**.
+Au-delà des coûts de recrutement et de formation, ces départs affectent la continuité des activités, la transmission des compétences et la stabilité des équipes.
+
+Comprendre les facteurs associés au départ devient donc un levier essentiel pour agir en amont et orienter les politiques RH vers la prévention plutôt que la réaction.
 
 ---
 
-## Objectif du projet
+## Objectif de l’analyse
 
-Ce projet vise à **identifier les déterminants des départs volontaires** à travers une analyse exploratoire approfondie d’un jeu de données RH simulé.  
-À partir des informations disponibles, l’objectif est de mettre en évidence les facteurs qui influencent significativement la décision de quitter l’entreprise, notamment :
+Cette analyse vise à identifier les variables les plus associées au départ volontaire des salariés à partir d’un jeu de données RH structuré.
 
-- l’âge,  
+Les dimensions étudiées incluent notamment :
+
 - l’ancienneté,  
 - la satisfaction au travail,  
-- les conditions et comportements au travail (heures supplémentaires, évolution, promotions),  
-- ainsi que certaines caractéristiques organisationnelles.
+- la charge de travail (heures supplémentaires),  
+- la distance domicile–travail,  
+- les caractéristiques organisationnelles et métiers.
 
-Cette démarche permet aux équipes RH de disposer d’enseignements concrets pour :
+L’objectif est de produire des enseignements utiles pour :
 
 - anticiper les situations à risque,  
-- renforcer les politiques de rétention,  
+- orienter les actions de rétention,  
 - améliorer l’expérience collaborateur,  
-- et favoriser une gestion plus durable du capital humain.
+- soutenir une gestion plus durable du capital humain.
 
 ---
 
 ## Jeu de données utilisé
 
-Pour cette analyse, nous utilisons le dataset RH simulé fourni par **IBM**, dans le cadre d’un cas d’étude en People Analytics.
+L’analyse repose sur le dataset RH simulé fourni par **IBM**, utilisé comme cas d’étude en People Analytics.
 
-Il s’agit d’un fichier tabulaire contenant les informations de **1 470 salariés**, avec **35 variables** couvrant plusieurs dimensions de la vie professionnelle.  
-Ce jeu de données, bien structuré pour un usage éducatif, est disponible sur Kaggle :  
-👉 *IBM HR Analytics Employee Attrition & Performance*.
+Il s’agit d’un fichier tabulaire comprenant **1 470 salariés** et **35 variables**, couvrant plusieurs dimensions de la vie professionnelle.
 
-### Les variables se répartissent en cinq grandes catégories :
+Dataset disponible sur Kaggle :  
+👉 *IBM HR Analytics Employee Attrition & Performance*
 
-- **Données démographiques** : âge, sexe, état civil  
+### Structuration des variables
+
+- **Données démographiques** : âge, sexe, situation familiale  
 - **Parcours professionnel** : poste, département, ancienneté, mobilité interne  
-- **Rémunération** : salaire mensuel, taux journalier, options d’achat d’actions  
-- **Engagement & bien-être** : satisfaction au travail, équilibre vie pro/perso, relation hiérarchique  
+- **Rémunération** : salaire mensuel, taux journalier, dispositifs d’actionnariat  
+- **Engagement & bien-être** : satisfaction, équilibre vie pro/perso, relation managériale  
 - **Comportements au travail** : heures supplémentaires, formations, promotions, changements de poste
 
 ---
 
-## À propos du renommage des variables
+## Harmonisation des variables
 
 ::: {.callout-note icon="info-circle"}
-Le dataset original est en anglais.  
-Dans un souci de clarté et de cohérence avec un public francophone, **les noms des variables ont été traduits en français** lors de la phase de préparation des données (ex. *Attrition* → **Départ**, *JobRole* → **Poste**, etc.).
+Le dataset d’origine étant en anglais, les variables ont été traduites en français afin de faciliter la lecture métier et l’interprétation RH.
 
-Ce renommage n’a **aucun impact sur les valeurs ou l’intégrité analytique** du jeu de données.
+Cette harmonisation n’altère ni les valeurs ni la structure analytique des données.
 :::
 
-La **variable cible** de ce projet est :
+La variable cible est :
 
-- **Départ** *(« Attrition » dans la version original)*  
-  → indique si un salarié a quitté volontairement l’entreprise (**Yes**) ou non (**No**).
+- **Départ** *(Attrition)*  
+→ indique si un salarié a quitté volontairement l’entreprise (**Yes**) ou non (**No**).
 
 ---
 
-## ▶️ Suite du projet
+## Structure de l’analyse
 
-L’analyse se structure autour de quatre étapes clés :
+L’étude s’organise en quatre étapes :
 
-1. **Exploration descriptive (EDA)** : profil global des collaborateurs, indicateurs sociaux, distribution des variables clés.  
-2. **Validation des 6 hypothèses People Analytics** : analyses ciblées, visualisations, patterns critiques.  
-3. **Insights actionnables** : identification des signaux forts liés au risque de départ.  
-4. **Recommandations RH** : leviers concrets pour réduire le turnover et renforcer la fidélisation.
+1. **Exploration descriptive (EDA)** : profil des collaborateurs et distribution des variables clés.  
+2. **Validation des hypothèses People Analytics** : identification des facteurs associés au départ.  
+3. **Insights décisionnels** : mise en évidence des signaux de risque et des populations exposées.  
+4. **Recommandations RH** : leviers opérationnels pour réduire le turnover et renforcer la rétention.
 
 ---
 
 #### Pages du projet
 
-- [**EDA & Résultats**](eda_resultats.qmd) — interprétations, visualisations, tests des hypothèses  
-- [**Synthèse & Recommandations RH**](synthese_reco.qmd) — axes prioritaires, risques, leviers opérationnels  
-- [**Notebook technique**](technique.qmd) — préparation des données, code Python, reproductibilité
+- [**EDA & Résultats**](eda_resultats.qmd) — analyses, visualisations et validation des hypothèses  
+- [**Synthèse & Recommandations RH**](synthese_reco.qmd) — priorités, leviers d’action et indicateurs de suivi  
+- [**Notebook technique**](technique.qmd) — préparation des données, code Python et reproductibilité
