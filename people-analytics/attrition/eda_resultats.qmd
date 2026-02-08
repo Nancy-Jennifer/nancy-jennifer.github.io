@@ -1,6 +1,6 @@
 ---
 title: "Résultats de l’Analyse Exploratoire (EDA)"
-subtitle: "Comprendre les déterminants du turnover des salariés"
+subtitle: "Identifier les facteurs associés au turnover des salariés"
 format:
   html:
     toc: true
@@ -13,41 +13,42 @@ execute:
   message: false
 ---
 
-# Synthèse exécutive
+# Synthèse décisionnelle
 
-Cette analyse exploratoire, réalisée à partir du dataset RH IBM (variables renommées en français), met en lumière **six facteurs clés associés aux départs volontaires** des salariés.  
+L’analyse exploratoire menée sur le dataset IBM HR (variables harmonisées en français) met en évidence **six facteurs fortement associés au départ volontaire des salariés**.
+
 Les résultats montrent que le turnover est principalement influencé par :
 
-- la **satisfaction au travail**,  
-- l’**ancienneté**,  
-- la **distance domicile–travail**,  
-- la **charge de travail** (heures supplémentaires),  
-- certaines **fonctions plus exposées**,  
-- des **effets croisés** entre ancienneté et heures supplémentaires.
+- la satisfaction au travail,  
+- l’ancienneté dans l’entreprise,  
+- la distance domicile–travail,  
+- la charge de travail (heures supplémentaires),  
+- certains métiers plus exposés,  
+- l’effet combiné entre ancienneté et surcharge.
 
-Ces éléments permettent d’identifier des **zones à risque**, d’améliorer la stratégie RH et de bâtir un plan de rétention ciblé.
+Ces éléments permettent d’identifier des **populations à risque**, de prioriser les actions RH et de structurer une stratégie de rétention ciblée.
 
 ---
 
 # Hypothèses testées
 
-**H1 — Les employés les moins satisfaits quittent davantage l’entreprise**  
+**H1 — Les salariés les moins satisfaits quittent davantage l’entreprise**  
 ➡️ Hypothèse confirmée
 
-**H2 — Les employés les plus récents partent davantage**  
+**H2 — Les salariés les plus récents partent davantage**  
 ➡️ Hypothèse fortement confirmée
 
-**H3 — Plus la distance est grande, plus les salariés quittent l’entreprise**  
-➡️ Hypothèse confirmée (relation positive nette)
+**H3 — Plus la distance domicile–travail est élevée, plus le risque de départ augmente**  
+➡️ Hypothèse confirmée
 
-**H4 — Les salariés faisant des heures supplémentaires quittent davantage**  
-➡️ Hypothèse confirmée avec un écart marqué
+**H4 — Les salariés effectuant des heures supplémentaires quittent davantage l’entreprise**  
+➡️ Hypothèse confirmée
 
-**H5 — L’entreprise affecte davantage les heures supplémentaires aux salariés récents**  
-➡️ Hypothèse partiellement confirmée (effet cumulatif surtout chez les salariés récents)
+**H5 — L’effet des heures supplémentaires est plus marqué chez les salariés récents**  
+➡️ Hypothèse partiellement confirmée
 
-**H6 — Certains postes présentent des taux de départ plus élevés que d'autres**  
-➡️ Hypothèse confirmée (zones à risque métier)
+**H6 — Certains métiers présentent des taux de départ plus élevés**  
+➡️ Hypothèse confirmée
 
 ---
 
@@ -68,14 +69,11 @@ Ces éléments permettent d’identifier des **zones à risque**, d’améliorer
 
 ![](/assets/images/people-analytics/attrition_hr/H1_satisfaction_taux_depart.png){fig-alt="Taux de départ selon la satisfaction au travail" width="80%"}
 
-**Résultat clé :**  
-Le taux de départ diminue fortement lorsque la satisfaction augmente : de ~**25 %** pour les salariés très insatisfaits à ~**10 %** pour les salariés très satisfaits.
+**Lecture analytique :**  
+Le risque de départ diminue fortement lorsque la satisfaction augmente.
 
-**Interprétation analytique :**  
-La satisfaction est un **déterminant majeur** de la rétention.
-
-**Insight métier :**  
-👉 Un baromètre régulier de la satisfaction permettrait de détecter les signaux faibles de désengagement.
+**Lecture RH :**  
+La satisfaction constitue un levier direct de rétention et un indicateur précoce du désengagement.
 
 ---
 
@@ -94,15 +92,11 @@ La satisfaction est un **déterminant majeur** de la rétention.
 
 ![](/assets/images/people-analytics/attrition_hr/H2_anciennete_taux_depart.png){fig-alt="Taux de départ selon l'ancienneté" width="80%"}
 
-**Résultat clé :**  
-Les salariés ayant moins d’un an d’ancienneté présentent un taux de départ proche de **38 %**, contre **5 %** au-delà de 5 ans.
+**Lecture analytique :**  
+Le turnover est concentré dans les premières années.
 
-**Interprétation analytique :**  
-Le turnover précoce est très marqué.  
-Il reflète souvent un **problème d’intégration, d’alignement initial ou d’attentes non satisfaites**.
-
-**Insight métier :**  
-👉 Prioriser les **12 premiers mois** comme période critique avec un parcours d’onboarding structuré.
+**Lecture RH :**  
+Les 12 premiers mois représentent une phase critique d’intégration et d’alignement.
 
 ---
 
@@ -122,14 +116,11 @@ Il reflète souvent un **problème d’intégration, d’alignement initial ou d
 
 ![](/assets/images/people-analytics/attrition_hr/H3_distance_taux_depart.png){fig-alt="Taux de départ selon la distance domicile-travail" width="80%"}
 
-**Résultat clé :**  
-La probabilité de départ grimpe jusqu’à **35 %** pour les salariés habitant à plus de 20 km.
+**Lecture analytique :**  
+Le risque de départ augmente avec l’éloignement.
 
-**Interprétation :**  
-La **fatigue liée aux trajets**, le coût du transport, la difficulté à concilier vie pro/vie perso peuvent peser sur la décision de rester.
-
-**Insight métier :**  
-👉 Le télétravail, les horaires flexibles ou des solutions de transport peuvent réduire cet impact.
+**Lecture RH :**  
+La contrainte géographique influence directement l’engagement et la fidélisation.
 
 ---
 
@@ -146,14 +137,11 @@ La **fatigue liée aux trajets**, le coût du transport, la difficulté à conci
 
 ![](/assets/images/people-analytics/attrition_hr/H4_heures_supp_taux_depart.png){fig-alt="Taux de départ selon la pratique des heures supplémentaires" width="80%"}
 
-**Résultat clé :**  
-Les salariés effectuant des heures supplémentaires quittent **3× plus souvent** l’entreprise (**30 %** vs **10 %**).
+**Lecture analytique :**  
+Les salariés en surcharge quittent significativement plus souvent l’entreprise.
 
-**Interprétation :**  
-La charge de travail excessive crée un **déséquilibre vie pro/perso** et un **épuisement latent**, en particulier si la reconnaissance n’est pas perçue comme suffisante.
-
-**Insight métier :**  
-👉 Mettre en place un **suivi régulier des heures supplémentaires** pour identifier les équipes en surcharge et ajuster la charge.
+**Lecture RH :**  
+La gestion de la charge de travail est un levier majeur de rétention.
 
 ---
 
@@ -176,22 +164,15 @@ La charge de travail excessive crée un **déséquilibre vie pro/perso** et un *
 
 ![](/assets/images/people-analytics/attrition_hr/H5_heures_supp_anciennete.png){fig-alt="Taux de départ selon l’ancienneté et les heures supplémentaires" width="80%"}
 
-**Résultat clé :**  
-L’effet des heures supplémentaires est **très marqué pour les salariés récents** (0–1 an, 1–3 ans), où le taux de départ dépasse **40–50 %** chez ceux qui font des heures sup.  
-Cet effet s’**atténue** ensuite, tout en restant supérieur à celui des salariés sans heures supplémentaires.
+**Lecture analytique :**  
+La surcharge a un impact beaucoup plus fort chez les collaborateurs récents.
 
-**Interprétation :**  
-On parle donc d’**hypothèse partiellement confirmée** :
-
-- oui, les heures supplémentaires renforcent le risque de départ,  
-- mais **surtout** pour les salariés les plus récents ; l’effet est moins prononcé chez les plus anciens.
-
-**Insight métier :**  
-👉 Limiter les heures supplémentaires pour les salariés en début de parcours et mettre en place un **accompagnement renforcé** (mentorat, points réguliers, répartition de la charge) sur les 2–3 premières années.
+**Lecture RH :**  
+La combinaison intégration × charge de travail constitue un facteur critique de départ.
 
 ---
 
-## Départs par poste / zones métier à risque (H6)
+## Départs par poste (H6)
 
 **Tableau de synthèse**
 
@@ -205,81 +186,44 @@ On parle donc d’**hypothèse partiellement confirmée** :
 
 ![](/assets/images/people-analytics/attrition_hr/H6_postes_taux_depart.png){fig-alt="Taux de départ par poste" width="80%"}
 
-**Résultat clé :**  
-Les postes les plus exposés sont :
+**Lecture analytique :**  
+Le turnover se concentre dans certains métiers.
 
-- **Ventes** : ~20,6 %  
-- **Ressources Humaines** : ~19 %  
-- **Recherche & Développement** : ~13,8 %
-
-**Interprétation :**  
-Le turnover est plus élevé dans les métiers :
-
-- **fortement exposés commercialement** (pression sur les résultats, objectifs),  
-- ou **au cœur des tensions organisationnelles** (RH).
-
-**Insight métier :**  
-👉 Mener des **entretiens qualitatifs** dans ces métiers pour comprendre les causes spécifiques :  
-conditions de travail, pression, reconnaissance, perspectives d’évolution.
+**Lecture RH :**  
+Les environnements à forte pression opérationnelle ou organisationnelle présentent un risque accru.
 
 ---
 
-# Insights transversaux
+# Enseignements transversaux
 
-**🔸 Les départs ne sont jamais causés par une seule variable** 
-
-Les facteurs se combinent :  
-
-- Charge de travail × ancienneté  
-- Distance × satisfaction  
-- Métier × stress ressenti
-
-**🔸 Les premiers mois sont critiques**  
-
-Ancienneté < 1 an = **principal point de fuite** de l’entreprise.
-
-**🔸 Le turnover est concentré dans certains métiers**  
-
-Ce qui indique une problématique **culturelle, managériale ou organisationnelle** dans certaines équipes.
-
-**🔸 La satisfaction est un levier puissant**  
-
-Améliorer la satisfaction au travail réduit mécaniquement le turnover, en particulier chez les salariés récents.
+- Le turnover résulte d’une **combinaison de facteurs**, rarement d’une cause unique.  
+- Les **premiers mois** constituent la période la plus sensible.  
+- La **charge de travail** agit comme accélérateur du départ, surtout chez les salariés récents.  
+- La **satisfaction au travail** reste le levier le plus structurant de rétention.  
 
 ---
 
-# Recommandations RH majeures
+# Orientations RH majeures
 
-**Recommandation 1 — Mettre en place un baromètre de satisfaction trimestriel**  
-
-→ Pour détecter précocement les signaux faibles de désengagement.
-
-**Recommandation 2 — Renforcer le parcours d’intégration (onboarding 12 mois)**  
-
-→ Pour réduire le turnover précoce et sécuriser les 0–1 an.
-
-**Recommandation 3 — Instaurer un suivi strict des heures supplémentaires**  
-
-→ Pour prévenir la surcharge chronique et l’épuisement.
-
-**Recommandation 4 — Offrir davantage de flexibilité pour les salariés éloignés**  
-
-→ Télétravail, plages horaires aménagées, réflexion sur la localisation des sites.
-
-**Recommandation 5 — Prioriser certains métiers dans la stratégie de rétention**  
-
-→ Accompagner plus fortement les équipes **Ventes** et **Ressources Humaines**.
-
-**Recommandation 6 — Construire un modèle prédictif du risque de départ**  
-
-→ Basé sur satisfaction, ancienneté, distance, charge de travail et poste, pour cibler les actions de rétention.
+- Structurer l’onboarding sur 12 mois  
+- Piloter les heures supplémentaires par équipe  
+- Mesurer régulièrement la satisfaction  
+- Adapter les conditions de travail pour les salariés éloignés  
+- Prioriser les métiers les plus exposés  
+- Préparer une approche prédictive du risque de départ
 
 ---
 
 # Conclusion
 
-Cette EDA met en évidence des schémas clairs permettant de comprendre les facteurs du turnover.  
-Les résultats serviront de base à une **modélisation prédictive** (Machine Learning) et à la mise en place d’un **plan de rétention structuré**, priorisant les populations les plus à risque et les leviers les plus efficaces.
+Cette EDA met en évidence des schémas robustes permettant de comprendre les mécanismes du turnover.
+
+Elle constitue une base solide pour :
+
+- structurer un plan de rétention,  
+- prioriser les populations à risque,  
+- orienter les décisions RH,  
+- préparer une modélisation prédictive encadrée.
 
 ---
 
@@ -288,4 +232,3 @@ Les résultats serviront de base à une **modélisation prédictive** (Machine L
 - ⬅️ [Retour à la page d’accueil du projet](../attrition/index.qmd)
 - 📌 [Voir la Synthèse & Recommandations RH](synthese_reco.qmd)
 - 🧠 [Accéder au Notebook technique (Python)](technique.qmd)
-
