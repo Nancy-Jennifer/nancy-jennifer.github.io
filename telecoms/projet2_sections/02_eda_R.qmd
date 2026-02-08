@@ -45,19 +45,22 @@ standardiser_operateur <- function(df) {
   df
 }
 
-# IMPORTANT :
-# 02_eda_R.qmd est dans "telecoms/projet2_sections"
-# Le dossier "data" est à la racine du repo
-# → remonter 2 niveaux
-base_dir <- "../.."
-
-# Check non-verbeux : confirme la présence de colonnes clés (sinon le rendu continue, mais tu sais quoi mapper)
+# Check non-verbeux : confirme la présence de colonnes clés (le rendu continue)
 assert_cols <- function(df, cols, tag="") {
   missing <- setdiff(cols, names(df))
   if (length(missing) > 0) {
     message(paste0("[", tag, "] colonnes manquantes : ", paste(missing, collapse=", ")))
   }
   invisible(TRUE)
+}
+
+# Lecture tolérante : si un fichier manque, on renvoie un tibble vide (et on loggue)
+read_if_exists <- function(path) {
+  if (!file.exists(path)) {
+    message("Fichier introuvable (skip): ", path)
+    return(tibble::tibble())
+  }
+  readr::read_csv(path, show_col_types = FALSE)
 }
 ```
 
@@ -79,48 +82,81 @@ Les données proviennent des campagnes de mesures terrain ARCEP. L’objectif ic
 ## Chargement des fichiers (ARCEP France)
 
 ```{r load-data-fr}
-globaux_clean <- read_csv(
-  file.path(base_dir, "data", "processed", "arcep_2024_indicateurs_globaux_clean.csv")
-) |>
-  clean_names_local()
+# 1) Détection robuste de la racine du repo (évite les erreurs en rendu Quarto / GitHub Actions)
+sentinel_rel <- file.path("data", "processed", "arcep_2024_indicateurs_globaux_clean.csv")
+candidates <- c(".", "..", "../..", "../../..", "../../../..")
 
-voix_hab <- read_csv(
-  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_voix_habitations_clean.csv")
-) |>
+base_dir <- candidates[file.exists(file.path(candidates, sentinel_rel))][1]
+
+if (is.na(base_dir)) {
+  stop(
+    "Impossible de localiser la racine du repo. Je ne trouve pas : ",
+    sentinel_rel,
+    " (testé depuis: ", paste(candidates, collapse = ", "), ")"
+  )
+}
+
+# 2) Chemins
+p_globaux <- file.path(base_dir, "data", "processed", "arcep_2024_indicateurs_globaux_clean.csv")
+p_voix_hab <- file.path(base_dir, "data", "processed", "2024_QoS_Metropole_voix_habitations_clean.csv")
+p_voix_trp <- file.path(base_dir, "data", "processed", "2024_QoS_Metropole_voix_transports_clean.csv")
+p_data_hab <- file.path(base_dir, "data", "processed", "2024_QoS_Metropole_data_habitations_clean.csv")
+
+# Data transports : on teste plusieurs variantes (selon l'export réel)
+data_trans_candidates <- c(
+  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_data_transports_clean.csv"),
+  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_data_transports_clean.csv.gz"),
+  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_data_transports_clean.csv.zip"),
+  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_data_transports_clean.csv.gz.zip")
+)
+p_data_trp <- data_trans_candidates[file.exists(data_trans_candidates)][1]
+if (is.na(p_data_trp)) {
+  message("Aucun fichier Data transports trouvé. Candidats testés : ",
+          paste(basename(data_trans_candidates), collapse = ", "))
+  p_data_trp <- data_trans_candidates[1]
+}
+
+# 3) Lecture
+globaux_clean <- read_if_exists(p_globaux) |> clean_names_local()
+
+voix_hab <- read_if_exists(p_voix_hab) |>
   clean_names_local() |>
   standardiser_operateur()
 
-voix_trans <- read_csv(
-  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_voix_transports_clean.csv")
-) |>
+voix_trans <- read_if_exists(p_voix_trp) |>
   clean_names_local() |>
   standardiser_operateur()
 
-data_hab <- read_csv(
-  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_data_habitations_clean.csv")
-) |>
+data_hab <- read_if_exists(p_data_hab) |>
   clean_names_local() |>
   standardiser_operateur()
 
-# Correction : fichier attendu côté pipeline Python = .csv (pas .gz.zip)
-data_trans <- read_csv(
-  file.path(base_dir, "data", "processed", "2024_QoS_Metropole_data_transports_clean.csv")
-) |>
+data_trans <- read_if_exists(p_data_trp) |>
   clean_names_local() |>
   standardiser_operateur()
 
-# Checks minimaux (si une colonne manque, un message s'affiche au build)
-assert_cols(voix_hab,  c("operator"), "voix_hab")
-assert_cols(voix_trans,c("operator"), "voix_trans")
-assert_cols(data_hab,  c("operator"), "data_hab")
-assert_cols(data_trans,c("operator"), "data_trans")
+# 4) Checks minimaux
+assert_cols(voix_hab,   c("operator"), "voix_hab")
+assert_cols(voix_trans, c("operator"), "voix_trans")
+assert_cols(data_hab,   c("operator"), "data_hab")
+assert_cols(data_trans, c("operator"), "data_trans")
+
+# 5) Log volumes (utile si un build replante)
+sizes <- c(
+  globaux_clean = nrow(globaux_clean),
+  voix_hab      = nrow(voix_hab),
+  voix_trans    = nrow(voix_trans),
+  data_hab      = nrow(data_hab),
+  data_trans    = nrow(data_trans)
+)
+message("Volumes chargés: ", paste(names(sizes), sizes, sep="=", collapse=" | "))
 ```
 
 ## Harmonisation des structures
 
 ```{r standardisation-operateurs}
 voix_all <- bind_rows(
-  voix_hab  |> mutate(context = "Habitations"),
+  voix_hab   |> mutate(context = "Habitations"),
   voix_trans |> mutate(context = "Transports")
 )
 
@@ -128,7 +164,7 @@ if (!"zone" %in% names(voix_all)) voix_all$zone <- "inconnue"
 voix_all$zone <- factor(voix_all$zone)
 
 data_all <- bind_rows(
-  data_hab  |> mutate(context = "Habitations"),
+  data_hab   |> mutate(context = "Habitations"),
   data_trans |> mutate(context = "Transports")
 )
 
@@ -143,29 +179,35 @@ data_all$zone <- factor(data_all$zone)
 ## Score Voix (0–100) par opérateur
 
 ```{r voix-kpi}
-# crspa : indicateur binaire (1 = appel réussi, 0 = échec) dans les exports ARCEP nettoyés
 assert_cols(voix_all, c("crspa","operator","zone","context"), "voix_all")
 
-voix_kpi_base <- voix_all |>
-  filter(!is.na(crspa)) |>
-  group_by(operator, zone, context) |>
-  summarise(
-    taux_appels_reussis = mean(crspa == 1, na.rm = TRUE),
-    n                   = n(),
-    .groups             = "drop"
-  )
+# Si crspa n'existe pas, on évite un plantage dur et on sort proprement
+if (!all(c("crspa","operator","zone","context") %in% names(voix_all))) {
+  message("Voix: colonnes indispensables absentes. Vérifie le mapping des exports ARCEP (crspa/operator/zone).")
+  voix_kpi_rescale <- tibble::tibble()
+  kpi_voix_synthese_operateur <- tibble::tibble()
+} else {
+  voix_kpi_base <- voix_all |>
+    filter(!is.na(crspa)) |>
+    group_by(operator, zone, context) |>
+    summarise(
+      taux_appels_reussis = mean(crspa == 1, na.rm = TRUE),
+      n                   = n(),
+      .groups             = "drop"
+    )
 
-voix_kpi_rescale <- voix_kpi_base |>
-  mutate(score_voix_100 = 100 * taux_appels_reussis)
+  voix_kpi_rescale <- voix_kpi_base |>
+    mutate(score_voix_100 = 100 * taux_appels_reussis)
 
-kpi_voix_synthese_operateur <- voix_kpi_rescale |>
-  group_by(operator) |>
-  summarise(
-    score_voix_moyen = weighted.mean(score_voix_100, w = n, na.rm = TRUE),
-    n_total          = sum(n),
-    .groups          = "drop"
-  ) |>
-  arrange(desc(score_voix_moyen))
+  kpi_voix_synthese_operateur <- voix_kpi_rescale |>
+    group_by(operator) |>
+    summarise(
+      score_voix_moyen = weighted.mean(score_voix_100, w = n, na.rm = TRUE),
+      n_total          = sum(n),
+      .groups          = "drop"
+    ) |>
+    arrange(desc(score_voix_moyen))
+}
 ```
 
 ```{r voix-kpi-table}
@@ -177,27 +219,35 @@ kpi_voix_synthese_operateur
 - vision directe de la fiabilité d’établissement d’appel par opérateur.
 
 ```{r voix-kpi-plot, fig.cap="Voix — score d’appels réussis (0–100) par opérateur, zone et contexte."}
-ggplot(voix_kpi_rescale,
-       aes(x = operator, y = score_voix_100, fill = operator)) +
-  geom_col() +
-  facet_grid(context ~ zone) +
-  scale_y_continuous(limits = c(0, 100)) +
-  labs(
-    title    = "Voix — score d’appels réussis (0–100)",
-    subtitle = "Lecture croisée opérateur × zone × contexte",
-    x        = NULL,
-    y        = "Score Voix (0–100)"
-  ) +
-  guides(fill = "none") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+if (nrow(voix_kpi_rescale) > 0) {
+  ggplot(voix_kpi_rescale,
+         aes(x = operator, y = score_voix_100, fill = operator)) +
+    geom_col() +
+    facet_grid(context ~ zone) +
+    scale_y_continuous(limits = c(0, 100)) +
+    labs(
+      title    = "Voix — score d’appels réussis (0–100)",
+      subtitle = "Lecture croisée opérateur × zone × contexte",
+      x        = NULL,
+      y        = "Score Voix (0–100)"
+    ) +
+    guides(fill = "none") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+} else {
+  message("Voix: pas de données exploitables pour tracer le graphique.")
+}
 ```
 
 ## Zones à risque (Voix)
 
 ```{r voix-zones-risque}
-voix_anomalies <- voix_kpi_rescale |>
-  filter(score_voix_100 < 95) |>
-  arrange(score_voix_100)
+if (nrow(voix_kpi_rescale) > 0) {
+  voix_anomalies <- voix_kpi_rescale |>
+    filter(score_voix_100 < 95) |>
+    arrange(score_voix_100)
+} else {
+  voix_anomalies <- tibble::tibble()
+}
 
 voix_anomalies
 ```
@@ -207,46 +257,54 @@ voix_anomalies
 - **90–95** : dégradation sensible (plan d’amélioration à 6–12 mois).
 
 ```{r voix-zones-risque-plot-hab, fig.cap="Voix — zones à risque (score < 95) — Habitations."}
-voix_anomalies_hab <- voix_anomalies |>
-  dplyr::filter(context == "Habitations")
+if (nrow(voix_anomalies) > 0) {
+  voix_anomalies_hab <- voix_anomalies |>
+    dplyr::filter(context == "Habitations")
 
-if (nrow(voix_anomalies_hab) > 0) {
-  ggplot(
-    voix_anomalies_hab,
-    aes(x = zone, y = score_voix_100, fill = operator)
-  ) +
-    geom_col(position = position_dodge(width = 0.7)) +
-    scale_y_continuous(limits = c(0, 100)) +
-    labs(
-      title    = "Voix — zones à risque (score < 95)",
-      subtitle = "Habitations — lecture par zone et opérateur",
-      x        = "Zone",
-      y        = "Score Voix (0–100)",
-      fill     = "Opérateur"
+  if (nrow(voix_anomalies_hab) > 0) {
+    ggplot(
+      voix_anomalies_hab,
+      aes(x = zone, y = score_voix_100, fill = operator)
     ) +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+      geom_col(position = position_dodge(width = 0.7)) +
+      scale_y_continuous(limits = c(0, 100)) +
+      labs(
+        title    = "Voix — zones à risque (score < 95)",
+        subtitle = "Habitations — lecture par zone et opérateur",
+        x        = "Zone",
+        y        = "Score Voix (0–100)",
+        fill     = "Opérateur"
+      ) +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  } else {
+    message("Voix: aucune zone à risque en Habitations selon le seuil <95.")
+  }
 }
 ```
 
 ```{r voix-zones-risque-plot-trans, fig.cap="Voix — zones à risque (score < 95) — Transports."}
-voix_anomalies_trans <- voix_anomalies |>
-  dplyr::filter(context == "Transports")
+if (nrow(voix_anomalies) > 0) {
+  voix_anomalies_trans <- voix_anomalies |>
+    dplyr::filter(context == "Transports")
 
-if (nrow(voix_anomalies_trans) > 0) {
-  ggplot(
-    voix_anomalies_trans,
-    aes(x = zone, y = score_voix_100, fill = operator)
-  ) +
-    geom_col(position = position_dodge(width = 0.7)) +
-    scale_y_continuous(limits = c(0, 100)) +
-    labs(
-      title    = "Voix — zones à risque (score < 95)",
-      subtitle = "Transports — lecture par zone et opérateur",
-      x        = "Zone",
-      y        = "Score Voix (0–100)",
-      fill     = "Opérateur"
+  if (nrow(voix_anomalies_trans) > 0) {
+    ggplot(
+      voix_anomalies_trans,
+      aes(x = zone, y = score_voix_100, fill = operator)
     ) +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+      geom_col(position = position_dodge(width = 0.7)) +
+      scale_y_continuous(limits = c(0, 100)) +
+      labs(
+        title    = "Voix — zones à risque (score < 95)",
+        subtitle = "Transports — lecture par zone et opérateur",
+        x        = "Zone",
+        y        = "Score Voix (0–100)",
+        fill     = "Opérateur"
+      ) +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  } else {
+    message("Voix: aucune zone à risque en Transports selon le seuil <95.")
+  }
 }
 ```
 
@@ -257,37 +315,44 @@ if (nrow(voix_anomalies_trans) > 0) {
 ## KPI Data par opérateur
 
 ```{r data-kpi}
-# loaded_in_less_10_secondes : binaire (1 = page chargée en < 10 s)
-# bitrate_dl : débit descendant (Mbit/s)
 assert_cols(data_all, c("loaded_in_less_10_secondes","bitrate_dl","operator","context"), "data_all")
 
-data_kpi_prov_operateur <- data_all |>
-  group_by(context, operator) |>
-  summarise(
-    part_pages_10s = mean(loaded_in_less_10_secondes == 1, na.rm = TRUE),
-    debit_dl_med   = median(bitrate_dl, na.rm = TRUE),
-    n              = n(),
-    .groups        = "drop"
-  ) |>
-  mutate(part_pages_10s_100 = 100 * part_pages_10s)
+if (!all(c("loaded_in_less_10_secondes","bitrate_dl","operator","context") %in% names(data_all))) {
+  message("Data: colonnes indispensables absentes. Vérifie le mapping (loaded_in_less_10_secondes/bitrate_dl/operator/context).")
+  data_kpi_prov_operateur <- tibble::tibble()
+} else {
+  data_kpi_prov_operateur <- data_all |>
+    group_by(context, operator) |>
+    summarise(
+      part_pages_10s = mean(loaded_in_less_10_secondes == 1, na.rm = TRUE),
+      debit_dl_med   = median(bitrate_dl, na.rm = TRUE),
+      n              = n(),
+      .groups        = "drop"
+    ) |>
+    mutate(part_pages_10s_100 = 100 * part_pages_10s)
+}
 
 data_kpi_prov_operateur
 ```
 
 ```{r data-kpi-plot, fig.cap="Internet mobile — part des pages chargées en moins de 10 s, par opérateur et contexte."}
-ggplot(data_kpi_prov_operateur,
-       aes(x = operator, y = part_pages_10s_100, fill = operator)) +
-  geom_col() +
-  facet_wrap(~ context) +
-  scale_y_continuous(limits = c(0, 100)) +
-  labs(
-    title    = "Internet mobile — pages chargées en moins de 10 s",
-    subtitle = "Par opérateur et par contexte",
-    x        = NULL,
-    y        = "Part des pages < 10 s (%)"
-  ) +
-  guides(fill = "none") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+if (nrow(data_kpi_prov_operateur) > 0) {
+  ggplot(data_kpi_prov_operateur,
+         aes(x = operator, y = part_pages_10s_100, fill = operator)) +
+    geom_col() +
+    facet_wrap(~ context) +
+    scale_y_continuous(limits = c(0, 100)) +
+    labs(
+      title    = "Internet mobile — pages chargées en moins de 10 s",
+      subtitle = "Par opérateur et par contexte",
+      x        = NULL,
+      y        = "Part des pages < 10 s (%)"
+    ) +
+    guides(fill = "none") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+} else {
+  message("Data: pas de données exploitables pour tracer le graphique.")
+}
 ```
 
 **Lecture opérationnelle :**
@@ -297,7 +362,7 @@ ggplot(data_kpi_prov_operateur,
 ## Performance Data par zone
 
 ```{r data-zone-kpi}
-if ("zone" %in% colnames(data_all)) {
+if (nrow(data_all) > 0 && "zone" %in% colnames(data_all) && all(c("loaded_in_less_10_secondes","bitrate_dl","operator","context") %in% names(data_all))) {
   data_env_probe_map <- data_all |>
     group_by(context, operator, zone) |>
     summarise(
@@ -331,6 +396,8 @@ if (!is.null(data_env_probe_map) && nrow(data_env_probe_map) > 0) {
         fill     = "Opérateur"
       ) +
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  } else {
+    message("Data: pas de zones exploitables (Habitations).")
   }
 }
 ```
@@ -352,6 +419,8 @@ if (!is.null(data_env_probe_map) && nrow(data_env_probe_map) > 0) {
         fill     = "Opérateur"
       ) +
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  } else {
+    message("Data: pas de zones exploitables (Transports).")
   }
 }
 ```
@@ -359,9 +428,13 @@ if (!is.null(data_env_probe_map) && nrow(data_env_probe_map) > 0) {
 ## Micro-diagnostics (entrée plan d’action)
 
 ```{r data-micro}
-data_micro_diag <- data_kpi_prov_operateur |>
-  arrange(part_pages_10s_100) |>
-  slice_head(n = 10)
+if (nrow(data_kpi_prov_operateur) > 0) {
+  data_micro_diag <- data_kpi_prov_operateur |>
+    arrange(part_pages_10s_100) |>
+    slice_head(n = 10)
+} else {
+  data_micro_diag <- tibble::tibble()
+}
 
 data_micro_diag
 ```
