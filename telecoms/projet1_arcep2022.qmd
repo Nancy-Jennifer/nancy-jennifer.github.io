@@ -24,15 +24,6 @@ Il marque le point de départ de mon approche : structurer l’analyse QoS et ap
 </span>
 </div>
 
-<div class="nav-inline">
-  <a href="index.qmd" class="btn btn-outline-secondary">⬅ Retour Télécoms</a>
-</div>
-
-<div style="background-color:#f2f5f7;padding:8px 15px;border-left:4px solid #0d6efd;border-radius:4px;margin-bottom:18px;">
-<b>Lecture décisionnelle — Synthèse orientée performance réseau</b><br>
-<small>Analyse structurée pour appuyer des arbitrages techniques, capacitaires et d’investissement.</small>
-</div>
-
 ---
 
 <div class="nav-inline">
