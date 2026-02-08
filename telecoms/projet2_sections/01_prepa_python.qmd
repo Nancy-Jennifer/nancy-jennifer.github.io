@@ -74,7 +74,7 @@ Ces jeux constituent la base utilisée dans :
 Chemins relatifs et structure indépendante de l’environnement local.  
 Le pipeline est directement exécutable sur GitHub Pages ou tout environnement collaboratif.
 
-### 2) Robustesse d’ingestion
+### Robustesse d’ingestion
 Gestion des variations :
 
 - encodage,
@@ -84,7 +84,7 @@ Gestion des variations :
 
 Objectif : éviter toute dépendance fragile aux fichiers sources.
 
-### 3) Normalisation
+### Normalisation
 Uniformisation systématique :
 
 - noms de colonnes,
