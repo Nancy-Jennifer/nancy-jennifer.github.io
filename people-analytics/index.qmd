@@ -1,37 +1,46 @@
 ---
-title: "PEOPLE ANALYTICS - TALENTS & PERFORMANCE"
+title: "PEOPLE ANALYTICS — TALENTS, ENGAGEMENT & PERFORMANCE"
 ---
 
 ![](../assets/images/people-analytics/banner_people_analytics.jpg){width="70%" fig-align="left" style="border-radius: 18px; margin-left: 0;"}
 
-**Spécialisée en People Analytics**, j’utilise la donnée RH pour éclairer des décisions clés : réduire le turnover, sécuriser l’onboarding, mieux cibler les plans de formation et améliorer l’engagement des collaborateurs.
+Spécialisée en **People Analytics**, j’utilise les données RH pour éclairer des décisions structurantes : réduire le turnover, sécuriser les phases d’intégration, mieux orienter les plans de développement des compétences et renforcer l’engagement des collaborateurs.
 
-En combinant **analyse statistique**, **visualisation de données** et **compréhension métier RH**, je transforme des fichiers RH bruts en **insights actionnables** pour les équipes Talent, RH et Direction :  
-quels profils quittent l’entreprise ? à quel moment du parcours salarié les risques augmentent-ils ? quels leviers activer en priorité pour stabiliser les équipes stratégiques ?
+En combinant **analyse statistique**, **visualisation** et **lecture métier RH**, je transforme des données RH opérationnelles en **enseignements décisionnels** pour les équipes Talent, RH et Direction :
 
-Dans cette section, chaque projet suit une approche rigoureuse :  
-**clarification de la question business → analyse exploratoire → tests d’hypothèses → recommandations RH opérationnelles**, accompagnées d’indicateurs de suivi (KPI) adaptés à la réalité terrain.
+- quels profils présentent un risque de départ,
+- à quel moment du parcours salarié ce risque augmente,
+- quels leviers activer en priorité pour stabiliser les équipes clés.
+
+Chaque projet suit une logique analytique structurée :  
+**question business → exploration → validation d’hypothèses → recommandations RH actionnables**, accompagnées d’indicateurs de suivi alignés avec la réalité terrain.
 
 ---
 
 ## Thématiques People Analytics
 
-- **Attrition & rétention des talents** : identifier les profils à risque et les zones critiques du parcours salarié  
-- **Onboarding & ancienneté** : comprendre ce qui se joue dans les premiers mois pour réduire les départs précoces  
-- **Engagement, satisfaction & bien-être** : relier les scores de satisfaction aux départs, à la performance et aux conditions de travail  
-- **Organisation du travail & charge** : analyser l’impact des **heures supplémentaires**, de la distance domicile–travail et des postes les plus exposés  
+- **Attrition & rétention** : identifier les populations à risque et les moments critiques du parcours collaborateur  
+- **Onboarding & ancienneté** : sécuriser les premiers mois et réduire les départs précoces  
+- **Engagement & satisfaction** : relier expérience collaborateur, performance et départs  
+- **Organisation du travail** : analyser l’impact des heures supplémentaires, de la distance domicile–travail et des postes les plus exposés  
 
 ---
 
 [📚 Voir les projets People Analytics](projets.qmd){.btn .btn-primary}
 
-## Projet phare
+## Projet principal
 
-### P1 – Comprendre les déterminants du turnover des salariés  
+### P1 — Comprendre les déterminants du turnover des salariés  
 **Analyse exploratoire basée sur le dataset IBM HR Attrition**
 
-Ce projet s’intéresse aux facteurs qui influencent le **départ des collaborateurs** : satisfaction au travail, ancienneté, distance domicile–travail, heures supplémentaires, type de poste, etc.  
-À partir de données RH anonymisées, j’explore plusieurs hypothèses métier (turnover des nouveaux arrivants, surcharge de travail, postes à risque…) pour proposer des **recommandations RH concrètes** : renforcer l’onboarding, mieux piloter les heures supplémentaires, cibler certains métiers critiques, suivre des KPI de rétention.
+Ce projet vise à identifier les facteurs associés au **départ volontaire des collaborateurs** : satisfaction au travail, ancienneté, distance domicile–travail, charge de travail, métiers exposés, etc.
+
+À partir de données RH anonymisées, l’analyse met en évidence des **patterns décisionnels** et propose des **leviers RH concrets** :
+
+- sécurisation de l’onboarding,
+- pilotage des heures supplémentaires,
+- priorisation de certains métiers,
+- suivi d’indicateurs de rétention.
 
 [🚀 Ouvrir le projet P1 – Analyse Attrition (IBM)](attrition/index.qmd){.btn .btn-success}
 
@@ -39,14 +48,15 @@ Ce projet s’intéresse aux facteurs qui influencent le **départ des collabora
 
 ## Explorations complémentaires & projets à venir
 
-Cette section regroupera progressivement d’autres analyses People Analytics menées selon la même logique méthodologique :  
-**question métier claire → analyse rigoureuse → recommandations concrètes**, en appui aux décisions RH.
+Cette section intégrera progressivement d’autres analyses People Analytics structurées autour d’une même logique :
 
-À terme, elle pourra inclure notamment :
+**question RH prioritaire → analyse rigoureuse → recommandations opérationnelles.**
 
-- Analyse **performance & formation** : liens entre investissement formation, performance et rétention  
-- Étude de la **mobilité interne** et des trajectoires de carrière  
-- Analyse d’un **baromètre d’engagement** et de satisfaction collaborateurs  
-- Explorations complémentaires à partir de données RH ouvertes ou simulées  
+Axes envisagés :
 
-*Ces projets viendront enrichir progressivement le portfolio, sans remettre en cause la hiérarchie des projets phares présentés ci-dessus.*
+- **Performance & formation** : impact des investissements formation sur la rétention et la performance  
+- **Mobilité interne** : compréhension des trajectoires professionnelles  
+- **Engagement collaborateurs** : analyse de baromètres internes  
+- **Exploration de données RH ouvertes** : cas d’usage complémentaires  
+
+*Ces projets enrichiront progressivement le portfolio tout en conservant la hiérarchie des projets structurants présentés ci-dessus.*
