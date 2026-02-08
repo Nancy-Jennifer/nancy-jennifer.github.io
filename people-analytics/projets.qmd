@@ -1,6 +1,6 @@
 ---
 title: "Projets People Analytics"
-subtitle: "Galerie des analyses RH : P1, P2 et suivants."
+subtitle: "Analyses RH orientées décision : attrition, engagement et performance"
 format:
   html:
     toc: true
@@ -14,7 +14,8 @@ execute:
 ---
 
 ::: {.callout-note}
-Accédez aux analyses People Analytics par projet. Chaque carte résume rapidement la problématique, l’approche et le livrable.
+Accédez aux analyses People Analytics par projet.  
+Chaque carte présente la problématique RH traitée, l’approche analytique retenue et les leviers opérationnels identifiés.
 :::
 
 ---
@@ -24,8 +25,15 @@ Accédez aux analyses People Analytics par projet. Chaque carte résume rapideme
 ### P1 — Comprendre les déterminants du turnover des salariés  
 *Analyse exploratoire — Dataset IBM HR Attrition*
 
-Facteurs analysés : satisfaction au travail, ancienneté, distance domicile–travail, heures supplémentaires, postes à risque.  
-Objectif : produire des **insights actionnables** et des **recommandations RH opérationnelles** pour réduire les départs volontaires.
+Cette analyse identifie les facteurs associés aux départs volontaires :
+
+- satisfaction au travail  
+- ancienneté  
+- distance domicile–travail  
+- charge de travail (heures supplémentaires)  
+- métiers plus exposés  
+
+Objectif : produire des **enseignements exploitables** et des **recommandations RH actionnables** pour renforcer la rétention des talents et prioriser les actions de fidélisation.
 
 [🚀 Ouvrir le projet P1 – Analyse Attrition (IBM)](attrition/index.qmd){.btn .btn-success}
 
@@ -33,10 +41,16 @@ Objectif : produire des **insights actionnables** et des **recommandations RH op
 
 ## Projets à venir
 
-### P2 — Projet People Analytics (à venir)
+### P2 — Analyse People Analytics (en préparation)
 
-Un second projet viendra compléter cette rubrique pour illustrer d’autres enjeux RH :  
-**performance & formation**, **mobilité interne**, ou **baromètre d’engagement**.
+Un second projet viendra compléter cette rubrique autour d’enjeux RH structurants :
+
+- **performance & formation**,  
+- **mobilité interne**,  
+- **engagement collaborateurs**.
+
+L’objectif est d’illustrer la continuité de l’approche People Analytics :  
+**analyse rigoureuse → lecture métier → décisions RH.**
 
 ---
 
