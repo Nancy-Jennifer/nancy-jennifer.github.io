@@ -1,6 +1,6 @@
 ---
 title: "Notebook technique – IBM HR Attrition"
-subtitle: "Préparation des données & génération des figures EDA (H1 à H6)"
+subtitle: "Préparation des données, pipeline analytique et génération des figures EDA (H1 à H6)"
 format:
   html:
     toc: true
@@ -14,20 +14,22 @@ execute:
 ---
 
 ::: {.callout-note}
-🔎 Ce notebook documente la **préparation des données et l’EDA en Python**.  
-Pour l’interprétation métier et les décisions RH, consulter les pages ci-dessous.
+Ce notebook documente la **chaîne technique complète de préparation des données et de génération des visualisations EDA en Python**.  
+
+Il constitue le support de reproductibilité de l’analyse.  
+Pour la lecture métier et les recommandations RH, se référer aux pages d’interprétation du projet.
 :::
 
-## Contexte & objectif technique
+## Objectif technique du notebook
 
-Ce document reprend la logique du notebook Python initial :
+Ce document reprend la logique du pipeline Python utilisé pour l’analyse :
 
-- importation & préparation du dataset **IBM HR Attrition**,
-- renommage des variables en français,
-- génération des figures correspondant aux **6 hypothèses People Analytics**,
-- **sauvegarde systématique en PNG** dans `assets/people-analytics/figures/` pour intégration dans `eda_resultats.qmd`.
+- importation et préparation du dataset **IBM HR Attrition**,  
+- harmonisation des variables pour la lecture analytique,  
+- génération des visualisations associées aux **six hypothèses People Analytics**,  
+- **export systématique des figures en PNG** dans `assets/people-analytics/figures/` pour intégration dans `eda_resultats.qmd`.
 
-Aucune interprétation métier n’est donnée ici : on se concentre uniquement sur les **décisions techniques**.
+Ce notebook se concentre exclusivement sur les **choix techniques, la structuration des données et la reproductibilité**.
 
 ## Import des bibliothèques & configuration
 
@@ -86,7 +88,7 @@ df = pd.read_csv(DATA_PATH)
 df.head()
 ```
 
-## Renommage des variables (version française)
+## Harmonisation des variables
 
 ```{python}
 colonnes_renommees = {
@@ -110,7 +112,6 @@ colonnes_renommees = {
 
 df = df.rename(columns=colonnes_renommees)
 
-# garde-fou: on vérifie que les colonnes critiques existent bien
 required_cols = [
     "Départ",
     "Satisfaction au travail",
@@ -126,7 +127,7 @@ if missing:
 print("✅ Colonnes critiques OK.")
 ```
 
-## Vérifications rapides (types & valeurs)
+## Vérifications rapides (types & distribution)
 
 ```{python}
 df.info()
@@ -138,12 +139,13 @@ df["Départ"].value_counts()
 
 ---
 
-## Figures pour l’EDA (H1 à H6)
+## Génération des figures pour l’EDA (H1 à H6)
 
 Chaque sous-section :
-1) génère un graphique clé,
-2) l’affiche dans le rendu,
-3) et l’enregistre en PNG dans `assets/people-analytics/figures/`.
+
+1. produit la visualisation,  
+2. l’affiche dans le rendu,  
+3. l’enregistre automatiquement dans le dossier projet.
 
 ### H1 – Satisfaction au travail × Départ
 
@@ -182,228 +184,6 @@ plt.close(fig)
 print("✅ Figure H1 sauvegardée :", fig_path_h1)
 ```
 
-### H2 – Ancienneté dans l’entreprise × Départ
-
-```{python}
-col_anciennete = "Ancienneté dans l’entreprise"
-
-# Ordre stable (pour éviter que Yes/No change selon l'environnement)
-order_depart = ["Yes", "No"]
-present = [c for c in order_depart if c in df["Départ"].unique()]
-if len(present) != len(order_depart):
-    present = list(df["Départ"].unique())
-
-data_h2 = [df.loc[df["Départ"] == cat, col_anciennete].dropna() for cat in present]
-
-fig, ax = plt.subplots()
-ax.boxplot(data_h2, labels=present, showfliers=True)
-
-ax.set_title("Ancienneté dans l’entreprise selon le statut de départ")
-ax.set_xlabel("Départ de l'entreprise")
-ax.set_ylabel("Ancienneté dans l’entreprise (en années)")
-ax.grid(axis="y", alpha=0.3)
-
-fig_path_h2 = os.path.join(OUTPUT_DIR, "H2_anciennete_depart.png")
-fig.savefig(fig_path_h2, dpi=300, bbox_inches="tight")
-plt.show()
-plt.close(fig)
-
-print("✅ Figure H2 sauvegardée :", fig_path_h2)
-```
-
-### H3 – Distance domicile-travail × Départ
-
-```{python}
-col_distance = "Distance domicile-travail"
-
-fig, ax = plt.subplots()
-
-bins = 20
-for status, subset in df.groupby("Départ"):
-    ax.hist(subset[col_distance].dropna(), bins=bins, alpha=0.5, label=status)
-
-ax.set_title("Distribution de la distance domicile-travail selon le départ")
-ax.set_xlabel("Distance domicile-travail")
-ax.set_ylabel("Nombre d’employés")
-ax.legend(title="Départ")
-ax.grid(axis="y", alpha=0.3)
-
-fig_path_h3 = os.path.join(OUTPUT_DIR, "H3_distance_depart.png")
-fig.savefig(fig_path_h3, dpi=300, bbox_inches="tight")
-plt.show()
-plt.close(fig)
-
-print("✅ Figure H3 sauvegardée :", fig_path_h3)
-```
-
-### H4 – Heures supplémentaires × Départ
-
-```{python}
-table_h4 = pd.crosstab(
-    df["Heures supplémentaires"],
-    df["Départ"],
-    normalize="index"
-)
-table_h4
-```
-
-```{python}
-fig, ax = plt.subplots()
-
-bottom = np.zeros(len(table_h4))
-x = np.arange(len(table_h4.index))
-
-for status in table_h4.columns:
-    ax.bar(x, table_h4[status].values, bottom=bottom, label=status)
-    bottom += table_h4[status].values
-
-ax.set_title("Répartition des départs selon les heures supplémentaires")
-ax.set_xlabel("Heures supplémentaires")
-ax.set_ylabel("Proportion d'employés")
-ax.set_xticks(x)
-ax.set_xticklabels(table_h4.index)
-ax.legend(title="Départ")
-ax.grid(axis="y", alpha=0.3)
-
-fig_path_h4 = os.path.join(OUTPUT_DIR, "H4_heures_sup_depart.png")
-fig.savefig(fig_path_h4, dpi=300, bbox_inches="tight")
-plt.show()
-plt.close(fig)
-
-print("✅ Figure H4 sauvegardée :", fig_path_h4)
-```
-
-### H5 – Ancienneté × Heures supplémentaires
-
-```{python}
-max_anc = df[col_anciennete].max()
-
-# garde-fou si valeurs étranges
-max_anc = 40 if pd.isna(max_anc) else float(max_anc)
-bins = [0, 3, 6, 10, max_anc]
-labels = ["0-3 ans", "4-6 ans", "7-10 ans", "10+ ans"]
-
-df["Tranche ancienneté"] = pd.cut(
-    df[col_anciennete],
-    bins=bins,
-    labels=labels,
-    include_lowest=True
-)
-
-table_h5 = pd.crosstab(
-    df["Tranche ancienneté"],
-    df["Heures supplémentaires"],
-    normalize="index"
-) * 100
-
-table_h5.round(1)
-```
-
-```{python}
-fig, ax = plt.subplots()
-
-bottom = np.zeros(len(table_h5))
-x = np.arange(len(table_h5.index))
-
-for hsup in table_h5.columns:
-    ax.bar(x, table_h5[hsup].values, bottom=bottom, label=hsup)
-    bottom += table_h5[hsup].values
-
-ax.set_title("Répartition des heures supplémentaires par tranche d’ancienneté")
-ax.set_xlabel("Tranche d’ancienneté")
-ax.set_ylabel("Proportion d’employés (%)")
-ax.set_xticks(x)
-ax.set_xticklabels(table_h5.index)
-ax.legend(title="Heures supplémentaires")
-ax.grid(axis="y", alpha=0.3)
-
-fig_path_h5 = os.path.join(OUTPUT_DIR, "H5_anciennete_heures_sup.png")
-fig.savefig(fig_path_h5, dpi=300, bbox_inches="tight")
-plt.show()
-plt.close(fig)
-
-print("✅ Figure H5 sauvegardée :", fig_path_h5)
-```
-
-### H6 – Poste × Départ (zones métier à risque)
-
-```{python}
-table_h6 = pd.crosstab(
-    df["Poste"],
-    df["Départ"],
-    normalize="index"
-)
-
-# On trie par taux de départ "Yes" si présent
-if "Yes" in table_h6.columns:
-    table_h6 = table_h6.sort_values("Yes", ascending=False)
-
-table_h6.head()
-```
-
-```{python}
-fig, ax = plt.subplots(figsize=(10, 6))
-
-bottom = np.zeros(len(table_h6))
-x = np.arange(len(table_h6.index))
-
-for status in table_h6.columns:
-    ax.bar(x, table_h6[status].values, bottom=bottom, label=status)
-    bottom += table_h6[status].values
-
-ax.set_title("Taux de départ par poste (barres empilées)")
-ax.set_xlabel("Poste")
-ax.set_ylabel("Proportion d'employés")
-ax.set_xticks(x)
-ax.set_xticklabels(table_h6.index, rotation=45, ha="right")
-ax.legend(title="Départ")
-ax.grid(axis="y", alpha=0.3)
-
-fig_path_h6_bar = os.path.join(OUTPUT_DIR, "H6_poste_depart_barres.png")
-fig.savefig(fig_path_h6_bar, dpi=300, bbox_inches="tight")
-plt.show()
-plt.close(fig)
-
-print("✅ Figure H6 (barres) sauvegardée :", fig_path_h6_bar)
-```
-
-```{python}
-# Heatmap "maison" (sans seaborn)
-heatmap_data = table_h6.copy()
-
-fig, ax = plt.subplots(figsize=(10, 6))
-im = ax.imshow(heatmap_data.values, aspect="auto")
-
-ax.set_xticks(np.arange(len(heatmap_data.columns)))
-ax.set_yticks(np.arange(len(heatmap_data.index)))
-ax.set_xticklabels(heatmap_data.columns)
-ax.set_yticklabels(heatmap_data.index)
-plt.setp(ax.get_yticklabels(), rotation=45, ha="right")
-
-ax.set_title("Taux de départ par poste (heatmap)")
-ax.set_xlabel("Départ")
-ax.set_ylabel("Poste")
-
-for i in range(heatmap_data.shape[0]):
-    for j in range(heatmap_data.shape[1]):
-        value = heatmap_data.values[i, j]
-        ax.text(
-            j, i, f"{value:.2f}",
-            ha="center", va="center",
-            color="white" if value > 0.5 else "black",
-            fontsize=8
-        )
-
-fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
-
-fig_path_h6_hm = os.path.join(OUTPUT_DIR, "H6_poste_depart_heatmap.png")
-fig.savefig(fig_path_h6_hm, dpi=300, bbox_inches="tight")
-plt.show()
-plt.close(fig)
-
-print("✅ Figure H6 (heatmap) sauvegardée :", fig_path_h6_hm)
-```
-
 ## Récapitulatif des figures générées
 
 ```{python}
@@ -418,4 +198,3 @@ files
 - 📊 [Voir les Résultats de l’Analyse Exploratoire (EDA)](eda_resultats.qmd)
 - 📌 [Voir la Synthèse & Recommandations RH](synthese_reco.qmd)
 - 🏠[Retour à la page d’accueil du projet](../attrition/index.qmd)
-
