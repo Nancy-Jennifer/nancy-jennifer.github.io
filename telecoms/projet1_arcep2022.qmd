@@ -19,7 +19,8 @@ keywords: ["ARCEP", "Qualité de service", "Voix", "SMS", "Data", "Réseaux mobi
 
 <div style="background-color:#f8d7da;padding:12px 15px;border-left:4px solid #721c24;border-radius:4px;margin-bottom:18px;">
 <span style="color:#0d1b4d;font-weight:bold;">
-Première analyse complète menée sur données ARCEP réelles, structurée pour transformer des indicateurs techniques QoS en priorités d’action réseau et en leviers d’amélioration de l’expérience client.
+Premier projet réalisé après certification, basé sur des données ARCEP réelles.
+Il marque le point de départ de mon approche : structurer l’analyse QoS et apprendre à traduire des constats techniques en orientations utiles pour le pilotage réseau et l’expérience client.
 </span>
 </div>
 
