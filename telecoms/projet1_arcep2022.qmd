@@ -1,6 +1,6 @@
 ---
-title: "Analyse de la QoS Télécom en France Métropolitaine – Scoring Voix/SMS/Data – ARCEP 2022"
-description: "Analyse comparative QoS voix/SMS/data, détection d’anomalies et recommandations opérationnelles alignées avec les standards internationaux."
+title: "Performance QoS mobile en France – Scoring Voix/SMS/Data et priorisation des actions réseau (ARCEP 2022)"
+description: "Analyse comparative des performances voix/SMS/data, identification des zones critiques et recommandations d’optimisation réseau orientées impact client et performance opérateur."
 format:
   html:
     toc: true
@@ -19,8 +19,7 @@ keywords: ["ARCEP", "Qualité de service", "Voix", "SMS", "Data", "Réseaux mobi
 
 <div style="background-color:#f8d7da;padding:12px 15px;border-left:4px solid #721c24;border-radius:4px;margin-bottom:18px;">
 <span style="color:#0d1b4d;font-weight:bold;">
-Premier projet autonome post-certification, où j’ai manipulé des données ARCEP réelles.  
-Avec le recul, je ne changerais pas l’analyse, mais j’ai appris à rendre visibles les hypothèses et à orienter rapidement vers la décision.
+Première analyse complète menée sur données ARCEP réelles, structurée pour transformer des indicateurs techniques QoS en priorités d’action réseau et en leviers d’amélioration de l’expérience client.
 </span>
 </div>
 
@@ -29,8 +28,8 @@ Avec le recul, je ne changerais pas l’analyse, mais j’ai appris à rendre vi
 </div>
 
 <div style="background-color:#f2f5f7;padding:8px 15px;border-left:4px solid #0d6efd;border-radius:4px;margin-bottom:18px;">
-<b>Version professionnelle — Synthèse + impact métier</b><br>
-<small>Analyse structurée et orientée résultats, adaptée à un public décisionnel.</small>
+<b>Lecture décisionnelle — Synthèse orientée performance réseau</b><br>
+<small>Analyse structurée pour appuyer des arbitrages techniques, capacitaires et d’investissement.</small>
 </div>
 
 ---
@@ -40,89 +39,102 @@ Avec le recul, je ne changerais pas l’analyse, mais j’ai appris à rendre vi
 </div>
 
 <div style="background-color:#f2f5f7;padding:8px 15px;border-left:4px solid #0d6efd;border-radius:4px;margin-bottom:18px;">
-<b>Version professionnelle — Synthèse + impact métier</b><br>
-<small>Analyse structurée et orientée résultats, adaptée à un public décisionnel.</small>
+<b>Lecture décisionnelle — Synthèse orientée performance réseau</b><br>
+<small>Analyse structurée pour appuyer des arbitrages techniques, capacitaires et d’investissement.</small>
 </div>
 
-## Contexte & enjeux
-Dans un marché mature où l’**expérience client** est un différenciateur décisif, la **Qualité de Service (QoS)** des réseaux mobiles conditionne la satisfaction et la fidélisation. À partir des mesures ARCEP 2022, nous **comparons la performance voix/SMS/data des opérateurs** (zones d’habitation & axes de transport) pour **prioriser les actions d’amélioration**.
+## Enjeu réseau & expérience client
 
-**Objectif** : traduire des **constats techniques** en **recommandations métier** exploitables (opérateurs, DSI, régulateur, décideurs publics).
+Sur un marché mobile mature, la qualité de service devient un levier direct de différenciation, de satisfaction et de rétention.  
+L’analyse des mesures ARCEP 2022 permet d’évaluer la performance comparée voix/SMS/data des opérateurs et d’identifier les zones où des actions techniques ont un impact immédiat sur l’expérience utilisateur.
 
-## Données & périmètre
-- **Source** : ARCEP — campagne de mesures **2022**, France métropolitaine (voix, SMS, data).
-- **Unités d’observation** : points de mesure géolocalisés (zones d’habitation, axes de transport).
-- **Granularité analytique** : opérateur × zone (urbain, péri-urbain, rural, transport).
-- **Variables clés** :
-  - **Voix** : taux de réussite, durée d’établissement, qualité perçue (MOS)
-  - **SMS** : taux d’envoi réussi, délai d’acheminement
-  - **Data** : débits descendant/montant, temps de chargement/latence
+**Finalité opérationnelle :** transformer des écarts de performance QoS en décisions concrètes d’optimisation réseau, de priorisation des investissements et de pilotage de la qualité perçue.
 
-> _Garantie de traçabilité_ : Data dictionary, contrôles qualité (valeurs manquantes, doublons, cohérence géographique), journal de nettoyage.
+## Données & périmètre d’analyse
 
-## Méthodologie (S2/T2)
-1. **Nettoyage & audit** : gestion des valeurs extrêmes, harmonisation des libellés opérateurs, vérification géo.
-2. **Standardisation** : normalisation des indicateurs par zone et contexte d’usage.
-3. **Scoring QoS** : pondération multi-critères (voix/SMS/data) + seuils d’alerte (zones à risque).
-4. **Comparaison inter-opérateurs** : médianes/quantiles + tests de robustesse (variabilité intra-zone).
-5. **Cartographie** : signalement des **points faibles structurels** (rural, axes ferroviaires, tunnels).
-6. **Synthèse métier** : hiérarchisation des priorités d’investissement & quick wins.
+- **Source** : campagne nationale ARCEP 2022 – France métropolitaine  
+- **Observations** : points de mesure géolocalisés (zones d’habitation, axes de transport)
+- **Niveau d’analyse** : opérateur × typologie de zone (urbain, péri-urbain, rural, transport)
+- **Indicateurs clés :**
+  - **Voix** : taux de réussite, délai d’établissement, qualité perçue (MOS)
+  - **SMS** : taux de délivrance, délai d’acheminement
+  - **Data** : débits descendant/montant, temps de chargement, latence
+
+> _Traçabilité et fiabilité_ : dictionnaire de données, contrôles de cohérence, gestion des valeurs manquantes et vérification géographique.
+
+## Approche analytique & logique de scoring
+
+1. **Audit des données** : contrôle qualité, traitement des valeurs extrêmes, harmonisation des opérateurs.
+2. **Normalisation des indicateurs** : comparaison équitable entre zones et contextes d’usage.
+3. **Scoring QoS global** : agrégation voix/SMS/data avec seuils d’alerte pour identifier les zones dégradées.
+4. **Comparaison inter-opérateurs** : analyse médiane et dispersion pour mesurer la régularité.
+5. **Analyse territoriale** : localisation des fragilités structurelles (rural, transport, zones denses).
+6. **Traduction métier** : hiérarchisation des priorités techniques et des actions correctives.
 
 ::: {.callout-tip}
-**Lecture PRO** : le scoring privilégie la **régularité** et la **stabilité** (expérience perçue) plutôt que des pics de performance ponctuels.
+**Lecture opérationnelle :** la performance durable repose davantage sur la stabilité de service que sur des pics ponctuels de débit ou de réussite.
 :::
 
-## Résultats clés (exemples structurés)
-- **Voix (zones d’habitation)** : opérateur A présente un **taux de réussite supérieur** (p50) et une **durée d’établissement plus courte** en urbain/péri-urbain ; **écarts s’accentuent en rural**.
-- **SMS (transport)** : latences hétérogènes selon axes ; **pics d’acheminement** sur tronçons spécifiques → **surveillance ciblée**.
-- **Data (mix zones)** : **débits médians robustes** pour l’opérateur B en urbain ; **variabilité** marquée pour C en rural ; **temps de chargement** à lisser pour D sur segments ferroviaires.
+## Constats majeurs sur la performance QoS
 
-**Insight transverse** : la **variabilité** intra-opérateur est **autant** un risque d’expérience que le niveau moyen.  
-**Implication** : orienter les investissements vers la **réduction des écarts** (p90–p10) plutôt que la seule hausse du p50.
+- **Voix – zones d’habitation** : performance globalement robuste en urbain/péri-urbain pour certains opérateurs ; dégradation plus marquée en rural.
+- **SMS – axes de transport** : délais irréguliers sur certains tronçons → nécessité de supervision ciblée.
+- **Data – multi-zones** : débits médians solides en urbain pour un opérateur, mais dispersion importante en rural ; instabilité sur segments ferroviaires.
 
-## Zones à risque & priorités d’action
-- **Rural dispersé** : trous de couverture voix/data → plan de comblement ciblé.
-- **Axes de transport** : latence SMS & data instable → optimisation sur tronçons récurrents.
-- **Nœuds urbains denses** : saturation ponctuelle → actions capacitaires/antennaire.
+**Constat transversal :**  
+La variabilité intra-réseau constitue un facteur majeur de dégradation de l’expérience client, indépendamment du niveau moyen de performance.
+
+**Implication directe :**  
+Réduire les écarts de performance (dispersion) génère plus d’impact utilisateur qu’une simple amélioration du niveau moyen.
+
+## Zones critiques & leviers prioritaires
+
+- **Rural dispersé** : déficit de couverture voix et data → actions de densification ciblée.
+- **Transport** : instabilité latence et continuité → optimisation handovers et couverture linéaire.
+- **Zones urbaines denses** : saturation ponctuelle → renforcement capacitaire et modernisation radio.
 
 ::: {.callout-warning}
-**Impact client** : une **régularité insuffisante** accroît la **probabilité d’incidents** (appels échoués, pages qui ne chargent pas), dégradant NPS/CSAT.
+**Risque client :** une QoS irrégulière augmente la probabilité d’échecs d’usage (appel, navigation, messagerie) et alimente directement l’insatisfaction.
 :::
 
-## Recommandations (opérationnelles & priorisées)
-**R1. Rural — voix accessible et fiable (priorité haute)**  
-- Renforcer la **couverture voix** sur communes faiblement desservies, alignée sur les corridors de mobilité locale.  
-- KPI : _Taux de réussite appels (rural)_, _Durée d’établissement médiane_, _% zones < seuil MOS_.
+## Recommandations réseau priorisées
 
-**R2. Transport — lisser la latence (priorité haute)**  
-- Optimiser la **continuité de service** sur axes ferroviaires/bus interurbains (handovers, densification ciblée).  
-- KPI : _Délai SMS p90_, _Temps de chargement p95_, _% segments instables_.
+**R1 — Sécurisation de la couverture voix en rural (priorité critique)**  
+- Renforcer la disponibilité sur zones faiblement desservies.  
+- Indicateurs : taux de réussite appels rural, délai d’établissement, MOS sous seuil.
 
-**R3. Urbain dense — stabilité data (priorité moyenne)**  
-- Gestion proactive de la **surcharge** (heures pleines) : allocation intelligente, modernisation antennaire.  
-- KPI : _Débit descendant p50/p10_, _Variabilité session-to-session_.
+**R2 — Continuité de service sur axes de transport (priorité critique)**  
+- Optimisation des transitions réseau et densification ciblée.  
+- Indicateurs : latence SMS p90, temps de chargement p95, stabilité par tronçon.
 
-**R4. Transparence QoS — pédagogie client (priorité utile)**  
-- **Tableau de bord public** par zone d’usage (habitation/transport) avec **indicateurs simples** et engagements minimums.  
-- KPI : _CSAT par zone_, _Taux de réclamation QoS_, _% engagements tenus_.
+**R3 — Stabilisation de la performance data en zones denses (priorité élevée)**  
+- Gestion proactive des pics de charge et modernisation des équipements radio.  
+- Indicateurs : débit descendant p50/p10, dispersion des sessions data.
 
-## Impact attendu (métier)
-- **Expérience** : baisse des irritants majeurs (appels échoués, lenteurs).
-- **Marque** : différenciation par la **régularité** perçue (pas seulement la pointe).
-- **Régulation** : meilleure lisibilité des écarts territoriaux (ciblage des investissements).
-- **ROI** : amélioration du ratio **coût d’intervention / réclamations évitées**.
+**R4 — Pilotage et transparence QoS (priorité structurante)**  
+- Mise à disposition d’indicateurs compréhensibles par zone d’usage.  
+- Indicateurs : CSAT, taux de réclamations QoS, respect des engagements de service.
 
-## Livrables & ouvertures
-- **Rapport complet** (technique) et **synthèse exécutive** (slides).
-- **Cartes** (zones à risque), **radar voix/SMS/data** (comparaison opérateurs).
-- **Pistes** : analyses longitudinales 2022→2024, corrélation QoS ↔ satisfaction.
+## Impacts attendus pour l’opérateur
+
+- **Expérience client** : réduction des irritants majeurs et amélioration de la continuité d’usage.
+- **Performance commerciale** : différenciation par la fiabilité perçue du réseau.
+- **Pilotage régulatoire** : meilleure lecture des disparités territoriales.
+- **Efficacité économique** : optimisation du ciblage des investissements et des interventions.
+
+## Livrables produits & prolongements
+
+- Rapport technique détaillé et synthèse exécutive.
+- Cartographie des zones sensibles et radar comparatif opérateurs.
+- Perspectives : analyses longitudinales, suivi des écarts QoS dans le temps, rapprochement avec indicateurs de satisfaction.
 
 ## Compétences mobilisées
-- **Data Analytics Télécoms** : QoS voix/SMS/data, normalisation, scoring multivarié.
-- **Géostatistiques & Carto** : analyses par zones d’usage, repérage hotspots.
-- **Data Quality & Traçabilité** : audits, dictionnaire, gestion outliers.
-- **Storytelling & Décision** : synthèse claire, recommandations actionnables.
-- **Outils** : R/Tidyverse, ggplot2, Leaflet, Quarto, Git/GitHub, (optionnel: Python/GeoPandas).
+
+- Analyse QoS télécoms multi-indicateurs
+- Construction de scoring et priorisation réseau
+- Analyse territoriale et géostatistique
+- Structuration d’insights orientés décision
+- Outils : R/Tidyverse, ggplot2, Leaflet, Quarto, Git/GitHub
 
 ---
 
@@ -142,7 +154,6 @@ Dans un marché mature où l’**expérience client** est un différenciateur d�
 
 4. **Carte interactive Leaflet – P1**  
    👉 [Disponible sur demande](https://nancy-jennifer.github.io/carte-leaflet/carte_leaflet_mos.html)
-
 
 <style>
 .nav-inline{
