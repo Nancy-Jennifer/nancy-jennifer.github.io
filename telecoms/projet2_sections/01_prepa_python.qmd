@@ -70,7 +70,7 @@ Ces jeux constituent la base utilisée dans :
 
 ## Principes d’ingénierie appliqués
 
-### 1) Portabilité
+### Portabilité
 Chemins relatifs et structure indépendante de l’environnement local.  
 Le pipeline est directement exécutable sur GitHub Pages ou tout environnement collaboratif.
 
@@ -94,14 +94,14 @@ Uniformisation systématique :
 
 Permet des comparaisons fiables entre sources et pays.
 
-### 4) Tolérance opérationnelle
+### Tolérance opérationnelle
 En cas d’absence de fichier brut :
 
 - génération de CSV structurés vides,
 - continuité du pipeline assurée,
 - absence d’interruption du build public.
 
-### 5) Traçabilité & auditabilité
+### Traçabilité & auditabilité
 Production automatique :
 
 - journal qualité (QA),
