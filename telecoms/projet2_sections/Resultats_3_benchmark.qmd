@@ -5,7 +5,7 @@ format:
   html:
     toc: true
     toc-depth: 3
-    number-sections: false
+    number-sections: true
     code-fold: false
 execute:
   echo: false
@@ -24,7 +24,7 @@ afin d’identifier **où investir**, **quoi optimiser** et **comment piloter**.
 
 ---
 
-## 1) Potentiel macro : le niveau de service attendu
+## Potentiel macro : le niveau de service attendu
 
 ### Lecture
 
@@ -40,7 +40,7 @@ Dans ce contexte, le marché “attend” une **qualité premium** : usage inten
 
 ---
 
-## 2) Structure d’usage : contraintes réelles de délivrance
+## Structure d’usage : contraintes réelles de délivrance
 
 ### Urbanisation
 
@@ -56,7 +56,7 @@ Conséquences terrain : trafic plus concentré, contraintes indoor plus fortes, 
 
 ---
 
-## 3) Alignement : potentiel macro → QoS réalisée (France)
+## Alignement : potentiel macro → QoS réalisée (France)
 
 ### Indicateurs synthétiques (z-scores 2024, pondérés par la volumétrie)
 
