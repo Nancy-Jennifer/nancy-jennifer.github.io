@@ -1,24 +1,30 @@
 ---
 title: "Projets Télécoms"
-description: "Galerie des analyses QoS en France : P1, P2 et suivants."
+description: "Galerie des analyses QoS en France (ARCEP) : diagnostics, scoring et recommandations actionnables."
 toc: false
 page-layout: full
 ---
 
 ## Galerie des projets Télécoms
 
-> Accédez aux analyses QoS (ARCEP) par projet. Chaque carte résume rapidement la portée et le livrable.
+> Accédez à mes analyses QoS (ARCEP) organisées par projet.  
+> Chaque carte résume **la question traitée**, **les indicateurs mobilisés** et **le livrable** (résultats + recommandations).
 
 ::: {.cards}
+
 ::: {.card}
-### P1 — Analyse de la QoS Télécom en France Métropolitaine – Scoring Voix/SMS/Data – ARCEP 2022
-EDA **voix/SMS/data** · KPI (réussite, latence, débits) · lecture par **contextes** (urbain, rural, transport, indoor)  
+### P1 — QoS mobile en France (ARCEP 2022)
+**Scoring Voix / SMS / Data** et diagnostic par contextes  
+**KPI** : réussite, coupures, latence, débits · lecture **urbain / rural / transport / indoor**  
+**Livrable** : zones à risque + priorités d’optimisation réseau  
 [🚀 Ouvrir le projet P1](projet1_arcep2022.qmd){.btn .btn-primary}
 :::
 
 ::: {.card}
-### P2 — France 2024 : où se situe la qualité de service mobile face aux standards internationaux ?
-Comparaisons, évolutions, alignements benchmark, recommandations orientées expérience client  
+### P2 — France 2024 : positionnement QoS face aux standards internationaux
+**Benchmark ARCEP 2024 × ITU × Banque Mondiale** pour mesurer l’écart entre **potentiel** et **qualité réellement vécue**  
+**Livrable** : indice QoS comparatif, facteurs explicatifs, recommandations **orientées QoE** (indoor/transport/densité)  
 [🚀 Ouvrir le projet P2](projet2_arcep2024.qmd){.btn .btn-primary}
 :::
+
 :::
