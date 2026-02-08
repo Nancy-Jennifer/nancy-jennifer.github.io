@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -64,9 +64,10 @@ jobs:
       - name: Render with Quarto
         uses: quarto-dev/quarto-actions/render@v2
 
-      - name: Upload artifact
+      - name: Upload artifact (unique)
         uses: actions/upload-pages-artifact@v3
         with:
+          name: github-pages-${{ github.run_id }}
           path: _site
 
   deploy:
@@ -79,3 +80,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deploy
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_id }}
