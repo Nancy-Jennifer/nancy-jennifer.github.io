@@ -3,53 +3,52 @@ title: "CONTACT"
 format: html
 ---
 
-Vous souhaitez échanger à propos d’un profil Data Analyst, d’un projet analytique ou d’une problématique métier nécessitant une analyse rigoureuse ?  
-Cette page vous permet de savoir quand, pourquoi et comment me contacter.
+Vous souhaitez échanger sur un profil **Data Analyst**, un **projet analytique** ou une **décision métier** à sécuriser par la donnée ?  
+Cette page précise **dans quels cas me solliciter**, **ce que je livre**, et **comment me joindre**.
 
-## Vous êtes recruteur Data / Tech
+## Recruteur Data / Tech
 
-Je travaille sur des analyses reproductibles, documentées et orientées décision, avec une exigence forte sur la qualité des données et la méthodologie.
+Je produis des analyses **reproductibles**, **documentées** et **orientées décision**, avec une exigence forte sur la qualité des données et la traçabilité.
 
-### Ce que je sais faire concrètement :
+### Ce que je réalise
 
-- Analyse exploratoire structurée (Python, SQL, R)  
-- Construction et interprétation d’indicateurs de performance  
+- Analyses exploratoires structurées (Python, SQL, R)  
+- Construction et lecture d’indicateurs de performance (KPI)  
 - Détection d’anomalies, comparaisons temporelles et segmentées  
-- Restitution claire des résultats (insights, limites, recommandations)  
+- Restitution claire : résultats, limites, recommandations actionnables  
 
-### Ce que je privilégie :
+### Ce que vous obtenez
 
-- Données fiables ou problématiques clairement identifiées  
-- Démarche analytique explicite (hypothèses, choix méthodologiques)  
-- Livrables compréhensibles et exploitables  
+- Hypothèses explicites et choix méthodologiques justifiés  
+- Contrôles qualité (cohérence, manquants, valeurs aberrantes)  
+- Livrables exploitables par un décideur (synthèse + points d’action)
 
-👉 Si vous recherchez un profil analytique sérieux, structuré et orienté impact, nous pouvons échanger.
+👉 Si vous cherchez un profil analytique rigoureux, structuré et orienté impact, je suis disponible pour échanger.
 
-## Vous êtes manager métier (Télécoms / RH)
+## Manager métier (Télécoms / RH)
 
-J’interviens lorsque la donnée doit éclairer une décision concrète, pas simplement produire des chiffres.
+J’interviens quand la donnée doit **trancher**, **prioriser** ou **déclencher une action**, pas seulement produire des tableaux.
 
-### Exemples de problématiques traitées :
+### Cas d’usage typiques
 
-- **Télécommunications** : qualité de service (QoS), performance réseau, analyses comparatives  
-- **People Analytics** : turnover, satisfaction, indicateurs RH, compréhension des dynamiques internes  
+- **Télécoms** : QoS, performance réseau, comparaisons inter-zones/inter-opérateurs, détection de dégradations  
+- **People Analytics** : attrition, satisfaction, indicateurs RH, compréhension des dynamiques de rétention  
 
-### Ma valeur ajoutée :
+### Valeur ajoutée
 
-- Traduire des enjeux métiers en questions analytiques claires  
-- Mettre en évidence les leviers d’action, pas seulement les constats  
-- Expliquer les résultats sans jargon inutile  
+- Traduction d’un enjeu métier en question analytique opérationnelle  
+- Mise en évidence des facteurs actionnables et des priorités  
+- Restitution sans jargon, centrée sur la décision et le suivi (KPI)
 
-👉 Si vous avez un problème à comprendre ou une décision à sécuriser, l’analyse est un moyen, pas une fin.
+👉 Si vous avez une décision à sécuriser ou un problème à objectiver, on peut cadrer le besoin rapidement.
 
 ## Disponibilité & cadre de collaboration
 
-- Ouverte aux opportunités Data Analyst  
-- **Préférence pour le télétravail**, avec possibilité d’interventions en présentiel uniquement **à Cotonou**. 
-  Pour toute autre localisation au Bénin, en Europe ou en Afrique francophone, le télétravail reste privilégié.  
+- Ouverte aux opportunités **Data Analyst**  
+- **Préférence pour le télétravail**, avec interventions en présentiel **uniquement à Cotonou**  
+  (pour toute autre localisation au Bénin, en Europe ou en Afrique francophone : télétravail privilégié)  
 - Zones privilégiées : Europe et Afrique francophone  
-- Environnements où la rigueur méthodologique et la compréhension métier sont attendues
-
+- Environnements où la rigueur méthodologique et la compréhension métier sont attendues  
 
 ## Me contacter
 
