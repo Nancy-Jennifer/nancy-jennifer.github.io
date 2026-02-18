@@ -77,7 +77,8 @@ Analyse des facteurs expliquant le turnover et la satisfaction collaborateurs.
 ## Compétences
 
 ### Techniques
-- SQL  
+- SQL
+- Excel
 - Python  
 - R  
 - Tableau  
