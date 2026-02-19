@@ -42,7 +42,7 @@ Domaines principaux :
 
 ## Outils & pratiques analytiques
 
-- **SQL, R, Python** — nettoyage, EDA, modélisation, automatisation.
+- **SQL, Excel, R, Python** — nettoyage, EDA, modélisation, automatisation.
 - **Visualisation** — ggplot2, matplotlib, Plotly, Leaflet (cartes), dashboards.
 - **Reproductibilité** — Quarto / R Markdown, notebooks, code source public.
 
