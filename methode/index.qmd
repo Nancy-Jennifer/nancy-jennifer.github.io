@@ -92,7 +92,8 @@ L’objectif reste constant : transformer la donnée en levier d’action.
 
 ## Outils
 
-- SQL  
+- SQL
+- Excel 
 - Python (pandas, scikit-learn)  
 - R (tidyverse)  
 - Quarto / Markdown  
