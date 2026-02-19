@@ -33,7 +33,7 @@ Analyse des performances voix, SMS et data selon les contextes d’usage (urbain
 - priorisation des actions d’optimisation réseau  
 - objectivation de la qualité perçue client  
 
-🔗 [Voir le projet ARCEP 2022](#)
+🔗 [Voir le projet ARCEP 2022](https://nancy-jennifer.github.io/telecoms/projet1_arcep2022.html)
 
 ---
 
@@ -46,7 +46,7 @@ Comparaison des performances nationales avec les standards internationaux (ITU, 
 - support à l’alignement stratégique  
 - aide à la priorisation des investissements réseau  
 
-🔗 [Voir le projet ARCEP 2024](#)
+🔗 [Voir le projet ARCEP 2024](https://nancy-jennifer.github.io/telecoms/projet2_arcep2024.html)
 
 ---
 
@@ -59,7 +59,7 @@ Analyse des facteurs expliquant le turnover et la satisfaction collaborateurs.
 - priorisation des actions RH  
 - amélioration de l’engagement  
 
-🔗 [Voir le projet People Analytics](#)
+🔗 [Voir le projet People Analytics](https://nancy-jennifer.github.io/people-analytics/attrition/)
 
 ---
 
