@@ -12,7 +12,7 @@ Je produis des analyses **reproductibles**, **documentées** et **orientées dé
 
 ### Ce que je réalise
 
-- Analyses exploratoires structurées (Python, SQL, R)  
+- Analyses exploratoires structurées (Python, SQL, Excel, R)  
 - Construction et lecture d’indicateurs de performance (KPI)  
 - Détection d’anomalies, comparaisons temporelles et segmentées  
 - Restitution claire : résultats, limites, recommandations actionnables  
