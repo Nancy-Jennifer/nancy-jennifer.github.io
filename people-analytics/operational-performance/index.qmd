@@ -1,0 +1,87 @@
+---
+title: "Operational Performance"
+format: html
+---
+
+## Contexte
+
+Dans les organisations back-office, la performance opérationnelle dépend de la capacité à exécuter des tâches et workflows dans des délais maîtrisés.
+Des dépassements de durée répétés se traduisent par des retards, une hausse des coûts, et une baisse de qualité de service.
+
+Ce projet vise à diagnostiquer les sources d’inefficience et à prioriser des actions d’amélioration à partir de données d’exécution de tâches (task-level records).
+
+---
+
+## Problème métier
+
+La performance globale stagne malgré des efforts (recrutement, investissements, optimisation).
+La direction a besoin de savoir :
+
+- quels workflows génèrent le plus de retards,
+- quels processus concentrent l’impact économique,
+- quels leviers prioriser pour réduire l’inefficience.
+
+---
+
+## Question d’analyse
+
+**Quels processus opérationnels génèrent le plus de retard et d’impact financier, et quelles actions doivent être priorisées pour améliorer la performance globale ?**
+
+---
+
+## Dataset
+
+**Source de téléchargement : Kaggle** — *Workflow Operations Performance Dataset*  
+**Auteur : Muhammad Shahzad**  
+**Licence : Apache 2.0**  
+**Fréquence de mise à jour attendue : Never** (dataset statique)  
+**Dernière mise à jour affichée sur Kaggle : “Updated 15 days ago”** (métadonnée de la fiche)
+
+Le dataset contient des enregistrements structurés décrivant l’exécution de tâches opérationnelles à travers plusieurs départements.
+Les champs couvrent notamment :
+
+- Process_Name, Task_Type, Priority_Level, Department
+- Task_Start_Time, Task_End_Time
+- Estimated_Time_Minutes, Actual_Time_Minutes
+- Approval_Level, Employee_Workload
+- Delay_Flag, Cost_Per_Task
+
+**Périmètre de l’analyse :**
+- Volume : **2 500** tâches
+- Période couverte (timestamps) : **janvier 2024 → décembre 2024**
+- Départements : **5** (IT, Finance, HR, Operations, Customer Service)
+
+> Note : il s’agit d’un dataset public conçu pour l’analyse de performance opérationnelle et l’évaluation de processus. L’objectif ici est de démontrer une démarche d’analyse décisionnelle reproductible sur un cas “corporate-like”.
+
+---
+
+## Méthodologie (SQL analytique)
+
+L’analyse a été conduite principalement en **SQL** (DuckDB), avec une logique orientée décision :
+
+1. **Audit & validation** : cohérence des timestamps, unicité des tâches, contrôle des flags.
+2. **Reconstruction du backlog** : estimation du nombre de tâches “ouvertes” par jour et par département via une table calendrier et des jointures temporelles.
+3. **Mesure des retards** : écarts (Actual − Estimated) et ratio d’efficacité (Actual / Estimated).
+4. **Diagnostic multi-axes** : retards par département, processus, type de tâche, niveau d’approbation, charge.
+5. **Priorisation par impact** : calcul du retard total et **du coût associé aux dépassements** (delay_cost).
+
+---
+
+## Résultats clés (insights)
+
+Les analyses mettent en évidence :
+
+- **Inefficience systémique** : les durées réelles dépassent largement les estimations (ratio > 1 sur l’ensemble des processus).
+- **Impact business priorisable** : certains processus concentrent l’essentiel du **retard total** et du **coût des retards**.
+- **Drivers plus explicatifs** : le **type de tâche** (ex. Review / Escalation) et certaines combinaisons (Process × Approval) révèlent des écarts plus discriminants que le seul découpage par département.
+
+---
+
+## Prochaines sections
+
+La suite du projet présente :
+
+- les requêtes SQL structurantes (audit, backlog, diagnostic)
+- les visualisations synthétiques (4 graphiques maximum, orientés décision)
+- les recommandations prioritaires (quick wins / actions structurantes)
+- les limites et pistes d’amélioration (mesures, instrumentation, qualité des estimations)
