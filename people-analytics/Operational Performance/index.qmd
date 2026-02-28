@@ -1,0 +1,6 @@
+---
+title: "Operational Performance"
+format: html
+---
+
+Projet People Analytics en cours de rédaction.
