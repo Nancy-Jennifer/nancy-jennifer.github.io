@@ -284,7 +284,8 @@ ORDER BY delay_cost DESC;
 ## Conclusion
 
 Ces requêtes permettent de :
-- reconstruire un backlog journalier (pression opérationnelle),
-- mesurer retards & efficacité,
-- identifier des segments explicatifs (Task_Type, Process × Approval),
-- prioriser les actions selon l’impact **temps** et **financier**.
+
+- reconstruire un backlog journalier (pression opérationnelle)
+- mesurer retards et efficacité
+- identifier des segments explicatifs (Task_Type, Process × Approval)
+- prioriser les actions selon l’impact **temps** et **financier**
