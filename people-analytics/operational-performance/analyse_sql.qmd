@@ -1,0 +1,290 @@
+---
+title: "Analyse SQL (DuckDB)"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+## Objectif
+
+Cette section documente les requêtes SQL utilisées pour :
+- auditer la qualité des données,
+- reconstruire un backlog opérationnel (tâches ouvertes),
+- diagnostiquer les retards et l’efficacité,
+- prioriser les processus selon l’impact (temps et coût).
+
+> Outil : DuckDB (SQL analytique) — source de données : CSV importé en table `tasks`.
+
+---
+
+## Ingestion & contrôles de base
+
+### Charger le CSV dans DuckDB
+
+```sql
+CREATE TABLE tasks AS
+SELECT *
+FROM read_csv_auto('AI_Workflow_Optimization_Dataset_2500_Rows_v1.csv');
+```
+
+### Volume & unicité
+
+```sql
+SELECT
+  COUNT(*) AS total_rows,
+  COUNT(DISTINCT Task_ID) AS unique_tasks
+FROM tasks;
+```
+
+**Attendu :** 2500 lignes et 2500 `Task_ID` uniques.
+
+### Cohérence des timestamps
+
+```sql
+SELECT *
+FROM tasks
+WHERE Task_End_Time < Task_Start_Time;
+```
+
+**Attendu :** 0 ligne (pas de fin avant début).
+
+---
+
+## Audit qualité ciblé (retards & flags)
+
+### Cohérence `Delay_Flag` vs durées
+
+```sql
+SELECT *
+FROM tasks
+WHERE Delay_Flag = 1
+  AND Actual_Time_Minutes <= Estimated_Time_Minutes;
+```
+
+**Attendu :** 0 ligne (si retard, la durée réelle doit dépasser l’estimée).
+
+---
+
+## Profiling “métier” du dataset
+
+### Périmètre (départements)
+
+```sql
+SELECT
+  Department,
+  COUNT(*) AS total_tasks
+FROM tasks
+GROUP BY Department
+ORDER BY total_tasks DESC;
+```
+
+### Couverture temporelle
+
+```sql
+SELECT
+  MIN(Task_Start_Time) AS min_start_time,
+  MAX(Task_End_Time)   AS max_end_time
+FROM tasks;
+```
+
+---
+
+## Reconstruction du backlog (tâches ouvertes)
+
+### Principe
+
+Une tâche est considérée “ouverte” le jour `d` si :
+- `Task_Start_Time <= d`
+- `Task_End_Time > d`
+
+### Créer une grille Jour × Département
+
+```sql
+WITH calendar AS (
+  SELECT generate_series AS day
+  FROM generate_series(DATE '2024-01-01', DATE '2024-12-31', INTERVAL '1 day')
+),
+departments AS (
+  SELECT DISTINCT Department FROM tasks
+),
+day_dept AS (
+  SELECT c.day, d.Department
+  FROM calendar c
+  CROSS JOIN departments d
+)
+SELECT *
+FROM day_dept
+LIMIT 10;
+```
+
+### Backlog journalier par département (zéros inclus)
+
+```sql
+WITH calendar AS (
+  SELECT generate_series AS day
+  FROM generate_series(DATE '2024-01-01', DATE '2024-12-31', INTERVAL '1 day')
+),
+departments AS (
+  SELECT DISTINCT Department FROM tasks
+),
+day_dept AS (
+  SELECT c.day, d.Department
+  FROM calendar c
+  CROSS JOIN departments d
+)
+SELECT
+  dd.day,
+  dd.Department,
+  COUNT(t.Task_ID) AS backlog_tasks
+FROM day_dept dd
+LEFT JOIN tasks t
+  ON t.Department = dd.Department
+ AND t.Task_Start_Time <= dd.day
+ AND t.Task_End_Time   >  dd.day
+GROUP BY dd.day, dd.Department
+ORDER BY dd.day, dd.Department;
+```
+
+### Backlog résumé (moyenne & pic)
+
+```sql
+WITH calendar AS (
+  SELECT generate_series AS day
+  FROM generate_series(DATE '2024-01-01', DATE '2024-12-31', INTERVAL '1 day')
+),
+departments AS (
+  SELECT DISTINCT Department FROM tasks
+),
+day_dept AS (
+  SELECT c.day, d.Department
+  FROM calendar c
+  CROSS JOIN departments d
+),
+daily_backlog AS (
+  SELECT
+    dd.day,
+    dd.Department,
+    COUNT(t.Task_ID) AS backlog_tasks
+  FROM day_dept dd
+  LEFT JOIN tasks t
+    ON t.Department = dd.Department
+   AND t.Task_Start_Time <= dd.day
+   AND t.Task_End_Time   >  dd.day
+  GROUP BY dd.day, dd.Department
+)
+SELECT
+  Department,
+  AVG(backlog_tasks) AS avg_backlog,
+  MAX(backlog_tasks) AS peak_backlog
+FROM daily_backlog
+GROUP BY Department
+ORDER BY avg_backlog DESC;
+```
+
+---
+
+## Diagnostic retards & efficacité
+
+### Taux de retard par département
+
+```sql
+SELECT
+  Department,
+  COUNT(*) AS total_tasks,
+  SUM(Delay_Flag) AS delayed_tasks,
+  ROUND(100.0 * SUM(Delay_Flag) / COUNT(*), 2) AS delay_rate_percent
+FROM tasks
+GROUP BY Department
+ORDER BY delay_rate_percent DESC;
+```
+
+### Retard moyen (minutes) par département
+
+```sql
+SELECT
+  Department,
+  AVG(Actual_Time_Minutes - Estimated_Time_Minutes) AS avg_delay_minutes
+FROM tasks
+GROUP BY Department
+ORDER BY avg_delay_minutes DESC;
+```
+
+### Efficacité (ratio) par processus
+
+```sql
+SELECT
+  Process_Name,
+  AVG(Actual_Time_Minutes / Estimated_Time_Minutes) AS efficiency_ratio
+FROM tasks
+GROUP BY Process_Name
+ORDER BY efficiency_ratio DESC;
+```
+
+### Retard / efficacité par type de tâche
+
+```sql
+SELECT
+  Task_Type,
+  AVG(Actual_Time_Minutes - Estimated_Time_Minutes) AS avg_delay,
+  AVG(Actual_Time_Minutes / Estimated_Time_Minutes) AS efficiency_ratio,
+  COUNT(*) AS tasks
+FROM tasks
+GROUP BY Task_Type
+ORDER BY avg_delay DESC;
+```
+
+---
+
+## Analyse d’interaction (diagnostic plus fin)
+
+### Process × Approval (combinaisons “à risque”)
+
+```sql
+SELECT
+  Process_Name,
+  Approval_Level,
+  AVG(Actual_Time_Minutes - Estimated_Time_Minutes) AS avg_delay
+FROM tasks
+GROUP BY Process_Name, Approval_Level
+ORDER BY avg_delay DESC;
+```
+
+---
+
+## Priorisation par impact (temps & coût)
+
+### Retard total par processus
+
+```sql
+SELECT
+  Process_Name,
+  SUM(Actual_Time_Minutes - Estimated_Time_Minutes) AS total_delay_minutes,
+  COUNT(*) AS task_count
+FROM tasks
+GROUP BY Process_Name
+ORDER BY total_delay_minutes DESC;
+```
+
+### Coût total des retards par processus
+
+```sql
+SELECT
+  Process_Name,
+  SUM((Actual_Time_Minutes - Estimated_Time_Minutes) * Cost_Per_Task) AS delay_cost,
+  COUNT(*) AS task_count
+FROM tasks
+GROUP BY Process_Name
+ORDER BY delay_cost DESC;
+```
+
+---
+
+## Conclusion
+
+Ces requêtes permettent de :
+- reconstruire un backlog journalier (pression opérationnelle),
+- mesurer retards & efficacité,
+- identifier des segments explicatifs (Task_Type, Process × Approval),
+- prioriser les actions selon l’impact **temps** et **financier**.
