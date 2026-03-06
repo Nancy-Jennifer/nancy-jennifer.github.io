@@ -9,60 +9,108 @@ format:
     smooth-scroll: true
 ---
 
-## Vue d’ensemble du projet
+::: {.callout-important appearance="simple"}
+## Pourquoi ce projet ?
 
-Dans de nombreuses organisations, la performance opérationnelle ne se dégrade pas brutalement : elle s’érode progressivement à travers des retards récurrents, des tâches mal estimées, des validations trop lourdes et des coûts invisibles qui finissent par freiner l’exécution.
+Dans de nombreuses organisations, la performance opérationnelle ne se dégrade pas brutalement. Elle s’érode progressivement à travers des retards récurrents, des tâches mal estimées, des validations trop lourdes et des coûts invisibles qui ralentissent progressivement l’exécution.
 
-Ce projet analyse un jeu de données simulant des workflows d’entreprise afin d’identifier les points de friction opérationnelle, d’estimer leur impact sur la performance globale et de dégager des priorités d’amélioration concrètes pour le pilotage.
+Ce projet montre comment l’analyse de données opérationnelles peut aider à détecter ces frictions, quantifier leur impact et orienter des décisions d’amélioration concrètes.
+:::
+
+::: {.callout-note appearance="simple"}
+## Fiche projet
+
+**Contexte** : performance opérationnelle d’entreprise  
+**Problématique** : identifier les workflows les plus inefficients et les leviers prioritaires d’amélioration  
+**Dataset** : *Workflow Operations Performance Dataset* (Kaggle)  
+**Granularité** : données au niveau tâche (*task-level*)  
+**Volume** : 2 500 tâches  
+**Pipeline** : DuckDB SQL → CSV → Python (matplotlib) → Quarto  
+**Livrables** : analyses SQL, visualisations, synthèse décisionnelle
+:::
+
+::: {.callout-warning appearance="simple"}
+## Pipeline analytique du projet
+
+Ce projet suit un pipeline analytique structuré permettant de passer de la donnée brute à des recommandations décisionnelles.
+
+```{mermaid}
+flowchart LR
+    A[Données opérationnelles<br>Workflow Dataset] --> B[Analyse SQL<br>DuckDB]
+    B --> C[Exports analytiques<br>CSV]
+    C --> D[Visualisations<br>Python - Matplotlib]
+    D --> E[Interprétation<br>Insights analytiques]
+    E --> F[Décisions opérationnelles<br>Optimisation des workflows]
+```
+
+:::
+
+::: {.callout-tip appearance="simple"}
+## Compétences démontrées
+
+Ce projet met en évidence plusieurs compétences clés en analyse de données appliquée à la performance opérationnelle :
+
+**Structuration d’un problème analytique**  
+Transformer une problématique opérationnelle en questions analytiques exploitables.
+
+**Analyse SQL orientée décision**  
+Construire des indicateurs pertinents à partir de données brutes afin d’identifier les signaux d’inefficience.
+
+**Lecture opérationnelle des données**  
+Interpréter les écarts entre performance attendue et performance réelle pour détecter les causes possibles de dégradation des processus.
+
+**Visualisation analytique**  
+Produire des graphiques facilitant la lecture des écarts de performance entre processus et types de tâches.
+
+**Traduction des analyses en insights décisionnels**  
+Transformer des résultats analytiques en recommandations concrètes pour améliorer la performance.
+:::
 
 ---
 
-## Contexte
+# Vue d’ensemble
 
-Les entreprises s’appuient sur une succession de processus internes pour exécuter leurs activités : traitement de demandes, validations, tâches de coordination, approbations, contrôles ou opérations administratives.
+Les workflows internes structurent l’exécution quotidienne de nombreuses activités en entreprise : validation, coordination, traitement, contrôle ou approbation.
 
-Lorsque ces workflows deviennent trop lents, trop coûteux ou insuffisamment fluides, plusieurs signaux apparaissent :
+Lorsque ces mécanismes deviennent trop lents ou trop coûteux, plusieurs effets apparaissent :
 
-- accumulation de retards ;
-- charge opérationnelle mal répartie ;
-- inefficiences dans certaines étapes du processus ;
-- augmentation du coût réel d’exécution ;
-- ralentissement global de la performance.
+- accumulation de retards  
+- surcharge de certaines étapes du processus  
+- inefficiences opérationnelles  
+- augmentation du coût réel d’exécution  
 
-L’enjeu n’est donc pas seulement de mesurer les délais, mais de comprendre **où** se situent les frictions, **quels types de tâches** les génèrent, et **quels processus** doivent être traités en priorité.
+L’objectif de ce projet est d’analyser un jeu de données simulant des workflows d’entreprise afin d’identifier les points de friction et les opportunités d’amélioration.
 
 ---
 
-## Objectif analytique
+# Objectif analytique
 
-L’objectif de ce projet est de répondre à une question simple mais stratégique :
+Ce projet cherche à répondre à la question suivante :
 
 **Quels workflows opérationnels concentrent les retards, inefficiences et surcoûts les plus importants, et sur quels leviers l’entreprise doit-elle agir en priorité pour améliorer sa performance ?**
 
-Pour y répondre, l’analyse s’est concentrée sur quatre axes :
+L’analyse repose sur quatre axes :
 
-- mesurer l’écart entre temps estimé et temps réel ;
-- identifier les types de tâches les plus générateurs de retard ;
-- quantifier le coût opérationnel associé aux délais ;
-- détecter les combinaisons de processus et niveaux d’approbation les plus à risque.
+- mesurer les écarts entre temps estimé et temps réel  
+- identifier les types de tâches générant le plus de retard  
+- estimer le coût des retards opérationnels  
+- détecter les combinaisons Process × Approval Level à risque
 
 ---
 
-## Présentation du dataset
+# Présentation du dataset
 
 Le projet repose sur le **Workflow Operations Performance Dataset**, un dataset synthétique publié sur Kaggle par **Muhammad Shahzad**.
 
-### Nature du dataset
+## Nature du dataset
 
-Il s’agit d’un jeu de données simulant des opérations internes d’entreprise au niveau **task-level**, c’est-à-dire à l’échelle de chaque tâche exécutée dans un workflow.
+Il s’agit d’un jeu de données simulant l’exécution de tâches dans différents workflows d’entreprise.
 
-### Volume
+Chaque observation correspond à **une tâche individuelle dans un processus**.
 
-- **2 500 tâches**
+## Variables principales
 
-### Variables principales
-
-Le dataset contient notamment les variables suivantes :
+Le dataset comprend notamment :
 
 - `Process_Name`
 - `Task_Type`
@@ -76,34 +124,36 @@ Le dataset contient notamment les variables suivantes :
 - `End_Time`
 - `Delay_Status`
 
-### Intérêt analytique
+## Intérêt analytique
 
-Même s’il s’agit d’un dataset synthétique, sa structure est pertinente pour un projet portfolio orienté décision, car elle permet de travailler sur des problématiques très proches de situations réelles :
+La structure du dataset permet de simuler des problématiques très proches de situations réelles :
 
-- suivi de performance opérationnelle ;
-- détection de goulots d’étranglement ;
-- analyse des écarts d’exécution ;
-- mesure d’impact financier ;
-- priorisation d’actions d’amélioration.
+- suivi de performance des processus
+- identification de goulots opérationnels
+- analyse des retards d’exécution
+- estimation des coûts associés aux inefficiences
 
 ---
 
-## Méthodologie analytique
+# Méthodologie analytique
 
-Le projet a été construit comme un mini pipeline analytique reproductible, allant de la requête SQL à la restitution visuelle dans le portfolio.
+Le projet suit un pipeline analytique simple et reproductible.
 
-### Pipeline utilisé
+## Pipeline utilisé
 
 **DuckDB (SQL analytique)**  
-→ extraction et agrégation des indicateurs  
-**Exports CSV**  
-→ transfert des résultats intermédiaires  
-**Python (matplotlib)**  
-→ génération des visualisations  
-**Quarto**  
-→ restitution analytique et narration décisionnelle dans le portfolio
+→ calcul des indicateurs et agrégations
 
-### Logique d’analyse
+**Exports CSV**  
+→ extraction des résultats analytiques
+
+**Python (matplotlib)**  
+→ génération des graphiques
+
+**Quarto**  
+→ restitution analytique dans le portfolio
+
+## Logique d’analyse
 
 L’analyse a été structurée autour de quatre questions :
 
@@ -114,123 +164,117 @@ L’analyse a été structurée autour de quatre questions :
 
 ---
 
-## Indicateurs analysés
+# Indicateurs analysés
 
-Quatre analyses principales ont été produites en SQL.
+Quatre indicateurs principaux ont été construits.
 
-### 1. Efficiency Ratio par processus
+## Efficiency ratio par processus
 
-Mesure du ratio moyen entre le temps réel et le temps estimé :
+Ratio entre temps réel et temps estimé :
 
-- un ratio proche de 1 indique une exécution conforme ;
-- un ratio supérieur à 1 signale une sous-estimation ou une inefficience ;
-- un ratio plus élevé révèle un processus plus instable ou moins maîtrisé.
+`Actual_Time_Minutes / Estimated_Time_Minutes`
 
-### 2. Retard moyen par type de tâche
+Il permet d’identifier les processus mal estimés ou inefficients.
 
-Calcul du retard moyen :
+---
+
+## Retard moyen par type de tâche
+
+Calcul :
 
 `Actual_Time_Minutes - Estimated_Time_Minutes`
 
-Cet indicateur permet d’identifier les tâches qui dépassent le plus fréquemment les temps prévus.
-
-### 3. Coût total des retards par processus
-
-Estimation de l’impact financier cumulé des délais à partir de :
-
-`(Actual_Time_Minutes - Estimated_Time_Minutes) × Cost_Per_Task`
-
-Cet indicateur ne mesure pas uniquement le retard, mais son poids économique potentiel dans les opérations.
-
-### 4. Retard moyen par combinaison Process × Approval Level
-
-Cette analyse permet de repérer les zones où le niveau de validation semble ralentir significativement l’exécution.
+Cet indicateur révèle les types de tâches les plus susceptibles de dépasser les délais prévus.
 
 ---
 
-## Principaux résultats
+## Coût total des retards par processus
 
-Les résultats mettent en évidence plusieurs signaux d’inefficience opérationnelle.
+Calcul :
+
+`(Actual_Time_Minutes - Estimated_Time_Minutes) * Cost_Per_Task`
+
+Cet indicateur permet d’évaluer l’impact financier potentiel des inefficiences.
+
+---
+
+## Retard moyen par Process × Approval Level
+
+Cette analyse permet de détecter les combinaisons de processus et de niveaux d’approbation susceptibles de générer des frictions organisationnelles.
+
+---
+
+# Principaux résultats
+
+Les analyses mettent en évidence plusieurs signaux de dégradation de la performance opérationnelle.
 
 ### 1. Certains processus sont structurellement sous-estimés
 
-L’écart récurrent entre temps prévu et temps réel suggère que certains workflows reposent sur des standards de durée peu réalistes.  
-Cela traduit soit une mauvaise estimation initiale, soit une complexité opérationnelle insuffisamment prise en compte.
+L’écart récurrent entre temps prévu et temps réel suggère une mauvaise estimation initiale ou une complexité opérationnelle sous-évaluée.
 
-### 2. Tous les types de tâches ne contribuent pas de la même manière au retard
+### 2. Certains types de tâches génèrent davantage de retard
 
-Certaines catégories de tâches apparaissent beaucoup plus exposées aux dépassements de durée.  
-Cela indique que le problème ne vient pas uniquement du volume de travail, mais aussi de la nature même des opérations exécutées.
+Tous les types d’opérations ne présentent pas la même difficulté d’exécution.
 
-### 3. Les retards ont un impact financier différencié selon les processus
+### 3. Les retards n’ont pas tous le même impact financier
 
-Deux processus peuvent présenter des délais similaires sans générer le même coût.  
-L’analyse montre donc qu’une priorisation purement temporelle est insuffisante : l’entreprise doit aussi arbitrer selon l’impact économique.
+Certains processus peuvent générer des délais similaires mais des coûts très différents.
 
-### 4. Certains niveaux d’approbation créent des frictions visibles
+### 4. Certains niveaux d’approbation ralentissent les workflows
 
-Les croisements entre processus et niveaux de validation révèlent des combinaisons plus lentes que les autres.  
-Cela peut signaler des chaînes de décision trop lourdes, des validations mal calibrées ou des étapes managériales non optimisées.
+Les chaînes de validation peuvent devenir un facteur important de ralentissement opérationnel.
 
 ---
 
-## Insights décisionnels
+# Insights décisionnels
 
-À partir des analyses produites, trois enseignements majeurs se dégagent.
+Trois enseignements principaux émergent de l’analyse.
 
-### Insight 1 — Les inefficiences ne sont pas uniformes
+### Insight 1 — Les inefficiences sont concentrées
 
-La dégradation de performance ne touche pas l’ensemble des workflows de manière homogène.  
-Elle se concentre sur certains processus spécifiques, ce qui rend possible une amélioration ciblée plutôt qu’une refonte globale.
+La dégradation de performance n’est pas uniforme.
 
-### Insight 2 — Les retards doivent être priorisés selon leur impact, pas seulement selon leur fréquence
+### Insight 2 — Les retards doivent être priorisés selon leur impact
 
-Une tâche fréquemment en retard n’est pas nécessairement la plus critique.  
-Le bon arbitrage consiste à croiser **retard**, **récurrence** et **coût** afin de concentrer les efforts sur les points de friction les plus pénalisants.
+La fréquence seule ne suffit pas : il faut croiser délai et coût.
 
-### Insight 3 — Les goulots ne sont pas seulement opérationnels, ils sont aussi organisationnels
+### Insight 3 — Les goulots peuvent être organisationnels
 
-Lorsqu’un niveau d’approbation ralentit fortement certains processus, le problème peut venir de la structure de validation elle-même.  
-L’amélioration de la performance passe alors autant par la simplification des circuits décisionnels que par l’optimisation des tâches.
+Les circuits d’approbation peuvent devenir une source majeure de ralentissement.
 
 ---
 
-## Valeur métier du projet
+# Ce que ce projet permettrait de décider en entreprise
 
-Ce projet illustre une capacité à transformer des données opérationnelles en lecture décisionnelle exploitable.
+Les résultats obtenus permettraient notamment de soutenir plusieurs décisions opérationnelles :
 
-Il montre comment :
+- **recalibrer les temps standards** pour les processus présentant les plus forts écarts entre estimation et exécution réelle  
+- **simplifier certains circuits d’approbation** afin de réduire les goulots décisionnels identifiés  
+- **prioriser les actions d’amélioration** sur les workflows générant le plus fort impact financier
 
-- structurer un problème de performance ;
-- construire des indicateurs pertinents en SQL ;
-- relier délais, inefficiences et coûts ;
-- produire une analyse orientée priorisation ;
-- formuler des recommandations utiles au pilotage.
-
-Au-delà de la technique, l’intérêt du projet est de démontrer une compétence centrale en data analytics : **faire émerger des leviers d’action clairs à partir de données opérationnelles brutes**.
+Ces décisions contribueraient à améliorer la fluidité des opérations et à réduire les coûts liés aux inefficiences.
 
 ---
 
-## Pages du projet
+# Navigation du projet
 
-Le projet est détaillé à travers plusieurs pages complémentaires :
+Le projet est détaillé à travers plusieurs pages :
 
-- [Analyse SQL](analyse_sql.qmd) : logique des requêtes, indicateurs et agrégations
-- [Visualisations](visualisations.qmd) : graphiques issus des exports analytiques
-- [Business Insights](business-insights.qmd) : synthèse décisionnelle du projet
-
----
-
-## Conclusion
-
-L’analyse montre qu’une baisse de performance opérationnelle ne relève pas uniquement d’un manque de productivité globale.  
-Elle peut provenir de processus mal calibrés, de tâches intrinsèquement plus complexes, de validations trop lourdes ou d’un impact financier sous-estimé.
-
-En identifiant précisément les zones de friction, ce projet propose une approche analytique utile pour aider l’entreprise à :
-
-- mieux prioriser ses efforts d’amélioration ;
-- réduire les retards critiques ;
-- limiter les surcoûts opérationnels ;
-- fluidifier ses workflows.
+- [Analyse SQL](analyse_sql.qmd)  
+- [Visualisations](visualisations.qmd)  
+- [Business Insights](business-insights.qmd)
 
 ---
+
+# Conclusion
+
+L’analyse montre qu’une baisse de performance opérationnelle ne provient pas uniquement d’un manque de productivité globale.
+
+Elle peut résulter :
+
+- de processus mal calibrés  
+- de tâches intrinsèquement plus complexes  
+- de validations trop lourdes  
+- d’un impact financier sous-estimé des retards
+
+En identifiant précisément les zones de friction, ce projet illustre comment l’analyse de données peut soutenir l’amélioration continue des workflows d’entreprise.
