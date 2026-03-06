@@ -21,7 +21,7 @@ L’objectif n’est pas seulement de décrire les performances observées, mais
 
 ## Insights clés
 
-### Insight 1 — Les retards sont systémiques plutôt que localisés
+**Insight 1 — Les retards sont systémiques plutôt que localisés**
 
 Les analyses par département montrent des écarts relativement faibles entre équipes, tandis que les ratios d’efficacité restent élevés sur l’ensemble des processus.
 
@@ -32,7 +32,7 @@ Le problème principal semble venir d’une sous-estimation structurelle des tem
 
 ---
 
-### Insight 2 — Certaines catégories de tâches concentrent davantage l’inefficience
+**Insight 2 — Certaines catégories de tâches concentrent davantage l’inefficience**
 
 Les tâches de type **Review** et **Escalation** présentent les retards moyens les plus élevés.
 
@@ -43,7 +43,7 @@ L’inefficience est davantage liée à la nature des tâches qu’à la seule o
 
 ---
 
-### Insight 3 — Le processus Purchase Order concentre l’impact économique le plus élevé
+**Insight 3 — Le processus Purchase Order concentre l’impact économique le plus élevé**
 
 L’analyse du **delay cost** montre que le processus **Purchase Order** génère le coût total de retard le plus important parmi les workflows observés.
 
@@ -56,7 +56,7 @@ Tous les retards n’ont pas la même valeur économique : le processus à trait
 
 ##  Décisions à prioriser
 
-### Décision 1 — Recalibrer les durées estimées des workflows
+**Décision 1 — Recalibrer les durées estimées des workflows**
 
 Les estimations actuelles semblent systématiquement sous-évaluer les durées réelles.
 
@@ -64,7 +64,7 @@ La première décision à prendre consiste donc à revoir les temps standards ut
 
 ---
 
-### Décision 2 — Cibler en priorité les tâches de type Review et Escalation
+**Décision 2 — Cibler en priorité les tâches de type Review et Escalation**
 
 Ces tâches doivent faire l’objet d’une revue spécifique car elles concentrent les plus forts dépassements de durée.
 
@@ -72,7 +72,7 @@ La direction ne doit pas chercher à optimiser uniformément tous les workflows,
 
 ---
 
-### Décision 3 — Prioriser le processus Purchase Order dans le plan d’amélioration
+**Décision 3 — Prioriser le processus Purchase Order dans le plan d’amélioration**
 
 Le processus **Purchase Order** doit être traité comme la priorité opérationnelle n°1 car il concentre l’impact financier du retard le plus élevé.
 
@@ -82,7 +82,7 @@ Une logique de priorisation par coût est ici plus pertinente qu’une logique p
 
 ##  Recommandations opérationnelles
 
-### Recommandation 1 — Réviser les standards de durée à partir des historiques réels
+**Recommandation 1 — Réviser les standards de durée à partir des historiques réels**
 
 Mettre à jour les durées de référence utilisées dans le pilotage opérationnel en s’appuyant sur les temps réellement observés.
 
@@ -93,7 +93,7 @@ Mettre à jour les durées de référence utilisées dans le pilotage opération
 
 ---
 
-### Recommandation 2 — Standardiser les tâches Review et sécuriser les escalations
+**Recommandation 2 — Standardiser les tâches Review et sécuriser les escalations**
 
 Pour les tâches **Review**, des checklists, modèles ou règles de traitement plus standardisées peuvent réduire l’incertitude.
 
@@ -105,7 +105,7 @@ Pour les tâches **Escalation**, une analyse complémentaire des causes d’esca
 
 ---
 
-### Recommandation 3 — Simplifier ou automatiser certaines validations sur Purchase Order
+**Recommandation 3 — Simplifier ou automatiser certaines validations sur Purchase Order**
 
 Le processus **Purchase Order** étant le plus coûteux en retard, il constitue le meilleur candidat pour une optimisation ciblée :
 
