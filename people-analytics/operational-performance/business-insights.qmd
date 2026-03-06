@@ -1,0 +1,130 @@
+---
+title: "Business Insights"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+---
+
+## Objectif
+
+Cette section traduit les analyses SQL et les visualisations en éléments directement exploitables par un décideur.
+
+L’objectif n’est pas seulement de décrire les performances observées, mais d’identifier :
+
+- les signaux les plus importants,
+- les priorités d’action,
+- les leviers d’amélioration les plus crédibles.
+
+---
+
+## 1. Insights clés
+
+### Insight 1 — Les retards sont systémiques plutôt que localisés
+
+Les analyses par département montrent des écarts relativement faibles entre équipes, tandis que les ratios d’efficacité restent élevés sur l’ensemble des processus.
+
+Cela suggère que les dépassements de durée ne proviennent pas d’une seule équipe en difficulté, mais d’un problème plus global de calibration des durées estimées.
+
+**Lecture business :**  
+Le problème principal semble venir d’une sous-estimation structurelle des temps de traitement plutôt que d’une sous-performance isolée d’un département.
+
+---
+
+### Insight 2 — Certaines catégories de tâches concentrent davantage l’inefficience
+
+Les tâches de type **Review** et **Escalation** présentent les retards moyens les plus élevés.
+
+Ces activités paraissent donc plus difficiles à standardiser ou à estimer correctement que les tâches plus routinières comme **Validation** ou **Data Entry**.
+
+**Lecture business :**  
+L’inefficience est davantage liée à la nature des tâches qu’à la seule organisation des équipes.
+
+---
+
+### Insight 3 — Le processus Purchase Order concentre l’impact économique le plus élevé
+
+L’analyse du **delay cost** montre que le processus **Purchase Order** génère le coût total de retard le plus important parmi les workflows observés.
+
+Même si les écarts moyens restent proches d’un processus à l’autre, ce workflow représente la priorité la plus claire en termes d’impact opérationnel et financier.
+
+**Lecture business :**  
+Tous les retards n’ont pas la même valeur économique : le processus à traiter en priorité n’est pas nécessairement le plus lent, mais celui dont l’inefficience coûte le plus cher.
+
+---
+
+## 2. Décisions à prioriser
+
+### Décision 1 — Recalibrer les durées estimées des workflows
+
+Les estimations actuelles semblent systématiquement sous-évaluer les durées réelles.
+
+La première décision à prendre consiste donc à revoir les temps standards utilisés dans les workflows afin de produire des estimations plus réalistes.
+
+---
+
+### Décision 2 — Cibler en priorité les tâches de type Review et Escalation
+
+Ces tâches doivent faire l’objet d’une revue spécifique car elles concentrent les plus forts dépassements de durée.
+
+La direction ne doit pas chercher à optimiser uniformément tous les workflows, mais concentrer ses efforts sur les segments les plus instables.
+
+---
+
+### Décision 3 — Prioriser le processus Purchase Order dans le plan d’amélioration
+
+Le processus **Purchase Order** doit être traité comme la priorité opérationnelle n°1 car il concentre l’impact financier du retard le plus élevé.
+
+Une logique de priorisation par coût est ici plus pertinente qu’une logique purement descriptive par moyenne de retard.
+
+---
+
+## 3. Recommandations opérationnelles
+
+### Recommandation 1 — Réviser les standards de durée à partir des historiques réels
+
+Mettre à jour les durées de référence utilisées dans le pilotage opérationnel en s’appuyant sur les temps réellement observés.
+
+**Bénéfice attendu :**
+- prévisions plus crédibles,
+- meilleure planification,
+- réduction des écarts artificiels entre prévu et réalisé.
+
+---
+
+### Recommandation 2 — Standardiser les tâches Review et sécuriser les escalations
+
+Pour les tâches **Review**, des checklists, modèles ou règles de traitement plus standardisées peuvent réduire l’incertitude.
+
+Pour les tâches **Escalation**, une analyse complémentaire des causes d’escalade permettrait d’identifier les points de friction en amont.
+
+**Bénéfice attendu :**
+- réduction des tâches les plus imprévisibles,
+- meilleure stabilité des temps de traitement.
+
+---
+
+### Recommandation 3 — Simplifier ou automatiser certaines validations sur Purchase Order
+
+Le processus **Purchase Order** étant le plus coûteux en retard, il constitue le meilleur candidat pour une optimisation ciblée :
+
+- simplification de certaines étapes,
+- automatisation de validations simples,
+- réduction des circuits de traitement inutiles.
+
+**Bénéfice attendu :**
+- baisse directe du coût global du retard,
+- amélioration du rendement opérationnel sur le workflow le plus critique.
+
+---
+
+## Conclusion
+
+Cette analyse montre que la priorité n’est pas de corriger une équipe isolée, mais de mieux piloter les workflows à partir de trois leviers :
+
+- **des estimations de durée plus réalistes**,  
+- **une attention particulière aux tâches les plus instables**,  
+- **une priorisation fondée sur l’impact économique**.
+
+Dans une logique de pilotage de la performance, ces résultats permettent de passer d’une lecture descriptive des retards à une logique de **décision opérationnelle priorisée**.
