@@ -19,7 +19,7 @@ L’objectif n’est pas seulement de décrire les performances observées, mais
 
 ---
 
-## 1. Insights clés
+## Insights clés
 
 ### Insight 1 — Les retards sont systémiques plutôt que localisés
 
@@ -54,7 +54,7 @@ Tous les retards n’ont pas la même valeur économique : le processus à trait
 
 ---
 
-## 2. Décisions à prioriser
+##  Décisions à prioriser
 
 ### Décision 1 — Recalibrer les durées estimées des workflows
 
@@ -80,7 +80,7 @@ Une logique de priorisation par coût est ici plus pertinente qu’une logique p
 
 ---
 
-## 3. Recommandations opérationnelles
+##  Recommandations opérationnelles
 
 ### Recommandation 1 — Réviser les standards de durée à partir des historiques réels
 
