@@ -28,7 +28,6 @@ Chaque projet suit une logique analytique structurée :
 
 [📚 Voir les projets People Analytics](projets.qmd){.btn .btn-primary}
 
-## Projet principal
 
 ### P1 — Comprendre les déterminants du turnover des salariés  
 **Analyse exploratoire basée sur le dataset IBM HR Attrition**
