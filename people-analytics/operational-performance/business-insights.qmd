@@ -2,9 +2,9 @@
 title: "Business Insights"
 format:
   html:
-    toc: false
+    toc: true
     toc-depth: 2
-    number-sections: true
+    number-sections: False
 ---
 
 ## Objectif
