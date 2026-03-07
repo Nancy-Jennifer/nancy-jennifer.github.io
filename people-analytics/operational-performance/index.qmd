@@ -260,7 +260,7 @@ Ces décisions contribueraient à améliorer la fluidité des opérations et à 
 
 Le projet est détaillé à travers plusieurs pages :
 
-- [Analyse SQL](analyse_sql.qmd)  
+- [Analyse SQL](analyse-sql.qmd)  
 - [Visualisations](visualisations.qmd)  
 - [Business Insights](business-insights.qmd)
 
