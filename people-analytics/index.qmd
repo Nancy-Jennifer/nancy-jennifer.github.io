@@ -62,18 +62,3 @@ L’analyse met en évidence plusieurs **leviers d’amélioration organisationn
 [🚀 Ouvrir le projet P2 – Performance des workflows](operational-performance/index.qmd){.btn .btn-success}
 
 ---
-
-## Explorations complémentaires & projets à venir
-
-Cette section intégrera progressivement d’autres analyses People Analytics structurées autour d’une même logique :
-
-**question RH prioritaire → analyse rigoureuse → recommandations opérationnelles.**
-
-Axes envisagés :
-
-- **Performance & formation** : impact des investissements formation sur la rétention et la performance  
-- **Mobilité interne** : compréhension des trajectoires professionnelles  
-- **Engagement collaborateurs** : analyse de baromètres internes  
-- **Exploration de données RH ouvertes** : cas d’usage complémentaires  
-
-*Ces projets enrichiront progressivement le portfolio tout en conservant la hiérarchie des projets structurants présentés ci-dessus.*
