@@ -39,18 +39,18 @@ Objectif : produire des **enseignements exploitables** et des **recommandations 
 
 ---
 
-## Projets à venir
+### P2 — Optimisation de la performance des workflows opérationnels  
+*Analyse des retards, inefficiences et coûts opérationnels dans les processus d’entreprise*
 
-### P2 — Analyse People Analytics (en préparation)
+Cette analyse explore un dataset simulant des **workflows opérationnels d’entreprise** afin d’identifier les sources de ralentissement dans l’exécution des tâches :
 
-Un second projet viendra compléter cette rubrique autour d’enjeux RH structurants :
+- écarts entre temps estimé et temps réel  
+- types de tâches générant le plus de retard  
+- frictions liées aux niveaux d’approbation  
 
-- **performance & formation**,  
-- **mobilité interne**,  
-- **engagement collaborateurs**.
+Objectif : produire des **enseignements exploitables** pour améliorer la fluidité des processus et orienter des **décisions d’optimisation opérationnelle**.
 
-L’objectif est d’illustrer la continuité de l’approche People Analytics :  
-**analyse rigoureuse → lecture métier → décisions RH.**
+[🚀 Ouvrir le projet P2 – Performance des workflows](operational-performance/index.qmd){.btn .btn-success}
 
 ---
 
