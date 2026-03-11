@@ -13,7 +13,7 @@ website:
         file: index.qmd
       - text: "QUI SUIS-JE ?"
         file: about.qmd
-      - text: "TELECOMS"
+      - text: "TELECOM ANALYTICS"
         file: telecoms/index.qmd
       - text: "PEOPLE ANALYTICS"
         file: people-analytics/index.qmd
