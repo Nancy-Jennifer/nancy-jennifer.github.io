@@ -44,20 +44,3 @@ Ce projet vise à identifier les facteurs associés au **départ volontaire des 
 [🚀 Ouvrir le projet P1 – Analyse Attrition (IBM)](attrition/index.qmd){.btn .btn-success}
 
 ---
-
-### P2 — Optimisation de la performance des workflows opérationnels  
-**Analyse des retards, inefficiences et coûts opérationnels dans les processus d’entreprise**
-
-Ce projet analyse un dataset simulant des **workflows opérationnels d’entreprise** afin d’identifier les sources de ralentissement dans l’exécution des tâches : écarts entre temps estimé et temps réel, complexité de certains types de tâches et frictions liées aux niveaux d’approbation.
-
-L’objectif est de comprendre **où se situent les inefficiences opérationnelles** et quels processus génèrent les retards et les coûts les plus importants.
-
-L’analyse met en évidence plusieurs **leviers d’amélioration organisationnelle** :
-
-- recalibrage des temps standards pour certains processus,
-- simplification de certains circuits d’approbation,
-- priorisation des actions d’optimisation sur les workflows à plus fort impact.
-
-[🚀 Ouvrir le projet P2 – Performance des workflows](operational-performance/index.qmd){.btn .btn-success}
-
----
