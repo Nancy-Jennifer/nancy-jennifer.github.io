@@ -39,19 +39,4 @@ Objectif : produire des **enseignements exploitables** et des **recommandations 
 
 ---
 
-### P2 — Optimisation de la performance des workflows opérationnels  
-*Analyse des retards, inefficiences et coûts opérationnels dans les processus d’entreprise*
-
-Cette analyse explore un dataset simulant des **workflows opérationnels d’entreprise** afin d’identifier les sources de ralentissement dans l’exécution des tâches :
-
-- écarts entre temps estimé et temps réel  
-- types de tâches générant le plus de retard  
-- frictions liées aux niveaux d’approbation  
-
-Objectif : produire des **enseignements exploitables** pour améliorer la fluidité des processus et orienter des **décisions d’optimisation opérationnelle**.
-
-[🚀 Ouvrir le projet P2 – Performance des workflows](operational-performance/index.qmd){.btn .btn-success}
-
----
-
 [← Retour à la rubrique People Analytics](index.qmd)
