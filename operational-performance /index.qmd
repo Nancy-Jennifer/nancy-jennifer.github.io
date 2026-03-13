@@ -3,6 +3,8 @@ title: "Operational Performance"
 format: html
 ---
 
+![](nancy-jennifer.github.io/operational-performance/operational-performance.png){fig-align="center" width="100%"}
+
 ## Operational Performance
 
 Dans beaucoup d’organisations, les difficultés opérationnelles sont d’abord perçues comme un problème de charge, de ressources ou de volume d’activité.
