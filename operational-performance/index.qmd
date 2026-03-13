@@ -1,0 +1,64 @@
+---
+title: "Operational Performance"
+format: html
+---
+![](nancy-jennifer.github.io/operational-performance/operational-performance.png){fig-align="center" width="100%"}
+
+## Operational Performance
+
+Dans beaucoup d’organisations, les difficultés opérationnelles sont d’abord perçues comme un problème de charge, de ressources ou de volume d’activité.
+
+Mais les données racontent souvent une autre réalité.
+
+Un système peut ralentir non pas parce qu’il produit trop de travail, mais parce que le travail circule mal :
+
+- étapes qui s’accumulent  
+- temps d’attente invisibles  
+- priorités mal distribuées  
+- goulots d’étranglement  
+- déséquilibres entre équipes ou entre phases de traitement  
+
+L’analyse de la performance opérationnelle consiste précisément à rendre ces mécanismes visibles.
+
+L’enjeu n’est pas seulement de mesurer une activité.  
+L’enjeu est de comprendre **où la performance se dégrade, pourquoi elle se dégrade, et quelle décision permet de la rétablir.**
+
+Dans cette section, chaque projet suit la même logique analytique :
+
+1. Identifier **un signal clair dans les données**  
+2. Produire **une lecture analytique structurée**  
+3. Éclairer **une décision opérationnelle concrète**
+
+Cette approche permet de passer :
+
+- d’un constat de lenteur à une lecture structurée du processus  
+- d’une impression de surcharge à l’identification d’un blocage réel  
+- d’un reporting descriptif à une **décision opérationnelle**
+
+---
+
+## Projet principal
+
+### Workflow Performance
+
+Ce projet analyse la performance d’un workflow opérationnel afin d’identifier les points de ralentissement dans le système.
+
+L’objectif n’est pas seulement de suivre des volumes ou des délais.  
+Il est de comprendre **comment les tâches circulent réellement dans le processus**, où elles se bloquent et quelles conséquences cela produit sur la performance globale.
+
+L’analyse met notamment en évidence :
+
+- la concentration des retards sur certaines étapes  
+- l’accumulation de temps d’attente entre deux phases du workflow  
+- des déséquilibres de charge dans la circulation des tâches  
+- l’impact structurel des points de blocage sur la performance du système  
+
+La finalité de l’analyse est décisionnelle :
+
+- rééquilibrer le flux de travail  
+- réduire les temps d’attente  
+- cibler les étapes critiques  
+- améliorer la fluidité du processus  
+
+🔎 Accéder au projet :  
+[Workflow Performance](workflow-performance/index.qmd)
