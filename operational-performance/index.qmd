@@ -1,64 +1,181 @@
 ---
-title: "Operational Performance"
-format: html
----
-![](nancy-jennifer.github.io/operational-performance/operational-performance.png){fig-align="center" width="100%"}
-
-## Operational Performance
-
-Dans beaucoup d’organisations, les difficultés opérationnelles sont d’abord perçues comme un problème de charge, de ressources ou de volume d’activité.
-
-Mais les données racontent souvent une autre réalité.
-
-Un système peut ralentir non pas parce qu’il produit trop de travail, mais parce que le travail circule mal :
-
-- étapes qui s’accumulent  
-- temps d’attente invisibles  
-- priorités mal distribuées  
-- goulots d’étranglement  
-- déséquilibres entre équipes ou entre phases de traitement  
-
-L’analyse de la performance opérationnelle consiste précisément à rendre ces mécanismes visibles.
-
-L’enjeu n’est pas seulement de mesurer une activité.  
-L’enjeu est de comprendre **où la performance se dégrade, pourquoi elle se dégrade, et quelle décision permet de la rétablir.**
-
-Dans cette section, chaque projet suit la même logique analytique :
-
-1. Identifier **un signal clair dans les données**  
-2. Produire **une lecture analytique structurée**  
-3. Éclairer **une décision opérationnelle concrète**
-
-Cette approche permet de passer :
-
-- d’un constat de lenteur à une lecture structurée du processus  
-- d’une impression de surcharge à l’identification d’un blocage réel  
-- d’un reporting descriptif à une **décision opérationnelle**
-
+title: "OPERATIONAL PERFORMANCE — PERFORMANCE DES PROCESSUS & AIDE À LA DÉCISION"
+toc: false
+page-layout: full
 ---
 
-## Projet principal
+<!-- ===== BANNIÈRE 2/3 LARGEUR ===== -->
+<div class="hero-ops-wrap">
+  <picture>
+    <img src="workflow-performance/assets/figs/operational-performance.png"
+         alt="Bannière Operational Performance" class="hero-banner-ops" loading="eager" />
+  </picture>
+</div>
 
-### Workflow Performance
+## Analyse de la performance opérationnelle & aide à la décision
 
-Ce projet analyse la performance d’un workflow opérationnel afin d’identifier les points de ralentissement dans le système.
+À travers des projets orientés **performance des processus**, j’analyse les données opérationnelles pour :
 
-L’objectif n’est pas seulement de suivre des volumes ou des délais.  
-Il est de comprendre **comment les tâches circulent réellement dans le processus**, où elles se bloquent et quelles conséquences cela produit sur la performance globale.
+- comprendre les écarts de performance  
+- détecter les points de friction dans les workflows  
+- identifier les goulots d’étranglement  
+- prioriser les actions d’amélioration  
+- éclairer les décisions de pilotage opérationnel  
 
-L’analyse met notamment en évidence :
+👉 **L’objectif :** transformer les indicateurs d’activité en leviers concrets d’efficacité, de maîtrise des délais et d’amélioration de la performance globale.
 
-- la concentration des retards sur certaines étapes  
-- l’accumulation de temps d’attente entre deux phases du workflow  
-- des déséquilibres de charge dans la circulation des tâches  
-- l’impact structurel des points de blocage sur la performance du système  
+`Workflow Performance`{.badge} `Délais de traitement`{.badge} `Efficacité opérationnelle`{.badge} `Bottlenecks`{.badge} `Aide à la décision`{.badge}
 
-La finalité de l’analyse est décisionnelle :
+## Projets orientés performance & décisions
 
-- rééquilibrer le flux de travail  
-- réduire les temps d’attente  
-- cibler les étapes critiques  
-- améliorer la fluidité du processus  
+<div class="proj-grid">
 
-🔎 Accéder au projet :  
-[Workflow Performance](workflow-performance/index.qmd)
+  <!-- P1 -->
+  <article class="proj-card">
+    <h3>P1 — Workflow Performance Analysis</h3>
+    <p class="subtitle">Processus métier · Délais · Efficacité · Goulots d’étranglement</p>
+
+    <p>
+      Analyse de la performance d’un workflow afin d’identifier les étapes les plus coûteuses en délai,
+      repérer les points de blocage et soutenir les décisions d’optimisation opérationnelle.
+    </p>
+
+    <a class="btn btn-success" href="workflow-performance/index.qmd">🚀 Explorer le projet P1</a>
+  </article>
+
+  <!-- P2 -->
+  <article class="proj-card muted">
+    <h3>P2 — À venir</h3>
+    <p class="subtitle">Performance opérationnelle · Monitoring · Pilotage</p>
+
+    <p>
+      Cette rubrique sera enrichie avec d’autres projets consacrés à l’analyse des processus,
+      à la mesure de l’efficacité opérationnelle et à l’aide à la décision en environnement métier.
+    </p>
+
+    <span class="btn btn-outline-primary disabled">Projet en préparation</span>
+  </article>
+
+</div>
+
+## Impact métier
+
+Ces analyses permettent notamment :
+
+- d’identifier les étapes qui ralentissent l’exécution  
+- de détecter les processus sous-performants  
+- de prioriser les actions d’amélioration opérationnelle  
+- d’orienter les décisions de réallocation ou d’automatisation  
+- d’améliorer la fluidité et la performance globale des opérations  
+
+## Positionnement analytique
+
+Mon travail se situe à l’interface entre :
+
+- indicateurs opérationnels  
+- performance des processus  
+- décisions d’optimisation  
+
+👉 **L’objectif :** relier la donnée opérationnelle à des décisions concrètes d’amélioration de la performance.
+
+Cette rubrique sera enrichie progressivement avec d’autres analyses orientées efficacité opérationnelle,
+diagnostic de processus et aide à la décision.
+
+```{=html}
+<style>
+
+/* ===============================
+   BANNIÈRE — 2/3 largeur à gauche
+   =============================== */
+
+.hero-ops-wrap{
+  width: 66%;
+  max-width: 1100px;
+  margin: 0 0 10px 0;
+}
+
+.hero-banner-ops{
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  object-position: 55% 50%;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  margin: 0 0 24px 0;
+}
+
+/* Responsive bannière */
+
+@media (max-width: 900px){
+  .hero-ops-wrap{ width: calc(100vw - 32px); }
+  .hero-banner-ops{ height: 280px; }
+}
+
+@media (max-width: 600px){
+  .hero-banner-ops{ height: 220px; }
+}
+
+/* ===============================
+   Cartes "Projets"
+   =============================== */
+
+.proj-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.proj-card{
+  background: var(--quarto-body-bg);
+  border: 1px solid #e9ecef;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.04);
+}
+
+.proj-card h3{
+  margin: 0 0 6px 0;
+  font-size: 1.18rem;
+  line-height: 1.25;
+}
+
+.proj-card .subtitle{
+  margin: 0 0 10px 0;
+  color: #667085;
+  font-size: 0.95rem;
+}
+
+.proj-card.muted{ opacity: .95; }
+
+/* ===============================
+   Boutons
+   =============================== */
+
+.btn-primary{
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+.btn-outline-primary{
+  background: transparent !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+
+.btn-outline-primary:hover{
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+
+.btn.disabled{
+  pointer-events: none;
+  opacity: .6;
+}
+
+.proj-card .btn{ margin-top: 6px; }
+
+</style>
