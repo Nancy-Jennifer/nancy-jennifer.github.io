@@ -1,5 +1,5 @@
 ---
-title: "OPERATIONAL PERFORMANCE — PERFORMANCE DES PROCESSUS & AIDE À LA DÉCISION"
+title: "PERFORMANCE DES PROCESSUS & AIDE À LA DÉCISION"
 toc: false
 page-layout: full
 ---
@@ -45,20 +45,7 @@ page-layout: full
     <a class="btn btn-success" href="workflow-performance/index.qmd">🚀 Explorer le projet P1</a>
   </article>
 
-  <!-- P2 -->
-  <article class="proj-card muted">
-    <h3>P2 — À venir</h3>
-    <p class="subtitle">Performance opérationnelle · Monitoring · Pilotage</p>
-
-    <p>
-      Cette rubrique sera enrichie avec d’autres projets consacrés à l’analyse des processus,
-      à la mesure de l’efficacité opérationnelle et à l’aide à la décision en environnement métier.
-    </p>
-
-    <span class="btn btn-outline-primary disabled">Projet en préparation</span>
-  </article>
-
-</div>
+  </div>
 
 ## Impact métier
 
