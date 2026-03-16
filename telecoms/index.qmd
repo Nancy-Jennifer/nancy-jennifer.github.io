@@ -1,5 +1,5 @@
 ---
-title: "TELECOMS — PERFORMANCE RÉSEAU & QUALITÉ DE SERVICE"
+title: "PERFORMANCE RÉSEAU & QUALITÉ DE SERVICE"
 toc: false
 page-layout: full
 ---
@@ -7,9 +7,10 @@ page-layout: full
 <!-- ===== BANNIÈRE 2/3 LARGEUR ===== -->
 <div class="hero-telecom-wrap">
   <picture>
-    <source srcset="https://nancy-jennifer.github.io/assets/banners/banner-telecom.jpg">
-    <img src="https://nancy-jennifer.github.io/assets/banners/banner-telecom.jpg"
-         alt="Bannière Télécoms" class="hero-banner-telecom" loading="eager" />
+    <img src="banner-telecom.png"
+         alt="Bannière Télécoms"
+         class="hero-banner-telecom"
+         loading="eager" />
   </picture>
 </div>
 
@@ -81,17 +82,20 @@ Cette rubrique sera enrichie progressivement avec d’autres analyses télécom,
 
 ```{=html}
 <style>
+
 /* ===============================
    BANNIÈRE — 2/3 largeur à gauche
    =============================== */
+
 .hero-telecom-wrap{
   width: 66%;
   max-width: 1100px;
-  margin: 0 0 10px 0;      /* alignée à gauche */
+  margin: 0 0 10px 0;
 }
+
 .hero-banner-telecom{
   width: 100%;
-  height: 360px;           /* même impression que la page Méthodo */
+  height: 360px;
   object-fit: cover;
   object-position: 55% 50%;
   border-radius: 12px;
@@ -101,10 +105,12 @@ Cette rubrique sera enrichie progressivement avec d’autres analyses télécom,
 }
 
 /* Responsive bannière */
+
 @media (max-width: 900px){
   .hero-telecom-wrap{ width: calc(100vw - 32px); }
   .hero-banner-telecom{ height: 280px; }
 }
+
 @media (max-width: 600px){
   .hero-banner-telecom{ height: 220px; }
 }
@@ -112,12 +118,14 @@ Cette rubrique sera enrichie progressivement avec d’autres analyses télécom,
 /* ===============================
    Cartes "Projets"
    =============================== */
+
 .proj-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
   margin-top: 8px;
 }
+
 .proj-card{
   background: var(--quarto-body-bg);
   border: 1px solid #e9ecef;
@@ -125,39 +133,49 @@ Cette rubrique sera enrichie progressivement avec d’autres analyses télécom,
   padding: 18px 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,.04);
 }
+
 .proj-card h3{
   margin: 0 0 6px 0;
   font-size: 1.18rem;
   line-height: 1.25;
 }
+
 .proj-card .subtitle{
   margin: 0 0 10px 0;
   color: #667085;
   font-size: 0.95rem;
 }
+
 .proj-card.muted{ opacity: .95; }
 
 /* ===============================
    Boutons & états
    =============================== */
+
 .btn-primary{
   background: var(--accent) !important;
   border-color: var(--accent) !important;
   color: #fff !important;
 }
+
 .btn-outline-primary{
   background: transparent !important;
   border-color: var(--accent) !important;
   color: var(--accent) !important;
   font-weight: 600;
 }
+
 .btn-outline-primary:hover{
   background: var(--accent) !important;
   color: #fff !important;
 }
+
 .btn.disabled{
   pointer-events: none;
   opacity: .6;
 }
+
 .proj-card .btn{ margin-top: 6px; }
+
 </style>
+```
