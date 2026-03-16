@@ -1,5 +1,5 @@
 ---
-title: "PEOPLE ANALYTICS — TALENTS, ENGAGEMENT & PERFORMANCE"
+title: "TALENTS, ENGAGEMENT & PERFORMANCE"
 ---
 
 <div class="hero-people-wrap">
