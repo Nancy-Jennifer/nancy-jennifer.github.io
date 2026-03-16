@@ -7,7 +7,7 @@ page-layout: full
 <!-- ===== BANNIÈRE 2/3 LARGEUR ===== -->
 <div class="hero-ops-wrap">
   <picture>
-    <img src="operational-performance.png"
+    <img src="banner-ops.png"
          alt="Bannière Operational Performance"
          class="hero-banner-ops"
          loading="eager" />
