@@ -7,8 +7,10 @@ page-layout: full
 <!-- ===== BANNIÈRE 2/3 LARGEUR ===== -->
 <div class="hero-ops-wrap">
   <picture>
-    <img src="/operational-performance/workflow-performance/assets/figs/operational-performance.png"
-     alt="Bannière Operational Performance" class="hero-banner-ops" loading="eager" />
+    <img src="workflow-performance/assets/figs/operational-performance.png"
+         alt="Bannière Operational Performance"
+         class="hero-banner-ops"
+         loading="eager">
   </picture>
 </div>
 
