@@ -13,8 +13,13 @@ execute:
   message: false
 ---
 
-<img src="assets/data_for_social_good_banner.jpg" alt="Bannière – Data for Social Good" style="width:75%;">
-
+<!-- ===== BANNIÈRE 2/3 LARGEUR ===== -->
+<div class="hero-social-wrap">
+  <img src="Social-good.png"
+       alt="Bannière Data for Social Good"
+       class="hero-banner-social"
+       loading="eager" />
+</div>
 
 ## Pourquoi une section *Data for Social Good* ?
 
@@ -80,9 +85,39 @@ Cette section regroupera progressivement d’autres analyses *Data for Social Go
 
 À terme, elle pourra inclure notamment :
 
-- analyses open data sur la **santé publique** (prévention, accès aux soins, déterminants sociaux),  
-- projets autour de l’**égalité & inclusion** (genre, éducation, accès au numérique),  
-- visualisations interactives pour **rendre visibles des inégalités** ou des zones de fragilité,  
-- études centrées sur l’**empowerment** et la prise de décision (individuelle ou communautaire).
+- analyses open data sur la **santé publique**,  
+- projets autour de l’**égalité & inclusion**,  
+- visualisations interactives pour **rendre visibles des inégalités**,  
+- études centrées sur l’**empowerment**.
 
-*Ces projets viendront enrichir progressivement le portfolio, sans remettre en cause la priorité donnée au projet phare présenté ci-dessus.*
+*Ces projets viendront enrichir progressivement le portfolio.*
+
+```{=html}
+<style>
+.hero-social-wrap{
+  width: 66%;
+  max-width: 1100px;
+  margin: 0 0 10px 0;
+}
+
+.hero-banner-social{
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  object-position: 55% 50%;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  margin: 0 0 24px 0;
+}
+
+@media (max-width: 900px){
+  .hero-social-wrap{ width: calc(100vw - 32px); }
+  .hero-banner-social{ height: 280px; }
+}
+
+@media (max-width: 600px){
+  .hero-banner-social{ height: 220px; }
+}
+</style>
+```
