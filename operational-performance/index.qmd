@@ -51,7 +51,7 @@ execute:
       repérer les points de blocage et soutenir les décisions d’optimisation opérationnelle.
     </p>
 
-    <a class="btn btn-success" href="workflow-performance/index.qmd">🚀 Explorer le projet P1</a>
+    <a class="btn btn-success" href="operational-performance/workflow-performance /index.qmd">🚀 Explorer le projet P1</a>
   </article>
 
   </div>
