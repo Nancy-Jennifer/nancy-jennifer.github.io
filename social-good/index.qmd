@@ -1,6 +1,5 @@
 ---
-title: "DATA FOR SOCIAL GOOD"
-subtitle: "Analyser pour comprendre. Comprendre pour agir."
+title: "ANALYSER POUR COMPRENDRE, COMPRENDRE POUR AGIR"
 format:
   html:
     toc: true
