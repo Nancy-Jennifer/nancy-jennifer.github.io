@@ -3,7 +3,8 @@ title: "ANALYSER POUR COMPRENDRE,
         COMPRENDRE POUR AGIR"
 format:
   html:
-    toc: true
+    toc: false
+    page-layout: full
     toc-depth: 2
     number-sections: false
     code-fold: false
