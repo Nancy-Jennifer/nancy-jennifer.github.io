@@ -1,5 +1,16 @@
 ---
 title: "TALENTS, ENGAGEMENT & PERFORMANCE"
+format:
+  html:
+    toc: false
+    page-layout: full
+    toc-depth: 2
+    number-sections: false
+    code-fold: false
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
 
 <div class="hero-people-wrap">
