@@ -1,5 +1,6 @@
 ---
-title: "ANALYSER POUR COMPRENDRE, COMPRENDRE POUR AGIR"
+title: "ANALYSER POUR COMPRENDRE, 
+        COMPRENDRE POUR AGIR"
 format:
   html:
     toc: true
