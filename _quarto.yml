@@ -17,6 +17,8 @@ website:
         file: telecoms/index.qmd
       - text: "People Analytics"
         file: people-analytics/index.qmd
+      - text: "Operational Performance"
+        file: operational-performance/index.qmd
       - text: "Data for Social Good"
         file: social-good/index.qmd
       - text: "Méthodologie Analytique"
