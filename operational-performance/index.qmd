@@ -37,6 +37,8 @@ execute:
 
 `Workflow Performance`{.badge} `Délais de traitement`{.badge} `Efficacité opérationnelle`{.badge} `Bottlenecks`{.badge} `Aide à la décision`{.badge}
 
+[📚 Voir les projets Operational Performance](projets.qmd){.btn .btn-primary}
+
 ## Projets orientés performance & décisions
 
 <div class="proj-grid">
