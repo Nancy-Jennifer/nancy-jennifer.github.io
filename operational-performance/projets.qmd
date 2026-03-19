@@ -1,0 +1,44 @@
+---
+title: "Projets Operational Performance"
+subtitle: "Analyses de processus orientées performance, délais et aide à la décision"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    code-fold: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+::: {.callout-note}
+Accédez aux analyses de performance opérationnelle par projet.  
+Chaque carte présente la problématique métier étudiée, l’approche analytique retenue et les leviers d’amélioration identifiés.
+:::
+
+---
+
+## Projets disponibles
+
+### P1 — Workflow Performance Analysis  
+*Analyse exploratoire — Performance des processus métier*
+
+Cette analyse vise à identifier les points de friction dans un workflow opérationnel afin de mieux piloter la performance globale.
+
+Les axes étudiés portent notamment sur :
+
+- les délais de traitement  
+- les étapes les plus lentes  
+- les goulots d’étranglement  
+- les écarts d’efficacité entre processus  
+- les opportunités d’optimisation opérationnelle  
+
+Objectif : produire des **enseignements exploitables** et des **recommandations actionnables** pour améliorer la fluidité des opérations, réduire les délais et soutenir les décisions d’optimisation.
+
+[🚀 Ouvrir le projet P1 – Workflow Performance](workflow-performance/){.btn .btn-success}
+
+---
+
+[← Retour à la rubrique Operational Performance](index.qmd)
