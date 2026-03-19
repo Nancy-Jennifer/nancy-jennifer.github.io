@@ -9,19 +9,19 @@ website:
   description: "Portfolio Data Analyst Technique — Télécoms QoS, People Analytics, Operational Performance et projets orientés performance, optimisation et aide à la décision"
   navbar:
     left:
-      - text: "ACCUEIL"
+      - text: "Accueil"
         file: index.qmd
-      - text: "QUI SUIS-JE ?"
+      - text: "Qui suis-je ?"
         file: about.qmd
-      - text: "TELECOM ANALYTICS"
+      - text: "Telecom Analytics"
         file: telecoms/index.qmd
-      - text: "PEOPLE ANALYTICS"
+      - text: "People Analytics"
         file: people-analytics/index.qmd
-      - text: "OPERATIONAL PERFORMANCE"
+      - text: "Operational Performance"
         file: operational-performance/index.qmd
-      - text: "METHODOLOGIE ANALYTIQUE"
+      - text: "Méthodologie analytique"
         file: methode/index.qmd
-      - text: "CONTACT"
+      - text: "Contact"
         file: contact.qmd
 
     right:
