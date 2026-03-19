@@ -19,8 +19,6 @@ website:
         file: people-analytics/index.qmd
       - text: "Operational Performance"
         file: operational-performance/index.qmd
-      - text: "Méthodologie Analytique"
-        file: methode/index.qmd
       - text: "Contributions bénévoles"
         file: contributions/index.qmd
       - text: "Contact"
