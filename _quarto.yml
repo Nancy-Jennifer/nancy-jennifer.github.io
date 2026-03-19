@@ -6,7 +6,7 @@ project:
 
 website:
   title: ""
-  description: "Portfolio Data Analyst Technique — Télécoms QoS, People Analytics & Operational Performance"
+  description: "Portfolio Data Analyst Technique — Télécoms QoS, People Analytics, Operational Performance et projets orientés performance, optimisation et aide à la décision"
   navbar:
     left:
       - text: "Accueil"
@@ -34,7 +34,7 @@ website:
 
   page-footer:
     left: |
-      © <span id="year"></span> Nancy Lee YIMBERE ALAPINI – Data Analyst | Télécommunications, People Analytics & Operational Performance – Portfolio personnel –
+      © <span id="year"></span> Nancy Lee YIMBERE ALAPINI – Data Analyst Technique | Télécommunications, People Analytics & Operational Performance – Analyses orientées performance, optimisation et aide à la décision –
       <a href="https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626" target="_blank" rel="noopener">LinkedIn</a> |
       <a href="mailto:nancylee.yimbere@gmail.com">nancylee.yimbere@gmail.com</a>
       <script>
