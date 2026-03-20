@@ -1,100 +1,147 @@
 ---
 title: "CV – Performance & Decision Intelligence Analyst"
-subtitle: "Telecom QoS • KPI • Operations • People Analytics"
+subtitle: "Telecom QoS • Operational Performance • People Analytics"
 format:
   html:
     toc: true
     number-sections: false
 ---
 
-## À propos
+## Positionnement
 
-Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en **analyse de la performance** et **aide à la décision par la data**.
+Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en  
+**analyse de la performance** et **aide à la décision par la donnée**.
 
-J’interviens sur des problématiques où les données servent directement à piloter l’activité :
+J’interviens sur des problématiques où la donnée sert directement à :
 
-- identifier les dérives de performance  
-- détecter les anomalies  
-- prioriser les actions  
-- éclairer les décisions opérationnelles et stratégiques  
+- **comprendre les écarts de performance**
+- **détecter les anomalies et inefficacités**
+- **identifier les leviers d’amélioration prioritaires**
+- **orienter les décisions opérationnelles et stratégiques**
 
-Mon approche consiste à relier **données, enjeux métier et décisions concrètes**.
-
----
-
-## Projets
-
-### Analyse QoS Télécom – France 2022 (ARCEP)
-
-Analyse des performances voix, SMS et data selon les contextes d’usage (urbain, rural, transport, indoor).
-
-**Impact décisionnel :**
-- identification des zones sous-performantes  
-- priorisation des actions d’optimisation réseau  
-- objectivation de la qualité perçue client  
-
-🔗 [Voir le projet ARCEP 2022](https://nancy-jennifer.github.io/telecoms/projet1_arcep2022.html)
+👉 Mon rôle : relier **données, enjeux métier et décisions concrètes**.
 
 ---
 
-### Benchmark QoS – France 2024
+## Domaines d’expertise
 
-Comparaison des performances nationales avec les standards internationaux (ITU, Banque Mondiale).
+### Télécommunications (QoS & performance réseau)
+- Analyse de la qualité de service (voix, SMS, data)
+- Identification des zones et contextes sous-performants
+- Aide à la priorisation des actions d’optimisation réseau
+- Benchmark et analyse comparative
 
-**Impact décisionnel :**
-- mise en évidence des écarts critiques  
-- support à l’alignement stratégique  
-- aide à la priorisation des investissements réseau  
+### Operational Performance (processus & workflows)
+- Analyse des délais et performance des processus métier
+- Identification des goulots d’étranglement
+- Détection des inefficacités opérationnelles
+- Recommandations d’optimisation orientées performance
 
-🔗 [Voir le projet ARCEP 2024](https://nancy-jennifer.github.io/telecoms/projet2_arcep2024.html)
+### People Analytics (performance & rétention)
+- Analyse des facteurs de turnover et d’engagement
+- Identification des populations à risque
+- Aide à la priorisation des actions RH
+- Lecture des données RH pour décision managériale
 
 ---
 
-### People Analytics – Analyse de l’attrition RH
+## Projets à impact décisionnel
 
-Analyse des facteurs expliquant le turnover et la satisfaction collaborateurs.
+### Télécoms — Analyse QoS France 2022 (ARCEP)
 
-**Impact décisionnel :**
+Analyse des performances voix, SMS et data selon les contextes d’usage.
+
+**Décisions supportées :**
+- priorisation des zones à optimiser  
+- identification des écarts de qualité de service  
+- objectivation de l’expérience utilisateur  
+
+🔗 [Voir le projet](https://nancy-jennifer.github.io/telecoms/projet1_arcep2022.html)
+
+---
+
+### Télécoms — Benchmark QoS France 2024 vs standards internationaux
+
+Comparaison des performances nationales avec les standards ITU et Banque Mondiale.
+
+**Décisions supportées :**
+- identification des écarts critiques  
+- orientation des investissements réseau  
+- alignement avec des benchmarks internationaux  
+
+🔗 [Voir le projet](https://nancy-jennifer.github.io/telecoms/projet2_arcep2024.html)
+
+---
+
+### Operational Performance — Workflow Performance Analysis
+
+Analyse de la performance d’un processus métier (délais, efficacité, friction).
+
+**Décisions supportées :**
+- identification des étapes bloquantes  
+- réduction des délais de traitement  
+- priorisation des actions d’optimisation  
+
+🔗 [Voir le projet](https://nancy-jennifer.github.io/operational-performance/workflow-performance/)
+
+---
+
+### People Analytics — Analyse de l’attrition RH
+
+Analyse des facteurs influençant le départ des collaborateurs.
+
+**Décisions supportées :**
 - ciblage des leviers de rétention  
 - priorisation des actions RH  
 - amélioration de l’engagement  
 
-🔗 [Voir le projet People Analytics](https://nancy-jennifer.github.io/people-analytics/attrition/)
+🔗 [Voir le projet](https://nancy-jennifer.github.io/people-analytics/attrition/)
 
 ---
 
-## Méthodologie
+## Démarche analytique
 
-- Compréhension de l’enjeu métier et formulation d’hypothèses  
-- Contrôle qualité des données et analyse exploratoire (EDA)  
-- Analyses statistiques adaptées au contexte  
-- Interprétation orientée décision  
-- Recommandations actionnables et mesurables  
-- Documentation et reproductibilité des analyses  
+Ma démarche est systématiquement orientée **performance et décision** :
+
+- clarification du besoin métier et des enjeux  
+- analyse exploratoire rigoureuse (EDA)  
+- contrôle qualité et cohérence des données  
+- formulation et test d’hypothèses  
+- interprétation orientée **impact opérationnel**  
+- recommandations **actionnables et mesurables**  
 
 ---
 
 ## Compétences
 
 ### Techniques
-- SQL
-- Excel
+- SQL  
+- Excel  
 - Python  
 - R  
 - Tableau  
 - ggplot2  
 - Leaflet  
 
-### Analytique & métier
-- Définition et suivi de KPIs de performance orientés pilotage  
-- Qualité de Service Télécom (QoS) : détection d’anomalies, comparaisons multi-zones, suivi temporel  
-- Analyses comparatives et segmentation pour identifier écarts, priorités et leviers d’action  
-- People Analytics : analyses RH orientées diagnostic et priorisation managériale  
+### Analytique & pilotage
+- Définition et suivi de KPIs de performance  
+- Analyse des écarts et identification des priorités  
+- Détection d’anomalies et signaux faibles  
+- Analyse comparative et segmentation  
 
 ### Restitution & décision
-- Data storytelling pour clarifier les enjeux et les options de décision  
-- Dashboards orientés action (quoi surveiller, quand agir, où prioriser)  
-- Rapports synthétiques pour décideurs, centrés sur signaux clés, risques et arbitrages possibles  
+- Data storytelling orienté décision  
+- Dashboards opérationnels (pilotage & suivi)  
+- Rapports synthétiques pour décideurs  
+- Traduction des données en **actions concrètes**  
+
+---
+
+## Philosophie
+
+Une donnée n’a de valeur que lorsqu’elle permet d’agir.  
+
+👉 **Analyser, comprendre, prioriser, décider.**
 
 ---
 
@@ -102,8 +149,8 @@ Analyse des facteurs expliquant le turnover et la satisfaction collaborateurs.
 
 📧 nancylee.yimbere@gmail.com  
 
-🔗 [Linkedin](https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/)  
+🔗 [LinkedIn](https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/)  
 📘 [Portfolio](https://nancy-jennifer.github.io)  
-💻 [Github](https://github.com/Nancy-Jennifer)  
+💻 [GitHub](https://github.com/Nancy-Jennifer)  
 
 📍 Télétravail privilégié | Présentiel possible à Cotonou
