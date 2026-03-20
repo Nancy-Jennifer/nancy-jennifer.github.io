@@ -4,37 +4,23 @@ page-layout: full
 title-block-style: none
 ---
 
-<!-- ===== HERO PREMIUM ===== -->
-<div class="hero-home">
-
-  <div class="hero-overlay">
-    <div class="hero-content">
-
-      <div class="hero-name">Nancy Lee YIMBERE ALAPINI</div>
-
-      <div class="hero-title">
-        Performance & Decision Intelligence Analyst
-      </div>
-
-      <div class="hero-subtitle">
-        Telecom QoS • People Analytics • Operational Performance
-      </div>
-
-      <div class="hero-tagline">
-        Transformer la donnée en décisions opérationnelles mesurables et actionnables
-      </div>
-
-    </div>
-  </div>
-
+<!-- ===== EN-TÊTE PERSONNEL (AU-DESSUS DE LA BANNIÈRE) ===== -->
+<div class="home-header">
+  <div class="home-name">Nancy Lee YIMBERE ALAPINI</div>
+  <div class="home-role">Performance &amp; Decision Intelligence Analyst — Telecom QoS, People Analytics &amp; Operational Performance</div>
+  <div class="home-tagline">Analyser la performance et transformer les données en décisions opérationnelles.</div>
 </div>
 
-<!-- ===== ESPACE ===== -->
-<div class="spacer-xl"></div>
+<!-- (2 lignes d'espace sous la tagline) -->
+<div class="spacer-2lines"></div>
+
+<!-- ===== BANNIÈRE D’ACCUEIL ===== -->
+<div class="hero-banner-home"></div>
 
 ## Une approche orientée performance & décision
 
-J’analyse les données pour répondre à une question simple :  
+J’analyse les données pour répondre à une question simple :
+
 👉 **où agir pour améliorer la performance ?**
 
 Mes analyses permettent de :
@@ -58,17 +44,17 @@ Mes analyses permettent de :
 
 <div class="projects-row">
 
-  <a class="project-pill" href="telecoms/projet2_arcep2024.qmd">
-    Télécoms — Benchmark QoS & décisions d’investissement
-  </a>
+<a class="project-pill" href="telecoms/projet2_arcep2024.qmd">
+Télécoms — Benchmark QoS & décisions d’investissement
+</a>
 
-  <a class="project-pill" href="people-analytics/attrition/index.qmd">
-    People Analytics — Réduction du turnover & rétention
-  </a>
+<a class="project-pill" href="people-analytics/attrition/index.qmd">
+People Analytics — Réduction du turnover & rétention
+</a>
 
-  <a class="project-pill" href="operational-performance/workflow-performance/">
-    Operational Performance — Optimisation des délais & workflows
-  </a>
+<a class="project-pill" href="operational-performance/workflow-performance/">
+Operational Performance — Optimisation des délais & workflows
+</a>
 
 </div>
 
@@ -80,9 +66,9 @@ Quel que soit le domaine, j’applique une démarche structurée orientée déci
 
 - clarification du besoin métier  
 - analyse exploratoire approfondie  
-- identification des drivers de performance  
-- formulation d’hypothèses actionnables  
-- recommandations concrètes et priorisées  
+- formulation et test d’hypothèses  
+- recommandations actionnables  
+- reproductibilité et transparence  
 
 👉 [Découvrir ma méthodologie analytique](methode/index.qmd)
 
@@ -90,123 +76,99 @@ Quel que soit le domaine, j’applique une démarche structurée orientée déci
 
 ## Ce que vous trouverez ici
 
-- **Études de cas concrètes** orientées performance  
-- **Analyses reproductibles** et structurées  
-- **Recommandations actionnables** directement exploitables  
+- **Études de cas** : Télécoms, People Analytics, performance opérationnelle  
+- **Livrables** : dashboards, analyses, recommandations concrètes  
 
 ```{=html}
 <style>
+/* Cache tout bloc-titre résiduel */
+.quarto-title-block { display: none; }
 
-/* ===== HERO PREMIUM ===== */
+/* ===============================
+   EN-TÊTE PERSONNEL
+   =============================== */
+.home-header{
+  margin-top: 4px;
+  margin-bottom: 0;
+}
 
-.hero-home{
-  position: relative;
+.home-name{
+  font-size: clamp(1.4rem, 2.2vw + .6rem, 2.0rem);
+  font-weight: 800;
+  color: #0f2233;
+  line-height: 1.15;
+}
+
+.home-role{
+  margin-top: 2px;
+  font-size: clamp(1.05rem, 1.4vw + .35rem, 1.25rem);
+  font-weight: 600;
+  color: #2E7D32;
+  line-height: 1.25;
+}
+
+.home-tagline{
+  margin-top: 4px;
+  font-size: clamp(1.0rem, 1.1vw + .25rem, 1.15rem);
+  color: #333;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+/* 2 lignes d'espace avant la bannière */
+.spacer-2lines{
+  height: calc(1.35em * 2);
+}
+
+/* ===============================
+   BANNIÈRE D’ACCUEIL
+   =============================== */
+.hero-banner-home{
   width: 100%;
-  height: 420px;
+  height: 340px;
   background-image: url('/assets/banners/banner-home-performance-decision.png');
   background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
+  background-position: center center;
+  margin-bottom: 24px;
+  border-radius: 0;
 }
 
-.hero-overlay{
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(11,19,43,0.85) 0%,
-    rgba(11,19,43,0.65) 40%,
-    rgba(11,19,43,0.2) 100%
-  );
-  display: flex;
-  align-items: center;
-}
-
-.hero-content{
-  max-width: 800px;
-  padding-left: 40px;
-  color: white;
-}
-
-.hero-name{
-  font-size: 1.1rem;
-  font-weight: 600;
-  opacity: 0.9;
-}
-
-.hero-title{
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin-top: 6px;
-}
-
-.hero-subtitle{
-  font-size: 1.2rem;
-  margin-top: 6px;
-  opacity: 0.95;
-}
-
-.hero-tagline{
-  margin-top: 10px;
-  font-size: 1.1rem;
-  font-style: italic;
-  opacity: 0.9;
-}
-
-/* ===== ESPACEMENT ===== */
-.spacer-xl{
-  height: 30px;
-}
-
-/* ===== PROJETS ===== */
-
+/* ===============================
+   PROJETS
+   =============================== */
 .projects-row{
   display: flex;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin: 12px 0 24px 0;
+  margin: 10px 0 24px 0;
 }
 
 .project-pill{
   display: inline-block;
-  background: #16A34A;
+  background: #2E7D32;
   color: #fff !important;
   text-decoration: none !important;
-  padding: 12px 16px;
-  border-radius: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
   font-weight: 700;
-  box-shadow: 0 3px 10px rgba(0,0,0,.15);
-  transition: all .2s ease;
+  border: 1px solid rgba(0,0,0,.06);
+  transition: transform .15s ease, box-shadow .15s ease;
 }
 
 .project-pill:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0,0,0,.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
 }
 
-/* ===== MOBILE ===== */
-
-@media (max-width: 768px){
-
-  .hero-home{
-    height: 300px;
-  }
-
-  .hero-content{
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .hero-title{
-    font-size: 1.6rem;
-  }
-
-  .hero-subtitle{
-    font-size: 1rem;
-  }
-
+/* ===============================
+   MOBILE
+   =============================== */
+@media (max-width: 600px){
+  .hero-banner-home{ height: 240px; margin-bottom: 20px; }
+  .home-name{ font-size: 1.6rem; }
+  .home-role{ font-size: 1.1rem; }
+  .home-tagline{ font-size: 1rem; }
 }
-
 </style>
 ```
