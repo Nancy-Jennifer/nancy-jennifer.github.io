@@ -16,6 +16,9 @@ execute:
 > **Rôle de cette section**  
 > Transformer les constats Voix/Data/Benchmark en **décisions opérationnelles** : quoi traiter en priorité, avec quels KPI, et sous quel horizon.
 
+> **Insight clé**  
+> *“La performance réseau ne se joue pas uniquement sur la couverture, mais sur la capacité à réduire la variabilité dans les contextes critiques d’usage.”*
+
 ---
 
 ## Décisions clés à retenir
