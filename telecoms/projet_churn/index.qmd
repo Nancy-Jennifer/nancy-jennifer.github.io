@@ -8,6 +8,19 @@ format:
     number-sections: true
 ---
 
+::: {.project-tags}
+<span class="tag">TÉLÉCOMS</span>
+<span class="tag">CHURN</span>
+<span class="tag">REVENU À RISQUE</span>
+<span class="tag">DATA ANALYSIS</span>
+:::
+
+::: {.publication-date}
+**DATE DE PUBLICATION**  
+5 mai 2026
+:::
+
+[⬅️ Retour Télécoms](https://nancy-jennifer.github.io/telecoms/){.btn-retour}
 # Positionnement de l’analyse
 
 Dans un environnement télécom fortement concurrentiel, la résiliation client impacte directement la croissance commerciale, la rentabilité et la stabilité du revenu.
