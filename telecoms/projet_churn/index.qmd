@@ -18,11 +18,8 @@ format:
 <div class="publication-date">
 
 DATE DE PUBLICATION
-
 5 mai 2026
-
 </div>
-
 <a href="https://nancy-jennifer.github.io/telecoms/" class="btn-retour">
 ⬅ Retour Télécoms
 </a>
@@ -51,16 +48,14 @@ Cette analyse cherche à répondre aux questions suivantes :
 
 # Dataset utilisé
 
-## Source des données
-
 Dataset : **Telco Customer Churn Dataset**
 
 - Plateforme : Kaggle
 - Auteur : BlastChar
 - Volume : 7043 clients
 - Structure : 21 variables
-## Variables principales
 
+**Variables principales**
 - Ancienneté client (`tenure`)
 - Type de contrat
 - Services souscrits
@@ -84,7 +79,7 @@ Les travaux de préparation ont porté sur :
 
 ## Segmentation réalisée
 
-### Groupes d’ancienneté
+**Groupes d’ancienneté**
 
 - 0 mois
 - 1–6 mois
@@ -92,7 +87,7 @@ Les travaux de préparation ont porté sur :
 - 13–24 mois
 - 24+ mois
 
-### Groupes de charges mensuelles
+**Groupes de charges mensuelles**
 
 - Faible
 - Moyen
@@ -141,7 +136,7 @@ Les résultats détaillés de l’analyse sont disponibles dans les sections sui
 
 # Compétences mobilisées
 
-## Analyse & pilotage
+**Analyse & pilotage**
 
 - Analyse décisionnelle
 - KPI Design
@@ -149,7 +144,7 @@ Les résultats détaillés de l’analyse sont disponibles dans les sections sui
 - Pilotage de la performance
 - Analyse du churn
 
-## Technologies
+**Technologies**
 
 - SQL
 - Power BI
@@ -157,7 +152,7 @@ Les résultats détaillés de l’analyse sont disponibles dans les sections sui
 - Data Cleaning
 - Data Visualization
 
-## Domaine métier
+**Domaine métier**
 
 - Télécommunications
 - Performance commerciale
