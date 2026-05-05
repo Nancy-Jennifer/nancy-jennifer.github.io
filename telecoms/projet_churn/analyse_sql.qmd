@@ -1,0 +1,296 @@
+---
+title: "Analyse SQL & structuration des KPI décisionnels"
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+# Positionnement analytique
+
+Cette phase analytique vise à transformer les données clients télécom en indicateurs exploitables pour soutenir les décisions de rétention client et de pilotage commercial.
+
+L’objectif n’est pas uniquement de mesurer le churn, mais de structurer une lecture décisionnelle permettant :
+
+- d’identifier les segments les plus exposés à la résiliation,
+- d’estimer le revenu à risque,
+- de détecter les profils clients prioritaires,
+- et de guider les actions de fidélisation.
+
+L’approche SQL a été utilisée pour fiabiliser les données, construire les KPI et produire des analyses segmentées orientées métier.
+
+---
+
+# Préparation et fiabilisation des données
+
+## Dataset utilisé
+
+- Source : Kaggle — *Telco Customer Churn Dataset*
+- Auteur : BlastChar
+- Volume : 7 043 clients
+- Variables : 21 colonnes
+- Domaine : Télécommunications / fidélisation client
+
+---
+
+## Contrôles qualité réalisés
+
+Avant toute analyse, plusieurs contrôles ont été effectués afin d’améliorer la fiabilité des indicateurs :
+
+### Vérifications effectuées
+
+- contrôle du volume de lignes et de colonnes ;
+- détection des valeurs manquantes ;
+- conversion des variables numériques ;
+- vérification des catégories ;
+- contrôle de cohérence des segments.
+
+---
+
+## Gestion des valeurs manquantes
+
+La variable `TotalCharges` contenait des valeurs vides liées principalement à des clients très récents.
+
+### Actions réalisées
+
+- conversion de la colonne en format numérique ;
+- identification des lignes concernées ;
+- exclusion analytique des valeurs incohérentes lorsque nécessaire.
+
+---
+
+## Création des segments analytiques
+
+Afin de faciliter le pilotage métier, plusieurs segments ont été créés.
+
+### Segments d’ancienneté
+
+| Segment | Description |
+|---|---|
+| 0 mois | Nouveaux clients |
+| 1–6 mois | Clients récents |
+| 7–12 mois | Clients intermédiaires |
+| 13–24 mois | Clients installés |
+| 24+ mois | Clients longue durée |
+
+---
+
+### Segments de facturation mensuelle
+
+| Segment | Description |
+|---|---|
+| Faible | Faible revenu mensuel |
+| Moyen | Revenu intermédiaire |
+| Élevé | Clients à forte valeur |
+
+---
+
+# Construction des KPI décisionnels
+
+## Taux de churn
+
+Le taux de churn permet d’évaluer la proportion de clients ayant quitté l’opérateur.
+
+### Objectif métier
+
+- mesurer l’érosion client ;
+- suivre la stabilité du portefeuille ;
+- détecter les segments critiques.
+
+### Requête SQL
+
+```sql
+SELECT
+    ROUND(
+        100.0 * SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END)
+        / COUNT(*),
+    2) AS churn_rate
+FROM telecom_churn;
+```
+
+### Lecture analytique
+
+Le churn constitue ici un indicateur d’alerte permettant d’identifier les populations nécessitant des actions de rétention prioritaires.
+
+---
+
+## ARPU — Average Revenue Per User
+
+L’ARPU mesure le revenu moyen généré par client.
+
+### Objectif métier
+
+- évaluer la valeur moyenne du portefeuille ;
+- suivre la rentabilité commerciale ;
+- prioriser les segments à forte contribution.
+
+### Requête SQL
+
+```sql
+SELECT
+    ROUND(AVG(MonthlyCharges), 2) AS arpu
+FROM telecom_churn;
+```
+
+### Lecture analytique
+
+L’ARPU permet ici de distinguer les segments à forte valeur financière et d’évaluer l’impact économique potentiel du churn.
+
+---
+
+## Revenue at Risk
+
+Le revenu à risque estime le montant potentiellement perdu en cas de résiliation des clients concernés.
+
+### Objectif métier
+
+- quantifier l’exposition financière ;
+- hiérarchiser les segments critiques ;
+- guider les investissements de fidélisation.
+
+### Requête SQL
+
+```sql
+SELECT
+    ROUND(SUM(MonthlyCharges), 2) AS revenue_at_risk
+FROM telecom_churn
+WHERE Churn = 'Yes';
+```
+
+### Lecture analytique
+
+Cet indicateur permet de transformer le churn en risque financier concret et facilite les arbitrages budgétaires liés à la fidélisation.
+
+---
+
+# Analyses segmentées orientées décision
+
+## Churn par type de contrat
+
+### Objectif métier
+
+Identifier les modèles contractuels les plus exposés à la résiliation.
+
+### Requête SQL
+
+```sql
+SELECT
+    Contract,
+    COUNT(*) AS total_clients,
+    SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END) AS churn_clients,
+    ROUND(
+        100.0 * SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END)
+        / COUNT(*),
+    2) AS churn_rate
+FROM telecom_churn
+GROUP BY Contract
+ORDER BY churn_rate DESC;
+```
+
+### Lecture analytique
+
+Les contrats courts présentent généralement une exposition plus forte au churn.
+
+Cette analyse aide à :
+
+- ajuster les stratégies commerciales ;
+- renforcer les mécanismes de fidélisation ;
+- prioriser les campagnes de rétention.
+
+---
+
+## Churn par ancienneté client
+
+### Objectif métier
+
+Identifier les périodes de vie client les plus critiques.
+
+### Requête SQL
+
+```sql
+SELECT
+    Tenure_Group,
+    COUNT(*) AS total_clients,
+    SUM(CASE WHEN Churn = 'Yes' THEN 1 ELSE 0 END) AS churn_clients
+FROM telecom_churn
+GROUP BY Tenure_Group
+ORDER BY total_clients DESC;
+```
+
+### Lecture analytique
+
+Les premiers mois représentent souvent une période sensible où le risque de départ est plus élevé.
+
+Cette analyse peut soutenir :
+
+- des programmes d’onboarding ;
+- des actions préventives précoces ;
+- un suivi renforcé des nouveaux abonnés.
+
+---
+
+## Segments à forte valeur et fort risque
+
+### Objectif métier
+
+Identifier les clients combinant :
+
+- forte contribution financière ;
+- forte probabilité de résiliation.
+
+### Requête SQL
+
+```sql
+SELECT
+    MonthlyCharges_Group,
+    Contract,
+    COUNT(*) AS total_clients,
+    ROUND(SUM(MonthlyCharges), 2) AS revenue_exposure
+FROM telecom_churn
+WHERE Churn = 'Yes'
+GROUP BY MonthlyCharges_Group, Contract
+ORDER BY revenue_exposure DESC;
+```
+
+### Lecture analytique
+
+Cette analyse permet de prioriser les efforts de rétention sur les segments ayant le plus fort impact économique.
+
+---
+
+# Logique analytique et priorisation métier
+
+L’objectif de cette analyse n’est pas simplement descriptif.
+
+La logique analytique utilisée vise à croiser :
+
+- le risque de churn,
+- la valeur client,
+- l’ancienneté,
+- et le niveau de revenu.
+
+Cette approche permet de distinguer :
+
+- les segments à faible impact ;
+- les segments à surveiller ;
+- et les segments critiques nécessitant des actions immédiates.
+
+Le pilotage devient alors plus ciblé, plus mesurable et plus orienté performance.
+
+---
+
+# Ce que cette phase SQL permettrait de décider en entreprise
+
+Cette phase analytique pourrait soutenir plusieurs décisions opérationnelles :
+
+- priorisation des campagnes de fidélisation ;
+- ciblage des clients à forte valeur ;
+- réduction du revenu à risque ;
+- amélioration des offres contractuelles ;
+- allocation plus efficace des budgets marketing ;
+- suivi des segments critiques ;
+- pilotage des actions de rétention.
+
+Au-delà du reporting, l’objectif est ici de transformer les données clients en leviers de décision et de performance commerciale.
