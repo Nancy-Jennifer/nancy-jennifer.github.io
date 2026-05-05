@@ -8,19 +8,25 @@ format:
     number-sections: true
 ---
 
-::: {.project-tags}
-<span class="tag">TÉLÉCOMS</span>
-<span class="tag">CHURN</span>
-<span class="tag">REVENU À RISQUE</span>
-<span class="tag">DATA ANALYSIS</span>
-:::
+<div class="project-tags">
+  <span class="tag">TÉLÉCOMS</span>
+  <span class="tag">CHURN</span>
+  <span class="tag">REVENU À RISQUE</span>
+  <span class="tag">DATA ANALYSIS</span>
+</div>
 
-::: {.publication-date}
-**DATE DE PUBLICATION**  
+<div class="publication-date">
+
+DATE DE PUBLICATION
+
 5 mai 2026
-:::
 
-[⬅️ Retour Télécoms](https://nancy-jennifer.github.io/telecoms/){.btn-retour}
+</div>
+
+<a href="https://nancy-jennifer.github.io/telecoms/" class="btn-retour">
+⬅ Retour Télécoms
+</a>
+
 # Positionnement de l’analyse
 
 Dans un environnement télécom fortement concurrentiel, la résiliation client impacte directement la croissance commerciale, la rentabilité et la stabilité du revenu.
@@ -45,15 +51,14 @@ Cette analyse cherche à répondre aux questions suivantes :
 
 # Dataset utilisé
 
-## Source
+## Source des données
 
-Dataset : **Telco Customer Churn**
+Dataset : **Telco Customer Churn Dataset**
 
-## Structure
-
-- ~7043 clients
-- 21 variables
-
+- Plateforme : Kaggle
+- Auteur : BlastChar
+- Volume : 7043 clients
+- Structure : 21 variables
 ## Variables principales
 
 - Ancienneté client (`tenure`)
