@@ -45,11 +45,9 @@ jobs:
 
       - name: Install R packages required by Quarto
         run: |
-          Rscript -e 'install.packages(c(
-            "knitr","rmarkdown","readr","dplyr","ggplot2"
-          ), repos = "https://cloud.r-project.org")'
+          Rscript -e 'install.packages(c("knitr", "rmarkdown", "readr", "dplyr", "ggplot2"), repos = "https://cloud.r-project.org")'
+          Rscript -e 'cat("rmarkdown version: ", as.character(packageVersion("rmarkdown")), "\n")'
 
-      # ✅ Étape clé : régénérer les PNG EDA (style/FR) AVANT le rendu Quarto
       - name: Generate EDA figures (FR)
         run: |
           set -e
@@ -76,6 +74,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
         id: deploy
