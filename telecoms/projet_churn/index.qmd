@@ -1,0 +1,163 @@
+---
+title: "Pilotage du churn et du revenu à risque dans un contexte télécom"
+subtitle: "Analyse décisionnelle orientée rétention client et performance commerciale"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+![](images/banner-churn-telecom.png)
+
+# Positionnement de l’analyse
+
+Dans un environnement télécom fortement concurrentiel, la résiliation client impacte directement la croissance commerciale, la rentabilité et la stabilité du revenu.
+
+Cette analyse vise à identifier les segments clients les plus exposés au churn, estimer le revenu à risque et mettre en évidence les leviers de priorisation pour les actions de fidélisation.
+
+L’objectif n’est pas uniquement de mesurer le churn, mais de structurer une lecture décisionnelle permettant d’orienter les actions de rétention sur les segments les plus critiques.
+
+---
+
+# Objectifs décisionnels
+
+Cette analyse cherche à répondre aux questions suivantes :
+
+- Quels segments clients présentent le risque de churn le plus critique ?
+- Quels profils concentrent le revenu le plus exposé ?
+- Quels indicateurs doivent être priorisés pour renforcer la rétention ?
+- Quels segments nécessitent une intervention prioritaire ?
+- Comment mieux relier churn, valeur client et impact financier ?
+
+---
+
+# Dataset utilisé
+
+## Source
+
+Dataset : **Telco Customer Churn**
+
+## Structure
+
+- ~7043 clients
+- 21 variables
+
+## Variables principales
+
+- Ancienneté client (`tenure`)
+- Type de contrat
+- Services souscrits
+- Charges mensuelles (`MonthlyCharges`)
+- Revenu total (`TotalCharges`)
+- Statut de churn (`Churn`)
+
+---
+
+# Préparation et fiabilisation des données
+
+Les travaux de préparation ont porté sur :
+
+- le contrôle des valeurs manquantes
+- la conversion des variables numériques
+- la vérification de cohérence des données
+- la structuration des variables financières
+- la segmentation des profils clients
+- la création de groupes d’ancienneté
+- la création de segments de revenus mensuels
+
+## Segmentation réalisée
+
+### Groupes d’ancienneté
+
+- 0 mois
+- 1–6 mois
+- 7–12 mois
+- 13–24 mois
+- 24+ mois
+
+### Groupes de charges mensuelles
+
+- Faible
+- Moyen
+- Élevé
+
+---
+
+# KPI de pilotage
+
+Les principaux indicateurs utilisés dans cette analyse sont :
+
+- Churn Rate
+- ARPU
+- Revenue at Risk
+- Churn par ancienneté
+- Churn par type de contrat
+- Revenu à risque par segment
+
+---
+
+# Logique analytique
+
+L’analyse repose sur une approche orientée décision visant à :
+
+- relier churn et impact financier
+- identifier les segments prioritaires
+- détecter les zones de vulnérabilité commerciale
+- soutenir les arbitrages de rétention client
+
+L’objectif n’est pas uniquement descriptif.
+
+Il s’agit d’identifier les segments sur lesquels une action de fidélisation peut avoir le plus fort impact business.
+
+---
+
+# Résultats et insights
+
+Les résultats détaillés de l’analyse sont disponibles dans les sections suivantes :
+
+- Analyse exploratoire
+- KPI et visualisations
+- Insights décisionnels
+- Dashboard décisionnel
+
+---
+
+# Compétences mobilisées
+
+## Analyse & pilotage
+
+- Analyse décisionnelle
+- KPI Design
+- Segmentation client
+- Pilotage de la performance
+- Analyse du churn
+
+## Technologies
+
+- SQL
+- Power BI
+- Excel
+- Data Cleaning
+- Data Visualization
+
+## Domaine métier
+
+- Télécommunications
+- Performance commerciale
+- Fidélisation client
+- Revenue Analytics
+
+---
+
+# Ce que ce projet permettrait de décider en entreprise
+
+Cette analyse pourrait aider un opérateur télécom à :
+
+- prioriser les actions de fidélisation
+- identifier les segments à forte valeur exposés au churn
+- surveiller le revenu à risque
+- améliorer les stratégies de rétention
+- renforcer le pilotage de la performance commerciale
+
+---
