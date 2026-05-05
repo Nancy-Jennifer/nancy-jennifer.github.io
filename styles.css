@@ -2,20 +2,16 @@
    PALETTE & VARIABLES GLOBALES
    ========================= */
 :root{
-  /* Base BLEU (UI de fond/navigation) */
-  --bleu-nuit:#0B132B;   /* navbar, hero gradient start */
-  --bleu:#1C2541;        /* hero gradient end, footer */
-  --bleu-clair:#2F3A66;  /* survols, détails */
+  --bleu-nuit:#0B132B;
+  --bleu:#1C2541;
+  --bleu-clair:#2F3A66;
 
-  /* Accent VERT (actions, liens, boutons) */
-  --accent:#16A34A;      /* vert pro People Analytics */
+  --accent:#16A34A;
 
-  /* Bleu data pour navigation */
   --data-blue:#0B5ED7;
   --data-blue-soft:rgba(11, 94, 215, 0.08);
   --data-blue-shadow:rgba(11, 94, 215, 0.20);
 
-  /* Neutres */
   --gris:#E0E0E0;
   --gris-f:#F5F7FA;
 }
@@ -34,17 +30,14 @@
   padding-right:.5rem;
 }
 
-/* SUPPRIMER le libellé de marque */
 .navbar-brand{
   display:none !important;
 }
 
-/* Espace entre éléments */
 .navbar-nav{
   gap:.35rem;
 }
 
-/* Liens de navbar sous forme de pastilles */
 .navbar .navbar-brand,
 .navbar .nav-link{
   color:var(--data-blue) !important;
@@ -59,7 +52,6 @@
   line-height:1.2;
 }
 
-/* Hover */
 .navbar .nav-link:hover,
 .navbar .nav-link:focus{
   color:#ffffff !important;
@@ -68,7 +60,6 @@
   opacity:1;
 }
 
-/* Onglet actif */
 .navbar .nav-link.active,
 .navbar .active > .nav-link,
 .navbar .show > .nav-link{
@@ -78,14 +69,12 @@
   box-shadow:0 4px 10px var(--data-blue-shadow);
 }
 
-/* Icône GitHub */
 .navbar .bi-github,
 .navbar .fa-github,
 .navbar .navbar-nav .nav-item .nav-link[href*="github.com"]{
   color:var(--data-blue) !important;
 }
 
-/* Version mobile */
 @media (max-width: 991.98px){
   .navbar-nav{
     gap:.2rem;
@@ -100,7 +89,7 @@
 }
 
 /* =========================
-   LIENS & BOUTONS (accent vert)
+   LIENS & BOUTONS
    ========================= */
 a{
   color:var(--accent);
@@ -123,6 +112,67 @@ a{
 }
 
 /* =========================
+   ENTÊTES PROJETS — TAGS / DATE / RETOUR
+   ========================= */
+.project-tags{
+  margin-top:1.2rem;
+  margin-bottom:1.6rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45rem;
+}
+
+.tag{
+  display:inline-block;
+  border:1px solid #b8c2cc;
+  border-radius:5px;
+  padding:4px 10px;
+  font-size:.72rem;
+  font-weight:500;
+  color:#6b7280;
+  background-color:#ffffff;
+  text-transform:uppercase;
+  letter-spacing:.25px;
+  line-height:1.2;
+}
+
+.publication-date{
+  margin-top:.8rem;
+  margin-bottom:1.5rem;
+  font-size:.9rem;
+  color:#111827;
+  line-height:1.7;
+}
+
+.publication-date strong{
+  display:block;
+  font-size:.78rem;
+  color:#6b7280;
+  text-transform:uppercase;
+  letter-spacing:.35px;
+  margin-bottom:.15rem;
+}
+
+.btn-retour{
+  display:inline-block;
+  background-color:var(--accent);
+  color:#ffffff !important;
+  padding:10px 18px;
+  border-radius:8px;
+  text-decoration:none !important;
+  font-weight:500;
+  margin-top:.3rem;
+  margin-bottom:2.3rem;
+  box-shadow:0 4px 10px rgba(22,163,74,.18);
+}
+
+.btn-retour:hover{
+  background-color:#15803d;
+  color:#ffffff !important;
+  text-decoration:none !important;
+}
+
+/* =========================
    FOOTER
    ========================= */
 .nav-footer{
@@ -135,7 +185,6 @@ a{
   text-decoration:underline;
 }
 
-/* Rangée de boutons utilitaires */
 .btn-row a{
   display:inline-block;
   margin:.25rem .35rem .25rem 0;
@@ -156,20 +205,12 @@ a{
   box-shadow:none !important;
 }
 
-/* Si Quarto place l'image dans une figure */
 .quarto-figure img.hero-banner{
   width:100% !important;
   height:auto !important;
   aspect-ratio:1920 / 720;
   object-fit:cover !important;
   object-position:55% 50% !important;
-}
-
-/* Version mobile */
-@media (max-width: 768px){
-  .hero-banner{
-    /* pas de changement, l'aspect-ratio s'occupe de tout */
-  }
 }
 
 /* =========================
@@ -235,7 +276,9 @@ blockquote{
   margin-right:.5rem;
 }
 
-/* Justifier tous les paragraphes du contenu principal */
+/* =========================
+   TEXTE PRINCIPAL
+   ========================= */
 main p{
   text-align:justify;
 }
