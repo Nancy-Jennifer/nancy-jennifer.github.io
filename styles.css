@@ -396,3 +396,36 @@ blockquote{
   text-align:center;
   line-height:1.7;
 }
+
+/* =========================
+   FOOTER — VERSION LARGE PRO
+   ========================= */
+
+footer.footer{
+  width:100% !important;
+  background:var(--bleu) !important;
+  padding:1.4rem 2rem !important;
+}
+
+footer.footer .nav-footer{
+  width:100% !important;
+  max-width:none !important;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  margin:0 auto !important;
+}
+
+footer.footer .nav-footer-left{
+  width:100% !important;
+  max-width:1200px !important;
+
+  margin:0 auto !important;
+
+  text-align:center !important;
+  line-height:1.8;
+}
