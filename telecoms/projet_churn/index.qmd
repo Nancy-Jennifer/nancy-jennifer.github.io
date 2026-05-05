@@ -8,8 +8,6 @@ format:
     number-sections: true
 ---
 
-![](images/banner-churn-telecom.png)
-
 # Positionnement de l’analyse
 
 Dans un environnement télécom fortement concurrentiel, la résiliation client impacte directement la croissance commerciale, la rentabilité et la stabilité du revenu.
