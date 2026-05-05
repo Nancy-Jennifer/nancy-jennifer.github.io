@@ -7,7 +7,6 @@ format:
     toc-depth: 3
     number-sections: true
 ---
-
 <div class="project-tags">
   <span class="tag">TÉLÉCOMS</span>
   <span class="tag">CHURN</span>
@@ -16,7 +15,6 @@ format:
 </div>
 
 <div class="publication-date">
-
 DATE DE PUBLICATION
 5 mai 2026
 </div>
