@@ -383,49 +383,44 @@ blockquote{
 }
 
 /* =========================
-   FOOTER — ALIGNEMENT
+   FOOTER — CORRECTION FINALE LARGEUR
    ========================= */
+
+footer,
+.nav-footer{
+  width:100vw !important;
+  max-width:100vw !important;
+  margin-left:calc(50% - 50vw) !important;
+  margin-right:calc(50% - 50vw) !important;
+  background:var(--bleu) !important;
+  color:#ffffff !important;
+}
 
 .nav-footer{
-  text-align:center;
-}
-
-.nav-footer .nav-footer-left{
-  margin:auto;
-  max-width:950px;
-  text-align:center;
-  line-height:1.7;
-}
-
-/* =========================
-   FOOTER — VERSION LARGE PRO
-   ========================= */
-
-footer.footer{
-  width:100% !important;
-  background:var(--bleu) !important;
+  display:grid !important;
+  grid-template-columns:1fr !important;
   padding:1.4rem 2rem !important;
-}
-
-footer.footer .nav-footer{
-  width:100% !important;
-  max-width:none !important;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  text-align:center;
-
-  margin:0 auto !important;
-}
-
-footer.footer .nav-footer-left{
-  width:100% !important;
-  max-width:1200px !important;
-
-  margin:0 auto !important;
-
   text-align:center !important;
-  line-height:1.8;
+}
+
+.nav-footer-left,
+.nav-footer-center,
+.nav-footer-right{
+  grid-column:1 / -1 !important;
+  width:100% !important;
+  max-width:100% !important;
+  margin:0 auto !important;
+  text-align:center !important;
+}
+
+.nav-footer-left *,
+.nav-footer-center *,
+.nav-footer-right *{
+  text-align:center !important;
+  color:#ffffff !important;
+}
+
+.nav-footer a{
+  color:#ffffff !important;
+  text-decoration:underline !important;
 }
