@@ -294,3 +294,15 @@ Cette phase analytique pourrait soutenir plusieurs décisions opérationnelles :
 - pilotage des actions de rétention.
 
 Au-delà du reporting, l’objectif est ici de transformer les données clients en leviers de décision et de performance commerciale.
+
+<div class="page-navigation">
+
+<a href="index.html" class="nav-button">
+⬅ Retour au projet
+</a>
+
+<a href="visualisations.html" class="nav-button">
+➡ Visualisations & Dashboard
+</a>
+
+</div>
