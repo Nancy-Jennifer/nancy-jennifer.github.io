@@ -1,0 +1,203 @@
+---
+title: "Visualisations & dashboard décisionnel"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+# Objectif de la visualisation
+
+Cette page présente les visualisations utilisées pour transformer les indicateurs churn en lecture décisionnelle.
+
+L’objectif n’est pas de produire des graphiques décoratifs, mais de rendre visibles :
+
+- les segments clients les plus exposés à la résiliation ;
+- les profils qui concentrent le revenu à risque ;
+- les leviers de priorisation pour les actions de rétention ;
+- les indicateurs clés à suivre dans un dashboard de pilotage.
+
+---
+
+# Vue d’ensemble des KPI
+
+Le dashboard repose sur trois indicateurs de synthèse :
+
+| KPI | Rôle décisionnel |
+|---|---|
+| Churn Rate | Mesurer l’intensité de la résiliation |
+| ARPU | Évaluer la valeur moyenne générée par client |
+| Revenue at Risk | Quantifier le revenu exposé au churn |
+
+Ces indicateurs permettent de relier la résiliation client à son impact financier, afin de ne pas piloter uniquement par volume de clients perdus.
+
+---
+
+# Churn par type de contrat
+
+## Objectif
+
+Identifier les types de contrats les plus exposés à la résiliation.
+
+## Lecture attendue
+
+Un taux de churn élevé sur certains contrats peut indiquer :
+
+- un faible niveau d’engagement client ;
+- une sensibilité plus forte aux offres concurrentes ;
+- un besoin de renforcement des mécanismes de fidélisation.
+
+## Décision associée
+
+Cette visualisation peut aider à prioriser les actions commerciales sur les contrats les plus fragiles.
+
+---
+
+# Churn par ancienneté client
+
+## Objectif
+
+Identifier les périodes de vie client où le risque de départ est le plus élevé.
+
+## Lecture attendue
+
+Une concentration du churn sur les premières périodes d’ancienneté peut signaler :
+
+- un onboarding client insuffisant ;
+- une mauvaise adéquation entre offre souscrite et expérience vécue ;
+- une absence de contact ou d’engagement après acquisition.
+
+## Décision associée
+
+Cette lecture peut justifier la mise en place d’actions précoces de rétention sur les premiers mois de vie client.
+
+---
+
+# Revenu à risque par segment
+
+## Objectif
+
+Identifier les segments qui concentrent le plus fort impact financier potentiel.
+
+## Lecture attendue
+
+Un segment avec un churn élevé n’est pas nécessairement prioritaire si son revenu exposé est faible.
+
+À l’inverse, un segment moins volumineux peut devenir critique s’il concentre une part importante du revenu à risque.
+
+## Décision associée
+
+Cette visualisation permet de prioriser les actions de fidélisation non seulement selon le nombre de clients perdus, mais selon la valeur financière menacée.
+
+---
+
+# Segments prioritaires
+
+## Logique de priorisation
+
+La priorisation ne doit pas reposer sur un seul indicateur.
+
+Elle doit croiser :
+
+- le taux de churn ;
+- le niveau de revenu mensuel ;
+- le type de contrat ;
+- l’ancienneté client ;
+- le revenu à risque.
+
+Cette approche permet d’éviter une lecture trop globale du churn et de concentrer les efforts sur les segments à plus fort enjeu métier.
+
+---
+
+# Dashboard décisionnel
+
+## Objectif du dashboard
+
+Le dashboard vise à fournir une vue synthétique permettant de :
+
+- suivre le churn global ;
+- visualiser le revenu à risque ;
+- identifier les segments critiques ;
+- orienter les actions de rétention ;
+- soutenir les arbitrages commerciaux.
+
+## Structure recommandée du dashboard
+
+Le dashboard peut être structuré autour de quatre blocs :
+
+1. **KPI globaux**
+   - Churn Rate
+   - ARPU
+   - Revenue at Risk
+
+2. **Analyse des segments**
+   - Churn par contrat
+   - Churn par ancienneté
+   - Revenu à risque par segment
+
+3. **Priorisation**
+   - segments à forte valeur
+   - segments à forte exposition au churn
+   - segments combinant risque élevé et revenu élevé
+
+4. **Aide à la décision**
+   - où agir en priorité
+   - quels profils cibler
+   - quels leviers commerciaux activer
+
+---
+
+# Lecture décisionnelle
+
+Une bonne visualisation ne se limite pas à montrer un écart.
+
+Elle doit permettre de répondre rapidement à trois questions :
+
+- où se situe le risque ?
+- quel est son impact financier ?
+- quelle action doit être priorisée ?
+
+Dans cette analyse, la visualisation sert donc à passer d’une lecture descriptive du churn à une logique de pilotage de la rétention client.
+
+---
+
+# Limites de la visualisation
+
+Les visualisations présentées doivent être interprétées avec prudence.
+
+Le dataset est un jeu de données d’entraînement et ne reflète pas directement les données internes d’un opérateur réel.
+
+Cependant, la logique analytique reste transposable à un contexte télécom opérationnel :
+
+- segmentation client ;
+- suivi du churn ;
+- revenu à risque ;
+- priorisation des actions de rétention ;
+- pilotage de la performance commerciale.
+
+---
+
+# Ce que cette page démontre
+
+Cette page démontre la capacité à :
+
+- transformer des KPI en visualisations utiles ;
+- relier les graphiques à des décisions concrètes ;
+- structurer un dashboard orienté pilotage ;
+- prioriser les actions à partir de signaux business ;
+- présenter une analyse claire pour un décideur métier.
+
+---
+
+<div class="page-navigation">
+
+<a href="analyse_sql.html" class="nav-button">
+⬅ Analyse SQL
+</a>
+
+<a href="business_insights.html" class="nav-button">
+➡ Insights & recommandations
+</a>
+
+</div>
