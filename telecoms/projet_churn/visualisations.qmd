@@ -34,7 +34,7 @@ Ces indicateurs permettent de relier la résiliation client à son impact financ
 
 ---
 
-# Churn par type de contrat
+#🔷 Churn par type de contrat
 
 **Objectif**
 
@@ -54,7 +54,7 @@ Cette visualisation peut aider à prioriser les actions commerciales sur les con
 
 ---
 
-# Churn par ancienneté client
+#🔷 Churn par ancienneté client
 
 **Objectif**
 
@@ -74,7 +74,7 @@ Cette lecture peut justifier la mise en place d’actions précoces de rétentio
 
 ---
 
-# Revenu à risque par segment
+#🔷 Revenu à risque par segment
 
 **Objectif**
 
@@ -92,7 +92,7 @@ Cette visualisation permet de prioriser les actions de fidélisation non seuleme
 
 ---
 
-# Segments prioritaires
+#🔷 Segments prioritaires
 
 **Logique de priorisation**
 
