@@ -36,11 +36,11 @@ Ces indicateurs permettent de relier la résiliation client à son impact financ
 
 # Churn par type de contrat
 
-## Objectif
+**Objectif**
 
 Identifier les types de contrats les plus exposés à la résiliation.
 
-## Lecture attendue
+**Lecture attendue**
 
 Un taux de churn élevé sur certains contrats peut indiquer :
 
@@ -48,7 +48,7 @@ Un taux de churn élevé sur certains contrats peut indiquer :
 - une sensibilité plus forte aux offres concurrentes ;
 - un besoin de renforcement des mécanismes de fidélisation.
 
-## Décision associée
+**Décision associée**
 
 Cette visualisation peut aider à prioriser les actions commerciales sur les contrats les plus fragiles.
 
@@ -56,11 +56,11 @@ Cette visualisation peut aider à prioriser les actions commerciales sur les con
 
 # Churn par ancienneté client
 
-## Objectif
+**Objectif**
 
 Identifier les périodes de vie client où le risque de départ est le plus élevé.
 
-## Lecture attendue
+**Lecture attendue**
 
 Une concentration du churn sur les premières périodes d’ancienneté peut signaler :
 
@@ -68,7 +68,7 @@ Une concentration du churn sur les premières périodes d’ancienneté peut sig
 - une mauvaise adéquation entre offre souscrite et expérience vécue ;
 - une absence de contact ou d’engagement après acquisition.
 
-## Décision associée
+**Décision associée**
 
 Cette lecture peut justifier la mise en place d’actions précoces de rétention sur les premiers mois de vie client.
 
@@ -76,17 +76,17 @@ Cette lecture peut justifier la mise en place d’actions précoces de rétentio
 
 # Revenu à risque par segment
 
-## Objectif
+**Objectif**
 
 Identifier les segments qui concentrent le plus fort impact financier potentiel.
 
-## Lecture attendue
+**Lecture attendue**
 
 Un segment avec un churn élevé n’est pas nécessairement prioritaire si son revenu exposé est faible.
 
 À l’inverse, un segment moins volumineux peut devenir critique s’il concentre une part importante du revenu à risque.
 
-## Décision associée
+**Décision associée**
 
 Cette visualisation permet de prioriser les actions de fidélisation non seulement selon le nombre de clients perdus, mais selon la valeur financière menacée.
 
@@ -94,7 +94,7 @@ Cette visualisation permet de prioriser les actions de fidélisation non seuleme
 
 # Segments prioritaires
 
-## Logique de priorisation
+**Logique de priorisation**
 
 La priorisation ne doit pas reposer sur un seul indicateur.
 
@@ -112,7 +112,7 @@ Cette approche permet d’éviter une lecture trop globale du churn et de concen
 
 # Dashboard décisionnel
 
-## Objectif du dashboard
+**Objectif du dashboard**
 
 Le dashboard vise à fournir une vue synthétique permettant de :
 
@@ -122,7 +122,7 @@ Le dashboard vise à fournir une vue synthétique permettant de :
 - orienter les actions de rétention ;
 - soutenir les arbitrages commerciaux.
 
-## Structure recommandée du dashboard
+**Structure recommandée du dashboard**
 
 Le dashboard peut être structuré autour de quatre blocs :
 
