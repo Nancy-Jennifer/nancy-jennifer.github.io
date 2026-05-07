@@ -1,0 +1,219 @@
+---
+title: "Insights métier & recommandations stratégiques"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+# Objectif de la page
+
+Cette page transforme les résultats analytiques en lecture métier orientée décision.
+L’objectif n’est pas uniquement d’identifier des écarts de performance, mais de mettre en évidence :
+
+**- les risques prioritaires ;**
+**- les segments critiques ;**
+**- les leviers d’action à plus fort impact ;**
+**- les décisions pouvant améliorer la rétention client et protéger le revenu.**
+
+Dans un contexte télécom fortement concurrentiel, la capacité à anticiper le churn devient un enjeu direct de performance commerciale et de stabilité financière.
+
+---
+
+# Insight 1 — Les contrats mensuels concentrent le risque de churn
+
+## Constat
+
+Les clients en contrat mensuel présentent un taux de churn significativement supérieur aux contrats avec engagement.
+Cette situation suggère une forte vulnérabilité des clients à faible engagement contractuel.
+
+---
+
+## Risque métier
+
+Cette exposition peut entraîner :
+
+- une instabilité du portefeuille client ;
+- une volatilité plus forte du revenu ;
+- une sensibilité accrue aux offres concurrentes ;
+- une augmentation des coûts d’acquisition nécessaires pour compenser les départs.
+
+---
+
+## Lecture analytique
+
+Le churn ne doit pas être interprété uniquement comme un indicateur de départ client.
+Dans ce contexte, il devient un signal de fragilité commerciale sur certains modèles contractuels.
+Le contrat mensuel agit ici comme un accélérateur potentiel de résiliation.
+
+---
+
+##👉 Décision prioritaire
+
+Prioriser les actions de fidélisation sur les clients mensuels à forte valeur.
+
+---
+
+## Recommandations stratégiques
+
+- proposer des offres de migration vers des contrats plus engageants ;
+- mettre en place des avantages fidélité ciblés ;
+- détecter précocement les signaux de désengagement ;
+- renforcer les campagnes de rétention sur les segments les plus rentables.
+
+---
+
+# Insight 2 — Les premiers mois client représentent la période la plus critique
+
+## Constat
+
+Le churn est particulièrement élevé sur les clients ayant une ancienneté inférieure à 12 mois.
+La probabilité de résiliation diminue progressivement avec l’ancienneté.
+
+---
+
+## Risque métier
+
+Cette situation peut traduire :
+
+- un onboarding insuffisant ;
+- une mauvaise adéquation entre promesse commerciale et expérience réelle ;
+- un faible niveau d’engagement après acquisition ;
+- une perte prématurée de valeur client.
+
+---
+
+## Lecture analytique
+
+Les premiers mois deviennent ici une phase critique du cycle de vie client.
+Le risque n’est pas uniquement la résiliation immédiate, mais l’incapacité à stabiliser durablement la relation client.
+
+---
+
+##👉 Décision prioritaire
+
+Concentrer les efforts de rétention sur les premiers mois suivant la souscription.
+
+---
+
+## Recommandations stratégiques
+
+- mettre en place un programme d’onboarding renforcé ;
+- suivre les indicateurs de satisfaction précoces ;
+- déclencher des actions proactives sur les clients à risque ;
+- segmenter les nouveaux clients selon leur probabilité de churn.
+
+---
+
+# Insight 3 — Le revenu à risque est concentré sur des segments spécifiques
+
+## Constat
+
+Une part importante du revenu à risque est concentrée sur un nombre limité de segments clients.
+Tous les churns n’ont donc pas le même impact économique.
+
+---
+
+## Risque métier
+
+Cette concentration peut exposer l’opérateur à :
+
+- une dégradation rapide du revenu ;
+- une baisse de rentabilité ;
+- une perte disproportionnée de clients à forte valeur ;
+- une instabilité commerciale sur certains segments stratégiques.
+
+---
+
+## Lecture analytique
+
+Une approche basée uniquement sur le volume de churn peut conduire à de mauvaises priorités.
+La criticité réelle dépend de la combinaison :
+
+- churn ;
+- valeur client ;
+- revenu exposé ;
+- rentabilité potentielle.
+
+---
+
+##👉 Décision prioritaire
+
+Prioriser les actions de rétention selon l’impact financier du churn.
+
+---
+
+## Recommandations stratégiques
+
+- construire une segmentation valeur × risque ;
+- identifier les clients à forte contribution financière ;
+- adapter les actions commerciales selon le niveau de risque ;
+- orienter les budgets de fidélisation vers les segments les plus critiques.
+
+---
+
+# Synthèse décisionnelle
+
+Cette analyse montre que le churn ne doit pas être piloté uniquement comme un indicateur marketing.
+Il doit être intégré dans une logique globale de pilotage de la performance commerciale.
+Les principaux leviers identifiés sont :
+
+- la sécurisation des clients à forte valeur ;
+- la stabilisation des nouveaux clients ;
+- la réduction de l’exposition financière liée au churn ;
+- la priorisation des actions de fidélisation.
+
+L’enjeu n’est pas seulement de réduire les départs, mais de protéger durablement la valeur du portefeuille client.
+
+---
+
+# Recommandations prioritaires pour un opérateur télécom
+
+| Priorité | Action recommandée | Impact attendu |
+|---|---|---|
+| Haute | Renforcer la rétention des contrats mensuels | Réduction du churn structurel |
+| Haute | Mettre en place un onboarding client renforcé | Stabilisation des nouveaux clients |
+| Haute | Prioriser les segments à forte valeur financière | Protection du revenu |
+| Moyenne | Développer des offres de fidélisation ciblées | Augmentation de l’engagement |
+| Moyenne | Suivre les signaux précoces de désengagement | Détection proactive du risque |
+
+---
+
+# Limites de l’analyse
+
+Cette analyse repose sur un dataset d’entraînement utilisé à des fins analytiques et pédagogiques.
+Les résultats ne représentent pas directement les performances d’un opérateur réel.
+Cependant, les logiques analytiques utilisées restent transposables à des contextes télécom opérationnels :
+
+- pilotage du churn ;
+- segmentation client ;
+- analyse de revenu à risque ;
+- priorisation commerciale ;
+- aide à la décision.
+
+---
+
+# Ce que ce projet démontre
+
+Ce projet démontre la capacité à :
+
+- transformer des données clients en leviers de décision ;
+- relier churn et impact financier ;
+- construire une lecture orientée pilotage ;
+- prioriser des actions à partir de KPI métier ;
+- produire une analyse exploitable par des décideurs.
+
+---
+
+<div class="page-navigation">
+
+<a href="visualisations.html" class="nav-button">
+⬅ Visualisations
+</a>
+
+<a href="../index.html" class="nav-button">
+🏠 Retour Portfolio
+</a>
+
+</div>
