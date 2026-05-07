@@ -20,81 +20,125 @@ L’objectif n’est pas de produire des graphiques décoratifs, mais de rendre 
 
 ---
 
-# Vue d’ensemble des KPI
+# Vue d’ensemble du dashboard
 
-Le dashboard repose sur trois indicateurs de synthèse :
+![](images/dashboard_churn.png){fig-alt="Dashboard Power BI de pilotage du churn, de l’ARPU et du revenu à risque" width="100%"}
 
-| KPI | Rôle décisionnel |
-|---|---|
-| Churn Rate | Mesurer l’intensité de la résiliation |
-| ARPU | Évaluer la valeur moyenne générée par client |
-| Revenue at Risk | Quantifier le revenu exposé au churn |
+Ce dashboard fournit une vue synthétique du churn, du revenu moyen par client et du revenu à risque.
 
-Ces indicateurs permettent de relier la résiliation client à son impact financier, afin de ne pas piloter uniquement par volume de clients perdus.
+Il permet de relier rapidement trois niveaux de lecture :
+
+- **l’intensité du churn** : 26,54 % ;
+- **la valeur moyenne client** : 64,76 ;
+- **l’exposition financière** : 139,13K de revenu à risque.
+
+L’intérêt du dashboard est de ne pas limiter l’analyse au volume de clients perdus, mais de relier la résiliation à son impact économique.
 
 ---
 
-#🔷 Churn par type de contrat
+# KPI de pilotage
+
+Le dashboard repose sur trois indicateurs de synthèse :
+
+| KPI | Valeur observée | Rôle décisionnel |
+|---|---:|---|
+| Churn Rate | 26,54 % | Mesurer l’intensité de la résiliation |
+| ARPU | 64,76 | Évaluer la valeur moyenne générée par client |
+| Revenue at Risk | 139,13K | Quantifier le revenu exposé au churn |
+
+Ces indicateurs permettent de passer d’une lecture descriptive du churn à une logique de pilotage orientée valeur client.
+
+---
+
+# Churn par type de contrat
+
+![](images/churn_par_contrat.png){fig-alt="Taux de churn par type de contrat" width="90%"}
 
 **Objectif**
 
 Identifier les types de contrats les plus exposés à la résiliation.
 
-**Lecture attendue**
+**Lecture métier**
 
-Un taux de churn élevé sur certains contrats peut indiquer :
+Le churn est nettement plus élevé sur les contrats mensuels, avec un taux de **42,71 %**, contre **11,27 %** pour les contrats d’un an et **2,83 %** pour les contrats de deux ans.
 
-- un faible niveau d’engagement client ;
-- une sensibilité plus forte aux offres concurrentes ;
-- un besoin de renforcement des mécanismes de fidélisation.
+Cette différence suggère que les clients sans engagement long sont plus exposés au départ, probablement en raison :
+
+- d’une faible barrière à la sortie ;
+- d’une sensibilité plus forte aux offres concurrentes ;
+- d’un engagement client plus fragile.
 
 **Décision associée**
 
-Cette visualisation peut aider à prioriser les actions commerciales sur les contrats les plus fragiles.
+Cette visualisation peut aider à prioriser les actions de rétention sur les clients en contrat mensuel, notamment par :
+
+- des offres de migration vers des contrats plus engageants ;
+- des avantages de fidélité ciblés ;
+- un suivi renforcé des clients à forte valeur en contrat mensuel.
 
 ---
 
-#🔷 Churn par ancienneté client
+# Churn par ancienneté client
+
+![](images/churn_par_anciennete.png){fig-alt="Taux de churn par ancienneté client" width="90%"}
 
 **Objectif**
 
 Identifier les périodes de vie client où le risque de départ est le plus élevé.
 
-**Lecture attendue**
+**Lecture métier**
 
-Une concentration du churn sur les premières périodes d’ancienneté peut signaler :
+Le churn est particulièrement fort sur les clients ayant entre **1 et 6 mois d’ancienneté**, avec un taux de **53,33 %**.
 
-- un onboarding client insuffisant ;
-- une mauvaise adéquation entre offre souscrite et expérience vécue ;
-- une absence de contact ou d’engagement après acquisition.
+Le taux diminue ensuite progressivement avec l’ancienneté :
+
+- 35,89 % entre 7 et 12 mois ;
+- 28,71 % entre 13 et 24 mois ;
+- 14,04 % au-delà de 24 mois.
+
+Cette lecture montre que la vulnérabilité client est très forte dans les premiers mois.
 
 **Décision associée**
 
-Cette lecture peut justifier la mise en place d’actions précoces de rétention sur les premiers mois de vie client.
+Cette visualisation peut justifier la mise en place d’un dispositif de rétention précoce :
+
+- programme d’onboarding renforcé ;
+- contact client après souscription ;
+- suivi de satisfaction dans les premiers mois ;
+- offres de stabilisation avant la période critique.
 
 ---
 
-#🔷 Revenu à risque par segment
+# Revenu à risque par segment client
+
+![](images/revenue_at_risk_segment.png){fig-alt="Revenu à risque par segment client" width="95%"}
 
 **Objectif**
 
 Identifier les segments qui concentrent le plus fort impact financier potentiel.
 
-**Lecture attendue**
+**Lecture métier**
 
-Un segment avec un churn élevé n’est pas nécessairement prioritaire si son revenu exposé est faible.
+Le segment **Risque financier prioritaire** concentre environ **71K** de revenu à risque, devant le segment **Risque commercial modéré** avec environ **50K**.
 
-À l’inverse, un segment moins volumineux peut devenir critique s’il concentre une part importante du revenu à risque.
+Cela montre que tous les churns n’ont pas le même poids économique.
+
+Un segment peut représenter un volume client limité, mais devenir prioritaire s’il concentre une forte valeur financière exposée.
 
 **Décision associée**
 
-Cette visualisation permet de prioriser les actions de fidélisation non seulement selon le nombre de clients perdus, mais selon la valeur financière menacée.
+Cette visualisation permet de prioriser les actions de fidélisation selon l’impact financier réel, et non uniquement selon le nombre de clients perdus.
+
+Elle aide à orienter :
+
+- les budgets de rétention ;
+- les campagnes commerciales ciblées ;
+- les actions prioritaires sur les clients à forte valeur ;
+- le suivi des segments les plus sensibles financièrement.
 
 ---
 
-#🔷 Segments prioritaires
-
-**Logique de priorisation**
+# Logique de priorisation
 
 La priorisation ne doit pas reposer sur un seul indicateur.
 
@@ -107,44 +151,6 @@ Elle doit croiser :
 - le revenu à risque.
 
 Cette approche permet d’éviter une lecture trop globale du churn et de concentrer les efforts sur les segments à plus fort enjeu métier.
-
----
-
-# Dashboard décisionnel
-
-**Objectif du dashboard**
-
-Le dashboard vise à fournir une vue synthétique permettant de :
-
-- suivre le churn global ;
-- visualiser le revenu à risque ;
-- identifier les segments critiques ;
-- orienter les actions de rétention ;
-- soutenir les arbitrages commerciaux.
-
-**Structure recommandée du dashboard**
-
-Le dashboard peut être structuré autour de quatre blocs :
-
-1. **KPI globaux**
-   - Churn Rate
-   - ARPU
-   - Revenue at Risk
-
-2. **Analyse des segments**
-   - Churn par contrat
-   - Churn par ancienneté
-   - Revenu à risque par segment
-
-3. **Priorisation**
-   - segments à forte valeur
-   - segments à forte exposition au churn
-   - segments combinant risque élevé et revenu élevé
-
-4. **Aide à la décision**
-   - où agir en priorité
-   - quels profils cibler
-   - quels leviers commerciaux activer
 
 ---
 
