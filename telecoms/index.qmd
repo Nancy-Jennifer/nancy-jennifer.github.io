@@ -31,8 +31,6 @@ Spécialisée en **analytics télécoms**, j’analyse les données réseau pour
 
 ## Projets orientés performance & décisions
 
-## Projets orientés performance & décisions
-
 <div class="proj-grid">
 
   <!-- P1 -->
