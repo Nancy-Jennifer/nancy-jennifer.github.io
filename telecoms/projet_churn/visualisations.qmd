@@ -16,7 +16,7 @@ L’objectif n’est pas de produire des graphiques décoratifs, mais de rendre 
 - **les profils qui concentrent le revenu à risque ;**
 - **les leviers de priorisation pour les actions de rétention ;**
 - **les indicateurs clés à suivre dans un dashboard de pilotage.**
----
+<hr>
 
 # Vue d’ensemble du dashboard
 
