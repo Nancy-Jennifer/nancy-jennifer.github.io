@@ -14,23 +14,27 @@ L’objectif n’est pas uniquement d’identifier des écarts de performance, m
 
 **- les risques prioritaires ;**
 **- les segments critiques ;**
-**- les leviers d’action à plus fort impact ;**
+**- les leviers d’action à plus fort impact ;*
 **- les décisions pouvant améliorer la rétention client et protéger le revenu.**
 
 Dans un contexte télécom fortement concurrentiel, la capacité à anticiper le churn devient un enjeu direct de performance commerciale et de stabilité financière.
 
 ---
 
+<div class="insight-title">
+
 # Insight 1 — Les contrats mensuels concentrent le risque de churn
 
-## Constat
+</div>
+
+**Constat**
 
 Les clients en contrat mensuel présentent un taux de churn significativement supérieur aux contrats avec engagement.
 Cette situation suggère une forte vulnérabilité des clients à faible engagement contractuel.
 
 ---
 
-## Risque métier
+**Risque métier**
 
 Cette exposition peut entraîner :
 
@@ -41,7 +45,7 @@ Cette exposition peut entraîner :
 
 ---
 
-## Lecture analytique
+**Lecture analytique**
 
 Le churn ne doit pas être interprété uniquement comme un indicateur de départ client.
 Dans ce contexte, il devient un signal de fragilité commerciale sur certains modèles contractuels.
@@ -49,13 +53,13 @@ Le contrat mensuel agit ici comme un accélérateur potentiel de résiliation.
 
 ---
 
-##👉 Décision prioritaire
+**👉 Décision prioritaire**
 
 Prioriser les actions de fidélisation sur les clients mensuels à forte valeur.
 
 ---
 
-## Recommandations stratégiques
+**Recommandations stratégiques**
 
 - proposer des offres de migration vers des contrats plus engageants ;
 - mettre en place des avantages fidélité ciblés ;
@@ -64,16 +68,20 @@ Prioriser les actions de fidélisation sur les clients mensuels à forte valeur.
 
 ---
 
+<div class="insight-title">
+
 # Insight 2 — Les premiers mois client représentent la période la plus critique
 
-## Constat
+</div>
+
+**Constat**
 
 Le churn est particulièrement élevé sur les clients ayant une ancienneté inférieure à 12 mois.
 La probabilité de résiliation diminue progressivement avec l’ancienneté.
 
 ---
 
-## Risque métier
+**Risque métier**
 
 Cette situation peut traduire :
 
@@ -84,20 +92,20 @@ Cette situation peut traduire :
 
 ---
 
-## Lecture analytique
+**Lecture analytique**
 
 Les premiers mois deviennent ici une phase critique du cycle de vie client.
 Le risque n’est pas uniquement la résiliation immédiate, mais l’incapacité à stabiliser durablement la relation client.
 
 ---
 
-##👉 Décision prioritaire
+**👉 Décision prioritaire**
 
 Concentrer les efforts de rétention sur les premiers mois suivant la souscription.
 
 ---
 
-## Recommandations stratégiques
+**Recommandations stratégiques**
 
 - mettre en place un programme d’onboarding renforcé ;
 - suivre les indicateurs de satisfaction précoces ;
@@ -106,16 +114,20 @@ Concentrer les efforts de rétention sur les premiers mois suivant la souscripti
 
 ---
 
+<div class="insight-title">
+
 # Insight 3 — Le revenu à risque est concentré sur des segments spécifiques
 
-## Constat
+</div>
+
+**Constat**
 
 Une part importante du revenu à risque est concentrée sur un nombre limité de segments clients.
 Tous les churns n’ont donc pas le même impact économique.
 
 ---
 
-## Risque métier
+**Risque métier**
 
 Cette concentration peut exposer l’opérateur à :
 
@@ -126,7 +138,7 @@ Cette concentration peut exposer l’opérateur à :
 
 ---
 
-## Lecture analytique
+**Lecture analytique**
 
 Une approche basée uniquement sur le volume de churn peut conduire à de mauvaises priorités.
 La criticité réelle dépend de la combinaison :
@@ -138,13 +150,13 @@ La criticité réelle dépend de la combinaison :
 
 ---
 
-##👉 Décision prioritaire
+**👉 Décision prioritaire**
 
 Prioriser les actions de rétention selon l’impact financier du churn.
 
 ---
 
-## Recommandations stratégiques
+**Recommandations stratégiques**
 
 - construire une segmentation valeur × risque ;
 - identifier les clients à forte contribution financière ;
@@ -168,7 +180,11 @@ L’enjeu n’est pas seulement de réduire les départs, mais de protéger dura
 
 ---
 
+<div class="reco-title">
+
 # Recommandations prioritaires pour un opérateur télécom
+
+</div>
 
 | Priorité | Action recommandée | Impact attendu |
 |---|---|---|
