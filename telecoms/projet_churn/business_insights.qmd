@@ -12,10 +12,11 @@ format:
 Cette page transforme les résultats analytiques en lecture métier orientée décision.
 L’objectif n’est pas uniquement d’identifier des écarts de performance, mais de mettre en évidence :
 
-**- les risques prioritaires ;**
-**- les segments critiques ;**
-**- les leviers d’action à plus fort impact ;*
-**- les décisions pouvant améliorer la rétention client et protéger le revenu.**
+- **Renforcer la rétention des contrats mensuels**
+- **Mettre en place un onboarding client renforcé**
+- **Prioriser les segments à forte valeur financière**
+- **Développer des offres de fidélisation ciblées**
+- **Suivre les signaux précoces de désengagement**
 
 Dans un contexte télécom fortement concurrentiel, la capacité à anticiper le churn devient un enjeu direct de performance commerciale et de stabilité financière.
 
