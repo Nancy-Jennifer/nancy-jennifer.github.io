@@ -488,3 +488,24 @@ footer,
   color:#ffffff !important;
   margin:0;
 }
+
+/* =========================
+   TITRE RECOMMANDATIONS
+   ========================= */
+
+.reco-title{
+  background:#365E7D;
+  color:#ffffff;
+  padding:12px 20px;
+  border-radius:10px;
+  margin-top:2.5rem;
+  margin-bottom:1.2rem;
+  box-shadow:0 4px 12px rgba(0,0,0,.10);
+}
+
+.reco-title h1,
+.reco-title h2,
+.reco-title h3{
+  color:#ffffff !important;
+  margin:0;
+}
