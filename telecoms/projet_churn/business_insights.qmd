@@ -24,7 +24,7 @@ Dans un contexte télécom fortement concurrentiel, la capacité à anticiper le
 
 <div class="insight-title">
 
-Insight 1 — Les contrats mensuels concentrent le risque de churn
+**Insight 1 — Les contrats mensuels concentrent le risque de churn**
 
 </div>
 
@@ -71,7 +71,7 @@ Prioriser les actions de fidélisation sur les clients mensuels à forte valeur.
 
 <div class="insight-title">
 
-Insight 2 — Les premiers mois client représentent la période la plus critique
+**Insight 2 — Les premiers mois client représentent la période la plus critique**
 
 </div>
 
@@ -117,7 +117,7 @@ Concentrer les efforts de rétention sur les premiers mois suivant la souscripti
 
 <div class="insight-title">
 
-Insight 3 — Le revenu à risque est concentré sur des segments spécifiques
+**Insight 3 — Le revenu à risque est concentré sur des segments spécifiques**
 
 </div>
 
