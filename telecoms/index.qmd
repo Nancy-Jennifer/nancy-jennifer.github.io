@@ -31,18 +31,20 @@ Spécialisée en **analytics télécoms**, j’analyse les données réseau pour
 
 ## Projets orientés performance & décisions
 
+## Projets orientés performance & décisions
+
 <div class="proj-grid">
 
   <!-- P1 -->
   <article class="proj-card">
-    <h3>P1 — Analyse QoS Télécom 2022</h3>
-    <p class="subtitle">France Métropolitaine · Voix / SMS / Data · ARCEP</p>
+    <h3>P1 — Pilotage du churn & revenu à risque télécom</h3>
+    <p class="subtitle">Churn Analytics · Rétention client · Revenue at Risk</p>
 
     <p>
-      Identification des zones et contextes sous-performants afin de prioriser les actions d’optimisation réseau et objectiver la qualité de service perçue.
+      Identification des segments clients les plus exposés à la résiliation afin de prioriser les actions de fidélisation, protéger le revenu et améliorer le pilotage de la performance commerciale.
     </p>
 
-    <a class="btn btn-success" href="projet1_arcep2022.qmd">🚀 Explorer le projet P1</a>
+    <a class="btn btn-success" href="projet_churn/index.qmd">🚀 Explorer le projet P1</a>
   </article>
 
   <!-- P2 -->
