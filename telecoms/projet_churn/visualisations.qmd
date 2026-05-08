@@ -50,18 +50,23 @@ Ces indicateurs permettent de passer d’une lecture descriptive du churn à une
 ![](images/churn_par_contrat.png){fig-alt="Taux de churn par type de contrat" width="90%"}
 
 **Objectif**
+
 Identifier les types de contrats les plus exposés à la résiliation.
 
 **Lecture métier**
+
 Le churn est nettement plus élevé sur les contrats mensuels, avec un taux de **42,71 %**, contre **11,27 %** pour les contrats d’un an et **2,83 %** pour les contrats de deux ans.
 
 Cette différence suggère que les clients sans engagement long sont plus exposés au départ, probablement en raison :
+
 - d’une faible barrière à la sortie ;
 - d’une sensibilité plus forte aux offres concurrentes ;
 - d’un engagement client plus fragile.
 
 **👉 Décision associée**
+
 Cette visualisation peut aider à prioriser les actions de rétention sur les clients en contrat mensuel, notamment par :
+
 - des offres de migration vers des contrats plus engageants ;
 - des avantages de fidélité ciblés ;
 - un suivi renforcé des clients à forte valeur en contrat mensuel.
@@ -73,11 +78,14 @@ Cette visualisation peut aider à prioriser les actions de rétention sur les cl
 ![](images/churn_par_anciennete.png){fig-alt="Taux de churn par ancienneté client" width="90%"}
 
 **Objectif**
+
 Identifier les périodes de vie client où le risque de départ est le plus élevé.
 
 **Lecture métier**
+
 Le churn est particulièrement fort sur les clients ayant entre **1 et 6 mois d’ancienneté**, avec un taux de **53,33 %**.
 Le taux diminue ensuite progressivement avec l’ancienneté :
+
 - 35,89 % entre 7 et 12 mois ;
 - 28,71 % entre 13 et 24 mois ;
 - 14,04 % au-delà de 24 mois.
@@ -85,7 +93,9 @@ Le taux diminue ensuite progressivement avec l’ancienneté :
 Cette lecture montre que la vulnérabilité client est très forte dans les premiers mois.
 
 **👉 Décision associée**
+
 Cette visualisation peut justifier la mise en place d’un dispositif de rétention précoce :
+
 - programme d’onboarding renforcé ;
 - contact client après souscription ;
 - suivi de satisfaction dans les premiers mois ;
@@ -98,16 +108,20 @@ Cette visualisation peut justifier la mise en place d’un dispositif de rétent
 ![](images/revenue_at_risk_segment.png){fig-alt="Revenu à risque par segment client" width="95%"}
 
 **Objectif**
+
 Identifier les segments qui concentrent le plus fort impact financier potentiel.
 
 **Lecture métier**
+
 Le segment **Risque financier prioritaire** concentre environ **71K** de revenu à risque, devant le segment **Risque commercial modéré** avec environ **50K**. Cela montre que tous les churns n’ont pas le même poids économique.
 Un segment peut représenter un volume client limité, mais devenir prioritaire s’il concentre une forte valeur financière exposée.
 
 **👉 Décision associée**
+
 Cette visualisation permet de prioriser les actions de fidélisation selon l’impact financier réel, et non uniquement selon le nombre de clients perdus.
 
 Elle aide à orienter :
+
 - les budgets de rétention ;
 - les campagnes commerciales ciblées ;
 - les actions prioritaires sur les clients à forte valeur ;
@@ -118,6 +132,7 @@ Elle aide à orienter :
 # Logique de priorisation
 La priorisation ne doit pas reposer sur un seul indicateur.
 Elle doit croiser :
+
 - le taux de churn ;
 - le niveau de revenu mensuel ;
 - le type de contrat ;
@@ -131,6 +146,7 @@ Cette approche permet d’éviter une lecture trop globale du churn et de concen
 # Lecture décisionnelle
 Une bonne visualisation ne se limite pas à montrer un écart.
 Elle doit permettre de répondre rapidement à trois questions :
+
 - où se situe le risque ?
 - quel est son impact financier ?
 - quelle action doit être priorisée ?
@@ -154,6 +170,7 @@ Cependant, la logique analytique reste transposable à un contexte télécom op�
 
 # Ce que cette page démontre
 Cette page démontre la capacité à :
+
 - transformer des KPI en visualisations utiles ;
 - relier les graphiques à des décisions concrètes ;
 - structurer un dashboard orienté pilotage ;
