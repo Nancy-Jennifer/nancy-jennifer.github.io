@@ -10,14 +10,12 @@ format:
 # Objectif de la visualisation
 
 Cette page présente les visualisations utilisées pour transformer les indicateurs churn en lecture décisionnelle.
-
 L’objectif n’est pas de produire des graphiques décoratifs, mais de rendre visibles :
 
-- les segments clients les plus exposés à la résiliation ;
-- les profils qui concentrent le revenu à risque ;
-- les leviers de priorisation pour les actions de rétention ;
-- les indicateurs clés à suivre dans un dashboard de pilotage.
-
+- **les segments clients les plus exposés à la résiliation ;**
+- **les profils qui concentrent le revenu à risque ;**
+- **les leviers de priorisation pour les actions de rétention ;**
+- **les indicateurs clés à suivre dans un dashboard de pilotage.**
 ---
 
 # Vue d’ensemble du dashboard
@@ -25,7 +23,6 @@ L’objectif n’est pas de produire des graphiques décoratifs, mais de rendre 
 ![](images/dashboard_churn.png){fig-alt="Dashboard Power BI de pilotage du churn, de l’ARPU et du revenu à risque" width="100%"}
 
 Ce dashboard fournit une vue synthétique du churn, du revenu moyen par client et du revenu à risque.
-
 Il permet de relier rapidement trois niveaux de lecture :
 
 - **l’intensité du churn** : 26,54 % ;
@@ -61,7 +58,6 @@ Identifier les types de contrats les plus exposés à la résiliation.
 **Lecture métier**
 
 Le churn est nettement plus élevé sur les contrats mensuels, avec un taux de **42,71 %**, contre **11,27 %** pour les contrats d’un an et **2,83 %** pour les contrats de deux ans.
-
 Cette différence suggère que les clients sans engagement long sont plus exposés au départ, probablement en raison :
 
 - d’une faible barrière à la sortie ;
@@ -89,7 +85,6 @@ Identifier les périodes de vie client où le risque de départ est le plus éle
 **Lecture métier**
 
 Le churn est particulièrement fort sur les clients ayant entre **1 et 6 mois d’ancienneté**, avec un taux de **53,33 %**.
-
 Le taux diminue ensuite progressivement avec l’ancienneté :
 
 - 35,89 % entre 7 et 12 mois ;
@@ -119,10 +114,7 @@ Identifier les segments qui concentrent le plus fort impact financier potentiel.
 
 **Lecture métier**
 
-Le segment **Risque financier prioritaire** concentre environ **71K** de revenu à risque, devant le segment **Risque commercial modéré** avec environ **50K**.
-
-Cela montre que tous les churns n’ont pas le même poids économique.
-
+Le segment **Risque financier prioritaire** concentre environ **71K** de revenu à risque, devant le segment **Risque commercial modéré** avec environ **50K**. Cela montre que tous les churns n’ont pas le même poids économique.
 Un segment peut représenter un volume client limité, mais devenir prioritaire s’il concentre une forte valeur financière exposée.
 
 **👉 Décision associée**
@@ -141,7 +133,6 @@ Elle aide à orienter :
 # Logique de priorisation
 
 La priorisation ne doit pas reposer sur un seul indicateur.
-
 Elle doit croiser :
 
 - le taux de churn ;
@@ -157,7 +148,6 @@ Cette approche permet d’éviter une lecture trop globale du churn et de concen
 # Lecture décisionnelle
 
 Une bonne visualisation ne se limite pas à montrer un écart.
-
 Elle doit permettre de répondre rapidement à trois questions :
 
 - où se situe le risque ?
@@ -171,9 +161,7 @@ Dans cette analyse, la visualisation sert donc à passer d’une lecture descrip
 # Limites de la visualisation
 
 Les visualisations présentées doivent être interprétées avec prudence.
-
 Le dataset est un jeu de données d’entraînement et ne reflète pas directement les données internes d’un opérateur réel.
-
 Cependant, la logique analytique reste transposable à un contexte télécom opérationnel :
 
 - segmentation client ;
