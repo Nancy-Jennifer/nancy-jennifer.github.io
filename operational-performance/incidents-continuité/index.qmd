@@ -1,0 +1,57 @@
+# Pilotage des incidents critiques et continuité opérationnelle
+
+::: {.hero-banner}
+
+## Transformer les données incidents en leviers de pilotage opérationnel
+
+Dans un contexte PMO ITSM, les incidents critiques ne représentent pas seulement des tickets techniques. Ils peuvent rapidement impacter la qualité de service, les engagements SLA et la continuité opérationnelle.
+
+Ce projet présente un dashboard décisionnel développé sous Power BI afin d'identifier les tensions opérationnelles, suivre la performance du processus de gestion des incidents et soutenir les décisions de pilotage opérationnel.
+
+:::
+
+<br>
+
+::: {.columns}
+
+::: {.column width="33%"}
+
+### 📊 Données analysées
+
+**141 712**
+
+Enregistrements incidents analysés.
+
+:::
+
+::: {.column width="33%"}
+
+### 💡 Insights métier
+
+**4**
+
+Insights identifiés à partir de l'analyse des incidents et des indicateurs de performance.
+
+:::
+
+::: {.column width="33%"}
+
+### 🎯 Indicateurs clés de pilotage
+
+**5**
+
+Backlog ouvert, vieillissement, temps de résolution, SLA et complexité opérationnelle.
+
+:::
+
+:::
+
+<br>
+
+## Compétences démontrées
+
+`Power BI` · `Excel` · `Data Quality` · `DAX` · `KPI Monitoring` · `SLA Analysis` · `Incident Management` · `Operational Performance` · `PMO ITSM`
+
+<br>
+
+> **Objectif analytique :** Identifier les tensions opérationnelles susceptibles d'affecter les SLA, la qualité de service et la continuité opérationnelle afin de soutenir une prise de décision plus éclairée.
