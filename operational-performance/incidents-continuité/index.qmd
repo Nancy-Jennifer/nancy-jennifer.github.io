@@ -1,14 +1,18 @@
 # Pilotage des incidents critiques et continuité opérationnelle
 
-::: {.hero-banner}
+Analyse décisionnelle de la performance des services numériques et de la qualité de service
 
-## Transformer les données incidents en leviers de pilotage opérationnel
+`PMO ITSM` · `GESTION DES INCIDENTS` · `QUALITÉ DE SERVICE` · `CONTINUITÉ OPÉRATIONNELLE` · `POWER BI`
 
-Dans un contexte PMO ITSM, les incidents critiques ne représentent pas seulement des tickets techniques. Ils peuvent rapidement impacter la qualité de service, les engagements SLA et la continuité opérationnelle.
+### DATE DE PUBLICATION
+
+Lundi 1er juin 2026
+
+Dans un contexte de pilotage des services numériques, les incidents critiques ne représentent pas seulement des tickets techniques. Ils peuvent rapidement impacter la qualité de service, les engagements SLA, la continuité opérationnelle et l'expérience des utilisateurs.
 
 Ce projet présente un dashboard décisionnel développé sous Power BI afin d'identifier les tensions opérationnelles, suivre la performance du processus de gestion des incidents et soutenir les décisions de pilotage opérationnel.
 
-:::
+L'analyse s'appuie sur un dataset ITSM de 141 712 enregistrements et met l'accent sur la qualité des données, la cohérence métier des indicateurs et la transformation des données opérationnelles en informations exploitables pour la décision.
 
 <br>
 
@@ -16,7 +20,7 @@ Ce projet présente un dashboard décisionnel développé sous Power BI afin d'i
 
 ::: {.column width="33%"}
 
-### 📊 Données analysées
+### Données analysées
 
 **141 712**
 
@@ -26,7 +30,7 @@ Enregistrements incidents analysés.
 
 ::: {.column width="33%"}
 
-### 💡 Insights métier
+### Insights métier
 
 **4**
 
@@ -36,7 +40,7 @@ Insights identifiés à partir de l'analyse des incidents et des indicateurs de 
 
 ::: {.column width="33%"}
 
-### 🎯 Indicateurs clés de pilotage
+### Indicateurs clés de pilotage
 
 **5**
 
