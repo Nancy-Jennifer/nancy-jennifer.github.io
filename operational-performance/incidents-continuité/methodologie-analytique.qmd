@@ -5,9 +5,7 @@ toc: true
 toc-depth: 2
 ---
 
-## Approche analytique
-
-### Fiabilisation des données
+## Fiabilisation des données
 
 Avant la construction du dashboard Power BI, une phase de fiabilisation des données a été réalisée sous Excel afin de sécuriser la cohérence des indicateurs.
 
@@ -25,7 +23,7 @@ Un point important de cette phase a été la clarification de la variable `made_
 
 Cette étape de contrôle a été déterminante pour garantir que les KPI construits dans Power BI reflètent une lecture métier fiable, et non une simple exploitation automatique des champs disponibles.
 
-### Modélisation Power BI
+## Modélisation Power BI
 
 La phase de modélisation a consisté à transformer les données incidents en indicateurs de pilotage directement exploitables par les équipes opérationnelles.
 
@@ -50,7 +48,7 @@ La modélisation a également permis de comparer les performances selon :
 
 L'objectif n'était pas uniquement de mesurer l'activité, mais de mettre en évidence les zones de tension susceptibles d'affecter la qualité de service et la continuité opérationnelle.
 
-### Objectif du dashboard
+## Objectif du dashboard
 
 Le dashboard a été conçu comme un outil de pilotage opérationnel permettant de suivre la performance du processus de gestion des incidents.
 
