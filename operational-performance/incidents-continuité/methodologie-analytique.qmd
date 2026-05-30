@@ -1,3 +1,10 @@
+---
+title: "Approche analytique"
+number-sections: true
+toc: true
+toc-depth: 2
+---
+
 ## Approche analytique
 
 ### Fiabilisation des données
