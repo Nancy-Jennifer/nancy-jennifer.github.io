@@ -1,0 +1,66 @@
+## Approche analytique
+
+### a) Fiabilisation des données
+
+Avant la construction du dashboard Power BI, une phase de fiabilisation des données a été réalisée sous Excel afin de sécuriser la cohérence des indicateurs.
+
+Cette étape a porté sur plusieurs contrôles essentiels :
+
+- vérification des types de données ;
+- contrôle des valeurs manquantes ;
+- cohérence des dates d'ouverture, de mise à jour, de résolution et de clôture ;
+- validation de la logique SLA à partir de la documentation du dataset ;
+- analyse des statuts incidents ;
+- contrôle des variables liées aux réassignations et aux réouvertures ;
+- vérification de la cohérence entre les incidents ouverts et les incidents résolus/clôturés.
+
+Un point important de cette phase a été la clarification de la variable `made_sla`. La documentation du dataset indique que cette variable signale si l'incident a dépassé la cible SLA. Cette vérification a permis d'éviter une inversion d'interprétation entre les incidents ayant respecté le SLA et ceux l'ayant dépassé.
+
+Cette étape de contrôle a été déterminante pour garantir que les KPI construits dans Power BI reflètent une lecture métier fiable, et non une simple exploitation automatique des champs disponibles.
+
+### b) Modélisation Power BI
+
+La phase de modélisation a consisté à transformer les données incidents en indicateurs de pilotage directement exploitables par les équipes opérationnelles.
+
+Deux tables ont été utilisées :
+
+- `Incident_Open_Backlog` pour l'analyse des incidents ouverts ;
+- `Incident_Resolved_Closed` pour l'analyse des incidents résolus et clôturés.
+
+Des mesures DAX ont été développées afin de suivre les principaux indicateurs de performance :
+
+- backlog total ouvert ;
+- vieillissement moyen du backlog ;
+- temps moyen de résolution ;
+- taux de respect des SLA ;
+- complexité opérationnelle des traitements.
+
+La modélisation a également permis de comparer les performances selon :
+
+- les niveaux de priorité ;
+- les groupes d'assignation ;
+- les profils de traitement des incidents.
+
+L'objectif n'était pas uniquement de mesurer l'activité, mais de mettre en évidence les zones de tension susceptibles d'affecter la qualité de service et la continuité opérationnelle.
+
+### c) Objectif du dashboard
+
+Le dashboard a été conçu comme un outil de pilotage opérationnel permettant de suivre la performance du processus de gestion des incidents.
+
+Il répond à plusieurs questions clés :
+
+- Les incidents critiques respectent-ils les engagements SLA ?
+- Quels niveaux de priorité accumulent le plus de dette opérationnelle ?
+- Quels groupes présentent les délais de résolution les plus élevés ?
+- Où se situent les principales frictions dans le traitement des incidents ?
+- Quels signaux nécessitent une action prioritaire de pilotage ?
+
+Le dashboard permet ainsi de :
+
+- surveiller la qualité de service ;
+- suivre les engagements SLA ;
+- identifier les tensions opérationnelles ;
+- détecter les risques de dégradation de la continuité de service ;
+- soutenir des décisions fondées sur les données.
+
+L'objectif final est de transformer les données incidents en informations directement exploitables pour améliorer la performance opérationnelle et la qualité des services numériques.
