@@ -28,7 +28,7 @@ Il permet de visualiser les indicateurs clés liés au backlog, au vieillissemen
 
 ### <span style="color:#1F4E79;">Dette opérationnelle sur les tickets faibles priorité</span>
 
-![Vieillissement du backlog par priorité](images/vieillissement-backlog-priorite.png)
+![Vieillissement moyen du backlog par priorité](images/vieillissement-backlog-priorite.png)
 
 **Signal observé :** les incidents de priorité faible présentent le vieillissement moyen le plus élevé.
 
@@ -38,7 +38,7 @@ Il permet de visualiser les indicateurs clés liés au backlog, au vieillissemen
 
 ### <span style="color:#2E8B57;">Les SLA critiques sont fortement préservés</span>
 
-![Respect des SLA par priorité](images/sla-priorite.png)
+![Taux de SLA respectés par priorité](images/sla-priorite.png)
 
 **Signal observé :** les incidents critiques et élevés présentent les meilleurs taux de respect des SLA.
 
@@ -48,7 +48,7 @@ Il permet de visualiser les indicateurs clés liés au backlog, au vieillissemen
 
 ### <span style="color:#C0504D;">Forte friction de routage opérationnel</span>
 
-![Profils de traitement des incidents](images/profil-traitement-incidents.png)
+![Répartition des profils de traitement](images/profil-traitement-incidents.png)
 
 **Signal observé :** une part importante des incidents est réassignée sans réouverture.
 
@@ -58,7 +58,7 @@ Il permet de visualiser les indicateurs clés liés au backlog, au vieillissemen
 
 ### <span style="color:#8064A2;">Certains groupes concentrent la tension opérationnelle</span>
 
-![Performance par groupe d'assignation](images/performance-groupes-assignment.png)
+![Performance opérationnelle par groupe](images/performance-groupes-assignment.png)
 
 **Signal observé :** certains groupes d'assignation présentent des temps moyens de résolution plus élevés que les autres.
 
