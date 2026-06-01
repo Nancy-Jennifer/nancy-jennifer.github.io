@@ -28,7 +28,7 @@ Il permet de visualiser les indicateurs clés liés au backlog, au vieillissemen
 
 ### <span style="color:#1F4E79;">Dette opérationnelle sur les tickets faibles priorité</span>
 
-![Vieillissement moyen du backlog par priorité](images/vieillissement-backlog-priorite.png)
+![Vieillissement du backlog par priorité](images/vieillissement-backlog-priorite.png){width=85% fig-align="center"}
 
 **Signal observé :** les incidents de priorité faible présentent le vieillissement moyen le plus élevé.
 
