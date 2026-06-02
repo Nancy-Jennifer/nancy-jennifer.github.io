@@ -9,11 +9,11 @@ toc-depth: 2
 
 Les analyses réalisées mettent en évidence plusieurs leviers d'amélioration permettant de renforcer la performance du processus de gestion des incidents et de soutenir la continuité des services numériques.
 
-### Renforcer les mécanismes de dispatch
+**Renforcer les mécanismes de dispatch**
 
 Réduire les réassignations successives grâce à des règles de routage plus précises et à une meilleure définition des responsabilités entre groupes de support.
 
-### Surveiller les backlog anciens
+**Surveiller les backlog anciens**
 
 Mettre en place un suivi spécifique des tickets à forte ancienneté afin d'éviter l'accumulation progressive d'une dette opérationnelle.
 
@@ -21,17 +21,17 @@ Mettre en place un suivi spécifique des tickets à forte ancienneté afin d'év
 
 Identifier les groupes présentant des délais de résolution élevés afin d'évaluer les besoins en ressources, en compétences ou en organisation.
 
-### Préserver les SLA critiques
+**Préserver les SLA critiques**
 
 Maintenir les mécanismes actuels de priorisation des incidents critiques tout en surveillant l'équilibre global de la charge opérationnelle.
 
-### Améliorer la catégorisation des incidents
+**Améliorer la catégorisation des incidents**
 
 Renforcer la qualité de classification des tickets afin de faciliter leur orientation et leur traitement dès la première prise en charge.
 
 ## Compétences démontrées
 
-### Analyse et pilotage opérationnel
+**Analyse et pilotage opérationnel**
 
 - Définition et suivi d'indicateurs de performance ;
 - Analyse du backlog et du vieillissement des incidents ;
@@ -39,7 +39,7 @@ Renforcer la qualité de classification des tickets afin de faciliter leur orien
 - Diagnostic des tensions opérationnelles ;
 - Production d'insights orientés décision.
 
-### Data et Business Intelligence
+**Data et Business Intelligence**
 
 - Power BI ;
 - DAX ;
@@ -47,7 +47,7 @@ Renforcer la qualité de classification des tickets afin de faciliter leur orien
 - Contrôle qualité des données ;
 - Préparation et structuration des données.
 
-### Décision et gouvernance
+**Décision et gouvernance**
 
 - Pilotage de la performance opérationnelle ;
 - PMO et gouvernance des services ;
