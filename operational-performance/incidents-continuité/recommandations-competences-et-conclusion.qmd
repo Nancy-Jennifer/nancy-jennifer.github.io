@@ -1,0 +1,62 @@
+---
+title: "Recommandations, compétences démontrées et conclusion"
+number-sections: true
+toc: true
+toc-depth: 2
+---
+
+## Recommandations opérationnelles
+
+Les analyses réalisées mettent en évidence plusieurs leviers d'amélioration permettant de renforcer la performance du processus de gestion des incidents et de soutenir la continuité des services numériques.
+
+### Renforcer les mécanismes de dispatch
+
+Réduire les réassignations successives grâce à des règles de routage plus précises et à une meilleure définition des responsabilités entre groupes de support.
+
+### Surveiller les backlog anciens
+
+Mettre en place un suivi spécifique des tickets à forte ancienneté afin d'éviter l'accumulation progressive d'une dette opérationnelle.
+
+### Analyser la capacité des groupes sous tension
+
+Identifier les groupes présentant des délais de résolution élevés afin d'évaluer les besoins en ressources, en compétences ou en organisation.
+
+### Préserver les SLA critiques
+
+Maintenir les mécanismes actuels de priorisation des incidents critiques tout en surveillant l'équilibre global de la charge opérationnelle.
+
+### Améliorer la catégorisation des incidents
+
+Renforcer la qualité de classification des tickets afin de faciliter leur orientation et leur traitement dès la première prise en charge.
+
+## Compétences démontrées
+
+### Analyse et pilotage opérationnel
+
+- Définition et suivi d'indicateurs de performance ;
+- Analyse du backlog et du vieillissement des incidents ;
+- Suivi des engagements SLA ;
+- Diagnostic des tensions opérationnelles ;
+- Production d'insights orientés décision.
+
+### Data et Business Intelligence
+
+- Power BI ;
+- DAX ;
+- Excel ;
+- Contrôle qualité des données ;
+- Préparation et structuration des données.
+
+### Décision et gouvernance
+
+- Pilotage de la performance opérationnelle ;
+- PMO et gouvernance des services ;
+- Gestion des incidents ;
+- Priorisation opérationnelle ;
+- Continuité opérationnelle.
+
+## Conclusion
+
+Ce projet illustre une approche orientée performance et décision, dans laquelle la donnée ne sert pas uniquement à visualiser l'activité mais à identifier les tensions opérationnelles, éclairer les priorités de pilotage et soutenir des actions concrètes d'amélioration continue.
+
+Dans un contexte de transformation digitale, ce type d'analyse contribue à renforcer la qualité des services numériques, la maîtrise des engagements de service et l'efficacité opérationnelle des organisations.
