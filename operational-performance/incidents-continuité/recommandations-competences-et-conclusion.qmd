@@ -9,23 +9,23 @@ toc-depth: 2
 
 Les analyses réalisées mettent en évidence plusieurs leviers d'amélioration permettant de renforcer la performance du processus de gestion des incidents et de soutenir la continuité des services numériques.
 
-**<span style="color:#2E8B57;">Renforcer les mécanismes de dispatch</span>**
+**<span style="color:#1E8449; font-size:1.2em;">✓ Renforcer les mécanismes de dispatch</span>**
 
 Réduire les réassignations successives grâce à des règles de routage plus précises et à une meilleure définition des responsabilités entre groupes de support.
 
-**<span style="color:#2E8B57;">Surveiller les backlog anciens</span>**
+**<span style="color:#1E8449; font-size:1.2em;">✓ Surveiller les backlog anciens</span>**
 
 Mettre en place un suivi spécifique des tickets à forte ancienneté afin d'éviter l'accumulation progressive d'une dette opérationnelle.
 
-**<span style="color:#2E8B57;">Analyser la capacité des groupes sous tension</span>**
+**<span style="color:#1E8449; font-size:1.2em;">✓ Analyser la capacité des groupes sous tension</span>**
 
 Identifier les groupes présentant des délais de résolution élevés afin d'évaluer les besoins en ressources, en compétences ou en organisation.
 
-**<span style="color:#2E8B57;">Préserver les SLA critiques</span>**
+**<span style="color:#1E8449; font-size:1.2em;">✓ Préserver les SLA critiques</span>**
 
 Maintenir les mécanismes actuels de priorisation des incidents critiques tout en surveillant l'équilibre global de la charge opérationnelle.
 
-**<span style="color:#2E8B57;">Améliorer la catégorisation des incidents</span>**
+**<span style="color:#1E8449; font-size:1.2em;">✓ Améliorer la catégorisation des incidents</span>**
 
 Renforcer la qualité de classification des tickets afin de faciliter leur orientation et leur traitement dès la première prise en charge.
 
