@@ -33,3 +33,11 @@ L'analyse s'appuie sur un dataset ITSM de 141 712 enregistrements et met l'accen
 <br>
 
 > **Objectif analytique :** Identifier les tensions opérationnelles susceptibles d'affecter les SLA, la qualité de service et la continuité opérationnelle afin de soutenir une prise de décision plus éclairée.
+
+---
+
+<div style="display:flex; justify-content:flex-end;">
+
+[➡️ Méthodologie analytique](methodologie-analytique.html)
+
+</div>
