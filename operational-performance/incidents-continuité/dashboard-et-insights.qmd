@@ -65,3 +65,13 @@ Il permet de visualiser les indicateurs clés liés au backlog, au vieillissemen
 **Risque métier :** ces groupes peuvent devenir des points de saturation opérationnelle et dégrader progressivement la qualité de service.
 
 **Décision possible :** analyser la capacité des groupes concernés, les types d'incidents traités et les éventuels goulets d'étranglement.
+
+---
+
+<div style="display:flex; justify-content:space-between;">
+
+[⬅️ Méthodologie analytique](methodologie-analytique.html)
+
+[➡️ Recommandations et conclusion](recommandations-competences-et-conclusion.html)
+
+</div>
