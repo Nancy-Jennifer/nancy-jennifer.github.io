@@ -60,3 +60,13 @@ Renforcer la qualité de classification des tickets afin de faciliter leur orien
 Ce projet illustre une approche orientée performance et décision, dans laquelle la donnée ne sert pas uniquement à visualiser l'activité mais à identifier les tensions opérationnelles, éclairer les priorités de pilotage et soutenir des actions concrètes d'amélioration continue.
 
 Dans un contexte de transformation digitale, ce type d'analyse contribue à renforcer la qualité des services numériques, la maîtrise des engagements de service et l'efficacité opérationnelle des organisations.
+
+---
+
+<div style="display:flex; justify-content:space-between;">
+
+[⬅️ Dashboard et insights](dashboard-et-insights.html)
+
+[🏠 Retour à l'accueil du projet](index.html)
+
+</div>
