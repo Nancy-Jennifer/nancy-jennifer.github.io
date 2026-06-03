@@ -69,3 +69,13 @@ Le dashboard permet ainsi de :
 - soutenir des décisions fondées sur les données.
 
 👉 **L’objectif final est de transformer les données incidents en informations directement exploitables pour améliorer la performance opérationnelle et la qualité des services numériques.**
+
+---
+
+<div style="display:flex; justify-content:space-between;">
+
+[⬅️ Retour au contexte](index.html)
+
+[➡️ Dashboard et insights](dashboard-et-insights.html)
+
+</div>
