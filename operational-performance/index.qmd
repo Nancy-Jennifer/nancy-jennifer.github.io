@@ -55,8 +55,24 @@ execute:
 
     <a class="btn btn-success" href="workflow-performance/">🚀 Explorer le projet P1</a>
 
-  </div>
+  </article>
 
+  <!-- P2 -->
+  <article class="proj-card">
+    <h3>P2 — Pilotage des incidents critiques et continuité opérationnelle</h3>
+    <p class="subtitle">PMO ITSM · SLA · Qualité de service · Services numériques</p>
+
+    <p>
+      Analyse de données ITSM visant à identifier les tensions opérationnelles,
+      suivre les engagements SLA, détecter les frictions de traitement et soutenir
+      les décisions de pilotage des services numériques.
+    </p>
+
+    <a class="btn btn-success" href="incidents-continuité/">🚀 Explorer le projet P2</a>
+
+  </article>
+
+</div>
 ## Impact métier
 
 Ces analyses permettent notamment :
