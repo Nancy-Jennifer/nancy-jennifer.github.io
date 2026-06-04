@@ -41,4 +41,22 @@ Objectif : produire des **enseignements exploitables** et des **recommandations 
 
 ---
 
+### P2 — Pilotage des incidents critiques et continuité opérationnelle  
+*PMO ITSM — Performance des services numériques et qualité de service*
+
+Cette analyse vise à transformer les données de gestion des incidents en leviers de pilotage opérationnel afin d'améliorer la qualité de service et la continuité des services numériques.
+
+Les axes étudiés portent notamment sur :
+
+- le respect des engagements SLA ;
+- le vieillissement du backlog ;
+- les tensions opérationnelles par groupe d'assignation ;
+- les réassignations et frictions de traitement ;
+- les opportunités d'amélioration du processus de gestion des incidents.
+
+Objectif : produire des **insights orientés décision** et des **recommandations opérationnelles** permettant de renforcer la performance des services numériques et de soutenir les initiatives de transformation digitale.
+
+[🚀 Ouvrir le projet P2 – Pilotage des incidents critiques](incidents-continuité/){.btn .btn-success}
+---
+
 [← Retour à la rubrique Operational Performance](index.qmd)
