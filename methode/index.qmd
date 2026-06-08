@@ -10,8 +10,9 @@ page-layout: full
 
 ## Démarche analytique orientée impact
 
-Ma démarche analytique vise à transformer des données opérationnelles en décisions concrètes. Elle s’appuie sur une progression simple :
-comprendre la performance, identifier les causes, anticiper les risques et prioriser les actions. Cette approche est appliquée dans mes projets télécom (QoS) et People Analytics, où l’objectif est toujours le même : produire des analyses utiles au pilotage et à la décision.
+Ma démarche analytique vise à transformer des données opérationnelles en décisions concrètes. Elle s’appuie sur une progression simple : comprendre la performance, identifier les causes, anticiper les risques et prioriser les actions.
+
+Cette approche est appliquée dans mes projets de performance réseau (télécoms), de performance opérationnelle (processus, incidents, SLA, continuité de service) et de People Analytics, avec un objectif constant : produire des analyses utiles au pilotage et à la décision.
 
 ---
 
@@ -36,46 +37,46 @@ Mon travail s’inscrit dans une progression analytique orientée performance et
 | Observation | Suivre la performance et les indicateurs clés | Maîtrisé |
 | Diagnostic | Comprendre les causes et facteurs explicatifs | Utilisé régulièrement |
 | Anticipation | Identifier tendances et risques | En développement |
-| Décision | Prioriser les actions et recommandations | Orientation centrale |
+| Décision | Prioriser les actions, arbitrages et recommandations | Orientation centrale |
 
 ---
 
 ## Cadre méthodologique
 
 ### 1 — Problème métier & hypothèses
-- cadrage de l’enjeu opérationnel  
-- définition des KPIs  
-- critères de succès attendus  
+- cadrage de l’enjeu opérationnel
+- définition des KPIs
+- critères de succès attendus
 
 ### 2 — Données & qualité
-- dictionnaire de données  
-- contrôles d’intégrité  
-- gestion des valeurs manquantes  
+- dictionnaire de données
+- contrôles d’intégrité
+- gestion des valeurs manquantes
 
 ### 3 — Analyse exploratoire orientée métier
-- tendances et évolutions  
-- segmentation  
-- détection de signaux faibles  
+- tendances et évolutions
+- segmentation
+- détection de signaux faibles
 
 ### 4 — Modélisation (si pertinent)
-- baselines analytiques  
-- sélection de variables  
-- tests et régularisation  
+- baselines analytiques
+- sélection de variables
+- tests et régularisation
 
 ### 5 — Validation & robustesse
-- validation croisée  
-- métriques adaptées au contexte  
-- analyses de sensibilité  
+- validation croisée
+- métriques adaptées au contexte
+- analyses de sensibilité
 
 ### 6 — Interprétation & recommandations
-- importance des variables  
-- interprétation métier  
-- recommandations opérationnelles  
+- importance des variables
+- interprétation métier
+- recommandations opérationnelles
 
 ### 7 — Reproductibilité
-- scripts versionnés  
-- documentation claire  
-- livrables exploitables  
+- scripts versionnés
+- documentation claire
+- livrables exploitables
 
 ---
 
@@ -83,28 +84,38 @@ Mon travail s’inscrit dans une progression analytique orientée performance et
 
 Cette démarche est mobilisée dans :
 
-- les projets télécom : performance réseau, QoS, détection d’anomalies  
-- les projets People Analytics : rétention, engagement, priorisation RH  
+- les projets télécom : performance réseau, QoS, détection d’anomalies
+- les projets de performance opérationnelle : pilotage d’incidents, backlog, SLA, continuité opérationnelle et efficacité des processus
+- les projets People Analytics : rétention, engagement, performance des équipes et priorisation RH
 
-L’objectif reste constant : transformer la donnée en levier d’action.
+L’objectif reste constant : transformer la donnée en levier d’action et en support à la décision.
 
 ---
 
 ## Outils
 
 - SQL
-- Excel 
-- Python (pandas, scikit-learn)  
-- R (tidyverse)  
-- Quarto / Markdown  
-- Git & GitHub  
-- Tableau  
-- Plotly / ggplot2  
+- Excel
+- Python (pandas, scikit-learn)
+- R (tidyverse)
+- Quarto / Markdown
+- Git & GitHub
+- Power BI
+- Tableau
+- Plotly / ggplot2
 
 ---
 
 ## Positionnement
 
-L’analyse n’a de valeur que lorsqu’elle permet d’agir. Ma démarche vise à relier données, performance et décisions opérationnelles dans des contextes télécoms comme RH.
+L’analyse n’a de valeur que lorsqu’elle permet d’agir.
+
+Ma démarche vise à relier données, performance et décisions opérationnelles dans trois univers complémentaires :
+
+- les télécommunications et la qualité de service
+- la performance opérationnelle et le pilotage des activités
+- la People Analytics et l’aide à la décision RH
+
+L’objectif reste le même : comprendre ce qui se passe, identifier pourquoi cela se produit et déterminer où agir en priorité.
 
 ---
