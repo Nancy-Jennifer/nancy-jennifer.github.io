@@ -77,7 +77,7 @@ Pilotage du backlog, des SLA, des délais de résolution et des risques de conti
 ::: {.g-col-12 .g-col-md-6}
 
 <div class="project-card">
-<a href="/telecoms/churn-revenu-risque/">
+<a href="/telecoms/projet_churn/">
 
 ### Télécoms — Pilotage du churn & revenu à risque
 
