@@ -10,11 +10,13 @@
 De l’expertise technique au pilotage de la performance par la donnée.
 </p>
 
-Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en **analyse de la performance** et **aide à la décision**, je transforme des données en **leviers d’action concrets** pour les organisations.
+Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en **analyse de la performance** et **aide à la décision**, je transforme les données en **leviers d’action concrets** pour les organisations.
 
-Mon travail consiste à relier **indicateurs**, **réalités terrain** et **décisions opérationnelles** : comprendre ce qui se passe, pourquoi, et **où agir en priorité**.
+Mon approche consiste à relier **indicateurs**, **processus métiers** et **décisions opérationnelles** afin d’identifier les écarts de performance, comprendre leurs causes et orienter les actions prioritaires.
 
-Au fil de mon parcours, j’ai consolidé une expertise en **qualité de service** et **performance réseau** (télécoms), puis étendu cette approche à la **People Analytics**, où les données éclairent les décisions RH et organisationnelles.
+Au fil de mon parcours, j’ai développé une expertise en **qualité de service** et **performance réseau** dans les télécommunications, puis étendu cette démarche à la **performance opérationnelle** et à la **People Analytics**, où les données servent à améliorer l’efficacité des opérations, le pilotage des activités et la prise de décision.
+
+J’accorde une attention particulière à la qualité des données, à la pertinence des indicateurs et à leur capacité à produire des recommandations réellement exploitables par les décideurs.
 
 ---
 
@@ -23,23 +25,33 @@ Au fil de mon parcours, j’ai consolidé une expertise en **qualité de service
 J’interviens sur des problématiques où les données servent directement à :
 
 - **piloter la performance opérationnelle**
-- **détecter les anomalies et dérives** (signaux faibles)
+- **détecter les anomalies, dérives et signaux faibles**
 - **améliorer la qualité de service** et l’**expérience client**
-- **prioriser** les actions / investissements
-- soutenir des décisions **RH et organisationnelles** (People Analytics)
+- **prioriser les actions et investissements**
+- **optimiser les processus et l’efficacité opérationnelle**
+- soutenir des décisions **RH et organisationnelles** fondées sur des faits
 
 ---
 
 ## Domaines d’intervention
 
 ### Télécoms & performance réseau
-- QoS, suivi d’indicateurs, analyse des anomalies  
-- compréhension des écarts de performance (zones / contextes d’usage / temporalité)  
-- aide à la priorisation des actions d’optimisation
+- qualité de service (QoS) et performance réseau
+- analyse des anomalies et écarts de performance
+- suivi d’indicateurs et aide à la priorisation des actions d’optimisation
+- pilotage de la performance des services télécoms
+
+### Performance opérationnelle
+- pilotage de la performance des activités et processus
+- analyse des incidents, SLA, backlog et continuité opérationnelle
+- conception de tableaux de bord décisionnels orientés action
+- identification des leviers d’amélioration et des risques opérationnels
 
 ### People Analytics
-- analyse rétention / engagement / performance équipes  
-- appui à des décisions RH basées sur des faits (diagnostic, priorisation, suivi)
+- analyse de la rétention, de l’engagement et de la performance des équipes
+- diagnostic RH fondé sur les données
+- suivi d’indicateurs sociaux et organisationnels
+- aide à la priorisation des actions RH
 
 ---
 
@@ -51,20 +63,21 @@ J’interviens sur des problématiques où les données servent directement à :
 - interprétation opérationnelle et **recommandations actionnables**
 - documentation et reproductibilité (selon le contexte)
 
-**Outils :** SQL, Excel, Python, R, Tableau.
+**Outils :** SQL, Excel, Python, Power BI, R, Tableau.
 
 ---
 
 ## Ma philosophie
 
-Une donnée n’a de valeur que lorsqu’elle permet d’agir.  
-**Analyser, comprendre, décider.**
+Une donnée n’a de valeur que lorsqu’elle permet d’agir.
+
+**Analyser. Comprendre. Décider.**
 
 ---
 
 ## Me contacter
 
-Si vous recherchez une analyste capable de transformer des données opérationnelles en **décisions utiles**, dans des contextes **télécoms** comme **RH**, je serai ravie d’échanger.
+Si vous recherchez une analyste capable de transformer des données en **décisions utiles**, d’éclairer la **performance opérationnelle** et d’accompagner le pilotage de l’activité par les indicateurs, je serai ravie d’échanger.
 
 - LinkedIn : [https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/](https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/)
 - Portfolio : [nancy-jennifer.github.io](https://nancy-jennifer.github.io)
