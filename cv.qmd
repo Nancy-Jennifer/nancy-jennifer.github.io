@@ -1,6 +1,6 @@
 ---
 title: "CV – Performance & Decision Intelligence Analyst"
-subtitle: "Telecom QoS • Operational Performance • People Analytics"
+subtitle: "Network Performance • Operational Performance • People Analytics"
 format:
   html:
     toc: true
@@ -9,148 +9,79 @@ format:
 
 ## Positionnement
 
-Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en  
-**analyse de la performance** et **aide à la décision par la donnée**.
+Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en **analyse de la performance** et **aide à la décision par la donnée**.
 
 J’interviens sur des problématiques où la donnée sert directement à :
 
-- **comprendre les écarts de performance**
-- **détecter les anomalies et inefficacités**
-- **identifier les leviers d’amélioration prioritaires**
-- **orienter les décisions opérationnelles et stratégiques**
+- mesurer la performance réelle
+- identifier les facteurs explicatifs des écarts observés
+- détecter les risques, anomalies et signaux faibles
+- prioriser les actions à plus fort impact
+- améliorer l’efficacité opérationnelle et organisationnelle
+- éclairer les décisions managériales et stratégiques
 
 👉 Mon rôle : relier **données, enjeux métier et décisions concrètes**.
 
 ---
 
-## Domaines d’expertise
+## Domaines d’intervention
 
-### Télécommunications (QoS & performance réseau)
+### Performance réseau (Télécommunications)
+
 - Analyse de la qualité de service (voix, SMS, data)
 - Identification des zones et contextes sous-performants
-- Aide à la priorisation des actions d’optimisation réseau
+- Analyse des écarts de performance réseau
+- Aide à la priorisation des actions d’optimisation
 - Benchmark et analyse comparative
+- Pilotage de la performance des services télécoms
 
-### Operational Performance (processus & workflows)
-- Analyse des délais et performance des processus métier
+### Performance opérationnelle (Processus, ITSM & pilotage d’activité)
+
+- Analyse des processus métier et de leur efficacité
+- Pilotage des incidents, backlog et continuité opérationnelle
+- Analyse des SLA et des délais de résolution
 - Identification des goulots d’étranglement
 - Détection des inefficacités opérationnelles
-- Recommandations d’optimisation orientées performance
+- Conception de tableaux de bord orientés décision
+- Recommandations d’optimisation fondées sur les données
 
-### People Analytics (performance & rétention)
-- Analyse des facteurs de turnover et d’engagement
+### Performance humaine et organisationnelle (People Analytics)
+
+- Analyse de la rétention, de l’engagement et de la performance des équipes
 - Identification des populations à risque
+- Évaluation des facteurs influençant la performance collective
+- Analyse de l’efficacité managériale
 - Aide à la priorisation des actions RH
 - Lecture des données RH pour décision managériale
 
 ---
 
-## Projets à impact décisionnel
+## Projets à fort impact décisionnel
 
-### Télécoms — Analyse QoS France 2022 (ARCEP)
+::: {.grid}
 
-Analyse des performances voix, SMS et data selon les contextes d’usage.
+::: {.g-col-12 .g-col-md-6}
 
-**Décisions supportées :**
-- priorisation des zones à optimiser  
-- identification des écarts de qualité de service  
-- objectivation de l’expérience utilisateur  
+<div class="project-card">
+<a href="/operational-performance/incidents-continuité/">
 
-🔗 [Voir le projet](https://nancy-jennifer.github.io/telecoms/projet1_arcep2022.html)
+### PMO ITSM — Incidents critiques & continuité opérationnelle
 
----
+Pilotage du backlog, des SLA, des délais de résolution et des risques de continuité opérationnelle à travers un tableau de bord décisionnel Power BI.
 
-### Télécoms — Benchmark QoS France 2024 vs standards internationaux
+</a>
+</div>
 
-Comparaison des performances nationales avec les standards ITU et Banque Mondiale.
+:::
 
-**Décisions supportées :**
-- identification des écarts critiques  
-- orientation des investissements réseau  
-- alignement avec des benchmarks internationaux  
+::: {.g-col-12 .g-col-md-6}
 
-🔗 [Voir le projet](https://nancy-jennifer.github.io/telecoms/projet2_arcep2024.html)
+<div class="project-card">
+<a href="/telecoms/churn-revenu-risque/">
 
----
+### Télécoms — Pilotage du churn & revenu à risque
 
-### Operational Performance — Workflow Performance Analysis
+Identification des segments à risque, estimation du revenu menacé et priorisation des actions de fidélisation à partir de données clients télécoms.
 
-Analyse de la performance d’un processus métier (délais, efficacité, friction).
-
-**Décisions supportées :**
-- identification des étapes bloquantes  
-- réduction des délais de traitement  
-- priorisation des actions d’optimisation  
-
-🔗 [Voir le projet](https://nancy-jennifer.github.io/operational-performance/workflow-performance/)
-
----
-
-### People Analytics — Analyse de l’attrition RH
-
-Analyse des facteurs influençant le départ des collaborateurs.
-
-**Décisions supportées :**
-- ciblage des leviers de rétention  
-- priorisation des actions RH  
-- amélioration de l’engagement  
-
-🔗 [Voir le projet](https://nancy-jennifer.github.io/people-analytics/attrition/)
-
----
-
-## Démarche analytique
-
-Ma démarche est systématiquement orientée **performance et décision** :
-
-- clarification du besoin métier et des enjeux  
-- analyse exploratoire rigoureuse (EDA)  
-- contrôle qualité et cohérence des données  
-- formulation et test d’hypothèses  
-- interprétation orientée **impact opérationnel**  
-- recommandations **actionnables et mesurables**  
-
----
-
-## Compétences
-
-### Techniques
-- SQL  
-- Excel  
-- Python  
-- R  
-- Tableau  
-- ggplot2  
-- Leaflet  
-
-### Analytique & pilotage
-- Définition et suivi de KPIs de performance  
-- Analyse des écarts et identification des priorités  
-- Détection d’anomalies et signaux faibles  
-- Analyse comparative et segmentation  
-
-### Restitution & décision
-- Data storytelling orienté décision  
-- Dashboards opérationnels (pilotage & suivi)  
-- Rapports synthétiques pour décideurs  
-- Traduction des données en **actions concrètes**  
-
----
-
-## Philosophie
-
-Une donnée n’a de valeur que lorsqu’elle permet d’agir.  
-
-👉 **Analyser, comprendre, prioriser, décider.**
-
----
-
-## Contact
-
-📧 nancylee.yimbere@gmail.com  
-
-🔗 [LinkedIn](https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/)  
-📘 [Portfolio](https://nancy-jennifer.github.io)  
-💻 [GitHub](https://github.com/Nancy-Jennifer)  
-
-📍 Télétravail privilégié | Présentiel possible à Cotonou
+</a>
+</div>
