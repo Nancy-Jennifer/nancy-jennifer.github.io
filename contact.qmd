@@ -104,8 +104,3 @@ J’interviens lorsque la donnée doit **éclairer une décision**, **prioriser 
 
 (projets Data, analyses Télécoms, Performance Opérationnelle & People Analytics, approche orientée décision)
 
-**GitHub**
-
-[https://github.com/nancy-jennifer](https://github.com/nancy-jennifer)
-
-(codes, analyses reproductibles et documentation méthodologique)
