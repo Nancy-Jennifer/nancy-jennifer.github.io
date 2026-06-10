@@ -3,65 +3,109 @@ title: "CONTACT"
 format: html
 ---
 
-Vous souhaitez échanger sur un profil **Data Analyst**, un **projet analytique** ou une **décision métier** à sécuriser par la donnée ?  
-Cette page précise **dans quels cas me solliciter**, **ce que je livre**, et **comment me joindre**.
+Vous souhaitez échanger sur un profil **Data Analyst**, un **projet analytique** ou une **décision métier** à sécuriser par la donnée ?
+
+Cette page précise **dans quels cas me solliciter**, **ce que je peux apporter** et **comment me joindre**.
 
 ## Recruteur Data / Tech
 
-Je produis des analyses **reproductibles**, **documentées** et **orientées décision**, avec une exigence forte sur la qualité des données et la traçabilité.
+Je produis des analyses **reproductibles**, **documentées** et **orientées décision**, avec une exigence forte sur la qualité des données, la cohérence métier et la traçabilité des résultats.
 
 ### Ce que je réalise
 
-- Analyses exploratoires structurées (Python, SQL, Excel, R)  
-- Construction et lecture d’indicateurs de performance (KPI)  
-- Détection d’anomalies, comparaisons temporelles et segmentées  
-- Restitution claire : résultats, limites, recommandations actionnables  
+- Analyses exploratoires structurées (Python, SQL, Excel, R)
+- Construction et interprétation d’indicateurs de performance (KPI)
+- Détection d’anomalies, signaux faibles et écarts de performance
+- Analyses comparatives, temporelles et segmentées
+- Tableaux de bord orientés pilotage et aide à la décision
+- Restitution claire : résultats, limites et recommandations actionnables
 
 ### Ce que vous obtenez
 
-- Hypothèses explicites et choix méthodologiques justifiés  
-- Contrôles qualité (cohérence, manquants, valeurs aberrantes)  
-- Livrables exploitables par un décideur (synthèse + points d’action)
+- Hypothèses explicites et choix méthodologiques justifiés
+- Contrôles qualité (cohérence, valeurs manquantes, valeurs aberrantes)
+- Analyses orientées impact métier
+- Livrables exploitables par un décideur (synthèse, indicateurs et recommandations)
 
-👉 Si vous cherchez un profil analytique rigoureux, structuré et orienté impact, je suis disponible pour échanger.
+👉 Si vous recherchez un profil analytique rigoureux, structuré et orienté impact, je serai ravie d’échanger.
 
-## Manager métier (Télécoms / RH)
+---
 
-J’interviens quand la donnée doit **trancher**, **prioriser** ou **déclencher une action**, pas seulement produire des tableaux.
+## Manager métier (Télécoms / Opérations / RH)
+
+J’interviens lorsque la donnée doit **éclairer une décision**, **prioriser une action** ou **objectiver une situation**, et non simplement produire des tableaux de bord.
 
 ### Cas d’usage typiques
 
-- **Télécoms** : QoS, performance réseau, comparaisons inter-zones/inter-opérateurs, détection de dégradations  
-- **People Analytics** : attrition, satisfaction, indicateurs RH, compréhension des dynamiques de rétention  
+- **Télécommunications** : QoS, performance réseau, comparaison inter-zones ou inter-opérateurs, détection de dégradations de service
+- **Performance opérationnelle** : incidents, backlog, SLA, continuité opérationnelle, performance des processus et efficacité des activités
+- **People Analytics** : engagement, rétention, turnover, performance des équipes et efficacité managériale
 
 ### Valeur ajoutée
 
-- Traduction d’un enjeu métier en question analytique opérationnelle  
-- Mise en évidence des facteurs actionnables et des priorités  
-- Restitution sans jargon, centrée sur la décision et le suivi (KPI)
+- Traduction d’un enjeu métier en question analytique exploitable
+- Identification des facteurs explicatifs et leviers d’action
+- Mise en évidence des priorités et risques opérationnels
+- Restitution claire, sans jargon, centrée sur la décision et le suivi des indicateurs
 
-👉 Si vous avez une décision à sécuriser ou un problème à objectiver, on peut cadrer le besoin rapidement.
+👉 Si vous avez une décision à sécuriser ou une problématique à objectiver, nous pouvons cadrer le besoin rapidement.
+
+---
 
 ## Disponibilité & cadre de collaboration
 
-- Ouverte aux opportunités **Data Analyst**  
-- **Préférence pour le télétravail**, avec interventions en présentiel **uniquement à Cotonou**  
-  (pour toute autre localisation au Bénin, en Europe ou en Afrique francophone : télétravail privilégié)  
-- Zones privilégiées : Europe et Afrique francophone  
-- Environnements où la rigueur méthodologique et la compréhension métier sont attendues  
+- Ouverte aux opportunités **Data Analyst**
+- Préférence pour le **télétravail**
+- Interventions en présentiel possibles à **Cotonou**
+- Télétravail privilégié pour toute autre localisation au Bénin, en Afrique francophone ou en Europe
+- Intérêt particulier pour les environnements orientés performance, amélioration continue et pilotage par les données
+
+---
+
+## Domaines d’intervention
+
+### Performance réseau (Télécommunications)
+
+- Qualité de service (QoS)
+- Performance réseau
+- Détection d’anomalies
+- Analyse comparative et benchmarking
+
+### Performance opérationnelle
+
+- Pilotage d’incidents
+- Analyse des SLA
+- Gestion du backlog
+- Continuité opérationnelle
+- Performance des processus
+
+### Performance humaine et organisationnelle
+
+- Engagement des collaborateurs
+- Rétention et turnover
+- Performance des équipes
+- Efficacité managériale
+
+---
 
 ## Me contacter
 
-**Email**  
-[nancylee.yimbere@gmail.com](mailto:nancylee.yimbere@gmail.com)  
+**Email**
 
-**LinkedIn**  
+[nancylee.yimbere@gmail.com](mailto:nancylee.yimbere@gmail.com)
+
+**LinkedIn**
+
 [https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/](https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/)
 
-**Portfolio**  
-[https://nancy-jennifer.github.io](https://nancy-jennifer.github.io)    
-(projets Data, analyses Télécoms & People Analytics, approche orientée décision)
+**Portfolio**
 
-**GitHub**  
-[https://github.com/nancy-jennifer](https://github.com/nancy-jennifer)  
-(codes, analyses reproductibles, documentation méthodologique)
+[https://nancy-jennifer.github.io](https://nancy-jennifer.github.io)
+
+(projets Data, analyses Télécoms, Performance Opérationnelle & People Analytics, approche orientée décision)
+
+**GitHub**
+
+[https://github.com/nancy-jennifer](https://github.com/nancy-jennifer)
+
+(codes, analyses reproductibles et documentation méthodologique)
