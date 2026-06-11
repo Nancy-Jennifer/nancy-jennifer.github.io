@@ -1,6 +1,6 @@
 <!-- ===== PHOTO DE PROFIL ===== -->
 <div class="profile-photo">
-  <img src="/assets/profile/photo-nancy.jpeg"
+  <img src="/assets/profile/linkimg.jpeg"
        alt="Photo professionnelle Nancy Lee Yimbere Alapini"
        style="width:160px; max-width:100%; height:auto; border-radius:12px;">
 </div>
