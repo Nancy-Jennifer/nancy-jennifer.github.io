@@ -11,14 +11,16 @@ format:
 
 Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en **analyse de la performance** et **aide à la décision par la donnée**.
 
-J’interviens sur des problématiques où la donnée sert directement à :
+J’interviens sur des problématiques où les données servent directement à :
 
-- mesurer la performance réelle
-- identifier les facteurs explicatifs des écarts observés
-- détecter les risques, anomalies et signaux faibles
-- prioriser les actions à plus fort impact
-- améliorer l’efficacité opérationnelle et organisationnelle
-- éclairer les décisions managériales et stratégiques
+- **piloter la performance opérationnelle**
+- **détecter les anomalies, dérives et signaux faibles**
+- **comprendre les causes de contre-performance**
+- **identifier les facteurs de surperformance à reproduire**
+- **améliorer la qualité de service** et l’**expérience client**
+- **prioriser les actions et investissements**
+- **optimiser les processus et l’efficacité opérationnelle**
+- soutenir des décisions **RH et organisationnelles** fondées sur des faits
 
 👉 Mon rôle : relier **données, enjeux métier et décisions concrètes**.
 
