@@ -113,7 +113,7 @@ def fig_h2(df: pd.DataFrame) -> None:
     data_non = df.loc[df[x] == "Non", y].dropna().values
 
     plt.figure()
-    plt.boxplot([data_oui, data_non], labels=["Oui", "Non"], showfliers=True)
+    plt.boxplot([data_oui, data_non], tick_labels=["Oui", "Non"], showfliers=True)
     plt.title("Ancienneté dans l'entreprise selon le statut de départ")
     plt.xlabel("Départ de l'entreprise")
     plt.ylabel("Ancienneté dans l'entreprise (en années)")
