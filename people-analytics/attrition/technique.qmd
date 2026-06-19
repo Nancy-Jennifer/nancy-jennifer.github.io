@@ -1,6 +1,6 @@
 ---
 title: "Notebook technique – IBM HR Attrition"
-subtitle: "Préparation des données, pipeline analytique et génération des figures EDA (H1 à H6)"
+subtitle: "Préparation des données, pipeline analytique et exemple de génération de figure EDA"
 format:
   html:
     toc: true
@@ -14,22 +14,24 @@ execute:
 ---
 
 ::: {.callout-note}
-Ce notebook documente la **chaîne technique complète de préparation des données et de génération des visualisations EDA en Python**.  
+Ce notebook illustre la **chaîne technique utilisée pour préparer les données et générer les visualisations EDA en Python**.
 
-Il constitue le support de reproductibilité de l’analyse.  
-Pour la lecture métier et les recommandations RH, se référer aux pages d’interprétation du projet.
+Pour éviter de surcharger la page, seule la figure **H1** est reproduite ici à titre d’exemple.  
+Les résultats complets des hypothèses **H1 à H6** sont disponibles dans la page d’interprétation de l’analyse exploratoire.
 :::
 
 ## Objectif technique du notebook
 
-Ce document reprend la logique du pipeline Python utilisé pour l’analyse :
+Ce document présente un exemple reproductible du pipeline Python utilisé pour l’analyse :
 
 - importation et préparation du dataset **IBM HR Attrition**,  
 - harmonisation des variables pour la lecture analytique,  
-- génération des visualisations associées aux **six hypothèses People Analytics**,  
-- **export systématique des figures en PNG** dans `assets/people-analytics/figures/` pour intégration dans `eda_resultats.qmd`.
+- vérification rapide de la structure des données,  
+- génération d’une visualisation EDA à titre d’exemple,  
+- export de la figure en PNG pour intégration dans les pages du projet.
 
-Ce notebook se concentre exclusivement sur les **choix techniques, la structuration des données et la reproductibilité**.
+Ce notebook se concentre sur les **choix techniques, la structuration des données et la reproductibilité**.  
+Pour la lecture métier, les résultats complets et les recommandations RH, se référer aux pages d’interprétation du projet.
 
 ## Import des bibliothèques & configuration
 
@@ -127,7 +129,7 @@ if missing:
 print("✅ Colonnes critiques OK.")
 ```
 
-## Vérifications rapides (types & distribution)
+## Vérifications rapides
 
 ```{python}
 df.info()
@@ -139,15 +141,17 @@ df["Départ"].value_counts()
 
 ---
 
-## Génération des figures pour l’EDA (H1 à H6)
+## Exemple de génération d’une figure EDA
 
-Chaque sous-section :
+Cette section illustre le processus technique utilisé pour produire une visualisation :
 
-1. produit la visualisation,  
-2. l’affiche dans le rendu,  
-3. l’enregistre automatiquement dans le dossier projet.
+1. préparation de la table d’analyse,  
+2. génération du graphique,  
+3. export automatique de la figure en PNG.
 
-### H1 – Satisfaction au travail × Départ
+Les autres figures EDA du projet sont présentées directement dans la page **Résultats de l’Analyse Exploratoire**.
+
+### Exemple — Satisfaction au travail × Départ
 
 ```{python}
 table_h1 = pd.crosstab(
@@ -181,10 +185,10 @@ fig.savefig(fig_path_h1, dpi=300, bbox_inches="tight")
 plt.show()
 plt.close(fig)
 
-print("✅ Figure H1 sauvegardée :", fig_path_h1)
+print("✅ Figure exemple sauvegardée :", fig_path_h1)
 ```
 
-## Récapitulatif des figures générées
+## Vérification des figures disponibles
 
 ```{python}
 files = sorted(f for f in os.listdir(OUTPUT_DIR) if f.lower().endswith(".png"))
@@ -197,4 +201,4 @@ files
 
 - 📊 [Voir les Résultats de l’Analyse Exploratoire (EDA)](eda_resultats.qmd)
 - 📌 [Voir la Synthèse & Recommandations RH](synthese_reco.qmd)
-- 🏠[Retour à la page d’accueil du projet](../attrition/index.qmd)
+- 🏠 [Retour à la page d’accueil du projet](../attrition/index.qmd)
