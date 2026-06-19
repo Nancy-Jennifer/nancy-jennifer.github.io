@@ -1,6 +1,6 @@
 ---
 title: "CV – Performance & Decision Intelligence Analyst"
-subtitle: "Network Performance • Operational Performance • People Analytics"
+subtitle: "Télécoms-Performance Réseau • Performance opérationnelle  • Performance humaine"
 format:
   html:
     toc: true
