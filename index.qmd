@@ -126,7 +126,7 @@ Quel que soit le domaine, j’applique une démarche structurée orientée déci
 .hero-banner-home{
   width: 100%;
   height: 340px;
-  background-image: url('/assets/banners/banner-home-performance-decision.png');
+  background-image: url('/assets/banners/Home-banniere.png');
   background-size: cover;
   background-position: center center;
   margin-bottom: 24px;
