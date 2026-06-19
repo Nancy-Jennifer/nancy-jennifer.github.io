@@ -14,7 +14,7 @@ Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui
 
 Mon approche consiste à relier **indicateurs**, **processus métiers** et **décisions opérationnelles** afin d’identifier les écarts de performance, comprendre leurs causes et orienter les actions prioritaires.
 
-Au fil de mon parcours, j’ai développé une expertise en **qualité de service** et **performance réseau** dans les télécommunications, puis étendu cette démarche à la **performance opérationnelle** et à la **People Analytics**, où les données servent à améliorer l’efficacité des opérations, le pilotage des activités et la prise de décision.
+Au fil de mon parcours, j’ai développé une expertise en **qualité de service** et **performance réseau** dans les télécommunications, puis étendu cette démarche à la **performance opérationnelle** et à la **Performance humaine**, où les données servent à améliorer l’efficacité des opérations, le pilotage des activités et la prise de décision.
 
 J’accorde une attention particulière à la qualité des données, à la pertinence des indicateurs et à leur capacité à produire des recommandations réellement exploitables par les décideurs.
 
@@ -26,6 +26,8 @@ J’interviens sur des problématiques où les données servent directement à :
 
 - **piloter la performance opérationnelle**
 - **détecter les anomalies, dérives et signaux faibles**
+- **comprendre les causes de contre-performance**
+- **identifier les facteurs de surperformance à reproduire**
 - **améliorer la qualité de service** et l’**expérience client**
 - **prioriser les actions et investissements**
 - **optimiser les processus et l’efficacité opérationnelle**
@@ -47,7 +49,7 @@ J’interviens sur des problématiques où les données servent directement à :
 - conception de tableaux de bord décisionnels orientés action
 - identification des leviers d’amélioration et des risques opérationnels
 
-### People Analytics
+### Performance humaine
 - analyse de la rétention, de l’engagement et de la performance des équipes
 - diagnostic RH fondé sur les données
 - suivi d’indicateurs sociaux et organisationnels
