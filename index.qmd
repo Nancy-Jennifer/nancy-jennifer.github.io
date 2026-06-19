@@ -7,7 +7,7 @@ title-block-style: none
 <!-- ===== EN-TÊTE PERSONNEL (AU-DESSUS DE LA BANNIÈRE) ===== -->
 <div class="home-header">
   <div class="home-name">Nancy Lee YIMBERE ALAPINI</div>
-  <div class="home-role">Performance &amp; Decision Intelligence Analyst — Telecom QoS, People Analytics &amp; Operational Performance</div>
+  <div class="home-role">Performance &amp; Decision Intelligence Analyst — Telecom QoS, Performance Humaine & Opérationnelle</div>
   <div class="home-tagline">Analyser la performance et transformer les données en décisions opérationnelles.</div>
 </div>
 
@@ -21,22 +21,27 @@ title-block-style: none
 
 J’analyse les données pour répondre à une question simple :
 
-👉 **où agir pour améliorer la performance ?**
+👉 **quelles décisions peuvent réellement influencer la performance ?**
 
 Mes analyses permettent de :
 
-- détecter les anomalies et inefficacités  
+- détecter les anomalies, inefficacités et contre-performances  
+- comprendre les causes qui dégradent les résultats  
 - identifier les leviers d’amélioration prioritaires  
-- objectiver les décisions opérationnelles  
-- transformer les indicateurs en actions concrètes  
+- repérer les facteurs qui expliquent une surperformance  
+- transformer les indicateurs en décisions opérationnelles  
+- aider à corriger ce qui freine la performance et à reproduire ce qui fonctionne  
 
+Autrement dit, je n’analyse pas seulement les écarts négatifs.
+
+J’analyse aussi les réussites pour comprendre comment les amplifier.
 ---
 
 ## Domaines d’expertise
 
 - **Télécommunications** — Qualité de service, performance réseau, benchmark  
-- **People Analytics** — Rétention, engagement, performance des équipes  
-- **Operational Performance** — Workflows, délais, efficacité des processus  
+- **Performance Humaine** — Rétention, engagement, performance des équipes  
+- **Performance Opérationnelle** — Workflows, délais, efficacité des processus  
 
 ---
 
@@ -53,7 +58,7 @@ Télécoms — Pilotage du churn & revenu à risque
 </a>
 
 <a class="project-pill" href="people-analytics/attrition/index.qmd">
-People Analytics — Rétention & performance des équipes
+Performance Humaine — Rétention & performance des équipes
 </a>
 
 </div>
