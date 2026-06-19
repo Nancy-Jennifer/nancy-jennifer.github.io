@@ -3,7 +3,7 @@ title: "CONTACT"
 format: html
 ---
 
-Vous souhaitez échanger sur un profil **Data Analyst**, un **projet analytique** ou une **décision métier** à sécuriser par la donnée ?
+Vous souhaitez échanger sur un profil **Data Analyst**, un **projet analytique** ou une **décision métier** à éclairer par la donnée ?
 
 Cette page précise **dans quels cas me solliciter**, **ce que je peux apporter** et **comment me joindre**.
 
@@ -16,6 +16,8 @@ Je produis des analyses **reproductibles**, **documentées** et **orientées dé
 - Analyses exploratoires structurées (Python, SQL, Excel, R)
 - Construction et interprétation d’indicateurs de performance (KPI)
 - Détection d’anomalies, signaux faibles et écarts de performance
+- Analyse des causes de contre-performance
+- Identification des facteurs de surperformance à reproduire
 - Analyses comparatives, temporelles et segmentées
 - Tableaux de bord orientés pilotage et aide à la décision
 - Restitution claire : résultats, limites et recommandations actionnables
@@ -25,7 +27,8 @@ Je produis des analyses **reproductibles**, **documentées** et **orientées dé
 - Hypothèses explicites et choix méthodologiques justifiés
 - Contrôles qualité (cohérence, valeurs manquantes, valeurs aberrantes)
 - Analyses orientées impact métier
-- Livrables exploitables par un décideur (synthèse, indicateurs et recommandations)
+- Lecture claire des leviers qui freinent ou accélèrent la performance
+- Livrables exploitables par un décideur : synthèse, indicateurs et recommandations
 
 👉 Si vous recherchez un profil analytique rigoureux, structuré et orienté impact, je serai ravie d’échanger.
 
@@ -33,28 +36,33 @@ Je produis des analyses **reproductibles**, **documentées** et **orientées dé
 
 ## Manager métier (Télécoms / Opérations / RH)
 
-J’interviens lorsque la donnée doit **éclairer une décision**, **prioriser une action** ou **objectiver une situation**, et non simplement produire des tableaux de bord.
+J’interviens lorsque la donnée doit **éclairer une décision**, **prioriser une action**, **objectiver une situation** ou **comprendre les facteurs qui influencent la performance**.
+
+Mon approche ne se limite pas à constater ce qui ne fonctionne pas.  
+Elle vise aussi à comprendre ce qui fonctionne particulièrement bien afin de le reproduire ou de l’amplifier.
 
 ### Cas d’usage typiques
 
 - **Télécommunications** : QoS, performance réseau, comparaison inter-zones ou inter-opérateurs, détection de dégradations de service
 - **Performance opérationnelle** : incidents, backlog, SLA, continuité opérationnelle, performance des processus et efficacité des activités
-- **People Analytics** : engagement, rétention, turnover, performance des équipes et efficacité managériale
+- **Performance humaine et organisationnelle** : engagement, rétention, turnover, performance des équipes et efficacité managériale
 
 ### Valeur ajoutée
 
 - Traduction d’un enjeu métier en question analytique exploitable
 - Identification des facteurs explicatifs et leviers d’action
-- Mise en évidence des priorités et risques opérationnels
+- Mise en évidence des priorités, risques et opportunités opérationnelles
+- Analyse des contre-performances à corriger
+- Analyse des surperformances à reproduire
 - Restitution claire, sans jargon, centrée sur la décision et le suivi des indicateurs
 
-👉 Si vous avez une décision à sécuriser ou une problématique à objectiver, nous pouvons cadrer le besoin rapidement.
+👉 Si vous avez une décision à sécuriser, une problématique à objectiver ou une performance à comprendre, nous pouvons cadrer le besoin rapidement.
 
 ---
 
 ## Disponibilité & cadre de collaboration
 
-- Ouverte aux opportunités **Data Analyst**
+- Ouverte aux opportunités **Data Analyst orienté Performance & Décision**
 - Préférence pour le **télétravail**
 - Interventions en présentiel possibles à **Cotonou**
 - Télétravail privilégié pour toute autre localisation au Bénin, en Afrique francophone ou en Europe
@@ -70,6 +78,7 @@ J’interviens lorsque la donnée doit **éclairer une décision**, **prioriser 
 - Performance réseau
 - Détection d’anomalies
 - Analyse comparative et benchmarking
+- Identification des zones de dégradation ou de surperformance
 
 ### Performance opérationnelle
 
@@ -78,6 +87,7 @@ J’interviens lorsque la donnée doit **éclairer une décision**, **prioriser 
 - Gestion du backlog
 - Continuité opérationnelle
 - Performance des processus
+- Repérage des leviers d’efficacité à reproduire
 
 ### Performance humaine et organisationnelle
 
@@ -85,6 +95,7 @@ J’interviens lorsque la donnée doit **éclairer une décision**, **prioriser 
 - Rétention et turnover
 - Performance des équipes
 - Efficacité managériale
+- Identification des pratiques qui soutiennent durablement la performance
 
 ---
 
@@ -102,5 +113,4 @@ J’interviens lorsque la donnée doit **éclairer une décision**, **prioriser 
 
 [https://nancy-jennifer.github.io](https://nancy-jennifer.github.io)
 
-(projets Data, analyses Télécoms, Performance Opérationnelle & People Analytics, approche orientée décision)
-
+(projets Data, analyses Télécoms, Performance Opérationnelle & Performance Humaine, approche orientée décision)
