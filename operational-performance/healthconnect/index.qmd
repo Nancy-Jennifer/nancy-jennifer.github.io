@@ -1,0 +1,7 @@
+---
+title: "HealthConnect — Healthcare Operations Analytics"
+subtitle: "Des rendez-vous manqués à la priorisation d’actions mesurables"
+lang: fr
+---
+
+Étude de cas en cours de rédaction.
