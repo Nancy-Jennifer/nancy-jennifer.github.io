@@ -20,3 +20,48 @@ Avant de proposer une action, il faut s'assurer que les indicateurs mesurent cor
 L'ambition du projet était ainsi de construire une analyse capable de soutenir une décision opérationnelle, tout en respectant les limites des données disponibles.
 
 **Enjeu décisionnel :** passer de la mesure des *No-Shows* à une priorisation argumentée des groupes auprès desquels évaluer une première intervention.
+
+
+## 2. Décision à éclairer
+
+Une analyse de performance ne prend toute sa valeur que lorsqu'elle permet d'éclairer une décision concrète.
+
+Dans le projet HealthConnect, la question n'était donc pas simplement de savoir quels rendez-vous étaient les plus souvent manqués, mais de déterminer **où concentrer en priorité l'évaluation d'une action de soutien à la présence**.
+
+### La question décisionnelle
+
+**Par quels groupes de rendez-vous HealthConnect devrait-il commencer pour tester une intervention, avant d'envisager son éventuel déploiement à plus grande échelle ?**
+
+Pour répondre à cette question, l'analyse devait apporter trois éléments complémentaires :
+
+1. **Mesurer le phénomène de manière fiable** : définir le `Overall No-Show Rate` sur une population cohérente avec la question métier.
+
+2. **Identifier des groupes pertinents pour la priorisation** : examiner les différences observées selon les caractéristiques disponibles des rendez-vous, sans confondre association et causalité.
+
+3. **Préparer une décision mesurable** : traduire les constats suffisamment étayés en pistes d'action testables, accompagnées d'indicateurs permettant d'évaluer leurs résultats.
+
+### Le cadre de décision
+
+La démarche repose sur une progression simple :
+
+**Observer → Comprendre → Prioriser → Tester → Mesurer → Ajuster**
+
+Cette progression permet de distinguer deux niveaux de décision :
+
+- **Ce que l'analyse peut éclairer :** les groupes de rendez-vous présentant des différences observées suffisamment pertinentes pour justifier une investigation ou un test prioritaire.
+- **Ce qui reste à démontrer :** l'efficacité réelle d'une intervention sur la présence aux rendez-vous.
+
+En effet, identifier un groupe présentant un `No-Show Rate` plus élevé ne démontre pas qu'une action particulière réduira ce taux.
+
+Une telle conclusion nécessiterait une évaluation adaptée de l'intervention.
+
+### La valeur attendue pour HealthConnect
+
+L'objectif était de fournir un cadre de décision permettant de :
+
+- Éviter de traiter tous les groupes de rendez-vous comme s'ils présentaient les mêmes caractéristiques.
+- Concentrer l'attention sur les différences les plus pertinentes et les mieux étayées.
+- Proposer une première expérimentation proportionnée aux preuves disponibles.
+- Prévoir, dès la recommandation, les conditions de suivi et d'évaluation.
+
+**Livrable décisionnel attendu :** une priorisation argumentée des groupes à considérer pour un premier test, accompagnée d'une logique de mesure permettant de décider ensuite de maintenir, ajuster, étendre ou arrêter l'intervention.
