@@ -65,3 +65,33 @@ L'objectif était de fournir un cadre de décision permettant de :
 - Prévoir, dès la recommandation, les conditions de suivi et d'évaluation.
 
 **Livrable décisionnel attendu :** une priorisation argumentée des groupes à considérer pour un premier test, accompagnée d'une logique de mesure permettant de décider ensuite de maintenir, ajuster, étendre ou arrêter l'intervention.
+
+
+## 3. Données et population analytique
+
+L'analyse repose sur un jeu de données de **5 000 rendez-vous médicaux**, comprenant des informations sur leur statut, leur planification et certaines caractéristiques des patients.
+
+L'unité d'analyse est le **rendez-vous** : les résultats décrivent des rendez-vous, et non nécessairement des patients distincts.
+
+### Définir la bonne population
+
+Avant de calculer le `Overall No-Show Rate`, une question méthodologique devait être tranchée : **tous les rendez-vous enregistrés permettent-ils réellement de mesurer la présence ?**
+
+| Statut | Nombre | Traitement pour le KPI |
+|---|---:|---|
+| `No-Show` | 2 423 | Inclus |
+| `Attended` | 2 314 | Inclus |
+| `Cancelled` | 263 | Exclu |
+| **Total** | **5 000** | |
+
+Les rendez-vous `Cancelled` restent dans le jeu de données, mais sont exclus du dénominateur du `Overall No-Show Rate` : leur issue ne correspond ni à une présence ni à une absence observable au rendez-vous.
+
+La **population analytique retenue est donc de 4 737 rendez-vous**, soit les rendez-vous `Attended` et `No-Show`.
+
+Cette distinction est essentielle : **un KPI peut être correctement calculé sur le plan mathématique, tout en étant inadapté à la question métier si sa population de référence est mal définie.**
+
+Les définitions détaillées des variables et des indicateurs utilisés seront précisées dans un lexique associé à l'étude de cas.
+
+---
+
+**[Poursuivre l'étude de cas : méthode, KPI et diagnostic →](analyse.qmd)**
