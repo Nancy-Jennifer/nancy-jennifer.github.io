@@ -1,7 +1,22 @@
+
 ---
-title: "HealthConnect — Healthcare Operations Analytics"
-subtitle: "Des rendez-vous manqués à la priorisation d’actions mesurables"
+title: "HealthConnect — Des rendez-vous manqués à la priorisation d’actions mesurables"
+subtitle: "Healthcare Operations Analytics | Performance & Decision Intelligence"
 lang: fr
 ---
 
-Étude de cas en cours de rédaction.
+## 1. Contexte métier
+
+Dans les services de santé, un rendez-vous manqué (*No-Show*) représente un enjeu de performance opérationnelle. Il peut perturber l'organisation des consultations, compliquer la planification des ressources et limiter l'utilisation des créneaux disponibles.
+
+Pour HealthConnect, le défi analytique ne consistait pas uniquement à quantifier les rendez-vous manqués. Il s'agissait surtout de comprendre comment ce phénomène se répartissait entre différents groupes de rendez-vous, afin d'identifier des pistes d'intervention pertinentes.
+
+**La question centrale était donc : par quels groupes de rendez-vous commencer si HealthConnect souhaite tester une action de soutien à la présence, puis en mesurer les résultats ?**
+
+Cette question impose de dépasser le simple reporting descriptif.
+
+Avant de proposer une action, il faut s'assurer que les indicateurs mesurent correctement le phénomène, examiner les différences observées entre groupes et distinguer les constats établis des explications encore hypothétiques.
+
+L'ambition du projet était ainsi de construire une analyse capable de soutenir une décision opérationnelle, tout en respectant les limites des données disponibles.
+
+**Enjeu décisionnel :** passer de la mesure des *No-Shows* à une priorisation argumentée des groupes auprès desquels évaluer une première intervention.
