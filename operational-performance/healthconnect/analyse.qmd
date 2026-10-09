@@ -1,0 +1,40 @@
+
+---
+title: "HealthConnect — Analyse et diagnostic"
+subtitle: "De la fiabilité des données aux enseignements décisionnels"
+lang: fr
+---
+
+[← Revenir au contexte et aux données](index.qmd)
+
+## 4. Méthode analytique
+
+**Une démarche structurée pour produire des résultats fiables et utiles à la décision.**
+
+L'analyse HealthConnect a suivi une progression allant du cadrage métier à la validation des constats, avant leur traduction en priorités d'action.
+
+| Phase | Travail réalisé | Finalité métier |
+|---|---|---|
+| **1. Cadrer** | Définition du problème, des questions analytiques et du périmètre. | S'assurer que l'analyse répond à une décision identifiable. |
+| **2. Fiabiliser** | Contrôle de la qualité des données, préparation et définition des populations et des KPI. | Éviter que des erreurs de données ou de dénominateur faussent le diagnostic. |
+| **3. Explorer et diagnostiquer** | Analyse des distributions et comparaison des groupes de rendez-vous. | Identifier les différences observées et les signaux pertinents. |
+| **4. Prioriser** | Hiérarchisation des constats selon leur solidité et leur utilité décisionnelle. | Déterminer où concentrer l'attention en priorité. |
+| **5. Valider** | Contrôles de cohérence, tests de robustesse, vérification du dashboard et échanges avec Data Science. | Vérifier que les conclusions restent défendables et correctement interprétées. |
+| **6. Préparer l'action** | Formulation de recommandations testables et définition d'une logique de suivi. | Passer des insights à une décision mesurable. |
+
+### Une règle méthodologique essentielle
+
+Tout au long du projet, les résultats ont été distingués selon leur niveau de preuve :
+
+- **Fait observé :** résultat directement établi par les données et les calculs validés.
+- **Interprétation :** lecture métier du résultat, dans les limites du périmètre étudié.
+- **Hypothèse :** explication possible qui nécessiterait une investigation ou un test supplémentaire.
+- **Recommandation :** proposition d'action proportionnée aux éléments disponibles.
+
+Cette distinction a permis de ne pas confondre **différence observée, association statistique, capacité prédictive et relation causale**.
+
+**Principe directeur :** un résultat analytique ne devient utile à la décision que lorsque sa définition, sa population de référence, ses limites et son implication métier sont explicites.
+
+---
+
+*Suite de l'étude de cas : définition des KPI et résultats du diagnostic.*
