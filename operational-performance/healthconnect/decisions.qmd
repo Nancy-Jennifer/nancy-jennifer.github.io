@@ -56,4 +56,66 @@ La décision de déployer une intervention doit également considérer sa faisab
 
 ---
 
-*À suivre : validation des résultats et limites des preuves disponibles.*
+
+## 8. Validation — Des résultats testés avant décision
+
+**Un insight ne devient une preuve exploitable que si les calculs, les interprétations et les outils qui le présentent résistent à la vérification.**
+
+La validation HealthConnect a combiné des contrôles analytiques, des tests du dashboard et une collaboration avec le track Data Science.
+
+### 8.1. Fiabilité analytique et dashboard
+
+En Week 7, **14 tests Analytics documentés** ont couvert les KPI, les segmentations, les filtres, les interprétations et les recommandations.
+
+| Contrôle | Résultat |
+|---|---|
+| KPI et populations | Calculs indépendants réconciliés avec les mesures Power BI. |
+| Signaux analytiques | Résultats examinés à travers des tests de robustesse et des variables de contrôle. |
+| Filtres et interprétations | Risque identifié, correction appliquée et nouveau test réussi. |
+| Recommandations | Cohérence vérifiée entre niveau de preuve et action proposée. |
+
+Une correction importante concernait le risque de présenter des conclusions établies sur une population de référence comme si elles s'appliquaient automatiquement à un sous-groupe filtré.
+
+Le dashboard distingue désormais trois fonctions :
+
+**MONITOR** — Explorer les données de manière interactive.
+
+**DIAGNOSE** — Consulter les constats analytiques validés sur leur population de référence.
+
+**PRIORITIZE** — Examiner les priorités et les implications décisionnelles validées.
+
+### 8.2. Collaboration Data Analytics × Data Science
+
+Les résultats Analytics ont également servi à questionner deux choix de variables du modèle prédictif.
+
+| Variable testée | Résultat de validation | Décision Data Science |
+|---|---|---|
+| `long_lead_followup` | Pas de gain prédictif supplémentaire significatif démontré. | Variable retirée du modèle candidat. |
+| `distance_to_clinic_km` | Contribution multivariée faible, mais cohérente dans les validations croisées. | Variable conservée dans le modèle. |
+
+Cette collaboration a mis en évidence une distinction essentielle :
+
+**Une variable peut différencier des groupes dans une analyse descriptive sans améliorer un modèle prédictif. Inversement, une variable faiblement associée au résultat lorsqu'elle est examinée seule peut apporter une information complémentaire dans un modèle multivarié.**
+
+La distance reste donc un facteur secondaire dans la priorisation Analytics, même si elle conserve un rôle dans le modèle Data Science.
+
+### 8.3. Ce qui est validé — et ce qui ne l'est pas
+
+**Validé :**
+- Les définitions et résultats des KPI principaux.
+- Les constats analytiques retenus pour la priorisation.
+- Les corrections et nouveaux tests du dashboard.
+- Les décisions de modélisation issues des tests croisés avec Data Science.
+
+**Non démontré :**
+- Une relation causale entre les facteurs étudiés et les absences.
+- L'efficacité d'une intervention destinée à réduire les *No-Shows*.
+- Un impact financier ou opérationnel chiffré d'une intervention future.
+
+**Résultat :** le volet Analytics a obtenu le statut **PASS — Ready for Week 8 Integration** à l'issue de la validation Week 7. Ce statut atteste la validation des livrables Analytics à cette étape, et non la réussite d'une intervention opérationnelle.
+
+**Enjeu décisionnel :** disposer d'une base analytique vérifiée pour formuler des recommandations proportionnées aux preuves, puis définir comment leur efficacité devra être évaluée.
+
+---
+
+*À suivre : recommandations opérationnelles et conditions de mise en œuvre.*
