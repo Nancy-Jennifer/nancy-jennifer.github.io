@@ -38,3 +38,45 @@ Cette distinction a permis de ne pas confondre **différence observée, associat
 ---
 
 *Suite de l'étude de cas : définition des KPI et résultats du diagnostic.*
+
+
+## 5. KPI — Mesurer avant de décider
+
+**Un indicateur n'est fiable que si sa définition et sa population de référence sont explicites.**
+
+Pour HealthConnect, deux KPI complémentaires ont été retenus pour suivre la performance des rendez-vous et le processus de rappel.
+
+| KPI | Résultat validé | Population de référence | Lecture métier |
+|---|---:|---|---|
+| `Overall No-Show Rate` | **51,15 %** | 4 737 rendez-vous `Attended` ou `No-Show` | Mesure la proportion de rendez-vous manqués parmi ceux dont l'issue de présence est observable. |
+| `Reminder Coverage` | **72,68 %** | 5 000 rendez-vous enregistrés | Mesure la couverture du processus de rappel, sans démontrer son efficacité sur la présence. |
+
+### Une définition déterminante : le No-Show Rate
+
+Le `Overall No-Show Rate` est calculé comme suit :
+
+**No-Show Rate = No-Shows / (No-Shows + Attended) × 100**
+
+Soit, pour HealthConnect :
+
+**2 423 / (2 423 + 2 314) × 100 = 51,15 %**
+
+Les 263 rendez-vous `Cancelled` ne sont pas inclus dans ce dénominateur. Leur exclusion évite de mélanger les annulations avec les rendez-vous dont la présence ou l'absence est effectivement observable.
+
+### Des KPI aux indicateurs de diagnostic
+
+Le taux global constitue un point de référence. Pour orienter une décision, il faut ensuite examiner comment le `No-Show Rate` varie entre les groupes de rendez-vous.
+
+Deux dimensions se sont révélées particulièrement utiles :
+
+- **`Booking Lead Time`** : délai entre la réservation et le rendez-vous.
+- **`Previous No-Shows`** : nombre d'absences antérieures enregistrées.
+
+Ces dimensions ne constituent pas des preuves de causalité. Elles permettent de comparer des groupes et d'identifier des priorités potentielles d'investigation ou d'intervention.
+
+**Enjeu décisionnel :** disposer d'indicateurs cohérents pour mesurer le phénomène, repérer les écarts pertinents et préparer l'évaluation d'une action.
+
+---
+
+*À suivre : les résultats du diagnostic et leur interprétation métier.*
+
