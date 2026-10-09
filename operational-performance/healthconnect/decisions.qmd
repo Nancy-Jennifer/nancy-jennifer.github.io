@@ -1,0 +1,59 @@
+
+---
+title: "HealthConnect — Des insights aux décisions"
+subtitle: "Priorisation, validation, recommandations et mesure"
+lang: fr
+---
+
+[← Revenir à l'analyse et au diagnostic](analyse.qmd)
+
+## 7. Priorisation — Où commencer pour agir ?
+
+**Prioriser ne signifie pas prédire avec certitude qui manquera son rendez-vous. Il s'agit d'identifier un point de départ défendable pour tester une intervention.**
+
+Le diagnostic a mis en évidence deux signaux descriptifs pertinents. Leur traduction en priorités doit tenir compte de la solidité des observations, des limites des données et de la possibilité d'évaluer une action.
+
+### Une priorisation fondée sur les preuves
+
+| Dimension | Position dans la priorisation | Justification |
+|---|---|---|
+| `Booking Lead Time` | **Signal principal** | Écart de No-Show Rate de +24,82 points entre les groupes comparés ; information disponible dès la planification du rendez-vous. |
+| `Previous No-Shows` | **Signal complémentaire** | Écart de +11,53 points ; information utile, mais soumise aux limites de complétude de l'historique. |
+| `Reminder Status` | **Indicateur de processus** | Permet d'examiner la couverture des rappels, sans démontrer leur efficacité sur la présence. |
+
+### La priorité analytique retenue
+
+**Le groupe des rendez-vous réservés 31 à 60 jours à l'avance constitue le premier groupe à considérer pour une expérimentation.**
+
+Ce choix repose sur trois éléments :
+
+1. Un `No-Show Rate` observé plus élevé que dans le groupe 0–30 jours.
+2. Un écart descriptif suffisamment marqué pour justifier une attention prioritaire.
+3. Une caractéristique identifiable au moment de la planification, permettant d'envisager une intervention ciblée.
+
+Les antécédents d'absence peuvent compléter cette réflexion, sous réserve de la fiabilité de l'historique disponible.
+
+### Ce que cette priorisation ne démontre pas
+
+La priorité proposée ne signifie pas que :
+
+- Le délai de réservation est la cause des absences.
+- Tous les rendez-vous du groupe prioritaire aboutiront à une absence.
+- Une intervention sur ce groupe réduira nécessairement le `No-Show Rate`.
+- Le groupe présentant le taux le plus élevé produira automatiquement le plus grand bénéfice opérationnel.
+
+La décision de déployer une intervention doit également considérer sa faisabilité, les ressources nécessaires et les résultats d'une évaluation adaptée.
+
+### De l'insight à la décision
+
+**What?** Les rendez-vous réservés 31 à 60 jours à l'avance présentent un taux d'absence observé plus élevé.
+
+**So what?** Ce groupe constitue un point de départ pertinent pour examiner une action de soutien à la présence.
+
+**Now what?** Définir une expérimentation ciblée, préciser les conditions de mise en œuvre et mesurer les résultats avant toute extension.
+
+**Décision proposée :** considérer en priorité les rendez-vous à délai de réservation long pour un premier test, sans présumer de l'efficacité de l'intervention.
+
+---
+
+*À suivre : validation des résultats et limites des preuves disponibles.*
