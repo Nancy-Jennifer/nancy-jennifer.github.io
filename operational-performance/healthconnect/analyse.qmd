@@ -78,5 +78,70 @@ Ces dimensions ne constituent pas des preuves de causalité. Elles permettent de
 
 ---
 
-*À suivre : les résultats du diagnostic et leur interprétation métier.*
+
+## 6. Diagnostic — Où se concentrent les différences observées ?
+
+Le taux global de rendez-vous manqués constitue un point de départ, mais il ne suffit pas à identifier les groupes qui méritent une attention particulière.
+
+L'analyse comparative a mis en évidence deux dimensions pertinentes pour comprendre la répartition des *No-Shows*.
+
+### 6.1. Délai de réservation : le signal principal
+
+| Booking Lead Time | No-Show Rate |
+|---|---:|
+| 0–30 jours | **39,13 %** |
+| 31–60 jours | **63,95 %** |
+| **Écart observé** | **+24,82 points** |
+
+**What? — Constat**
+
+Les rendez-vous réservés entre 31 et 60 jours à l'avance présentent un `No-Show Rate` supérieur de 24,82 points de pourcentage à celui des rendez-vous réservés entre 0 et 30 jours à l'avance.
+
+**So what? — Interprétation**
+
+Le délai entre la réservation et le rendez-vous constitue un signal de différenciation important dans les données étudiées. Il permet d'identifier un groupe de rendez-vous pour lequel la fréquence observée des absences est plus élevée.
+
+**Limite de preuve**
+
+Cet écart ne démontre pas que le délai de réservation provoque les absences. D'autres caractéristiques des rendez-vous ou des patients peuvent contribuer à la différence observée.
+
+### 6.2. Antécédents d'absence : un signal complémentaire
+
+| Previous No-Shows | No-Show Rate |
+|---|---:|
+| Aucun antécédent enregistré | **46,30 %** |
+| Au moins un antécédent enregistré | **57,83 %** |
+| **Écart observé** | **+11,53 points** |
+
+**What? — Constat**
+
+Les rendez-vous associés à au moins un antécédent d'absence enregistré présentent un `No-Show Rate` supérieur de 11,53 points à celui des rendez-vous sans antécédent enregistré.
+
+**So what? — Interprétation**
+
+L'historique des absences apporte une information complémentaire pour distinguer les groupes de rendez-vous.
+
+**Limite de preuve**
+
+L'historique disponible ne garantit pas une observation complète et homogène du comportement passé des patients. L'absence d'antécédent enregistré ne signifie donc pas nécessairement qu'aucune absence n'a jamais eu lieu.
+
+### 6.3. Lecture croisée des résultats
+
+Les deux dimensions apportent des informations différentes :
+
+- **`Booking Lead Time`** présente l'écart descriptif le plus marqué parmi ces deux comparaisons et constitue le principal signal retenu pour orienter la réflexion.
+- **`Previous No-Shows`** apporte un signal complémentaire, à interpréter avec les réserves liées à la qualité de l'historique.
+
+Ces écarts sont des **différences descriptives entre groupes**, et non des effets causaux. Ils ne permettent pas non plus, à eux seuls, d'affirmer qu'une intervention sera efficace.
+
+### L'insight à retenir
+
+**Les rendez-vous HealthConnect ne présentent pas tous le même niveau observé de No-Show. Le délai de réservation constitue le signal descriptif principal, tandis que les antécédents d'absence apportent un éclairage complémentaire.**
+
+**Implication décisionnelle :** ces résultats fournissent une base argumentée pour examiner les groupes à considérer en priorité dans une première expérimentation, sans préjuger de son efficacité.
+
+---
+
+*À suivre : transformer les constats du diagnostic en priorités d'action.*
+
 
