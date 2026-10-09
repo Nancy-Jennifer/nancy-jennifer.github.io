@@ -142,6 +142,7 @@ Ces écarts sont des **différences descriptives entre groupes**, et non des eff
 
 ---
 
-*À suivre : transformer les constats du diagnostic en priorités d'action.*
+
+[→ Poursuivre l'étude de cas : priorisation, validation et décisions opérationnelles](decisions.qmd)
 
 
