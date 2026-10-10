@@ -37,9 +37,6 @@ Cette distinction a permis de ne pas confondre **différence observée, associat
 
 ---
 
-*Suite de l'étude de cas : définition des KPI et résultats du diagnostic.*
-
-
 ## 5. KPI — Mesurer avant de décider
 
 **Un indicateur n'est fiable que si sa définition et sa population de référence sont explicites.**
