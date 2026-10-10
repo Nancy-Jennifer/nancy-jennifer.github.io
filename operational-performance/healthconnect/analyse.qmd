@@ -93,6 +93,12 @@ L'analyse comparative a mis en évidence deux dimensions pertinentes pour compre
 | 31–60 jours | **63,95 %** |
 | **Écart observé** | **+24,82 points** |
 
+
+![Taux de rendez-vous manqués selon cinq tranches de délai de réservation. Les groupes agrégés 0–30 jours et 31–60 jours présentent respectivement 39,13 % et 63,95 % de No-Shows.](images/booking-lead-time.png){fig-alt="Graphique HealthConnect présentant cinq tranches de Booking Lead Time, avec un No-Show Rate croissant de 29,47 % à 71,36 %." width="100%"}
+
+*Figure 1 — Le délai de réservation constitue le principal signal descriptif de différenciation des rendez-vous manqués. Source : HealthConnect, analyse Week 8.*
+
+
 **What? — Constat**
 
 Les rendez-vous réservés entre 31 et 60 jours à l'avance présentent un `No-Show Rate` supérieur de 24,82 points de pourcentage à celui des rendez-vous réservés entre 0 et 30 jours à l'avance.
