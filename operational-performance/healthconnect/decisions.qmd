@@ -21,6 +21,11 @@ Le diagnostic a mis en évidence deux signaux descriptifs pertinents. Leur tradu
 | `Previous No-Shows` | **Signal complémentaire** | Écart de +11,53 points ; information utile, mais soumise aux limites de complétude de l'historique. |
 | `Reminder Status` | **Indicateur de processus** | Permet d'examiner la couverture des rappels, sans démontrer leur efficacité sur la présence. |
 
+
+![Affinement de la priorisation par croisement du délai de réservation et des antécédents d'absence enregistrés.](images/priority-refinement.png){fig-alt="Comparaison des No-Show Rates de quatre groupes définis par Booking Lead Time et Previous No-Shows." width="100%"}
+
+*Figure 2 — Le délai de réservation oriente la priorité ; les antécédents d'absence permettent d'affiner les groupes à examiner. Ces résultats descriptifs ne constituent pas des prédictions individuelles.*
+
 ### La priorité analytique retenue
 
 **Le groupe des rendez-vous réservés 31 à 60 jours à l'avance constitue le premier groupe à considérer pour une expérimentation.**
@@ -43,6 +48,14 @@ La priorité proposée ne signifie pas que :
 - Le groupe présentant le taux le plus élevé produira automatiquement le plus grand bénéfice opérationnel.
 
 La décision de déployer une intervention doit également considérer sa faisabilité, les ressources nécessaires et les résultats d'une évaluation adaptée.
+
+### Traduction de la priorisation dans Power BI
+
+![Page PRIORITIZE du dashboard HealthConnect, présentant la matrice des groupes, les signaux de priorisation et le cadre d'action.](images/dashboard-prioritize.png){fig-alt="Capture authentique de la page PRIORITIZE du dashboard Power BI HealthConnect Week 8." width="100%"}
+
+*Figure 3 — Dashboard Power BI HealthConnect, page PRIORITIZE. Les constats validés sont organisés en un cadre d'aide à la décision : prioriser, affiner, tester et mesurer.*
+
+Cette vue présente les conclusions établies sur la population analytique de référence. Elle ne doit pas être interprétée comme une analyse recalculée pour chaque sous-groupe filtré.
 
 ### De l'insight à la décision
 
@@ -86,18 +99,15 @@ Le dashboard distingue désormais trois fonctions :
 
 ### 8.2. Collaboration Data Analytics × Data Science
 
-Les résultats Analytics ont également servi à questionner deux choix de variables du modèle prédictif.
+Les échanges entre les tracks Data Analytics et Data Science ont permis de confronter les constats descriptifs aux résultats de tests prédictifs contrôlés.
 
-| Variable testée | Résultat de validation | Décision Data Science |
-|---|---|---|
-| `long_lead_followup` | Pas de gain prédictif supplémentaire significatif démontré. | Variable retirée du modèle candidat. |
-| `distance_to_clinic_km` | Contribution multivariée faible, mais cohérente dans les validations croisées. | Variable conservée dans le modèle. |
+![Décisions issues des tests croisés Data Analytics et Data Science : retrait de long_lead_followup et conservation de distance_to_clinic_km.](images/da-ds-validation.png){width="100%"}
 
-Cette collaboration a mis en évidence une distinction essentielle :
+*Figure 4 — Collaboration Data Analytics × Data Science : deux variables examinées, deux décisions de modélisation distinctes.*
 
-**Une variable peut différencier des groupes dans une analyse descriptive sans améliorer un modèle prédictif. Inversement, une variable faiblement associée au résultat lorsqu'elle est examinée seule peut apporter une information complémentaire dans un modèle multivarié.**
+**Enseignement méthodologique :** une variable peut différencier des groupes dans une analyse descriptive sans améliorer la performance d'un modèle prédictif. Inversement, une variable présentant une faible association descriptive peut apporter une contribution complémentaire dans un modèle multivarié.
 
-La distance reste donc un facteur secondaire dans la priorisation Analytics, même si elle conserve un rôle dans le modèle Data Science.
+Ces résultats ne constituent pas une preuve de causalité. La distance à la clinique reste un facteur secondaire dans la priorisation Analytics, même si elle a été conservée dans le modèle Data Science.
 
 ### 8.3. Ce qui est validé — et ce qui ne l'est pas
 
