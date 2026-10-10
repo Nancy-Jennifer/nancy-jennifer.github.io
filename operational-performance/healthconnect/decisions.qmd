@@ -118,4 +118,41 @@ La distance reste donc un facteur secondaire dans la priorisation Analytics, mê
 
 ---
 
-*À suivre : recommandations opérationnelles et conditions de mise en œuvre.*
+
+## 9. Recommandations — Passer des insights à l'action
+
+**La priorité n'est pas de déployer immédiatement une solution, mais de tester une intervention ciblée et d'en mesurer les résultats avant toute généralisation.**
+
+Les recommandations HealthConnect reposent sur les différences observées entre groupes de rendez-vous et sur les limites identifiées lors de la validation.
+
+### Trois orientations opérationnelles
+
+| Recommandation | Fondement analytique | Action proposée |
+|---|---|---|
+| **1. Tester une intervention ciblée** | Le `Booking Lead Time` constitue le principal signal descriptif validé. | Évaluer une action de soutien à la présence auprès des rendez-vous réservés 31 à 60 jours à l'avance. |
+| **2. Utiliser les antécédents avec prudence** | `Previous No-Shows` apporte un signal complémentaire, mais l'historique disponible présente des limites. | Examiner son utilisation comme critère complémentaire, sous réserve de contrôles de qualité et de complétude. |
+| **3. Suivre le processus de rappel** | Le `Reminder Coverage` renseigne sur la couverture des rappels, sans établir leur efficacité. | Suivre la couverture des rappels pendant l'expérimentation et évaluer séparément leur contribution éventuelle à la présence. |
+
+### Conditions préalables à la mise en œuvre
+
+Avant tout lancement opérationnel, HealthConnect devra préciser :
+
+- **L'intervention exacte** à tester et ses modalités pratiques.
+- **La population éligible** et les critères d'inclusion.
+- **Les responsabilités opérationnelles** et les ressources mobilisables.
+- **Le dispositif d'évaluation**, permettant de distinguer une évolution observée d'un effet attribuable à l'intervention.
+- **Les critères de décision** pour maintenir, ajuster, étendre ou arrêter le test.
+
+Ces éléments constituent des décisions de mise en œuvre à confirmer avec les responsables du projet. Ils ne sont pas présentés ici comme déjà approuvés.
+
+### Une recommandation proportionnée aux preuves
+
+Le diagnostic permet de proposer **où commencer à tester**. Il ne permet pas encore d'affirmer **quelle intervention fonctionnera**, ni quel bénéfice opérationnel elle produira.
+
+La recommandation centrale est donc :
+
+**Commencer par une expérimentation ciblée sur les rendez-vous à délai de réservation long, documenter sa mise en œuvre et mesurer ses résultats avant d'envisager un déploiement plus large.**
+
+---
+
+*À suivre : définir comment mesurer les résultats et éclairer la décision suivante.*
