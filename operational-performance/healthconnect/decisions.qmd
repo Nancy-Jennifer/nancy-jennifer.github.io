@@ -155,4 +155,61 @@ La recommandation centrale est donc :
 
 ---
 
-*À suivre : définir comment mesurer les résultats et éclairer la décision suivante.*
+
+## 10. Mesure — Vérifier l'effet avant de généraliser
+
+**Une recommandation ne devient une amélioration démontrée que lorsque ses résultats sont mesurés et évalués.**
+
+Pour HealthConnect, la prochaine étape proposée consiste à tester une intervention de soutien à la présence auprès du groupe prioritaire, puis à déterminer si les résultats justifient sa poursuite.
+
+### Un dispositif de suivi à définir
+
+| Dimension | Indicateur ou contrôle | Question décisionnelle |
+|---|---|---|
+| **Résultat** | `No-Show Rate` du groupe concerné | La fréquence des absences évolue-t-elle ? |
+| **Exécution** | Nombre de rendez-vous éligibles et effectivement couverts par l'intervention | L'action a-t-elle été mise en œuvre comme prévu ? |
+| **Processus** | `Reminder Coverage`, si l'intervention implique les rappels | La couverture des rappels a-t-elle évolué ? |
+| **Évaluation** | Comparaison adaptée avec un groupe témoin ou une référence pertinente | L'évolution observée peut-elle raisonnablement être attribuée à l'intervention ? |
+
+Les modalités de comparaison, la durée du test, les seuils de décision et les ressources nécessaires devront être définis avant son lancement.
+
+### Une boucle de décision
+
+**TESTER → MESURER → ÉVALUER → DÉCIDER**
+
+À l'issue de l'évaluation, quatre orientations pourront être envisagées :
+
+- **Maintenir** l'intervention si les résultats justifient sa poursuite.
+- **Ajuster** ses modalités si des améliorations sont nécessaires.
+- **Étendre** progressivement son périmètre si les preuves et les conditions opérationnelles le permettent.
+- **Arrêter** l'intervention si les résultats ne justifient pas sa continuation.
+
+Ces décisions devront reposer sur des critères définis en amont, et non sur la seule observation d'une variation du taux d'absence.
+
+### La frontière entre analyse et impact
+
+Les travaux HealthConnect ont permis de fiabiliser les indicateurs, d'identifier des différences entre groupes et de proposer une priorisation argumentée.
+
+**Ils ne démontrent pas encore qu'une intervention a réduit les rendez-vous manqués.**
+
+La conception opérationnelle du test, son autorisation et ses modalités d'évaluation restent à confirmer par les responsables concernés.
+
+### Conclusion — Transformer les données en décisions
+
+L'apport de cette étude de cas ne se limite pas à constater un taux élevé de rendez-vous manqués.
+
+Il consiste à construire une chaîne de décision traçable :
+
+**Question métier → KPI fiables → Diagnostic validé → Priorisation → Recommandation testable → Mesure**
+
+Pour HealthConnect, l'analyse permet ainsi de répondre à une première question essentielle :
+
+**Où est-il pertinent de commencer à tester une action ?**
+
+La question suivante — **cette action améliore-t-elle réellement la présence aux rendez-vous ?** — nécessitera une expérimentation et une évaluation adaptées.
+
+**C'est cette articulation entre preuve, décision et mesure qui constitue le cœur de la démarche Performance & Decision Intelligence.**
+
+---
+
+[← Revenir à l'analyse et au diagnostic](analyse.qmd) | [Retour au début de l'étude de cas](index.qmd)
