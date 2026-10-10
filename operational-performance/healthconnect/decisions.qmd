@@ -222,4 +222,13 @@ La question suivante — **cette action améliore-t-elle réellement la présenc
 
 ---
 
+---
+
+## Consulter les livrables du projet
+
+Les résultats et décisions présentés dans cette étude de cas sont documentés par les livrables Power BI, les rapports analytiques et les preuves de validation du projet HealthConnect.
+
+[→ Accéder aux livrables et preuves du projet](livrables.qmd)
+
+
 [← Revenir à l'analyse et au diagnostic](analyse.qmd) | [Retour au début de l'étude de cas](index.qmd)
