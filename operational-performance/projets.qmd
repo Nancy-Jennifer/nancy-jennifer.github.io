@@ -59,4 +59,27 @@ Objectif : produire des **insights orientés décision** et des **recommandation
 [🚀 Ouvrir le projet P2 – Pilotage des incidents critiques](incidents-continuité/){.btn .btn-success}
 ---
 
+
+---
+
+### P3 — HealthConnect | Pilotage de la présence aux rendez-vous
+*Healthcare Analytics — Performance opérationnelle & Decision Intelligence*
+
+Cette étude de cas vise à transformer l'analyse des rendez-vous manqués en **priorités d'action fondées sur des preuves**, afin d'aider HealthConnect à déterminer où commencer une intervention et comment en évaluer les résultats.
+
+Les axes étudiés portent notamment sur :
+
+- la fiabilité des KPI et la définition des populations analysées ;
+- l'identification des différences de taux d'absence selon le délai de réservation ;
+- l'analyse complémentaire des antécédents de rendez-vous manqués ;
+- la priorisation des groupes pouvant faire l'objet d'une intervention pilote ;
+- la définition d'une démarche de mesure avant toute généralisation.
+
+**Enseignement clé :** les rendez-vous réservés entre 31 et 60 jours à l'avance présentent un taux d'absence observé de **63,95 %**, contre **39,13 %** pour ceux réservés entre 0 et 30 jours. Cet écart de **24,82 points de pourcentage** constitue un signal de priorisation, sans démontrer de relation causale.
+
+**Objectif :** soutenir une décision opérationnelle prudente et mesurable : **identifier où tester une action, vérifier son efficacité, puis décider de son éventuel déploiement**.
+
+[🚀 Ouvrir le projet P3 – HealthConnect](healthconnect/){.btn .btn-success}
+
+
 [← Retour à la rubrique Operational Performance](index.qmd)
