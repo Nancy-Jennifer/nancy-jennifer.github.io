@@ -291,7 +291,6 @@ Je recherche prioritairement des postes ou missions dans les fonctions suivantes
 
 Zones recherchées :
 
-- Cotonou et Porto-Novo ;
 - remote depuis le Bénin ;
 - Afrique francophone ;
 - Europe francophone lorsque la collaboration internationale est explicitement autorisée.
