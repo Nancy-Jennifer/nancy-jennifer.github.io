@@ -1,7 +1,7 @@
 ---
 title: "CV – Data & Business Intelligence Analyst"
 subtitle: "Performance & Decision Intelligence | Telecom QoS • Operational Performance • ITSM Analytics"
-author: "Nancy Lee YIMBERE ALAPINI"
+"Nancy Lee YIMBERE ALAPINI"
 format:
   html:
     toc: true
@@ -190,20 +190,6 @@ Le projet vise à situer la performance observée par rapport à différents ré
 
 <div class="project-card">
 
-### HealthConnect — Analyse des rendez-vous non honorés
-
-Analyse de **5 000 rendez-vous médicaux** pour identifier les groupes présentant des différences importantes de taux de no-show.
-
-Le projet distingue les associations observées des relations causales et propose de tester une action ciblée avant d’en mesurer l’efficacité.
-
-</div>
-
-:::
-
-::: {.g-col-12 .g-col-md-6}
-
-<div class="project-card">
-
 ### Télécoms — Churn et revenu à risque
 
 Identification des segments clients présentant un risque de churn, estimation du revenu exposé et priorisation des actions de fidélisation.
@@ -217,14 +203,6 @@ Identification des segments clients présentant un risque de churn, estimation d
 ::: {.g-col-12 .g-col-md-6}
 
 <div class="project-card">
-
-### People Analytics — Attrition des collaborateurs
-
-Analyse de **1 417 collaborateurs**, dont **231 départs**, soit un taux d’attrition de **16,3 %**.
-
-Étude de l’ancienneté, des heures supplémentaires, de la satisfaction et d’autres facteurs associés afin d’orienter les investigations et les actions de rétention.
-
-</div>
 
 :::
 
