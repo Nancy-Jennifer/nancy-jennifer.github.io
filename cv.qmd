@@ -1,77 +1,173 @@
 ---
-title: "CV – Performance & Decision Intelligence Analyst"
-subtitle: "Télécoms-Performance Réseau • Performance opérationnelle  • Performance humaine"
+title: "CV – Data & Business Intelligence Analyst"
+subtitle: "Performance & Decision Intelligence | Telecom QoS • Operational Performance • ITSM Analytics"
+author: "Nancy Lee YIMBERE ALAPINI"
 format:
   html:
     toc: true
     number-sections: false
 ---
 
-## Positionnement
+## Positionnement professionnel
 
-Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en **analyse de la performance** et **aide à la décision par la donnée**.
+Ingénieure télécoms avec **11 années d’expérience dans les opérations**, je suis aujourd’hui spécialisée en **Data Analytics**, **Business Intelligence** et **pilotage de la performance**.
 
-J’interviens sur des problématiques où les données servent directement à :
+Mon positionnement de **Performance & Decision Intelligence Analyst** repose sur une double compétence :
 
-- **piloter la performance opérationnelle**
-- **détecter les anomalies, dérives et signaux faibles**
-- **comprendre les causes de contre-performance**
-- **identifier les facteurs de surperformance à reproduire**
-- **améliorer la qualité de service** et l’**expérience client**
-- **prioriser les actions et investissements**
-- **optimiser les processus et l’efficacité opérationnelle**
-- soutenir des décisions **RH et organisationnelles** fondées sur des faits
+- une connaissance opérationnelle des télécommunications, de la qualité de service, des incidents et des SLA ;
+- une pratique analytique permettant de transformer les données en indicateurs fiables, en enseignements métier et en décisions mesurables.
 
-👉 Mon rôle : relier **données, enjeux métier et décisions concrètes**.
+J’interviens principalement sur des problématiques de **Telecom QoS**, de **performance opérationnelle** et d’**ITSM Analytics**.
+
+Mon objectif est d’aider les organisations à mieux comprendre leur performance, à identifier les écarts et les risques, puis à prioriser les actions dont les effets pourront être mesurés.
+
+---
+
+## Proposition de valeur
+
+J’accompagne les équipes opérationnelles et les décideurs pour :
+
+- clarifier le problème métier et la décision à soutenir ;
+- structurer et fiabiliser les données nécessaires à l’analyse ;
+- définir des KPI cohérents avec les objectifs opérationnels ;
+- analyser les écarts, tendances, anomalies et facteurs associés ;
+- distinguer les faits, les interprétations et les hypothèses ;
+- détecter les signaux nécessitant une investigation ;
+- identifier les zones de risque et les points de friction ;
+- traduire les résultats en priorités d’action ;
+- définir les indicateurs permettant de mesurer les effets des décisions engagées.
+
+> **Fil directeur :** comprendre le problème métier → fiabiliser les données → construire les bons KPI → analyser les écarts et les risques → prioriser les décisions → mesurer les résultats.
 
 ---
 
 ## Domaines d’intervention
 
-### Performance réseau (Télécommunications)
+### Telecom QoS et performance réseau
 
-- Analyse de la qualité de service (voix, SMS, data)
-- Identification des zones et contextes sous-performants
+- Analyse des KPI de qualité de service voix, SMS et data
+- Suivi de la disponibilité et de la performance des services
 - Analyse des écarts de performance réseau
+- Identification des zones et contextes nécessitant une investigation
+- Détection des dérives et signaux faibles
+- Benchmark de performance télécoms
 - Aide à la priorisation des actions d’optimisation
-- Benchmark et analyse comparative
-- Pilotage de la performance des services télécoms
+- Production de supports de pilotage pour les équipes opérationnelles et le management
 
-### Performance opérationnelle (Processus, ITSM & pilotage d’activité)
+### Operational Performance
 
-- Analyse des processus métier et de leur efficacité
-- Pilotage des incidents, backlog et continuité opérationnelle
-- Analyse des SLA et des délais de résolution
-- Identification des goulots d’étranglement
-- Détection des inefficacités opérationnelles
-- Conception de tableaux de bord orientés décision
-- Recommandations d’optimisation fondées sur les données
+- Analyse de l’efficacité des processus et des activités
+- Suivi des volumes, délais, backlogs et niveaux de service
+- Identification des goulots d’étranglement et points de friction
+- Analyse des écarts entre résultats, objectifs et seuils attendus
+- Conception de KPI et tableaux de bord orientés décision
+- Priorisation des actions selon les données, les risques et les contraintes
+- Suivi des résultats après mise en œuvre des actions
+- Appui à l’amélioration continue et à la continuité opérationnelle
 
-### Performance humaine et organisationnelle (People Analytics)
+### ITSM Analytics et qualité des services IT
 
-- Analyse de la rétention, de l’engagement et de la performance des équipes
-- Identification des populations à risque
-- Évaluation des facteurs influençant la performance collective
-- Analyse de l’efficacité managériale
-- Aide à la priorisation des actions RH
-- Lecture des données RH pour décision managériale
+- Analyse des incidents et demandes de service
+- Suivi des SLA et délais de traitement
+- Analyse du backlog, de l’ancienneté des tickets et des réassignations
+- Identification des incidents récurrents
+- Évaluation des risques de dégradation ou de rupture de service
+- Analyse de la performance des processus de support
+- Construction d’indicateurs de qualité et d’efficacité des services IT
+- Aide à la priorisation des actions correctives et préventives
+
+### Environnements adjacents
+
+Cette expertise peut également être mobilisée dans :
+
+- les fournisseurs d’accès et services numériques ;
+- les centres de services et le support client ;
+- les fintech ;
+- l’énergie et les utilities ;
+- les organisations gérant des opérations, des incidents, des SLA, des backlogs ou des processus critiques.
+
+La **People Analytics**, la **Commercial Analytics**, le Retail et la Healthcare Analytics constituent des domaines complémentaires explorés dans mes projets, sans remplacer mon ancrage principal dans les télécommunications et la performance opérationnelle.
 
 ---
 
-## Projets à fort impact décisionnel
+## Expérience analytique
+
+### Premium Data Analytics Internship — AnalystLab Africa
+
+**Juin 2026 – Octobre 2026 | Remote**
+
+Réalisation de projets analytiques de bout en bout dans plusieurs contextes métier : télécommunications, ITSM, performance opérationnelle, People Analytics, retail et santé.
+
+Principales responsabilités et réalisations :
+
+- cadrage des problématiques métier et formulation des questions d’analyse ;
+- contrôle de la qualité, de la cohérence et du périmètre des données ;
+- préparation et transformation des données avec SQL, Python, Excel et Power Query ;
+- modélisation des données et construction de mesures DAX ;
+- définition de KPI adaptés aux populations et aux décisions étudiées ;
+- réalisation d’analyses exploratoires, descriptives et diagnostiques ;
+- conception de dashboards Power BI orientés suivi, diagnostic et priorisation ;
+- distinction entre constats descriptifs, hypothèses et conclusions vérifiables ;
+- formulation de recommandations proportionnées aux résultats ;
+- documentation des méthodes, limites et règles de calcul ;
+- présentation des résultats à des interlocuteurs techniques et non techniques ;
+- collaboration cross-track avec les équipes Data Science et Project Management.
+
+Projet final **HealthConnect** :
+
+- analyse de **5 000 rendez-vous médicaux** ;
+- définition d’une population observable de **4 737 rendez-vous** ;
+- analyse des différences de taux de no-show selon le délai de réservation et les antécédents disponibles ;
+- conception d’un dashboard structuré autour de trois niveaux : **MONITOR, DIAGNOSE et PRIORITIZE** ;
+- confrontation de certains résultats descriptifs avec le track Data Science ;
+- formulation d’une recommandation prudente : tester une action ciblée, puis mesurer son efficacité avant généralisation ;
+- production d’un handoff documenté pour l’équipe Project Management.
+
+**Certification Premium Data Analytics Internship obtenue en octobre 2026.**
+
+---
+
+## Expérience opérationnelle
+
+### Opérations télécoms — 11 années d’expérience
+
+**Glo Mobile Bénin • Bell Bénin • Bénin Télécoms**
+
+Expérience acquise au plus près des opérations réseau, de la qualité de service et de l’exploitation télécoms.
+
+Principaux domaines couverts :
+
+- exploitation et suivi des équipements et services télécoms ;
+- supervision de la performance réseau ;
+- suivi des KPI de qualité de service ;
+- analyse des incidents et dégradations ;
+- suivi des SLA et délais de résolution ;
+- contribution à la continuité des services ;
+- communication avec les équipes techniques et opérationnelles ;
+- analyse des écarts entre niveaux de service observés et attendus ;
+- appui à la priorisation des interventions ;
+- production et interprétation de rapports de performance.
+
+Cette expérience constitue mon principal avantage métier : elle me permet d’interpréter les indicateurs dans leur contexte opérationnel et de relier plus efficacement les données aux décisions de terrain.
+
+---
+
+## Projets analytiques orientés décision
 
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-6}
 
 <div class="project-card">
-<a href="/operational-performance/incidents-continuité/">
 
-### PMO ITSM — Incidents critiques & continuité opérationnelle
+### ITSM — Incidents, SLA et continuité opérationnelle
 
-Pilotage du backlog, des SLA, des délais de résolution et des risques de continuité opérationnelle à travers un tableau de bord décisionnel Power BI.
+Analyse de **141 712 incidents** afin de suivre le backlog, l’ancienneté des tickets, les délais de résolution, le respect des SLA et les réassignations.
 
-</a>
+Le dashboard Power BI permet de distinguer la maîtrise des incidents critiques de l’accumulation progressive d’une dette opérationnelle sur les tickets de priorité plus faible.
+
+[Consulter le projet](/operational-performance/incidents-continuité/)
+
 </div>
 
 :::
@@ -79,11 +175,180 @@ Pilotage du backlog, des SLA, des délais de résolution et des risques de conti
 ::: {.g-col-12 .g-col-md-6}
 
 <div class="project-card">
-<a href="/telecoms/projet_churn/">
 
-### Télécoms — Pilotage du churn & revenu à risque
+### Telecom QoS — Benchmark de performance
 
-Identification des segments à risque, estimation du revenu menacé et priorisation des actions de fidélisation à partir de données clients télécoms.
+Analyse comparative d’indicateurs de qualité de service télécoms : voix, data, couverture, latence et accès au haut débit.
 
-</a>
+Le projet vise à situer la performance observée par rapport à différents référentiels et à identifier les écarts nécessitant une investigation ou une action de pilotage.
+
 </div>
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+<div class="project-card">
+
+### HealthConnect — Analyse des rendez-vous non honorés
+
+Analyse de **5 000 rendez-vous médicaux** pour identifier les groupes présentant des différences importantes de taux de no-show.
+
+Le projet distingue les associations observées des relations causales et propose de tester une action ciblée avant d’en mesurer l’efficacité.
+
+</div>
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+<div class="project-card">
+
+### Télécoms — Churn et revenu à risque
+
+Identification des segments clients présentant un risque de churn, estimation du revenu exposé et priorisation des actions de fidélisation.
+
+[Consulter le projet](/telecoms/projet_churn/)
+
+</div>
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+<div class="project-card">
+
+### People Analytics — Attrition des collaborateurs
+
+Analyse de **1 417 collaborateurs**, dont **231 départs**, soit un taux d’attrition de **16,3 %**.
+
+Étude de l’ancienneté, des heures supplémentaires, de la satisfaction et d’autres facteurs associés afin d’orienter les investigations et les actions de rétention.
+
+</div>
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+<div class="project-card">
+
+### Global Superstore — Performance commerciale et rentabilité
+
+Analyse des ventes, de la marge, des commandes, des remises et des écarts de rentabilité selon les produits, catégories et régions.
+
+Le projet met en évidence qu’une forte contribution au chiffre d’affaires ne garantit pas automatiquement une performance rentable.
+
+</div>
+
+:::
+
+:::
+
+---
+
+## Compétences analytiques
+
+### Cadrage et analyse métier
+
+- Compréhension du besoin métier
+- Formulation des questions d’analyse
+- Identification de la décision à soutenir
+- Définition des KPI et règles de calcul
+- Analyse des populations et dénominateurs
+- Distinction entre faits, hypothèses et interprétations
+- Analyse descriptive et diagnostique
+- Formulation de recommandations mesurables
+
+### Data Quality et préparation
+
+- Profilage des données
+- Contrôle des valeurs manquantes et doublons
+- Vérification des types, formats et règles de cohérence
+- Contrôle de la granularité et des relations entre tables
+- Réconciliation des KPI
+- Documentation des transformations et limites
+- Préparation et structuration des données pour l’analyse
+
+### Business Intelligence
+
+- Modélisation de données
+- Construction de tables de faits et dimensions
+- Création de mesures DAX
+- Conception de dashboards Power BI
+- Data storytelling
+- Restitution pour équipes opérationnelles et management
+- Documentation des KPI
+- Analyse de tendances, écarts et anomalies
+
+---
+
+## Outils
+
+- **Power BI :** Power Query, modélisation, DAX, visualisation et dashboards
+- **SQL :** extraction, jointures, agrégations, contrôles et analyses
+- **Python :** pandas, préparation, exploration et visualisation
+- **Excel :** analyse, tableaux croisés dynamiques, formules et reporting
+- **R :** tidyverse, analyse et visualisation
+- **DuckDB :** requêtes analytiques et traitement local
+- **GitHub et Quarto :** documentation et publication de projets
+
+---
+
+## Formation
+
+- **Master Télécommunications et Réseaux** — Institut de Mathématiques et de Sciences Physiques
+- **MBA en Management de Projets** — Pigier
+- **Licence en Télécommunications**
+
+---
+
+## Certifications
+
+- **Premium Data Analytics Internship** — AnalystLab Africa, 2026
+- **Google Data Analytics Professional Certificate** — Google, 2025
+
+---
+
+## Positionnement recherché
+
+Je recherche prioritairement des postes ou missions dans les fonctions suivantes :
+
+- Performance Analyst
+- Operational Performance Analyst
+- Operations Data Analyst
+- Business Intelligence Analyst — Operations
+- Telecom Data Analyst
+- Telecom Performance Analyst
+- Network Performance Analyst
+- Telecom QoS Analyst
+- ITSM Data Analyst
+- IT Service Performance Analyst
+- Service Delivery Analyst
+- SLA Performance Analyst
+- Reporting & Performance Analyst
+- PMO Data Analyst ou PMO Reporting Analyst
+
+Zones recherchées :
+
+- Cotonou et Porto-Novo ;
+- remote depuis le Bénin ;
+- Afrique francophone ;
+- Europe francophone lorsque la collaboration internationale est explicitement autorisée.
+
+---
+
+## Objectif professionnel
+
+Mettre mon expérience des opérations télécoms et mes compétences en Data Analytics et Business Intelligence au service d’un pilotage plus fiable de la performance.
+
+Je souhaite aider les organisations à répondre à trois questions essentielles :
+
+1. **Que se passe-t-il réellement ?**
+2. **Qu’est-ce qui mérite une attention prioritaire ?**
+3. **Comment mesurer les effets des décisions prises ?**
+
+---
+
+## Portfolio
+
+[Consulter mon portfolio](https://nancy-jennifer.github.io)
