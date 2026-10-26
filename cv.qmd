@@ -1,7 +1,6 @@
 ---
 title: "CV – Data & Business Intelligence Analyst"
 subtitle: "Performance & Decision Intelligence | Telecom QoS • Operational Performance • ITSM Analytics"
-"Nancy Lee YIMBERE ALAPINI"
 format:
   html:
     toc: true
@@ -86,8 +85,6 @@ Cette expertise peut également être mobilisée dans :
 - l’énergie et les utilities ;
 - les organisations gérant des opérations, des incidents, des SLA, des backlogs ou des processus critiques.
 
-La **People Analytics**, la **Commercial Analytics**, le Retail et la Healthcare Analytics constituent des domaines complémentaires explorés dans mes projets, sans remplacer mon ancrage principal dans les télécommunications et la performance opérationnelle.
-
 ---
 
 ## Expérience analytique
@@ -96,7 +93,7 @@ La **People Analytics**, la **Commercial Analytics**, le Retail et la Healthcare
 
 **Août 2026 – Octobre 2026 | Remote**
 
-Réalisation de projets analytiques de bout en bout dans plusieurs contextes métier : télécommunications, performance opérationnelle, retail et santé.
+Réalisation de projets analytiques de bout en bout portant notamment sur les télécommunications, l’ITSM, la performance opérationnelle et la performance commerciale.
 
 Principales responsabilités et réalisations :
 
@@ -107,21 +104,12 @@ Principales responsabilités et réalisations :
 - définition de KPI adaptés aux populations et aux décisions étudiées ;
 - réalisation d’analyses exploratoires, descriptives et diagnostiques ;
 - conception de dashboards Power BI orientés suivi, diagnostic et priorisation ;
-- distinction entre constats descriptifs, hypothèses et conclusions vérifiables ;
-- formulation de recommandations proportionnées aux résultats ;
+- distinction entre constats descriptifs, interprétations et hypothèses ;
+- formulation de recommandations proportionnées aux résultats disponibles ;
 - documentation des méthodes, limites et règles de calcul ;
 - présentation des résultats à des interlocuteurs techniques et non techniques ;
-- collaboration cross-track avec les équipes Data Science et Project Management.
-
-Projet final **HealthConnect** :
-
-- analyse de **5 000 rendez-vous médicaux** ;
-- définition d’une population observable de **4 737 rendez-vous** ;
-- analyse des différences de taux de no-show selon le délai de réservation et les antécédents disponibles ;
-- conception d’un dashboard structuré autour de trois niveaux : **MONITOR, DIAGNOSE et PRIORITIZE** ;
-- confrontation de certains résultats descriptifs avec le track Data Science ;
-- formulation d’une recommandation prudente : tester une action ciblée, puis mesurer son efficacité avant généralisation ;
-- production d’un handoff documenté pour l’équipe Project Management.
+- collaboration avec des profils issus d’autres disciplines Data et Project Management ;
+- préparation de livrables analytiques documentés et réutilisables.
 
 **Certification Premium Data Analytics Internship obtenue en octobre 2026.**
 
@@ -204,15 +192,9 @@ Identification des segments clients présentant un risque de churn, estimation d
 
 <div class="project-card">
 
-:::
-
-::: {.g-col-12 .g-col-md-6}
-
-<div class="project-card">
-
 ### Global Superstore — Performance commerciale et rentabilité
 
-Analyse des ventes, de la marge, des commandes, des remises et des écarts de rentabilité selon les produits, catégories et régions.
+Analyse des ventes, de la marge, des commandes, des remises et des écarts de rentabilité selon les produits, les catégories et les régions.
 
 Le projet met en évidence qu’une forte contribution au chiffre d’affaires ne garantit pas automatiquement une performance rentable.
 
@@ -254,9 +236,9 @@ Le projet met en évidence qu’une forte contribution au chiffre d’affaires n
 - Création de mesures DAX
 - Conception de dashboards Power BI
 - Data storytelling
-- Restitution pour équipes opérationnelles et management
+- Restitution pour les équipes opérationnelles et le management
 - Documentation des KPI
-- Analyse de tendances, écarts et anomalies
+- Analyse des tendances, écarts et anomalies
 
 ---
 
@@ -304,7 +286,8 @@ Je recherche prioritairement des postes ou missions dans les fonctions suivantes
 - Service Delivery Analyst
 - SLA Performance Analyst
 - Reporting & Performance Analyst
-- PMO Data Analyst ou PMO Reporting Analyst
+- PMO Data Analyst
+- PMO Reporting Analyst
 
 Zones recherchées :
 
