@@ -1,4 +1,4 @@
-
+```yaml
 name: Deploy Quarto site to Pages
 
 on:
@@ -13,14 +13,20 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install system dependencies for R packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libuv1-dev
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -38,17 +44,23 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Python packages (optional)
+      - name: Install Python packages
         run: |
           python -m pip install --upgrade pip
-          pip install jupyter numpy pandas matplotlib
+          pip install jupyter numpy pandas matplotlib seaborn scipy
+
+      - name: Install R packages required by Quarto
+        run: |
+          Rscript -e 'install.packages(c("knitr", "rmarkdown", "readr", "dplyr", "ggplot2"), repos = "https://cloud.r-project.org")'
+          Rscript -e 'cat("rmarkdown version: ", as.character(packageVersion("rmarkdown")), "\n")'
 
       - name: Render with Quarto
         uses: quarto-dev/quarto-actions/render@v2
 
-      - name: Upload artifact
+      - name: Upload artifact (unique)
         uses: actions/upload-pages-artifact@v3
         with:
+          name: github-pages-${{ github.run_id }}
           path: _site
 
   deploy:
@@ -57,7 +69,11 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
         id: deploy
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_id }}
+```
