@@ -205,3 +205,253 @@ Le projet vise à identifier les retards, les inefficacités et les activités n
 **Valeur décisionnelle :** contribuer à la priorisation des améliorations opérationnelles à partir des écarts observés.
 
 </div>
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+<div class="project-card">
+
+### HealthConnect — Healthcare Operations Analytics
+
+Analyse de **5 000 rendez-vous médicaux**, dont **4 737 avec une issue de présence observable**, afin de comprendre les différences de taux de rendez-vous manqués entre groupes.
+
+Définition et validation des KPI, analyse diagnostique, identification des signaux de priorisation et conception d'un dashboard Power BI organisé autour de trois fonctions : **MONITOR, DIAGNOSE et PRIORITIZE**.
+
+**Valeur décisionnelle :** identifier les groupes auprès desquels tester des actions de soutien à la présence, puis définir les indicateurs permettant d'en évaluer les résultats.
+
+Les associations observées ne sont pas présentées comme des relations causales démontrées.
+
+</div>
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+<div class="project-card">
+
+### ITSM — Incidents, SLA et continuité opérationnelle
+
+Analyse de **141 712 incidents** afin de suivre le backlog, l'ancienneté des tickets, les délais de résolution, le respect des SLA et les réassignations.
+
+Le dashboard Power BI permet de distinguer la maîtrise des incidents critiques de l'accumulation progressive d'une dette opérationnelle sur les tickets de priorité plus faible.
+
+**Valeur décisionnelle :** identifier les situations nécessitant une attention opérationnelle et orienter les priorités de suivi.
+
+[Consulter le projet](/operational-performance/incidents-continuité/)
+
+</div>
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+<div class="project-card">
+
+### Telecom QoS — Benchmark de performance
+
+Analyse comparative d'indicateurs de qualité de service télécoms : voix, data, couverture, latence et accès au haut débit.
+
+Le projet vise à situer la performance observée par rapport à différents référentiels et à identifier les écarts nécessitant une investigation ou une action de pilotage.
+
+**Valeur décisionnelle :** éclairer les priorités d'amélioration de la qualité de service.
+
+</div>
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+<div class="project-card">
+
+### Télécoms — Churn et revenu à risque
+
+Analyse des comportements de résiliation et identification des segments clients présentant un risque de churn.
+
+Construction d'indicateurs de suivi, estimation du revenu exposé et analyse des différences entre segments.
+
+**Valeur décisionnelle :** aider à prioriser les actions de fidélisation selon les risques identifiés et les enjeux économiques.
+
+[Consulter le projet](/telecoms/projet_churn/)
+
+</div>
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+
+<div class="project-card">
+
+### Global Superstore — Performance commerciale et rentabilité
+
+Analyse des ventes, de la marge, des commandes, des remises et des écarts de rentabilité selon les produits, les catégories et les régions.
+
+Le projet met en évidence qu'une forte contribution au chiffre d'affaires ne garantit pas automatiquement une performance rentable.
+
+**Valeur décisionnelle :** soutenir l'identification des segments et activités nécessitant une investigation de rentabilité.
+
+</div>
+
+:::
+
+:::
+
+---
+
+## Compétences analytiques
+
+### Cadrage et analyse métier
+
+- Compréhension du besoin métier.
+- Formulation des questions d'analyse.
+- Identification de la décision à soutenir.
+- Définition des KPI et des règles de calcul.
+- Analyse des populations et des dénominateurs.
+- Distinction entre faits, hypothèses et interprétations.
+- Analyse descriptive et diagnostique.
+- Formulation de recommandations mesurables.
+
+### Operational Performance & Process Analytics
+
+- Analyse des processus et des flux opérationnels.
+- Suivi des volumes, délais et niveaux de service.
+- Analyse des écarts de performance.
+- Identification des goulots d'étranglement.
+- Suivi des backlogs.
+- Analyse des risques opérationnels.
+- Segmentation des activités.
+- Priorisation des actions d'amélioration.
+- Définition des indicateurs de suivi.
+
+### Data Quality et préparation
+
+- Profilage des données.
+- Contrôle des valeurs manquantes et des doublons.
+- Vérification des types, formats et règles de cohérence.
+- Contrôle de la granularité et des relations entre tables.
+- Réconciliation des KPI.
+- Documentation des transformations et des limites.
+- Préparation et structuration des données pour l'analyse.
+
+### Business Intelligence
+
+- Modélisation de données.
+- Construction de tables de faits et de dimensions.
+- Création de mesures DAX.
+- Conception de dashboards Power BI.
+- Data storytelling.
+- Restitution pour les équipes opérationnelles et le management.
+- Documentation des KPI.
+- Analyse des tendances, écarts et anomalies.
+
+### Decision Support
+
+- Identification des enjeux opérationnels.
+- Hiérarchisation des signaux analytiques.
+- Évaluation des limites des résultats.
+- Traduction des constats en recommandations.
+- Définition de priorités d'investigation.
+- Construction d'indicateurs de suivi.
+- Communication des résultats pour soutenir les décisions.
+
+---
+
+## Outils
+
+- **Power BI :** Power Query, modélisation, DAX, visualisation et dashboards.
+- **SQL :** extraction, jointures, agrégations, contrôles et analyses.
+- **Python :** pandas, préparation, exploration et visualisation.
+- **Excel :** analyse, tableaux croisés dynamiques, formules et reporting.
+- **R :** tidyverse, analyse et visualisation.
+- **DuckDB :** requêtes analytiques et traitement local.
+- **GitHub et Quarto :** documentation et publication de projets.
+
+---
+
+## Formation
+
+- **Master Télécommunications et Réseaux** — Institut de Mathématiques et de Sciences Physiques.
+- **MBA en Management de Projets** — Pigier.
+- **Licence en Télécommunications**.
+
+---
+
+## Certifications
+
+- **Premium Data Analytics Internship** — AnalystLab Africa, 2026.
+- **Google Data Analytics Professional Certificate** — Google, 2025.
+
+---
+
+## Positionnement recherché
+
+Je recherche prioritairement des postes ou missions permettant de mobiliser mes compétences en **analyse de la performance opérationnelle, Business Intelligence et aide à la décision**.
+
+### Fonctions transversales
+
+- Performance & Decision Intelligence Analyst
+- Operational Performance Analyst
+- Operations Analyst
+- Operations Data Analyst
+- Business Intelligence Analyst
+- Business Intelligence Analyst — Operations
+- KPI Analyst
+- Reporting & Performance Analyst
+- Process Analyst
+- Business Performance Analyst
+
+### Fonctions liées à mon expérience métier
+
+- Telecom Data Analyst
+- Telecom Performance Analyst
+- Network Performance Analyst
+- Telecom QoS Analyst
+- ITSM Data Analyst
+- IT Service Performance Analyst
+- Service Delivery Analyst
+- SLA Performance Analyst
+- PMO Data Analyst
+- PMO Reporting Analyst
+
+### Autres environnements d'application
+
+Je m'intéresse également aux opportunités d'analyse de la performance dans les organisations de santé, les services, la logistique et d'autres secteurs disposant de processus opérationnels mesurables.
+
+Ces perspectives de mobilité sectorielle s'appuient sur mes compétences analytiques transférables et sur les projets réalisés dans différents contextes métier.
+
+Elles ne constituent pas une revendication d'expérience professionnelle approfondie dans chacun de ces secteurs.
+
+### Modalités de collaboration recherchées
+
+- **Cotonou et Bénin :** opportunités professionnelles locales.
+- **Remote depuis le Bénin :** postes et missions autorisant explicitement cette localisation.
+- **Afrique francophone :** collaborations à distance accessibles depuis le Bénin.
+- **Europe francophone :** opportunités internationales lorsque les conditions de recrutement et de collaboration le permettent.
+
+**Priorité :** postes et missions à distance en Data Analytics, Business Intelligence et analyse de la performance opérationnelle.
+
+---
+
+## Objectif professionnel
+
+Mettre mon expérience opérationnelle et mes compétences en **Data Analytics, Business Intelligence et Performance Management** au service d'un pilotage plus fiable de la performance.
+
+Je souhaite contribuer à des organisations qui cherchent à :
+
+- Comprendre les résultats de leurs activités.
+- Identifier les écarts entre performance observée et objectifs.
+- Détecter les risques et les inefficacités.
+- Prioriser les investigations et les actions d'amélioration.
+- Mesurer les résultats des décisions engagées.
+
+Mon approche s'articule autour de trois questions :
+
+1. **WHAT? — Que se passe-t-il réellement ?**
+2. **SO WHAT? — Qu'est-ce qui mérite une attention prioritaire ?**
+3. **NOW WHAT? — Quelle décision prendre et comment en mesurer les effets ?**
+
+---
+
+## Portfolio
+
+[Consulter mon portfolio](https://nancy-jennifer.github.io)
