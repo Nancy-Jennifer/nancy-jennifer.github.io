@@ -1,60 +1,69 @@
 ---
 title: "CV – Performance & Decision Intelligence Analyst"
-subtitle: "Télécoms-Performance Réseau • Performance opérationnelle  • Performance humaine"
+subtitle: "Operational Performance • Business Intelligence • KPI & Process Analytics"
 format:
   html:
     toc: true
     number-sections: false
 ---
 
-## Positionnement
+## Positionnement professionnel
 
-Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en **analyse de la performance** et **aide à la décision par la donnée**.
+**Performance & Decision Intelligence Analyst**
 
-J’interviens sur des problématiques où les données servent directement à :
+Ingénieure télécom avec **11 ans d’expérience dans les opérations télécoms**, aujourd’hui spécialisée en **Data Analytics, Business Intelligence et analyse de la performance**.
 
-- **piloter la performance opérationnelle**
-- **détecter les anomalies, dérives et signaux faibles**
-- **comprendre les causes de contre-performance**
-- **identifier les facteurs de surperformance à reproduire**
-- **améliorer la qualité de service** et l’**expérience client**
-- **prioriser les actions et investissements**
-- **optimiser les processus et l’efficacité opérationnelle**
-- soutenir des décisions **RH et organisationnelles** fondées sur des faits
+Je combine une expérience opérationnelle en **qualité de service, performance réseau, incidents et SLA** avec des compétences analytiques permettant de transformer les données en informations exploitables pour éclairer les décisions métier.
 
-👉 Mon rôle : relier **données, enjeux métier et décisions concrètes**.
+Mon approche consiste à relier les **indicateurs de performance**, les **processus opérationnels** et les **enjeux métier** afin de :
+
+- **piloter la performance opérationnelle** à travers des indicateurs pertinents ;
+- **détecter les anomalies, dérives et signaux faibles** ;
+- **analyser les écarts de performance** et explorer leurs causes possibles ;
+- **identifier les facteurs de surperformance** susceptibles d’être reproduits ;
+- **améliorer la qualité de service** et l’expérience client ;
+- **identifier les inefficacités et les goulots d’étranglement** ;
+- **prioriser les actions d’amélioration** sur la base des résultats observés ;
+- **concevoir des tableaux de bord décisionnels** ;
+- **proposer des indicateurs de suivi** pour évaluer les résultats des actions engagées.
+
+**Ma valeur ajoutée : relier les données, les enjeux opérationnels et les décisions concrètes.**
 
 ---
 
 ## Domaines d’intervention
 
-### Performance réseau (Télécommunications)
+### Operational Performance & Process Analytics
 
-- Analyse de la qualité de service (voix, SMS, data)
-- Identification des zones et contextes sous-performants
-- Analyse des écarts de performance réseau
-- Aide à la priorisation des actions d’optimisation
-- Benchmark et analyse comparative
-- Pilotage de la performance des services télécoms
+- Analyse de la performance des activités et des processus métier.
+- Suivi des délais, workflows et indicateurs d’efficacité opérationnelle.
+- Identification des anomalies et des inefficacités.
+- Analyse des écarts entre résultats observés et objectifs définis.
+- Identification des goulots d’étranglement et des risques opérationnels.
+- Aide à la priorisation des actions d’amélioration.
+- Analyse des facteurs associés aux contre-performances et aux surperformances.
 
-### Performance opérationnelle (Processus, ITSM & pilotage d’activité)
+### Business Intelligence & Performance Management
 
-- Analyse des processus métier et de leur efficacité
-- Pilotage des incidents, backlog et continuité opérationnelle
-- Analyse des SLA et des délais de résolution
-- Identification des goulots d’étranglement
-- Détection des inefficacités opérationnelles
-- Conception de tableaux de bord orientés décision
-- Recommandations d’optimisation fondées sur les données
+- Structuration, préparation et fiabilisation des données.
+- Définition et construction d’indicateurs clés de performance (KPI).
+- Conception de tableaux de bord décisionnels.
+- Analyse des tendances, variations et écarts de performance.
+- Contrôle de cohérence des indicateurs.
+- Production de synthèses analytiques orientées décision.
+- Formulation de recommandations fondées sur les résultats observés.
+- Définition d’indicateurs permettant de suivre les résultats des actions.
 
-### Performance humaine et organisationnelle (People Analytics)
+### Telecom QoS & ITSM Analytics
 
-- Analyse de la rétention, de l’engagement et de la performance des équipes
-- Identification des populations à risque
-- Évaluation des facteurs influençant la performance collective
-- Analyse de l’efficacité managériale
-- Aide à la priorisation des actions RH
-- Lecture des données RH pour décision managériale
+- Analyse de la qualité de service télécoms : voix, SMS et données mobiles.
+- Analyse de la performance réseau et identification des contextes sous-performants.
+- Benchmarking et analyse comparative des performances.
+- Suivi des indicateurs de qualité de service.
+- Analyse des incidents, backlog et délais de résolution.
+- Analyse du respect des SLA.
+- Suivi des risques de continuité opérationnelle.
+- Aide à la priorisation des actions d’optimisation.
 
 ---
 
@@ -64,26 +73,86 @@ J’interviens sur des problématiques où les données servent directement à :
 
 ::: {.g-col-12 .g-col-md-6}
 
-<div class="project-card">
-<a href="/operational-performance/incidents-continuité/">
-
 ### PMO ITSM — Incidents critiques & continuité opérationnelle
 
-Pilotage du backlog, des SLA, des délais de résolution et des risques de continuité opérationnelle à travers un tableau de bord décisionnel Power BI.
+**Problématique métier :** comment mieux piloter les incidents critiques et identifier les risques susceptibles d’affecter la continuité opérationnelle ?
 
-</a>
-</div>
+**Contribution analytique :**
+
+- Analyse du backlog et de son vieillissement.
+- Suivi des délais de résolution.
+- Analyse du respect des SLA.
+- Étude des réassignations et réouvertures d’incidents.
+- Construction d’un tableau de bord décisionnel Power BI.
+
+**Finalité décisionnelle :** aider à identifier les priorités de traitement et les leviers d’amélioration du processus de gestion des incidents.
+
+[**Consulter le projet ITSM**](/operational-performance/incidents-continuité/)
 
 :::
 
 ::: {.g-col-12 .g-col-md-6}
 
-<div class="project-card">
-<a href="/telecoms/projet_churn/">
-
 ### Télécoms — Pilotage du churn & revenu à risque
 
-Identification des segments à risque, estimation du revenu menacé et priorisation des actions de fidélisation à partir de données clients télécoms.
+**Problématique métier :** quels segments de clients présentent les risques de résiliation et de perte de revenus les plus importants ?
 
-</a>
-</div>
+**Contribution analytique :**
+
+- Analyse du churn par contrat et ancienneté.
+- Segmentation des clients selon leurs caractéristiques.
+- Analyse du revenu à risque.
+- Identification des segments prioritaires.
+- Construction d’indicateurs et de visualisations Power BI.
+
+**Finalité décisionnelle :** éclairer la priorisation des actions de fidélisation sur les segments présentant les enjeux les plus importants.
+
+[**Consulter le projet Churn**](/telecoms/projet_churn/)
+
+:::
+
+:::
+
+---
+
+## Approche analytique
+
+J’applique une démarche structurée orientée **performance et décision métier** :
+
+1. **Comprendre le besoin métier** et identifier les décisions à éclairer.
+2. **Collecter et fiabiliser les données** en vérifiant leur qualité et leur cohérence.
+3. **Définir les KPI** adaptés aux objectifs opérationnels.
+4. **Analyser les écarts, tendances et anomalies** pour identifier les signaux pertinents.
+5. **Distinguer les faits, interprétations et hypothèses** afin de produire des conclusions rigoureuses.
+6. **Formuler des recommandations actionnables** à partir des résultats observés.
+7. **Proposer des indicateurs de suivi** pour mesurer les effets des actions engagées.
+
+Cette démarche privilégie la **traçabilité entre question métier, preuve analytique, insight et recommandation**.
+
+---
+
+## Compétences techniques
+
+- **Data Analytics :** SQL, Python, R, Excel.
+- **Business Intelligence :** Power BI, DAX, tableaux de bord décisionnels.
+- **Performance Management :** KPI, analyse des écarts, suivi de performance.
+- **Process Analytics :** analyse des workflows, délais, incidents et SLA.
+- **Méthodologie :** qualité des données, analyse exploratoire, interprétation métier, documentation et reproductibilité.
+
+---
+
+## Positionnement transversal
+
+Mon expérience opérationnelle dans les télécommunications constitue un socle de compétences que je complète par une pratique de la Data Analytics et de la Business Intelligence.
+
+Cette double compétence me permet d’aborder des problématiques de performance dans différents secteurs, sous réserve d’en comprendre les processus, les contraintes et les indicateurs métier.
+
+**Mon objectif : aider les organisations à comprendre leur performance, identifier leurs priorités et prendre des décisions éclairées par des données fiables.**
+
+---
+
+## Contact
+
+- **LinkedIn :** [Profil professionnel](https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/)
+- **Portfolio :** [nancy-jennifer.github.io](https://nancy-jennifer.github.io)
+- **Email :** [nancylee.yimbere@gmail.com](mailto:nancylee.yimbere@gmail.com)
