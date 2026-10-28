@@ -5,83 +5,113 @@
        style="width:160px; max-width:100%; height:auto; border-radius:12px;">
 </div>
 
-<!-- ===== SLOGAN (bleu, taille ajustée, 1 ligne) ===== -->
-<p style="font-size:1.35rem; font-weight:700; color:#1f4e79; margin-bottom:0.6em; white-space:nowrap;">
+<!-- ===== SLOGAN ===== -->
+<p style="font-size:1.35rem; font-weight:700; color:#1f4e79; margin-bottom:0.6em;">
 De l’expertise technique au pilotage de la performance par la donnée.
 </p>
 
-Ingénieure télécom avec 11 ans d’expérience opérationnelle, aujourd’hui spécialisée en **analyse de la performance** et **aide à la décision**, je transforme les données en **leviers d’action concrets** pour les organisations.
+Ingénieure télécom avec **11 ans d’expérience dans les opérations télécoms**, aujourd’hui spécialisée en **Data Analytics, Business Intelligence et analyse de la performance**, j’aide les organisations à transformer leurs données en **informations exploitables pour éclairer leurs décisions métier**.
 
-Mon approche consiste à relier **indicateurs**, **processus métiers** et **décisions opérationnelles** afin d’identifier les écarts de performance, comprendre leurs causes et orienter les actions prioritaires.
+Mon positionnement de **Performance & Decision Intelligence Analyst** repose sur une approche orientée résultats : comprendre les enjeux opérationnels, fiabiliser les indicateurs, analyser les écarts de performance et identifier les actions prioritaires.
 
-Au fil de mon parcours, j’ai développé une expertise en **qualité de service** et **performance réseau** dans les télécommunications, puis étendu cette démarche à la **performance opérationnelle** et à la **Performance humaine**, où les données servent à améliorer l’efficacité des opérations, le pilotage des activités et la prise de décision.
+Mon expérience dans les télécommunications m’a permis de développer une connaissance approfondie des enjeux de **qualité de service (QoS), performance réseau, incidents et continuité opérationnelle**.
 
-J’accorde une attention particulière à la qualité des données, à la pertinence des indicateurs et à leur capacité à produire des recommandations réellement exploitables par les décideurs.
+J’ai ensuite élargi cette démarche analytique à d’autres problématiques de performance, notamment l’**efficacité des processus, le pilotage des activités, la Business Intelligence et l’analyse des indicateurs opérationnels**.
+
+Cette double compétence, technique et analytique, me permet d’aborder des problématiques de performance dans différents environnements métier, en tenant compte de leurs spécificités.
+
+J’accorde une attention particulière à la **qualité des données**, à la **cohérence des KPI**, à la distinction entre **faits, interprétations et hypothèses**, ainsi qu’à la capacité des analyses à soutenir des décisions concrètes.
 
 ---
 
 ## Ma valeur
 
-J’interviens sur des problématiques où les données servent directement à :
+J’interviens sur des problématiques où les données permettent de :
 
-- **piloter la performance opérationnelle**
-- **détecter les anomalies, dérives et signaux faibles**
-- **comprendre les causes de contre-performance**
-- **identifier les facteurs de surperformance à reproduire**
-- **améliorer la qualité de service** et l’**expérience client**
-- **prioriser les actions et investissements**
-- **optimiser les processus et l’efficacité opérationnelle**
-- soutenir des décisions **RH et organisationnelles** fondées sur des faits
+- **piloter la performance opérationnelle** à travers des indicateurs pertinents ;
+- **détecter les anomalies, les dérives et les signaux faibles** ;
+- **analyser les écarts de performance** et explorer leurs causes possibles ;
+- **identifier les facteurs de surperformance** susceptibles d’être reproduits ;
+- **améliorer la qualité de service** et l’expérience client ;
+- **analyser les processus métier** pour identifier les inefficacités ;
+- **prioriser les actions d’amélioration** sur la base des résultats observés ;
+- **concevoir des tableaux de bord décisionnels** adaptés aux besoins métier ;
+- **définir des indicateurs de suivi** pour mesurer les résultats des actions engagées.
+
+Mon objectif est de relier systématiquement :
+
+**Question métier → Données fiables → Analyse → Insight → Recommandation → Suivi des résultats.**
 
 ---
 
 ## Domaines d’intervention
 
-### Télécoms & performance réseau
-- qualité de service (QoS) et performance réseau
-- analyse des anomalies et écarts de performance
-- suivi d’indicateurs et aide à la priorisation des actions d’optimisation
-- pilotage de la performance des services télécoms
+### Operational Performance & Process Analytics
 
-### Performance opérationnelle
-- pilotage de la performance des activités et processus
-- analyse des incidents, SLA, backlog et continuité opérationnelle
-- conception de tableaux de bord décisionnels orientés action
-- identification des leviers d’amélioration et des risques opérationnels
+- Analyse de la performance des activités et des processus.
+- Suivi des délais, workflows et indicateurs d’efficacité opérationnelle.
+- Identification des anomalies, inefficacités et goulots d’étranglement.
+- Analyse des écarts entre résultats observés et objectifs définis.
+- Identification des leviers d’amélioration et des risques opérationnels.
+- Aide à la priorisation des actions correctives.
 
-### Performance humaine
-- analyse de la rétention, de l’engagement et de la performance des équipes
-- diagnostic RH fondé sur les données
-- suivi d’indicateurs sociaux et organisationnels
-- aide à la priorisation des actions RH
+### Business Intelligence & Performance Management
+
+- Structuration et fiabilisation des données métier.
+- Définition et construction d’indicateurs clés de performance (KPI).
+- Conception de tableaux de bord orientés pilotage et décision.
+- Analyse des tendances, variations et écarts de performance.
+- Production de synthèses analytiques et de recommandations exploitables.
+- Suivi des indicateurs permettant d’évaluer les résultats des actions.
+
+### Telecom QoS & ITSM Analytics
+
+- Analyse de la qualité de service (QoS) et de la performance réseau.
+- Analyse comparative et benchmarking des performances télécoms.
+- Identification des zones, contextes et services sous-performants.
+- Analyse des incidents, SLA, backlog et délais de résolution.
+- Suivi des risques de continuité opérationnelle.
+- Aide à la priorisation des actions d’optimisation.
 
 ---
 
 ## Approche analytique
 
-- structuration et **fiabilisation** des données
-- construction d’indicateurs et **contrôles de cohérence**
-- analyse orientée **impact métier**
-- interprétation opérationnelle et **recommandations actionnables**
-- documentation et reproductibilité (selon le contexte)
+Ma démarche repose sur une logique de **Performance & Decision Intelligence**.
 
-**Outils :** SQL, Excel, Python, Power BI, R, Tableau.
+1. **Comprendre le problème métier** : clarifier les enjeux, les objectifs et les décisions à éclairer.
+2. **Fiabiliser les données** : vérifier leur qualité, leur cohérence et leurs limites.
+3. **Construire les indicateurs pertinents** : définir des KPI compréhensibles et adaptés aux objectifs.
+4. **Analyser la performance** : examiner les écarts, tendances, anomalies et facteurs associés aux résultats.
+5. **Interpréter avec rigueur** : distinguer les faits établis, les hypothèses et les limites de l’analyse.
+6. **Formuler des recommandations actionnables** : relier les résultats analytiques aux décisions métier.
+7. **Prévoir le suivi des résultats** : proposer des indicateurs permettant d’évaluer les effets des actions engagées.
+
+J’accorde également une importance particulière à la **documentation, à la traçabilité et à la reproductibilité** des analyses, selon les exigences du projet.
+
+**Outils :** SQL, Power BI, Excel, Python, R et Tableau.
 
 ---
 
 ## Ma philosophie
 
-Une donnée n’a de valeur que lorsqu’elle permet d’agir.
+Une donnée n’a de valeur que lorsqu’elle permet de mieux comprendre une situation et d’éclairer une décision.
 
-**Analyser. Comprendre. Décider.**
+Un tableau de bord ne constitue pas une finalité : il doit aider à identifier **ce qui mérite attention, où agir et comment suivre les résultats**.
+
+**Analyser. Comprendre. Décider. Mesurer.**
 
 ---
 
 ## Me contacter
 
-Si vous recherchez une analyste capable de transformer des données en **décisions utiles**, d’éclairer la **performance opérationnelle** et d’accompagner le pilotage de l’activité par les indicateurs, je serai ravie d’échanger.
+Je m’intéresse aux opportunités professionnelles et aux missions en **Data Analytics, Business Intelligence, Operational Performance et Decision Intelligence**.
 
-- LinkedIn : [https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/](https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/)
+Mon expérience opérationnelle dans les télécommunications constitue un socle solide, tandis que mes compétences analytiques peuvent être mobilisées dans différents secteurs, après compréhension de leurs processus et enjeux métier.
+
+Si vous recherchez une analyste capable de relier **données, indicateurs de performance et décisions opérationnelles**, je serai ravie d’échanger.
+
+- LinkedIn : [Mon profil professionnel](https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/)
 - Portfolio : [nancy-jennifer.github.io](https://nancy-jennifer.github.io)
 - Email : [nancylee.yimbere@gmail.com](mailto:nancylee.yimbere@gmail.com)
 
@@ -90,6 +120,6 @@ Si vous recherchez une analyste capable de transformer des données en **décisi
 <!-- ===== BOUTON CV ===== -->
 <div class="cv-button-wrapper">
   <a href="cv.qmd" class="cv-button">
-    Consulter mon CV détaillé – Performance & Decision Intelligence Analyst
+    Consulter mon CV détaillé – Performance &amp; Decision Intelligence Analyst
   </a>
 </div>
