@@ -1,6 +1,6 @@
 ---
-title: "CV – Data & Business Intelligence Analyst"
-subtitle: "Performance & Decision Intelligence | Telecom QoS • Operational Performance • ITSM Analytics"
+title: "CV – Performance & Decision Intelligence Analyst"
+subtitle: "Operational Performance | Business Intelligence | KPI & Process Analytics"
 format:
   html:
     toc: true
@@ -9,81 +9,123 @@ format:
 
 ## Positionnement professionnel
 
-Ingénieure télécoms avec **11 années d’expérience dans les opérations**, je suis aujourd’hui spécialisée en **Data Analytics**, **Business Intelligence** et **pilotage de la performance**.
+**Performance & Decision Intelligence Analyst**, je combine **11 années d'expérience dans les opérations télécoms** avec des compétences en **Data Analytics, Business Intelligence et analyse de la performance opérationnelle**.
 
-Mon positionnement de **Performance & Decision Intelligence Analyst** repose sur une double compétence :
+Mon positionnement repose sur une double compétence :
 
-- une connaissance opérationnelle des télécommunications, de la qualité de service, des incidents et des SLA ;
-- une pratique analytique permettant de transformer les données en indicateurs fiables, en enseignements métier et en décisions mesurables.
+- **Une expérience métier opérationnelle** acquise dans les télécommunications, notamment en performance réseau, qualité de service, exploitation, gestion des incidents et suivi des SLA.
+- **Une expertise analytique** permettant de structurer les données, construire des indicateurs fiables, diagnostiquer les écarts de performance et éclairer les décisions opérationnelles.
 
-J’interviens principalement sur des problématiques de **Telecom QoS**, de **performance opérationnelle** et d’**ITSM Analytics**.
+Mon domaine d'intervention transversal est l'**Operational Performance**, associé à la **Business Intelligence** et à l'analyse des KPI et des processus.
 
-Mon objectif est d’aider les organisations à mieux comprendre leur performance, à identifier les écarts et les risques, puis à prioriser les actions dont les effets pourront être mesurés.
+Mes compétences s'appliquent notamment à :
+
+- L'analyse et au pilotage de la performance opérationnelle.
+- La Business Intelligence et au reporting décisionnel.
+- L'analyse des processus, des flux et des délais.
+- L'identification des inefficacités et des risques opérationnels.
+- La qualité de service et à la continuité des activités.
+- L'analyse des incidents et des engagements de service.
+
+Les télécommunications et l'ITSM constituent mes principaux domaines d'expérience métier. Mes projets analytiques démontrent également ma capacité à appliquer ces méthodes à d'autres contextes opérationnels, notamment la santé, les services et les activités commerciales.
+
+**Mon objectif professionnel : aider les organisations à comprendre leur performance, identifier les écarts et les risques, prioriser les actions et mesurer leurs résultats.**
 
 ---
 
 ## Proposition de valeur
 
-J’accompagne les équipes opérationnelles et les décideurs pour :
+J'accompagne les équipes opérationnelles et les décideurs dans l'analyse et le pilotage de la performance.
 
-- clarifier le problème métier et la décision à soutenir ;
-- structurer et fiabiliser les données nécessaires à l’analyse ;
-- définir des KPI cohérents avec les objectifs opérationnels ;
-- analyser les écarts, tendances, anomalies et facteurs associés ;
-- distinguer les faits, les interprétations et les hypothèses ;
-- détecter les signaux nécessitant une investigation ;
-- identifier les zones de risque et les points de friction ;
-- traduire les résultats en priorités d’action ;
-- définir les indicateurs permettant de mesurer les effets des décisions engagées.
+Mon approche consiste à :
+
+- Clarifier le problème métier et la décision à soutenir.
+- Identifier les données nécessaires à l'analyse.
+- Contrôler leur qualité, leur cohérence et leur périmètre.
+- Définir des KPI adaptés aux objectifs opérationnels.
+- Analyser les écarts, tendances, anomalies et facteurs associés.
+- Identifier les processus, activités ou groupes nécessitant une investigation.
+- Distinguer les faits observés, les interprétations et les hypothèses.
+- Évaluer les risques et les points de friction opérationnels.
+- Traduire les résultats en priorités d'action.
+- Définir les indicateurs permettant de mesurer les effets des décisions engagées.
 
 > **Fil directeur :** comprendre le problème métier → fiabiliser les données → construire les bons KPI → analyser les écarts et les risques → prioriser les décisions → mesurer les résultats.
 
 ---
 
-## Domaines d’intervention
+## Domaines de compétences
 
-### Telecom QoS et performance réseau
+### Operational Performance & Process Analytics
 
-- Analyse des KPI de qualité de service voix, SMS et data
-- Suivi de la disponibilité et de la performance des services
-- Analyse des écarts de performance réseau
-- Identification des zones et contextes nécessitant une investigation
-- Détection des dérives et signaux faibles
-- Benchmark de performance télécoms
-- Aide à la priorisation des actions d’optimisation
-- Production de supports de pilotage pour les équipes opérationnelles et le management
+Analyse de la performance des activités, des processus et des services.
 
-### Operational Performance
+- Suivi des KPI opérationnels.
+- Analyse des volumes d'activité, des flux et des délais.
+- Identification des goulots d'étranglement et des points de friction.
+- Analyse des écarts entre résultats observés et objectifs attendus.
+- Suivi des backlogs et des situations de saturation.
+- Identification des risques de dégradation de la performance.
+- Analyse comparative entre processus, activités et groupes.
+- Priorisation des investigations et des actions d'amélioration.
+- Définition d'indicateurs de suivi des résultats.
+- Appui à l'amélioration continue et à la continuité opérationnelle.
 
-- Analyse de l’efficacité des processus et des activités
-- Suivi des volumes, délais, backlogs et niveaux de service
-- Identification des goulots d’étranglement et points de friction
-- Analyse des écarts entre résultats, objectifs et seuils attendus
-- Conception de KPI et tableaux de bord orientés décision
-- Priorisation des actions selon les données, les risques et les contraintes
-- Suivi des résultats après mise en œuvre des actions
-- Appui à l’amélioration continue et à la continuité opérationnelle
+### Business Intelligence & Performance Management
 
-### ITSM Analytics et qualité des services IT
+Structuration et exploitation des données pour soutenir le pilotage opérationnel et les décisions du management.
 
-- Analyse des incidents et demandes de service
-- Suivi des SLA et délais de traitement
-- Analyse du backlog, de l’ancienneté des tickets et des réassignations
-- Identification des incidents récurrents
-- Évaluation des risques de dégradation ou de rupture de service
-- Analyse de la performance des processus de support
-- Construction d’indicateurs de qualité et d’efficacité des services IT
-- Aide à la priorisation des actions correctives et préventives
+- Recueil et clarification des besoins analytiques.
+- Définition des KPI et des règles de calcul.
+- Préparation, transformation et validation des données.
+- Modélisation des données.
+- Construction de mesures DAX.
+- Conception de tableaux de bord Power BI.
+- Analyse des tendances, des écarts et des anomalies.
+- Développement de rapports de performance.
+- Data storytelling orienté décision.
+- Documentation des indicateurs et de leurs limites.
 
-### Environnements adjacents
+### KPI & Diagnostic Analytics
 
-Cette expertise peut également être mobilisée dans :
+Analyse des résultats pour comprendre les écarts et identifier les situations nécessitant une attention particulière.
 
-- les fournisseurs d’accès et services numériques ;
-- les centres de services et le support client ;
-- les fintech ;
-- l’énergie et les utilities ;
-- les organisations gérant des opérations, des incidents, des SLA, des backlogs ou des processus critiques.
+- Définition des populations et des dénominateurs.
+- Validation et réconciliation des indicateurs.
+- Analyse descriptive et diagnostique.
+- Segmentation des populations et des activités.
+- Analyse comparative des performances.
+- Identification des facteurs associés aux écarts.
+- Détection des anomalies et signaux nécessitant une investigation.
+- Distinction entre association, prédiction et causalité.
+- Formulation d'insights et de recommandations proportionnés aux preuves.
+
+### Telecom QoS & Network Performance
+
+Domaine d'expérience métier historique, fondé sur 11 années dans les opérations télécoms.
+
+- Analyse des KPI de qualité de service voix, SMS et data.
+- Suivi de la disponibilité et de la performance des services.
+- Analyse des écarts de performance réseau.
+- Identification des zones et contextes nécessitant une investigation.
+- Détection des dérives et signaux de contre-performance.
+- Benchmark de performance télécoms.
+- Aide à la priorisation des actions d'optimisation.
+- Production de supports de pilotage opérationnel.
+
+### ITSM & Service Performance Analytics
+
+Analyse de la performance des services IT et des processus de traitement des incidents.
+
+- Analyse des incidents et des demandes de service.
+- Suivi des SLA et des délais de traitement.
+- Analyse du backlog et de l'ancienneté des tickets.
+- Étude des réassignations et des réouvertures.
+- Identification des incidents récurrents.
+- Analyse des risques de dégradation des services.
+- Évaluation de la performance des processus de support.
+- Construction d'indicateurs de qualité et d'efficacité.
+- Aide à la priorisation des actions correctives et préventives.
 
 ---
 
@@ -93,23 +135,25 @@ Cette expertise peut également être mobilisée dans :
 
 **Août 2026 – Octobre 2026 | Remote**
 
-Réalisation de projets analytiques de bout en bout portant notamment sur les télécommunications, l’ITSM, la performance opérationnelle et la performance commerciale.
+Réalisation de projets analytiques de bout en bout dans différents contextes métier, notamment les télécommunications, l'ITSM, la performance opérationnelle, la santé et les activités commerciales.
 
-Principales responsabilités et réalisations :
+**Principales responsabilités et réalisations :**
 
-- cadrage des problématiques métier et formulation des questions d’analyse ;
-- contrôle de la qualité, de la cohérence et du périmètre des données ;
-- préparation et transformation des données avec SQL, Python, Excel et Power Query ;
-- modélisation des données et construction de mesures DAX ;
-- définition de KPI adaptés aux populations et aux décisions étudiées ;
-- réalisation d’analyses exploratoires, descriptives et diagnostiques ;
-- conception de dashboards Power BI orientés suivi, diagnostic et priorisation ;
-- distinction entre constats descriptifs, interprétations et hypothèses ;
-- formulation de recommandations proportionnées aux résultats disponibles ;
-- documentation des méthodes, limites et règles de calcul ;
-- présentation des résultats à des interlocuteurs techniques et non techniques ;
-- collaboration avec des profils issus d’autres disciplines Data et Project Management ;
-- préparation de livrables analytiques documentés et réutilisables.
+- Cadrage des problématiques métier et formulation des questions d'analyse.
+- Identification des décisions à soutenir.
+- Contrôle de la qualité, de la cohérence et du périmètre des données.
+- Préparation et transformation des données avec SQL, Python, Excel et Power Query.
+- Modélisation des données et construction de mesures DAX.
+- Définition et validation des KPI.
+- Réalisation d'analyses exploratoires, descriptives et diagnostiques.
+- Conception de dashboards Power BI orientés suivi, diagnostic et priorisation.
+- Analyse des écarts de performance entre groupes, processus et activités.
+- Distinction entre constats descriptifs, interprétations et hypothèses.
+- Formulation de recommandations proportionnées aux résultats disponibles.
+- Documentation des méthodes, limites et règles de calcul.
+- Présentation des résultats à des interlocuteurs techniques et non techniques.
+- Collaboration avec des profils Data Science et Project Management.
+- Préparation de livrables analytiques documentés et réutilisables.
 
 **Certification Premium Data Analytics Internship obtenue en octobre 2026.**
 
@@ -117,26 +161,30 @@ Principales responsabilités et réalisations :
 
 ## Expérience opérationnelle
 
-### Opérations télécoms — 11 années d’expérience
+### Opérations télécoms — 11 années d'expérience
 
 **Glo Mobile Bénin • Bell Bénin • Bénin Télécoms**
 
-Expérience acquise au plus près des opérations réseau, de la qualité de service et de l’exploitation télécoms.
+Expérience professionnelle acquise dans l'exploitation des réseaux et des services télécoms, avec une exposition directe aux enjeux de performance, de qualité de service et de continuité opérationnelle.
 
-Principaux domaines couverts :
+**Principaux domaines couverts :**
 
-- exploitation et suivi des équipements et services télécoms ;
-- supervision de la performance réseau ;
-- suivi des KPI de qualité de service ;
-- analyse des incidents et dégradations ;
-- suivi des SLA et délais de résolution ;
-- contribution à la continuité des services ;
-- communication avec les équipes techniques et opérationnelles ;
-- analyse des écarts entre niveaux de service observés et attendus ;
-- appui à la priorisation des interventions ;
-- production et interprétation de rapports de performance.
+- Exploitation et suivi des équipements et services télécoms.
+- Supervision de la performance réseau.
+- Suivi des KPI de qualité de service.
+- Analyse des incidents et des dégradations.
+- Suivi des SLA et des délais de résolution.
+- Contribution à la continuité des services.
+- Communication avec les équipes techniques et opérationnelles.
+- Analyse des écarts entre niveaux de service observés et attendus.
+- Appui à la priorisation des interventions.
+- Production et interprétation de rapports de performance.
 
-Cette expérience constitue mon principal avantage métier : elle me permet d’interpréter les indicateurs dans leur contexte opérationnel et de relier plus efficacement les données aux décisions de terrain.
+**Valeur ajoutée de cette expérience :**
+
+Cette expérience opérationnelle me permet d'aborder les données avec une compréhension des réalités de terrain : contraintes de service, gestion des incidents, disponibilité des ressources, délais de traitement et arbitrages entre priorités.
+
+Elle constitue un avantage pour relier les indicateurs aux décisions opérationnelles, y compris lors de l'analyse de processus dans d'autres environnements métier.
 
 ---
 
@@ -148,167 +196,12 @@ Cette expérience constitue mon principal avantage métier : elle me permet d’
 
 <div class="project-card">
 
-### ITSM — Incidents, SLA et continuité opérationnelle
+### Operational Performance — Workflow Analytics
 
-Analyse de **141 712 incidents** afin de suivre le backlog, l’ancienneté des tickets, les délais de résolution, le respect des SLA et les réassignations.
+Analyse de la performance des processus opérationnels à partir des volumes d'activité, des délais, des charges et des indicateurs d'efficacité.
 
-Le dashboard Power BI permet de distinguer la maîtrise des incidents critiques de l’accumulation progressive d’une dette opérationnelle sur les tickets de priorité plus faible.
+Le projet vise à identifier les retards, les inefficacités et les activités nécessitant une investigation approfondie.
 
-[Consulter le projet](/operational-performance/incidents-continuité/)
-
-</div>
-
-:::
-
-::: {.g-col-12 .g-col-md-6}
-
-<div class="project-card">
-
-### Telecom QoS — Benchmark de performance
-
-Analyse comparative d’indicateurs de qualité de service télécoms : voix, data, couverture, latence et accès au haut débit.
-
-Le projet vise à situer la performance observée par rapport à différents référentiels et à identifier les écarts nécessitant une investigation ou une action de pilotage.
+**Valeur décisionnelle :** contribuer à la priorisation des améliorations opérationnelles à partir des écarts observés.
 
 </div>
-
-:::
-
-::: {.g-col-12 .g-col-md-6}
-
-<div class="project-card">
-
-### Télécoms — Churn et revenu à risque
-
-Identification des segments clients présentant un risque de churn, estimation du revenu exposé et priorisation des actions de fidélisation.
-
-[Consulter le projet](/telecoms/projet_churn/)
-
-</div>
-
-:::
-
-::: {.g-col-12 .g-col-md-6}
-
-<div class="project-card">
-
-### Global Superstore — Performance commerciale et rentabilité
-
-Analyse des ventes, de la marge, des commandes, des remises et des écarts de rentabilité selon les produits, les catégories et les régions.
-
-Le projet met en évidence qu’une forte contribution au chiffre d’affaires ne garantit pas automatiquement une performance rentable.
-
-</div>
-
-:::
-
-:::
-
----
-
-## Compétences analytiques
-
-### Cadrage et analyse métier
-
-- Compréhension du besoin métier
-- Formulation des questions d’analyse
-- Identification de la décision à soutenir
-- Définition des KPI et règles de calcul
-- Analyse des populations et dénominateurs
-- Distinction entre faits, hypothèses et interprétations
-- Analyse descriptive et diagnostique
-- Formulation de recommandations mesurables
-
-### Data Quality et préparation
-
-- Profilage des données
-- Contrôle des valeurs manquantes et doublons
-- Vérification des types, formats et règles de cohérence
-- Contrôle de la granularité et des relations entre tables
-- Réconciliation des KPI
-- Documentation des transformations et limites
-- Préparation et structuration des données pour l’analyse
-
-### Business Intelligence
-
-- Modélisation de données
-- Construction de tables de faits et dimensions
-- Création de mesures DAX
-- Conception de dashboards Power BI
-- Data storytelling
-- Restitution pour les équipes opérationnelles et le management
-- Documentation des KPI
-- Analyse des tendances, écarts et anomalies
-
----
-
-## Outils
-
-- **Power BI :** Power Query, modélisation, DAX, visualisation et dashboards
-- **SQL :** extraction, jointures, agrégations, contrôles et analyses
-- **Python :** pandas, préparation, exploration et visualisation
-- **Excel :** analyse, tableaux croisés dynamiques, formules et reporting
-- **R :** tidyverse, analyse et visualisation
-- **DuckDB :** requêtes analytiques et traitement local
-- **GitHub et Quarto :** documentation et publication de projets
-
----
-
-## Formation
-
-- **Master Télécommunications et Réseaux** — Institut de Mathématiques et de Sciences Physiques
-- **MBA en Management de Projets** — Pigier
-- **Licence en Télécommunications**
-
----
-
-## Certifications
-
-- **Premium Data Analytics Internship** — AnalystLab Africa, 2026
-- **Google Data Analytics Professional Certificate** — Google, 2025
-
----
-
-## Positionnement recherché
-
-Je recherche prioritairement des postes ou missions dans les fonctions suivantes :
-
-- Performance Analyst
-- Operational Performance Analyst
-- Operations Data Analyst
-- Business Intelligence Analyst — Operations
-- Telecom Data Analyst
-- Telecom Performance Analyst
-- Network Performance Analyst
-- Telecom QoS Analyst
-- ITSM Data Analyst
-- IT Service Performance Analyst
-- Service Delivery Analyst
-- SLA Performance Analyst
-- Reporting & Performance Analyst
-- PMO Data Analyst
-- PMO Reporting Analyst
-
-Zones recherchées :
-
-- remote depuis le Bénin ;
-- Afrique francophone ;
-- Europe francophone lorsque la collaboration internationale est explicitement autorisée.
-
----
-
-## Objectif professionnel
-
-Mettre mon expérience des opérations télécoms et mes compétences en Data Analytics et Business Intelligence au service d’un pilotage plus fiable de la performance.
-
-Je souhaite aider les organisations à répondre à trois questions essentielles :
-
-1. **Que se passe-t-il réellement ?**
-2. **Qu’est-ce qui mérite une attention prioritaire ?**
-3. **Comment mesurer les effets des décisions prises ?**
-
----
-
-## Portfolio
-
-[Consulter mon portfolio](https://nancy-jennifer.github.io)
