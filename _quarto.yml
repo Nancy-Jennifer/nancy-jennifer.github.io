@@ -15,8 +15,6 @@ website:
         file: about.qmd
       - text: "Telecom Analytics"
         file: telecoms/index.qmd
-      - text: "People Analytics"
-        file: people-analytics/index.qmd
       - text: "Operational Performance"
         file: operational-performance/index.qmd
       - text: "Méthodologie analytique"
