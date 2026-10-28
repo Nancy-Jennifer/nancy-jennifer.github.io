@@ -1,4 +1,3 @@
-```yaml
 project:
   type: website
   output-dir: _site
@@ -7,8 +6,7 @@ project:
 
 website:
   title: ""
-  description: "Portfolio Performance & Decision Intelligence Analyst — Operational Performance, Business Intelligence, KPI & Process Analytics, Telecom QoS et ITSM"
-
+  description: "Portfolio Data Analyst Technique — Télécoms QoS, People Analytics, Operational Performance et projets orientés performance, optimisation et aide à la décision"
   navbar:
     left:
       - text: "Accueil"
@@ -17,6 +15,8 @@ website:
         file: about.qmd
       - text: "Telecom Analytics"
         file: telecoms/index.qmd
+      - text: "People Analytics"
+        file: people-analytics/index.qmd
       - text: "Operational Performance"
         file: operational-performance/index.qmd
       - text: "Méthodologie analytique"
@@ -30,7 +30,7 @@ website:
 
   page-footer:
     left: |
-      © <span id="year"></span> Nancy Lee YIMBERE ALAPINI – Performance & Decision Intelligence Analyst | Operational Performance • Business Intelligence • KPI & Process Analytics
+      © <span id="year"></span> Nancy Lee YIMBERE ALAPINI – Data Analyst Technique | Télécommunications, People Analytics & Operational Performance – Analyses orientées performance, optimisation et aide à la décision 
       <br>
       <a href="https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626" target="_blank" rel="noopener">LinkedIn</a> |
       <a href="mailto:nancylee.yimbere@gmail.com">nancylee.yimbere@gmail.com</a>
@@ -54,4 +54,3 @@ format:
     link-external-newwindow: true
     code-copy: true
     code-overflow: wrap
-```

@@ -1,0 +1,102 @@
+---
+title: "Analyse Attrition – IBM HR Analytics"
+subtitle: "Identifier les déterminants du turnover des salariés"
+date: 2025-07-15
+---
+
+`PEOPLE ANALYTICS`{.badge} `ATTRITION`{.badge} `IBM HR ANALYTICS`{.badge} `TURNOVER`{.badge} `RH & TALENTS`{.badge}
+
+Analyse exploratoire des facteurs associés aux départs volontaires des salariés à partir du dataset IBM HR Analytics, avec une lecture orientée décision RH et priorisation des leviers de rétention.
+
+**MOTS CLÉS**  
+IBM HR Analytics, People Analytics, Turnover, Attrition RH, Satisfaction au travail, Heures supplémentaires, Ancienneté, Distance domicile-travail, Rétention des talents
+
+---
+
+## Enjeu RH : comprendre et anticiper les départs volontaires
+
+Le turnover représente un enjeu structurant pour les organisations, à la fois sur le plan humain, opérationnel et économique.  
+Un niveau élevé de départs volontaires peut révéler :
+
+- un désalignement entre attentes des collaborateurs et conditions de travail,  
+- des difficultés d’intégration ou de gestion de la charge,  
+- des tensions organisationnelles ou managériales,  
+- ou encore un déficit d’engagement durable.
+
+Au-delà des coûts de recrutement et de formation, ces départs affectent la continuité des activités, la transmission des compétences et la stabilité des équipes.
+
+Comprendre les facteurs associés au départ devient donc un levier essentiel pour agir en amont et orienter les politiques RH vers la prévention plutôt que la réaction.
+
+---
+
+## Objectif de l’analyse
+
+Cette analyse vise à identifier les variables les plus associées au départ volontaire des salariés à partir d’un jeu de données RH structuré.
+
+Les dimensions étudiées incluent notamment :
+
+- l’ancienneté,  
+- la satisfaction au travail,  
+- la charge de travail (heures supplémentaires),  
+- la distance domicile–travail,  
+- les caractéristiques organisationnelles et métiers.
+
+L’objectif est de produire des enseignements utiles pour :
+
+- anticiper les situations à risque,  
+- orienter les actions de rétention,  
+- améliorer l’expérience collaborateur,  
+- soutenir une gestion plus durable du capital humain.
+
+---
+
+## Jeu de données utilisé
+
+L’analyse repose sur le dataset RH simulé fourni par **IBM**, utilisé comme cas d’étude en People Analytics.
+
+Il s’agit d’un fichier tabulaire comprenant **1 470 salariés** et **35 variables**, couvrant plusieurs dimensions de la vie professionnelle.
+
+Dataset disponible sur Kaggle :  
+👉 *IBM HR Analytics Employee Attrition & Performance*
+
+### Structuration des variables
+
+- **Données démographiques** : âge, sexe, situation familiale  
+- **Parcours professionnel** : poste, département, ancienneté, mobilité interne  
+- **Rémunération** : salaire mensuel, taux journalier, dispositifs d’actionnariat  
+- **Engagement & bien-être** : satisfaction, équilibre vie pro/perso, relation managériale  
+- **Comportements au travail** : heures supplémentaires, formations, promotions, changements de poste
+
+---
+
+## Harmonisation des variables
+
+::: {.callout-note icon="info-circle"}
+Le dataset d’origine étant en anglais, les variables ont été traduites en français afin de faciliter la lecture métier et l’interprétation RH.
+
+Cette harmonisation n’altère ni les valeurs ni la structure analytique des données.
+:::
+
+La variable cible est :
+
+- **Départ** *(Attrition)*  
+→ indique si un salarié a quitté volontairement l’entreprise (**Yes**) ou non (**No**).
+
+---
+
+## Structure de l’analyse
+
+L’étude s’organise en quatre étapes :
+
+1. **Exploration descriptive (EDA)** : profil des collaborateurs et distribution des variables clés.  
+2. **Validation des hypothèses People Analytics** : identification des facteurs associés au départ.  
+3. **Insights décisionnels** : mise en évidence des signaux de risque et des populations exposées.  
+4. **Recommandations RH** : leviers opérationnels pour réduire le turnover et renforcer la rétention.
+
+---
+
+#### Pages du projet
+
+- [**EDA & Résultats**](eda_resultats.qmd) — analyses, visualisations et validation des hypothèses  
+- [**Synthèse & Recommandations RH**](synthese_reco.qmd) — priorités, leviers d’action et indicateurs de suivi  
+- [**Notebook technique**](technique.qmd) — préparation des données, code Python et reproductibilité

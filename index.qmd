@@ -7,64 +7,41 @@ title-block-style: none
 <!-- ===== EN-TÊTE PERSONNEL (AU-DESSUS DE LA BANNIÈRE) ===== -->
 <div class="home-header">
   <div class="home-name">Nancy Lee YIMBERE ALAPINI</div>
-  <div class="home-role">Performance &amp; Decision Intelligence Analyst</div>
-  <div class="home-specialties">Operational Performance | Business Intelligence | KPI &amp; Process Analytics</div>
-  <div class="home-tagline">Analyser la performance, comprendre les écarts et transformer les données en décisions mesurables.</div>
+  <div class="home-role">Performance &amp; Decision Intelligence Analyst — Telecom QoS, Performance Humaine & Opérationnelle</div>
+  <div class="home-tagline">Analyser la performance et transformer les données en décisions opérationnelles.</div>
 </div>
 
-<!-- Espacement sous la présentation -->
+<!-- (2 lignes d'espace sous la tagline) -->
 <div class="spacer-2lines"></div>
 
 <!-- ===== BANNIÈRE D’ACCUEIL ===== -->
 <div class="hero-banner-home"></div>
 
-## Transformer les données en décisions opérationnelles
+## Une approche orientée performance & décision
 
-**Comprendre la performance est une première étape. Savoir où agir et comment mesurer les résultats est l'enjeu principal.**
+J’analyse les données pour répondre à une question simple :
 
-J'aide les organisations à analyser leur performance opérationnelle, à identifier les écarts et les risques, puis à transformer leurs données en informations exploitables pour orienter les décisions.
+👉 **quelles décisions peuvent réellement influencer la performance ?**
 
-Mon approche associe **11 années d'expérience dans les opérations télécoms** à des compétences en **Data Analytics, Business Intelligence et analyse des processus**.
+Mes analyses permettent de :
 
-Mes analyses visent à :
+- détecter les anomalies, inefficacités et contre-performances  
+- comprendre les causes qui dégradent les résultats  
+- identifier les leviers d’amélioration prioritaires  
+- repérer les facteurs qui expliquent une surperformance  
+- transformer les indicateurs en décisions opérationnelles  
+- aider à corriger ce qui freine la performance et à reproduire ce qui fonctionne  
 
-- **fiabiliser les données et les indicateurs** utilisés pour piloter les activités ;
-- **identifier les écarts, tendances et anomalies** qui méritent une attention particulière ;
-- **analyser les processus, les flux et les délais** pour comprendre les situations de contre-performance ;
-- **repérer les facteurs associés aux performances observées**, qu'elles soient favorables ou défavorables ;
-- **identifier les risques opérationnels et les points de friction** ;
-- **prioriser les investigations et les actions d'amélioration** ;
-- **définir des indicateurs permettant de mesurer les résultats**.
+Autrement dit, je n’analyse pas seulement les écarts négatifs.
 
-Mon objectif n'est pas uniquement de montrer ce qui fonctionne ou ce qui se dégrade, mais d'aider à comprendre **ce qui mérite une décision, pourquoi et comment en évaluer les effets**.
-
+J’analyse aussi les réussites pour comprendre comment les amplifier.
 ---
 
-## Mes domaines de compétences
+## Domaines d’expertise
 
-### Operational Performance & Process Analytics
-
-Analyse de la performance des activités, des processus et des services : volumes, délais, flux, backlogs, efficacité opérationnelle et risques.
-
-**Finalité :** identifier les situations nécessitant une investigation et soutenir la priorisation des améliorations.
-
-### Business Intelligence & Performance Management
-
-Définition et validation des KPI, préparation des données, modélisation analytique, conception de dashboards Power BI et reporting décisionnel.
-
-**Finalité :** rendre la performance fiable, lisible et exploitable pour le pilotage des activités.
-
-### Telecom QoS & Network Performance
-
-Analyse de la qualité de service, des indicateurs de performance réseau et des écarts observés selon les environnements et les services.
-
-**Finalité :** éclairer les priorités d'investigation et d'amélioration de la qualité de service.
-
-### ITSM & Service Performance Analytics
-
-Analyse des incidents, des SLA, des délais de résolution, des backlogs et des processus de traitement.
-
-**Finalité :** identifier les risques de dégradation du service et orienter les priorités opérationnelles.
+- **Télécommunications** — Qualité de service, performance réseau, benchmark  
+- **Performance Humaine** — Rétention, engagement, performance des équipes  
+- **Performance Opérationnelle** — Workflows, délais, efficacité des processus  
 
 ---
 
@@ -73,129 +50,85 @@ Analyse des incidents, des SLA, des délais de résolution, des backlogs et des 
 <div class="projects-row">
 
 <a class="project-pill" href="operational-performance/incidents-continuité/">
-PMO ITSM — Incidents critiques &amp; continuité opérationnelle
+PMO ITSM — Incidents critiques & continuité opérationnelle
 </a>
 
 <a class="project-pill" href="telecoms/projet_churn/index.qmd">
-Télécoms — Pilotage du churn &amp; revenu à risque
+Télécoms — Pilotage du churn & revenu à risque
+</a>
+
+<a class="project-pill" href="people-analytics/attrition/index.qmd">
+Performance Humaine — Rétention & performance des équipes
 </a>
 
 </div>
 
 ---
 
-## Ma démarche analytique
+## Démarche analytique
 
-Chaque analyse commence par une question :
+Quel que soit le domaine, j’applique une démarche structurée orientée décision :
 
-**Quelle décision cherchons-nous à éclairer ?**
-
-Ma démarche repose sur six principes :
-
-1. **Comprendre le problème métier** et clarifier la décision à soutenir.
-2. **Fiabiliser les données** et définir des indicateurs cohérents.
-3. **Analyser les écarts, tendances et facteurs associés**.
-4. **Distinguer les faits observés, les interprétations et les hypothèses**.
-5. **Formuler des recommandations proportionnées aux preuves disponibles**.
-6. **Définir les indicateurs permettant de mesurer les résultats**.
-
-### WHAT? SO WHAT? NOW WHAT?
-
-**WHAT?** — Que montrent les données ?
-
-**SO WHAT?** — Pourquoi ces résultats sont-ils importants pour le métier ?
-
-**NOW WHAT?** — Quelle décision, investigation ou action peut en découler ?
+- clarification du besoin métier  
+- analyse exploratoire approfondie  
+- formulation et test d’hypothèses  
+- recommandations actionnables  
+- reproductibilité et transparence  
 
 👉 [Découvrir ma méthodologie analytique](methode/index.qmd)
 
 ---
 
-## Ce que vous trouverez dans ce portfolio
+## Ce que vous trouverez ici
 
-- **Des études de cas analytiques** appliquées à la performance opérationnelle, aux télécommunications, à l'ITSM et à d'autres contextes métier.
-- **Des dashboards et des visualisations** conçus pour faciliter la lecture des indicateurs.
-- **Des analyses diagnostiques** permettant de comprendre les écarts et les situations nécessitant une investigation.
-- **Des recommandations orientées décision**, formulées à partir des résultats disponibles.
-- **Une démarche documentée**, attentive à la qualité des données, aux limites des analyses et à la reproductibilité.
-
----
-
-## Mon positionnement professionnel
-
-**Performance & Decision Intelligence Analyst**
-
-Operational Performance | Business Intelligence | KPI & Process Analytics
-
-Mon expérience professionnelle s'est construite dans les opérations télécoms. Mes compétences analytiques me permettent aujourd'hui d'aborder des problématiques de performance dans différents environnements, sous réserve d'en comprendre les processus et les contraintes métier.
-
-Je suis ouverte aux opportunités professionnelles et aux collaborations en **Data Analytics, Business Intelligence, Operational Performance et Decision Support**.
-
-**Localisation :** Cotonou, Bénin.
-
-**Opportunités recherchées :** postes locaux et missions à distance accessibles depuis le Bénin, notamment dans les environnements francophones et internationaux.
-
-[Consulter mon CV détaillé](cv.qmd)
-
----
+- **Études de cas** : Télécoms, People Analytics, performance opérationnelle  
+- **Livrables** : dashboards, analyses, recommandations concrètes  
 
 ```{=html}
 <style>
 /* Cache tout bloc-titre résiduel */
-.quarto-title-block {
-  display: none;
-}
+.quarto-title-block { display: none; }
 
 /* ===============================
    EN-TÊTE PERSONNEL
    =============================== */
-
-.home-header {
+.home-header{
   margin-top: 4px;
   margin-bottom: 0;
 }
 
-.home-name {
+.home-name{
   font-size: clamp(1.4rem, 2.2vw + .6rem, 2.0rem);
   font-weight: 800;
   color: #0f2233;
   line-height: 1.15;
 }
 
-.home-role {
-  margin-top: 4px;
+.home-role{
+  margin-top: 2px;
   font-size: clamp(1.05rem, 1.4vw + .35rem, 1.25rem);
-  font-weight: 700;
+  font-weight: 600;
   color: #2E7D32;
   line-height: 1.25;
 }
 
-.home-specialties {
-  margin-top: 5px;
-  font-size: clamp(.95rem, 1.1vw + .3rem, 1.1rem);
-  font-weight: 600;
-  color: #1f4e79;
-  line-height: 1.35;
-}
-
-.home-tagline {
-  margin-top: 6px;
+.home-tagline{
+  margin-top: 4px;
   font-size: clamp(1.0rem, 1.1vw + .25rem, 1.15rem);
   color: #333;
   font-style: italic;
   line-height: 1.35;
 }
 
-/* Espacement avant la bannière */
-.spacer-2lines {
+/* 2 lignes d'espace avant la bannière */
+.spacer-2lines{
   height: calc(1.35em * 2);
 }
 
 /* ===============================
    BANNIÈRE D’ACCUEIL
    =============================== */
-
-.hero-banner-home {
+.hero-banner-home{
   width: 100%;
   height: 340px;
   background-image: url('/assets/banners/Home-banniere.png');
@@ -208,15 +141,14 @@ Je suis ouverte aux opportunités professionnelles et aux collaborations en **Da
 /* ===============================
    PROJETS
    =============================== */
-
-.projects-row {
+.projects-row{
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
   margin: 10px 0 24px 0;
 }
 
-.project-pill {
+.project-pill{
   display: inline-block;
   background: #2E7D32;
   color: #fff !important;
@@ -229,7 +161,7 @@ Je suis ouverte aux opportunités professionnelles et aux collaborations en **Da
   transition: transform .15s ease, box-shadow .15s ease;
 }
 
-.project-pill:hover {
+.project-pill:hover{
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0,0,0,.15);
 }
@@ -237,28 +169,11 @@ Je suis ouverte aux opportunités professionnelles et aux collaborations en **Da
 /* ===============================
    MOBILE
    =============================== */
-
-@media (max-width: 600px) {
-  .hero-banner-home {
-    height: 240px;
-    margin-bottom: 20px;
-  }
-
-  .home-name {
-    font-size: 1.6rem;
-  }
-
-  .home-role {
-    font-size: 1.1rem;
-  }
-
-  .home-specialties {
-    font-size: 1rem;
-  }
-
-  .home-tagline {
-    font-size: 1rem;
-  }
+@media (max-width: 600px){
+  .hero-banner-home{ height: 240px; margin-bottom: 20px; }
+  .home-name{ font-size: 1.6rem; }
+  .home-role{ font-size: 1.1rem; }
+  .home-tagline{ font-size: 1rem; }
 }
 </style>
 ```
