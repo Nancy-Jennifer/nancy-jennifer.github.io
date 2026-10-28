@@ -7,8 +7,9 @@ title-block-style: none
 <!-- ===== EN-TÊTE PERSONNEL (AU-DESSUS DE LA BANNIÈRE) ===== -->
 <div class="home-header">
   <div class="home-name">Nancy Lee YIMBERE ALAPINI</div>
-  <div class="home-role">Performance &amp; Decision Intelligence Analyst — Telecom QoS, Performance Humaine & Opérationnelle</div>
-  <div class="home-tagline">Analyser la performance et transformer les données en décisions opérationnelles.</div>
+  <div class="home-role">Performance &amp; Decision Intelligence Analyst</div>
+  <div class="home-specialization">Operational Performance | Business Intelligence | KPI &amp; Process Analytics</div>
+  <div class="home-tagline">Analyser la performance, comprendre les écarts et transformer les données en décisions mesurables.</div>
 </div>
 
 <!-- (2 lignes d'espace sous la tagline) -->
@@ -17,31 +18,36 @@ title-block-style: none
 <!-- ===== BANNIÈRE D’ACCUEIL ===== -->
 <div class="hero-banner-home"></div>
 
-## Une approche orientée performance & décision
+## Transformer les données en décisions opérationnelles
 
-J’analyse les données pour répondre à une question simple :
+J'analyse les données pour répondre à une question essentielle :
 
-👉 **quelles décisions peuvent réellement influencer la performance ?**
+👉 **Où agir en priorité pour améliorer la performance, et comment mesurer les résultats ?**
+
+Mon approche consiste à relier les **indicateurs de performance**, les **processus métier** et les **décisions opérationnelles**.
 
 Mes analyses permettent de :
 
-- détecter les anomalies, inefficacités et contre-performances  
-- comprendre les causes qui dégradent les résultats  
-- identifier les leviers d’amélioration prioritaires  
-- repérer les facteurs qui expliquent une surperformance  
-- transformer les indicateurs en décisions opérationnelles  
-- aider à corriger ce qui freine la performance et à reproduire ce qui fonctionne  
+- détecter les anomalies, les inefficacités et les écarts de performance ;
+- comprendre les facteurs associés aux contre-performances ;
+- identifier les leviers d'amélioration prioritaires ;
+- repérer les facteurs de surperformance à reproduire ;
+- transformer les indicateurs en recommandations exploitables ;
+- accompagner la priorisation des actions et le suivi de leurs résultats.
 
-Autrement dit, je n’analyse pas seulement les écarts négatifs.
+**L'objectif n'est pas seulement de comprendre ce qui ne fonctionne pas, mais aussi d'identifier ce qui fonctionne et comment le reproduire.**
 
-J’analyse aussi les réussites pour comprendre comment les amplifier.
 ---
 
-## Domaines d’expertise
+## Mes domaines de compétences
 
-- **Télécommunications** — Qualité de service, performance réseau, benchmark  
-- **Performance Humaine** — Rétention, engagement, performance des équipes  
-- **Performance Opérationnelle** — Workflows, délais, efficacité des processus  
+- **Operational Performance & Process Analytics** — Analyse des processus, efficacité opérationnelle, délais, workflows et identification des leviers d'amélioration.
+
+- **Business Intelligence & Performance Management** — Construction d'indicateurs, tableaux de bord décisionnels, analyse des écarts et suivi de la performance.
+
+- **Telecom QoS & ITSM Analytics** — Qualité de service, performance réseau, incidents, SLA, backlog et continuité opérationnelle.
+
+Ces compétences analytiques peuvent être mobilisées dans différents secteurs, en tenant compte de leurs processus, de leurs indicateurs et de leurs enjeux métier.
 
 ---
 
@@ -57,37 +63,51 @@ PMO ITSM — Incidents critiques & continuité opérationnelle
 Télécoms — Pilotage du churn & revenu à risque
 </a>
 
-<a class="project-pill" href="people-analytics/attrition/index.qmd">
-Performance Humaine — Rétention & performance des équipes
-</a>
-
 </div>
 
 ---
 
-## Démarche analytique
+## Ma démarche analytique
 
-Quel que soit le domaine, j’applique une démarche structurée orientée décision :
+Quel que soit le domaine, j'applique une démarche structurée orientée décision :
 
-- clarification du besoin métier  
-- analyse exploratoire approfondie  
-- formulation et test d’hypothèses  
-- recommandations actionnables  
-- reproductibilité et transparence  
+- **Clarifier le problème métier** et les décisions à éclairer.
+- **Fiabiliser les données** et vérifier la cohérence des indicateurs.
+- **Analyser les écarts, tendances et anomalies** pour identifier les signaux pertinents.
+- **Distinguer les faits, les interprétations et les hypothèses** afin d'éviter les conclusions non étayées.
+- **Formuler des recommandations actionnables** en fonction des résultats observés.
+- **Définir les indicateurs de suivi** permettant d'évaluer les effets des actions engagées.
 
 👉 [Découvrir ma méthodologie analytique](methode/index.qmd)
 
 ---
 
-## Ce que vous trouverez ici
+## Ce que vous trouverez dans ce portfolio
 
-- **Études de cas** : Télécoms, People Analytics, performance opérationnelle  
-- **Livrables** : dashboards, analyses, recommandations concrètes  
+- **Études de cas** : Telecom Analytics, Operational Performance, ITSM et analyses orientées performance.
+- **Livrables analytiques** : tableaux de bord Power BI, analyses exploratoires, indicateurs de performance et recommandations métier.
+- **Démarche décisionnelle** : des questions métier aux preuves, des insights aux recommandations.
+
+---
+
+## Mon positionnement professionnel
+
+**Performance & Decision Intelligence Analyst**
+
+Forte de **11 années d'expérience dans les opérations télécoms**, je combine une connaissance des enjeux opérationnels avec des compétences en **Data Analytics et Business Intelligence**.
+
+Mon objectif est d'aider les organisations à :
+
+**Comprendre leur performance → Identifier les priorités → Éclairer les décisions → Mesurer les résultats.**
+
+---
 
 ```{=html}
 <style>
 /* Cache tout bloc-titre résiduel */
-.quarto-title-block { display: none; }
+.quarto-title-block {
+  display: none;
+}
 
 /* ===============================
    EN-TÊTE PERSONNEL
@@ -107,13 +127,21 @@ Quel que soit le domaine, j’applique une démarche structurée orientée déci
 .home-role{
   margin-top: 2px;
   font-size: clamp(1.05rem, 1.4vw + .35rem, 1.25rem);
-  font-weight: 600;
+  font-weight: 700;
   color: #2E7D32;
   line-height: 1.25;
 }
 
+.home-specialization{
+  margin-top: 6px;
+  font-size: clamp(1rem, 1.2vw + .3rem, 1.15rem);
+  font-weight: 600;
+  color: #1f4e79;
+  line-height: 1.35;
+}
+
 .home-tagline{
-  margin-top: 4px;
+  margin-top: 8px;
   font-size: clamp(1.0rem, 1.1vw + .25rem, 1.15rem);
   color: #333;
   font-style: italic;
@@ -170,10 +198,26 @@ Quel que soit le domaine, j’applique une démarche structurée orientée déci
    MOBILE
    =============================== */
 @media (max-width: 600px){
-  .hero-banner-home{ height: 240px; margin-bottom: 20px; }
-  .home-name{ font-size: 1.6rem; }
-  .home-role{ font-size: 1.1rem; }
-  .home-tagline{ font-size: 1rem; }
+  .hero-banner-home{
+    height: 240px;
+    margin-bottom: 20px;
+  }
+
+  .home-name{
+    font-size: 1.6rem;
+  }
+
+  .home-role{
+    font-size: 1.1rem;
+  }
+
+  .home-specialization{
+    font-size: 1rem;
+  }
+
+  .home-tagline{
+    font-size: 1rem;
+  }
 }
 </style>
 ```
