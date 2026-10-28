@@ -1,10 +1,10 @@
-
 # Nancy Lee YIMBERE ALAPINI
 
 ### Performance & Decision Intelligence Analyst
-**Business Intelligence | Data Analytics | Operational Performance**
 
-> Analyser la performance, comprendre les écarts et transformer les données en décisions opérationnelles éclairées.
+**Operational Performance | Business Intelligence | KPI & Process Analytics**
+
+> Analyser la performance, comprendre les écarts et transformer les données fiables en décisions métier éclairées et mesurables.
 
 🌐 **[Consulter mon portfolio](https://nancy-jennifer.github.io/)**
 
@@ -12,49 +12,73 @@
 
 ## À propos de ce portfolio
 
-Bienvenue sur mon portfolio professionnel dédié à la **Data Analytics, à la Business Intelligence et à l'analyse de la performance orientée décision**.
+Bienvenue sur mon portfolio professionnel dédié à la **Data Analytics, à la Business Intelligence et au pilotage de la performance orienté décision**.
 
 Mon approche repose sur une conviction :
 
 **La valeur d'une analyse ne réside pas uniquement dans les résultats qu'elle produit, mais dans sa capacité à éclairer une décision et à rendre l'action mesurable.**
 
-Forte d'une expérience professionnelle dans les opérations télécoms, complétée par une formation certifiante en Data Analytics et une expérience pratique au sein du programme AnalystLab Africa, je développe des projets analytiques qui relient les problématiques métier aux indicateurs de performance, aux diagnostics et aux recommandations opérationnelles.
+Ingénieure télécom avec **11 ans d'expérience dans les opérations télécoms**, aujourd'hui spécialisée en **analyse de la performance et aide à la décision par la donnée**, je combine une expérience opérationnelle en qualité de service, performance réseau, incidents et SLA avec des compétences en Data Analytics et Business Intelligence.
 
-Ce portfolio présente des études de cas dans plusieurs domaines, avec une attention particulière portée à la **qualité des données, à la fiabilité des KPI, à la rigueur des interprétations et à la valeur décisionnelle des analyses**.
+Cette double compétence me permet d'aborder des problématiques de performance au-delà du secteur des télécommunications, en tenant compte des processus, des contraintes et des objectifs propres à chaque environnement métier.
+
+Ce portfolio présente des études de cas dans plusieurs domaines, avec une attention particulière portée à :
+
+- la **qualité et la fiabilité des données** ;
+- la **pertinence et la cohérence des KPI** ;
+- l'**analyse des écarts, tendances et anomalies** ;
+- l'**identification des leviers d'amélioration** ;
+- la **rigueur des interprétations** ;
+- la **priorisation des décisions et des actions** ;
+- la **mesure des résultats**.
+
+**Mon objectif : relier les données, les enjeux opérationnels et les décisions concrètes.**
 
 ---
 
 ## Mes domaines d'analyse
 
-### Telecom Analytics
+### Operational Performance & Process Analytics
 
-Analyse de la qualité de service et de la performance des réseaux télécoms.
-
-- Suivi des indicateurs de qualité de service (QoS).
-- Analyse comparative de performance.
-- Identification des écarts et des zones de contre-performance.
-- Traduction des constats en priorités d'amélioration.
-
-### People Analytics
-
-Analyse des données RH pour mieux comprendre les dynamiques de performance humaine.
-
-- Analyse de l'attrition et de la rétention.
-- Identification des groupes présentant des écarts de performance.
-- Étude des facteurs associés aux phénomènes observés.
-- Recommandations orientées pilotage RH.
-
-### Operational Performance
-
-Analyse de la performance des processus et des services.
+Analyse de la performance des activités, des processus et des services afin d'identifier les écarts et d'éclairer les priorités d'amélioration.
 
 - Suivi des KPI opérationnels.
-- Analyse des incidents, du backlog et des SLA.
+- Analyse des workflows, délais et processus métier.
+- Identification des anomalies et inefficacités.
+- Analyse des goulots d'étranglement.
 - Diagnostic des écarts de performance.
+- Identification des facteurs associés aux contre-performances et aux surperformances.
 - Priorisation des actions d'amélioration.
 - Définition d'indicateurs de suivi des actions.
 
-Ce domaine inclut notamment des applications aux services IT et aux opérations de santé.
+Ce domaine inclut notamment des applications à la gestion des services IT et aux opérations de santé.
+
+### Business Intelligence & Performance Management
+
+Conception d'analyses et de dispositifs de suivi permettant de rendre la performance plus lisible et les décisions mieux informées.
+
+- Préparation, structuration et fiabilisation des données.
+- Définition et validation des indicateurs clés de performance.
+- Construction de tableaux de bord décisionnels.
+- Analyse des tendances et variations de performance.
+- Contrôle de cohérence des indicateurs.
+- Segmentation et analyse comparative.
+- Traduction des résultats en insights métier.
+- Formulation de recommandations actionnables.
+- Définition d'indicateurs pour évaluer les résultats des actions.
+
+### Telecom QoS & ITSM Analytics
+
+Analyse de la qualité de service télécoms et de la performance des processus de gestion des incidents.
+
+- Suivi des indicateurs de qualité de service (QoS).
+- Analyse de la performance des réseaux mobiles.
+- Benchmarking et analyse comparative.
+- Identification des écarts et des contextes de sous-performance.
+- Analyse des incidents, du backlog et des délais de résolution.
+- Suivi du respect des SLA.
+- Analyse des risques de continuité opérationnelle.
+- Aide à la priorisation des actions d'optimisation.
 
 ---
 
@@ -65,6 +89,7 @@ Ce domaine inclut notamment des applications aux services IT et aux opérations 
 **Problématique :** comprendre les rendez-vous médicaux manqués et identifier les groupes auprès desquels tester en priorité des actions de soutien à la présence.
 
 **Démarche :**
+
 - Définition et validation des KPI.
 - Analyse de la qualité des données et des populations de référence.
 - Exploration et diagnostic des écarts entre groupes.
@@ -77,13 +102,18 @@ Ce domaine inclut notamment des applications aux services IT et aux opérations 
 
 Les conclusions sont présentées dans leurs limites observationnelles, sans transformer les associations en relations causales.
 
+**Valeur décisionnelle :** aider à identifier les groupes prioritaires pour tester une intervention et définir les indicateurs permettant d'en évaluer les résultats.
+
 **Statut :** étude de cas détaillée en cours d'intégration au portfolio.
+
+---
 
 ### 2. Telecom QoS — Analyse comparative de performance
 
 **Problématique :** analyser la qualité de service des réseaux mobiles et identifier les écarts de performance dans une perspective d'amélioration opérationnelle.
 
 **Démarche :**
+
 - Collecte et préparation des données.
 - Définition des indicateurs comparables.
 - Analyse exploratoire et comparative.
@@ -92,31 +122,40 @@ Les conclusions sont présentées dans leurs limites observationnelles, sans tra
 
 **Valeur décisionnelle :** éclairer les priorités d'investigation et d'amélioration de la qualité de service.
 
+---
+
 ### 3. ITSM — Incident Management & SLA Performance
 
 **Problématique :** analyser la performance du traitement des incidents IT et identifier les situations nécessitant une attention opérationnelle.
 
 **Démarche :**
+
 - Analyse du volume et des caractéristiques des incidents.
 - Construction de KPI de performance.
 - Étude du backlog, des délais et du respect des SLA.
 - Segmentation des profils de traitement.
+- Analyse des réassignations et réouvertures d'incidents.
 - Identification des risques opérationnels et des priorités de suivi.
+- Conception d'un tableau de bord décisionnel Power BI.
 
-**Valeur décisionnelle :** contribuer au pilotage des services IT et à l'amélioration de la gestion des incidents.
+**Valeur décisionnelle :** contribuer au pilotage des services IT, à la priorisation des incidents et à l'amélioration des processus de gestion des incidents.
 
-### 4. People Analytics — Employee Attrition
+---
 
-**Problématique :** comprendre les différences observées en matière d'attrition et identifier les groupes nécessitant une investigation RH approfondie.
+### 4. Telecom Customer Churn — Pilotage du churn et du revenu à risque
+
+**Problématique :** identifier les segments de clients présentant les enjeux les plus importants en matière de résiliation et de revenu à risque.
 
 **Démarche :**
-- Préparation et validation des données RH.
-- Définition des indicateurs d'attrition.
-- Analyse des écarts entre groupes d'employés.
-- Étude des facteurs associés aux départs.
-- Formulation de pistes d'action et de suivi.
 
-**Valeur décisionnelle :** soutenir la réflexion sur la rétention et les priorités d'investigation RH, sans présenter les associations observées comme des causes démontrées.
+- Préparation et structuration des données clients.
+- Analyse du churn selon les caractéristiques des clients.
+- Segmentation par type de contrat, ancienneté et niveau de facturation.
+- Construction d'indicateurs de churn et de revenu à risque.
+- Identification des segments prioritaires.
+- Conception d'un tableau de bord Power BI.
+
+**Valeur décisionnelle :** éclairer la priorisation des actions de fidélisation en fonction des segments présentant les risques observés les plus importants.
 
 ---
 
@@ -174,6 +213,7 @@ La démarche suit une progression allant du cadrage métier à l'évaluation des
 | Data Analysis | SQL, Python, R, Excel |
 | Business Intelligence | Power BI, DAX, Data Visualization |
 | Performance Analytics | KPI Design, KPI Validation, Performance Monitoring |
+| Process Analytics | Workflow Analysis, Incident Analysis, SLA Monitoring |
 | Diagnostic Analytics | Exploratory Data Analysis, Segmentation, Comparative Analysis |
 | Decision Support | Insight Interpretation, Prioritization, Actionable Recommendations |
 | Documentation | Quarto, R Markdown, GitHub |
@@ -215,10 +255,9 @@ Ce dépôt contient les fichiers sources de mon site portfolio, construit avec *
 Les contenus sont organisés autour des principales rubriques du site :
 
 - **Accueil** — Positionnement professionnel et présentation des projets.
-- **Qui suis-je ?** — Parcours et transition vers la Data Analytics.
+- **Qui suis-je ?** — Parcours professionnel et approche analytique.
 - **Telecom Analytics** — Analyses de performance et qualité de service télécoms.
-- **People Analytics** — Études de cas RH.
-- **Operational Performance** — Performance opérationnelle, ITSM et HealthConnect.
+- **Operational Performance** — Performance opérationnelle, processus, ITSM et analyses appliquées.
 - **Méthodologie analytique** — Approche d'analyse orientée performance et décision.
 - **Contact** — Coordonnées et liens professionnels.
 
@@ -243,12 +282,14 @@ https://www.linkedin.com/in/nancy-lee-yimbere-alapini-b84a6626/
 
 **Nancy Lee YIMBERE ALAPINI**
 
-Performance & Decision Intelligence Analyst  
+**Performance & Decision Intelligence Analyst**  
+Operational Performance | Business Intelligence | KPI & Process Analytics
+
 Cotonou, Bénin
 
 **Email :** nancylee.yimbere@gmail.com
 
-Je m'intéresse aux opportunités de collaboration et aux missions en **Business Intelligence, Data Analytics, Operational Performance et Decision Support**, notamment dans des environnements francophones et internationaux accessibles à distance.
+Je m'intéresse aux opportunités de collaboration et aux missions en **Business Intelligence, Data Analytics, Operational Performance, Process Analytics et Decision Support**, notamment dans des environnements francophones et internationaux accessibles à distance.
 
 ---
 
