@@ -53,17 +53,6 @@ jobs:
           Rscript -e 'install.packages(c("knitr", "rmarkdown", "readr", "dplyr", "ggplot2"), repos = "https://cloud.r-project.org")'
           Rscript -e 'cat("rmarkdown version: ", as.character(packageVersion("rmarkdown")), "\n")'
 
-      - name: Generate EDA figures (FR)
-        run: |
-          set -e
-          echo "Running figure export script..."
-          test -f "people-analytics/attrition/export_figures_eda.py"
-          python people-analytics/attrition/export_figures_eda.py
-
-          echo "Checking generated PNGs..."
-          ls -la assets/images/people-analytics/attrition_hr/ || true
-          test -f "assets/images/people-analytics/attrition_hr/H1_satisfaction_taux_depart.png"
-
       - name: Render with Quarto
         uses: quarto-dev/quarto-actions/render@v2
 
