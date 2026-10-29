@@ -25,15 +25,17 @@ execute:
 
 ## Analyse de la performance opérationnelle & aide à la décision
 
-À travers des projets orientés **performance des processus**, j’analyse les données opérationnelles pour :
+À travers des projets orientés **performance des processus**, j'analyse les données opérationnelles pour :
 
-- comprendre les écarts de performance  
-- détecter les points de friction dans les workflows  
-- identifier les goulots d’étranglement  
-- prioriser les actions d’amélioration  
-- éclairer les décisions de pilotage opérationnel  
+- comprendre les écarts de performance
+- détecter les points de friction dans les workflows
+- identifier les goulots d'étranglement
+- prioriser les actions d'amélioration
+- éclairer les décisions de pilotage opérationnel
 
-👉 **L’objectif :** transformer les indicateurs d’activité en leviers concrets d’efficacité, de maîtrise des délais et d’amélioration de la performance globale.
+👉 **L'objectif :** transformer les indicateurs d'activité en leviers concrets d'efficacité, de maîtrise des délais et d'amélioration de la performance globale.
+
+Cette démarche s'applique à différents environnements métier, notamment aux **processus opérationnels**, à la **gestion des services numériques (ITSM)** et aux **opérations de santé (Healthcare Operations)**.
 
 `Workflow Performance`{.badge} `Délais de traitement`{.badge} `Efficacité opérationnelle`{.badge} `Bottlenecks`{.badge} `Aide à la décision`{.badge}
 
@@ -46,11 +48,11 @@ execute:
   <!-- P1 -->
   <article class="proj-card">
     <h3>P1 — Workflow Performance Analysis</h3>
-    <p class="subtitle">Processus métier · Délais · Efficacité · Goulots d’étranglement</p>
+    <p class="subtitle">Processus métier · Délais · Efficacité · Goulots d'étranglement</p>
 
     <p>
-      Analyse de la performance d’un workflow afin d’identifier les étapes les plus coûteuses en délai,
-      repérer les points de blocage et soutenir les décisions d’optimisation opérationnelle.
+      Analyse de la performance d'un workflow afin d'identifier les étapes les plus coûteuses en délai,
+      repérer les points de blocage et soutenir les décisions d'optimisation opérationnelle.
     </p>
 
     <a class="btn btn-success" href="workflow-performance/">🚀 Explorer le projet P1</a>
@@ -72,29 +74,48 @@ execute:
 
   </article>
 
+  <!-- P3 — HEALTHCONNECT -->
+  <article class="proj-card">
+    <h3>P3 — HealthConnect : Performance des rendez-vous & aide à la décision</h3>
+    <p class="subtitle">Healthcare Operations · Patient No-Show · KPI · Business Intelligence</p>
+
+    <p>
+      Analyse de 5 000 rendez-vous de santé pour comprendre les différences
+      de non-présentation entre groupes de rendez-vous, identifier les segments
+      nécessitant une attention particulière et orienter les décisions
+      d'amélioration de la gestion des rendez-vous.
+    </p>
+
+    <a class="btn btn-success" href="healthconnect/">
+      🚀 Explorer le projet P3
+    </a>
+
+  </article>
+
 </div>
+
 ## Impact métier
 
 Ces analyses permettent notamment :
 
-- d’identifier les étapes qui ralentissent l’exécution  
-- de détecter les processus sous-performants  
-- de prioriser les actions d’amélioration opérationnelle  
-- d’orienter les décisions de réallocation ou d’automatisation  
-- d’améliorer la fluidité et la performance globale des opérations  
+- d'identifier les étapes qui ralentissent l'exécution
+- de détecter les processus sous-performants
+- de prioriser les actions d'amélioration opérationnelle
+- d'orienter les décisions de réallocation ou d'automatisation
+- d'améliorer la fluidité et la performance globale des opérations
+- d'éclairer les décisions de gestion des rendez-vous et d'organisation des services de santé
 
 ## Positionnement analytique
 
-Mon travail se situe à l’interface entre :
+Mon travail se situe à l'interface entre :
 
-- indicateurs opérationnels  
-- performance des processus  
-- décisions d’optimisation  
+- indicateurs opérationnels
+- performance des processus
+- décisions d'optimisation
 
-👉 **L’objectif :** relier la donnée opérationnelle à des décisions concrètes d’amélioration de la performance.
+👉 **L'objectif :** relier la donnée opérationnelle à des décisions concrètes d'amélioration de la performance.
 
-Cette rubrique sera enrichie progressivement avec d’autres analyses orientées efficacité opérationnelle,
-diagnostic de processus et aide à la décision.
+Cette approche est transversale : elle permet d'étudier des problématiques de performance dans différents secteurs, tout en tenant compte des spécificités de chaque environnement métier.
 
 ```{=html}
 <style>
@@ -194,3 +215,4 @@ diagnostic de processus et aide à la décision.
 .proj-card .btn{ margin-top: 6px; }
 
 </style>
+```
